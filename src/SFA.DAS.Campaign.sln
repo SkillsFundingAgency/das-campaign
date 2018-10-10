@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Web", "SFA.DAS.Campaign.Web\SFA.DAS.Campaign.Web.csproj", "{78963483-FF2C-42AF-9C29-8DC42B98D6A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A89024A5-7D28-42A4-840B-F2F81DF10635}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Campaign.Web.UnitTests", "SFA.DAS.Campaign.Web.UnitTests\SFA.DAS.Campaign.Web.UnitTests.csproj", "{06D897E8-4472-465F-8499-2508560572AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78963483-FF2C-42AF-9C29-8DC42B98D6A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78963483-FF2C-42AF-9C29-8DC42B98D6A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78963483-FF2C-42AF-9C29-8DC42B98D6A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78963483-FF2C-42AF-9C29-8DC42B98D6A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06D897E8-4472-465F-8499-2508560572AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06D897E8-4472-465F-8499-2508560572AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06D897E8-4472-465F-8499-2508560572AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06D897E8-4472-465F-8499-2508560572AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{06D897E8-4472-465F-8499-2508560572AC} = {A89024A5-7D28-42A4-840B-F2F81DF10635}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF997E03-26CD-4805-8114-38F71532A883}
+	EndGlobalSection
+EndGlobal
