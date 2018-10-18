@@ -5,6 +5,7 @@ using NUnit.Framework;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Apprenticeships.Api.Types;
 using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
+using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.StandardsTests
