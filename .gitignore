@@ -266,4 +266,3 @@ src/Tools/PhantomJS/tools/phantomjs/ChangeLog
 *.stackdump
 desktop.ini
 App.Debug.config
-*.json

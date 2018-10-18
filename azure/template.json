@@ -1,0 +1,119 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environmentName": {
+      "type": "string",
+      "metadata": {
+        "description": "Short name of the environment. Used for the name of resources created"
+      }
+    }
+  },
+  "variables": {
+    "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/master/templates/",
+    "appServicePrefix": "[concat('das-',toLower(parameters('environmentName')),'-campaign')]",
+    "appServiceName": "[concat(variables('appServicePrefix'),'-web')]",
+    "appServicePlanName": "[concat(variables('appServicePrefix'),'-asp')]",
+    "appServicePlanSize": "1",
+    "appServicePlanInstances": 1
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-05-10",
+      "name": "campaignAppServerPlan",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('deploymentUrlBase'),'app-service-plan.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "appServicePlanName": {
+            "value": "[variables('appServicePlanName')]"
+          },
+          "aseHostingEnvironmentName": {
+            "value": ""
+          },
+          "aseResourceGroup": {
+            "value": ""
+          },
+          "aspSize": {
+            "value": "[variables('appServicePlanSize')]"
+          },
+          "aspInstances": {
+            "value": "[variables('appServicePlanInstances')]"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2017-05-10",
+      "name": "campaignAppInsights",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('deploymentUrlBase'),'application-insights.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "appInsightsName": {
+            "value": "[variables('appServiceName')]"
+          },
+          "attachedService": {
+            "value": "[variables('appServiceName')]"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2017-05-10",
+      "name": "campaignAppService",
+      "type": "Microsoft.Resources/deployments",
+      "dependsOn": [
+        "campaignAppServerPlan",
+        "campaignAppInsights"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('deploymentUrlBase'),'app-service.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "appServiceName": {
+            "value": "[variables('appServiceName')]"
+          },
+          "appServicePlanName": {
+            "value": "[variables('appServicePlanName')]"
+          },
+          "appServicePlanResourceGroup": {
+            "value": "[resourceGroup().location]"
+          },
+          "deployStagingSlot": {
+            "value": true
+          },
+          "appServiceAppSettings": {
+            "value": [
+              {
+                "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                "value": "[reference('campaignAppInsights').outputs.InstrumentationKey.value]"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "appServiceName": {
+      "type": "string",
+      "value": "[variables('appServiceName')]"
+    },
+    "appInsightInstrumentationKey": {
+      "type": "string",
+      "value": "[reference('campaignAppInsights').outputs.InstrumentationKey.value]"
+    }
+  }
+}
