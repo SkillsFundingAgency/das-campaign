@@ -2,11 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using SFA.DAS.Apprenticeships.Api.Client;
+using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
 
 namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
 {
-    public class StandardsService
+    public class StandardsService : IStandardsService
     {
         private readonly IApprenticeshipProgrammeApiClient _apprenticeshipProgrammeApiClient;
         private readonly IStandardsMapper _standardsMapper;

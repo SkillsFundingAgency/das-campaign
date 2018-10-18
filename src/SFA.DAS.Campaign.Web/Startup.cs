@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SFA.DAS.Apprenticeships.Api.Client;
+using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
+using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -31,6 +34,10 @@ namespace SFA.DAS.Campaign.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddTransient<IApprenticeshipProgrammeApiClient>(
+                client => new ApprenticeshipProgrammeApiClient(Configuration["ApprenticeshipBaseUrl"]));
+            services.AddTransient<IStandardsMapper, StandardsMapper>();
+            services.AddTransient<IStandardsService, StandardsService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
