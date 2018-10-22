@@ -12,7 +12,8 @@
   "variables": {
     "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/master/templates/",
     "appServicePrefix": "[concat('das-',toLower(parameters('environmentName')),'-campaign')]",
-    "appServiceName": "[concat(variables('appServicePrefix'),'-web')]",
+    "appServiceName": "[concat(variables('appServicePrefix'),'-as')]",
+    "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
     "appServicePlanName": "[concat(variables('appServicePrefix'),'-asp')]",
     "appServicePlanSize": "1",
     "appServicePlanInstances": 1
@@ -59,7 +60,7 @@
         },
         "parameters": {
           "appInsightsName": {
-            "value": "[variables('appServiceName')]"
+            "value": "[variables('appInsightName')]"
           },
           "attachedService": {
             "value": "[variables('appServiceName')]"
