@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
+using SFA.DAS.Campaign.Infrastructure.Configuration;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -19,7 +16,21 @@ namespace SFA.DAS.Campaign.Web
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json").Build();
+
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .AddAzureTableStorageConfiguration(
+                    builder["ConfigurationStorageConnectionString"],
+                    builder["Environment"],
+                    builder["Version"]
+                    )
+                .Build();
+
+            Configuration = config;
         }
 
         public IConfiguration Configuration { get; }
@@ -39,7 +50,11 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IStandardsMapper, StandardsMapper>();
             services.AddTransient<IStandardsService, StandardsService>();
 
+
+            var value = Configuration["TestVal"];
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddApplicationInsightsTelemetry(Configuration["ApplicationInsightsInstrumentationKey"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +73,7 @@ namespace SFA.DAS.Campaign.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
