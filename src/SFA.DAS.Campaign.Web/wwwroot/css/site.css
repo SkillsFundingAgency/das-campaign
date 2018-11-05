@@ -35,3 +35,13 @@ body {
         display: none;
     }
 }
+
+.form-control {
+    width: 100%;
+}
+
+.postcode-search-form {
+    background-color: #dee0e2;
+    padding: 20px 20px 0;
+    margin-bottom: 20px;
+}

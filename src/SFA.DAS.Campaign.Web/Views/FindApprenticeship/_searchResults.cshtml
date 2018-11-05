@@ -1,0 +1,87 @@
+﻿@using SFA.DAS.Campaign.Web.Helpers;
+@model SFA.DAS.Campaign.Models.Vacancy.VacancySearchResultItem
+
+<li class="search-result sfa-section-bordered" data-id="@Model.VacancyReference" data-lat="@Model.Location.Latitude" data-lon="@Model.Location.Longitude">
+    <h2 class="heading-medium sfa-no-margins">
+        <a href="@Model.VacancyUrl" target="_blank">@Model.TrainingTitle</a>
+    </h2>
+    <ul class="list">
+
+        <li class="secondary-text">@Model.Title</li>
+
+        <li class="font-xsmall secondary-text">
+          
+                <text>(Added @Model.PostedDate.ToFriendlyDaysAgo())</text>
+            
+
+        </li>
+    </ul>
+    <p>
+        @Model.ShortDescription
+    </p>
+    <div class="grid-row">
+        <div class="column-half">
+           
+            <ul class="list sfa-no-margins vacancy-details-list">
+                @*@if (vacancy.VacancyLocationType == VacancyLocationType.NonNational)
+                    {*@
+                <li data-show="DisplayDistance">
+                <span class="bold-small">Employer:</span>@Model.EmployerName <br/>
+
+                </li>
+                <li data-show="DisplayDistance">
+                    <span class="bold-small">Distance:</span> <span id="distance-value">@Model.DistanceInMiles.ToString("N")</span> miles <br/>
+                    
+                    @*<a href="#" class="summary-style hide-nojs journey-trigger">Journey time</a>
+                        <div class="detail-content toggle-content hide-nojs">
+                            <select class="form-control valid select-mode" name="" aria-invalid="false">
+                                <option value="DRIVING" aria-live="polite">Driving</option>
+                                <option value="TRANSIT" aria-live="polite">Bus/Train</option>
+                                <option value="WALKING" aria-live="polite">Walking</option>
+                                <option value="BICYCLING" aria-live="polite">Cycling</option>
+                            </select>
+
+                            <span class="journey-time" aria-live="polite"></span>
+                        </div>*@
+                </li>
+                @*  }*@
+                <li data-show="DisplayClosingDate">
+                    <span class="bold-small">Closing date:</span> <span id="closing-date-value" data-date="@Model.ApplicationClosingDate.ToString("d")">@Model.ApplicationClosingDate.ToString("d")</span>
+                </li>
+                <li data-show="DisplayStartDate">
+                    <span class="bold-small">Possible start date:</span> <span id="start-date-value">@Model.ExpectedStartDate.ToString("d")</span>
+                </li>
+                <li>
+                    <img height="20px" src="https://www.findapprenticeship.service.gov.uk/Content/_assets/img/gov.uk_logotype_crown_invert_trans.png"/>  <a href="@Model.VacancyUrl" target="_blank">View more details on gov.uk site</a>
+                </li>
+                @*<li>
+                        <span class="bold-small">Apprenticeship level:</span> @vacancy.ApprenticeshipLevel.GetDescription()
+                    </li>*@
+
+
+                @*@if (vacancy.VacancyLocationType == VacancyLocationType.NonNational)
+                    {
+                        <li class="sfa-hide-tablet hide-nojs">
+                            <a href="#1" class="mob-map-trigger summary-style map-closed">Show/hide map</a>
+                        </li>
+                    }*@
+
+                @*@if (vacancy.VacancyLocationType == VacancyLocationType.National)
+                    {
+                        <li id="multiple-positions-nationwide">
+                            This apprenticeship has multiple positions across England.
+                        </li>
+                    }*@
+            </ul>
+
+
+        </div>
+        <div id="map-@Model.VacancyReference" class="column-half">
+            @{ await Html.RenderPartialAsync("_map",Model); }
+
+        </div>
+
+    </div>
+
+
+</li>

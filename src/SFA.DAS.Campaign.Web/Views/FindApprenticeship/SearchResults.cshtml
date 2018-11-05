@@ -1,0 +1,54 @@
+﻿@model SearchResultsViewModel
+
+@{
+    ViewBag.Title = "Search results";
+    Layout = "_Layout";
+}
+
+<h1 class="heading-xlarge">Search results</h1>
+
+
+<div class="grid-row">
+    <div class="column-full">
+        <div id="mapDev" data-google-map-canvas style="height: 400px; width: 100%;"> </div>
+    </div>
+</div>
+
+
+<div class="grid-row">
+    <div class="column-one-third">
+        @{ await Html.RenderPartialAsync("_searchFilter", Model.filterModel); }
+    </div>
+    <hr/>
+    <div class="column-two-thirds">
+        <ul id="vacancy-search-results" class="search-results">
+            @foreach (var vacancySearchResultItem in Model.Results)
+            {
+            
+                await Html.RenderPartialAsync("_searchResults", vacancySearchResultItem);
+
+            }
+        </ul>
+        <input id="MapSearchResults" type="hidden" value="@Model.JsonResults" />
+        <input id="Latitude" type="hidden" value="@Model.Location.Latitude" />
+        <input id="Longitude" type="hidden" value="@Model.Location.Longitude" />
+        <input id="Postcode" type="hidden" value="@Model.Postcode" />
+        <input id="Distance" type="hidden" value="@Model.Distance" />
+    </div>
+</div>
+
+
+@section Scripts
+    {
+    <script src="~/lib/es6-promise/es6-promise.js"></script>
+    <script src="~/lib/markerclustererplus/markerclusterer.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWwWUGSweGpvZe7M2azzl19IcD9l3OH0s&callback=initMap"
+            type="text/javascript"></script>
+
+
+
+    <script src="~/js/_require.config.js"></script>
+    <script>require.baseUrl = '@Url.Content("~/scripts")';</script>
+    <script data-main="SearchResults" src="~/lib/requirejs/require.js"></script>
+
+}
