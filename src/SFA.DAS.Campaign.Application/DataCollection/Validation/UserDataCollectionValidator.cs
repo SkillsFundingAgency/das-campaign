@@ -19,7 +19,7 @@ namespace SFA.DAS.Campaign.Application.DataCollection.Validation
                 return false;
             }
 
-                return true;
+            return userData.IsValidEmail();
         }
     }
 }

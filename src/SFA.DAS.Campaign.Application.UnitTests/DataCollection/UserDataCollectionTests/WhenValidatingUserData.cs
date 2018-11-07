@@ -39,7 +39,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             //Act
             var actual = _validator.Validate(new UserData
             {
-                Email = "a'@a.com",
+                Email = "a'a@a.com",
                 FirstName = "test",
                 LastName = "tester",
                 RouteId = "123",
