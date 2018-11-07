@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
+    <ProjectReference Include="..\SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
