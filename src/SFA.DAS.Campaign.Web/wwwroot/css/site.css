@@ -45,3 +45,23 @@ body {
     padding: 20px 20px 0;
     margin-bottom: 20px;
 }
+
+.no-js {
+    display: none;
+}
+
+.infobox {
+    background:#fff;
+    height: auto;
+    width: 300px; 
+    font-size:17px;
+    padding:12px;
+}
+
+.infobox > a {
+    font-size: 14px;
+}
+
+[data-google-map-infobox-template] {
+    display: none;
+}

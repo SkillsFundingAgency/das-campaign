@@ -8,6 +8,7 @@
  */
 export interface IMarkerData extends IMarker {
     Title: string;
-    ShortDescription: string;
+    ShortDescription?: string;
     Location: IMarker;
+    VacancyUrl?: string;
 }

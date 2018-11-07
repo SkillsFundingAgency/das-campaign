@@ -17,11 +17,13 @@ namespace SFA.DAS.Campaign.Web.Controllers
     {
         private IVacanciesService _vacanciesService;
         private IGeocodeService _geocodeService;
+        private readonly IMappingService _mappingService;
 
-        public FindApprenticeshipController(IVacanciesService vacanciesService, IGeocodeService geocodeService)
+        public FindApprenticeshipController(IVacanciesService vacanciesService, IGeocodeService geocodeService, IMappingService mappingService)
         {
             _vacanciesService = vacanciesService;
             _geocodeService = geocodeService;
+            _mappingService = mappingService;
         }
 
         [HttpGet]
@@ -46,6 +48,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             viewModel.Postcode = postcode;
             viewModel.Location.Latitude = latLng.Coordinates.Lat;
             viewModel.Location.Longitude = latLng.Coordinates.Lon;
+            viewModel.StaticMapUrl = _mappingService.GetStaticMapsUrl(results.Select(p => p.Location), "400","960");
 
             return View(viewModel);
         }

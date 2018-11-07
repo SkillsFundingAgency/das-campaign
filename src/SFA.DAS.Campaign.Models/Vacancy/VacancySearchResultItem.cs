@@ -18,6 +18,7 @@ namespace SFA.DAS.Campaign.Models.Vacancy
         public DateTime PostedDate { get; set; }
         public DateTime ExpectedStartDate { get; set; }
         public DateTime ApplicationClosingDate { get; set; }
+        public string StaticMapUrl { get; set; }
     }
 
     public class Location

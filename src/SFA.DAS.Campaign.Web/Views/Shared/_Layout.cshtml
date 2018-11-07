@@ -57,7 +57,13 @@
     <environment exclude="Development">
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
+<noscript>
+    <style>
+        .no-js {
+            display:block;
+        }
+    </style>
+</noscript>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

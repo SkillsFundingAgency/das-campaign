@@ -18,6 +18,7 @@ namespace SFA.DAS.Campaign.Web.Models
         public Location Location { get; set; }
         public string Postcode { get; set; }
         public int Distance { get; set; }
+        public string StaticMapUrl { get; set; }
         public VacancySearchViewModel filterModel => new VacancySearchViewModel();
     }
 }

@@ -46,8 +46,11 @@ namespace SFA.DAS.Campaign.Web
             var postcodeConfig = new PostcodeApiConfiguration();
             Configuration.Bind("Postcode",postcodeConfig);
             
+            var mappingConfig = new MappingConfiguration();
+            Configuration.Bind("Mapping",mappingConfig);
         
             services.AddSingleton<IPostcodeApiConfiguration>(postcodeConfig);
+            services.AddSingleton<IMappingConfiguration>(mappingConfig);
             services.AddTransient<IApprenticeshipProgrammeApiClient>(
                 client => new ApprenticeshipProgrammeApiClient(Configuration["ApprenticeshipBaseUrl"]));
             services.AddTransient<IStandardsMapper, StandardsMapper>();
@@ -61,6 +64,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<ILivevacanciesAPI>(client => new LivevacanciesAPI(vacanciesHttpClient,false));
             services.AddTransient<IGeocodeService, GeocodeService>();
             services.AddTransient<IRetryWebRequests, WebRequestRetryService>();
+            services.AddTransient<IMappingService, GoogleMappingService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

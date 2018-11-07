@@ -25,7 +25,7 @@ export class SearchResults {
             var resultMap = new MapController(element, center, null);
 
 
-            resultMap.addMarker(element.dataset.id,parseFloat(element.dataset.lat),parseFloat(element.dataset.lon));
+            resultMap.addMarker(element.dataset.id,parseFloat(element.dataset.lat),parseFloat(element.dataset.lon),false);
 
         });
 

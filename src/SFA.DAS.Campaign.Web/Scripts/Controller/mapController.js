@@ -1,6 +1,4 @@
 /// <reference types="@types/googlemaps" />
-//import { config } from '../Config';
-//import { template } from '../lib/Template';
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -14,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-define(["require", "exports", "../shims/MarkerClusterer", "./Controller"], function (require, exports, MarkerClusterer_1, Controller_1) {
+define(["require", "exports", "../shims/MarkerClusterer", "../shims/InfoBox", "../Lib/Template", "./Controller"], function (require, exports, MarkerClusterer_1, InfoBox_1, Template_1, Controller_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MapController = /** @class */ (function (_super) {
@@ -59,8 +57,6 @@ define(["require", "exports", "../shims/MarkerClusterer", "./Controller"], funct
             };
             // init Google Maps itself
             this.map = new google.maps.Map(this.$(MapController.canvas)[0], options);
-            // set to current Location according to IP
-            // this.initCurrentLocation();
             // initialize markers
             if (this.markerString != null) {
                 this.initMarkers(this.markerString);
@@ -75,9 +71,6 @@ define(["require", "exports", "../shims/MarkerClusterer", "./Controller"], funct
         };
         MapController.prototype.addRadius = function (distance) {
             var self = this;
-            //google.maps.event.addListenerOnce(this.map, 'bounds_changed', function () {
-            //    self.map.setZoom(self.map.getZoom() + 1);
-            //});
             var circ = new google.maps.Circle({
                 strokeColor: "#111111",
                 strokeOpacity: 0.8,
@@ -90,21 +83,22 @@ define(["require", "exports", "../shims/MarkerClusterer", "./Controller"], funct
             });
             this.map.fitBounds(circ.getBounds());
         };
-        MapController.prototype.addMarker = function (title, lat, lon) {
+        MapController.prototype.addMarker = function (title, lat, lon, enableInfobox) {
+            if (enableInfobox === void 0) { enableInfobox = true; }
             var markerData = {
                 Title: title,
-                ShortDescription: null,
                 Latitude: lat,
                 Longitude: lon,
                 Location: { Latitude: lat, Longitude: lon }
             };
-            this.setMarkerOnMap(markerData);
+            this.setMarkerOnMap(markerData, enableInfobox);
         };
         /**
          * Transforms the current MarkerData to google maps markers
          * and saves them in the markes array.
          */
-        MapController.prototype.setMarkersOnMap = function (markerData) {
+        MapController.prototype.setMarkersOnMap = function (markerData, enableInfobox) {
+            if (enableInfobox === void 0) { enableInfobox = true; }
             var icon = {
                 //url: '/images/icon.png?v=' + config.project.version,
                 // This marker is 45 pixels wide by 40 pixels high.
@@ -119,86 +113,71 @@ define(["require", "exports", "../shims/MarkerClusterer", "./Controller"], funct
             // also we will append the current marker data to the
             // google marker itself - maybe we will need it later
             for (var i = 0, max = markerData.length; i < max; i++) {
-                this.setMarkerOnMap(markerData[i]);
+                this.setMarkerOnMap(markerData[i], enableInfobox);
             }
             // initialize MarkerClusterer        
             this.initMarkerClusterer();
-            //var self = this;
-            //google.maps.event.addListenerOnce(this.map, 'resize', function () {
-            //    self.map.setZoom(self.map.getZoom() + 1);
-            //});
             // Resize Event will be triggered once after markers are set.
             google.maps.event.trigger(this.map, 'resize');
         };
-        MapController.prototype.setMarkerOnMap = function (currentMarkerData) {
+        MapController.prototype.setMarkerOnMap = function (currentMarkerData, enableInfobox) {
+            var _this = this;
+            if (enableInfobox === void 0) { enableInfobox = true; }
             var markerObject = {
                 position: new google.maps.LatLng(currentMarkerData.Location.Latitude, currentMarkerData.Location.Longitude),
                 //  icon: icon,
                 map: this.map
             };
-            //if (infoBox) {
-            //    markerObject['infobox'] = this.getInfoBox(currentMarkerData);
-            //}
+            if (InfoBox_1.infoBox && enableInfobox) {
+                markerObject['infobox'] = this.getInfoBox(currentMarkerData);
+            }
             var marker = new google.maps.Marker(markerObject);
-            //if (infoBox) {
-            //    // add on click handler to the marker itself
-            //    // so it will open our infobox.
-            //    marker.addListener('click', () => {
-            //        if (this.openInfoBox) {
-            //            this.openInfoBox.close();
-            //            if (this.openInfoBox === marker.infobox) {
-            //                this.openInfoBox = null;
-            //                return;
-            //            }
-            //        }
-            //        marker.infobox.open(this.map, marker);
-            //        this.openInfoBox = marker.infobox;
-            //    });
-            //}
+            if (InfoBox_1.infoBox && enableInfobox) {
+                // add on click handler to the marker itself
+                // so it will open our infobox.
+                marker.addListener('click', function () {
+                    if (_this.openInfoBox) {
+                        _this.openInfoBox.close();
+                        if (_this.openInfoBox === marker.infobox) {
+                            _this.openInfoBox = null;
+                            return;
+                        }
+                    }
+                    marker.infobox.open(_this.map, marker);
+                    _this.openInfoBox = marker.infobox;
+                });
+            }
             // add to controllers markers array.
             this.markers.push(marker);
         };
         MapController.prototype.getLatLngByPostcode = function (postcode) {
             var geocoder = new google.maps.Geocoder();
         };
-        ///**
-        // * Get Current Location using freegeoip.net because
-        // * it's fast and quite accurate
-        // */
-        //initCurrentLocation() {
-        //    let xhttp: XMLHttpRequest = new XMLHttpRequest();
-        //    xhttp.onreadystatechange = () => {
-        //        if (xhttp.readyState == 4 && xhttp.status == 200) {
-        //            this.currentLocation = <IFreeGeoIPLocation>JSON.parse(xhttp.responseText);
-        //            this.map.setCenter(new google.maps.LatLng(this.currentLocation.latitude, this.currentLocation.longitude));
-        //        }
-        //    };
-        //    xhttp.open('GET', '//freegeoip.net/json/', true);
-        //    xhttp.send();
-        //}
-        ///**
+        //**
         // * Generates an InfoBox Element using the InfoBox.JS Library
         // * replacing the placeholder from the <script> tag and retrieves it.
         // * 
         // * @param {IMarkerData} markerData current markerData
         // * @returns Instance of an InfoBox
         // */
-        //getInfoBox(markerData: IMarkerData) {
-        //    let infoBoxTemplate: string = this.$(MapController.infoboxTemplate)[0].innerHTML.trim();
-        //    let infoBoxTemplateData: any = {
-        //        company: markerData.company,
-        //        picture: markerData.picture
-        //    }
-        //    let currentInfoBox: any = new infoBox({
-        //        content: template(infoBoxTemplate, infoBoxTemplateData),
-        //        disableAutoPan: false,
-        //        maxWidth: 'auto',
-        //        pixelOffset: new google.maps.Size(-102, 40),
-        //        infoBoxClearance: new google.maps.Size(1, 1),
-        //        closeBoxURL: '' // removes close button
-        //    });
-        //    return currentInfoBox;
-        //}
+        MapController.prototype.getInfoBox = function (markerData) {
+            var infoBoxTemplate = this.$(MapController.infoboxTemplate)[0].innerHTML.trim();
+            var infoBoxTemplateData = {
+                Title: markerData.Title,
+                ShortDescription: markerData.ShortDescription,
+                Url: markerData.VacancyUrl
+            };
+            var currentInfoBox = new InfoBox_1.infoBox({
+                content: Template_1.template(infoBoxTemplate, infoBoxTemplateData),
+                disableAutoPan: false,
+                maxWidth: 'auto',
+                pixelOffset: new google.maps.Size(-132, 20),
+                infoBoxClearance: new google.maps.Size(1, 1),
+                closeBoxMargin: "5px 5px 2px 2px",
+                closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+            });
+            return currentInfoBox;
+        };
         ///**
         // * Initialize MarkerClusterer with current Map & Markers
         // * 
@@ -210,22 +189,6 @@ define(["require", "exports", "../shims/MarkerClusterer", "./Controller"], funct
                 this.markerClusterer = new MarkerClusterer_1.MarkerClusterer(this.map, this.markers, { imagePath: 'https://googlemaps.github.io/js-marker-clusterer/images/m' });
             }
         };
-        /**
-         * Snazzy Maps styles included from the
-         * SnazzyMaps Map
-         *
-         * @static
-         * @type {*}
-         */
-        //  static style: any = snazzyMapsStyle;
-        /**
-         * Google Maps API Key from the
-         * your google account.
-         *
-         * @static
-         * @type {string} APIKey
-         */
-        //  static googleMapsApiKey: string = config.google.map.apiKey;
         /**
          * Selector for the Controller which contains the
          * google maps canvas

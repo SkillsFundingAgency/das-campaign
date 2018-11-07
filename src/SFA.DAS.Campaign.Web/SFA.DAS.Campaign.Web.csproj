@@ -12,14 +12,21 @@
 
   <ItemGroup>
     <None Remove="Scripts\Controller.ts" />
+    <None Remove="Scripts\Lib\Google.js" />
+    <None Remove="Scripts\Lib\Google.js.map" />
+    <None Remove="Scripts\Lib\Template - Copy.js" />
+    <None Remove="Scripts\Lib\Template - Copy.js.map" />
+    <None Remove="Scripts\Lib\Template.ts" />
     <None Remove="Scripts\mapController.ts" />
     <None Remove="Scripts\Models\IMarker.ts" />
     <None Remove="Scripts\Models\IMarkerData.ts" />
     <None Remove="Scripts\SearchResults.ts" />
     <None Remove="Scripts\Shims\Google - Copy.js" />
+    <None Remove="Scripts\Shims\Google - Copy.js.map" />
     <None Remove="Scripts\Shims\Google.js" />
     <None Remove="Scripts\Shims\Google.js.map" />
     <None Remove="Scripts\Shims\Google.ts" />
+    <None Remove="Scripts\Shims\InfoBox.ts" />
     <None Remove="Scripts\Shims\MarkerClusterer.ts" />
     <None Remove="Scripts\Shims\Shim.js" />
     <None Remove="Scripts\Shims\Shim.ts" />
@@ -57,6 +64,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Scripts\Lib\Interfaces.ts">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Scripts\Lib\Template.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Scripts\Lib\Template.js.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Scripts\Lib\Template.ts">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Scripts\Shims\InfoBox.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Scripts\Shims\InfoBox.js.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Scripts\Shims\InfoBox.ts">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="Scripts\Shims\MarkerClusterer.js">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -93,6 +121,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\FindApprenticeship\_map.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\_MapsInfobox.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
   </ItemGroup>

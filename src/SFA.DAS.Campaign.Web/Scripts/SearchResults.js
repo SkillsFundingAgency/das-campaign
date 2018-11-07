@@ -17,7 +17,7 @@ define(["require", "exports", "./Controller/mapController"], function (require, 
             searchResults.forEach(function (element) {
                 var center = { latitude: element.dataset.lat, longitude: element.dataset.lon };
                 var resultMap = new mapController_1.MapController(element, center, null);
-                resultMap.addMarker(element.dataset.id, parseFloat(element.dataset.lat), parseFloat(element.dataset.lon));
+                resultMap.addMarker(element.dataset.id, parseFloat(element.dataset.lat), parseFloat(element.dataset.lon), false);
             });
         }
         return SearchResults;

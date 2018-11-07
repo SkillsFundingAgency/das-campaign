@@ -10,8 +10,11 @@
 
 <div class="grid-row">
     <div class="column-full">
-        <div id="mapDev" data-google-map-canvas style="height: 400px; width: 100%;"> </div>
-    </div>
+        <div id="mapDev" data-google-map-canvas style="height: 400px; width: 100%;">
+            <img class="no-js" src="@Model.StaticMapUrl" height="400" width="960"/>
+        </div>
+
+        </div>
 </div>
 
 
@@ -37,14 +40,16 @@
     </div>
 </div>
 
+@{ await Html.RenderPartialAsync("_MapsInfobox");}
 
 @section Scripts
     {
     <script src="~/lib/es6-promise/es6-promise.js"></script>
     <script src="~/lib/markerclustererplus/markerclusterer.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWwWUGSweGpvZe7M2azzl19IcD9l3OH0s&callback=initMap"
+    
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWwWUGSweGpvZe7M2azzl19IcD9l3OH0s&callback=initMap"
             type="text/javascript"></script>
-
+    <script defer src="~/lib/google-maps-infobox/infobox.js"></script>
 
 
     <script src="~/js/_require.config.js"></script>
