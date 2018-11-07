@@ -51,7 +51,6 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IStandardsService, StandardsService>();
 
 
-            var value = Configuration["TestVal"];
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddApplicationInsightsTelemetry(Configuration["ApplicationInsightsInstrumentationKey"]);
