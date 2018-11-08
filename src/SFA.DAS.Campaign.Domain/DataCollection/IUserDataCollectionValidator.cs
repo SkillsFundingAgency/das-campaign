@@ -8,5 +8,7 @@ namespace SFA.DAS.Campaign.Domain.DataCollection
     public interface IUserDataCollectionValidator
     {
         bool Validate(UserData userData);
+
+        bool ValidateEmail(string email);
     }
 }

@@ -9,5 +9,7 @@ namespace SFA.DAS.Campaign.Domain.DataCollection
     public interface IUserDataCollection
     {
         Task StoreUserData(UserData userData);
+
+        Task RemoveUserData(string email);
     }
 }
