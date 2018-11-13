@@ -8,6 +8,7 @@ using SFA.DAS.Campaign.Models.Vacancy;
 using SFA.DAS.Vacancies.Api.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using VacanciesApi;
 
@@ -37,7 +38,7 @@ namespace SFA.DAS.Campaign.Application.Vacancies
             var vacancyApiList = GetVacancyList(distance, coordinates, 1);
 
 
-            while (vacancyApiList.Max(s => s.DistanceInMiles < distance))
+            while (vacancyApiList.Count == 250 && vacancyApiList.Max(s => s.DistanceInMiles < distance))
             {
                 pageNumber++;
 
@@ -65,8 +66,7 @@ namespace SFA.DAS.Campaign.Application.Vacancies
         private List<Result> GetVacancyList(int distance, CoordinatesResponse coordinates, int pageNumber = 1)
         {
             var result = (HttpOperationResponse<object>)_vacanciesApi.SearchApprenticeshipVacancies(
-                latitude: coordinates.Coordinates.Lat, longitude: coordinates.Coordinates.Lon, distanceInMiles: distance,
-                pageSize: 250, pageNumber: pageNumber);
+                coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber,250, distance);
 
 
             var vacancyList = ((VacancySearchResults)(result).Body).Results.ToList();

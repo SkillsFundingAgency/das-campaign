@@ -17,11 +17,11 @@ namespace SFA.DAS.Campaign.Application.Geocode
 {
     public class GeocodeService : IGeocodeService
     {
-        private ILogger<GeocodeService> _logger;
+        private ILogger<IGeocodeService> _logger;
         private IRetryWebRequests _retryWebRequests;
         private IPostcodeApiConfiguration _postcodeConfiguration;
 
-        public GeocodeService(ILogger<GeocodeService> logger, IRetryWebRequests retryWebRequests, IPostcodeApiConfiguration postcodeConfiguration)
+        public GeocodeService(ILogger<IGeocodeService> logger, IRetryWebRequests retryWebRequests, IPostcodeApiConfiguration postcodeConfiguration)
         {
             _logger = logger;
             _retryWebRequests = retryWebRequests;
@@ -36,7 +36,7 @@ namespace SFA.DAS.Campaign.Application.Geocode
             try
             {
                 var stopwatch = Stopwatch.StartNew();
-                var response = await _retryWebRequests.Retry(() => MakeRequestAsync(uri.ToString()), CouldntConnect);
+                var response = await _retryWebRequests.Retry(() => _retryWebRequests.MakeRequestAsync(uri.ToString()), CouldntConnect);
                 stopwatch.Stop();
                 var responseTime = stopwatch.ElapsedMilliseconds;
 
@@ -123,17 +123,7 @@ namespace SFA.DAS.Campaign.Application.Geocode
         {
             _logger.LogWarning(string.Concat("Couldn't connect to postcode service, retrying...", ex.Message));
         }
-
-        private async Task<HttpResponseMessage> MakeRequestAsync(string url)
-        {
-            using (var client = new HttpClient())
-            {
-                using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url))
-                {
-                    return await client.SendAsync(request);
-                }
-            }
-        }
+        
     }
 
 }

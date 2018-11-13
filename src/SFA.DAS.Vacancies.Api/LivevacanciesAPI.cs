@@ -855,5 +855,13 @@ namespace VacanciesApi
             return _result;
         }
 
+        public async Task<HttpOperationResponse<object>> SearchApprenticeshipVacanciesByLocationAsync(double latitude, double longitude, int pageNumber, int pageSize, int distanceInMiles)
+        {
+
+            var result = SearchApprenticeshipVacanciesAsync(distanceInMiles: distanceInMiles,latitude: latitude, longitude: longitude, pageNumber: pageNumber,
+                pageSize: pageSize).Result;
+
+            return result;
+        }
     }
 }

@@ -120,7 +120,7 @@
     <Content Update="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Views\FindApprenticeship\_map.cshtml">
+    <Content Update="Views\FindApprenticeship\_searchResultsMap.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Shared\_MapsInfobox.cshtml">

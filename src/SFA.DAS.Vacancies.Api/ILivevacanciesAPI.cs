@@ -276,5 +276,6 @@ namespace VacanciesApi
         /// </param>
         Task<HttpOperationResponse<object>> SearchApprenticeshipVacanciesAsync(string standardLarsCodes = default(string), string frameworkLarsCodes = default(string), int? pageSize = default(int?), int? pageNumber = default(int?), int? postedInLastNumberOfDays = default(int?), bool? nationwideOnly = default(bool?), double? latitude = default(double?), double? longitude = default(double?), int? distanceInMiles = default(int?), string sortBy = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
+        Task<HttpOperationResponse<object>> SearchApprenticeshipVacanciesByLocationAsync(double latitude, double longitude,int pageNumber,int pageSize, int distanceInMiles);
     }
 }

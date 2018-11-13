@@ -107,6 +107,9 @@ export class MapController extends Controller {
             scrollwheel: false,
             zoom: 10,
             maxZoom: 14,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_CENTER
+            },
             mapTypeControl: false,
             streetViewControl: false
         };

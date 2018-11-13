@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -25,6 +26,17 @@ namespace SFA.DAS.Campaign.Application.Core
                     (exception, timespan) => { onError.Invoke(exception); });
 
             return await policy.ExecuteAsync(action);
+        }
+
+        public async Task<HttpResponseMessage> MakeRequestAsync(string url)
+        {
+            using (var client = new HttpClient())
+            {
+                using (var request = new HttpRequestMessage(HttpMethod.Get, url))
+                {
+                    return await client.SendAsync(request);
+                }
+            }
         }
     }
 }
