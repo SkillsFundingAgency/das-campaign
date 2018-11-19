@@ -4,6 +4,6 @@
     {
         public string StoreUserDataQueueName { get; set; }
         public string RemoveUserDataQueueName { get; set; }
-        public string ConfigurationStorageConnectionString { get; set; }
+        public string QueueConnectionString { get; set; }
     }
 }

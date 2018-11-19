@@ -14,7 +14,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Queue
 
         public AzureQueueService(IOptions<CampaignConfiguration> configuration)
         {
-            var storageAccount = CloudStorageAccount.Parse(configuration.Value.ConfigurationStorageConnectionString);
+            var storageAccount = CloudStorageAccount.Parse(configuration.Value.QueueConnectionString);
             _queueClient = storageAccount.CreateCloudQueueClient();
         }
         public async Task AddMessageToQueue(T message, string queueName)
