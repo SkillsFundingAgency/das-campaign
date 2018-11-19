@@ -14,6 +14,7 @@
     "appServicePrefix": "[concat('das-',toLower(parameters('environmentName')),'-cpg')]",
     "appServiceName": "[concat(variables('appServicePrefix'),'-as')]",
     "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
+    "storageAccountName": "[concat('das',toLower(parameters('environmentName')),'cpgstr')]",
     "appServicePlanName": "[concat(variables('appServicePrefix'),'-asp')]",
     "appServicePlanSize": "1",
     "appServicePlanInstances": 1
@@ -105,6 +106,23 @@
           }
         }
       }
+    },
+    {
+      "apiVersion": "2017-05-10",
+      "name": "campaignStorage",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('deploymentUrlBase'),'storage-account-arm.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "storageAccountName": {
+            "value": "[variables('storageAccountName')]"
+          }
+        }
+      }
     }
   ],
   "outputs": {
@@ -115,6 +133,10 @@
     "appInsightInstrumentationKey": {
       "type": "string",
       "value": "[reference('campaignAppInsights').outputs.InstrumentationKey.value]"
+    },
+    "queueConnectionString": {
+      "type": "string",
+      "value": "[reference('campaignStorage').outputs.storageConnectionString.value]"
     }
   }
 }
