@@ -7,6 +7,9 @@
       "metadata": {
         "description": "Short name of the environment. Used for the name of resources created"
       }
+    },
+    "configurationStorageConnectionString": {
+      "type": "securestring"
     }
   },
   "variables": {
@@ -101,6 +104,10 @@
               {
                 "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
                 "value": "[reference('campaignAppInsights').outputs.InstrumentationKey.value]"
+              },
+              {
+                "name": "ConfigurationStorageConnectionString",
+                "value": "[parameters('configurationStorageConnectionString')]"
               }
             ]
           }
