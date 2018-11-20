@@ -2,11 +2,14 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "environmentName": {
+    "resourceEnvironmentName": {
       "type": "string",
       "metadata": {
         "description": "Short name of the environment. Used for the name of resources created"
       }
+    },
+    "environmentName": {
+      "type": "string"
     },
     "configurationStorageConnectionString": {
       "type": "securestring"
@@ -14,10 +17,10 @@
   },
   "variables": {
     "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/master/templates/",
-    "appServicePrefix": "[concat('das-',toLower(parameters('environmentName')),'-cpg')]",
+    "appServicePrefix": "[concat('das-',toLower(parameters('resourceEnvironmentName')),'-cpg')]",
     "appServiceName": "[concat(variables('appServicePrefix'),'-as')]",
     "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
-    "storageAccountName": "[concat('das',toLower(parameters('environmentName')),'cpgstr')]",
+    "storageAccountName": "[concat('das',toLower(parameters('resourceEnvironmentName')),'cpgstr')]",
     "appServicePlanName": "[concat(variables('appServicePrefix'),'-asp')]",
     "appServicePlanSize": "1",
     "appServicePlanInstances": 1
@@ -108,6 +111,10 @@
               {
                 "name": "ConfigurationStorageConnectionString",
                 "value": "[parameters('configurationStorageConnectionString')]"
+              },
+              {
+                "name": "Environment",
+                "value": "[parameters('environmentName')]"
               }
             ]
           }
