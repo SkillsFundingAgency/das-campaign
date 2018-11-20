@@ -115,6 +115,10 @@
               {
                 "name": "Environment",
                 "value": "[parameters('environmentName')]"
+              },
+              {
+                "name": "Version",
+                "value": "1.0"
               }
             ]
           }
