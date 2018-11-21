@@ -13,6 +13,9 @@
     },
     "configurationStorageConnectionString": {
       "type": "securestring"
+    },
+    "cdnUrl": {
+      "type": "string"
     }
   },
   "variables": {
@@ -119,6 +122,10 @@
               {
                 "name": "Version",
                 "value": "1.0"
+              },
+              {
+                "name": "cdn:url",
+                "value": "[parameters('cdnUrl')]"
               }
             ]
           }
