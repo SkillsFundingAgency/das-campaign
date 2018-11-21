@@ -7,8 +7,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
+using SFA.DAS.Campaign.Application.DataCollection.Services;
+using SFA.DAS.Campaign.Application.DataCollection.Validation;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
+using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
+using SFA.DAS.Campaign.Infrastructure.Queue;
+using SFA.DAS.Campaign.Models.Configuration;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -47,15 +52,18 @@ namespace SFA.DAS.Campaign.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddTransient<IApprenticeshipProgrammeApiClient>(
-                client => new ApprenticeshipProgrammeApiClient(Configuration["ApprenticeshipBaseUrl"]));
+            services.Configure<CampaignConfiguration>(Configuration);
+
+            services.AddTransient<IApprenticeshipProgrammeApiClient>(client => new ApprenticeshipProgrammeApiClient(Configuration["ApprenticeshipBaseUrl"]));
             services.AddTransient<IStandardsMapper, StandardsMapper>();
             services.AddTransient<IStandardsService, StandardsService>();
-
+            services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
+            services.AddTransient<IUserDataCollection, UserDataCollection>();
+            services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddApplicationInsightsTelemetry(Configuration["ApplicationInsightsInstrumentationKey"]);
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
