@@ -38,7 +38,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Configuration
         }
         private TableOperation GetOperation(string serviceName, string environmentName, string version)
         {
-            return TableOperation.Retrieve<ConfigurationItem>(environmentName, $"{serviceName}_v{version}");
+            return TableOperation.Retrieve<ConfigurationItem>(environmentName, $"{serviceName}_{version}");
         }
     }
 }
