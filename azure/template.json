@@ -46,7 +46,7 @@
     "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
     "appServicePlanName": "[concat(variables('appServicePrefix'),'-asp')]",
     "appServicePlanSize": "1",
-    "appServicePlanInstances": 1
+    "appServicePlanInstances": 2
   },
   "resources": [
     {
