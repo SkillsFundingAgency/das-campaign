@@ -24,6 +24,19 @@
     "aseHostingEnvironmentName": {
       "type": "string",
       "defaultValue": ""
+    },
+    "keyvaultCertificateName": {
+      "type": "string"
+    },
+    "keyvaultName": {
+      "type": "string"
+    },
+    "keyvaultResourceGroup": {
+      "type": "string"
+    },
+    "customHostname": {
+      "type": "string",
+      "defaultValue": ""
     }
   },
   "variables": {
@@ -61,6 +74,32 @@
           },
           "aspInstances": {
             "value": "[variables('appServicePlanInstances')]"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2017-05-10",
+      "name": "campaignSSLCert",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('deploymentUrlBase'),'app-service-certificate.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "keyVaultCertificateName": {
+            "value": "[parameters('keyvaultCertificateName')]"
+          },
+          "keyVaultName": {
+            "value": "[parameters('keyvaultName')]"
+          },
+          "keyVaultResourceGroup": {
+            "value": "[parameters('keyvaultResourceGroup')]"
+          },
+          "serverFarmId": {
+            "value": "[reference('campaignAppServerPlan').outputs.appServicePlanId.value]"
           }
         }
       }
@@ -135,6 +174,12 @@
                 "value": "[parameters('cdnUrl')]"
               }
             ]
+          },
+          "customHostName": {
+            "value": "[parameters('customHostname')]"
+          },
+          "certificateThumbprint": {
+            "value": "[reference('campaignSSLCert').outputs.certificateThumbprint.value]"
           }
         }
       }
