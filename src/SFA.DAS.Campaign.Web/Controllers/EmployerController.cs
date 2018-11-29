@@ -6,10 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
-    public class HowItWorksController : Controller
+    public class EmployerController : Controller
     {
-        [HttpGet]
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
