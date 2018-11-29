@@ -1,6 +1,6 @@
 ﻿@model SFA.DAS.Campaign.Web.ViewComponents.Modal.ModalViewModel
 
-<div class="modal" id="@Model.Id}" aria-hidden="true">
+<div class="modal" id="@Model.Id" aria-hidden="true">
 
     <div class="modal-dialog">
         <div class="modal-header">
@@ -9,7 +9,7 @@
 
                 </rect><rect class="modal--icon-close" x="0.0966797" y="11.34" width="16.0371" height="2.16583" transform="rotate(-45 0.0966797 11.34)"></rect></svg></a>
         </div>
-        @await Component.InvokeAsync(Model.Component, Model.ComponentOptions);
+        @await Component.InvokeAsync(Model.Component, Model.ComponentOptions)
 
     </div>
 </div>
