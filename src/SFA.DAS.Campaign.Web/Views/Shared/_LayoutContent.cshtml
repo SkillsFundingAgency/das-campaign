@@ -2,9 +2,13 @@
     Layout = "_Layout-campaign";
 }
 
+<partial name="./Components/_Header" />
+
+@await Component.InvokeAsync("HeroHeading")
 
 <main id="main-content" class="main-content">
-    <partial name="./Components/_Header" />
+
+
     @RenderBody()
 
 </main>
