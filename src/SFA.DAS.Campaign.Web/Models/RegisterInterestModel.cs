@@ -8,7 +8,9 @@ namespace SFA.DAS.Campaign.Web.Models
 {
     public class RegisterInterestModel : FormModel
     {
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
         [EmailAddress]
         public string EmailAddress { get; set; }
