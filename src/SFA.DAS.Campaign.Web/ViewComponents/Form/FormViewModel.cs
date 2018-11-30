@@ -11,6 +11,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Form
         public HttpMethod ResponseType { get; set; }
         public string Controller { get; set; }
         public string Action { get; set; }
+        public object FormModel { get; set; }
 
     }
 }

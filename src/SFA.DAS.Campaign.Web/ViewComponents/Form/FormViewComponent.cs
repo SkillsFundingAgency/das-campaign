@@ -13,13 +13,11 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Form
         public async Task<IViewComponentResult> InvokeAsync(FormType type,string controller,string action)
         {
 
-            var form = new FormViewModel();
-            form.Controller = controller;
-            form.Action = action;
+          
             switch (type)
             {
                 case FormType.Registerinterest:
-                    return View("RegisterInterest",form);
+                    return View("RegisterInterest",new RegisterInterestModel());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
