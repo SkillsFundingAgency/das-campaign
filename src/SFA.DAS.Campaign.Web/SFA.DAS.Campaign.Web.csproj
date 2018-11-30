@@ -59,6 +59,9 @@
     <Content Update="Views\Shared\Components\Button\Input.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\Components\HeroHeading\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\Components\Modal\Modal.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
