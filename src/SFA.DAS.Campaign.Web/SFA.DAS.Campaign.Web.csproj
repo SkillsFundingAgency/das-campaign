@@ -44,6 +44,9 @@
     <Content Update="Views\Shared\Components\Form\RegisterInterest.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\Components\Form\Register-Thanks.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

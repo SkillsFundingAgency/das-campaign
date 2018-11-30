@@ -1,0 +1,15 @@
+﻿
+    <section class="section">
+        <div class="grid-row">
+            <div class="grid-column-full">
+                <span class="caption-s">Registration complete</span>
+                <h1 class="heading-m">Thanks for registering</h1>
+                
+                <p>You will hear from us shortly......</p>
+               
+                @await Component.InvokeAsync("Button", new { type = ButtonType.Anchor, style = ButtonStyle.PrimaryInverted, text = "Close",href="#", shadow = false })
+
+
+            </div>
+        </div>
+    </section>
