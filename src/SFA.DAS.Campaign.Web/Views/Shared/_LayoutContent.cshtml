@@ -5,7 +5,16 @@
 
 <main id="main-content" class="main-content">
     <partial name="./Components/_Header" />
-    @RenderBody()
 
+    <div class="grid-row">
+        <div class="grid-column-two-thirds">
+            @RenderBody()
+        </div>
+        <div class="grid-column-one-third">
+
+           
+            <partial name="./Components/_Sidebar" />
+        </div>
+    </div>
 </main>
 <partial name="./Components/_Footer" />

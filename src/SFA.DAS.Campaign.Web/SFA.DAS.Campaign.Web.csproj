@@ -59,6 +59,9 @@
     <Content Update="Views\Shared\Components\_Footer.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\Components\_Sidebar.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\Components\_Navigation.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
