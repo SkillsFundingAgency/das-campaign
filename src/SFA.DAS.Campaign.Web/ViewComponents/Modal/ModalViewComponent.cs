@@ -10,14 +10,16 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Modal
 {
     public class ModalViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(string id,string component,object componentOptions)
+        public async Task<IViewComponentResult> InvokeAsync(string id,ModalType type,string name,object componentOptions)
         {
             var modalVM = new ModalViewModel()
             {
-                Component = component,
-                ComponentOptions = componentOptions,
-                Id = id
+                Name = name,
+                ComponentOptions = componentOptions == null ? null : componentOptions,
+                Id = id,
+                Type = type
             };
+
 
             return View("Modal", modalVM);
         }
@@ -25,8 +27,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Modal
 
     public class ModalViewModel
     {
-        public string Component { get; set; }
+        public string Name { get; set; }
         public object ComponentOptions { get; set; }
         public string Id { get; set; }
+        public ModalType Type { get; set; }
     }
 }

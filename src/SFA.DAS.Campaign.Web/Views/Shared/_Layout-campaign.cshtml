@@ -1,4 +1,6 @@
-﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
+﻿@using System.Runtime.Versioning
+@using SFA.DAS.Campaign.Web.Models.Components.Form
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
 <!DOCTYPE html>
 <html lang="en" class="govuk-template ">
 <head>
@@ -51,7 +53,10 @@
     </div>
 
 
-@await Component.InvokeAsync("Modal", new {id = "modal-RegisterInterest",component = "Form", componentOptions = new { type = FormType.Registerinterest, controller = "Form", action = "RegisterInterest"}})
+    @await Component.InvokeAsync("Modal", new { id = "modal-RegisterInterest",type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.Registerinterest } })
+
+    @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks",type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
+
 </body>
 
 </html>
