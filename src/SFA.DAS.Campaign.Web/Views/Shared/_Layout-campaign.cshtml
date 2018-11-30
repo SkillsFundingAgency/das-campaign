@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using System.Runtime.Versioning
+@using SFA.DAS.Campaign.Web.Models.Components.Form
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+<!DOCTYPE html>
 <html lang="en" class="govuk-template ">
 <head>
     <meta charset="utf-8" />
@@ -36,18 +39,24 @@
 <body class="page-template">
 
     <script>
-    document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+        document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <div class="wrap">
 
-       
 
-            @RenderBody()
-      
+
+        @RenderBody()
+
     </div>
+
+
+    @await Component.InvokeAsync("Modal", new { id = "modal-RegisterInterest",type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.Registerinterest } })
+
+    @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks",type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
+
 </body>
 
 </html>
