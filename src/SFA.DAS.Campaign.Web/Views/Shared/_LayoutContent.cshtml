@@ -1,4 +1,5 @@
-﻿@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
 @{
     Layout = "_Layout-campaign";
 
@@ -23,6 +24,7 @@
 }
 else
 {
+
     @await Component.InvokeAsync("HeroHeading", new { type = headingType })
 }
 
