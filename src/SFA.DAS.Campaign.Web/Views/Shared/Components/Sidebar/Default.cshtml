@@ -1,0 +1,18 @@
+﻿@model SFA.DAS.Campaign.Web.ViewComponents.Sidebar.SidebarViewModel
+
+<div class="sidebar">
+    <div class="sidebar__hero">
+        <img src="@Model.ImgLocation" class="sidebar__hero-image"/>
+    </div>
+    <div class="trimmer">
+        <div class="sidebar__header">
+
+            <h3 class="heading-s sidebar__heading">@Model.Title</h3>
+        </div>
+    </div>
+    <div class="sidebar__content">
+        <ol class="sidebar-nav">
+            <partial name="@Model.ContentView" />
+        </ol>
+    </div>
+</div>
