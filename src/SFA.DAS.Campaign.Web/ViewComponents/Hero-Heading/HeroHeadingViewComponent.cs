@@ -30,7 +30,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 
             if (!string.IsNullOrWhiteSpace(classes))
             {
-                Class = classes;
+                Class = Class + " " + classes;
             }
         }
 

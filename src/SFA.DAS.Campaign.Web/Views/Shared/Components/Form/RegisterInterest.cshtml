@@ -41,7 +41,7 @@
                 </div>
                 
                 <input asp-for="ReturnUrl" type="hidden" value="@ViewContext.HttpContext.Request.Path"/>
-                @await Component.InvokeAsync("Button", new { type = ButtonType.Button, style = ButtonStyle.PrimaryInverted, text = "Register Interest", shadow = false })
+                @await Component.InvokeAsync("Button", new { type = ButtonType.Button, style = ButtonStyle.PrimaryInverted, name = "registerInterestSubmit", text = "Register Interest", shadow = false })
 
 
             </div>
