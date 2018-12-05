@@ -1,0 +1,20 @@
+﻿@model SFA.DAS.Campaign.Web.ViewComponents.HeroHeadingViewModel
+
+<div class="hero">
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+            <div class="hero-heading">
+                <span class="caption-m hero-heading__caption @Model.Class">@Model.Caption</span>
+                <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
+            </div>
+            
+            @Model.Content
+          
+        </div>
+        <div class="grid-column-one-half">
+
+
+
+        </div>
+    </div>
+</div>
