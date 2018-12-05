@@ -1,16 +1,20 @@
-﻿@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
 @{
     Layout = "_Layout-campaign";
 
     var headingType = HeroHeadingType.None;
+    var sidebarType = SidebarType.None;
 
     switch (ViewContext.RouteData.Values["Controller"])
     {
         case "apprentice":
             headingType = HeroHeadingType.Apprentice;
+            sidebarType = SidebarType.Apprentice;
             break;
         case "Employer":
             headingType = HeroHeadingType.Employer;
+            sidebarType = SidebarType.Employer;
             break;
     }
 }
@@ -23,21 +27,21 @@
 }
 else
 {
+
     @await Component.InvokeAsync("HeroHeading", new { type = headingType })
 }
 
 
 <main id="main-content" class="main-content">
-
     <div class="grid-row">
         <div class="grid-column-two-thirds">
+
             @RenderBody()
         </div>
         <div class="grid-column-one-third">
-
-           
-            <partial name="./Components/_Sidebar" />
+            @await Component.InvokeAsync("Sidebar", new { type = sidebarType })
         </div>
     </div>
+
 </main>
 <partial name="./Components/_Footer" />

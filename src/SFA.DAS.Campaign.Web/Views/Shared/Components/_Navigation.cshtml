@@ -132,9 +132,7 @@
             </ul>
         </li>
         <li class="navigation__list-item navigation__list-item--with-button">
-            @*<partial name="./components/Form/_button" model="@{new ButtonViewModel(ButtonType.Primary){Shadow = true, Sparks = true, Text = "Register Interest"}}" />*@
-
-            @await Component.InvokeAsync("Button", new { type = ButtonType.Anchor, style = ButtonStyle.Primary, text = "Register Interest", href = "#modal-RegisterInterest", shadow = true, sparks = true })
+            @await Component.InvokeAsync("Button", new { type = ButtonType.Anchor, style = ButtonStyle.Primary, name = "btnregisterinterestopen", text = "Register Interest" ,href = "#modal-RegisterInterest", shadow = true, sparks = true })
             
             
         </li>

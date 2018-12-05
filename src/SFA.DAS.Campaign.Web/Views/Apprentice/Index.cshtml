@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@{
     ViewData["Title"] = "Ignite your career";
 }
 
@@ -36,3 +39,21 @@
     </div>
 
 </div>
+
+@{
+
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+                                                       <li><a href="#" class="hero__link">How much can you earn</a> </li>
+                                                       <li><a href="#" class="hero__link">Cost to you</a> </li>
+                                                       <li><a href="#" class="hero__link">Future prospects</a> </li>
+                                                       <li><a href="#" class="hero__link">Top 5 reasons for becoming an apprentice</a> </li>
+                                                   </ul>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Apprentice,content = HeroHeadingContent() })
+}
+
+
+
+
