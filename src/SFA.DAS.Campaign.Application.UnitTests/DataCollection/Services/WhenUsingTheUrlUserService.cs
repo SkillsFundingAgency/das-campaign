@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.DataCollection.Services;
@@ -30,7 +27,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.Services
         public void Then_The_Configuration_Options_Are_Used_For_Generating_The_Encoded_Url()
         {
             //Act
-            _userDataCryptographyService.GenerateEncodedUserId(12345);
+            _userDataCryptographyService.GenerateEncodedUserEmail("te'st@test.local");
 
             //Assert
             _options.Verify(x=>x.Value.UserUrlMinValue, Times.Once);
@@ -39,13 +36,13 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.Services
         }
 
         [Test]
-        public void Then_The_Encoded_String_Contains_The_UserId()
+        public void Then_The_Encoded_String_Contains_The_User_Email()
         {
             //Arrange
-            var userId = 12345;
+            var userId = "te'st@test.local";
 
             //Act
-            var actual = _userDataCryptographyService.GenerateEncodedUserId(userId);
+            var actual = _userDataCryptographyService.GenerateEncodedUserEmail(userId);
 
             //Assert
             Assert.AreNotEqual(string.Empty, actual);
@@ -53,41 +50,28 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.Services
         }
 
         [Test]
-        public void Then_The_Encoded_String_Can_Be_Decoded_To_Get_The_User_Id()
+        public void Then_The_Encoded_String_Can_Be_Decoded_To_Get_The_User_Email()
         {
             //Arrange
-            var userId = 12345;
+            var userId = "te'st@test.local";
 
             //Act
-            var encoded = _userDataCryptographyService.GenerateEncodedUserId(userId);
-            var actual = _userDataCryptographyService.DecodeUserId(encoded);
+            var encoded = _userDataCryptographyService.GenerateEncodedUserEmail(userId);
+            var actual = _userDataCryptographyService.DecodeUserEmail(encoded);
 
             //Assert
             Assert.AreEqual(userId, actual);
         }
 
         [Test]
-        public void Then_If_An_Invalid_Encoded_Value_Is_Passed_Then_Zero_Is_Returned()
+        public void Then_If_An_Invalid_Encoded_Value_Is_Passed_Then_An_Empty_String_Is_Returned()
         {
             //Act
-            var actual = _userDataCryptographyService.DecodeUserId("ZZ2211ASD");
+            var actual = _userDataCryptographyService.DecodeUserEmail("AA99BBCCDDEEFF");
 
             //Assert
-            Assert.AreEqual(0, actual);
+            Assert.AreEqual("", actual);
         }
 
-        [Test]
-        public void Then_The_Encoded_String_Can_Be_Decoded_To_Get_The_User_Ids()
-        {
-            //Arrange
-            var userId = 12345;
-
-            //Act
-            var encoded = _userDataCryptographyService.GenerateEncodedUserId(userId);
-            var actual = _userDataCryptographyService.DecodeUserId(encoded);
-
-            //Assert
-            Assert.AreEqual(userId, actual);
-        }
     }
 }

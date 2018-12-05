@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 using HashidsNet;
 using Microsoft.Extensions.Options;
+using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Models.Configuration;
 
 namespace SFA.DAS.Campaign.Application.DataCollection.Services
 {
-    public class UserDataCryptographyService
+    public class UserDataCryptographyService : IUserDataCryptographyService
     {
         private readonly Hashids _hashedId;
 
@@ -13,23 +16,24 @@ namespace SFA.DAS.Campaign.Application.DataCollection.Services
         {
             _hashedId = new Hashids(options.Value.UserUrlSalt,options.Value.UserUrlMinValue,options.Value.AllowedUrlCharacters);
         }
-        public string GenerateEncodedUserId(int userId)
+        public string GenerateEncodedUserEmail(string email)
         {
-            return _hashedId.Encode(userId);
+            var hexEmail = string.Join("", email.Select(c => ((int)c).ToString("X2")));
+            return _hashedId.EncodeHex(hexEmail);
         }
-
-        public long DecodeUserId(string encodedUrl)
+        public string DecodeUserEmail(string encodedUrl)
         {
-            try
+            var decodedHex = _hashedId.DecodeHex(encodedUrl);
+            return Encoding.ASCII.GetString(FromHex(decodedHex));    
+        }
+        public static byte[] FromHex(string hex)
+        {
+            var raw = new byte[hex.Length / 2];
+            for (var i = 0; i < raw.Length; i++)
             {
-                return _hashedId.Decode(encodedUrl)[0];
+                raw[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
             }
-            catch (IndexOutOfRangeException e)
-            {
-
-                return 0;
-            }
-            
+            return raw;
         }
     }
 }
