@@ -12,12 +12,15 @@ namespace SFA.DAS.Campaign.Application.DataCollection.Services
         private readonly IUserDataCollectionValidator _validator;
         private readonly IQueueService<UserData> _queueService;
         private readonly IOptions<CampaignConfiguration> _options;
-        
-        public UserDataCollection(IUserDataCollectionValidator validator, IQueueService<UserData> queueService, IOptions<CampaignConfiguration> options)
+        private readonly IUserDataCryptographyService _userDataCryptographyService;
+
+        public UserDataCollection(IUserDataCollectionValidator validator, IQueueService<UserData> queueService,
+            IOptions<CampaignConfiguration> options, IUserDataCryptographyService userDataCryptographyService)
         {
             _validator = validator;
             _queueService = queueService;
             _options = options;
+            _userDataCryptographyService = userDataCryptographyService;
         }
 
         public async Task StoreUserData(UserData userData)
@@ -26,6 +29,8 @@ namespace SFA.DAS.Campaign.Application.DataCollection.Services
             {
                 throw new ArgumentException("UserData model failed validation", nameof(UserData));
             }
+
+            userData.EncodedEmail = _userDataCryptographyService.GenerateEncodedUserEmail(userData.Email);
 
             await _queueService.AddMessageToQueue(userData, _options.Value.StoreUserDataQueueName);
         }

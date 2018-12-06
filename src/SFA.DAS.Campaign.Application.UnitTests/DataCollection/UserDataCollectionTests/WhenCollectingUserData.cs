@@ -16,7 +16,11 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
         private UserDataCollection _userDataCollection;
         private Mock<IQueueService<UserData>> _queueService;
         private Mock<IOptions<CampaignConfiguration>> _options;
+        private Mock<IUserDataCryptographyService> _userDataCryptographyService;
+        private UserData _userData;
         private const string StoreUserDataQueueName = "store-queue";
+        private const string ExpectedEncodedEmail = "ABVF43AD";
+        private const string ExpectedEmail = "test@local.com";
 
         [SetUp]
         public void Arrange()
@@ -26,20 +30,22 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             _userDataCollectionValidator.Setup(x => x.Validate(It.IsAny<UserData>())).Returns(true);
             _options = new Mock<IOptions<CampaignConfiguration>>();
             _options.Setup(x => x.Value).Returns(new CampaignConfiguration{StoreUserDataQueueName = StoreUserDataQueueName});
-            _userDataCollection = new UserDataCollection(_userDataCollectionValidator.Object, _queueService.Object, _options.Object);
+            _userDataCryptographyService = new Mock<IUserDataCryptographyService>();
+            _userDataCryptographyService.Setup(x => x.GenerateEncodedUserEmail(It.Is<string>(c=>c.Equals(ExpectedEmail)))).Returns(ExpectedEncodedEmail);
+
+            _userData = new UserData {Email = ExpectedEmail};
+
+            _userDataCollection = new UserDataCollection(_userDataCollectionValidator.Object, _queueService.Object, _options.Object, _userDataCryptographyService.Object);
         }
 
         [Test]
         public async Task Then_The_Parameters_Are_Validated()
         {
-            //Arrange
-            var userData = new UserData();
-
             //Act
-            await _userDataCollection.StoreUserData(userData);
+            await _userDataCollection.StoreUserData(_userData);
 
             //Arrange
-            _userDataCollectionValidator.Verify(x=>x.Validate(userData), Times.Once);
+            _userDataCollectionValidator.Verify(x=>x.Validate(_userData), Times.Once);
         }
 
         [Test]
@@ -57,14 +63,27 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
         public async Task Then_If_The_Validation_Is_Successful_Store_Is_Called()
         {
             //Arrange
-            var userData = new UserData();
-            _userDataCollectionValidator.Setup(x => x.Validate(userData)).Returns(true);
+            _userDataCollectionValidator.Setup(x => x.Validate(_userData)).Returns(true);
 
             //Act
-            await _userDataCollection.StoreUserData(userData);
+            await _userDataCollection.StoreUserData(_userData);
 
             //Assert
-            _queueService.Verify(x => x.AddMessageToQueue(userData, StoreUserDataQueueName), Times.Once);
+            _queueService.Verify(x => x.AddMessageToQueue(_userData, StoreUserDataQueueName), Times.Once);
+        }
+
+        [Test]
+        public async Task Then_The_Encoded_Email_Is_Added_To_The_User_Record()
+        {
+            //Arrange
+            _userDataCollectionValidator.Setup(x => x.Validate(_userData)).Returns(true);
+
+            //Act
+            await _userDataCollection.StoreUserData(_userData);
+
+            //Assert
+            _userDataCryptographyService.Verify(x=>x.GenerateEncodedUserEmail(ExpectedEmail), Times.Once);
+            _queueService.Verify(x => x.AddMessageToQueue(It.Is<UserData>(c=>c.EncodedEmail.Equals(ExpectedEncodedEmail)), StoreUserDataQueueName), Times.Once);
         }
     }
 }
