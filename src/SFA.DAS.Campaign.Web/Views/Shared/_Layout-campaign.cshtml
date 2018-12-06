@@ -39,14 +39,14 @@
     document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
 
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
     <div class="wrap">
 
-       
+        <partial name="./Components/_Header" />
 
-            @RenderBody()
-      
+        @RenderBody()
+
+        <partial name="./Components/_Footer" />
+
     </div>
 </body>
 
