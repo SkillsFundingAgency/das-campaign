@@ -1,7 +1,16 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Html
+@{
     Layout = "_Layout-campaign";
 }
-
 <main id="main-content" class="main-content">
-    @RenderBody()
+    <div class="grid-row">
+        <div class="grid-column-two-thirds">
+            <div class="page">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="grid-column-one-third">
+ 
+        </div>
+    </div>
 </main>
