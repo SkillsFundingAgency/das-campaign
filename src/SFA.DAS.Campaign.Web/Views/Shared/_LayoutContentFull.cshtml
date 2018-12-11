@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@{
+    Layout = "_Layout-campaign";
+
+    var headingType = HeroHeadingType.None;
+
+    switch (ViewContext.RouteData.Values["Controller"])
+    {
+        case "apprentice":
+            headingType = HeroHeadingType.Apprentice;
+            break;
+        case "Employer":
+            headingType = HeroHeadingType.Employer;
+            break;
+    }
+}
+
+@if (IsSectionDefined("HeroHeading"))
+{
+@RenderSection("HeroHeading", required: false)
+}
+else
+{
+
+@await Component.InvokeAsync("HeroHeading", new { type = headingType })
+}
+
+
+<main id="main-content" class="main-content">
+    <div class="grid-row-full-width">
+        @RenderBody()
+    </div>
+
+</main>
