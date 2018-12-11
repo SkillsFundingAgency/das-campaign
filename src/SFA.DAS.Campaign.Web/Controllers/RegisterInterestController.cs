@@ -35,7 +35,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
                 await _userDataCollection.StoreUserData(userData);
 
-                return Redirect(registerInterest.ReturnUrl + $"#{ModalIdConsts.RegisterThanksId}");
+                return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
             }
 
 
