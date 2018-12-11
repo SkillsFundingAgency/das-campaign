@@ -1,10 +1,13 @@
-﻿@model object
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@model object
 
 @{
     ViewBag.Title = "The right apprenticeship";
     Layout = "_LayoutContent";
 }
-
+<a id="#what-apprentice"></a>
 <h2 class="heading-m">What is an apprentice?</h2>
 
 <p>
@@ -24,6 +27,7 @@
 </p>
 <p>
     Your apprentice should:
+</p>
     <ul class="list list--bullet list--bullet-employer">
         <li>work with experienced staff</li>
         <li>learn job-specific skills</li>
@@ -31,7 +35,6 @@
             study during their working week (for example, at a college or independent  training provider)
         </li>
     </ul>
-</p>
 <h2 class="heading-m">Types of apprenticeships</h2>
 <p>
     Apprentices must work towards an approved apprenticeship.  Their training must last at least 12 months.
@@ -42,11 +45,13 @@
 <p>
     To successfully complete an apprenticeship your apprentice will need to have an assessment plan and satisfy the requirements of an independent assessment conducted by an apprentice assessment organisation (called ‘end-point assessment’).
 </p>
+<a id="#find-apprentice"></a>
 <h2 class="heading-m">I want to find an apprentice for my business</h2>
 
 
 <p>
     If you’re interested in taking on an apprentice you need to:
+</p>
     <ul class="list list--bullet list--bullet-employer">
         <li>know how much it’s going to cost you</li>
         <li>understand which type of funding you can get</li>
@@ -54,7 +59,7 @@
         <li>find a training provider who can deliver the right training</li>
     </ul>
 
-</p>
+
 <h2 class="heading-m"> Consider which apprenticeship level works for your business</h2>
 <p>
     Apprentices will spend at least 20% of their time on off-the-job training with your chosen training provider - either regular day release or block release and must be able to attend special training days or workshops.
@@ -74,3 +79,17 @@ FURTHER READING (Links):
     - Current apprenticeship funding rules
     - Transferring unused levy funds to another employer
     - Find apprenticeship training
+
+@{
+
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+                                                         <li><a href="#what-apprentice" class="hero__link">What is an apprentice?</a> </li>
+                                                         <li><a href="#find-apprentice" class="hero__link">find an apprentice for my business</a> </li>
+                                                     </ul>);
+
+
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}

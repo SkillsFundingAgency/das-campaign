@@ -1,53 +1,138 @@
-﻿@*@model < object ></ object >*@
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@*@model < object ></ object >*@
 
 @{
     ViewBag.Title = "How much is it going to cost?";
     Layout = "_LayoutContent";
 }
 
-<h2 class="heading-m">How much will it cost me?</h2>
-<p>
-    You can get help from the government to pay for apprenticeship training.  The amount you get depends on whether you pay the apprenticeship levy or not.
-    You will pay the apprenticeship levy if you’re an employer with a pay bill over £3 million each year.
-</p>
-<p>
-    Apprenticeship funding is devolved and so how you get your funds and pay for training depends on whether you’re in:
+<div class="grid-row">
+    <div class="grid-column-full">
+        <a id="Cost"></a>
+        <h2 class="heading-m">How much will it cost me?</h2>
+        <p>
+            You can get help from the government to pay for apprenticeship training.  The amount you get depends on whether you pay the apprenticeship levy or not.
+            You will pay the apprenticeship levy if you’re an employer with a pay bill over £3 million each year.
+        </p>
+        <p>
+            Apprenticeship funding is devolved and so how you get your funds and pay for training depends on whether you’re in:
+        </p>
+        <ul class="list list--bullet list--bullet-employer">
+            <li>England</li>
+            <li>Scotland</li>
+            <li>Wales</li>
+            <li>Northern Ireland</li>
+        </ul>
 
-    <ul class="list list--bullet list--bullet-employer">
-        <li>England</li>
-        <li>Scotland</li>
-        <li>Wales</li>
-        <li>Northern Ireland</li>
-    </ul>
-</p>
-<h3 class="heading-s">Example Cost 1</h3>
-<h3 class="heading-s">Example Cost 1</h3>
-<h2 class="heading-m">If you don’t need to pay the apprenticeship levy</h2>
-<p>
-    As an employer who doesn’t pay the apprenticeship levy, you will continue to pay the training provider directly for training your apprentices.
-</p><p>
-    You pay 10% towards the cost of training and assessing your apprentice.  The government will pay the rest (90%) up to the funding band maximum. They’ll pay it directly to the training provider.
-</p><p>
-    Before you start your apprentice, you’ll need to agree:
-    <ul class="list list--bullet list--bullet-employer">
-        <li>a payment breakdown and schedule with the training provider</li>
-        <li>how you’re going to pay your training provider directly for the training</li>
-    </ul>
+        <h3 class="heading-s">Example Cost 1</h3>
+        <h3 class="heading-s">Example Cost 1</h3>
+
+        <a id="NoLevy"></a>
+        <h2 class="heading-m">If you don’t need to pay the apprenticeship levy</h2>
+        <p>
+            As an employer who doesn’t pay the apprenticeship levy, you will continue to pay the training provider directly for training your apprentices.
+        </p>
+        <p>
+            You pay 10% towards the cost of training and assessing your apprentice.  The government will pay the rest (90%) up to the funding band maximum. They’ll pay it directly to the training provider.
+        </p>
+        <p>
+            Before you start your apprentice, you’ll need to agree:
+        </p>
+        <ul class="list list--bullet list--bullet-employer">
+            <li>a payment breakdown and schedule with the training provider</li>
+            <li>how you’re going to pay your training provider directly for the training</li>
+        </ul>
 
 
-</p>
 
-<h2 class="heading-m"> Additional payments from the government if you don’t pay the apprenticeship levy:</h2>
-<p>
-    Employers who don’t pay the levy, can get additional payments from the government.
-</p><p>
-    Additional payments of £1,000 may be available to you and your training provider at the start of an apprenticeship.  This will be paid (in 2 instalments) when you take on an apprentice who’s between:
-    <ul class="list list--bullet list--bullet-employer">
+        <a id="AdditionalPayments"></a>
+        <h2 class="heading-m">Additional payments from the government if you don’t pay the apprenticeship levy:</h2>
+        <p>
+            Employers who don’t pay the levy, can get additional payments from the government.
+        </p>
+        <p>
+            Additional payments of £1,000 may be available to you and your training provider at the start of an apprenticeship.  This will be paid (in 2 instalments) when you take on an apprentice who’s between:
+        </p>
+        <ul class="list list--bullet list--bullet-employer">
 
-        <li> 16-18 years old</li>
-        <li>
-            19-24 years old and has previously been in care or who has a local authority
-            education, health and care plan
-        </li>
-    </ul>
-</p>
+            <li> 16-18 years old</li>
+            <li>
+                19-24 years old and has previously been in care or who has a local authority
+                education, health and care plan
+            </li>
+        </ul>
+
+    </div>
+</div>
+<div class="grid-row">
+    <div class="grid-column-full">
+        <div class="govuk-accordion" data-module="accordion" id="accordion-content-employer-cost">
+            <div class="govuk-accordion__section accordion__section">
+                <h2 class="govuk-accordion__section-header accordion__section-header">
+                    <span class="govuk-accordion__section-header-button" id="accordion-content-employer-cost-1"></span>
+                    Paying apprentices using a transfer of funds
+                </h2>
+                <div class="govuk-accordion__section-panel accordion__section-panel" aria-labelledby="accordion-content-employer-cost-1">
+                    <p>
+                        If you’re an employer who’s received a transfer of funds from an employer who can’t use all their apprenticeship funds, you can use these funds to pay for your apprenticeships.
+                    </p>
+                    <p>
+                        You will receive your funds and pay for your apprenticeships using the apprenticeship service. If you don’t have an account you will need to register an account.
+                    </p>
+                    FURTHER READING
+                    Transferring unused apprenticeship funds to another employer
+                    How to register and use the apprenticeship service as an employer
+                </div>
+            </div>
+            <div class="govuk-accordion__section accordion__section">
+                <h2 class="govuk-accordion__section-header accordion__section-header">
+                    <span class="govuk-accordion__section-header-button" id="accordion-content-employer-cost-2"></span>
+                    Transferring funds from a levy payer
+                </h2>
+                <div class="govuk-accordion__section-panel accordion__section-panel" aria-labelledby="accordion-content-employer-cost-2">
+                    <p>
+                        Employers who pay the apprenticeship levy and have unused apprenticeship funds can find employers who want to receive a transfer in a number of ways, for example:
+                        <ul class="list list--bullet list--bullet-employer">
+                            <li>work with employers in your supply chain</li>
+                            <li>get in touch with employers in your industry</li>
+                            <li>get in touch with an Apprenticeship Training Agency (ATA)</li>
+                            <li>work with regional partners</li>
+                        </ul>
+                    </p>
+                    FURTHER READING
+                    Transferring unused apprenticeship funds to another employer
+                    Apprenticeship Funding: How it works
+                </div>
+            </div>
+            <div class="govuk-accordion__section accordion__section">
+                <h2 class="govuk-accordion__section-header accordion__section-header">
+                    <span class="govuk-accordion__section-header-button" id="accordion-content-employer-cost-3"></span>
+                    Paying the levy
+                </h2>
+                <div class="govuk-accordion__section-panel accordion__section-panel" aria-labelledby="accordion-content-employer-cost-3">
+                    <p>
+                        If you pay the apprenticeship levy, you’ll receive funds to spend on training and assessing your apprentices. The government will add 10% to these funds.
+                        <a href="#">REGISTER</a>  or <a href="#">Sign in</a> to your account
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@{
+
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#Cost" class="hero__link">How much will it cost me</a> </li>
+        <li><a href="#NoLevy" class="hero__link">If you don’t need to pay the apprenticeship levy</a> </li>
+        <li><a href="#AdditionalPayments" class="hero__link">Additional payments from the government</a> </li>
+    </ul>);
+
+
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}
