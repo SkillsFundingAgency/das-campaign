@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text;
+using SFA.DAS.Campaign.Web.Models;
 
-namespace SFA.DAS.Campaign.Web.Models
+namespace SFA.DAS.Campaign.Web.ViewComponents.Button
 {
     public class ButtonViewModel
     {
