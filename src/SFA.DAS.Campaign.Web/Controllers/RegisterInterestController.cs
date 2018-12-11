@@ -16,7 +16,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
         public RegisterInterestController(IUserDataCollection userDataCollection)
         {
-            _userDataCollection = userDataCollection == null ? throw new NullReferenceException() : userDataCollection ;
+            _userDataCollection = userDataCollection ;
         }
 
         [HttpPost]
