@@ -16,8 +16,6 @@
     }
 }
 
-<partial name="./Components/_Header" />
-
 @if (IsSectionDefined("HeroHeading"))
 {
     @RenderSection("HeroHeading", required: false)
@@ -30,9 +28,14 @@ else
 
 
 <main id="main-content" class="main-content">
-
-
-    @RenderBody()
-
+    <div class="grid-row">
+        <div class="grid-column-two-thirds">
+            <div class="page">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="grid-column-one-third">
+            <partial name="./Components/_Sidebar" />
+        </div>
+    </div>
 </main>
-<partial name="./Components/_Footer" />
