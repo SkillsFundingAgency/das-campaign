@@ -8,7 +8,15 @@ namespace SFA.DAS.Campaign.Web.Controllers
 {
     public class RealStoriesController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Apprentice()
+        {
+            return View();
+        }
+        public IActionResult Employer()
+        {
+            return View();
+        }
+        public IActionResult FamousFaces()
         {
             return View();
         }
