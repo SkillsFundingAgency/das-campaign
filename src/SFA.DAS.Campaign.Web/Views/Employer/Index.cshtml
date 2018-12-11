@@ -1,38 +1,70 @@
 ﻿@{
-    ViewData["Title"] = "Turbocharge your business";
+    Layout = "_Layout-campaign";
+    ViewData["Title"] = "Employer";
+    ViewBag.Section = "employer";
 }
 
-<div class="page">
+<div class="hero-banner">
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+            <div class="hero-heading">
+                <h1 class="heading-xl hero-heading__heading">Turbo charge your business</h1>
+            </div>
+            <h2 class="heading-s hero-banner__sub-heading">Be part of the movement</h2>
+            <p class="hero-banner__copy">
+                Try apprenticeships for size - you'll grow your own talent, reduce staff turnover and enhance the skills your company need to succeed.
+            </p>
+            <h2 class="hero-banner__copy heading-xs">Call the National apprenticeship service</h2>
+            <p class="hero-banner__copy heading-xl">0800 015 0600</p>
+            <p>Find out about call charges</p>
+        </div>
+    </div>
+    <span class="hero-banner__background hero-banner__background--employer"></span>
+</div>
 
-    <h2 class="heading-l">Introduction to apprenticeships</h2>
-
-    <p>An apprenticeship gives you hands-on experience, a salary and the opportunity to train while you work.   You get a same as other employees: a contract of employment, holiday leave and sick pay.   Anyone from the age of 16 can become an apprentice as long as they're living in England and not in full-time education.</p>
-    <p>An apprenticeship is a real job. It's a way to:</p>
-
-    <ul class="list list--bullet list--bullet-apprentice">
-        <li>get paid and learn at the same time, with at least 20% of your time set aside for learning - normally at a college, university or other training providers</li>
-        <li>gain official certification of your skills, equivalent to a qualification ranging from level 2 (GCSE equivalent) up to degree level</li>
-        <li>start a long-term career path with the possibility of higher earnings</li>
-    </ul>
-
-    {% include './components/boxQuote/_boxQuote.html'%}
-
-    <p>An apprenticeship can take 2 to 4 years to complete depending on which level you do.   </p>
-
-    <p>By successfully completing your apprenticeship, you'll have gained the confidence and skills needed to progress in your chosen career. </p>
-
-    <p>Apprenticeships are available across a wide range of industries and organisations, from local businesses to large national brands.</p>
-
-    <p>Apprenticeships have been through a massive change in the last few years.  They're not the 'easy option' and studying whilst you're working takes hard work!  Degree apprenticeship are now recognised as credible alternatives to full-time university courses. </p>
-
-    <p>If you live in <a href="#"> Scotland</a>, <a href="#">Wales</a>  or <a href="">Northern Ireland</a>  you can find out more about apprenticeships in your area.  </p>
-
-
-    <div class="next-step-link">
-        <a href="">
-            Benefits
-            <span class="next-step-link__subtitle">Next step</span>
+<div class="grid-row-full-width card__collection card__collection--employer">
+    <div class="grid-column-full-width-one-quarter">
+        <a class="card" href="/employer/">
+            <div class="card__image">
+                <span class="card__img card__img--1"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="card__headline heading-s">What's the process of employing an apprentice</h2>
+                <p class="card__link">Find out more</p>
+            </div>
         </a>
     </div>
-
+    <div class="grid-column-full-width-one-quarter">
+        <a class="card" href="/employer/the-right-apprenticeship">
+            <div class="card__image">
+                <span class="card__img card__img--2"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="card__headline heading-s">The right apprenticeship</h2>
+                <p class="card__link">Find out more</p>
+            </div>
+        </a>
+    </div>
+    <div class="grid-column-full-width-one-quarter">
+        <a class="card" href="#">
+            <div class="card__image">
+                <span class="card__img card__img--3"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="card__headline heading-s">Benefits to your business </h2>
+                <p class="card__link">Find out more</p>
+            </div>
+        </a>
+    </div>
+    <div class="grid-column-full-width-one-quarter">
+        <a class="card" href="#">
+            <div class="card__image">
+                <span class="card__img card__img--4"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="card__headline heading-s">Real stories and famous apprentices</h2>
+                <p class="card__link">Find out more</p>
+            </div>
+        </a>
+    </div>
 </div>
