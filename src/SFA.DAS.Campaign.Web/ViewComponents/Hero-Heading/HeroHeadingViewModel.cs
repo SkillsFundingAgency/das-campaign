@@ -6,14 +6,7 @@ using SFA.DAS.Campaign.Web.ViewComponents.Modal;
 
 namespace SFA.DAS.Campaign.Web.ViewComponents
 {
-    public class HeroHeadingViewComponent : ViewComponent
-    {
-        public async Task<IViewComponentResult> InvokeAsync(HeroHeadingType type, string caption, string classes, IHtmlContent content)
-        {
-           
-            return View("Default", new HeroHeadingViewModel(type, caption, classes, content));
-        }
-    }
+  
 
     public class HeroHeadingViewModel
     {
@@ -34,13 +27,13 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
             }
         }
 
-        public IHtmlContent Content { get; set; }
+        public IHtmlContent Content { get; internal set; }
 
-        public HeroHeadingType Type { get; }
+        internal HeroHeadingType Type { get; }
 
-        public string Caption {get; set; }
+        public string Caption { get; internal set; }
 
-        public string Class { get; set; }
+        public string Class { get; internal set; }
 
         private string setDefaults()
         {
