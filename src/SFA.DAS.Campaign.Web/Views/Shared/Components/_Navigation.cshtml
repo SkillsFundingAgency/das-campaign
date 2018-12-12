@@ -13,95 +13,139 @@
                 <span class="navigation__sub-menu-toggle"></span>
                 <span class="navigation__sub-menu-icon"></span>
             </a>
-            <ul class="navigation__sub-menu">
-                <li class="hidden--desktop">
-                    <a href="/apprentice" class="navigation__link">
-                        Apprenticeship hub
-                    </a>
-                </li>
-                <li>
-                    <a href="/apprentice" class="navigation__link">
-                        What is an apprenticeship?
-                        <span class="navigation__link-caption">If you don't know what career you want to do.... consider an apprenticeship and open up your potential</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/apprentice" class="navigation__link">
-                        What are the benefits to me?
-                        <span class="navigation__link-caption">Have you wondered what's in it for you?  </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/apprentice" class="navigation__link">
-                        How to become a great apprentice
-                        <span class="navigation__link-caption">Take a look at what it takes to make a great apprentice</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/apprentice" class="navigation__link">
-                        the right apprenticeship for you
-                        <span class="navigation__link-caption">Have a look at the different sectors and case studies to help you choose the right apprenticeship</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/apprentice" class="navigation__link">
-                        Find an apprenticeship
-                        <span class="navigation__link-caption">Find an apprenticeship that you want to do, to kick start your career</span>
-                    </a>
-                </li>
+            <div class="grid-row navigation__sub-menu navigation__sub-menu__apprentice">
 
-            </ul>
+                <div class="grid-column-one-half">
+                    <h3 class="heading-s"><span class="highlight">WHY</span> you should become an apprentice...</h3>
+                    <ul>
+                        <li class="hidden--desktop">
+                            <a href="/apprentice" class="navigation__link">
+                                Apprentice hub
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/apprentice" class="navigation__link">
+                                Real stories &amp; famous Apprentices
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="grid-column-one-half">
+                    <h3 class="heading-s"><span class="highlight">how</span> to become an apprentice - step by step...</h3>
+                    <ol>
+                        <li>
+                            <a href="/apprentice/fire-up-your-apprenticeship" class="navigation__link">
+                                Fire up your apprenticeship
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/apprentice/what-are-the-benefits-to-me" class="navigation__link">
+                                What are the benefits to me?
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/apprentice/what-are-the-steps-I-need-to-take" class="navigation__link">
+                                What are the steps I need to take?
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/apprentice/how-to-get-your-application-right" class="navigation__link">
+                                How to get your application right and nail the interview
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/apprentice/monitor-your-progress" class="navigation__link">
+                                Monitor your progress
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/apprentice/assessment-and-qualification" class="navigation__link">
+                                Assessment and qualification
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
         </li>
         <li class="navigation__list-item">
-            <a href="/Employer" class="navigation__link--top-level">
+            <a href="/employer" class="navigation__link--top-level">
                 Employer
                 <span class="navigation__sub-menu-toggle"></span>
                 <span class="navigation__sub-menu-icon"></span>
             </a>
-            <ul class="navigation__sub-menu">
-                <li class="hidden--desktop">
-                    <a href="/Employer" class="navigation__link">
-                        Employer hub
-                    </a>
-                </li>
-                <li>
-                    <a href="/Employer" class="navigation__link">
-                        What is an apprenticeship?
-                        <span class="navigation__link-caption">Find out how taking on an apprentice can recharge your business</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/Employer" class="navigation__link">
-                        What's the cost to me?
-                        <span class="navigation__link-caption">Discover the costs to you and the help with funding that you can get from the government when you take on an apprentice</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/Employer" class="navigation__link">
-                        ESFA helpful videos
-                        <span class="navigation__link-caption">Take a look at our video 'how to' guides and find out all about apprenticeships</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/Employer" class="navigation__link">
-                        Employer useful links
-                        <span class="navigation__link-caption">For further reading and help you can access the resources on .GOV</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/Employer" class="navigation__link">
-                        Find Apprenticeship training
-                        <span class="navigation__link-caption">For further reading and help you can access the resources on .GOV</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="navigation__list-item navigation__list-item--with-button">
-            @*<partial name="./components/Form/_button" model="@{new ButtonViewModel(ButtonType.Primary){Shadow = true, Sparks = true, Text = "Register Interest"}}" />*@
+            <div class="grid-row navigation__sub-menu navigation__sub-menu__employer">
 
-            @await Component.InvokeAsync("Button", new { type = ButtonType.Input, style = ButtonStyle.Primary, text = "Register Interest" })
-            
-            
+                <div class="grid-column-one-half">
+                    <h3 class="heading-s"><span class="highlight">WHY</span> you should hire an apprentice...</h3>
+                    <ul>
+                        <li class="hidden--desktop">
+                            <a href="/employer" class="navigation__link">
+                                Employer hub
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/employer/benefits" class="navigation__link">
+                                Benefits to your business
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/employer" class="navigation__link">
+                                My industry - find out what other companies are doing
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/employer" class="navigation__link">
+                                Real stories &amp; famous Apprentices
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="grid-column-one-half">
+                    <h3 class="heading-s"><span class="highlight">how</span> to hire an apprentice - step by step...</h3>
+                    <ol>
+                        <li>
+                            <a href="/employer/how-much-is-it-going-to-cost" class="navigation__link">
+                                How much is it going to cost?
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/employer/the-right-apprenticeship" class="navigation__link">
+                                The right apprenticeship
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/employer/choose-training-provider" class="navigation__link">
+                                Choose a training provider
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/employer/hire-an-apprentice" class="navigation__link">
+                                Hire an apprentice
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/employer/preparing-and-monitoring" class="navigation__link">
+                                Preparing and monitoring
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/employer/assessment-and-qualification" class="navigation__link">
+                                Assessment and qualification
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+        </li>
+
+        <li class="navigation__list-item navigation__list-item--with-button">
+            @await Component.InvokeAsync("Button", new { type = ButtonType.Anchor, style = ButtonStyle.Primary, name = "btnregisterinterestopen", text = "Register Interest", href = "#modal-RegisterInterest", shadow = true, sparks = true })
+
+
         </li>
     </ul>
 </nav>

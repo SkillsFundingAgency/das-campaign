@@ -1,8 +1,32 @@
 ﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
 @{
     Layout = "_Layout-campaign";
+
+    var headingType = HeroHeadingType.None;
+
+    switch (ViewContext.RouteData.Values["Controller"])
+    {
+        case "Apprentice":
+            headingType = HeroHeadingType.Apprentice;
+            break;
+        case "Employer":
+            headingType = HeroHeadingType.Employer;
+            break;
+    }
 }
-<partial name="./Components/_HeroHeader" />
+
+
+@if (IsSectionDefined("HeroHeading"))
+{
+    @RenderSection("HeroHeading", required: false)
+}
+else
+{
+
+    @await Component.InvokeAsync("HeroHeading", new { type = headingType })
+}
+
 
 <main id="main-content" class="main-content">
     <div class="grid-row">
@@ -15,4 +39,6 @@
             <partial name="./Components/_Sidebar" />
         </div>
     </div>
+
 </main>
+

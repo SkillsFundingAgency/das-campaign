@@ -1,0 +1,89 @@
+﻿@model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
+
+<form asp-controller="RegisterInterest" asp-action="Index">
+    <section class="section">
+        <div class="grid-row">
+            <div class="grid-column-full">
+                <span class="caption-s">Register interest</span>
+                <h1 class="heading-m">keep me informed of upcoming features</h1>
+                <div class="form-group">
+
+                    <label class="label visually-hidden" asp-for="FirstName">
+                        First name
+                    </label>
+                    <input class="input" asp-for="FirstName" type="text" placeholder="First name">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="label visually-hidden" asp-for="LastName">
+                        Last name
+                    </label>
+                    <input class="input" asp-for="LastName" type="text" placeholder="Last name">
+
+                </div>
+                <div class="form-group">
+
+                    <label class="label visually-hidden" asp-for="EmailAddress">
+                        Email Address
+                    </label>
+                    <input class="input" asp-for="EmailAddress" type="text" placeholder="Email address">
+
+                </div>
+                <div class="form-group">
+                    <div class="checkboxes__item">
+                        <input class="checkboxes__input" asp-for="AcceptTandCs" type="checkbox" value="true">
+                        <label class="label checkboxes__label" asp-for="AcceptTandCs">
+                            I agree to the terms and conditions
+                        </label>
+                    </div>
+                </div>
+                
+                <input asp-for="ReturnUrl" type="hidden" value="@ViewContext.HttpContext.Request.Path"/>
+                @await Component.InvokeAsync("Button", new { type = ButtonType.Button, style = ButtonStyle.PrimaryInverted, name = "registerInterestSubmit", text = "Register Interest", shadow = false })
+
+
+            </div>
+        </div>
+    </section>
+</form>
+<section class="section section-grey">
+    <div class="grid-row">
+
+        <div class="grid-column-one-half">
+            <h2 class="heading-s">Apprentice</h2>
+            <hr class="hr hr-apprentice">
+            <ul class="list form-list list-apprentice list--bullet">
+                <li class="form-list-item">
+                    get paid and learn at the same time, with at least 20% of your time set aside for
+                    learning - normally at a
+                    college, university or other training providers
+                </li>
+                <li class="form-list-item">
+                    gain official certification of your skills, equivalent to a qualification ranging
+                    from level 2 (GCSE
+                    equivalent) up to degree level
+                </li>
+                <li class="form-list-item">start a long-term career path with the possibility of higher earnings</li>
+            </ul>
+        </div>
+        <div class="grid-column-one-half">
+            <h2 class="heading-s">Employer</h2>
+            <hr class="hr hr-employer">
+            <ul class="list form-list list-employer list--bullet">
+                <li class="form-list-item">
+                    get paid and learn at the same time, with at least 20% of your time set aside for
+                    learning - normally at a
+                    college, university or other training providers
+                </li>
+                <li class="form-list-item">
+                    gain official certification of your skills, equivalent to a qualification ranging
+                    from level 2 (GCSE
+                    equivalent) up to degree level
+                </li>
+                <li class="form-list-item">start a long-term career path with the possibility of higher earnings</li>
+            </ul>
+        </div>
+    </div>
+</section>
