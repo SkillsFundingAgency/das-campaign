@@ -1,6 +1,6 @@
 ﻿@model SFA.DAS.Campaign.Web.ViewComponents.Sidebar.SidebarViewModel
 
-<div class="sidebar">
+<div class="sidebar sidebar--employer">
     <div class="sidebar__hero">
         <img src="@Model.ImgLocation" class="sidebar__hero-image"/>
     </div>
@@ -11,8 +11,6 @@
         </div>
     </div>
     <div class="sidebar__content">
-        <ol class="sidebar-nav">
             <partial name="@Model.ContentView" />
-        </ol>
     </div>
 </div>
