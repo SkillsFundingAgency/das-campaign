@@ -7,7 +7,7 @@
 
     switch (ViewContext.RouteData.Values["Controller"])
     {
-        case "Apprentice":
+        case "apprentice":
             headingType = HeroHeadingType.Apprentice;
             break;
         case "Employer":
@@ -16,29 +16,20 @@
     }
 }
 
-
 @if (IsSectionDefined("HeroHeading"))
 {
-    @RenderSection("HeroHeading", required: false)
+@RenderSection("HeroHeading", required: false)
 }
 else
 {
 
-    @await Component.InvokeAsync("HeroHeading", new { type = headingType })
+@await Component.InvokeAsync("HeroHeading", new { type = headingType })
 }
 
 
 <main id="main-content" class="main-content">
-    <div class="grid-row">
-        <div class="grid-column-two-thirds">
-            <div class="page">
-                @RenderBody()
-            </div>
-        </div>
-        <div class="grid-column-one-third">
-            <partial name="./Components/_Sidebar" />
-        </div>
+    <div class="grid-row-full-width">
+        @RenderBody()
     </div>
 
 </main>
-

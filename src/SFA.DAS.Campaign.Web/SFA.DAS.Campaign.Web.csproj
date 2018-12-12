@@ -88,6 +88,9 @@
     <Content Update="Views\Shared\Sidebar\_apprentice.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\_LayoutContentFull.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\_LayoutContent.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

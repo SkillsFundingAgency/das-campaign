@@ -2,58 +2,82 @@
 @using SFA.DAS.Campaign.Web.Constants
 @using SFA.DAS.Campaign.Web.ViewComponents.Modal
 @{
-    ViewData["Title"] = "Ignite your career";
+    Layout = "_LayoutContentFull";
+    ViewData["Title"] = "Apprentice";
 }
 
-
-<div class="page">
-
-    <h2 class="heading-l">Introduction to apprenticeships</h2>
-
-    <p>An apprenticeship gives you hands-on experience, a salary and the opportunity to train while you work.   You get a same as other employees: a contract of employment, holiday leave and sick pay.   Anyone from the age of 16 can become an apprentice as long as they're living in England and not in full-time education.</p>
-    <p>An apprenticeship is a real job. It's a way to:</p>
-
-    <ul class="list list--bullet list--bullet-apprentice">
-        <li>get paid and learn at the same time, with at least 20% of your time set aside for learning - normally at a college, university or other training providers</li>
-        <li>gain official certification of your skills, equivalent to a qualification ranging from level 2 (GCSE equivalent) up to degree level</li>
-        <li>start a long-term career path with the possibility of higher earnings</li>
-    </ul>
-
-
-    <p>An apprenticeship can take 2 to 4 years to complete depending on which level you do.   </p>
-
-    <p>By successfully completing your apprenticeship, you'll have gained the confidence and skills needed to progress in your chosen career. </p>
-
-    <p>Apprenticeships are available across a wide range of industries and organisations, from local businesses to large national brands.</p>
-
-    <p>Apprenticeships have been through a massive change in the last few years.  They're not the 'easy option' and studying whilst you're working takes hard work!  Degree apprenticeship are now recognised as credible alternatives to full-time university courses. </p>
-
-    <p>If you live in <a href="#"> Scotland</a>, <a href="#">Wales</a>  or <a href="">Northern Ireland</a>  you can find out more about apprenticeships in your area.  </p>
-
-
-    <div class="next-step-link">
-        <a href="">
-            Benefits
-            <span class="next-step-link__subtitle">Next step</span>
-        </a>
+@*<div class="hero-banner">
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+            <div class="hero-heading">
+                <h1 class="heading-xl hero-heading__heading">Ignite your career</h1>
+            </div>
+            <h2 class="heading-s hero-banner__sub-heading">Embrace change and become an apprentice</h2>
+            <p class="hero-banner__copy">Do you want to earn while you learn, be debt free at the end of your training and have valuable hands-on experience? Then enter your postcode or town below and start to fire up your apprenticeship journey.</p>
+        </div>
     </div>
-
-</div>
+    <span class="hero-banner__background"></span>
+</div>*@
 
 @{
 
-    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
-                                                       <li><a href="#" class="hero__link">How much can you earn</a> </li>
-                                                       <li><a href="#" class="hero__link">Cost to you</a> </li>
-                                                       <li><a href="#" class="hero__link">Future prospects</a> </li>
-                                                       <li><a href="#" class="hero__link">Top 5 reasons for becoming an apprentice</a> </li>
-                                                   </ul>);
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<div>
+                                                         <h2 class="heading-s hero-banner__sub-heading">Embrace change and become an apprentice</h2>
+                                                         <p class="hero-banner__copy">Do you want to earn while you learn, be debt free at the end of your training and have valuable hands-on experience? Then enter your postcode or town below and start to fire up your apprenticeship journey.</p>
+                                                     </div>);
 }
 
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Apprentice,content = HeroHeadingContent() })
 }
 
-
-
-
+<div class="grid-row-full-width card__collection">
+    <div class="grid-column-full-width-one-quarter">
+        <a class="card" href="#">
+            <div class="card__image">
+                <span class="card__img card__img--1"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="card__headline heading-s">What are the steps I need to take?</h2>
+                <p class="card__summary">Discover the journey - how you can become an apprentice.</p>
+                <p class="card__link">Find out more</p>
+            </div>
+        </a>
+    </div>
+    <div class="grid-column-full-width-one-quarter">
+        <a class="card" href="#">
+            <div class="card__image">
+                <span class="card__img card__img--2"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="card__headline heading-s">What is an apprenticeship?</h2>
+                <p class="card__summary">To inspire you, here's everything you need to know to help you become an apprentice.</p>
+                <p class="card__link">Find out more</p>
+            </div>
+        </a>
+    </div>
+    <div class="grid-column-full-width-one-quarter">
+        <a class="card" href="#">
+            <div class="card__image">
+                <span class="card__img card__img--3"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="card__headline heading-s">What are the benefits For me? </h2>
+                <p class="card__summary">Kick start your career and earn while you learn.</p>
+                <p class="card__link">Find out more</p>
+            </div>
+        </a>
+    </div>
+    <div class="grid-column-full-width-one-quarter">
+        <a class="card" href="#">
+            <div class="card__image">
+                <span class="card__img card__img--4"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="card__headline heading-s">Don't just take our word for it</h2>
+                <p class="card__summary">Read some of our real stories and see which famous people have made a success.</p>
+                <p class="card__link">Find out more</p>
+            </div>
+        </a>
+    </div>
+</div>
