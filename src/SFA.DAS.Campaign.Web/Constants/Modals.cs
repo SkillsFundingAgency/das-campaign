@@ -8,7 +8,7 @@ namespace SFA.DAS.Campaign.Web.Constants
 {
     public static class ModalIdConsts
     {
-        public static string RegisterThanksId = "modal-register-thanks";
+        public const string RegisterThanksId = "modal-register-thanks";
     }
 
     public static class Helper
