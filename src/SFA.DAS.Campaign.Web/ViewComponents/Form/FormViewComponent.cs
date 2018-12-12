@@ -10,13 +10,12 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Form
 {
     public class FormViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(FormType type,string controller,string action)
+        public async Task<IViewComponentResult> InvokeAsync(FormType type)
         {
-
           
             switch (type)
             {
-                case FormType.Registerinterest:
+                case FormType.RegisterInterest:
                     return View("RegisterInterest",new RegisterInterestModel());
                     break;
                 default:
