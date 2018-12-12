@@ -40,7 +40,6 @@
 
     <div class="wrap">
 
-
         <partial name="./Components/_Header" />
 
         @RenderBody()
@@ -49,10 +48,6 @@
 
     </div>
 
-
-    @await Component.InvokeAsync("Modal", new { id = "modal-RegisterInterest", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.RegisterInterest } })
-
-    @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
     <mini-profiler />
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -63,6 +58,12 @@
     <script>
         window.DASFrontend.initAll()
     </script>
+
+
+
+    @await Component.InvokeAsync("Modal", new { id = "modal-RegisterInterest", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.RegisterInterest } })
+
+    @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks",type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
 
 </body>
 
