@@ -29,7 +29,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 
         public IHtmlContent Content { get; internal set; }
 
-        internal HeroHeadingType Type { get; }
+        public HeroHeadingType Type { get; }
 
         public string Caption { get; internal set; }
 
