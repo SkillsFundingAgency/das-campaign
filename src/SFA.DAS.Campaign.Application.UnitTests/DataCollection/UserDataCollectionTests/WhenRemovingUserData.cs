@@ -16,6 +16,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
         private UserDataCollection _userDataCollection;
         private Mock<IQueueService<UserData>> _queueService;
         private Mock<IOptions<CampaignConfiguration>> _options;
+        private Mock<IUserDataCryptographyService> _userDataCryptographyService;
         private const string RemoveUserDataQueueName = "remove-queue";
 
         [SetUp]
@@ -26,7 +27,9 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             _userDataCollectionValidator.Setup(x => x.ValidateEmail(It.IsAny<string>())).Returns(true);
             _options = new Mock<IOptions<CampaignConfiguration>>();
             _options.Setup(x => x.Value).Returns(new CampaignConfiguration { RemoveUserDataQueueName = RemoveUserDataQueueName });
-            _userDataCollection = new UserDataCollection(_userDataCollectionValidator.Object, _queueService.Object, _options.Object);
+            _userDataCryptographyService = new Mock<IUserDataCryptographyService>();
+
+            _userDataCollection = new UserDataCollection(_userDataCollectionValidator.Object, _queueService.Object, _options.Object, _userDataCryptographyService.Object);
         }
 
         [Test]
