@@ -94,6 +94,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
             services.AddTransient<IUserDataCollection, UserDataCollection>();
             services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
+            services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
