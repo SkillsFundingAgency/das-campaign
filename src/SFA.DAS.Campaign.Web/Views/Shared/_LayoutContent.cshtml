@@ -4,20 +4,18 @@
     Layout = "_Layout-campaign";
 
     var headingType = HeroHeadingType.None;
-    var sidebarType = SidebarType.None;
 
     switch (ViewContext.RouteData.Values["Controller"])
     {
         case "Apprentice":
             headingType = HeroHeadingType.Apprentice;
-            sidebarType = SidebarType.Apprentice;
             break;
         case "Employer":
             headingType = HeroHeadingType.Employer;
-            sidebarType = SidebarType.Employer;
             break;
     }
 }
+
 
 @if (IsSectionDefined("HeroHeading"))
 {
@@ -38,7 +36,7 @@ else
             </div>
         </div>
         <div class="grid-column-one-third">
-            @await Component.InvokeAsync("Sidebar", new { type = sidebarType })
+            <partial name="./Components/_Sidebar" />
         </div>
     </div>
 

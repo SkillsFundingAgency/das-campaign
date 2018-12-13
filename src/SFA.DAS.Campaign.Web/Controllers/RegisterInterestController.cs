@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Models.DataCollection;
 using SFA.DAS.Campaign.Web.Constants;
@@ -31,7 +30,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                     LastName = registerInterest.LastName,
                     Email = registerInterest.EmailAddress,
                     CookieId = registerInterest.ReturnUrl,
-                    RouteId = registerInterest.Route.ToString()
+                    RouteId = registerInterest.ReturnUrl
                 };
 
                 await _userDataCollection.StoreUserData(userData);
@@ -39,8 +38,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
             }
 
-           
-            return View(registerInterest);
+
+            return RedirectToAction("Index","Home");
         }
     }
 }
