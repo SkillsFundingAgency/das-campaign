@@ -2,11 +2,14 @@
 @using SFA.DAS.Campaign.Web.Constants
 @using SFA.DAS.Campaign.Web.ViewComponents.Modal
 @{
-    Layout = "_LayoutContentFull";
-    ViewData["Title"] = "Apprentice";
+    Layout = "_Layout-campaign";
+    ViewBag.Title = "Ignite your career";
+    ViewBag.MetaTitle = "Apprentice: Find out all you need to know about becoming an apprentice";
+    ViewBag.PageID = "apprentice";
+    ViewBag.MetaDesc = "All you need to know about how to become an apprentice in different sectors and which apprenticeship to search for. ";
 }
 
-@*<div class="hero-banner">
+<div class="hero-banner">
     <div class="grid-row">
         <div class="grid-column-one-half">
             <div class="hero-heading">
@@ -17,19 +20,7 @@
         </div>
     </div>
     <span class="hero-banner__background"></span>
-</div>*@
-
-@{
-
-    IHtmlContent HeroHeadingContent() => Helper.Body(@<div>
-                                                         <h2 class="heading-s hero-banner__sub-heading">Embrace change and become an apprentice</h2>
-                                                         <p class="hero-banner__copy">Do you want to earn while you learn, be debt free at the end of your training and have valuable hands-on experience? Then enter your postcode or town below and start to fire up your apprenticeship journey.</p>
-                                                     </div>);
-}
-
-@section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Apprentice,content = HeroHeadingContent() })
-}
+</div>
 
 <div class="grid-row-full-width card__collection">
     <div class="grid-column-full-width-one-quarter">
