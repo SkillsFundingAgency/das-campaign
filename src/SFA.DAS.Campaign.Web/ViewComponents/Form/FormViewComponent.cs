@@ -12,8 +12,8 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Form
     {
         public async Task<IViewComponentResult> InvokeAsync(FormType type, object formViewModel)
         {
-
-            var returnUrl = ViewContext.HttpContext.Request.Path;
+            
+            var returnUrl = ViewContext?.HttpContext?.Request?.Path.ToString() ?? "/";
             
             switch (type)
             {
