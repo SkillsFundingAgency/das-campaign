@@ -1,8 +1,9 @@
-﻿<ol class="sidebar-nav">
-    <li class="sidebar-nav__section"><a href="/employer/how-much-is-it-going-to-cost"> How much is it going to cost?</a></li>
-    <li class="sidebar-nav__section"><a href="/employer/the-right-apprenticeship"> The right apprenticeship</a></li>
-    <li class="sidebar-nav__section"><a href="/employer/choose-training-provider"> Choose a training provider</a></li>
-    <li class="sidebar-nav__section"><a href="/employer/hire-an-apprentice"> Hire an apprentice</a> </li>
-    <li class="sidebar-nav__section"><a href="/employer/preparing-and-monitoring"> Preparing and monitoring</a></li>
-    <li class="sidebar-nav__section"><a href="/employer/assessment-and-qualification"> Assessment and qualification</a></li>
+﻿@model int
+<ol class="sidebar-nav">
+    <li class="sidebar-nav__section @(Model == 1 ? "sidebar-nav__section--active")"><a href="/employer/how-much-is-it-going-to-cost"> How much is it going to cost?</a></li>
+    <li class="sidebar-nav__section @(Model == 2 ? "sidebar-nav__section--active")"><a href="/employer/the-right-apprenticeship"> The right apprenticeship</a></li>
+    <li class="sidebar-nav__section @(Model == 3 ? "sidebar-nav__section--active")"><a href="/employer/choose-training-provider"> Choose a training provider</a></li>
+    <li class="sidebar-nav__section @(Model == 4 ? "sidebar-nav__section--active")"><a href="/employer/hire-an-apprentice"> Hire an apprentice</a> </li>
+    <li class="sidebar-nav__section @(Model == 5 ? "sidebar-nav__section--active")"><a href="/employer/preparing-and-monitoring"> Preparing and monitoring</a></li>
+    <li class="sidebar-nav__section @(Model == 6 ? "sidebar-nav__section--active")"><a href="/employer/assessment-and-qualification"> Assessment and qualification</a></li>
 </ol>

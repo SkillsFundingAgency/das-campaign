@@ -2,18 +2,6 @@
 @using SFA.DAS.Campaign.Web.ViewComponents.Modal
 @{
     Layout = "_Layout-campaign";
-
-    var headingType = HeroHeadingType.None;
-
-    switch (ViewContext.RouteData.Values["Controller"])
-    {
-        case "Apprentice":
-            headingType = HeroHeadingType.Apprentice;
-            break;
-        case "Employer":
-            headingType = HeroHeadingType.Employer;
-            break;
-    }
 }
 
 
@@ -24,7 +12,7 @@
 else
 {
 
-    @await Component.InvokeAsync("HeroHeading", new { type = headingType })
+    @await Component.InvokeAsync("HeroHeading")
 }
 
 
@@ -36,7 +24,7 @@ else
             </div>
         </div>
         <div class="grid-column-one-third">
-            <partial name="./Components/_Sidebar" />
+            @await Component.InvokeAsync("Sidebar", new { activeIndex = ViewBag.PageNavIndex ?? 0 })
         </div>
     </div>
 
