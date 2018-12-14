@@ -8,22 +8,23 @@
 <nav class="navigation" aria-labelledby="nav-label">
     <ul class="navigation__menu">
         <li class="navigation__list-item">
-            <a href="/apprentice" class="navigation__link--top-level">
+            <a href="/apprentice" class="navigation__link--top-level navigation__link--top-level--apprentice">
                 Apprentice
                 <span class="navigation__sub-menu-toggle"></span>
                 <span class="navigation__sub-menu-icon"></span>
             </a>
-            <div class="grid-row navigation__sub-menu navigation__sub-menu__apprentice">
-
-                <div class="grid-column-one-half">
-                    <h3 class="heading-s"><span class="highlight">WHY</span> you should become an apprentice...</h3>
-                    <ul>
+            <div class="grid-row navigation__sub-menu navigation__sub-menu--apprentice">
+                <div class="grid-column-one-half navigation__column">
+                    <h3 class="heading-s navigation_sub-heading">
+                        <span class="highlight">Why</span>
+                        <span class="secondary">you should become an apprentice...</span>
+                    </h3>
+                    <ul class="navigation__list">
                         <li class="hidden--desktop">
                             <a href="/apprentice" class="navigation__link">
                                 Apprentice hub
                             </a>
                         </li>
-
                         <li>
                             <a href="/real-stories/apprentice" class="navigation__link">
                                 Real stories &amp; famous Apprentices
@@ -36,9 +37,12 @@
                         </li>
                     </ul>
                 </div>
-                <div class="grid-column-one-half">
-                    <h3 class="heading-s"><span class="highlight">how</span> to become an apprentice - step by step...</h3>
-                    <ol>
+                <div class="grid-column-one-half navigation__column">
+                    <h3 class="heading-s navigation_sub-heading">
+                        <span class="highlight">How</span>
+                        <span class="secondary">to become an apprentice - step by step...</span>
+                    </h3>
+                    <ol class="navigation__ordered-list">
                         <li>
                             <a href="/apprentice/fire-up-your-apprenticeship" class="navigation__link">
                                 Fire up your apprenticeship
@@ -74,16 +78,19 @@
             </div>
         </li>
         <li class="navigation__list-item">
-            <a href="/employer" class="navigation__link--top-level">
+            <a href="/employer" class="navigation__link--top-level  navigation__link--top-level--employer">
                 Employer
                 <span class="navigation__sub-menu-toggle"></span>
                 <span class="navigation__sub-menu-icon"></span>
             </a>
-            <div class="grid-row navigation__sub-menu navigation__sub-menu__employer">
+            <div class="grid-row navigation__sub-menu navigation__sub-menu--employer">
 
-                <div class="grid-column-one-half">
-                    <h3 class="heading-s"><span class="highlight">WHY</span> you should hire an apprentice...</h3>
-                    <ul>
+                <div class="grid-column-one-half navigation__column">
+                    <h3 class="heading-s navigation_sub-heading">
+                        <span class="highlight">Why</span>
+                        <span class="secondary">you should hire an apprentice...</span>
+                    </h3>
+                    <ul class="navigation__list">
                         <li class="hidden--desktop">
                             <a href="/employer" class="navigation__link">
                                 Employer hub
@@ -107,9 +114,12 @@
 
                     </ul>
                 </div>
-                <div class="grid-column-one-half">
-                    <h3 class="heading-s"><span class="highlight">how</span> to hire an apprentice - step by step...</h3>
-                    <ol>
+                <div class="grid-column-one-half navigation__column">
+                    <h3 class="heading-s navigation_sub-heading">
+                        <span class="highlight">How</span>
+                        <span class="secondary">to hire an apprentice - step by step...</span>
+                    </h3>
+                    <ol class="navigation__ordered-list">
                         <li>
                             <a href="/employer/how-much-is-it-going-to-cost" class="navigation__link">
                                 How much is it going to cost?
@@ -148,8 +158,6 @@
 
         <li class="navigation__list-item navigation__list-item--with-button">
             @await Component.InvokeAsync("Button", new { type = ButtonType.Anchor, style = ButtonStyle.Primary, name = "btnregisterinterestopen", text = "Register Interest", href = "#modal-RegisterInterest", shadow = true, sparks = true })
-
-
         </li>
     </ul>
 </nav>
