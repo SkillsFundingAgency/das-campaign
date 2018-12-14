@@ -21,6 +21,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {
             if (ModelState.IsValid)
