@@ -1,0 +1,9 @@
+﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
+@model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
+
+@{
+    ViewBag.Title = "Register Interest";
+    Layout = "_LayoutContentFull";
+}
+
+@await Component.InvokeAsync("Form", new{type = FormType.RegisterInterest, formViewModel = Model});
