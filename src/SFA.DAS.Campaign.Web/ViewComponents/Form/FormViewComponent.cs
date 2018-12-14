@@ -10,13 +10,15 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Form
 {
     public class FormViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(FormType type)
+        public async Task<IViewComponentResult> InvokeAsync(FormType type, object formViewModel)
         {
-          
+            
+            var returnUrl = ViewContext?.HttpContext?.Request?.Path.ToString() ?? "/";
+            
             switch (type)
             {
                 case FormType.RegisterInterest:
-                    return View("RegisterInterest",new RegisterInterestModel());
+                    return View("RegisterInterest", formViewModel ?? new RegisterInterestModel(){ReturnUrl = returnUrl});
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
