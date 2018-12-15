@@ -30,6 +30,28 @@ namespace SFA.DAS.Campaign.Web.Controllers
             //await _standardsService.GetBySearchTerm("Baker");
             return View("Index");
         }
+        [Route("privacy")]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
 
+        [Route("terms")]
+        public IActionResult Terms()
+        {
+            return View();
+        }
+
+        [Route("cookies")]
+        public IActionResult Cookies()
+        {
+            return View();
+        }
+
+        [Route("sitemap")]
+        public IActionResult Sitemap()
+        {
+            return View();
+        }
     }
 }
