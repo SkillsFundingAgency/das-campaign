@@ -1,5 +1,4 @@
-﻿using System;
-using SFA.DAS.Campaign.Domain.DataCollection;
+﻿using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Models.DataCollection;
 
 namespace SFA.DAS.Campaign.Application.DataCollection.Validation
@@ -22,7 +21,8 @@ namespace SFA.DAS.Campaign.Application.DataCollection.Validation
 
         public bool ValidateEmail(string email)
         {
-            throw new NotImplementedException();
+            var userData = new UserData{Email = email};
+            return userData.IsValidEmail();
         }
     }
 }
