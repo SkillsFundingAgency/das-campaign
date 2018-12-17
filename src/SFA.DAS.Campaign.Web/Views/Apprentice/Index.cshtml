@@ -2,10 +2,12 @@
 @using SFA.DAS.Campaign.Web.Constants
 @using SFA.DAS.Campaign.Web.ViewComponents.Modal
 @{
-    Layout = "_LayoutContentFull";
-    ViewData["Title"] = "Apprentice";
+    Layout = "_Layout-campaign";
+    ViewBag.Title = "Ignite your career";
+    ViewBag.MetaTitle = "Apprentice: Find out all you need to know about becoming an apprentice";
+    ViewBag.PageID = "apprentice";
+    ViewBag.MetaDesc = "All you need to know about how to become an apprentice in different sectors and which apprenticeship to search for. ";
 }
-
 
 @{
 
@@ -20,6 +22,7 @@
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Apprentice,content = HeroHeadingContent() })
 }
+
 
 <div class="grid-row-full-width card__collection">
     <div class="grid-column-full-width-one-quarter">

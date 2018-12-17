@@ -13,10 +13,12 @@ namespace SFA.DAS.Campaign.Models.DataCollection
         public bool EmailVerified { get; set; }
         public string CookieId { get; set; }
         public string RouteId { get; set; }
+        public string EncodedEmail { get; set; }
         /*
          * Email validation taken from https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
          */
         private bool DomainInvalid { get; set; }
+
         public bool IsValidEmail()
         {
             var strIn = Email;
