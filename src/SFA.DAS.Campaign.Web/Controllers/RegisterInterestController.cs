@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Models.DataCollection;
 using SFA.DAS.Campaign.Web.Constants;
@@ -20,6 +21,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {
             if (ModelState.IsValid)
@@ -30,7 +32,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                     LastName = registerInterest.LastName,
                     Email = registerInterest.EmailAddress,
                     CookieId = registerInterest.ReturnUrl,
-                    RouteId = registerInterest.ReturnUrl
+                    RouteId = registerInterest.Route.ToString()
                 };
 
                 await _userDataCollection.StoreUserData(userData);
@@ -38,8 +40,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
             }
 
-
-            return RedirectToAction("Index","Home");
+           
+            return View(registerInterest);
         }
     }
 }

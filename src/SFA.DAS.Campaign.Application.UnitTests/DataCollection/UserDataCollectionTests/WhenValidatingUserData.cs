@@ -66,5 +66,17 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             //Assert
             Assert.IsFalse(actual);
         }
+
+        [TestCase("test@test.com", true)]
+        [TestCase("test@", false)]
+        [TestCase("", false)]
+        public void Then_The_Email_Is_Validated(string email, bool expectedResult)
+        {
+            //Act
+            var actual = _validator.ValidateEmail(email);
+
+            //Assert
+            Assert.AreEqual(expectedResult, actual);
+        }
     }
 }
