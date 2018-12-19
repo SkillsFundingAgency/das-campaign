@@ -37,8 +37,9 @@
                         <div class="form-group radios" das-validation-for="Route" das-validationerror-class="form-group-validation-error">
                             
                             <div class="radios__item">
+
                                 <input class="input radios__input" asp-for="Route" value="1" type="radio" id="rbApprentice" />
-                                <label class="label radios__label" for="rbApprentice">I’m to become an <span class="text--apprentice">apprentice</span> </label>
+                                <label class="label radios__label" for="rbApprentice">I want to become an <span class="text--apprentice">apprentice</span> </label>
                             </div>
                             <div class="radios__item">
                                 <input class="input radios__input" asp-for="Route" value="2" type="radio" id="rbEmployer" />
@@ -50,7 +51,7 @@
                             <div class="checkboxes__item">
                                 <input class="checkboxes__input" asp-for="AcceptTandCs" type="checkbox" value="true">
                                 <label class="label checkboxes__label" asp-for="AcceptTandCs">
-                                    I agree to the terms and conditions
+                                    I would like to receive information via emails from the Education and Skills Funding Agency in relation to apprenticeships. I can confirm that I am over the age of 13
                                 </label>
                                 <span asp-validation-for="AcceptTandCs" class="text-danger"></span>
                             </div>
