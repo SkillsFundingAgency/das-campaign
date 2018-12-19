@@ -13,8 +13,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-        [Route("fire-up-your-apprenticeship")]
-        public IActionResult FireUpYourApprenticeship()
+        [Route("what-is-an-apprenticeship")]
+        public IActionResult WhatIsAnApprenticeship()
         {
             return View();
         }

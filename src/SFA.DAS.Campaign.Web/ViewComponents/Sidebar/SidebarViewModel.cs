@@ -29,7 +29,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                     if (title == null)
                     {
 
-                        Title = "the process to becoming an apprentice";
+                        Title = "What are the steps to become an apprentice";
                     }
 
                     Classes = "sidebar-apprentice";
@@ -43,9 +43,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                     if (title == null)
                     {
 
-                        Title = "the process to hire an apprentice";
+                        Title = "What are the steps for hiring apprentices";
                     }
-                    Classes = "sidebar-apprentice";
+                    Classes = "sidebar-employer";
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
