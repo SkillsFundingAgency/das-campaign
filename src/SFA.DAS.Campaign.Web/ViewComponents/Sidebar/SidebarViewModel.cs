@@ -19,19 +19,10 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
             switch (type)
             {
                 case SidebarType.Apprentice:
-                   
-
                     if (imgLocation == null)
                     {
                         ImgLocation = "/campaign/images/worker-girl.jpg";
                     }
-
-                    if (title == null)
-                    {
-
-                        Title = "The steps for becoming an apprentice";
-                    }
-
                     Classes = "sidebar--apprentice";
                     break;
                 case SidebarType.Employer:
@@ -39,11 +30,6 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                     if (imgLocation == null)
                     {
                         ImgLocation = "/campaign/images/worker-girl.jpg";
-                    }
-                    if (title == null)
-                    {
-
-                        Title = "the process to hire an apprentice";
                     }
                     Classes = "sidebar--employer";
                     break;

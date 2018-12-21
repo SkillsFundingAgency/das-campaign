@@ -1,4 +1,9 @@
 ﻿@model int
+
+@{
+    ViewBag.SidebarTitle = "the process to hire an apprentice";
+
+}
 <ol class="sidebar-nav">
     <li class="sidebar-nav__section @(Model == 1 ? "sidebar-nav__section--active" : "")"><a href="/employer/how-much-is-it-going-to-cost"> How much is it going to cost?</a></li>
     <li class="sidebar-nav__section @(Model == 2 ? "sidebar-nav__section--active" : "")"><a href="/employer/the-right-apprenticeship"> The right apprenticeship</a></li>
