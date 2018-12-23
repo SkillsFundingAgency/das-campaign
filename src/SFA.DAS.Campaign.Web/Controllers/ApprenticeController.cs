@@ -18,7 +18,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-        [Route("what-are-the-benefits-to-me")]
+        [Route("what-are-the-benefits-for-me")]
         public IActionResult WhatAreTheBenefitsToMe()
         {
             return View();
