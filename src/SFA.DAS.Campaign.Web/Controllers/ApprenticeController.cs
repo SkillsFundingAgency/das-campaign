@@ -24,17 +24,17 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View();
         }
         [Route("application")]
-        public IActionResult WhatAreTheStepsINeedToTake()
+        public IActionResult Application()
         {
             return View();
         }
         [Route("interview")]
-        public IActionResult HowToGetYourApplicationRight()
+        public IActionResult Interview()
         {
             return View();
         }
         [Route("your-apprenticeship")]
-        public IActionResult MonitorYourProgress()
+        public IActionResult YourApprenticeship()
         {
             return View();
         }
