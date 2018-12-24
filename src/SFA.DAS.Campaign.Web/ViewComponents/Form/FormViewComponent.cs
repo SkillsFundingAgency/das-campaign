@@ -20,6 +20,8 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Form
                 case FormType.RegisterInterest:
                     return View("RegisterInterest", formViewModel ?? new RegisterInterestModel(){ReturnUrl = returnUrl});
                     break;
+                case FormType.CookieSettings:
+                    return View("cookieSettings");
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }

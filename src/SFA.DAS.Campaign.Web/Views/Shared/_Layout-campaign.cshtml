@@ -75,6 +75,7 @@
             crossorigin="anonymous"></script>
     <script src="/campaign/js/app.min.js"></script>
     <script src="/js/das-all.js"></script>
+    <script src="https://localhost:44308/js/cookieConsent.js"></script>
     <script>
         window.DASFrontend.initAll()
     </script>
@@ -84,7 +85,7 @@
     @await Component.InvokeAsync("Modal", new { id = "modal-RegisterInterest", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.RegisterInterest } })
 
     @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
-
+    <partial name="./Components/_cookieBanner" />
 </body>
 
 </html>
