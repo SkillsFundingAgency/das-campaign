@@ -8,13 +8,12 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 
     public class SidebarViewModel
     {
-        public SidebarViewModel(SidebarType type, string contentView,string title, int activeIndex, string imgLocation)
+        public SidebarViewModel(SidebarType type, string contentView, int activeIndex, string imgLocation)
         {
             Type = type;
             ActiveIndex = activeIndex;
             ImgLocation = imgLocation;
             ContentView = contentView;
-            Title = title;
 
             switch (type)
             {
@@ -45,7 +44,6 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 
         public int ActiveIndex { get; set; }
         public string ImgLocation { get; set; }
-        public string Title { get; set; }
         public string Classes { get; set; }
     }
 

@@ -41,8 +41,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
-
-            return View("Default", new SidebarViewModel((SidebarType)type, view,null, activeIndex, imgLocation));
+            return View("Default", new SidebarViewModel((SidebarType)type, view, activeIndex, imgLocation));
         }
     }
     
