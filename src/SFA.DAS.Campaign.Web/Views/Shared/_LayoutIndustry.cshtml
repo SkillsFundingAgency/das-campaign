@@ -3,13 +3,27 @@
     Layout = "_Layout-campaign";
 }
 
-<partial name="./Components/_HeroHeader" />
+<div class="hero">
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+            <div class="hero-heading">
+                <h1 class="heading-xl hero-heading__heading">@(ViewBag.Title)</h1>
+            </div>
+            <div class="hero-heading__content">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="grid-column-one-half">
+            <img src="/campaign/images/industries/@(ViewBag.PageID).jpg" class="hero-heading__image" />
+        </div>
+    </div>
+</div>
 
 <main id="main-content" class="main-content">
     <div class="grid-row">
         <div class="grid-column-two-thirds">
             <div class="page">
-                @RenderBody()
+               
             </div>
         </div>
         <div class="grid-column-one-third">
