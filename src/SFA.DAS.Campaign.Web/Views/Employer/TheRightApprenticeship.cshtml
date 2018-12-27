@@ -133,16 +133,6 @@
 
 
 
-@{
-
-    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
-        <li><a href="#what-apprentice" class="hero__link">What is an apprentice?</a> </li>
-        <li><a href="#find-apprentice" class="hero__link">find an apprentice for my business</a> </li>
-    </ul>);
-
-
-}
-
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer})
 }
