@@ -35,12 +35,15 @@
                             <span asp-validation-for="EmailAddress" class="text-danger"></span>
                         </div>
                         <div class="form-group radios" das-validation-for="Route" das-validationerror-class="form-group-validation-error">
-                            We want to engage with you in future, what type of user are you?
+                            
                             <div class="radios__item">
-                                <input class="input radios__input" asp-for="Route" value="1" type="radio" id="rbApprentice" /><label class="label radios__label">I’m to become an <span class="text--apprentice">apprentice</span> </label>
+
+                                <input class="input radios__input" asp-for="Route" value="1" type="radio" id="rbApprentice" />
+                                <label class="label radios__label" for="rbApprentice">I want to become an <span class="text--apprentice">apprentice</span> </label>
                             </div>
                             <div class="radios__item">
-                                <input class="input radios__input" asp-for="Route" value="2" type="radio" id="rbEmployer" /><label class="label radios__label">I want to <span class="text--employer">employ</span> an apprentice</label>
+                                <input class="input radios__input" asp-for="Route" value="2" type="radio" id="rbEmployer" />
+                                <label class="label radios__label" for="rbEmployer">I want to <span class="text--employer">employ</span> an apprentice</label>
 
                             </div>
                         </div>
@@ -48,7 +51,7 @@
                             <div class="checkboxes__item">
                                 <input class="checkboxes__input" asp-for="AcceptTandCs" type="checkbox" value="true">
                                 <label class="label checkboxes__label" asp-for="AcceptTandCs">
-                                    I agree to the terms and conditions
+                                    I would like to receive information via emails from the Education and Skills Funding Agency in relation to apprenticeships. I can confirm that I am over the age of 13
                                 </label>
                                 <span asp-validation-for="AcceptTandCs" class="text-danger"></span>
                             </div>
@@ -62,48 +65,5 @@
                 </div>
             </section>
         </form>
-    </div>
-</div>
-<div class="grid-row-full-width">
-    <div class="grid-column-full">
-        <section class="section section-grey">
-            <div class="grid-row">
-
-                <div class="grid-column-one-half">
-                    <h2 class="heading-s">Apprentice</h2>
-                    <hr class="hr hr-apprentice">
-                    <ul class="list form-list list-apprentice list--bullet">
-                        <li class="form-list-item">
-                            get paid and learn at the same time, with at least 20% of your time set aside for
-                            learning - normally at a
-                            college, university or other training providers
-                        </li>
-                        <li class="form-list-item">
-                            gain official certification of your skills, equivalent to a qualification ranging
-                            from level 2 (GCSE
-                            equivalent) up to degree level
-                        </li>
-                        <li class="form-list-item">start a long-term career path with the possibility of higher earnings</li>
-                    </ul>
-                </div>
-                <div class="grid-column-one-half">
-                    <h2 class="heading-s">Employer</h2>
-                    <hr class="hr hr-employer">
-                    <ul class="list form-list list-employer list--bullet">
-                        <li class="form-list-item">
-                            get paid and learn at the same time, with at least 20% of your time set aside for
-                            learning - normally at a
-                            college, university or other training providers
-                        </li>
-                        <li class="form-list-item">
-                            gain official certification of your skills, equivalent to a qualification ranging
-                            from level 2 (GCSE
-                            equivalent) up to degree level
-                        </li>
-                        <li class="form-list-item">start a long-term career path with the possibility of higher earnings</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
     </div>
 </div>

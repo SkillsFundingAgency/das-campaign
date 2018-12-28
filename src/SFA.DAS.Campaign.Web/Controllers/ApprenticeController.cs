@@ -13,28 +13,28 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-        [Route("fire-up-your-apprenticeship")]
-        public IActionResult FireUpYourApprenticeship()
+        [Route("what-is-an-apprenticeship")]
+        public IActionResult WhatIsAnApprenticeship()
         {
             return View();
         }
-        [Route("what-are-the-benefits-to-me")]
+        [Route("what-are-the-benefits-for-me")]
         public IActionResult WhatAreTheBenefitsToMe()
         {
             return View();
         }
-        [Route("what-are-the-steps-I-need-to-take")]
-        public IActionResult WhatAreTheStepsINeedToTake()
+        [Route("application")]
+        public IActionResult Application()
         {
             return View();
         }
-        [Route("how-to-get-your-application-right")]
-        public IActionResult HowToGetYourApplicationRight()
+        [Route("interview")]
+        public IActionResult Interview()
         {
             return View();
         }
-        [Route("monitor-your-progress")]
-        public IActionResult MonitorYourProgress()
+        [Route("your-apprenticeship")]
+        public IActionResult YourApprenticeship()
         {
             return View();
         }
