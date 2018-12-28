@@ -25,10 +25,8 @@
 }
 else
 {
-
     @await Component.InvokeAsync("HeroHeading", new { type = headingType })
 }
-
 
 <main id="main-content" class="main-content">
     <div class="grid-row">
@@ -38,9 +36,8 @@ else
             </div>
         </div>
         <div class="grid-column-one-third">
-            @await Component.InvokeAsync("Sidebar", new { type = sidebarType })
+            @await Component.InvokeAsync("Sidebar", new { type = sidebarType, imgLocation = "/campaign/images/sidebar/" + ViewBag.PageId + ".jpg" })
         </div>
     </div>
-
 </main>
 
