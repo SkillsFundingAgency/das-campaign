@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "Your apprenticeship";
     ViewBag.MetaTitle = "Your apprenticeship";
-    ViewBag.PageID = "apprentice-monitoring-and-progress";
+    ViewBag.PageID = "apprentice-your-apprenticeship";
+    ViewBag.Section = "apprentice";
     ViewBag.MetaDesc = "";
     Layout = "_LayoutContent";
 }
@@ -63,3 +64,11 @@
     The sooner you start to take control of the new trail you’re blazing, the better the ride will be.
 </p>
 
+<ul class="pagination pagination--apprentice">
+    <li class="pagination__list-item">
+        <a class="pagination__link pagination__link--previous" href="/apprentice/interview"> Interview</a>
+    </li>
+    <li class="pagination__list-item">
+        <a class="pagination__link pagination__link--next" href="/apprentice/assessment-and-qualification">Assessment and qualification </a>
+    </li>
+</ul>
