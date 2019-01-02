@@ -1,7 +1,16 @@
-﻿@{
-    Layout = "_LayoutContent";
+﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
+@{
+    Layout = "_LayoutContentFull";
     ViewBag.Title = "Cookies policy";
     ViewBag.PageID = "cookies";
     ViewBag.MetaTitle = "Cookies policy";
     ViewBag.MetaDesc = "";
 }
+
+<main id="main-content" class="main-content">
+    <div class="grid-row">
+        <div class="grid-column">
+            @await Component.InvokeAsync("Form", new { type = FormType.CookieSettings })
+        </div>
+    </div>
+</main>
