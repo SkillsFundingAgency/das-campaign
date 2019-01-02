@@ -4,17 +4,14 @@
     Layout = "_Layout-campaign";
 
     var headingType = HeroHeadingType.None;
-    var sidebarType = SidebarType.None;
 
     switch (ViewContext.RouteData.Values["Controller"])
     {
         case "Apprentice":
             headingType = HeroHeadingType.Apprentice;
-            sidebarType = SidebarType.Apprentice;
             break;
         case "Employer":
             headingType = HeroHeadingType.Employer;
-            sidebarType = SidebarType.Employer;
             break;
     }
 }
@@ -25,7 +22,7 @@
 }
 else
 {
-    @await Component.InvokeAsync("HeroHeading", new { type = headingType })
+    @await Component.InvokeAsync("HeroHeading")
 }
 
 <main id="main-content" class="main-content">

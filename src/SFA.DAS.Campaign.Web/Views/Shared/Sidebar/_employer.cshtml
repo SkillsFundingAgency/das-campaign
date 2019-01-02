@@ -1,4 +1,28 @@
-﻿@{
+﻿@model SFA.DAS.Campaign.Web.ViewComponents.Sidebar.SidebarViewModel
+
+<div class="sidebar @Model.Classes">
+
+    <div class="sidebar__hero">
+        <img src="@Model.ImgLocation" class="sidebar__hero-image" />
+    </div>
+    <div class="trimmer">
+        <div class="sidebar__header">
+
+            <h3 class="heading-s sidebar__heading">What are the steps for hiring apprentices</h3>
+        </div>
+    </div>
+    <div class="sidebar__content">
+        <ol class="sidebar-nav">
+            <li class="sidebar-nav__section @(Model.ActiveIndex == 1 ? "sidebar-nav__section--active" : "")"><a href="/employer/how-much-is-it-going-to-cost"> How much is it going to cost?</a></li>
+            <li class="sidebar-nav__section @(Model.ActiveIndex == 2 ? "sidebar-nav__section--active" : "")"><a href="/employer/the-right-apprenticeship"> The right apprenticeship</a></li>
+            <li class="sidebar-nav__section @(Model.ActiveIndex == 3 ? "sidebar-nav__section--active" : "")"><a href="/employer/choose-training-provider"> Choose a training provider</a></li>
+            <li class="sidebar-nav__section @(Model.ActiveIndex == 4 ? "sidebar-nav__section--active" : "")"><a href="/employer/hire-an-apprentice"> Hire an apprentice</a> </li>
+            <li class="sidebar-nav__section @(Model.ActiveIndex == 5 ? "sidebar-nav__section--active" : "")"><a href="/employer/preparing-and-monitoring"> Preparing and monitoring</a></li>
+            <li class="sidebar-nav__section @(Model.ActiveIndex == 6 ? "sidebar-nav__section--active" : "")"><a href="/employer/assessment-and-qualification"> Assessment and qualification</a></li>
+        </ol>
+    </div>
+</div>
+@{
     var activeClass = "sidebar-nav__section--active";
 }
 
