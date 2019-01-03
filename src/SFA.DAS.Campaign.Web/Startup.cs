@@ -111,7 +111,8 @@ namespace SFA.DAS.Campaign.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                //app.UseExceptionHandler("/Home/Error");
+                app.UseStatusCodePagesWithReExecute("/error/{0}");
                 app.UseHsts();
             }
 
