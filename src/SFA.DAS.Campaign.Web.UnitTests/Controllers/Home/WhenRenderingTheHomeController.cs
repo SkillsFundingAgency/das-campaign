@@ -11,15 +11,11 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
     public class WhenRenderingTheHomeController
     {
         private HomeController _homeController;
-        private Mock<IStandardsService> _standardsService;
-        private Mock<IUserDataCollection> _userDataCollection;
 
         [SetUp]
         public void Arrange()
         {
-            _standardsService = new Mock<IStandardsService>();
-            _userDataCollection = new Mock<IUserDataCollection>();
-            _homeController = new HomeController(_standardsService.Object, _userDataCollection.Object);
+            _homeController = new HomeController();
         }
 
         [Test]
