@@ -220,3 +220,7 @@ to the training provider.
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
 }
+
+@section Resources {
+    <partial name="./Components/Resources/_employer" />
+}
