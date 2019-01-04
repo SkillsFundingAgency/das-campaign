@@ -70,6 +70,11 @@
 
     <mini-profiler />
 
+@await Component.InvokeAsync("Modal", new { id = "modal-RegisterInterest", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.RegisterInterest } })
+
+@await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
+
+<partial name="./Components/_cookieBanner" />
 
     <script src="/js/aspnet-validation.min.js"></script>
     <script src="/campaign/js/app.min.js"></script>
@@ -79,11 +84,6 @@
     </script>
 
 
-
-    @await Component.InvokeAsync("Modal", new { id = "modal-RegisterInterest", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.RegisterInterest } })
-
-    @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
-    <partial name="./Components/_cookieBanner" />
 </body>
 
 </html>
