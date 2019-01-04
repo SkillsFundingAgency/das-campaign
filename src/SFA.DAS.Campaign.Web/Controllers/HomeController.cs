@@ -39,5 +39,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
+        [Route("error/{errorCode}")]
+        public IActionResult Error(string errorCode)
+        {
+            return View("Error", errorCode);
+        }
+
+      
     }
 }
