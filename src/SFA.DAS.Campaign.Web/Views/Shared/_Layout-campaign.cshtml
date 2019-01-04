@@ -70,9 +70,13 @@
 
     <mini-profiler />
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
+@await Component.InvokeAsync("Modal", new { id = "modal-RegisterInterest", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.RegisterInterest } })
+
+@await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
+
+<partial name="./Components/_cookieBanner" />
+
+    <script src="/js/aspnet-validation.min.js"></script>
     <script src="/campaign/js/app.min.js"></script>
     <script src="/js/das-all.js"></script>
     <script>
@@ -80,11 +84,6 @@
     </script>
 
 
-
-    @await Component.InvokeAsync("Modal", new { id = "modal-RegisterInterest", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.RegisterInterest } })
-
-    @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
-    <partial name="./Components/_cookieBanner" />
 </body>
 
 </html>
