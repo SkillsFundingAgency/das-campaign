@@ -79,6 +79,9 @@
     <Content Update="Views\Shared\Components\_cookieBanner.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\Components\Cta\_Contact-phoneNumber.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\Components\_Sidebar.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
