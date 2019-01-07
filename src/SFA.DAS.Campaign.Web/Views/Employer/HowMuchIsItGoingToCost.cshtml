@@ -6,8 +6,8 @@
     ViewBag.MetaTitle = "What are the costs to me: How much will it cost my business to take on an apprentice? ";
     ViewBag.PageID = "employer-what-are-the-costs-to-me";
     ViewBag.MetaDesc = "How much will employing an apprentice cost me and my business.";
-    ViewBag.Section = "employer";
-    Layout = "_LayoutContent";
+    ViewBag.PageNavIndex = 1;
+    Layout = "_LayoutContentSidebar";
 }
 
 <h2 class="heading-m">How much will it cost me?</h2>
@@ -221,4 +221,8 @@ to the training provider.
 
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}
+
+@section Resources {
+    <partial name="./Components/Resources/_employer" />
 }

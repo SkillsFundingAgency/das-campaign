@@ -3,8 +3,8 @@
     ViewBag.MetaTitle = "Assessment and qualification";
     ViewBag.PageID = "employer-assessment-qualification";
     ViewBag.MetaDesc = "";
-    Layout = "_LayoutContent";
-    ViewBag.Section = "employer";
+    Layout = "_LayoutContentSidebar";
+    ViewBag.PageNavIndex = 6;
 }
 
 <h2 class="heading-m">Assessment</h2>
@@ -29,13 +29,13 @@
 <h2 class="heading-m">
     Where to find an end-point assessment organisation
 </h2>
-<p>You must select an organisation to deliver the end-point assessment from the <a href="https://www.gov.uk/government/publications/using-the-register-of-apprentice-assessment-organisations" target="_blank">register of end-point assessment organisations</a> and agree to a price with this organisation for the end-point assessment.</p>
+<p>You must select an organisation to deliver the end-point assessment from the <a href="https://www.gov.uk/government/publications/using-the-register-of-apprentice-assessment-organisations" target="_blank" rel="external" id="link-roepao">register of end-point assessment organisations</a> and agree to a price with this organisation for the end-point assessment.</p>
 <p>
-    Although the training provider will be involved in arrangements for the end-point assessment, 
+    Although the training provider will be involved in arrangements for the end-point assessment,
     the assessment itself must be independent.
 </p>
 <p>
-    The training provider must contract with the end-point assessment 
+    The training provider must contract with the end-point assessment
     organisation on your behalf and have a written agreement in place to make payment to them for conducting the end-point assessment.
 </p>
 <h3 class="heading-s">End-point assessment cost</h3>
@@ -55,3 +55,7 @@
 <ul class="pagination pagination--employer">
     <li class="pagination__list-item"><a class="pagination__link pagination__link--previous" href="/employer/preparing-and-monitoring"> Preparing and monitoring</a></li>
 </ul>
+
+@section Resources {
+    <partial name="./Components/Resources/_employer" />
+}

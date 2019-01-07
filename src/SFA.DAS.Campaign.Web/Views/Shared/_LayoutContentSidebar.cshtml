@@ -10,15 +10,20 @@
 }
 else
 {
-
     @await Component.InvokeAsync("HeroHeading")
 }
 
-
 <main id="main-content" class="main-content">
     <div class="grid-row">
-        <div class="grid-column">
-            @RenderBody()
+        <div class="grid-column-two-thirds">
+            <div class="page">
+                @RenderBody()
             </div>
         </div>
-    </main>
+        <div class="grid-column-one-third">
+            @await Component.InvokeAsync("Sidebar", new { imgLocation = "/campaign/images/sidebar/" + ViewBag.PageId + ".jpg" })
+        </div>
+    </div>
+</main>
+
+@RenderSection("Resources", required: false)

@@ -8,10 +8,26 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 {
     public class HeroHeadingViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(HeroHeadingType type, string caption, string classes, IHtmlContent content)
+        public async Task<IViewComponentResult> InvokeAsync(HeroHeadingType? type, string caption, string classes, IHtmlContent content)
         {
-           
-            return View("Default", new HeroHeadingViewModel(type, caption, classes, content));
+            if (type == null)
+            {
+
+                switch (ViewContext.RouteData.Values["Controller"])
+                {
+                    case "Apprentice":
+                        type = HeroHeadingType.Apprentice;
+                        break;
+                    case "Employer":
+                        type = HeroHeadingType.Employer;
+                        break;
+                    default:
+                        type = HeroHeadingType.None;
+                        break;
+                }
+            }
+
+            return View("Default", new HeroHeadingViewModel((HeroHeadingType)type, caption, classes, content));
         }
     }
 

@@ -8,31 +8,21 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 
     public class SidebarViewModel
     {
-        public SidebarViewModel(SidebarType type, string contentView,string title, int activeIndex, string imgLocation)
+        public SidebarViewModel(SidebarType type, string contentView, int activeIndex, string imgLocation)
         {
             Type = type;
             ActiveIndex = activeIndex;
             ImgLocation = imgLocation;
             ContentView = contentView;
-            Title = title;
 
             switch (type)
             {
                 case SidebarType.Apprentice:
-                   
-
                     if (imgLocation == null)
                     {
                         ImgLocation = "/campaign/images/worker-girl.jpg";
                     }
-
-                    if (title == null)
-                    {
-
-                        Title = "What are the steps to become an apprentice";
-                    }
-
-                    Classes = "sidebar-apprentice";
+                    Classes = "sidebar--apprentice";
                     break;
                 case SidebarType.Employer:
                    
@@ -40,12 +30,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                     {
                         ImgLocation = "/campaign/images/worker-girl.jpg";
                     }
-                    if (title == null)
-                    {
-
-                        Title = "What are the steps for hiring apprentices";
-                    }
-                    Classes = "sidebar-employer";
+                    Classes = "sidebar--employer";
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -59,7 +44,6 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 
         public int ActiveIndex { get; set; }
         public string ImgLocation { get; set; }
-        public string Title { get; set; }
         public string Classes { get; set; }
     }
 

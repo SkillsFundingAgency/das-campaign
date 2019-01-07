@@ -1,12 +1,27 @@
-﻿@{
+﻿@model SFA.DAS.Campaign.Web.ViewComponents.Sidebar.SidebarViewModel
+@{
     var activeClass = "sidebar-nav__section--active";
 }
 
-<ol class="sidebar-nav">
-    <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-what-are-the-costs-to-me" ? activeClass : null ) "><a href="/employer/how-much-is-it-going-to-cost"> How much is it going to cost?</a></li>
-    <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-the-right-apprenticeship" ? activeClass : null ) "><a href="/employer/the-right-apprenticeship"> The right apprenticeship</a></li>
-    <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-choose-training-provider" ? activeClass : null ) "><a href="/employer/choose-training-provider"> Choose a training provider</a></li>
-    <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-hire-an-apprentice" ? activeClass : null ) "><a href="/employer/hire-an-apprentice"> Hire an apprentice</a> </li>
-    <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-preparing-monitoring" ? activeClass : null ) "><a href="/employer/preparing-and-monitoring"> Preparing and monitoring</a></li>
-    <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-assessment-qualification" ? activeClass : null ) "><a href="/employer/assessment-and-qualification"> Assessment and qualification</a></li>
-</ol>
+<div class="sidebar @Model.Classes">
+
+    <div class="sidebar__hero">
+        <img src="@Model.ImgLocation" class="sidebar__hero-image" />
+    </div>
+    <div class="trimmer">
+        <div class="sidebar__header">
+
+            <h3 class="heading-s sidebar__heading">What are the steps for hiring apprentices</h3>
+        </div>
+    </div>
+    <div class="sidebar__content">
+        <ol class="sidebar-nav">
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-what-are-the-costs-to-me" ? activeClass : null ) "><a href="/employer/how-much-is-it-going-to-cost"> How much is it going to cost?</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-the-right-apprenticeship" ? activeClass : null ) "><a href="/employer/the-right-apprenticeship"> The right apprenticeship</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-choose-training-provider" ? activeClass : null ) "><a href="/employer/choose-training-provider"> Choose a training provider</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-hire-an-apprentice" ? activeClass : null ) "><a href="/employer/hire-an-apprentice"> Hire an apprentice</a> </li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-preparing-monitoring" ? activeClass : null ) "><a href="/employer/preparing-and-monitoring"> Preparing and monitoring</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-assessment-qualification" ? activeClass : null ) "><a href="/employer/assessment-and-qualification"> Assessment and qualification</a></li>
+        </ol>
+    </div>
+</div>
