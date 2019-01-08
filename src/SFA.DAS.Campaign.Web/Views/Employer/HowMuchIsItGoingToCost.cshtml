@@ -144,13 +144,15 @@ to the training provider.
 <h3 class="heading-s">Paying for apprenticeships using a transfer of apprenticeship funds</h3>
 
 <p>
-    <a href="https://www.gov.uk/guidance/transferring-apprenticeship-service-funds" target="_blank" rel="external">Transferred funds</a> can be used to pay for new apprenticeship training and assessment
-    for <a href="/employer/the-right-apprenticeship#available-apprenticeships">apprenticeship standards</a>.  Transferred funds can't be used for <a href="/employer/the-right-apprentice#available-apprenticeships"></a> apprenticeship frameworks.
-</p>
-<p>
     Employers who already have an apprenticeship service account and haven't spent all their
     apprenticeship funds, can transfer unused funds to another employer.
 </p>
+
+<p>
+    <a href="https://www.gov.uk/guidance/transferring-apprenticeship-service-funds" target="_blank" rel="external">Transferred funds</a> can be used to pay for new apprenticeship training and assessment
+    for <a href="/employer/the-right-apprenticeship#available-apprenticeships">apprenticeship standards</a>.  Transferred funds can't be used for <a href="/employer/the-right-apprentice#available-apprenticeships"></a> apprenticeship frameworks.
+</p>
+
 <!--<p>
     How to <a href="https://www.gov.uk/guidance/manage-apprenticeship-funds" target="_blank" rel="external">
         register and use the
@@ -221,4 +223,8 @@ to the training provider.
 
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}
+
+@section Resources {
+    <partial name="./Components/Resources/_employer" />
 }
