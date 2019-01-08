@@ -2,6 +2,18 @@
 @{
     var activeClass = "sidebar-nav__section--active";
 }
+<div class="sidebar @Model.Classes">
+
+    <div class="sidebar__hero">
+        <img src="@Model.ImgLocation" class="sidebar__hero-image" />
+    </div>
+    <div class="trimmer">
+        <div class="sidebar__header">
+
+            <h3 class="heading-s sidebar__heading">What are the steps for becoming an apprentice</h3>
+        </div>
+    </div>
+    <div class="sidebar__content">
 
 <ol class="sidebar-nav">
     <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprenticeship-whats-an-apprenticeship" ? activeClass : null ) ">
@@ -29,9 +41,9 @@
             Your apprenticeship
         </a>
     </li>
-    <li class="sidebar-nav__section">
-        <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" rel="external" target="_blank">
-            Find an apprenticeship
+   <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "assessment-and-qualification" ? activeClass : null ) ">
+        <a href="/apprentice/assessment-and-qualification">
+            Assessment and qualification
         </a>
     </li>
 </ol>
