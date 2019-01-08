@@ -36,7 +36,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
         public void Then_The_Message_Is_Not_Processed_If_No_Email_Is_Passed()
         {
             //Act/Assert
-            Assert.ThrowsAsync<ArgumentException>(async ()=> await _userDataCollection.RemoveUserData(""));
+            Assert.ThrowsAsync<ArgumentException>(async ()=> await _userDataCollection.RemoveUserData("", true));
             _queueService.Verify(x=>x.AddMessageToQueue(It.IsAny<UserData>(),It.IsAny<string>()),Times.Never);
         }
 
@@ -47,7 +47,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             _userDataCollectionValidator.Setup(x => x.ValidateEmail(It.IsAny<string>())).Returns(false);
 
             //Act/Assert
-            Assert.ThrowsAsync<ArgumentException>(async () => await _userDataCollection.RemoveUserData("Test"));
+            Assert.ThrowsAsync<ArgumentException>(async () => await _userDataCollection.RemoveUserData("Test", true));
             _queueService.Verify(x => x.AddMessageToQueue(It.IsAny<UserData>(), It.IsAny<string>()), Times.Never);
         }
 
@@ -58,10 +58,10 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             var expectedEmail = "test@test.local";
 
             //Act
-            await _userDataCollection.RemoveUserData(expectedEmail);
+            await _userDataCollection.RemoveUserData(expectedEmail, true);
 
             //Assert
-            _queueService.Verify(x => x.AddMessageToQueue(It.Is<UserData>(c=>c.Email.Equals(expectedEmail)), RemoveUserDataQueueName), Times.Once);
+            _queueService.Verify(x => x.AddMessageToQueue(It.Is<UserData>(c=>c.Email.Equals(expectedEmail) && c.Consent.Equals(true)), RemoveUserDataQueueName), Times.Once);
         }
     }
 }
