@@ -10,6 +10,6 @@ namespace SFA.DAS.Campaign.Domain.DataCollection
     {
         Task StoreUserData(UserData userData);
 
-        Task RemoveUserData(string email);
+        Task RemoveUserData(string email, bool receiveEmails);
     }
 }

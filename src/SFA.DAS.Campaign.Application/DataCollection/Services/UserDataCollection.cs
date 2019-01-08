@@ -35,7 +35,7 @@ namespace SFA.DAS.Campaign.Application.DataCollection.Services
             await _queueService.AddMessageToQueue(userData, _options.Value.StoreUserDataQueueName);
         }
 
-        public async Task RemoveUserData(string email)
+        public async Task RemoveUserData(string email, bool receiveEmails)
         {
             if (string.IsNullOrWhiteSpace(email))
             {
@@ -47,7 +47,7 @@ namespace SFA.DAS.Campaign.Application.DataCollection.Services
                 throw new ArgumentException("Email is not valid", nameof(email));
             }
 
-            await _queueService.AddMessageToQueue(new UserData{Email = email}, _options.Value.RemoveUserDataQueueName);
+            await _queueService.AddMessageToQueue(new UserData{Email = email, Consent = receiveEmails}, _options.Value.RemoveUserDataQueueName);
         }
     }
 }
