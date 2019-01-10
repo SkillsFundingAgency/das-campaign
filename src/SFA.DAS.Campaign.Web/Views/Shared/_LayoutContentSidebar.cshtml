@@ -18,12 +18,17 @@ else
         <div class="grid-column-two-thirds">
             <div class="page">
                 @RenderBody()
+
+               
             </div>
         </div>
         <div class="grid-column-one-third">
             @await Component.InvokeAsync("Sidebar", new { imgLocation = "/campaign/images/sidebar/" + ViewBag.PageId + ".jpg" })
         </div>
     </div>
+     <div class="grid-row">
+         @RenderSection("pageFooter", required: false)
+     </div>
 </main>
 
 @RenderSection("Resources", required: false)

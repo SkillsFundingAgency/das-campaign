@@ -1,28 +1,24 @@
 ﻿@{
-    ViewBag.Title = "Assessment and qualification";
-    ViewBag.PageID = "apprentice-assessment-and-qualification";
+    ViewBag.Title = "Assessment and certification";
+    ViewBag.PageID = "apprentice-assessment-and-certification";
     ViewBag.Section = "apprentice";
-    ViewBag.MetaTitle = "Assessment and qualification";
+    ViewBag.MetaTitle = "Assessment and certification";
     ViewBag.MetaDesc = "";
     Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 6;
 }
-<h2 class="heading-m">Get Assessed</h2>
+<h2 class="heading-m">Get Assessed and get your certificate</h2>
 <p>
-    When you’re reaching the end of your apprenticeship, you’ll 
-    be given the chance to show what you’ve learned as part of a 
-    final assessment.  Not all apprenticeships have an assessment, but 
-    you will be expected to demonstrate your new skills at some point.
-</p>
-<p>
-    This is a chance for you to show your employer how well you’ve progressed, 
-    by showcasing your new skills, knowledge and behaviour.
+    You will be assessed at some stage during your apprenticeship, to make sure you 
+    have achieved the knowledge, skills and behaviours required. 
+    Increasingly, many apprenticeships now include an end-point assessment, which will 
+    test you at the end of the apprenticeship to make sure you are fully competent 
+    in your apprenticeship occupation.
 </p>
 <p>
     Your employer and training provider should give you 
     plenty of guidance as to what’s expected, and when your assessment 
-    will happen. <!--Alongside your college training and exams, 
-    this final assessment will count towards your end qualification. -->
+    will happen. 
 </p>
 
 
@@ -42,14 +38,17 @@
     show that you can make the step up from apprentice to, well, wherever you want to go.</p>
 
 
- <p>
-    "90% of apprentices stay on in their place of work after completing their apprenticeship" (Source: The Nursery: Research and planning)
-</p>
-
-
 <ul class="pagination pagination--apprentice">
     <li class="pagination__list-item">
         <a class="pagination__link pagination__link--previous" href="/apprentice/your-apprenticeship"> Your apprenticeship </a>
     </li>
 
 </ul>
+
+@section pageFooter 
+{
+    <div class="grid-column">
+        <partial name="./Components/Cta/_find-an-apprenticeship" />
+   
+    </div>
+}

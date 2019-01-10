@@ -38,7 +38,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-        [Route("assessment-and-qualification")]
+        [Route("assessment-and-certification")]
         public IActionResult AssessmentAndQualification()
         {
             return View();
