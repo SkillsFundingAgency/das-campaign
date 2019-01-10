@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Domain.DataCollection;
@@ -21,7 +22,15 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(new RegisterInterestModel());
+            var url = Request.Headers["Referer"].ToString();
+
+            if (url == string.Empty 
+                || url.Contains(ControllerContext.ActionDescriptor.ControllerName,StringComparison.CurrentCultureIgnoreCase))
+            {
+                url = Url.Action("Index","Home");
+            }
+
+            return View(new RegisterInterestModel{ReturnUrl = url});
         }
 
         [HttpPost]
