@@ -27,9 +27,8 @@ else
         </div>
     </div>
      <div class="grid-row">
-        <div class="grid-column">
-             <partial name="./components/Cta/_find-an-apprenticeship" />
-            </div>
+         @RenderSection("pageFooter", required: false)
+     </div>
 </main>
 
 @RenderSection("Resources", required: false)
