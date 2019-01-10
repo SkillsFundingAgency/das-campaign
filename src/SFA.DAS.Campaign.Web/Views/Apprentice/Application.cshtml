@@ -9,49 +9,61 @@
     ViewBag.PageNavIndex = 3;
 }
 
-<h2 class="heading-m">So, you've found the apprenticeship you'd like to apply for?</h2>  
+<h2 class="heading-m">So, you've found the apprenticeship you'd like to apply for?</h2>
 
 <p>Once you've searched and found the right apprenticeship for you, you can get on with the application process.</p>
 
-<p>If you haven't found your ideal apprenticeship yet, you can <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" target="_blank" rel="external">search for the 
-    latest apprenticeship vacancies</a>.</p>
+<p>
+    If you haven't found your ideal apprenticeship yet, you can <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" target="_blank" rel="external">
+        search for the
+        latest apprenticeship vacancies
+    </a>.
+</p>
 
 <h3 class="heading-s">Apply for the job and send the application to the employer</h3>
-<p><a href="https://nationalcareersservice.direct.gov.uk/get-a-job/cv-sections" target="_blank" rel="external" id="link-ncs">Get help</a> 
-with writing applications, creating a good CV and covering letter.
+<p>
+    <a href="https://nationalcareersservice.direct.gov.uk/get-a-job/cv-sections" target="_blank" rel="external" id="link-ncs">Get help</a>
+    with writing applications, creating a good CV and covering letter.
 </p>
 
 <h3 class="heading-s">Wait for the applications to be shortlisted</h3>
-<p>If you haven’t applied for many jobs before, this can be the nail-biting bit, where you're waiting to hear back from the employer. 
-    Sometimes it might help to 
-check when the closing date was for applications - this should give you a clue as to when 
-they'll be in touch.
+<p>
+    If you haven’t applied for many jobs before, this can be the nail-biting bit, where you're waiting to hear back from the employer.
+    Sometimes it might help to
+    check when the closing date was for applications - this should give you a clue as to when
+    they'll be in touch.
 </p>
-<p>It's a good idea to apply for more than one apprenticeship vacancy at one time - try and get a number of 
-    applications to potential employers; that way you're increasing your options and not waiting 
-    for a response from one employer.  
+<p>
+    It's a good idea to apply for more than one apprenticeship vacancy at one time - try and get a number of
+    applications to potential employers; that way you're increasing your options and not waiting
+    for a response from one employer.
 </p>
-<p>If you don't get an interview, don't take it personally.  It's usual to apply for a number of vacancies before 
+<p>
+    If you don't get an interview, don't take it personally.  It's usual to apply for a number of vacancies before
     you find the right apprenticeship for you.  This happens to everyone and it's part of the normal process.
 </p>
 
 
-<h3 class="heading-s">If you’re on the shortlist, you’ll be invited 
-    for an interview with the employer</h3>
-<p>This first interview could be an online chat or video call, 
-    rather than a face-to-face one. Remember to brush up your 
-    research into the organisation for each stage of the interview 
+<h3 class="heading-s">
+    If you’re on the shortlist, you’ll be invited
+    for an interview with the employer
+</h3>
+<p>
+    This first interview could be an online chat or video call,
+    rather than a face-to-face one. Remember to brush up your
+    research into the organisation for each stage of the interview
     process.
 </p>
 
 <h3 class="heading-s">Training providers</h3>
-<p>Your employer will find a training provider that is best suited to deliver the training for your apprenticeship.  
-    Some training providers also offer support to help you apply for an apprenticeship.  
-    </p>
-    
-    <p>
-        Your teacher or careers adviser can help you find out about training providers and how to get in touch.  
-        There are also other local organisations that can help you find out more, like a job centre or other community programmes.
+<p>
+    Your employer will find a training provider that is best suited to deliver the training for your apprenticeship.
+    Some training providers also offer support to help you apply for an apprenticeship.
+</p>
+
+<p>
+    Your teacher or careers adviser can help you find out about training providers and how to get in touch.
+    There are also other local organisations that can help you find out more, like a job centre or other community programmes.
 </p>
 
 <ul class="pagination pagination--apprentice">
@@ -64,3 +76,11 @@ they'll be in touch.
         <a class="pagination__link pagination__link--next" href="/apprentice/interview">Interview </a>
     </li>
 </ul>
+
+@section pageFooter 
+{
+    <div class="grid-column">
+        <partial name="./Components/Cta/_find-an-apprenticeship" />
+   
+    </div>
+}
