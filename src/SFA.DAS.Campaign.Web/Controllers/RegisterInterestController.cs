@@ -8,6 +8,7 @@ using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
+    [Route("register-interest")]
     public class RegisterInterestController : Controller
     {
         private readonly IUserDataCollection _userDataCollection;
@@ -15,6 +16,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
         public RegisterInterestController(IUserDataCollection userDataCollection)
         {
             _userDataCollection = userDataCollection;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(new RegisterInterestModel());
         }
 
         [HttpPost]
