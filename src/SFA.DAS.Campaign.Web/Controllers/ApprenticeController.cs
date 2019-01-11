@@ -9,10 +9,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
     [Route("apprentice")]
     public class ApprenticeController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
         [Route("what-is-an-apprenticeship")]
         public IActionResult WhatIsAnApprenticeship()
         {
