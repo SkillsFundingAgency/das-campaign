@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     [Route("employer")]
     public class EmployerController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
         [Route("how-much-is-it-going-to-cost")]
         public IActionResult HowMuchIsItGoingToCost()
         {
@@ -38,16 +30,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-        [Route("assessment-and-qualification")]
+        [Route("assessment-and-certification")]
         public IActionResult AssessmentAndQualification()
         {
             return View();
         }
-        [Route("what-is-an-apprenticeship")]
-        public IActionResult WhatIsAnApprenticeship()
-        {
-            return View();
-        }
+        
         [Route("benefits")]
         public IActionResult Benefits()
         {

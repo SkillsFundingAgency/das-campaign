@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Moq;
@@ -7,6 +8,8 @@ using SFA.DAS.Campaign.Application.DataCollection.Services;
 using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Models.Configuration;
 using SFA.DAS.Campaign.Models.DataCollection;
+using SFA.DAS.Campaign.Models.Validation;
+using ValidationResult = SFA.DAS.Campaign.Models.Validation.ValidationResult;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollectionTests
 {
@@ -27,7 +30,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
         {
             _queueService = new Mock<IQueueService<UserData>>();
             _userDataCollectionValidator = new Mock<IUserDataCollectionValidator>();
-            _userDataCollectionValidator.Setup(x => x.Validate(It.IsAny<UserData>())).Returns(true);
+            _userDataCollectionValidator.Setup(x => x.Validate(It.IsAny<UserData>())).Returns(new ValidationResult());
             _options = new Mock<IOptions<CampaignConfiguration>>();
             _options.Setup(x => x.Value).Returns(new CampaignConfiguration{StoreUserDataQueueName = StoreUserDataQueueName});
             _userDataCryptographyService = new Mock<IUserDataCryptographyService>();
@@ -52,10 +55,12 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
         public void Then_If_The_Validation_Fails_Store_Is_Not_Called_And_An_Exception_Is_Thrown()
         {
             //Arrange
-            _userDataCollectionValidator.Setup(x => x.Validate(It.IsAny<UserData>())).Returns(false);
+            var result = new ValidationResult();
+            result.AddError("test", ValidationFailure.NotPopulated);
+            _userDataCollectionValidator.Setup(x => x.Validate(It.IsAny<UserData>())).Returns(result);
 
             //Act/Assert
-            Assert.ThrowsAsync<ArgumentException>(async ()=>await _userDataCollection.StoreUserData(new UserData()));
+            Assert.ThrowsAsync<ValidationException>(async ()=>await _userDataCollection.StoreUserData(new UserData()));
             _queueService.Verify(x=>x.AddMessageToQueue( It.IsAny<UserData>(), It.IsAny<string>()), Times.Never);
         }
 
@@ -63,7 +68,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
         public async Task Then_If_The_Validation_Is_Successful_Store_Is_Called()
         {
             //Arrange
-            _userDataCollectionValidator.Setup(x => x.Validate(_userData)).Returns(true);
+            _userDataCollectionValidator.Setup(x => x.Validate(_userData)).Returns(new ValidationResult());
 
             //Act
             await _userDataCollection.StoreUserData(_userData);
@@ -76,7 +81,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
         public async Task Then_The_Encoded_Email_Is_Added_To_The_User_Record()
         {
             //Arrange
-            _userDataCollectionValidator.Setup(x => x.Validate(_userData)).Returns(true);
+            _userDataCollectionValidator.Setup(x => x.Validate(_userData)).Returns(new ValidationResult());
 
             //Act
             await _userDataCollection.StoreUserData(_userData);

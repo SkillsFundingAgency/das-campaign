@@ -1,22 +1,44 @@
 ﻿using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Models.DataCollection;
+using SFA.DAS.Campaign.Models.Validation;
 
 namespace SFA.DAS.Campaign.Application.DataCollection.Validation
 {
     public class UserDataCollectionValidator : IUserDataCollectionValidator
     {
-        public bool Validate(UserData userData)
+        public ValidationResult Validate(UserData userData)
         {
-            if (string.IsNullOrWhiteSpace(userData.FirstName) ||
-                string.IsNullOrWhiteSpace(userData.LastName) ||
-                string.IsNullOrWhiteSpace(userData.Email) ||
-                string.IsNullOrWhiteSpace(userData.CookieId) ||
-                string.IsNullOrWhiteSpace(userData.RouteId))
+            var validationResult = new ValidationResult();
+
+            if (string.IsNullOrWhiteSpace(userData.FirstName))
             {
-                return false;
+                validationResult.AddError(nameof(userData.FirstName),ValidationFailure.NotPopulated);
+            }
+            if (string.IsNullOrWhiteSpace(userData.LastName))
+            {
+                validationResult.AddError(nameof(userData.LastName), ValidationFailure.NotPopulated);
             }
 
-            return userData.IsValidEmail();
+            if (string.IsNullOrWhiteSpace(userData.Email))
+            {
+                validationResult.AddError(nameof(userData.Email), ValidationFailure.NotPopulated);
+            }
+
+            if (string.IsNullOrWhiteSpace(userData.CookieId))
+            {
+                validationResult.AddError(nameof(userData.CookieId), ValidationFailure.NotPopulated);
+            }
+            if(string.IsNullOrWhiteSpace(userData.RouteId))
+            {
+                validationResult.AddError(nameof(userData.RouteId), ValidationFailure.NotPopulated);
+            }
+
+            if (!userData.IsValidEmail())
+            {
+                validationResult.AddError(nameof(userData.Email), ValidationFailure.NotValid);
+            }
+
+            return validationResult;
         }
 
         public bool ValidateEmail(string email)
