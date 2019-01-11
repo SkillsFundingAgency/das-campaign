@@ -6,35 +6,34 @@
 <div class="sidebar @Model.Classes">
 
     <div class="sidebar__hero">
-        <img src="@Model.ImgLocation" class="sidebar__hero-image" />
+        <img src="@Model.ImgLocation" class="sidebar__hero-image" alt="" />
     </div>
     <div class="trimmer">
         <div class="sidebar__header">
-
-            <h3 class="heading-s sidebar__heading">What are the steps for hiring apprentices</h3>
+            <h2 class="heading-s sidebar__heading">What are the steps for hiring apprentices</h2>
         </div>
     </div>
     <div class="sidebar__content">
         <ol class="sidebar-nav">
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-what-are-the-costs-to-me" ? activeClass : null ) "><a href="/employer/how-much-is-it-going-to-cost"> How much is it going to cost?</a></li>
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-the-right-apprenticeship" ? activeClass : null ) "><a href="/employer/the-right-apprenticeship"> The right apprenticeship</a></li>
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-choose-training-provider" ? activeClass : null ) "><a href="/employer/choose-training-provider"> Choose a training provider</a></li>
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-hire-an-apprentice" ? activeClass : null ) "><a href="/employer/hire-an-apprentice"> Hire an apprentice</a> </li>
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-preparing-monitoring" ? activeClass : null ) "><a href="/employer/preparing-and-monitoring"> Preparing and monitoring</a></li>
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-assessment-qualification" ? activeClass : null ) "><a href="/employer/assessment-and-certification"> Assessment and certification</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-what-are-the-costs-to-me" ? activeClass : null ) "><a asp-controller="Employer" asp-action="HowMuchIsItGoingToCost" id="link-sidebar-employer-1"> How much is it going to cost?</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-the-right-apprenticeship" ? activeClass : null ) "><a asp-controller="Employer" asp-action="TheRightApprenticeship" id="link-sidebar-employer-2"> The right apprenticeship</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-choose-training-provider" ? activeClass : null ) "><a asp-controller="Employer" asp-action="ChooseATrainingProvider" id="link-sidebar-employer-3"> Choose a training provider</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-hire-an-apprentice" ? activeClass : null ) "><a asp-controller="Employer" asp-action="HireAnApprentice" id="link-sidebar-employer-4"> Hire an apprentice</a> </li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-preparing-monitoring" ? activeClass : null ) "><a asp-controller="Employer" asp-action="PreparingAndMonitoring" id="link-sidebar-employer-5"> Preparing and monitoring</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-assessment-certification" ? activeClass : null ) "><a asp-controller="Employer" asp-action="AssessmentAndQualification" id="link-sidebar-employer-6"> Assessment and certification</a></li>
         </ol>
     </div>
     <div class="trimmer">
         <div class="sidebar__sub-content">
             @*<h2 class="heading-s sidebar__heading">Find out more</h2>*@
             @*<p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>*@
-            <a class="button button--sparks button--shadow " asp-action="index" asp-controller="RegisterInterest" id="btn-register-interest-employer">Register Interest</a>
+            <a class="button button--sparks button--shadow " asp-action="index" asp-controller="RegisterInterest" id="btn-sidebar-register-interest-employer">Register Interest</a>
         </div>
     </div>
     <div class="trimmer">
         <div class="sidebar__sub-content sidebar__sub-content--mid">
             <h2 class="heading-m sidebar__heading">Already have a <img class="sidebar__sub-content-crown-logo" src="/assets/images/govuk-mask-icon.svg" /> gov.uk account?</h2>
-            <a id="link-MA-sidebar-cta" class="button button-inverted button--shadow" href="https://accounts.manage-apprenticeships.service.gov.uk/service/index" rel="external" target="_blank">Go to my account</a>
+            <a id="link-sidebar-ma-cta" class="button button-inverted button--shadow" href="https://accounts.manage-apprenticeships.service.gov.uk/service/index" rel="external" target="_blank">Go to my account</a>
         </div>
     </div>
 </div>
