@@ -16,34 +16,34 @@
     <div class="sidebar__content">
         <ol class="sidebar-nav">
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprenticeship-whats-an-apprenticeship" ? activeClass : null ) ">
-                <a href="/apprentice/what-is-an-apprenticeship">
+                <a href="/apprentice/what-is-an-apprenticeship" id="link-sidebar-apprentice-1">
                     Before you start
                 </a>
             </li>
 
             <li class="sidebar-nav__section">
-                <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" id="link-faa-sidebar"  rel="external" target="_blank">
+                <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" id="link-sidebar-faa"  rel="external" target="_blank">
                     Find an apprenticeship
                 </a>
             </li>
         
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-application" ? activeClass : null ) ">
-                <a href="/apprentice/application">
+                <a href="/apprentice/application" id="link-sidebar-apprentice-3">
                     Application
                 </a>
             </li>
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-interview" ? activeClass : null ) ">
-                <a href="/apprentice/interview">
+                <a href="/apprentice/interview" id="link-sidebar-apprentice-4">
                     Interview
                 </a>
             </li>
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-your-apprenticeship" ? activeClass : null ) ">
-                <a href="/apprentice/your-apprenticeship">
+                <a href="/apprentice/your-apprenticeship"  id="link-sidebar-apprentice-5">
                     Your apprenticeship
                 </a>
             </li>
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-assessment-and-certification" ? activeClass : null ) ">
-                <a href="/apprentice/assessment-and-certification">
+                <a href="/apprentice/assessment-and-certification" id="link-sidebar-apprentice-6">
                     Assessment and certification
                 </a>
             </li>
@@ -51,7 +51,7 @@
     </div>
     <div class="trimmer">
         <div class="sidebar__sub-content">
-            <a class="button button--sparks button--shadow "  asp-action="index" asp-controller="RegisterInterest" id="btn-register-interest-apprentice">Register Interest</a>
+            <a class="button button--sparks button--shadow "  asp-action="index" asp-controller="RegisterInterest" id="btn-sidebar-register-interest-apprentice">Register Interest</a>
         </div>
     </div>
 </div>
