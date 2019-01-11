@@ -67,6 +67,8 @@ You can then manage your applications and even get alerts about new apprenticesh
     There are also other local organisations that can help you find out more, like a job centre or other community programmes.
 </p>
 
+<partial name="./components/Cta/_Contact-phoneNumber-apprentice" />
+
 <ul class="pagination pagination--apprentice">
     <li class="pagination__list-item">
         <a  href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" id="link-pagination-faa" class="pagination__link pagination__link--previous" rel="external" target="_blank">
@@ -77,11 +79,10 @@ You can then manage your applications and even get alerts about new apprenticesh
         <a class="pagination__link pagination__link--next" asp-controller="Apprentice" asp-action="Interview" id="link-pagination-apprentice-4">Interview </a>
     </li>
 </ul>
-
-@section pageFooter 
-{
+@section pageFooter
+    {
     <div class="grid-column">
         <partial name="./Components/Cta/_find-an-apprenticeship" />
-   
+
     </div>
 }
