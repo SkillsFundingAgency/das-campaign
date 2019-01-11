@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.Extensions.Primitives;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Domain.DataCollection;
@@ -22,6 +25,8 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         private RegisterInterestModel _registerInterestModel;
 
         private const string ExpectedCookieId = "123FDSF.123";
+        private const string ExpectedReferrerUrl = "http://test/cpg/test";
+        private const string ExpectedDefaultUrl = "http://test/cpg/test";
 
         [SetUp]
         public void Arrange()
@@ -37,13 +42,95 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             _userDataCollection = new Mock<IUserDataCollection>();
 
             var cookies = new RequestCookieCollection(new Dictionary<string, string>{{ "_ga", ExpectedCookieId } } );
+            var headers = new HeaderDictionary(new Dictionary<string, StringValues>{{ "Referer", ExpectedReferrerUrl } } );
             _httpContext = new Mock<HttpContext>();
             _httpContext.Setup(x => x.Request.Cookies).Returns(cookies);
-
+            _httpContext.Setup(x => x.Request.Headers).Returns(headers);
+            
             _controller = new RegisterInterestController(_userDataCollection.Object)
             {
-                ControllerContext = {HttpContext = _httpContext.Object}
+                ControllerContext = {HttpContext = _httpContext.Object,
+                ActionDescriptor = new ControllerActionDescriptor
+                {
+                    ControllerName = "register-interest"
+                }}
             };
+        }
+
+        [Test]
+        public void Then_When_Viewing_The_Form_The_Referring_Url_Is_Taken()
+        {
+            //Act
+            var actual = _controller.Index();
+
+            //Assert
+            Assert.IsNotNull(actual);
+            var viewResult = actual as ViewResult;
+            Assert.IsNotNull(viewResult);
+            var model = viewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(ExpectedReferrerUrl, model.ReturnUrl);
+        }
+
+        [Test]
+        public void Then_If_The_Referrer_Is_Itself_Then_It_Is_Redirected_To_The_Homepage()
+        {
+            //Arrange
+            var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
+            mockUrlHelper
+                .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
+                .Returns(ExpectedDefaultUrl).Verifiable();
+            _httpContext.Setup(x => x.Request.Headers)
+                .Returns(new HeaderDictionary(new Dictionary<string, StringValues> { { "Referer", "https://test/Register-interest" } }));
+            _controller = new RegisterInterestController(_userDataCollection.Object)
+            {
+                Url = mockUrlHelper.Object,
+                ControllerContext = {
+                    HttpContext = _httpContext.Object,
+                    ActionDescriptor = new ControllerActionDescriptor
+                    {
+                        ControllerName = "register-interest"
+
+                    }}
+            };
+
+            //Act
+            var actual = _controller.Index();
+
+            //Assert
+            Assert.IsNotNull(actual);
+            var viewResult = actual as ViewResult;
+            Assert.IsNotNull(viewResult);
+            var model = viewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(ExpectedDefaultUrl, model.ReturnUrl);
+        }
+
+        [Test]
+        public void Then_When_Viewing_The_If_There_Is_No_Referrer_They_Are_Redirected_To_The_HomePage()
+        {
+            //Arrange
+            var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
+            mockUrlHelper
+                .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
+                .Returns(ExpectedDefaultUrl).Verifiable();
+            _httpContext.Setup(x => x.Request.Headers).Returns(new HeaderDictionary(new Dictionary<string, StringValues>()));
+            _controller = new RegisterInterestController(_userDataCollection.Object)
+            {
+                Url = mockUrlHelper.Object,
+                ControllerContext = { HttpContext = _httpContext.Object }
+            };
+
+            //Act
+            var actual = _controller.Index();
+
+            //Assert
+            Assert.IsNotNull(actual);
+            var viewResult = actual as ViewResult;
+            Assert.IsNotNull(viewResult);
+            var model = viewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(ExpectedDefaultUrl, model.ReturnUrl);
         }
 
         [Test]

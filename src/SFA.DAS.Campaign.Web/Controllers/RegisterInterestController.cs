@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Domain.DataCollection;
@@ -8,6 +9,7 @@ using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
+    [Route("register-interest")]
     public class RegisterInterestController : Controller
     {
         private readonly IUserDataCollection _userDataCollection;
@@ -15,6 +17,20 @@ namespace SFA.DAS.Campaign.Web.Controllers
         public RegisterInterestController(IUserDataCollection userDataCollection)
         {
             _userDataCollection = userDataCollection;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var url = Request.Headers["Referer"].ToString();
+
+            if (url == string.Empty 
+                || url.Contains(ControllerContext.ActionDescriptor.ControllerName,StringComparison.CurrentCultureIgnoreCase))
+            {
+                url = Url.Action("Index","Home");
+            }
+
+            return View(new RegisterInterestModel{ReturnUrl = url});
         }
 
         [HttpPost]
