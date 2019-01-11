@@ -9,10 +9,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
     [Route("employer")]
     public class EmployerController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
         [Route("how-much-is-it-going-to-cost")]
         public IActionResult HowMuchIsItGoingToCost()
         {
@@ -43,11 +39,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-        [Route("what-is-an-apprenticeship")]
-        public IActionResult WhatIsAnApprenticeship()
-        {
-            return View();
-        }
+        
         [Route("benefits")]
         public IActionResult Benefits()
         {
