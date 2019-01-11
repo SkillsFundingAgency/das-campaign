@@ -19,10 +19,5 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-        [Route("famous-faces")]
-        public IActionResult FamousFaces()
-        {
-            return View();
-        }
     }
 }
