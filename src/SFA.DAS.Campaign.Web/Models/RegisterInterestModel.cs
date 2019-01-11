@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SFA.DAS.Campaign.Web.Models
 {
-    public class RegisterInterestModel : FormModel
+    public class RegisterInterestModel
     {
         [Required]
         [DisplayName("First name")]
@@ -26,6 +26,6 @@ namespace SFA.DAS.Campaign.Web.Models
         [Range(typeof(bool), "true", "true", ErrorMessage = "You need to accept terms and conditions")]
         public bool AcceptTandCs { get; set; }
 
-        
+        public string ReturnUrl { get; set; }
     }
 }

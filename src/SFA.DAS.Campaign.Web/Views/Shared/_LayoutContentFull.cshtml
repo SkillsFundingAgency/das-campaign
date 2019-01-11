@@ -4,21 +4,21 @@
     Layout = "_Layout-campaign";
 }
 
-@if (IsSectionDefined("HeroHeading"))
-{
-    @RenderSection("HeroHeading", required: false)
-}
-else
-{
+<main id="main-content">
 
-    @await Component.InvokeAsync("HeroHeading")
-}
+    @if (IsSectionDefined("HeroHeading"))
+    {
+        @RenderSection("HeroHeading", required: false)
+    }
+    else
+    {
 
+        @await Component.InvokeAsync("HeroHeading")
+    }
 
-<main id="main-content" class="main-content">
-    <div class="grid-row">
-        <div class="grid-column">
+    <div class="main-content">
+        <div class="page">
             @RenderBody()
-            </div>
-        </div>
-    </main>
+        </div>  
+    </div>
+</main>
