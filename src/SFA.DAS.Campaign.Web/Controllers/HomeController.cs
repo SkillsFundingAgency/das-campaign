@@ -21,13 +21,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-
-        [Route("terms")]
-        public IActionResult Terms()
-        {
-            return View();
-        }
-
+        
         [Route("cookies")]
         public IActionResult Cookies()
         {
