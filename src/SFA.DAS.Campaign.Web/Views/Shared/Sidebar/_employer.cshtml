@@ -15,12 +15,12 @@
     </div>
     <div class="sidebar__content">
         <ol class="sidebar-nav">
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-what-are-the-costs-to-me" ? activeClass : null ) "><a href="/employer/how-much-is-it-going-to-cost" id="link-sidebar-employer-1"> How much is it going to cost?</a></li>
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-the-right-apprenticeship" ? activeClass : null ) "><a href="/employer/the-right-apprenticeship" id="link-sidebar-employer-2"> The right apprenticeship</a></li>
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-choose-training-provider" ? activeClass : null ) "><a href="/employer/choose-training-provider" id="link-sidebar-employer-3"> Choose a training provider</a></li>
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-hire-an-apprentice" ? activeClass : null ) "><a href="/employer/hire-an-apprentice" id="link-sidebar-employer-4"> Hire an apprentice</a> </li>
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-preparing-monitoring" ? activeClass : null ) "><a href="/employer/preparing-and-monitoring" id="link-sidebar-employer-5"> Preparing and monitoring</a></li>
-            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-assessment-certification" ? activeClass : null ) "><a href="/employer/assessment-and-certification" id="link-sidebar-employer-6"> Assessment and certification</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-what-are-the-costs-to-me" ? activeClass : null ) "><a asp-controller="Employer" asp-action="HowMuchIsItGoingToCost" id="link-sidebar-employer-1"> How much is it going to cost?</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-the-right-apprenticeship" ? activeClass : null ) "><a asp-controller="Employer" asp-action="TheRightApprenticeship" id="link-sidebar-employer-2"> The right apprenticeship</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-choose-training-provider" ? activeClass : null ) "><a asp-controller="Employer" asp-action="ChooseATrainingProvider" id="link-sidebar-employer-3"> Choose a training provider</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-hire-an-apprentice" ? activeClass : null ) "><a asp-controller="Employer" asp-action="HireAnApprentice" id="link-sidebar-employer-4"> Hire an apprentice</a> </li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-preparing-monitoring" ? activeClass : null ) "><a asp-controller="Employer" asp-action="PreparingAndMonitoring" id="link-sidebar-employer-5"> Preparing and monitoring</a></li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "employer-assessment-certification" ? activeClass : null ) "><a asp-controller="Employer" asp-action="AssessmentAndQualification" id="link-sidebar-employer-6"> Assessment and certification</a></li>
         </ol>
     </div>
     <div class="trimmer">

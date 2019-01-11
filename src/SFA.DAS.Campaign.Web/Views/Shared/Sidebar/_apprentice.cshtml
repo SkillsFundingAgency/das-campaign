@@ -16,7 +16,7 @@
     <div class="sidebar__content">
         <ol class="sidebar-nav">
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprenticeship-whats-an-apprenticeship" ? activeClass : null ) ">
-                <a href="/apprentice/what-is-an-apprenticeship" id="link-sidebar-apprentice-1">
+                <a asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" id="link-sidebar-apprentice-1">
                     Before you start
                 </a>
             </li>
@@ -28,22 +28,22 @@
             </li>
         
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-application" ? activeClass : null ) ">
-                <a href="/apprentice/application" id="link-sidebar-apprentice-3">
+                <a asp-controller="Apprentice" asp-action="Application" id="link-sidebar-apprentice-3">
                     Application
                 </a>
             </li>
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-interview" ? activeClass : null ) ">
-                <a href="/apprentice/interview" id="link-sidebar-apprentice-4">
+                <a asp-controller="Apprentice" asp-action="Interview" id="link-sidebar-apprentice-4">
                     Interview
                 </a>
             </li>
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-your-apprenticeship" ? activeClass : null ) ">
-                <a href="/apprentice/your-apprenticeship"  id="link-sidebar-apprentice-5">
+                <a asp-controller="Apprentice" asp-action="YourApprenticeship" id="link-sidebar-apprentice-5">
                     Your apprenticeship
                 </a>
             </li>
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-assessment-and-certification" ? activeClass : null ) ">
-                <a href="/apprentice/assessment-and-certification" id="link-sidebar-apprentice-6">
+                <a asp-controller="Apprentice" asp-action="AssessmentAndQualification" id="link-sidebar-apprentice-6">
                     Assessment and certification
                 </a>
             </li>
