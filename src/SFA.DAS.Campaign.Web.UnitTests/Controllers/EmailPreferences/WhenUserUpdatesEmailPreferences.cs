@@ -7,7 +7,7 @@ using SFA.DAS.Campaign.Web.Controllers;
 
 namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.EmailPreferences
 {
-    public class WhenUserEmailPreferences
+    public class WhenUserUpdatesEmailPreferences
     {
         private EmailPreferencesController _emailPreferencesController;
         private Mock<IUserDataCollection> _userDataCollectionService;
