@@ -34,7 +34,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             {
                 var uri = new Uri(url);
                 var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/","");
-                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2];
+                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/","");
 
                 url = Url.Action(actionName, controllerName);
             }

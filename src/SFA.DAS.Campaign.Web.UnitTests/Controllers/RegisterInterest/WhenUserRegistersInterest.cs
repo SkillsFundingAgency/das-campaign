@@ -151,7 +151,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             _httpContext.Setup(x => x.Request.Headers)
                 .Returns(new HeaderDictionary(new Dictionary<string, StringValues>
                 {
-                    { "Referer", "https://test2/some-controller/some" }
+                    { "Referer", "https://test2/some-controller/some/" }
                 }));
             _controller = new RegisterInterestController(_userDataCollection.Object)
             {
