@@ -2,119 +2,99 @@
     Layout = "_Layout-campaign";
     ViewBag.Title = "Employ an apprentice and become an apprentice";
     ViewBag.PageID = "homepage";
-    ViewBag.MetaDesc = "Everything you need to know about apprenticeships from an employer and citizen point of view.";
+    ViewBag.MetaDesc = "Everything you need to know about how apprenticeships can fire up your career or business.";
 }
+<main id="main-content">
+    <section class="launcher__wrap">
+        <div class="grid-row-full-width">
+            <div class="grid-column-full-width-one-half">
+                <a asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" class="launcher__link-wrap">
+                    <div class="launcher launcher--apprentice">
+                        <div class="launcher__content">
+                            <h2 class="launcher__section-heading">Apprentices</h2>
 
-<section class="launcher__wrap">
-    <div class="grid-row-full-width">
-        <div class="grid-column-full-width-one-half">
-            <a href="/apprentice/what-is-an-apprenticeship" class="launcher__link-wrap">
-                <div class="launcher launcher--apprentice">
-                    <div class="launcher__content">
-                        <h1 class="launcher__section-heading">Apprentices</h1>
+                            <p class="launcher__heading">Blaze your own trail and become an apprentice</p>
+                            <p class="launcher__intro">
+                                Find out what you need to do to become an apprentice, what
+                                careers are available and which employers are offering them.
+                            </p>
+                            <p class="launcher__link">Become an apprentice</p>
 
-                        <h2 class="launcher__heading">Blaze your own trail and become an apprentice</h2>
-                        <p class="launcher__intro">
-                            Find out what you need to do to become an apprentice, what
-                            careers are available and which employers are offering them.
-                        </p>
-                        <p class="launcher__link">Become an apprentice</p>
-
+                        </div>
+                        <span class="launcher__bg"></span>
                     </div>
-                    <span class="launcher__bg"></span>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-half">
-            <a href="/employer/how-much-is-it-going-to-cost" class="launcher__link-wrap">
-                <div class="launcher launcher--employer">
-                    <div class="launcher__content">
-                        <h1 class="launcher__section-heading">Employers</h1>
+                </a>
+            </div>
+            <div class="grid-column-full-width-one-half">
+                <a asp-controller="Employer" asp-action="HowMuchIsItGoingToCost" class="launcher__link-wrap">
+                    <div class="launcher launcher--employer">
+                        <div class="launcher__content">
+                            <h2 class="launcher__section-heading">Employers</h2>
 
-                        <h2 class="launcher__heading">Fire up your business with an apprentice</h2>
-                        <p class="launcher__intro">
-                            Employing an apprentice is easier than you think and
-                            there's financial help and support available from the government.
-                        </p>
-                        <p class="launcher__link">Hire an apprentice</p>
+                            <p class="launcher__heading">Fire up your business with an apprentice</p>
+                            <p class="launcher__intro">
+                                Employing an apprentice is easier than you think and
+                                there's financial help and support available from the government.
+                            </p>
+                            <p class="launcher__link">Hire an apprentice</p>
 
+                        </div>
+                        <span class="launcher__bg"></span>
                     </div>
-                    <span class="launcher__bg"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <div class="grid-row hero-banner hero-banner--apprentice hero-banner--right-aligned">
+        <div class="grid-column-full">
+            <h2 class="hero-banner__caption">
+                <span class="hero-banner__caption-icon"></span>
+                <span class="hero-banner__caption-text">Real apprentice stories</span>
+            </h2>
+            <div class="grid-row hero-banner__content">
+                <div class="grid-column-one-half  hero-banner__icon-play-container">
+                    <a class="hero-banner__icon-play" href="#player-1" id="play-1" data-module="videoPlayer" data-playerclass="video-player--employer" data-videoplayerid="plyr-1" data-videourl="https://www.youtube.com/embed/I1Cmn0KkR0Q?iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
                 </div>
-            </a>
-        </div>
-    </div>
-</section>
-
-
-<div class="grid-row hero-banner hero-banner--apprentice hero-banner--right-aligned">
-    <div class="grid-column-full">
-        <div class="hero-banner__caption">
-            <span class="hero-banner__caption-icon"></span>
-            <span class="hero-banner__caption-text">Real apprentice stories</span>
-        </div>
-        <div class="grid-row hero-banner__content">
-            <div class="grid-column-one-half  hero-banner__icon-play-container">
-                <a class="hero-banner__icon-play-mobile" href="#player-1" id="play-mobile-1"></a>
-                <a class="hero-banner__icon-play-desktop" href="#player-1" id="play-desktop-1"></a>
+                <div class="grid-column-one-half hero-banner__content-main">
+                    <p class="hero-banner__header">Get the confidence, grab the career.</p>
+                    <p class="hero-banner__copy">
+                        "I found the confidence I needed to take the apprenticeship,
+                        because I knew theatre is what I loved and where I wanted to be."
+                    </p>
+                    <div class="hero-banner__cite">Hosanna <span class="hero-banner__cite-detail">18, Royal Opera House Apprentice, London</span></div>
+                    <a class="hero-banner__link" href="/real-stories/apprentice">View more apprentice stories</a>
+                </div>
             </div>
-            <div class="grid-column-one-half hero-banner__content-main">
-                <h3 class="hero-banner__header">Valuable hands-on experience</h3>
-                <p class="hero-banner__copy">
-                    "FICTION: I didn't think university was for me. I saw a lot of my friends
-                    struggling to make ends meet - I didn't want the debt and I was desperate to get the hands-on experience."
-                </p>
-                <div class="hero-banner__cite">Sarah Bloggs <span class="hero-banner__cite-detail">33, Designer, Manchester</span></div>
-                <a class="hero-banner__link" href="#">View more apprentice stories</a>
-            </div>
+            <span class="hero-banner__background hero-banner__background--apprentice-hosanna"></span>
         </div>
-        <span class="hero-banner__background"></span>
     </div>
-</div>
+    <div class="grid-row hero-banner hero-banner--employer">
+        <div class="grid-column-full">
+            <h2 class="hero-banner__caption">
+                <span class="hero-banner__caption-icon"></span>
+                <span class="hero-banner__caption-text">Real employer stories</span>
+            </h2>
+            <div class="grid-row hero-banner__content">
+                <div class="grid-column-one-half  hero-banner__icon-play-container">
+                    <a class="hero-banner__icon-play" href="#player-2" id="play-2" data-module="videoPlayer" data-playerclass="video-player--employer" data-videoplayerid="plyr-2" data-videourl="https://www.youtube.com/embed/YwV1siw7reo?iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
+                </div>
+                <div class="grid-column-one-half hero-banner__content-main">
+                    <p class="hero-banner__header">A real win-win for businesses, large and small.</p>
+                    <p class="hero-banner__copy">
+                        "The business, the organisation, and our managers here know the value that someone
+                        who has gone through an apprenticeship brings."
+                    </p>
+                    <p class="hero-banner__cite">
+                        Annie Cook
+                        <span class="hero-banner__cite-detail">
+                            NHS Career Development Coordinator, Norfolk
+                        </span>
+                    </p>
 
-
-<div class="grid-row hero-banner hero-banner--employer">
-    <div class="grid-column-full">
-        <div class="hero-banner__caption">
-            <span class="hero-banner__caption-icon"></span>
-            <span class="hero-banner__caption-text">Real employer stories</span>
-        </div>
-        <div class="grid-row hero-banner__content">
-            <div class="grid-column-one-half  hero-banner__icon-play-container">
-                <a class="hero-banner__icon-play-mobile" href="#player-2" id="play-mobile-2"></a>
-                <a class="hero-banner__icon-play-desktop" href="#player-2" id="play-desktop-2"></a>
+                    <a class="hero-banner__link" href="#">View more employer stories</a>
+                </div>
             </div>
-            <div class="grid-column-one-half hero-banner__content-main">
-                <h3 class="hero-banner__header">Good candidates</h3>
-                <p class="hero-banner__copy">
-                    "FICTION: At 'Wates' we wanted to train good candidates and give them the opportunity to work in
-                    this exciting organisation which continues to grow and prosper."
-                </p>
-                <p class="hero-banner__cite">
-                    Wates Smartspace <span class="hero-banner__cite-detail">
-                        Site management trainee,
-                        Birmingham
-                    </span>
-                </p>
-                <a class="hero-banner__link" href="#">View more employer stories</a>
-            </div>
+            <span class="hero-banner__background hero-banner__background--employer-annie"></span>
         </div>
-        <span class="hero-banner__background"></span>
     </div>
-</div>
-
-<div class="video-player plyr__video-embed js-player visually-hidden" id="player-1">
-    <div class="video-player--inner-wrap">
-        <a class="video-player__close-mobile" href="#" id="close-mobile-1"><span class="video-player__close-icon"></span> Close</a>
-        <a class="video-player__close-desktop" href="#" id="close-desktop-1"><span class="video-player__close-icon"></span> Close</a>
-        <iframe src="https://www.youtube.com/embed/VSeiSg9WPtE?iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
-    </div>
-</div>
-
-<div class="video-player video-player--employer plyr__video-embed js-player visually-hidden" id="player-2" data-video="2">
-    <div class="video-player--inner-wrap">
-        <a class="video-player__close-mobile" href="#" id="close-mobile-2"><span class="video-player__close-icon"></span> Close</a>
-        <a class="video-player__close-desktop" href="#" id="close-desktop-2"><span class="video-player__close-icon"></span> Close</a>
-        <iframe src="https://www.youtube.com/embed/VSeiSg9WPtE?iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
-    </div>
-</div>
+</main>
