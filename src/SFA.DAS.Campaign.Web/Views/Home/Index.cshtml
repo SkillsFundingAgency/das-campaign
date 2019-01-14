@@ -5,7 +5,6 @@
     ViewBag.MetaDesc = "Everything you need to know about how apprenticeships can fire up your career or business.";
 }
 <main id="main-content">
-
     <section class="launcher__wrap">
         <div class="grid-row-full-width">
             <div class="grid-column-full-width-one-half">
@@ -46,73 +45,56 @@
             </div>
         </div>
     </section>
-
-
     <div class="grid-row hero-banner hero-banner--apprentice hero-banner--right-aligned">
         <div class="grid-column-full">
             <h2 class="hero-banner__caption">
                 <span class="hero-banner__caption-icon"></span>
                 <span class="hero-banner__caption-text">Real apprentice stories</span>
             </h2>
-            <div class="grid-column-one-half hero-banner__content-main">
-                <p class="hero-banner__header">Get the confidence, grab the career.</p>
-                <p class="hero-banner__copy">
-                    "I found the confidence I needed to take the apprenticeship, 
-                    because I knew theatre is what I loved and where I wanted to be."
-                </p>
-                <div class="hero-banner__cite">Hosanna <span class="hero-banner__cite-detail">18, Royal Opera House Apprentice, London</span></div>
-                <a class="hero-banner__link" href="/real-stories/apprentice">View more apprentice stories</a>
+            <div class="grid-row hero-banner__content">
+                <div class="grid-column-one-half  hero-banner__icon-play-container">
+                    <a class="hero-banner__icon-play" href="#player-1" id="play-1" data-module="videoPlayer" data-playerclass="video-player--employer" data-videoplayerid="plyr-1" data-videourl="https://www.youtube.com/embed/I1Cmn0KkR0Q?iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
+                </div>
+                <div class="grid-column-one-half hero-banner__content-main">
+                    <p class="hero-banner__header">Get the confidence, grab the career.</p>
+                    <p class="hero-banner__copy">
+                        "I found the confidence I needed to take the apprenticeship,
+                        because I knew theatre is what I loved and where I wanted to be."
+                    </p>
+                    <div class="hero-banner__cite">Hosanna <span class="hero-banner__cite-detail">18, Royal Opera House Apprentice, London</span></div>
+                    <a class="hero-banner__link" href="/real-stories/apprentice">View more apprentice stories</a>
+                </div>
             </div>
             <span class="hero-banner__background hero-banner__background--apprentice-hosanna"></span>
         </div>
     </div>
+    <div class="grid-row hero-banner hero-banner--employer">
+        <div class="grid-column-full">
+            <h2 class="hero-banner__caption">
+                <span class="hero-banner__caption-icon"></span>
+                <span class="hero-banner__caption-text">Real employer stories</span>
+            </h2>
+            <div class="grid-row hero-banner__content">
+                <div class="grid-column-one-half  hero-banner__icon-play-container">
+                    <a class="hero-banner__icon-play" href="#player-2" id="play-2" data-module="videoPlayer" data-playerclass="video-player--employer" data-videoplayerid="plyr-2" data-videourl="https://www.youtube.com/embed/YwV1siw7reo?iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
+                </div>
+                <div class="grid-column-one-half hero-banner__content-main">
+                    <p class="hero-banner__header">A real win-win for businesses, large and small.</p>
+                    <p class="hero-banner__copy">
+                        "The business, the organisation, and our managers here know the value that someone
+                        who has gone through an apprenticeship brings."
+                    </p>
+                    <p class="hero-banner__cite">
+                        Annie Cook
+                        <span class="hero-banner__cite-detail">
+                            NHS Career Development Coordinator, Norfolk
+                        </span>
+                    </p>
 
-
-<div class="grid-row hero-banner hero-banner--employer">
-    <div class="grid-column-full">
-        <h2 class="hero-banner__caption">
-            <span class="hero-banner__caption-icon"></span>
-            <span class="hero-banner__caption-text">Real employer stories</span>
-        </h2>
-        <div class="grid-row hero-banner__content">
-            <div class="grid-column-one-half  hero-banner__icon-play-container">
-                <a class="hero-banner__icon-play-mobile" href="#player-2" id="play-mobile-2"></a>
-                <a class="hero-banner__icon-play-desktop" href="#player-2" id="play-desktop-2"></a>
+                    <a class="hero-banner__link" href="#">View more employer stories</a>
+                </div>
             </div>
-            <div class="grid-column-one-half hero-banner__content-main">
-                <p class="hero-banner__header">A real win-win for businesses, large and small.</p>
-                <p class="hero-banner__copy">
-                    "The business, the organisation, and our managers here know the value that someone 
-                    who has gone through an apprenticeship brings."
-                </p>
-                <p class="hero-banner__cite">
-                    Annie Cook
-                    <span class="hero-banner__cite-detail">
-                        NHS Career Development Coordinator, Norfolk
-                    </span>
-                </p>
-              
-                <a class="hero-banner__link" href="#">View more employer stories</a>
-            </div>
-        </div>
-        <span class="hero-banner__background hero-banner__background--employer-annie"></span>
-    </div>
-</div>
-
-    <div class="video-player plyr__video-embed js-player visually-hidden" id="player-1">
-        <div class="video-player--inner-wrap">
-            <a class="video-player__close-mobile" href="#" id="close-mobile-1"><span class="video-player__close-icon"></span> Close</a>
-            <a class="video-player__close-desktop" href="#" id="close-desktop-1"><span class="video-player__close-icon"></span> Close</a>
-            <iframe src="https://www.youtube.com/embed/VSeiSg9WPtE?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
+            <span class="hero-banner__background hero-banner__background--employer-annie"></span>
         </div>
     </div>
-
-    <div class="video-player video-player--employer plyr__video-embed js-player visually-hidden" id="player-2" data-video="2">
-        <div class="video-player--inner-wrap">
-            <a class="video-player__close-mobile" href="#" id="close-mobile-2"><span class="video-player__close-icon"></span> Close</a>
-            <a class="video-player__close-desktop" href="#" id="close-desktop-2"><span class="video-player__close-icon"></span> Close</a>
-            <iframe src="https://www.youtube.com/embed/VSeiSg9WPtE?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" allowfullscreen allowtransparency allow="autoplay"></iframe>
-        </div>
-    </div>
-
 </main>
