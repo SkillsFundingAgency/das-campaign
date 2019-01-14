@@ -4,31 +4,34 @@
     Layout = "_Layout-campaign";
 }
 
-@if (IsSectionDefined("HeroHeading"))
-{
-    @RenderSection("HeroHeading", required: false)
-}
-else
-{
-    @await Component.InvokeAsync("HeroHeading")
-}
+<main id="main-content">
 
-<main id="main-content" class="main-content">
-    <div class="grid-row">
-        <div class="grid-column-two-thirds">
-            <div class="page">
-                @RenderBody()
+    @if (IsSectionDefined("HeroHeading"))
+    {
+        @RenderSection("HeroHeading", required: false)
+    }
+    else
+    {
+        @await Component.InvokeAsync("HeroHeading")
+    }
 
-               
+    <div class="main-content">
+        <div class="grid-row">
+            <div class="grid-column-two-thirds">
+                <div class="page">
+                    @RenderBody()
+
+
+                </div>
+            </div>
+            <div class="grid-column-one-third">
+                @await Component.InvokeAsync("Sidebar", new { imgLocation = "/campaign/images/sidebar/" + ViewBag.PageId + ".jpg" })
             </div>
         </div>
-        <div class="grid-column-one-third">
-            @await Component.InvokeAsync("Sidebar", new { imgLocation = "/campaign/images/sidebar/" + ViewBag.PageId + ".jpg" })
+        <div class="grid-row">
+            @RenderSection("pageFooter", required: false)
         </div>
     </div>
-     <div class="grid-row">
-         @RenderSection("pageFooter", required: false)
-     </div>
 </main>
 
 @RenderSection("Resources", required: false)

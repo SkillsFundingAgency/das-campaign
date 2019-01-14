@@ -6,39 +6,44 @@
 <div class="sidebar @Model.Classes">
 
     <div class="sidebar__hero">
-        <img src="@Model.ImgLocation" class="sidebar__hero-image" />
+        <img src="@Model.ImgLocation" class="sidebar__hero-image" alt="" />
     </div>
     <div class="trimmer">
         <div class="sidebar__header">
-
-            <h3 class="heading-s sidebar__heading">What are the steps to become an apprentice</h3>
+            <h2 class="heading-s sidebar__heading">What are the steps to become an apprentice</h2>
         </div>
     </div>
     <div class="sidebar__content">
         <ol class="sidebar-nav">
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprenticeship-whats-an-apprenticeship" ? activeClass : null ) ">
-                <a href="/apprentice/what-is-an-apprenticeship">
+                <a asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" id="link-sidebar-apprentice-1">
                     Before you start
+                </a>
+            </li>
+
+            <li class="sidebar-nav__section">
+                <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" id="link-sidebar-faa"  rel="external" target="_blank">
+                    Find an apprenticeship
                 </a>
             </li>
         
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-application" ? activeClass : null ) ">
-                <a href="/apprentice/application">
+                <a asp-controller="Apprentice" asp-action="Application" id="link-sidebar-apprentice-3">
                     Application
                 </a>
             </li>
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-interview" ? activeClass : null ) ">
-                <a href="/apprentice/interview">
+                <a asp-controller="Apprentice" asp-action="Interview" id="link-sidebar-apprentice-4">
                     Interview
                 </a>
             </li>
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-your-apprenticeship" ? activeClass : null ) ">
-                <a href="/apprentice/your-apprenticeship">
+                <a asp-controller="Apprentice" asp-action="YourApprenticeship" id="link-sidebar-apprentice-5">
                     Your apprenticeship
                 </a>
             </li>
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-assessment-and-certification" ? activeClass : null ) ">
-                <a href="/apprentice/assessment-and-certification">
+                <a asp-controller="Apprentice" asp-action="AssessmentAndQualification" id="link-sidebar-apprentice-6">
                     Assessment and certification
                 </a>
             </li>
@@ -46,9 +51,7 @@
     </div>
     <div class="trimmer">
         <div class="sidebar__sub-content">
-            @*<h2 class="heading-s sidebar__heading">Find out more</h2>*@
-            @*<p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>*@
-            <a class="button button--sparks button--shadow " href="#modal-RegisterInterest">Register Interest</a>
+            <a class="button button--sparks button--shadow "  asp-action="index" asp-controller="RegisterInterest" id="btn-sidebar-register-interest-apprentice">Register Interest</a>
         </div>
     </div>
 </div>

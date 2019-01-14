@@ -14,8 +14,8 @@
 <p>Once you've searched and found the right apprenticeship for you, you can get on with the application process.</p>
 
 <p>
-    If you haven't found your ideal apprenticeship yet, you can <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" target="_blank" rel="external">
-        search for the latest apprenticeship vacancies<</a> by job title or employer, or just browse to see what’s available in your area. 
+    If you haven't found your ideal apprenticeship yet, you can <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" target="_blank" rel="external" id="link-faa">
+        search for the latest apprenticeship vacancies</a> by job title or employer, or just browse to see what’s available in your area. 
 </p>
 <p>
 You can then manage your applications and even get alerts about new apprenticeships. 
@@ -67,21 +67,22 @@ You can then manage your applications and even get alerts about new apprenticesh
     There are also other local organisations that can help you find out more, like a job centre or other community programmes.
 </p>
 
+<partial name="./components/Cta/_Contact-phoneNumber-apprentice" />
+
 <ul class="pagination pagination--apprentice">
     <li class="pagination__list-item">
-        <a href="/apprentice/what-is-an-apprenticeship" class="pagination__link pagination__link--previous">
-            Before you start
+        <a  href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" id="link-pagination-faa" class="pagination__link pagination__link--previous" rel="external" target="_blank">
+            Find an apprenticeship
         </a>
     </li>
     <li class="pagination__list-item">
-        <a class="pagination__link pagination__link--next" href="/apprentice/interview">Interview </a>
+        <a class="pagination__link pagination__link--next" asp-controller="Apprentice" asp-action="Interview" id="link-pagination-apprentice-4">Interview </a>
     </li>
 </ul>
-
-@section pageFooter 
-{
+@section pageFooter
+    {
     <div class="grid-column">
         <partial name="./Components/Cta/_find-an-apprenticeship" />
-   
+
     </div>
 }
