@@ -46,9 +46,13 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             _httpContext = new Mock<HttpContext>();
             _httpContext.Setup(x => x.Request.Cookies).Returns(cookies);
             _httpContext.Setup(x => x.Request.Headers).Returns(headers);
-            
+            var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
+            mockUrlHelper
+                .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
+                .Returns(ExpectedDefaultUrl).Verifiable();
             _controller = new RegisterInterestController(_userDataCollection.Object)
             {
+                Url = mockUrlHelper.Object,
                 ControllerContext = {HttpContext = _httpContext.Object,
                 ActionDescriptor = new ControllerActionDescriptor
                 {
@@ -81,7 +85,10 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
                 .Returns(ExpectedDefaultUrl).Verifiable();
             _httpContext.Setup(x => x.Request.Headers)
-                .Returns(new HeaderDictionary(new Dictionary<string, StringValues> { { "Referer", "https://test/Register-interest" } }));
+                .Returns(new HeaderDictionary(new Dictionary<string, StringValues>
+                {
+                    { "Referer", "https://test/Register-interest" }
+                }));
             _controller = new RegisterInterestController(_userDataCollection.Object)
             {
                 Url = mockUrlHelper.Object,
@@ -90,7 +97,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                     ActionDescriptor = new ControllerActionDescriptor
                     {
                         ControllerName = "register-interest"
-
                     }}
             };
 
@@ -107,7 +113,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         }
 
         [Test]
-        public void Then_When_Viewing_The_If_There_Is_No_Referrer_They_Are_Redirected_To_The_HomePage()
+        public void Then_When_Viewing_The_RegisterInterest_Form_If_There_Is_No_Referrer_They_Are_Redirected_To_The_HomePage()
         {
             //Arrange
             var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
@@ -131,6 +137,81 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             var model = viewResult.Model as RegisterInterestModel;
             Assert.IsNotNull(model);
             Assert.AreEqual(ExpectedDefaultUrl, model.ReturnUrl);
+            mockUrlHelper.Verify(x => x.Action(It.Is<UrlActionContext>(c => c.Action.Equals("Index") && c.Controller.Equals("Home"))));
+        }
+
+        [Test]
+        public void Then_When_Viewing_The_RegisterInterest_Form_Only_The_Controller_And_Action_Segments_Are_Used()
+        {
+            //Arrange
+            var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
+            mockUrlHelper
+                .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
+                .Returns(ExpectedDefaultUrl).Verifiable();
+            _httpContext.Setup(x => x.Request.Headers)
+                .Returns(new HeaderDictionary(new Dictionary<string, StringValues>
+                {
+                    { "Referer", "https://test2/some-controller/some/" }
+                }));
+            _controller = new RegisterInterestController(_userDataCollection.Object)
+            {
+                Url = mockUrlHelper.Object,
+                ControllerContext = {
+                    HttpContext = _httpContext.Object,
+                    ActionDescriptor = new ControllerActionDescriptor
+                    {
+                        ControllerName = "register-interest"
+                    }}
+            };
+
+            //Act
+            var actual = _controller.Index();
+
+            //Assert
+            Assert.IsNotNull(actual);
+            var viewResult = actual as ViewResult;
+            Assert.IsNotNull(viewResult);
+            var model = viewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+
+            mockUrlHelper.Verify(x => x.Action(It.Is<UrlActionContext>(c => c.Action.Equals("some") && c.Controller.Equals("some-controller"))));
+        }
+
+        [Test]
+        public void Then_When_Viewing_The_RegisterInterest_Form_Then_If_There_Are_No_Controller_Action_Segments_Default_Values_AreUsed()
+        {
+            //Arrange
+            var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
+            mockUrlHelper
+                .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
+                .Returns(ExpectedDefaultUrl).Verifiable();
+            _httpContext.Setup(x => x.Request.Headers)
+                .Returns(new HeaderDictionary(new Dictionary<string, StringValues>
+                {
+                    { "Referer", "https://test2/" }
+                }));
+            _controller = new RegisterInterestController(_userDataCollection.Object)
+            {
+                Url = mockUrlHelper.Object,
+                ControllerContext = {
+                    HttpContext = _httpContext.Object,
+                    ActionDescriptor = new ControllerActionDescriptor
+                    {
+                        ControllerName = "register-interest"
+                    }}
+            };
+
+            //Act
+            var actual = _controller.Index();
+
+            //Assert
+            Assert.IsNotNull(actual);
+            var viewResult = actual as ViewResult;
+            Assert.IsNotNull(viewResult);
+            var model = viewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+            
+            mockUrlHelper.Verify(x=>x.Action(It.Is<UrlActionContext>(c=>c.Action.Equals("Index") && c.Controller.Equals("Home"))));
         }
 
         [Test]
