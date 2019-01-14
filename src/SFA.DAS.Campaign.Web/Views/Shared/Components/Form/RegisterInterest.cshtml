@@ -15,7 +15,7 @@
                 {
                     if (error.Value.ValidationState == ModelValidationState.Invalid)
                     {
-                        errorStringBuilder.Append($"<a href=\"#{error.Key}\">{error.Key}</a>");
+                        errorStringBuilder.Append($"<a href=\"#{error.Key}\">{Model.ValidationMessages[error.Key]}</a>");
                         if (loopCount == errorCount - 1)
                         {
                             errorStringBuilder.Append(" and ");

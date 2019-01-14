@@ -9,6 +9,20 @@ namespace SFA.DAS.Campaign.Web.Models
 {
     public class RegisterInterestModel
     {
+        public RegisterInterestModel()
+        {
+            ValidationMessages = new Dictionary<string, string>
+            {
+                {"FirstName", "First Name"},
+                {"LastName", "Last Name"},
+                {"Email", "Email"},
+                {"Route", "Type of user"},
+                {"AcceptTandCs", "Terms and conditions"}
+            };
+        }
+
+        public Dictionary<string, string> ValidationMessages { get; internal set; }
+
         [Required]
         [DisplayName("First name")]
         public string FirstName { get; set; }
