@@ -1,5 +1,7 @@
-﻿@model object
-
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@model object
 @{
     ViewBag.Title = "What is an apprenticeship?";
     ViewBag.PageID = "apprenticeship-whats-an-apprenticeship";
@@ -14,7 +16,8 @@
     It’s a real job, with hands-on experience, a salary
     and the chance to train while you work. You get the same as
     other employees – a contract of employment and holiday leave.
-</p><p>
+</p>
+<p>
     If you’re 16 or over, you can become an apprentice as long as
     you spend at least 50% of your working hours in England - for the duration of the
     apprenticeship and you are not in full-time education.
@@ -24,7 +27,7 @@
     <a href="https://www.apprenticeships.scot/" target="_blank" rel="external" id="link-scotland">Scotland</a>,
     <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external" id="link-wales">Wales</a>, or <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external" id="link-northern-ireland">Northern Ireland</a>, check out your apprenticeship options.
 </p>
-</p><p>
+<p>
     When you're an apprentice:
 </p>
 <ul class="list list--bullet list--bullet-apprentice">
@@ -61,7 +64,7 @@
 
 
 </p>
-<h2 class="heading-m">What are the different types of apprenticeships?</h2>
+<h2 class="heading-m" id="h1">What are the different types of apprenticeships?</h2>
 
 <p>
     There are hundreds of different apprenticeships to choose from.
@@ -92,10 +95,20 @@
     </li>
 </ul>
 
-@section pageFooter 
-{
-<div class="grid-column">
-    <partial name="./Components/Cta/_find-an-apprenticeship" />
-   
-</div>
+@{
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#h1" class="hero__link">What are the different types of apprenticeships?</a> </li>
+    </ul>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Apprentice, content = HeroHeadingContent() })
+}
+
+@section pageFooter
+    {
+    <div class="grid-column">
+        <partial name="./Components/Cta/_find-an-apprenticeship" />
+
+    </div>
 }

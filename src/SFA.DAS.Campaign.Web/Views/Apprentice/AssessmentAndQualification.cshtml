@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@{
     ViewBag.Title = "Assessment and certification";
     ViewBag.PageID = "apprentice-assessment-and-certification";
     ViewBag.Section = "apprentice";
@@ -7,35 +10,36 @@
     Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 6;
 }
-<h2 class="heading-m">Get Assessed and get your certificate</h2>
+<h2 class="heading-m" id="h1">Get assessed and get your certificate</h2>
 <p>
-    You will be assessed at some stage during your apprenticeship, to make sure you 
-    have achieved the knowledge, skills and behaviours required. 
-    Increasingly, many apprenticeships now include an end-point assessment, which will 
-    test you at the end of the apprenticeship to make sure you are fully competent 
+    You will be assessed at some stage during your apprenticeship, to make sure you
+    have achieved the knowledge, skills and behaviours required.
+    Increasingly, many apprenticeships now include an end-point assessment, which will
+    test you at the end of the apprenticeship to make sure you are fully competent
     in your apprenticeship occupation.
 </p>
 <p>
-    Your employer and training provider should give you 
-    plenty of guidance as to what’s expected, and when your assessment 
-    will happen. 
+    Your employer and training provider should give you
+    plenty of guidance as to what’s expected, and when your assessment
+    will happen.
 </p>
 
 
-<h2 class="heading-m">Complete your apprenticeship</h2>
+<h2 class="heading-m" id="h2">Complete your apprenticeship</h2>
 <p>
-    Pass the assessment, finish your apprenticeship, 
-    enjoy the moment (then jump around, scream, shout, post something on social media). 
+    Pass the assessment, finish your apprenticeship,
+    enjoy the moment (then jump around, scream, shout, post something on social media).
     You’ve done it, you did it, you’ve earned this!
 </p>
 <p>
     So where next?
 </p>
 <p>
-    Just like your apprenticeship, the answer’s up to you. You’ve 
-    got a whole new set of skills, an apprenticeship that’ll impress 
-    employers, and really useful experiences that 
-    show that you can make the step up from apprentice to, well, wherever you want to go.</p>
+    Just like your apprenticeship, the answer’s up to you. You’ve
+    got a whole new set of skills, an apprenticeship that’ll impress
+    employers, and really useful experiences that
+    show that you can make the step up from apprentice to, well, wherever you want to go.
+</p>
 
 <partial name="./components/Cta/_Contact-phoneNumber-apprentice" />
 
@@ -43,13 +47,23 @@
     <li class="pagination__list-item">
         <a class="pagination__link pagination__link--previous" asp-controller="Apprentice" asp-action="YourApprenticeship" id="link-pagination-apprentice-5"> Your apprenticeship </a>
     </li>
-
 </ul>
 
-@section pageFooter 
-{
+@{
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#h1" class="hero__link">Get assessed and get your certificate</a> </li>
+        <li><a href="#h2" class="hero__link">Complete your apprenticeship</a> </li>
+    </ul>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Apprentice, content = HeroHeadingContent() })
+}
+
+@section pageFooter
+    {
     <div class="grid-column">
         <partial name="./Components/Cta/_find-an-apprenticeship" />
-   
+
     </div>
 }

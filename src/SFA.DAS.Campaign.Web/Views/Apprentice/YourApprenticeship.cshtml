@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@{
     ViewBag.Title = "Your apprenticeship";
     ViewBag.MetaTitle = "Your apprenticeship";
     ViewBag.PageID = "apprentice-your-apprenticeship";
@@ -7,7 +10,7 @@
     Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 5;
 }
-<h2 class="heading-m">What to bring, and other useful info</h2>
+<h2 class="heading-m" id="h1">What to bring, and other useful info</h2>
 <p>
     Your employer will be in touch beforehand to let you know your working hours,
     and when they’d like you to start on your first day. If however, you already work at the place where you're
@@ -41,7 +44,7 @@
 
 
 
-<h2 class="heading-m">Meet your new team</h2>
+<h2 class="heading-m" id="h2">Meet your new team</h2>
 
 <p>
     When you start your apprenticeship, you’ll meet the people you'll be working with. They will show
@@ -49,7 +52,7 @@
 
 </p>
 
-<h2 class="heading-m">What comes after my apprenticeship?</h2>
+<h2 class="heading-m" id="h3">What comes after my apprenticeship?</h2>
 <p>
     Apprenticeships are designed to make you ‘job-ready’ in the role you're training for.
     Once your apprenticeship is up and running, and you’re gaining more experience and learning new skills,
@@ -71,10 +74,24 @@
     </li>
 </ul>
 
-@section pageFooter 
-{
+@{
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#h1" class="hero__link">What to bring, and other useful info</a> </li>
+        <li><a href="#h2" class="hero__link">Meet your new team</a> </li>
+        <li><a href="#h3" class="hero__link">What comes after my apprenticeship?</a> </li>
+    </ul>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Apprentice, content = HeroHeadingContent() })
+}
+
+
+
+@section pageFooter
+    {
     <div class="grid-column">
         <partial name="./Components/Cta/_find-an-apprenticeship" />
-   
+
     </div>
 }

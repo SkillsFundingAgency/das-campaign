@@ -1,4 +1,6 @@
-﻿
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
 @{
     ViewBag.Title = "Application";
     ViewBag.MetaTitle = "Application";
@@ -15,10 +17,11 @@
 
 <p>
     If you haven't found your ideal apprenticeship yet, you can <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" target="_blank" rel="external" id="link-faa">
-        search for the latest apprenticeship vacancies</a> by job title or employer, or just browse to see what’s available in your area. 
+        search for the latest apprenticeship vacancies
+    </a> by job title or employer, or just browse to see what’s available in your area.
 </p>
 <p>
-You can then manage your applications and even get alerts about new apprenticeships. 
+    You can then manage your applications and even get alerts about new apprenticeships.
 </p>
 
 <h3 class="heading-s">Apply for the job and send the application to the employer</h3>
@@ -71,7 +74,7 @@ You can then manage your applications and even get alerts about new apprenticesh
 
 <ul class="pagination pagination--apprentice">
     <li class="pagination__list-item">
-        <a  href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" id="link-pagination-faa" class="pagination__link pagination__link--previous" rel="external" target="_blank">
+        <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" id="link-pagination-faa" class="pagination__link pagination__link--previous" rel="external" target="_blank">
             Find an apprenticeship
         </a>
     </li>
