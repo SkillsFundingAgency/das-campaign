@@ -1,5 +1,7 @@
-﻿@model object
-
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@model object
 @{
     ViewBag.Title = "Hire an apprentice";
     ViewBag.MetaTitle = "Hire an apprentice";
@@ -9,10 +11,10 @@
     ViewBag.PageNavIndex = 4;
 }
 
-<h2 class="heading-m">Finding the right apprentice for you</h2>
+<h2 class="heading-m" id="h1">Finding the right apprentice for you</h2>
 
 <p>
-    When you've decided to hire an apprentice you need to think about the right person for you and the benefits 
+    When you've decided to hire an apprentice you need to think about the right person for you and the benefits
     they can bring to your organisation.
 </p>
 
@@ -40,7 +42,7 @@
     <li>participate in shows, such as 'WorldSkills UK Live'</li>
     <li>invite potential apprentices to your organisation for a day, to get a feel for how you work</li>
 </ul>
-<h2 class="heading-m">How to ask the right questions at interview</h2>
+<h2 class="heading-m" id="h2">How to ask the right questions at interview</h2>
 <p>
     Take time to think about what you really need to know and how you’ll
     tease out the best from the interviewee.  You want to find out if the candidate is right for your organisation.
@@ -67,6 +69,17 @@
     <li class="pagination__list-item"><a class="pagination__link pagination__link--next" asp-controller="Employer" asp-action="PreparingAndMonitoring" id="link-pagination-employer-5"> Preparing and monitoring</a></li>
 </ul>
 
+@{
+
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#h1" class="hero__link">Finding the right apprentice for you </a> </li>
+        <li><a href="#h2" class="hero__link">How to ask the right questions at interview </a> </li>
+    </ul>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}
 
 @section Resources {
     <partial name="./Components/Resources/_employer" />

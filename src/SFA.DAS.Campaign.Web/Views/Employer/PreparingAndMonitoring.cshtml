@@ -1,5 +1,7 @@
-﻿@model object
-
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@model object
 @{
     ViewBag.Title = "Preparing and monitoring";
     ViewBag.MetaTitle = "Preparing and monitoring";
@@ -20,7 +22,7 @@
     much help as the school leaver, but they may still be nervous and unsure of what’s expected of them.
 </p>
 
-<h2 class="heading-m">Preparing</h2>
+<h2 class="heading-m" id="h1">Preparing</h2>
 <p>
     Before an apprentice starts you should consider sending them a
     starter pack so they know what to expect from their first day.
@@ -39,7 +41,7 @@
 </ul>
 
 
-<h2 class="heading-m">Monitoring</h2>
+<h2 class="heading-m" id="h2">Monitoring</h2>
 
 <p>
     It's important as an employer to support your new apprentice and keep in regular contact with them.
@@ -58,6 +60,17 @@
     <li class="pagination__list-item"><a class="pagination__link pagination__link--next" asp-controller="Employer" asp-action="AssessmentAndQualification" id="link-pagination-employer-6"> Assessment and certification</a></li>
 </ul>
 
+@{
+
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#h1" class="hero__link">Preparing </a> </li>
+        <li><a href="#h2" class="hero__link">Monitoring </a> </li>
+    </ul>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}
 
 @section Resources {
     <partial name="./Components/Resources/_employer" />
