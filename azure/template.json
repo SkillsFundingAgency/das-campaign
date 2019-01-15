@@ -37,6 +37,19 @@
     "customHostname": {
       "type": "string",
       "defaultValue": ""
+    },
+    "appServicePlanSize": {
+      "type": "string",
+      "allowedValues": [
+        "1",
+        "2",
+        "3"
+      ],
+      "defaultValue": "1"
+    },
+    "appServicePlanInstances": {
+      "type": "int",
+      "defaultValue": 2
     }
   },
   "variables": {
@@ -44,9 +57,7 @@
     "appServicePrefix": "[concat('das-',toLower(parameters('resourceEnvironmentName')),'-cpg')]",
     "appServiceName": "[concat(variables('appServicePrefix'),'-as')]",
     "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
-    "appServicePlanName": "[concat(variables('appServicePrefix'),'-asp')]",
-    "appServicePlanSize": "1",
-    "appServicePlanInstances": 2
+    "appServicePlanName": "[concat(variables('appServicePrefix'),'-asp')]"
   },
   "resources": [
     {
@@ -70,10 +81,10 @@
             "value": "[parameters('aseResourceGroup')]"
           },
           "aspSize": {
-            "value": "[variables('appServicePlanSize')]"
+            "value": "[parameters('appServicePlanSize')]"
           },
           "aspInstances": {
-            "value": "[variables('appServicePlanInstances')]"
+            "value": "[parameters('appServicePlanInstances')]"
           }
         }
       }
