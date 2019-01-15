@@ -10,7 +10,7 @@
     Layout = "_LayoutContentSidebar";
 }
 
-<h2 class="heading-m">How much will it cost me?</h2>
+<h2 class="heading-m" id="h1">How much will it cost me?</h2>
 <p>
     You can get help from the government to pay for apprenticeship training and assessment.
     The amount you get depends on whether you pay the apprenticeship levy or not.
@@ -26,7 +26,7 @@
     <li><a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external" id="link-wales">Wales</a></li>
     <li><a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external" id="link-northern-ireland">Northern Ireland</a></li>
 </ul>
-<h2 class="heading-m">If you don't need to pay the apprenticeship levy</h2>
+<h2 class="heading-m" id="h2">If you don't need to pay the apprenticeship levy</h2>
 <p>
 As an employer who doesn’t pay the apprenticeship levy, you will need to pay the training 
 provider directly for training your apprentices.
@@ -37,7 +37,7 @@ will pay the rest (90%) up to the <a href="https://www.gov.uk/government/publica
 to the training provider.
 </p>
 
-<h2 class="heading-m">Additional payments from the government</h2>
+<h2 class="heading-m" id="h3">Additional payments from the government</h2>
 
 <h3 class="heading-s">Extra support for small employers</h3>
 <p>
@@ -198,12 +198,10 @@ to the training provider.
 @{
 
     IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
-        <li><a href="#Cost" class="hero__link">How much will it cost me</a> </li>
-        <li><a href="#NoLevy" class="hero__link">If you don’t need to pay the apprenticeship levy</a> </li>
-        <li><a href="#AdditionalPayments" class="hero__link">Additional payments from the government</a> </li>
-    </ul>);
-
-
+    <li><a href="#h1" class="hero__link">How much will it cost me? </a> </li>
+    <li><a href="#h2" class="hero__link">If you don't need to pay the apprenticeship levy </a> </li>
+    <li><a href="#h3" class="hero__link">Additional payments from the government </a> </li>
+</ul>);
 }
 
 @section HeroHeading {

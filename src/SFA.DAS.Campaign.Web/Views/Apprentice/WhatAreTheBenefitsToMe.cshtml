@@ -1,5 +1,6 @@
-﻿@model object
-
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
 @{
     ViewBag.Title = "What are the benefits for me?";
     ViewBag.MetaTitle = "What are the benefits for me? ";
@@ -9,13 +10,11 @@
     Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 2;
 }
-<h2 class="heading-m">What are my future prospects once I’ve successfully finished my apprenticeship?</h2>
+<h2 class="heading-m" id="h1">What are my future prospects once I’ve successfully finished my apprenticeship?</h2>
 <p>
     Once you’ve successfully finished, you have plenty of choices. You could apply for another apprenticeship or
     find a career that uses your new skills.
 </p>
-
-
 <p>Some of the top reasons for becoming an apprentice:</p>
 <ul class="list list--bullet list--bullet-apprentice">
     <li>earn while you learn and get paid a competitive salary</li>
@@ -26,8 +25,7 @@
     <li>get a boost to your future earnings potential</li>
     <li>develop the skills you need for a range of exciting jobs or careers, no matter your age or background</li>
 </ul>
-
-<h2 class="heading-m">How much can you earn?</h2>
+<h2 class="heading-m" id="h2">How much can you earn?</h2>
 <p>
     Your salary will depend upon the industry, location and type of apprenticeship you choose.
 </p>
@@ -40,7 +38,7 @@
     you are entitled to the national <a href="https://www.gov.uk/national-minimum-wage-rates" target="_blank" rel="external" id="link-min-wage">minimum wage</a> for your age.
 </p>
 
-<h2 class="heading-m">What will my apprenticeship cost me?</h2>
+<h2 class="heading-m" id="h3">What will my apprenticeship cost me?</h2>
 <p>
     When you become an apprentice, you’ll need to cover the cost of your day-to-day expenses,
     such as lunch and travel.
@@ -53,11 +51,22 @@
 <partial name="./components/Cta/_Contact-phoneNumber-apprentice" />
 <hr class="section-break" />
 
+@{
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+    <li><a href="#h1" class="hero__link">What are my future prospects once I’ve successfully finished my apprenticeship?</a> </li>
+    <li><a href="#h2" class="hero__link">How much can you earn?</a> </li>
+    <li><a href="#h2" class="hero__link">What will my apprenticeship cost me?</a> </li>
+</ul>);
+}
 
-@section pageFooter 
-{
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Apprentice, content = HeroHeadingContent() })
+}
+
+@section pageFooter
+    {
     <div class="grid-column">
         <partial name="./Components/Cta/_find-an-apprenticeship" />
-   
+
     </div>
 }

@@ -1,5 +1,7 @@
-﻿@model object
-
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@model object
 @{
     ViewBag.Title = "Choose a training provider";
     ViewBag.MetaTitle = "Choose a training provider";
@@ -11,15 +13,16 @@
 }
 
 <p>
-You will need to choose a training provider to train your apprentice.
+    You will need to choose a training provider to train your apprentice.
 </p>
 <p>
     <a href="https://findapprenticeshiptraining.sfa.bis.gov.uk/" target="_blank" rel="external" id="link-fat">Find apprenticeship training</a> will help
     you search for one by location, job role or keyword.
 </p>
 
-<p>Your training provider can provide you with as much help and support as you need when you take on an apprentice.
-     
+<p>
+    Your training provider can provide you with as much help and support as you need when you take on an apprentice.
+
 </p>
 <p>
     Your training provider may also be able to help with:
@@ -32,9 +35,9 @@ You will need to choose a training provider to train your apprentice.
     <li>working with you to make sure your apprentice is learning the relevant skills</li>
 </ul>
 
-<h2 class="heading-m">Misunderstandings and myths</h2>
+<h2 class="heading-m" id="h1">Misunderstandings and myths</h2>
 <p>
-    There are some misunderstandings and myths about what you can and can't do when working with a training provider.  
+    There are some misunderstandings and myths about what you can and can't do when working with a training provider.
     Here are a couple of examples:
 </p>
 <ul class="list list--bullet list--bullet-employer">
@@ -53,6 +56,16 @@ You will need to choose a training provider to train your apprentice.
     <li class="pagination__list-item"><a class="pagination__link pagination__link--next" href="/employer/hire-an-apprentice" id="link-pagination-employer-4"> Hire an apprentice</a> </li>
 </ul>
 
+@{
+
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#h1" class="hero__link">Misunderstandings and myths </a> </li>
+    </ul>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}
 
 @section Resources {
     <partial name="./Components/Resources/_employer" />

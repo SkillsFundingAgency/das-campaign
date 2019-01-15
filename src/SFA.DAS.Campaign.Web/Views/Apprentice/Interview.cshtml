@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@{
     ViewBag.Title = "Interview";
     ViewBag.MetaTitle = "Interview";
     ViewBag.PageID = "apprentice-interview";
@@ -8,7 +11,7 @@
     ViewBag.PageNavIndex = 4;
 }
 
-<h2 class="heading-m">The Interview Process</h2>
+<h2 class="heading-m" id="h1">The Interview Process</h2>
 
 <p>
     Everyone goes through the interview process - at some stage of their working life.  When you apply for new jobs,
@@ -45,7 +48,7 @@
 
 <p>If you've not done an interview before, the following tips should help you through the whole process:</p>
 
-<h2 class="heading-m">Before Your Interview</h2>
+<h2 class="heading-m" id="h2">Before Your Interview</h2>
 
 <h3 class="heading-s">Check where and when</h3>
 <p>
@@ -69,7 +72,7 @@
 </p>
 
 
-<h2 class="heading-m">Day of the interview</h2>
+<h2 class="heading-m" id="h3">Day of the interview</h2>
 
 <h3 class="heading-s">What to wear</h3>
 <p>
@@ -116,11 +119,22 @@
     </li>
 </ul>
 
+@{
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#h1" class="hero__link">The interview process</a> </li>
+        <li><a href="#h2" class="hero__link">Before your interview</a> </li>
+        <li><a href="#h3" class="hero__link">Day of the interview</a> </li>
+    </ul>);
+}
 
-@section pageFooter 
-{
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Apprentice, content = HeroHeadingContent() })
+}
+
+@section pageFooter
+    {
     <div class="grid-column">
         <partial name="./Components/Cta/_find-an-apprenticeship" />
-   
+
     </div>
 }
