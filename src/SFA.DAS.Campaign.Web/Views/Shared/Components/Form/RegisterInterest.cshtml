@@ -4,76 +4,75 @@
 
 <form asp-controller="RegisterInterest" asp-action="Index">
 
-        <h2 class="heading-m">Keep me up to date with the latest information</h2>
-        <div class="form-validation-summary" style="@(ViewData.ModelState.IsValid ? "display: none" : "")">
-            <h3 class="heading-s">Sorry but there seems to be a problem with you registration</h3>
-            @{
-                var errorStringBuilder = new StringBuilder();
-                var errorCount = ViewData.ModelState.ErrorCount;
-                var loopCount = 1;
-                foreach(var error in ViewData.ModelState)
+    <h2 class="heading-m">Keep me up to date with the latest information</h2>
+    <div class="form-validation-summary" style="@(ViewData.ModelState.IsValid ? "display: none" : "")">
+        <h3 class="heading-s">Sorry but there seems to be a problem with you registration</h3>
+        @{
+            var errorStringBuilder = new StringBuilder();
+            var errorCount = ViewData.ModelState.ErrorCount;
+            var loopCount = 1;
+            foreach (var error in ViewData.ModelState)
+            {
+                if (error.Value.ValidationState == ModelValidationState.Invalid)
                 {
-                    if (error.Value.ValidationState == ModelValidationState.Invalid)
+                    errorStringBuilder.Append($"<a href=\"#{error.Key}\">{Model.ValidationMessages[error.Key]}</a>");
+                    if (loopCount == errorCount - 1)
                     {
-                        errorStringBuilder.Append($"<a href=\"#{error.Key}\">{Model.ValidationMessages[error.Key]}</a>");
-                        if (loopCount == errorCount - 1)
-                        {
-                            errorStringBuilder.Append(" and ");
-                        }
-                        else if (loopCount != errorCount)
-                        {
-                            errorStringBuilder.Append(", ");
-                        }
-
-                        loopCount++;
+                        errorStringBuilder.Append(" and ");
                     }
+                    else if (loopCount != errorCount)
+                    {
+                        errorStringBuilder.Append(", ");
+                    }
+
+                    loopCount++;
                 }
             }
-            @Html.Raw(errorStringBuilder.ToString())
+        }
+        @Html.Raw(errorStringBuilder.ToString())
+    </div>
+    <div class="form-group" das-validation-for="FirstName" das-validationerror-class="form-group-validation-error">
+        <label class="label visually-hidden" asp-for="FirstName">
+            First name
+        </label>
+        <input id="FirstName" class="input" asp-for="FirstName" type="text" placeholder="First name" autocomplete="given-name">
+    </div>
+
+    <div class="form-group" das-validation-for="LastName" das-validationerror-class="form-group-validation-error">
+
+        <label class="label visually-hidden" asp-for="LastName">
+            Last name
+        </label>
+        <input class="input" asp-for="LastName" type="text" placeholder="Last name" autocomplete="family-name">
+    </div>
+    <div class="form-group" das-validation-for="Email" das-validationerror-class="form-group-validation-error">
+
+        <label class="label visually-hidden" asp-for="Email">
+            Email Address
+        </label>
+        <input class="input" asp-for="Email" type="text" placeholder="Email address" autocomplete="email">
+    </div>
+    <div class="form-group radios" das-validation-for="Route" das-validationerror-class="form-group-validation-error">
+
+        <div class="radios__item">
+
+            <input class="input radios__input" asp-for="Route" value="1" type="radio" id="rbApprentice" />
+            <label class="label radios__label" for="rbApprentice">I want to become an <span class="text--apprentice">apprentice</span> </label>
         </div>
-        <div class="form-group" das-validation-for="FirstName" das-validationerror-class="form-group-validation-error">
-            <label class="label visually-hidden" asp-for="FirstName">
-                First name
+        <div class="radios__item">
+            <input class="input radios__input" asp-for="Route" value="2" type="radio" id="rbEmployer" />
+            <label class="label radios__label" for="rbEmployer">I want to <span class="text--employer">employ</span> an apprentice</label>
+        </div>
+    </div>
+    <div class="form-group" das-validation-for="AcceptTandCs" das-validationerror-class="form-group-validation-error">
+        <div class="checkboxes__item">
+            <input class="checkboxes__input" asp-for="AcceptTandCs" type="checkbox" value="true">
+            <label class="label checkboxes__label" asp-for="AcceptTandCs">
+                I would like to receive information via emails from the Education and Skills Funding Agency in relation to apprenticeships. I can confirm that I am over the age of 13
             </label>
-            <input id="FirstName" class="input" asp-for="FirstName" type="text" placeholder="First name" autocomplete="given-name">
         </div>
+    </div>
 
-        <div class="form-group" das-validation-for="LastName" das-validationerror-class="form-group-validation-error">
-
-            <label class="label visually-hidden" asp-for="LastName">
-                Last name
-            </label>
-            <input class="input" asp-for="LastName" type="text" placeholder="Last name" autocomplete="family-name">
-        </div>
-        <div class="form-group" das-validation-for="Email" das-validationerror-class="form-group-validation-error">
-
-            <label class="label visually-hidden" asp-for="Email">
-                Email Address
-            </label>
-            <input class="input" asp-for="Email" type="text" placeholder="Email address" autocomplete="email">
-        </div>
-        <div class="form-group radios" das-validation-for="Route" das-validationerror-class="form-group-validation-error">
-                            
-            <div class="radios__item">
-
-                <input class="input radios__input" asp-for="Route" value="1" type="radio" id="rbApprentice" />
-                <label class="label radios__label" for="rbApprentice">I want to become an <span class="text--apprentice">apprentice</span> </label>
-            </div>
-            <div class="radios__item">
-                <input class="input radios__input" asp-for="Route" value="2" type="radio" id="rbEmployer" />
-                <label class="label radios__label" for="rbEmployer">I want to <span class="text--employer">employ</span> an apprentice</label>
-            </div>
-        </div>
-        <div class="form-group" das-validation-for="AcceptTandCs" das-validationerror-class="form-group-validation-error">
-            <div class="checkboxes__item">
-                <input class="checkboxes__input" asp-for="AcceptTandCs" type="checkbox" value="true">
-                <label class="label checkboxes__label" asp-for="AcceptTandCs">
-                    I would like to receive information via emails from the Education and Skills Funding Agency in relation to apprenticeships. I can confirm that I am over the age of 13
-                </label>
-            </div>
-        </div>
-
-        <input asp-for="ReturnUrl" type="hidden" value="@Model.ReturnUrl" />
-        @await Component.InvokeAsync("Button", new { type = ButtonType.Button, style = ButtonStyle.PrimaryInverted, name = "registerInterestSubmit", text = "Register Interest", shadow = false })
-
+    <input asp-for="ReturnUrl" type="hidden" value="@Model.ReturnUrl" />
+    <button class="button button-inverted " name="registerInterestSubmit" type="submit" id="btn-register-interest-complete">Register Interest </button>
 </form>
