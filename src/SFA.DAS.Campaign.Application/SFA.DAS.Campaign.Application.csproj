@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NLog" Version="4.5.10" />
+    <PackageReference Include="Polly" Version="6.1.0" />
     <PackageReference Include="Hashids.net" Version="1.2.2" />
     <PackageReference Include="SFA.DAS.Apprenticeships.Api.Client" Version="0.11.98" />
     <PackageReference Include="SFA.DAS.Apprenticeships.Api.Types" Version="0.11.98" />
@@ -14,6 +16,13 @@
   <ItemGroup>
     <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Models\SFA.DAS.Campaign.Models.csproj" />
+    <ProjectReference Include="..\SFA.DAS.Vacancies.Api\SFA.DAS.Vacancies.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.extensions.logging.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
