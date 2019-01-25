@@ -2,7 +2,7 @@
 
 export class SearchResults {
 
-    private mainContentElement: HTMLElement = document.getElementById("content");
+    private mainContentElement: HTMLElement = document.getElementById("main-content");
     private searchResultsElement: HTMLElement = document.getElementById("vacancy-search-results");
     private lat: number = parseFloat((<HTMLInputElement>document.getElementById("Latitude")).value);
     private lon: number = parseFloat((<HTMLInputElement>document.getElementById("Longitude")).value);

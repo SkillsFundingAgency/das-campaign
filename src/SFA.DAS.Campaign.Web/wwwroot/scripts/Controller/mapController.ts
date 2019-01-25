@@ -114,7 +114,7 @@ export class MapController extends Controller {
             streetViewControl: false
         };
         // init Google Maps itself
-        this.map = new google.maps.Map(this.$(MapController.canvas)[0], options);
+        this.map = new google.maps.Map(document.querySelector(MapController.canvas), options);
 
         // initialize markers
         if (this.markerString != null) {

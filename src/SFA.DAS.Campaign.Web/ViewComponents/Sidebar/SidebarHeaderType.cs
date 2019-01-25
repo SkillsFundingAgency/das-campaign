@@ -1,10 +1,9 @@
 ﻿namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 {
-    public enum SidebarType
+    public enum SidebarHeaderType
     {
         None = 0,
-        Apprentice = 1,
-        Employer = 2,
-
+        Image = 1,
+        GoogleMap = 2,
     }
 }

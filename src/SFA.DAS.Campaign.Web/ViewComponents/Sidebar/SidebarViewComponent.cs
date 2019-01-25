@@ -1,21 +1,20 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
-using SFA.DAS.Campaign.Web.ViewComponents.Modal;
+using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps;
 
 namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 {
     public class SidebarViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(SidebarType? type, int activeIndex, string imgLocation)
+        public async Task<IViewComponentResult> InvokeAsync(SidebarType? type, SidebarHeaderType? headerType, int activeIndex, string imgLocation, GoogleMapsViewModel googleMapsOptions)
         {
             string view;
             string title;
 
             if (type == null)
             {
-                
+
                 switch (ViewContext.RouteData.Values["Controller"])
                 {
                     case "Apprentice":
@@ -23,6 +22,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                         break;
                     case "Employer":
                         type = SidebarType.Employer;
+                        break;
+                    case "FindApprenticeship":
+                        type = SidebarType.Apprentice;
                         break;
                 }
             }
@@ -41,9 +43,20 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
-            return View("Default", new SidebarViewModel((SidebarType)type, view, activeIndex, imgLocation));
+
+            if (headerType == null)
+            {
+                headerType = SidebarHeaderType.Image;
+            }
+
+            if (headerType == SidebarHeaderType.GoogleMap)
+            {
+                return View("DefaultNew", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, googleMapsOptions));
+
+            }
+            return View("Default", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, googleMapsOptions));
         }
     }
-    
+
 
 }

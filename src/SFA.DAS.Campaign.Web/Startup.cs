@@ -68,6 +68,13 @@ namespace SFA.DAS.Campaign.Web
 
             services.Configure<CampaignConfiguration>(Configuration);
 
+            var postcodeConfig = new PostcodeApiConfiguration();
+            Configuration.Bind("Postcode", postcodeConfig);
+
+            var mappingConfig = new MappingConfiguration();
+            Configuration.Bind("Mapping", mappingConfig);
+
+
             services.AddMiniProfiler(options =>
             {
                 // ALL of this is optional. You can simply call .AddMiniProfiler() for all defaults
@@ -100,7 +107,8 @@ namespace SFA.DAS.Campaign.Web
                 // Optionally disable "Connection Open()", "Connection Close()" (and async variants).
                 //options.TrackConnectionOpenClose = false;);
             });
-
+            services.AddSingleton<IPostcodeApiConfiguration>(postcodeConfig);
+            services.AddSingleton<IMappingConfiguration>(mappingConfig);
             services.AddTransient<IApprenticeshipProgrammeApiClient>(client => new ApprenticeshipProgrammeApiClient(Configuration["ApprenticeshipBaseUrl"]));
             services.AddTransient<IStandardsMapper, StandardsMapper>();
             services.AddTransient<IStandardsService, StandardsService>();

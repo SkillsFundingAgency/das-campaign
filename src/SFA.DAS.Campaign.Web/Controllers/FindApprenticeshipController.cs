@@ -48,7 +48,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             viewModel.Postcode = postcode;
             viewModel.Location.Latitude = latLng.Coordinates.Lat;
             viewModel.Location.Longitude = latLng.Coordinates.Lon;
-            viewModel.StaticMapUrl = _mappingService.GetStaticMapsUrl(results.Select(p => p.Location), "400","960");
+            viewModel.StaticMapUrl = _mappingService.GetStaticMapsUrl(results.Select(p => p.Location), "680","530");
 
             return View(viewModel);
         }
