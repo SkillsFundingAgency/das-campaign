@@ -18,6 +18,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Domain", "SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj", "{ABA71A27-1FF0-4201-BBC6-E6E1D0ED44A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Vacancies.Api", "SFA.DAS.Vacancies.Api\SFA.DAS.Vacancies.Api.csproj", "{A4837F8C-5EA8-4342-9D3B-FF703B3D9085}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Infrastructure", "SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj", "{93CE170F-44C8-4F8E-A749-9154C3555577}"
 EndProject
 Global

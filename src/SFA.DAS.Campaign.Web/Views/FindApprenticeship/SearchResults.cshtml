@@ -11,17 +11,6 @@
     Layout = "_LayoutContentSidebar";
 }
 
-<h1 class="heading-xlarge">Search results</h1>
-
-
-<div class="grid-row">
-    <div class="column-full">
-
-
-    </div>
-</div>
-
-
 <div class="grid-row">
     <div class="column-one-third">
 
@@ -29,7 +18,7 @@
         @{ await Html.RenderPartialAsync("_searchFilter", Model.filterModel); }
     </div>
     <div class="column-two-thirds">
-        <ul id="vacancy-search-results" class="search-results">
+        <ol id="vacancy-search-results" class="search-results-list">
 
             @foreach (var vacancySearchResultItem in Model.Results)
             {
@@ -38,44 +27,22 @@
 
             }
 
-        </ul>
-        <input id="MapSearchResults" type="hidden" value="@Model.JsonResults" />
-        <input id="Latitude" type="hidden" value="@Model.Location.Latitude" />
-        <input id="Longitude" type="hidden" value="@Model.Location.Longitude" />
-        <input id="Postcode" type="hidden" value="@Model.Postcode" />
-        <input id="Distance" type="hidden" value="@Model.Distance" />
+        </ol>
     </div>
 </div>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0" id="daSVG">
-    <clipPath id="googleMapsClip">
-        <polygon points="0 400,960 360,960 55,0 0">
-        </polygon>
-    </clipPath>
-    <clipPath id="searchResultGoogleMapsClip">
-        <polygon points="0 135,300 135,300 20,0 0">
-        </polygon>
-    </clipPath>
-
-</svg>
-@{ await Html.RenderPartialAsync("_MapsInfobox");}
 
 @section Scripts
     {
-    <script src="http://localhost:50159/lib/es6-promise/es6-promise.js"></script>
     <script src="http://localhost:50159/lib/markerclustererplus/markerclusterer.js"></script>
 
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIhjmd9QkQXP_s9nULNsMRkPJgT8tv4_8"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIhjmd9QkQXP_s9nULNsMRkPJgT8tv4_8"
             type="text/javascript"></script>
-    <script defer src="http://localhost:50159/lib/google-maps-infobox/infobox.js"></script>
+    <script src="http://localhost:50159/lib/google-maps-infobox/infobox.js"></script>
 
-
-    <script src="http://localhost:50159/js/_require.config.js"></script>
-    <script>require.baseUrl = '@Url.Content("~/scripts")';</script>
-    <script data-main="SearchResults" src="http://localhost:50159/lib/requirejs/require.js"></script>
 
 }
 
 @section Sidebar
     {
-    @await Component.InvokeAsync("Sidebar", new { headerType = SidebarHeaderType.GoogleMap, googleMapsOptions = new GoogleMapsViewModel(Model.StaticMapUrl) })
+    @await Component.InvokeAsync("Sidebar", new { headerType = SidebarHeaderType.GoogleMap, googleMapsOptions = new GoogleMapsViewModel(Model.StaticMapUrl) { Latitude = Model.Location.Latitude, Longitude = Model.Location.Longitude } })
 }

@@ -1,38 +1,38 @@
 ﻿@using SFA.DAS.Campaign.Web.Models.Vacancy
 @model SFA.DAS.Campaign.Web.Models.Vacancy.VacancySearchViewModel
 
-<fieldset class="search-filter">
-    <legend class="heading-medium sfa-mob-collpanel-trigger sfa-no-top-margin" id="editSearchToggle">Edit search</legend>
-    <div class="sfa-mob-collpanel toggle-content--mob" id="editSearchPanel">
+<h2 class="heading-m">Update search results</h2>
+<section class="grid-row cta-faa">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
     <form asp-action="UpdateSearch">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Postcode" class="form-label-bold"></label>
-            <input asp-for="Postcode" class="form-control" />
-            <span asp-validation-for="Postcode" class="text-danger"></span>
+        <div class="grid-column-one-third">
+            <div class="cta-faa__content">
+                <div class="form-group">
+                    <label asp-for="Postcode" class="form-label-bold"></label>
+                    <input asp-for="Postcode" class="form-control" />
+                    <span asp-validation-for="Postcode" class="text-danger"></span>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Distance" class="form-label-bold"></label>
-            <select asp-for="Distance" asp-items="Model.DistanceOptions" class="form-control"></select>
+        <div class="grid-column-one-third">
+            <div class="cta-faa__content">
+                <div class="form-group">
+                    <label asp-for="Distance" class="form-label-bold"></label>
+                    <select asp-for="Distance" asp-items="Model.DistanceOptions" class="form-control"></select>
 
-            <span asp-validation-for="Distance" class="text-danger"></span>
+                    <span asp-validation-for="Distance" class="text-danger"></span>
+                </div>
+            </div>
         </div>
-        
-        <div class="form-group">
-            <label asp-for="Keywords" class="form-label-bold"></label>?
-            <input asp-for="Keywords" class="form-control form-control-4-4" />
-            <span asp-validation-for="Keywords" class="text-danger"></span>
+        <div class="grid-column-one-third">
+            <div class="cta-faa__content">
+                <div class="form-group">
+                    <input type="submit" value="Update results" class="button" />
+                </div>
+            </div>
         </div>
-        
-        <div class="form-group">
-            <label asp-for="IndustrySectors" class="form-label-bold"></label>?
-            <select asp-for="IndustrySectors" asp-items="Model.IndustrySectorsOptions" class="form-control form-conntrol-auto"></select>
 
-            <span asp-validation-for="IndustrySectors" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Update results" class="button" />
-        </div>
+
     </form>
-    </div>
-</fieldset>
+</section>

@@ -21,6 +21,23 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
 
         public string Class { get; internal set; }
 
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string MarkerDataUrl => generateMarkerDataUrl();
+
+        private string generateMarkerDataUrl()
+        {
+            if (!string.IsNullOrEmpty(Postcode) && Distance > 0)
+            {
+                return $"/findapprentice/searchresultsjson/{Postcode}/{Distance}";
+            }
+            return "";
+        }
+
+        public int Distance { get; set; }
+        public string Postcode { get; set; }
+        
+
     }
 
 }

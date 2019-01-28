@@ -5,10 +5,10 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
 {
     public class GoogleMapsViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(string staticMapUrl)
+        public async Task<IViewComponentResult> InvokeAsync(GoogleMapsViewModel googleMapsViewModel)
         {
           
-            return View("Default", new GoogleMapsViewModel(staticMapUrl));
+            return View("Default", googleMapsViewModel);
         }
     }
 
