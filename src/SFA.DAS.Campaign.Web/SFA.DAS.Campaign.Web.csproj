@@ -48,6 +48,7 @@
   <ItemGroup>
     <Folder Include="Views\Pages\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\json\" />
   </ItemGroup>
 
   <ItemGroup>
