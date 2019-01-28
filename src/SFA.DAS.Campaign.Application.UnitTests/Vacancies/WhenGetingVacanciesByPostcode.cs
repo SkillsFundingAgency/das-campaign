@@ -101,21 +101,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
 
             Assert.AreEqual(results.Count,100);
         }
-        
 
-        [Test]
-        public async Task Then_Static_Map_Urls_Are_Generated_For_Results()
-        {
-            _searchResultCount = 200;
-
-            var results = await sut.GetByPostcode(postcode, 20);
-
-            var mapsWithoutStatic = results.Where(w => string.IsNullOrWhiteSpace(w.StaticMapUrl)).ToList();
-
-            Assert.AreEqual(mapsWithoutStatic.Count, 0);
-
-
-        }
 
         private HttpOperationResponse<object> mockSearchResults()
         {
@@ -151,4 +137,17 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
         }
 
     }
+    //[Test]
+    //public async Task Then_Static_Map_Urls_Are_Generated_For_Results()
+    //{
+    //    _searchResultCount = 200;
+
+    //    var results = await sut.GetByPostcode(postcode, 20);
+
+    //    var mapsWithoutStatic = results.Where(w => string.IsNullOrWhiteSpace(w.StaticMapUrl)).ToList();
+
+    //    Assert.AreEqual(mapsWithoutStatic.Count, 0);
+
+
+    //}
 }
