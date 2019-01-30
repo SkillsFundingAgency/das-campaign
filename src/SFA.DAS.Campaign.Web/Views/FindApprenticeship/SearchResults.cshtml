@@ -33,16 +33,16 @@
 
 @section Scripts
     {
-    <script src="http://localhost:50159/lib/markerclustererplus/markerclusterer.js"></script>
+    <script defer src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvjlbjx6_-sz4utE2SVVNwc63PlUM_MLE"
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvjlbjx6_-sz4utE2SVVNwc63PlUM_MLE&callback=DASFrontend.initMaps"
             type="text/javascript"></script>
-    <script src="http://localhost:50159/lib/google-maps-infobox/infobox.js"></script>
+    <script defer src="/campaign/js/infobox.js"></script>
 
 
 }
 
 @section Sidebar
     {
-    @await Component.InvokeAsync("Sidebar", new { headerType = SidebarHeaderType.GoogleMap, googleMapsOptions = new GoogleMapsViewModel(Model.StaticMapUrl) { Latitude = Model.Location.Latitude, Longitude = Model.Location.Longitude } })
+    @await Component.InvokeAsync("Sidebar", new { headerType = SidebarHeaderType.GoogleMap, googleMapsOptions = new GoogleMapsViewModel(Model.StaticMapUrl) { Latitude = Model.Location.Latitude, Longitude = Model.Location.Longitude, Distance = Model.Distance, Postcode = Model.Postcode} })
 }

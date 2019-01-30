@@ -29,7 +29,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
         {
             if (!string.IsNullOrEmpty(Postcode) && Distance > 0)
             {
-                return $"/findapprentice/searchresultsjson/{Postcode}/{Distance}";
+                return $"/FindApprenticeship/searchResults/Data/{Postcode}/{Distance}";
             }
             return "";
         }

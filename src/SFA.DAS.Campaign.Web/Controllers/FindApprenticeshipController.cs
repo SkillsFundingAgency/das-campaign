@@ -26,13 +26,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _mappingService = mappingService;
         }
 
-        [HttpGet]
-        public ActionResult EnterPostcode()
-        {
-            var viewModel = new VacancySearchViewModel();
-            return View(viewModel);
-        }
-
         [HttpGet("SearchResults/{postcode}/{distance}")]
         public async Task<ActionResult> SearchResults(string postcode, int distance)
         {
@@ -40,10 +33,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             var latLng = await _geocodeService.GetFromPostCode(postcode);
 
-            var results = await _vacanciesService.GetByPostcode(postcode, Convert.ToInt32(distance * 1.5));
+            var results = await _vacanciesService.GetByPostcode(postcode, Convert.ToInt32(distance));
 
-            viewModel.Results = results.Where(w => w.DistanceInMiles <= distance).Take(20).ToList();
-            viewModel.JsonResults = JsonConvert.SerializeObject(results);
+            viewModel.Results = results.Where(w => w.DistanceInMiles <= distance).Take(10).ToList();
             viewModel.Distance = distance;
             viewModel.Postcode = postcode;
             viewModel.Location.Latitude = latLng.Coordinates.Lat;
@@ -51,6 +43,25 @@ namespace SFA.DAS.Campaign.Web.Controllers
             viewModel.StaticMapUrl = _mappingService.GetStaticMapsUrl(results.Select(p => p.Location), "680","530");
 
             return View(viewModel);
+        }
+
+        [HttpGet("SearchResults/Data/{postcode}/{distance}")]
+        public async Task<ActionResult> SearchResultsData(string postcode, int distance)
+        {
+            var viewModel = new SearchResultsViewModel();
+
+            var latLng = await _geocodeService.GetFromPostCode(postcode);
+
+            var results = await _vacanciesService.GetByPostcode(postcode, Convert.ToInt32(distance * 1.5));
+            
+            viewModel.Results = results;
+            viewModel.Distance = distance;
+            viewModel.Postcode = postcode;
+            viewModel.Location.Latitude = latLng.Coordinates.Lat;
+            viewModel.Location.Longitude = latLng.Coordinates.Lon;
+            viewModel.StaticMapUrl = _mappingService.GetStaticMapsUrl(results.Select(p => p.Location), "680", "530");
+
+            return Json(viewModel);
         }
 
         public async Task<IActionResult> UpdateSearch(VacancySearchViewModel viewModel)
