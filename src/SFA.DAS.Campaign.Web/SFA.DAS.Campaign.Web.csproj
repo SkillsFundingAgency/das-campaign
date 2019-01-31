@@ -6,30 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\FindApprenticeship\EnterPostcode.cshtml" />
-    <Content Remove="Views\HowItWorks\Index.cshtml" />
+    <Compile Remove="wwwroot\images\**" />
+    <Content Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
+    <None Remove="wwwroot\images\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Scripts\Controller.ts" />
-    <None Remove="Scripts\Lib\Google.js" />
-    <None Remove="Scripts\Lib\Google.js.map" />
-    <None Remove="Scripts\Lib\Template - Copy.js" />
-    <None Remove="Scripts\Lib\Template - Copy.js.map" />
-    <None Remove="Scripts\Lib\Template.ts" />
-    <None Remove="Scripts\mapController.ts" />
-    <None Remove="Scripts\Models\IMarker.ts" />
-    <None Remove="Scripts\Models\IMarkerData.ts" />
-    <None Remove="Scripts\SearchResults.ts" />
-    <None Remove="Scripts\Shims\Google - Copy.js" />
-    <None Remove="Scripts\Shims\Google - Copy.js.map" />
-    <None Remove="Scripts\Shims\Google.js" />
-    <None Remove="Scripts\Shims\Google.js.map" />
-    <None Remove="Scripts\Shims\Google.ts" />
-    <None Remove="Scripts\Shims\InfoBox.ts" />
-    <None Remove="Scripts\Shims\MarkerClusterer.ts" />
-    <None Remove="Scripts\Shims\Shim.js" />
-    <None Remove="Scripts\Shims\Shim.ts" />
+    <Content Remove="Views\FindApprenticeship\EnterPostcode.cshtml" />
+    <Content Remove="Views\HowItWorks\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,7 +32,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Pages\" />
-    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\json\" />
   </ItemGroup>
 
@@ -159,80 +143,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Scripts\Lib\Interfaces.ts">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Lib\Template.js">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Lib\Template.js.map">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Lib\Template.ts">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Shims\InfoBox.js">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Shims\InfoBox.js.map">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Shims\InfoBox.ts">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Shims\MarkerClusterer.js">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Shims\MarkerClusterer.ts">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Shims\Google.js">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Shims\Google.js.map">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Shims\Google.ts">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Shims\Shim.js">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Scripts\Shims\Shim.ts">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\Controller\Controller.ts" />
-    <TypeScriptCompile Include="Scripts\Controller\mapController.ts" />
-    <TypeScriptCompile Include="Scripts\Models\IMarker.ts" />
-    <TypeScriptCompile Include="Scripts\Models\IMarkerData.ts" />
-    <TypeScriptCompile Include="Scripts\SearchResults.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\Shared\_MapsInfobox.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Scripts\Controller\Controller.js">
-      <DependentUpon>Controller.ts</DependentUpon>
-    </None>
-    <None Update="Scripts\Controller.js.map">
-      <DependentUpon>Controller.js</DependentUpon>
-    </None>
-    <None Update="Scripts\Models\IMarker.js">
-      <DependentUpon>IMarker.ts</DependentUpon>
-    </None>
-    <None Update="Scripts\Models\IMarker.js.map">
-      <DependentUpon>IMarker.js</DependentUpon>
-    </None>
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
