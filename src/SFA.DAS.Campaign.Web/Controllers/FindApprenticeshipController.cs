@@ -35,6 +35,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             var results = await _vacanciesService.GetByPostcode(postcode, Convert.ToInt32(distance));
 
+            viewModel.TotalResults = results.Count;
             viewModel.Results = results.Where(w => w.DistanceInMiles <= distance).Take(10).ToList();
             viewModel.Distance = distance;
             viewModel.Postcode = postcode;

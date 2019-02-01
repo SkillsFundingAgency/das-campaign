@@ -7,7 +7,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 {
     public class SidebarViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(SidebarType? type, SidebarHeaderType? headerType, int activeIndex, string imgLocation, GoogleMapsViewModel googleMapsOptions)
+        public async Task<IViewComponentResult> InvokeAsync(SidebarType? type, SidebarHeaderType? headerType, int activeIndex, string imgLocation, GoogleMapsViewModel googleMapsOptions, object formOptions)
         {
             string view;
             string title;
@@ -49,12 +49,18 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                 headerType = SidebarHeaderType.Image;
             }
 
-            if (headerType == SidebarHeaderType.GoogleMap)
+            switch (headerType)
             {
-                return View("DefaultNew", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, googleMapsOptions));
+                case SidebarHeaderType.GoogleMap:
+                    return View("mapsSidebar", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, googleMapsOptions));
+                case SidebarHeaderType.Form:
+                    return View("FormSidebar", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, formModel: formOptions));
+
+                default:
+                    return View("Default", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, googleMapsOptions));
 
             }
-            return View("Default", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, googleMapsOptions));
+
         }
     }
 

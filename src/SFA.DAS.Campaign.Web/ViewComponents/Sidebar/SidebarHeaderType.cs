@@ -5,5 +5,6 @@
         None = 0,
         Image = 1,
         GoogleMap = 2,
+        Form = 3
     }
 }

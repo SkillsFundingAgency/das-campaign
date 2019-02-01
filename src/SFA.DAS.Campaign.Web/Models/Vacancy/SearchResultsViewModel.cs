@@ -13,6 +13,7 @@ namespace SFA.DAS.Campaign.Web.Models
         {
             Location = new Location();
         }
+        public int TotalResults { get; set; }
         public IList<VacancySearchResultItem> Results { get; set; }
         public string JsonResults { get; set; }
         public Location Location { get; set; }
