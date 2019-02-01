@@ -1,0 +1,7 @@
+﻿@model SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps.GoogleMapsViewModel
+<div id="mapDev" style="height:680px;" data-module="googleMaps" data-markerdataurl="@Model.MarkerDataUrl" data-lat="@Model.Latitude" data-lon="@Model.Longitude" data-distance="@Model.Distance">
+    <img class="no-js sidebar__hero-image" src="@Model.StaticMapUrl" />
+
+    @Html.RenderPartialAsync("_MapsInfobox");
+
+</div>

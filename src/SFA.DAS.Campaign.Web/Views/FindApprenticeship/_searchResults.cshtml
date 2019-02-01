@@ -1,0 +1,57 @@
+﻿@using SFA.DAS.Campaign.Web.Helpers;
+@model SFA.DAS.Campaign.Models.Vacancy.VacancySearchResultItem
+
+<li class="search-result" data-id="@Model.VacancyReference" data-lat="@Model.Location.Latitude" data-lon="@Model.Location.Longitude">
+    <h2 class="heading-m">
+        <a href="@Model.VacancyUrl" target="_blank">@Model.TrainingTitle</a>
+    </h2>
+    <ul class="list  search-results__list-secondary">
+        <li>@Model.Title</li>
+        <li>(Added @Model.PostedDate.ToFriendlyDaysAgo())
+        </li>
+    </ul>
+    <p>
+        @Model.ShortDescription
+    </p>
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+
+            <ul class="list">
+
+                <li>
+                    <span class="bold">Employer:</span> @Model.EmployerName <br />
+
+                </li>
+                <li>
+                    <span class="bold">Distance:</span> <span id="distance-value">@Model.DistanceInMiles.ToString("N")</span> miles <br />
+
+
+                </li>
+
+                <li>
+                    <span class="bold">Closing date:</span> <span id="closing-date-value" data-date="@Model.ApplicationClosingDate.ToString("d")">@Model.ApplicationClosingDate.ToString("d")</span>
+                </li>
+                <li>
+                    <span class="bold">Possible start date:</span> <span id="start-date-value">@Model.ExpectedStartDate.ToString("d")</span>
+                </li>
+                <li>
+                    <a class="search-results__external-link" href="@Model.VacancyUrl"
+                       target="_blank">
+                        <img class="search-results__inline-icon" src="/legacy/images/gov.uk_logotype_crown.svg" />
+                        View more details on gov.uk site
+                    </a>
+                </li>
+
+            </ul>
+
+
+        </div>
+        <div id="map-@Model.VacancyReference" class="grid-column-one-half">
+            @{ await Html.RenderPartialAsync("_searchResultsMap", Model.StaticMapUrl); }
+
+        </div>
+
+    </div>
+
+
+</li>

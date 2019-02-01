@@ -1,13 +1,18 @@
-﻿<section class="grid-row cta-faa">
-    <div class="grid-column-two-thirds">
+﻿@model SearchResultsViewModel
+<section class="grid-row cta-faa">
+    <div class="grid-column-one-half">
         <div class="cta-faa__content">
             <h2 class="heading-s cta-faa__heading">Find an apprenticeship</h2>
             <p>
-             Search for the right apprenticeship for you! Blaze your own trail and become an apprentice.   
+                Search for the right apprenticeship for you! Blaze your own trail and become an apprentice.
             </p>
         </div>
     </div>
-    <div class="grid-column-one-third cta-faa__action">
-        <a id="link-faa-cta" href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" class="button button--shadow button--sparks" target="_blank" rel="external"> Start looking <span class="vh">for an apprenticeship in the @ViewBag.Title industry</span></a>
+    <div class="grid-column-one-half cta-faa__action">
+        <form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
+            <input type="text" class="input input__postcode" asp-for="Postcode" />
+            <input type="hidden" asp-for="Distance" value="5"/>
+            <button class="button button--sparks" type="submit">Search</button>
+        </form>
     </div>
 </section>

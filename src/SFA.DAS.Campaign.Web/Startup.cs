@@ -1,15 +1,29 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
+using SFA.DAS.Campaign.Application.Core;
+using SFA.DAS.Campaign.Application.Geocode;
+using SFA.DAS.Campaign.Application.Vacancies;
 using SFA.DAS.Campaign.Application.DataCollection.Services;
 using SFA.DAS.Campaign.Application.DataCollection.Validation;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
+using SFA.DAS.Campaign.Domain.Configuration;
+using SFA.DAS.Campaign.Domain.Configuration.Models;
+using SFA.DAS.Campaign.Domain.Geocode;
+using SFA.DAS.Campaign.Domain.Vacancies;
+using VacanciesApi;
 using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Queue;
@@ -55,6 +69,13 @@ namespace SFA.DAS.Campaign.Web
 
             services.Configure<CampaignConfiguration>(Configuration);
 
+            var postcodeConfig = new PostcodeApiConfiguration();
+            Configuration.Bind("Postcode", postcodeConfig);
+
+            var mappingConfig = new MappingConfiguration();
+            Configuration.Bind("Mapping", mappingConfig);
+
+
             services.AddMiniProfiler(options =>
             {
                 // ALL of this is optional. You can simply call .AddMiniProfiler() for all defaults
@@ -87,18 +108,30 @@ namespace SFA.DAS.Campaign.Web
                 // Optionally disable "Connection Open()", "Connection Close()" (and async variants).
                 //options.TrackConnectionOpenClose = false;);
             });
-
+            services.AddSingleton<IPostcodeApiConfiguration>(postcodeConfig);
+            services.AddSingleton<IMappingConfiguration>(mappingConfig);
             services.AddTransient<IApprenticeshipProgrammeApiClient>(client => new ApprenticeshipProgrammeApiClient(Configuration["ApprenticeshipBaseUrl"]));
             services.AddTransient<IStandardsMapper, StandardsMapper>();
             services.AddTransient<IStandardsService, StandardsService>();
+            services.AddTransient<IVacanciesMapper, VacanciesMapper>();
+            services.AddTransient<IVacanciesService, VacanciesService>();
+
+            var vacanciesHttpClient = new HttpClient(){BaseAddress = new Uri("https://apis.apprenticeships.sfa.bis.gov.uk/vacancies") };
+            vacanciesHttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "a38ac93176f04689a7d6cb3b53e60033");
+
+            services.AddTransient<ILivevacanciesAPI>(client => new LivevacanciesAPI(vacanciesHttpClient,false));
+            services.AddTransient<IGeocodeService, GeocodeService>();
+            services.AddTransient<IRetryWebRequests, WebRequestRetryService>();
+            services.AddTransient<IMappingService, GoogleMappingService>();
             services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
             services.AddTransient<IUserDataCollection, UserDataCollection>();
             services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+   
+        services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

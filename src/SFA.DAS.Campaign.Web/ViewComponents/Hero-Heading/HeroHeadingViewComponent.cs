@@ -2,13 +2,14 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
-using SFA.DAS.Campaign.Web.ViewComponents.Modal;
+using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps;
+using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading;
 
 namespace SFA.DAS.Campaign.Web.ViewComponents
 {
     public class HeroHeadingViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(HeroHeadingType? type, string caption, string classes, IHtmlContent content)
+        public async Task<IViewComponentResult> InvokeAsync(HeroHeadingType? type, string caption, string classes, IHtmlContent content, GoogleMapsViewModel googleMapsOptions)
         {
             if (type == null)
             {
@@ -27,7 +28,14 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                 }
             }
 
-            return View("Default", new HeroHeadingViewModel((HeroHeadingType)type, caption, classes, content));
+            var view = "Default";
+            if (type == HeroHeadingType.FindApprenticeship)
+            {
+                type = HeroHeadingType.Apprentice;
+                view = "GoogleMaps";
+            }
+
+            return View(view, new HeroHeadingViewModel((HeroHeadingType)type, caption, classes, content, googleMapsOptions));
         }
     }
 
