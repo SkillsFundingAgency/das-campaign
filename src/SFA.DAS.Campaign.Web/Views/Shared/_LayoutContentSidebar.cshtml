@@ -25,7 +25,15 @@
                 </div>
             </div>
             <div class="grid-column-one-third">
-                @await Component.InvokeAsync("Sidebar", new { imgLocation = "/campaign/images/sidebar/" + ViewBag.PageId + ".jpg" })
+                @if (IsSectionDefined("Sidebar"))
+                {
+                    @RenderSection("Sidebar", required: false)
+                }
+                else
+                {
+                    @await Component.InvokeAsync("Sidebar", new { imgLocation = "/campaign/images/sidebar/" + ViewBag.PageId + ".jpg" })
+                }
+
             </div>
         </div>
         <div class="grid-row">
@@ -35,3 +43,7 @@
 </main>
 
 @RenderSection("Resources", required: false)
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

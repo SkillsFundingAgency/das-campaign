@@ -1,0 +1,75 @@
+﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
+@using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
+@using SFA.DAS.Campaign.Web.ViewComponents.Sidebar
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model SearchResultsViewModel
+
+@{
+    ViewBag.Title = "Find an apprenticeship";
+    ViewBag.PageID = "apprentice-find-an-apprentice";
+    ViewBag.Section = "apprentice";
+    ViewBag.MetaTitle = "Find an apprenticeship";
+    ViewBag.MetaDesc = "";
+    Layout = "_LayoutContentSidebar";
+}
+
+<div class="grid-row  search-results">
+
+    <div class="grid-column-full-width">
+        <h1 class="heading-l">Your top 10 results...</h1>
+        <p>
+            We’ve found <span class="bold">@Model.TotalResults</span> apprenticeships in your selected area, below are
+            the top 10.
+        </p>
+        <ol id="vacancy-search-results" class="search-results-list">
+
+            @foreach (var vacancySearchResultItem in Model.Results)
+            {
+
+                await Html.RenderPartialAsync("_searchResults", vacancySearchResultItem);
+
+            }
+
+        </ol>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script defer src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvjlbjx6_-sz4utE2SVVNwc63PlUM_MLE&callback=DASFrontend.initMaps"
+            type="text/javascript"></script>
+    <script defer src="/campaign/js/infobox.js"></script>
+
+
+}
+
+@section Sidebar
+    {
+    @await Component.InvokeAsync("Sidebar", new { headerType = SidebarHeaderType.Form, formOptions = new { type = FormType.faaUpdateSearch, findApprenticeshipSearchModel = new FindApprenticeshipSearchModel() { Distance = Model.Distance, Postcode = Model.Postcode } } })
+}
+
+
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeship, googleMapsOptions = new GoogleMapsViewModel(Model.StaticMapUrl) { Latitude = Model.Location.Latitude, Longitude = Model.Location.Longitude, Distance = Model.Distance, Postcode = Model.Postcode } })
+}
+
+@section Resources {
+    <section class="section section--slant section--apprentice ">
+        <div class="grid-row">
+            <div class="grid-column-one-half">
+                <h3 class="heading-l">view all my results on <img class="section__faa-logo-header-inline" src="/legacy/images/gov.uk_logotype_crown_white.svg" /> gov.uk</h3>
+                <p>We have provided you with the top 10 search results in your area, to see all your results you need to visit the Find an Apprenticeship website</p>
+                <div class="section__faa-actions">
+
+                    <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="button button--shadow button--sparks" rel="external" target="_blank">visit gov.uk to see my results</a>
+                </div>
+            </div>
+            <div class="grid-column-one-half">
+                <img class="section__faa_img"src="/campaign/images/FAA-Screenshot.JPG" />
+            </div>
+        </div>
+    </section>
+}
