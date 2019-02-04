@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="grid-column-one-half">
-                <img src="/campaign/images/industries/@(ViewBag.PageID).jpg" class="hero-heading__image" />
+                <img src="/campaign/images/industries/@(ViewBag.PageID).jpg" class="hero-heading__image" alt="" />
             </div>
         </div>
     </div>
@@ -26,4 +26,5 @@
             </div>
         </div>
     </div>
+    @RenderSection("QuoteHero", required: false)
 </main>

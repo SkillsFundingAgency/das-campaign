@@ -19,11 +19,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-        [Route("find-an-apprenticeship")]
-        public IActionResult FindAnApprenticeship()
-        {
-            return View();
-        }
         [Route("application")]
         public IActionResult Application()
         {
