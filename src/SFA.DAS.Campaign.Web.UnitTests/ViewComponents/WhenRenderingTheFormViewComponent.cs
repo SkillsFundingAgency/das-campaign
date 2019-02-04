@@ -24,7 +24,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         {
 
             //Act
-            var actual = await _sut.InvokeAsync(FormType.RegisterInterest,null,null);
+            var actual = await _sut.InvokeAsync(FormType.RegisterInterest,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -38,7 +38,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         {
 
             //Act
-            var actual = await _sut.InvokeAsync(FormType.RegisterInterest,null,null);
+            var actual = await _sut.InvokeAsync(FormType.RegisterInterest,null);
 
             //Assert
             Assert.IsNotNull(actual);

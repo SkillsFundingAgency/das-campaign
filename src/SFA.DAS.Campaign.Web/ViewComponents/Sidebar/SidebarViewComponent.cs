@@ -1,20 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Threading.Tasks;
-using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
+using SFA.DAS.Campaign.Web.ViewComponents.Modal;
 
 namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 {
     public class SidebarViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(SidebarType? type, SidebarHeaderType? headerType, int activeIndex, string imgLocation, GoogleMapsViewModel googleMapsOptions, object formOptions)
+        public async Task<IViewComponentResult> InvokeAsync(SidebarType? type, int activeIndex, string imgLocation)
         {
             string view;
             string title;
 
             if (type == null)
             {
-
+                
                 switch (ViewContext.RouteData.Values["Controller"])
                 {
                     case "Apprentice":
@@ -22,9 +23,6 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                         break;
                     case "Employer":
                         type = SidebarType.Employer;
-                        break;
-                    case "FindApprenticeship":
-                        type = SidebarType.Apprentice;
                         break;
                 }
             }
@@ -43,26 +41,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
-
-            if (headerType == null)
-            {
-                headerType = SidebarHeaderType.Image;
-            }
-
-            switch (headerType)
-            {
-                case SidebarHeaderType.GoogleMap:
-                    return View("mapsSidebar", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, googleMapsOptions));
-                case SidebarHeaderType.Form:
-                    return View("FormSidebar", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, formModel: formOptions));
-
-                default:
-                    return View("Default", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, googleMapsOptions));
-
-            }
-
+            return View("Default", new SidebarViewModel((SidebarType)type, view, activeIndex, imgLocation));
         }
     }
-
+    
 
 }
