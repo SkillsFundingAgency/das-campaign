@@ -10,7 +10,7 @@
     </div>
     <div class="grid-column-one-half cta-faa__action">
         <form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
-            <input type="text" class="input input__postcode" asp-for="Postcode" />
+            <input type="text" class="input input__postcode" asp-for="Postcode" placeholder="Enter a postcode" />
             <input type="hidden" asp-for="Distance" value="5"/>
             <button class="button button--sparks" type="submit">Search</button>
         </form>
