@@ -21,21 +21,16 @@ namespace SFA.DAS.Campaign.Web
     {
         public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .AddEnvironmentVariables()
-                .Build();
-
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .AddEnvironmentVariables()
                 .AddAzureTableStorageConfiguration(
-                    builder["ConfigurationStorageConnectionString"],
-                    builder["Environment"],
-                    builder["Version"]
+                    configuration["ConfigurationStorageConnectionString"],
+                    configuration["Environment"],
+                    configuration["Version"]
                     )
+                .AddUserSecrets<Startup>()
                 .Build();
 
             Configuration = config;
