@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
 using SFA.DAS.Campaign.Web.Models.Components.Form;
 using SFA.DAS.Campaign.Web.ViewComponents;
-using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading;
+using SFA.DAS.Campaign.Web.ViewComponents.Modal;
 
 namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
 {
@@ -27,7 +27,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         {
             var headingType = HeroHeadingType.None;
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null,null,null,null);
+            var actual = await _sut.InvokeAsync(headingType, null,null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -49,7 +49,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             var headingType = HeroHeadingType.Apprentice;
             var caption = "Apprentice";
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null, null, null,null);
+            var actual = await _sut.InvokeAsync(headingType, null, null, null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -70,7 +70,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             var headingType = HeroHeadingType.Employer;
             var caption = "Employer";
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null, null, null,null);
+            var actual = await _sut.InvokeAsync(headingType, null, null, null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -91,7 +91,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             var headingType = HeroHeadingType.Employer;
             var caption = "Custom";
             //Act
-            var actual = await _sut.InvokeAsync(headingType, caption, null, null,null);
+            var actual = await _sut.InvokeAsync(headingType, caption, null, null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -112,7 +112,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             var headingType = HeroHeadingType.Apprentice;
             var caption = "Custom";
             //Act
-            var actual = await _sut.InvokeAsync(headingType, caption, null, null,null);
+            var actual = await _sut.InvokeAsync(headingType, caption, null, null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -135,7 +135,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
 
             var actualClass = "hero-heading__caption--employer " + customClasses;
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null, customClasses, null,null);
+            var actual = await _sut.InvokeAsync(headingType, null, customClasses, null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -157,7 +157,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             var customClasses = "custom-apprentice-class";
             var actualClass = "hero-heading__caption--apprentice " + customClasses;
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null, customClasses, null,null);
+            var actual = await _sut.InvokeAsync(headingType, null, customClasses, null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -178,7 +178,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             var headingType = HeroHeadingType.Employer;
             var content = customContent();
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null, null, content,null);
+            var actual = await _sut.InvokeAsync(headingType, null, null, content);
 
             //Assert
             Assert.IsNotNull(actual);

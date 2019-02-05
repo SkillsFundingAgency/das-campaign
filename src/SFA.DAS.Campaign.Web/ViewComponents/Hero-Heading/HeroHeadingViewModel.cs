@@ -2,8 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
-using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps;
-using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading;
+using SFA.DAS.Campaign.Web.ViewComponents.Modal;
 
 namespace SFA.DAS.Campaign.Web.ViewComponents
 {
@@ -11,12 +10,11 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 
     public class HeroHeadingViewModel
     {
-        public HeroHeadingViewModel(HeroHeadingType type, string caption, string classes, IHtmlContent content, GoogleMapsViewModel googleMapsViewModel)
+        public HeroHeadingViewModel(HeroHeadingType type, string caption, string classes, IHtmlContent content)
         {
             Type = type;
             Content = content;
             setDefaults();
-            GoogleMapsViewModel = googleMapsViewModel;
 
             if (!string.IsNullOrWhiteSpace(caption))
             {
@@ -36,7 +34,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
         public string Caption { get; internal set; }
 
         public string Class { get; internal set; }
-        public GoogleMapsViewModel GoogleMapsViewModel { get; }
+
         private string setDefaults()
         {
             var caption = "";
