@@ -3,8 +3,8 @@
     Layout = "_LayoutContentFull";
     ViewBag.Title = "Cookies policy";
     ViewBag.PageID = "cookies";
-    ViewBag.MetaTitle = "Cookies policy";
-    ViewBag.MetaDesc = "";
+    ViewBag.MetaTitle = "Manage cookies on this website";
+    ViewBag.MetaDesc = "Cookies are small text files that can be used by websites to make a user's experience more efficient. Use this page to set your cookie preferences.";
 }
 
 @await Component.InvokeAsync("Form", new { type = FormType.CookieSettings })
@@ -224,16 +224,16 @@
             <td class="table__cell">1P_JAR</td>
             <td class="table__cell">.gstatic.com</td>
             <td class="table__cell" rowspan="13">
-                
-                    These cookies are set via embedded youtube-videos. They
-                    register anonymous statistical data on
-                    for example how many times the video is displayed and what
-                    settings are used for playback.
-                    <br/>
-                    No sensitive data is collected unless you log in to your
-                    google account, in that case your choices are
-                    linked with your account, for example if you click “like”
-                    on a video.
+
+                These cookies are set via embedded youtube-videos. They
+                register anonymous statistical data on
+                for example how many times the video is displayed and what
+                settings are used for playback.
+                <br />
+                No sensitive data is collected unless you log in to your
+                google account, in that case your choices are
+                linked with your account, for example if you click “like”
+                on a video.
             </td>
             <td class="table__cell">1 month</td>
             <td class="table__cell">HTTP</td>
@@ -321,52 +321,60 @@
 </p>
 <table class="table">
     <thead class="table__header">
-    <tr class="table__row table__header-row">
-        <th class="table__cell">Name</th>
-        <th class="table__cell">Provider</th>
-        <th class="table__cell">Purpose</th>
-        <th class="table__cell">Expiry</th>
-        <th class="table__cell">Type</th>
-    </tr>
+        <tr class="table__row table__header-row">
+            <th class="table__cell">Name</th>
+            <th class="table__cell">Provider</th>
+            <th class="table__cell">Purpose</th>
+            <th class="table__cell">Expiry</th>
+            <th class="table__cell">Type</th>
+        </tr>
     </thead>
     <tbody class="table__body">
-    <tr class="table__row">
-        <td class="table__cell">_gcl_au</td>
-        <td class="table__cell">apprenticehips.gov.uk</td>
-        <td class="table__cell">Used by Google AdSense for experimenting with advertisement
-            efficiency across websites using their services</td>
-        <td class="table__cell">3 months</td>
-        <td class="table__cell">HTTP</td>
-    </tr>
-    <tr class="table__row">
-        <td class="table__cell">MUID</td>
-        <td class="table__cell">bat.bing.com</td>
-        <td class="table__cell"> Used by Bing to register and report the website user's
-            actions after viewing or clicking one of the advertiser's
-            ads with the purpose of measuring the efficacy of an ad and
-            to present targeted ads to the user</td>
-        <td class="table__cell">1 year</td>
-        <td class="table__cell">HTTP</td>
-    </tr>
-    <tr class="table__row">
-        <td class="table__cell">MUIDB</td>
-        <td class="table__cell">bat.bing.com</td>
-        <td class="table__cell"> Used by Bing to register and report the website user's
-            actions after viewing or clicking one of the advertiser's
-            ads with the purpose of measuring the efficacy of an ad and
-            to present targeted ads to the user</td>
-        <td class="table__cell">1 year</td>
-        <td class="table__cell">HTTP</td>
-    </tr>
-    <tr class="table__row">
-        <td class="table__cell">_fbp</td>
-        <td class="table__cell">facebook.com</td>
-        <td class="table__cell">This cookie will help deliver our advertising to people who
-            have already visited our website when they are on Facebook
-            or a digital platform powered by Facebook Advertising</td>
-        <td class="table__cell">session</td>
-        <td class="table__cell">HTTP</td>
-    </tr>
+        <tr class="table__row">
+            <td class="table__cell">_gcl_au</td>
+            <td class="table__cell">apprenticehips.gov.uk</td>
+            <td class="table__cell">
+                Used by Google AdSense for experimenting with advertisement
+                efficiency across websites using their services
+            </td>
+            <td class="table__cell">3 months</td>
+            <td class="table__cell">HTTP</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__cell">MUID</td>
+            <td class="table__cell">bat.bing.com</td>
+            <td class="table__cell">
+                Used by Bing to register and report the website user's
+                actions after viewing or clicking one of the advertiser's
+                ads with the purpose of measuring the efficacy of an ad and
+                to present targeted ads to the user
+            </td>
+            <td class="table__cell">1 year</td>
+            <td class="table__cell">HTTP</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__cell">MUIDB</td>
+            <td class="table__cell">bat.bing.com</td>
+            <td class="table__cell">
+                Used by Bing to register and report the website user's
+                actions after viewing or clicking one of the advertiser's
+                ads with the purpose of measuring the efficacy of an ad and
+                to present targeted ads to the user
+            </td>
+            <td class="table__cell">1 year</td>
+            <td class="table__cell">HTTP</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__cell">_fbp</td>
+            <td class="table__cell">facebook.com</td>
+            <td class="table__cell">
+                This cookie will help deliver our advertising to people who
+                have already visited our website when they are on Facebook
+                or a digital platform powered by Facebook Advertising
+            </td>
+            <td class="table__cell">session</td>
+            <td class="table__cell">HTTP</td>
+        </tr>
 
     </tbody>
 </table>
