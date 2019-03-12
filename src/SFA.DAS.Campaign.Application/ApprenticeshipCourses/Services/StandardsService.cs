@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ifa.Api;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
@@ -11,11 +12,13 @@ namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
     {
         private readonly IApprenticeshipProgrammeApiClient _apprenticeshipProgrammeApiClient;
         private readonly IStandardsMapper _standardsMapper;
+        private readonly IFullStandardsApi _fullStandardsApi;
 
-        public StandardsService(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper)
+        public StandardsService(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper, IFullStandardsApi fullStandardsApi)
         {
             _apprenticeshipProgrammeApiClient = apprenticeshipProgrammeApiClient;
             _standardsMapper = standardsMapper;
+            _fullStandardsApi = fullStandardsApi;
         }
 
         public async Task<List<StandardResultItem>> GetBySearchTerm(string searchTerm)
@@ -26,6 +29,16 @@ namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
                 .ToList();
 
             return result;
+        }
+
+        public async Task<List<StandardResultItem>> GetByRoute(string routeId)
+        {
+            var result = (await _fullStandardsApi.FullStandardsGetAllAsync());
+            result = result.Where(c => c.IsPublished == true & c.Route.ToLower() == routeId.ToLower()).ToList();
+
+
+            return result.Select(_standardsMapper.Map)
+                .ToList();
         }
     }
 }

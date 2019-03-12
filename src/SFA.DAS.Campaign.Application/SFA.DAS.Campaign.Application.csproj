@@ -21,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Ifa.Api">
+      <HintPath>..\..\..\Ifa\csharp-client\src\IO.Swagger\bin\Debug\Ifa.Api.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Extensions.Logging.Abstractions">
       <HintPath>..\..\..\..\..\.nuget\packages\microsoft.extensions.logging.abstractions\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
