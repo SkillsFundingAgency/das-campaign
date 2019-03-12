@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Ifa.Api.Model;
+using NUnit.Framework;
 using SFA.DAS.Apprenticeships.Api.Types;
 using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
 
@@ -15,11 +16,12 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
         }
 
         [Test]
-        public void Then_The_Values_Are_Correctly_Mapped()
+        public void And_ApprenticeshipSearchResultsItem_Then_The_Values_Are_Correctly_Mapped()
         {
             //Arrange
             var toMap = new ApprenticeshipSearchResultsItem
             {
+                StandardId = "123",
                 Title = "Test",
                 Level = 1,
                 Duration = 10
@@ -29,6 +31,29 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
             var actual = _mapper.Map(toMap);
 
             //Assert
+            Assert.AreEqual(int.Parse(toMap.StandardId),actual.Id);
+            Assert.AreEqual(toMap.Title, actual.Title);
+            Assert.AreEqual(toMap.Duration, actual.Duration);
+            Assert.AreEqual(toMap.Level, actual.Level);
+        }
+
+        [Test]
+        public void And_TempApprenticeshipStandard_Then_The_Values_Are_Correctly_Mapped()
+        {
+            //Arrange
+            var toMap = new TempApprenticeshipStandard()
+            {
+                ID = 123,
+                Title= "Test",
+                Level = 1,
+                Duration = 10
+            };
+
+            //Act
+            var actual = _mapper.Map(toMap);
+
+            //Assert
+            Assert.AreEqual(toMap.ID, actual.Id);
             Assert.AreEqual(toMap.Title, actual.Title);
             Assert.AreEqual(toMap.Duration, actual.Duration);
             Assert.AreEqual(toMap.Level, actual.Level);
