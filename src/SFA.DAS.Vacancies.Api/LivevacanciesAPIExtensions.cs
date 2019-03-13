@@ -354,12 +354,19 @@ namespace VacanciesApi
                 return operations.SearchApprenticeshipVacanciesAsync(standardLarsCodes, frameworkLarsCodes, pageSize, pageNumber, postedInLastNumberOfDays, nationwideOnly, latitude, longitude, distanceInMiles, sortBy).GetAwaiter().GetResult();
             }
 
-        public static object SearchApprenticeshipVacancies(this ILivevacanciesAPI operations, double latitude, double longitude,int pageNumber, int pageSize,
-            int distanceInMiles)
-        {
-            return operations.SearchApprenticeshipVacanciesByLocationAsync(latitude, longitude, pageNumber, pageSize,
-                distanceInMiles).GetAwaiter().GetResult();
-        }
+            public static object SearchApprenticeshipVacancies(this ILivevacanciesAPI operations, double latitude, double longitude, int pageNumber, int pageSize,
+                int distanceInMiles)
+            {
+                return operations.SearchApprenticeshipVacanciesByLocationAsync(latitude, longitude, pageNumber, pageSize,
+                    distanceInMiles).GetAwaiter().GetResult();
+            }
+
+            public static object SearchApprenticeshipVacancies(this ILivevacanciesAPI operations, double latitude, double longitude, int pageNumber, int pageSize,
+                int distanceInMiles, string standardLarsCode)
+            {
+                return operations.SearchApprenticeshipVacanciesByLocationAsync(latitude, longitude, pageNumber, pageSize,
+                    distanceInMiles, standardLarsCode).GetAwaiter().GetResult();
+            }
         /// <summary>
         /// SearchApprenticeshipVacancies
         /// </summary>

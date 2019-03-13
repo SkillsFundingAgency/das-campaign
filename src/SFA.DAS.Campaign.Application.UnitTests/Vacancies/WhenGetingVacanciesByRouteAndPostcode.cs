@@ -13,13 +13,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using SFA.DAS.Apprenticeships.Api.Types;
 using SFA.DAS.Campaign.Domain.Vacancies;
+using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
 using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
 {
     [TestFixture]
-    public class WhenGetingVacanciesByPostcode
+    public class WhenGetingVacanciesByRouteAndPostcode
     {
         private Mock<IGeocodeService> _geocodeService;
         private Mock<IMappingService> _mappingService;
@@ -30,12 +32,16 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
         private IVacanciesService sut;
 
         private string postcode = "SW1 2AA";
+        private string routeId = "1";
         private int _searchResultCount = 200;
         private CoordinatesResponse coordinatesResponse = new CoordinatesResponse()
         {
             Coordinates = new Coordinates() { Lat = 50, Lon = 50 },
             ResponseCode = "200"
         };
+
+        private List<StandardResultItem> _standards;
+        private string _standardIds;
 
         [SetUp]
         public void Arrange()
@@ -46,15 +52,31 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
             _standardsService = new Mock<IStandardsService>();
             _vacanciesMapper = new VacanciesMapper();
 
+            _standards = new List<StandardResultItem>()
+            {
+                new StandardResultItem()
+                {
+                    Id = 1,
+                    Title = "Standard 1"
+                },
+                new StandardResultItem(){
+                    Id = 2,
+                    Title = "Standard 2"
+                }
+                
+            };
+
+            _standardIds = string.Join(',', _standards.Select(s => s.Id));
 
             _geocodeService.Setup(s => s.GetFromPostCode(It.IsAny<string>())).ReturnsAsync(coordinatesResponse);
 
 
             _vacanciesApi.Setup(s => s.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
-                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(mockSearchResults());
+                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>())).ReturnsAsync(mockSearchResults());
 
+            _standardsService.Setup(s => s.GetByRoute(routeId)).ReturnsAsync(_standards);
 
-            sut = new VacanciesService(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object,_standardsService.Object);
+            sut = new VacanciesService(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object);
 
         }
 
@@ -62,7 +84,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
         public void Then_Coordinates_Are_Retrieved_For_Postcode_By_GeocodeService()
         {
 
-            var results = sut.GetByPostcode(postcode, 10);
+            var results = sut.GetByRoute("1",postcode, 10);
             
             _geocodeService.Verify(s => s.GetFromPostCode(postcode), Times.Once);
 
@@ -73,36 +95,32 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
         {
             _searchResultCount = 200;
 
-            var results = sut.GetByPostcode(postcode, 20);
+            var results = sut.GetByRoute("1", postcode, 10);
 
             _vacanciesApi.Verify(v => v.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
-                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()),Times.Once());
+                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(),It.IsAny<string>()),Times.Once());
         }
-
-
-        //[Test]
-        //public void And_300_Results_Then_Vacancies_Api_Is_Called_Twice_Filtered_On_Postcode_And_Distance()
-        //{
-        //    _searchResultCount = 300;
-
-        //    _vacanciesApi.Setup(s => s.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
-        //        It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(mockSearchResults());
-
-        //    var results = sut.GetByPostcode(postcode, 20);
-
-        //    _vacanciesApi.Verify(v => v.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
-        //        It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>()), Times.Exactly(2));
-
-        //}
+       
 
         [Test]
         public async Task Then_Only_Standards_Returned()
          {
             _searchResultCount = 200;
 
-            var results = await sut.GetByPostcode(postcode, 20);
+            var results = await sut.GetByRoute("1",postcode, 20);
 
             Assert.AreEqual(results.Count,100);
+        }
+
+        [Test]
+        public async Task Then_Only_Standards_With_Expected_Route_Returned()
+        {
+            _searchResultCount = 200;
+
+            var results = await sut.GetByRoute("1", postcode, 10);
+
+            _vacanciesApi.Verify(v => v.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
+                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.Is<string>(s => s.Equals(_standardIds))), Times.Once());
         }
 
 

@@ -7,5 +7,6 @@ namespace SFA.DAS.Campaign.Domain.ApprenticeshipCourses
     public interface IStandardsService
     {
         Task<List<StandardResultItem>> GetBySearchTerm(string searchTerm);
+        Task<List<StandardResultItem>> GetByRoute(string routeId);
     }
 }

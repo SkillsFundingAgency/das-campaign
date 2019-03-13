@@ -20,13 +20,16 @@ namespace SFA.DAS.Campaign.Application.Vacancies
         private readonly IVacanciesMapper _vacanciesMapper;
         private readonly IGeocodeService _geocodeService;
         private readonly IMappingService _mappingService;
+        private readonly IStandardsService _standardsService;
 
-        public VacanciesService(ILivevacanciesAPI vacanciesApi, IVacanciesMapper vacanciesMapper, IGeocodeService geocodeService, IMappingService mappingService)
+        public VacanciesService(ILivevacanciesAPI vacanciesApi, IVacanciesMapper vacanciesMapper,
+            IGeocodeService geocodeService, IMappingService mappingService,IStandardsService standardsService)
         {
             _vacanciesApi = vacanciesApi;
             _vacanciesMapper = vacanciesMapper;
             _geocodeService = geocodeService;
             _mappingService = mappingService;
+           _standardsService = standardsService;
         }
 
         public async Task<IList<VacancySearchResultItem>> GetByPostcode(string postcode, int distance)
@@ -35,7 +38,7 @@ namespace SFA.DAS.Campaign.Application.Vacancies
             var coordinates = await _geocodeService.GetFromPostCode(postcode);
 
             int pageNumber = 1;
-            var vacancyApiList = GetVacancyList(distance, coordinates, 1);
+            var vacancyApiList = GetVacancyList(distance, coordinates, pageNumber);
 
 
             while (vacancyApiList.Count == 250 && vacancyApiList.Max(s => s.DistanceInMiles < distance))
@@ -51,25 +54,71 @@ namespace SFA.DAS.Campaign.Application.Vacancies
                 }
 
             }
+
             var vacancyList = vacancyApiList.Where(w => w.TrainingType == TrainingType.Standard)
                 .Select(_vacanciesMapper.Map)
                 .ToList();
 
-            Parallel.ForEach(vacancyList, vacancy =>
-                {
-                    vacancy.StaticMapUrl = _mappingService.GetStaticMapsUrl(vacancy.Location);
-                });
+            Parallel.ForEach(vacancyList,
+                vacancy => { vacancy.StaticMapUrl = _mappingService.GetStaticMapsUrl(vacancy.Location); });
 
             return vacancyList;
         }
 
+        public async Task<IList<VacancySearchResultItem>> GetByRoute(string routeId, string postcode, int distance)
+        {
+            var coordinates = await _geocodeService.GetFromPostCode(postcode);
+
+            int pageNumber = 1;
+            var vacancyApiList = await GetVacancyListByRoute(routeId,distance, coordinates, pageNumber);
+
+
+            while (vacancyApiList.Count == 250 && vacancyApiList.Max(s => s.DistanceInMiles < distance))
+            {
+                pageNumber++;
+
+                var list = await GetVacancyListByRoute(routeId,distance, coordinates, pageNumber);
+                vacancyApiList.AddRange(list);
+
+                if (list.Count < 250)
+                {
+                    break;
+                }
+
+            }
+
+            var vacancyList = vacancyApiList.Where(w => w.TrainingType == TrainingType.Standard)
+                .Select(_vacanciesMapper.Map)
+                .ToList();
+
+            Parallel.ForEach(vacancyList,
+                vacancy => { vacancy.StaticMapUrl = _mappingService.GetStaticMapsUrl(vacancy.Location); });
+
+            return vacancyList;
+        }
+
+
         private List<Result> GetVacancyList(int distance, CoordinatesResponse coordinates, int pageNumber = 1)
         {
-            var result = (HttpOperationResponse<object>)_vacanciesApi.SearchApprenticeshipVacancies(
-                coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber,250, distance);
+            var result = (HttpOperationResponse<object>) _vacanciesApi.SearchApprenticeshipVacancies(
+                coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber, 250, distance);
 
 
-            var vacancyList = ((VacancySearchResults)(result).Body).Results.ToList();
+            var vacancyList = ((VacancySearchResults) (result).Body).Results.ToList();
+            return vacancyList;
+        }
+
+        private async Task<List<Result>> GetVacancyListByRoute(string routeId, int distance,
+            CoordinatesResponse coordinates, int pageNumber = 1)
+        {
+            var standards = await _standardsService.GetByRoute(routeId);
+
+            var standardIds = string.Join(',', standards.Select(s => s.Id.ToString()));
+
+            var result = (HttpOperationResponse<object>) _vacanciesApi.SearchApprenticeshipVacancies(
+                coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber, 250, distance, standardIds);
+
+            var vacancyList = ((VacancySearchResults) (result).Body).Results.ToList();
             return vacancyList;
         }
     }
