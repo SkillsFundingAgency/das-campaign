@@ -1,6 +1,6 @@
-﻿@model SearchResultsViewModel
+﻿@model FindApprenticeshipSearchModel
 <section class="grid-row cta-faa">
-    <div class="grid-column-one-half">
+    <div class="grid-column-one-third">
         <div class="cta-faa__content">
             <h2 class="heading-s cta-faa__heading">Find an apprenticeship</h2>
             <p>
@@ -8,11 +8,71 @@
             </p>
         </div>
     </div>
-    <div class="grid-column-one-half cta-faa__action">
+    <div class="grid-column-two-thirds cta-faa__action">
         <form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
-            <input type="text" class="input input__postcode" asp-for="Postcode" placeholder="Enter a postcode" />
-            <input type="hidden" asp-for="Distance" value="5"/>
-            <button class="button button--sparks" type="submit">Search</button>
+
+            @if (ViewBag.Route == null)
+            {
+                <div class="grid-row">
+                    <div class="grid-column-full">
+                        <select class="input" asp-for="Route" data-val="true" data-val-required="The interest field is required."
+                                id="Route" name="Route">
+                            <option selected disabled hidden>Select interest</option>
+                            <option value="Agriculture-environmental-and-animal-care">Agriculture, environmental and animal care</option>
+                            <option value="Business-and-administration">Business and administration</option>
+                            <option value="Care-services">Care services </option>
+                            <option value="Catering-and-hospitality">Catering and hospitality</option>
+                            <option value="Construction">Construction</option>
+                            <option value="Creative-and-design">Creative and design</option>
+                            <option value="Digital">Digital</option>
+                            <option value="Education-and-childcare">Education and childcare</option>
+                            <option value="Engineering-and-manufacturing">Engineering and manufacturing</option>
+                            <option value="Hair-and-beauty">Hair and beauty</option>
+                            <option value="Health-and-science">Health and science</option>
+                            <option value="Legal-finance-and-accounting">Legal, finance and accounting</option>
+                            <option value="Protective-services">Protective services</option>
+                            <option value="Sales-marketing-and-procurement">Sales, marketing and procurement</option>
+                            <option value="Transport-and-logistics">Transport and logistics</option>
+                        </select>
+                        <p><span asp-validation-for="Route" class="text-danger"></span></p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <input type="hidden" asp-for="Route" value="@ViewBag.Route" />
+            }
+
+            <div class="grid-row">
+                <div class="grid-column-one-half">
+                    <div class="form-group">
+                        <input type="text" class="input" asp-for="Postcode" placeholder="Enter a postcode" />
+                        <p> <span asp-validation-for="Postcode" class="text-danger"></span></p>
+                    </div>
+
+                </div>
+                <div class="grid-column-one-half">
+                    <div class="form-group">
+                        <input type="hidden" asp-for="Distance" value="5" />
+                        <select class="input" asp-for="Distance" data-val="true" data-val-required="The Distance field is required."
+                                id="Distance" name="Distance">
+                            <option value="2">2 miles</option>
+                            <option value="5" selected="selected">5 miles</option>
+                            <option value="10">10 miles</option>
+                            <option value="15">15 miles</option>
+                            <option value="20">20 miles</option>
+                            <option value="30">30 miles</option>
+                            <option value="40">40 miles</option>
+                        </select>
+                        <p><span asp-validation-for="Distance" class="text-danger"></span></p>
+                        <div class="form-group grid-column--pull-right">
+                            <button class="button button--sparks" type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </form>
     </div>
 </section>
