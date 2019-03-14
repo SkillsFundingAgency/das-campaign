@@ -19,7 +19,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
             Content = content;
             setDefaults();
             GoogleMapsViewModel = googleMapsViewModel;
-            FaaSearchResultsViewModel = new VacancySearchViewModel();
+            FaaSearchResultsViewModel = new FindApprenticeshipSearchModel();
 
             if (!string.IsNullOrWhiteSpace(caption))
             {
@@ -40,7 +40,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 
         public string Class { get; internal set; }
         public GoogleMapsViewModel GoogleMapsViewModel { get; }
-        public VacancySearchViewModel FaaSearchResultsViewModel { get; }
+        public FindApprenticeshipSearchModel FaaSearchResultsViewModel { get; }
         private string setDefaults()
         {
             var caption = "";

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.Geocode;
@@ -42,10 +43,15 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return Json(viewModel);
         }
 
-        public async Task<IActionResult> UpdateSearch(VacancySearchViewModel viewModel)
+        public async Task<IActionResult> UpdateSearch(FindApprenticeshipSearchModel viewModel)
         {
-            return RedirectToAction("SearchResults",
-                new {route = viewModel.Route,postcode = viewModel.Postcode, distance = viewModel.Distance});
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("SearchResults",
+                    new { route = viewModel.Route, postcode = viewModel.Postcode, distance = viewModel.Distance });
+            }
+
+           return RedirectToAction("FindAnApprenticeship", "Apprentice");
         }
 
         private async Task<SearchResultsViewModel> GetSearchResults(string route, string postcode, int distance)

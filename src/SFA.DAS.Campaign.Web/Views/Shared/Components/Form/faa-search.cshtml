@@ -1,4 +1,4 @@
-﻿@model SFA.DAS.Campaign.Web.Models.Vacancy.VacancySearchViewModel
+﻿@model SFA.DAS.Campaign.Web.Models.FindApprenticeshipSearchModel
 <section class="grid-row">
     <div class="grid-column-two-thirds">
         <form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
@@ -23,11 +23,13 @@
                         <option value="Sales-marketing-and-procurement">Sales, marketing and procurement</option>
                         <option value="Transport-and-logistics">Transport and logistics</option>
                     </select>
+                    <p><span asp-validation-for="Route" class="text-danger"></span></p>
                 </div>
             </div>
             <div class="grid-row">
                 <div class="grid-column-one-half">
                     <input type="text" class="input input__postcode" asp-for="Postcode" placeholder="Enter a postcode" name="Postcode"/>
+                   <p> <span asp-validation-for="Postcode" class="text-danger"></span></p>
                 </div>
                 <div class="grid-column-one-half">
                     <select class="input" asp-for="Distance" data-val="true" data-val-required="The Distance field is required."
@@ -40,12 +42,13 @@
                         <option value="30">30 miles</option>
                         <option value="40">40 miles</option>
                     </select>
+                    <p><span asp-validation-for="Distance" class="text-danger"></span></p>
                 </div>
                 <div class="grid-column-full">
                     <button class="button button-apprentice" type="submit">Search</button>
-
                 </div>
             </div>
         </form>
     </div>
 </section>
+

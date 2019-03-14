@@ -7,8 +7,8 @@
                 <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
             </div>
 
-            <partial name="./Components/Form/faa-search" for="FaaSearchResultsViewModel" />
 
+            @await Html.PartialAsync("./Components/Form/faa-search", Model.FaaSearchResultsViewModel)
         </div>
     </div>
 </div>

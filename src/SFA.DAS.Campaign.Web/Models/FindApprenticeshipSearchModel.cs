@@ -11,10 +11,14 @@ namespace SFA.DAS.Campaign.Web.Models
     {
         [Required]
         [DisplayName("Postcode")]
+
         public string Postcode { get; set; }
         [Required]
         [DisplayName("Distance")]
         public int Distance { get; set; }
+        [Required]
+        [DisplayName("Interest")]
+        public string Route { get; set; }
 
     }
 }
