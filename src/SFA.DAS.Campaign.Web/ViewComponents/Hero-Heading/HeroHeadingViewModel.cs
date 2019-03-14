@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
+using SFA.DAS.Campaign.Web.Models;
+using SFA.DAS.Campaign.Web.Models.Vacancy;
 using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps;
 using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading;
 
@@ -17,6 +19,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
             Content = content;
             setDefaults();
             GoogleMapsViewModel = googleMapsViewModel;
+            FaaSearchResultsViewModel = new VacancySearchViewModel();
 
             if (!string.IsNullOrWhiteSpace(caption))
             {
@@ -37,6 +40,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 
         public string Class { get; internal set; }
         public GoogleMapsViewModel GoogleMapsViewModel { get; }
+        public VacancySearchViewModel FaaSearchResultsViewModel { get; }
         private string setDefaults()
         {
             var caption = "";

@@ -29,10 +29,31 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
             }
 
             var view = "Default";
-            if (type == HeroHeadingType.FindApprenticeship)
+
+            switch (type)
             {
-                type = HeroHeadingType.Apprentice;
-                view = "GoogleMaps";
+                case HeroHeadingType.None:
+                    break;
+                case HeroHeadingType.Apprentice:
+                    break;
+                case HeroHeadingType.Employer:
+                    break;
+                case HeroHeadingType.FindApprenticeshipResults:
+                    type = HeroHeadingType.Apprentice;
+                    view = "GoogleMaps";
+                    break;
+                case HeroHeadingType.FindApprenticeship:
+                    type = HeroHeadingType.Apprentice;
+                    view = "FAA";
+                    break;
+                case null:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+            if (type == HeroHeadingType.FindApprenticeshipResults)
+            {
+               
             }
 
             return View(view, new HeroHeadingViewModel((HeroHeadingType)type, caption, classes, content, googleMapsOptions));

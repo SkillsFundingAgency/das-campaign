@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Ifa.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -110,6 +111,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IStandardsService, StandardsService>();
             services.AddTransient<IVacanciesMapper, VacanciesMapper>();
             services.AddTransient<IVacanciesService, VacanciesService>();
+            services.AddTransient<IFullStandardsApi, FullStandardsApi>();
 
             var vacanciesHttpClient = new HttpClient(){BaseAddress = new Uri("https://apis.apprenticeships.sfa.bis.gov.uk/vacancies") };
             vacanciesHttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "a38ac93176f04689a7d6cb3b53e60033");

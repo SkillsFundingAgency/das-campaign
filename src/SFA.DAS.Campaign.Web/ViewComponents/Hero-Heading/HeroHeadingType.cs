@@ -5,6 +5,7 @@
         None = 0,
         Apprentice = 1,
         Employer = 2,
-        FindApprenticeship=3
+        FindApprenticeshipResults=3,
+        FindApprenticeship = 4
     }
 }

@@ -8,7 +8,7 @@ namespace SFA.DAS.Campaign.Web.Models.Vacancy
 {
     public class VacancySearchViewModel
     {
-        public string Keywords { get; set; }
+        public string Route { get; set; }
         public string Postcode { get; set; }
         public int Distance { get; set; }
         public string IndustrySectors { get; set; }
