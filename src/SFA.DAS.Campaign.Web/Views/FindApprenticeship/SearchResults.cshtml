@@ -68,7 +68,7 @@
 
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeship, googleMapsOptions = new GoogleMapsViewModel(Model.StaticMapUrl) { Latitude = Model.Location.Latitude, Longitude = Model.Location.Longitude, Distance = Model.Distance, Postcode = Model.Postcode } })
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeshipResults, googleMapsOptions = new GoogleMapsViewModel(Model.StaticMapUrl) { Latitude = Model.Location.Latitude, Longitude = Model.Location.Longitude, Distance = Model.Distance, Postcode = Model.Postcode, Route = Model.Route } })
 }
 
 @section Resources {

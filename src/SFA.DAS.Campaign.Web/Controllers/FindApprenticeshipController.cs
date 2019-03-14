@@ -60,6 +60,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             viewModel.TotalResults = results.Count;
             viewModel.Results = results.Where(w => w.DistanceInMiles <= distance).Take(10).ToList();
+            viewModel.Route = route;
             viewModel.Distance = distance;
             viewModel.Postcode = postcode;
             viewModel.Location.Latitude = latLng.Coordinates.Lat;

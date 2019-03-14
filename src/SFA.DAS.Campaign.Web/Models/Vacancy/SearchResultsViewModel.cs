@@ -17,6 +17,7 @@ namespace SFA.DAS.Campaign.Web.Models
         public IList<VacancySearchResultItem> Results { get; set; }
         public string JsonResults { get; set; }
         public Location Location { get; set; }
+        public string Route { get; set; }
         public string Postcode { get; set; }
         public int Distance { get; set; }
         public string StaticMapUrl { get; set; }

@@ -27,13 +27,13 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
 
         private string generateMarkerDataUrl()
         {
-            if (!string.IsNullOrEmpty(Postcode) && Distance > 0)
+            if (!string.IsNullOrEmpty(Postcode) && Distance > 0 && !string.IsNullOrEmpty(Route))
             {
-                return $"/FindApprenticeship/searchResults/Data/{Postcode}/{Distance}";
+                return $"/FindApprenticeship/searchResults/Data/{Route}/{Postcode}/{Distance}";
             }
             return "";
         }
-
+        public string Route { get; set; }
         public int Distance { get; set; }
         public string Postcode { get; set; }
         
