@@ -1,14 +1,14 @@
 ﻿@model FindApprenticeshipSearchModel
 <section class="grid-row cta-faa">
-    <div class="grid-column-one-third">
+    <div class="grid-column-one-half">
         <div class="cta-faa__content">
-            <h2 class="heading-s cta-faa__heading">Find an apprenticeship</h2>
+            <h2 class="heading-l cta-faa__heading">Find an apprenticeship</h2>
             <p>
                 Search for the right apprenticeship for you! Blaze your own trail and become an apprentice.
             </p>
         </div>
     </div>
-    <div class="grid-column-two-thirds cta-faa__action">
+    <div class="grid-column-one-half cta-faa__action">
         <form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
 
             @if (ViewBag.Route == null)
@@ -49,6 +49,9 @@
                         <input type="text" class="input" asp-for="Postcode" placeholder="Enter a postcode" />
                         <p> <span asp-validation-for="Postcode" class="text-danger"></span></p>
                     </div>
+                    <div class="form-group">
+                        <button class="button button--sparks" type="submit">Search</button>
+                    </div>  
 
                 </div>
                 <div class="grid-column-one-half">
@@ -65,9 +68,7 @@
                             <option value="40">40 miles</option>
                         </select>
                         <p><span asp-validation-for="Distance" class="text-danger"></span></p>
-                        <div class="form-group grid-column--pull-right">
-                            <button class="button button--sparks" type="submit">Search</button>
-                        </div>
+                      
                     </div>
                 </div>
 

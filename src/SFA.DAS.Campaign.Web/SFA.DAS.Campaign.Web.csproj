@@ -34,6 +34,7 @@
     <Folder Include="wwwroot\json\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ifa.Api\Ifa.Api.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj" />
@@ -154,12 +155,6 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\FindApprenticeship\EnterPostcode.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Ifa.Api">
-      <HintPath>..\..\..\Ifa\csharp-client\src\IO.Swagger\bin\Debug\Ifa.Api.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

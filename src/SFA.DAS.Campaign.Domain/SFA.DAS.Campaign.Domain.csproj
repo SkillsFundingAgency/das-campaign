@@ -10,14 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Ifa.Api\Ifa.Api.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Models\SFA.DAS.Campaign.Models.csproj" />
     <ProjectReference Include="..\SFA.DAS.Vacancies.Api\SFA.DAS.Vacancies.Api.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Ifa.Api">
-      <HintPath>..\SFA.DAS.Campaign.Application\bin\Debug\netcoreapp2.1\Ifa.Api.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
