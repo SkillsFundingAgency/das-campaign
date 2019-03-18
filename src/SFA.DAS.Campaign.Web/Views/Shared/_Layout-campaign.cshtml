@@ -5,16 +5,27 @@
 <html lang="en-gb">
 
 <head>
+    <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    
     <!-- Google Tag Manager -->
     <script>
         (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
+            w[l] = w[l] || [];
+            w[l].push({
                 'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-M4VJPRW');</script>
+                    new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M4VJPRW');
+    </script>
     <!-- End Google Tag Manager -->
 
     <meta charset="utf-8" />
@@ -32,11 +43,17 @@
     <!--[if !IE 8]><!-->
 
     <link href="/campaign/css/screen.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.typekit.net/xwy5uap.css" />
+
+    <link rel="preload" onload="this.rel = 'stylesheet'" href="https://use.typekit.net/xwy5uap.css" as="style" crossorigin />
+    <noscript>
+        <link rel="stylesheet" href="https://use.typekit.net/xwy5uap.css" />
+    </noscript>
 
     <!--<![endif]-->
 
     <meta property="og:image" content="/campaign/images/opengraph.png" />
+
+    <link rel="preconnect" href="//youtube.com">
 
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
@@ -78,16 +95,20 @@
 
     @RenderSection("Scripts", required: false)
 
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL" crossorigin="anonymous"></script>
+<script defer src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL" crossorigin="anonymous"></script>
 
-    <script src="/campaign/js/plyr.min.js" crossorigin="anonymous"></script>
-    <script src="/campaign/js/app.min.js" crossorigin="anonymous"></script>
-    <script src="/js/das-all.js" crossorigin="anonymous"></script>
-    <script>
-        window.DASFrontend.initAll()
-    </script>
+<script defer src="/campaign/js/plyr.min.js" crossorigin="anonymous"></script>
+    <script defer src="/campaign/js/app.min.js" crossorigin="anonymous"></script>
+    <script defer src="/js/das-all.min.js" crossorigin="anonymous" id="dasJs"></script>
+<script>
+    var dasJs = document.getElementById('dasJs');
+    dasJs.onload = function() {
+        window.DASFrontend.initAll();
+    }
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
 
