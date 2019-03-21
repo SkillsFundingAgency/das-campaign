@@ -10,6 +10,7 @@ using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.StandardsTests
 {
@@ -19,6 +20,9 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
         private Mock<IApprenticeshipProgrammeApiClient> _apprenticeshipProgrammeApiClient;
         private Mock<IStandardsMapper> _standardsMApper;
         private Mock<IFullStandardsApi> _fullStandardsApi;
+        private IMemoryCache _memoryCache;
+
+        
 
         //Arrange
         string routeId = "1";
@@ -29,6 +33,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
             _standardsMApper = new Mock<IStandardsMapper>();
             _apprenticeshipProgrammeApiClient = new Mock<IApprenticeshipProgrammeApiClient>();
             _fullStandardsApi = new Mock<IFullStandardsApi>();
+            _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _apprenticeshipProgrammeApiClient.Setup(c => c.SearchAsync(It.IsAny<string>(), It.IsAny<int>()))
                 .ReturnsAsync(new List<ApprenticeshipSearchResultsItem>
                 {
@@ -96,7 +101,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
                 });
 
 
-            _standardsService = new StandardsService(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object);
+            _standardsService = new StandardsService(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, _memoryCache);
         }
 
         [Test]
@@ -134,13 +139,26 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
         }
 
         [Test]
-        public async Task And_By_Route_Then_The_IFA_Api_Is_Called_To_Get_Standards()
+        public async Task And_By_Route_And_First_Call_Then_The_IFA_Api_Is_Called_To_Get_Standards()
         {
+            object cacheValue;
+
             //Act
             await _standardsService.GetByRoute(routeId);
 
             //Assert
             _fullStandardsApi.Verify(x => x.FullStandardsGetAllAsync(), Times.Once);
+        }
+        [Test]
+        public async Task And_By_Route_And_Not_First_Call_Then_The_Cache_Is_Called_To_Get_Standards()
+        {
+            object cacheValue;
+            //Act
+            await _standardsService.GetByRoute(routeId);
+            await _standardsService.GetByRoute(routeId);
+
+            _fullStandardsApi.Verify(x => x.FullStandardsGetAllAsync(), Times.Once);
+            
         }
 
         [Test]
