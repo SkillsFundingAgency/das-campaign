@@ -4,6 +4,7 @@
         <form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
             <div class="grid-row">
                 <div class="grid-column-full">
+                    <label for="Route" class="vh">Select interest</label>
                     <select class="input" asp-for="Route" data-val="true" data-val-required="The interest field is required."
                             id="Route" name="Route">
                         <option selected disabled hidden>Select interest</option>
@@ -28,10 +29,12 @@
             </div>
             <div class="grid-row">
                 <div class="grid-column-one-half">
-                    <input type="text" class="input input__postcode" asp-for="Postcode" placeholder="Enter a postcode" name="Postcode"/>
-                   <p> <span asp-validation-for="Postcode" class="text-danger"></span></p>
+                    <label for="Postcode" class="vh">Enter a postcode</label>
+                    <input type="text" class="input input__postcode" asp-for="Postcode" placeholder="Enter a postcode" name="Postcode" />
+                    <p> <span asp-validation-for="Postcode" class="text-danger"></span></p>
                 </div>
                 <div class="grid-column-one-half">
+                    <label for="Distance" class="vh">Select distance</label>
                     <select class="input" asp-for="Distance" data-val="true" data-val-required="The Distance field is required."
                             id="Distance" name="Distance">
                         <option value="2">2 miles</option>
