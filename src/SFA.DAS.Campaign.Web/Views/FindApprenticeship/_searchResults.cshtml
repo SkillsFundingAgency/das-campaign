@@ -16,7 +16,7 @@
     <div class="grid-row">
         <div class="grid-column-one-half">
 
-            <ul class="list">
+            <ul class="list list--padding-left-none">
 
                 <li>
                     <span class="bold">Employer:</span> @Model.EmployerName <br />
@@ -24,10 +24,7 @@
                 </li>
                 <li>
                     <span class="bold">Distance:</span> <span id="distance-value">@Model.DistanceInMiles.ToString("N")</span> miles <br />
-
-
                 </li>
-
                 <li>
                     <span class="bold">Closing date:</span> <span id="closing-date-value" data-date="@Model.ApplicationClosingDate.ToString("d")">@Model.ApplicationClosingDate.ToString("d")</span>
                 </li>
@@ -44,14 +41,11 @@
 
             </ul>
 
-
         </div>
         <div id="map-@Model.VacancyReference" class="grid-column-one-half">
             @{ await Html.RenderPartialAsync("_searchResultsMap", Model.StaticMapUrl); }
-
         </div>
 
     </div>
-
 
 </li>
