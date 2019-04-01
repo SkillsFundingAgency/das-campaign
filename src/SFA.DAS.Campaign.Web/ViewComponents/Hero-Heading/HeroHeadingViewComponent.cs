@@ -46,6 +46,10 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                     type = HeroHeadingType.Apprentice;
                     view = "FAA";
                     break;
+                case HeroHeadingType.FindApprenticeshipTraining:
+                    type = HeroHeadingType.Employer;
+                    view = "FAT";
+                    break;
                 case null:
                     break;
                 default:

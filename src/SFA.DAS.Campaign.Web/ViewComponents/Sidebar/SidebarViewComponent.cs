@@ -15,16 +15,19 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
             if (type == null)
             {
 
-                switch (ViewContext.RouteData.Values["Controller"])
+                switch (ViewContext.RouteData.Values["Controller"].ToString().ToLower())
                 {
-                    case "Apprentice":
+                    case "apprentice":
                         type = SidebarType.Apprentice;
                         break;
-                    case "Employer":
+                    case "employer":
                         type = SidebarType.Employer;
                         break;
-                    case "FindApprenticeship":
+                    case "findapprenticeship":
                         type = SidebarType.Apprentice;
+                        break;
+                    case "findapprenticeshiptraining":
+                        type = SidebarType.Employer;
                         break;
                 }
             }

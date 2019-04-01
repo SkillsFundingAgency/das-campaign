@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using Sfa.Das.Sas.Core.Configuration;
+using Sfa.Das.Sas.Shared.Components.Configuration;
+using Sfa.Das.Sas.Shared.Components.DependencyResolution;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
 using SFA.DAS.Campaign.Application.Core;
@@ -129,6 +132,11 @@ namespace SFA.DAS.Campaign.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.AddMemoryCache();
+
+            IFatConfigurationSettings fatConfig = new FatSharedComponentsConfiguration();
+            Configuration.Bind("fatSharedComponents", fatConfig);
+            services.AddSingleton(fs => fatConfig);
+            services.AddFatSharedComponents(fatConfig);
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
         }
