@@ -15,6 +15,7 @@ using Newtonsoft.Json.Serialization;
 using Sfa.Das.Sas.Core.Configuration;
 using Sfa.Das.Sas.Shared.Components.Configuration;
 using Sfa.Das.Sas.Shared.Components.DependencyResolution;
+using Sfa.Das.Sas.Shared.Components.Domain.Interfaces;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
 using SFA.DAS.Campaign.Application.Core;
@@ -32,6 +33,7 @@ using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Models.Configuration;
+using SFA.DAS.Campaign.Web.Models.Fat;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -137,6 +139,8 @@ namespace SFA.DAS.Campaign.Web
             Configuration.Bind("fatSharedComponents", fatConfig);
             services.AddSingleton(fs => fatConfig);
             services.AddFatSharedComponents(fatConfig);
+
+            services.AddTransient<ICssClasses, CampaignCssClasses>();
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
         }
