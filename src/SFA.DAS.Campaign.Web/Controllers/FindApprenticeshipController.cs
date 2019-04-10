@@ -58,21 +58,28 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             var viewModel = new SearchResultsViewModel();
 
-            var latLng = await _geocodeService.GetFromPostCode(postcode);
-
-            var routeId = Routes.GetRoute(route);
-
-            var results = await _vacanciesService.GetByRoute(routeId, postcode, Convert.ToInt32(distance));
-
-            viewModel.TotalResults = results.Count;
-            viewModel.Results = results.Where(w => w.DistanceInMiles <= distance).Take(10).ToList();
             viewModel.Route = route;
             viewModel.Distance = distance;
             viewModel.Postcode = postcode;
-            viewModel.Location.Latitude = latLng.Coordinates.Lat;
-            viewModel.Location.Longitude = latLng.Coordinates.Lon;
-            viewModel.StaticMapUrl = _mappingService.GetStaticMapsUrl(results.Select(p => p.Location), "680", "530");
 
+            var latLng = await _geocodeService.GetFromPostCode(postcode);
+
+
+            if (latLng.ResponseCode == "OK")
+            {
+                var routeId = Routes.GetRoute(route);
+
+                var results = await _vacanciesService.GetByRoute(routeId, postcode, Convert.ToInt32(distance));
+
+                viewModel.TotalResults = results.Count;
+                viewModel.Results = results.Where(w => w.DistanceInMiles <= distance).Take(10).ToList();
+                
+                viewModel.Location.Latitude = latLng.Coordinates.Lat;
+                viewModel.Location.Longitude = latLng.Coordinates.Lon;
+                viewModel.StaticMapUrl = _mappingService.GetStaticMapsUrl(results.Select(p => p.Location), "680", "530");
+
+                
+            }
             return viewModel;
         }
 
