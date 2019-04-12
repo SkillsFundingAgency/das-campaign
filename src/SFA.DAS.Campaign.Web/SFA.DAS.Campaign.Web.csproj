@@ -14,7 +14,6 @@
   <ItemGroup>
     <Content Remove="Views\FindApprenticeship\EnterPostcode.cshtml" />
     <Content Remove="Views\HowItWorks\Index.cshtml" />
-    <Content Remove="Views\Shared\Fat\SearchResults.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,13 +29,14 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.0.165" />
     <PackageReference Include="SFA.DAS.Apprenticeships.Api.Client" Version="0.11.129" />
-    <PackageReference Include="Sfa.Das.Sas.Shared.Components" Version="0.0.5" />
+    <PackageReference Include="Sfa.Das.Sas.Shared.Components" Version="0.0.9" />
     <PackageReference Include="StructureMap" Version="4.2.0.402" />
     <PackageReference Include="WebEssentials.AspNetCore.CdnTagHelpers" Version="1.0.16" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Pages\" />
+    <Folder Include="Views\Shared\Fat\" />
     <Folder Include="wwwroot\json\" />
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +168,6 @@
 
   <ItemGroup>
     <None Include="Views\Employer\FindApprenticeshipTraining.cshtml" />
-    <None Include="Views\Shared\Fat\SearchResults.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

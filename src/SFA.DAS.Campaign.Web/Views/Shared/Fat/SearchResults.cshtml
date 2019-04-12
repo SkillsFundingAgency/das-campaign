@@ -7,12 +7,4 @@
     Layout = "_LayoutContentFull";
     ViewBag.PageNavIndex = 3;
 }
-<h1>Search Results</h1>
-
-
-@{
-    foreach (var apprenticeshipSearchResultsItem in Model.Results)
-    {
-        <h1>@apprenticeshipSearchResultsItem.Title</h1>
-    }
-}
+    @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model})

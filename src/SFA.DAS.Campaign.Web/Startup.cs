@@ -191,6 +191,10 @@ namespace SFA.DAS.Campaign.Web
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    "Fat",
+                    "employer/find-apprenticeship-training/Search/{keywords?}",
+                    new { controller = "Fat", action = "Search" });
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
