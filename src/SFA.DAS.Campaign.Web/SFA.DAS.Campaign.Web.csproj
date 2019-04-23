@@ -95,6 +95,9 @@
     <Content Update="Views\Shared\Components\GoogleMaps\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\Components\ApprenticeshipHeading\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\Components\HeroHeading\FAT.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
