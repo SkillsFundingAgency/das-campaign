@@ -34,7 +34,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
         private CoordinatesResponse coordinatesResponse = new CoordinatesResponse()
         {
             Coordinates = new Coordinates() { Lat = 50, Lon = 50 },
-            ResponseCode = "Ok"
+            ResponseCode = "OK"
         };
 
         [SetUp]
