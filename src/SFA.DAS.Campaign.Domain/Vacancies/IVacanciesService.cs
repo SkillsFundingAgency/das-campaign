@@ -7,7 +7,7 @@ namespace SFA.DAS.Campaign.Domain.Vacancies
 {
     public interface IVacanciesService
     {
-        Task<IList<VacancySearchResultItem>> GetByPostcode(string postcode, int distance);
-        Task<IList<VacancySearchResultItem>> GetByRoute(string routeId,string postcode, int distance);
+        Task<VacancySearchResult> GetByPostcode(string postcode, int distance);
+        Task<VacancySearchResult> GetByRoute(string routeId,string postcode, int distance);
     }
 }

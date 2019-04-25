@@ -37,7 +37,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
         private CoordinatesResponse coordinatesResponse = new CoordinatesResponse()
         {
             Coordinates = new Coordinates() { Lat = 50, Lon = 50 },
-            ResponseCode = "200"
+            ResponseCode = "OK"
         };
 
         private List<StandardResultItem> _standards;
@@ -109,7 +109,17 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
 
             var results = await sut.GetByRoute("1",postcode, 20);
 
-            Assert.AreEqual(results.Count,100);
+            Assert.AreEqual(results.Results.Count,100);
+        }
+        [Test]
+        public async Task Then_Location_Is_Returned()
+        {
+            _searchResultCount = 200;
+
+            var results = await sut.GetByRoute("1", postcode, 20);
+
+            Assert.AreEqual(results.searchLocation.Longitude, coordinatesResponse.Coordinates.Lon);
+            Assert.AreEqual(results.searchLocation.Latitude, coordinatesResponse.Coordinates.Lat);
         }
 
         [Test]

@@ -34,7 +34,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
         private CoordinatesResponse coordinatesResponse = new CoordinatesResponse()
         {
             Coordinates = new Coordinates() { Lat = 50, Lon = 50 },
-            ResponseCode = "200"
+            ResponseCode = "Ok"
         };
 
         [SetUp]
@@ -112,7 +112,17 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
 
             var results = await sut.GetByPostcode(postcode, 20);
 
-            Assert.AreEqual(results.Count,100);
+            Assert.AreEqual(results.Results.Count,100);
+        }
+
+        public async Task Then_Location_Is_Returned()
+        {
+            _searchResultCount = 200;
+
+            var results = await sut.GetByRoute("1", postcode, 20);
+
+            Assert.AreEqual(results.searchLocation.Longitude, coordinatesResponse.Coordinates.Lon);
+            Assert.AreEqual(results.searchLocation.Latitude, coordinatesResponse.Coordinates.Lat);
         }
 
 
@@ -155,7 +165,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
 
             var results = await sut.GetByPostcode(postcode, 20);
 
-            var mapsWithoutStatic = results.Where(w => string.IsNullOrWhiteSpace(w.StaticMapUrl)).ToList();
+            var mapsWithoutStatic = results.Results.Where(w => string.IsNullOrWhiteSpace(w.StaticMapUrl)).ToList();
 
             Assert.AreEqual(mapsWithoutStatic.Count, 0);
 
