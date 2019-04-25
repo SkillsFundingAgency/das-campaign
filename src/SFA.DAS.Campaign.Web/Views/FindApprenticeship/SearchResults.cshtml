@@ -16,36 +16,48 @@
 <div class="grid-row  search-results">
 
     <div class="grid-column-full-width">
-        <h1 class="heading-l">
-            Your top @if (Model.TotalResults >= 10)
-            {
-                @:10
-            }
-            else
-            {
-                @Model.TotalResults
-            } results...
-        </h1>
-        <p>
-            We’ve found <span class="bold">@Model.TotalResults</span> apprenticeships in your selected @if (Model.TotalResults >= 10)
-            {
-                @:area, below are the top 10.
-            }
-            else
-            {
-                @: area.
-            }
-        </p>
-        <ol id="vacancy-search-results" class="search-results-list">
+        @if (Model.TotalResults > 0)
+        {
+            <h1 class="heading-l">
+                Your top @if (Model.TotalResults >= 10)
+                {
+                    @:10
+                }
+                else
+                {
+                    @Model.TotalResults
+                } results...
+            </h1>
+            <p>
+                We’ve found <span class="bold">@Model.TotalResults</span> apprenticeships in your selected @if (Model.TotalResults >= 10)
+                {
+                    @:area, below are the top 10.
+                }
+                else
+                {
+                    @: area.
+                }
+            </p>
 
-            @foreach (var vacancySearchResultItem in Model.Results)
-            {
+            <ol id="vacancy-search-results" class="search-results-list">
 
-                await Html.RenderPartialAsync("_searchResults", vacancySearchResultItem);
+                @foreach (var vacancySearchResultItem in Model.Results)
+                {
 
-            }
+                    await Html.RenderPartialAsync("_searchResults", vacancySearchResultItem);
 
-        </ol>
+                }
+
+            </ol>
+        }
+
+        @if (Model.Location.Latitude == 0)
+        {
+            <span class="error-message heading-s" >
+           The postcode you have entered is invalid, please enter a valid postcode and update results.
+            </span>
+        }
+
     </div>
 </div>
 
@@ -72,32 +84,35 @@
 }
 
 @section Resources {
-    <section class="section section--slant section--apprentice ">
-        <div class="grid-row">
-            <div class="grid-column-one-half">
-                <h3 class="heading-l">view all my results on <img class="section__faa-logo-header-inline" src="/legacy/images/gov.uk_logotype_crown_white.svg" /> gov.uk</h3>
-                <p>
-                    We have provided you with the top
-                    @if (Model.TotalResults >= 10)
-                    {
-                        @:10
-                    }
-                    else
-                    {
-                        @Model.TotalResults
-                    }
+    @if (Model.TotalResults > 0)
+    {
+        <section class="section section--slant section--apprentice ">
+            <div class="grid-row">
+                <div class="grid-column-one-half">
+                    <h3 class="heading-l">view all my results on <img class="section__faa-logo-header-inline" src="/legacy/images/gov.uk_logotype_crown_white.svg" /> gov.uk</h3>
+                    <p>
+                        We have provided you with the top
+                        @if (Model.TotalResults >= 10)
+                        {
+                            @:10
+                        }
+                        else
+                        {
+                            @Model.TotalResults
+                        }
 
-                    search results in your area, to see all your results you need to visit the Find an Apprenticeship website
-                </p>
+                        search results in your area, to see all your results you need to visit the Find an Apprenticeship website
+                    </p>
 
-                <div class="section__faa-actions">
+                    <div class="section__faa-actions">
 
-                    <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="button button--shadow button--sparks" rel="external" target="_blank">visit gov.uk to see my results</a>
+                        <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="button button--shadow button--sparks" rel="external" target="_blank">visit gov.uk to see my results</a>
+                    </div>
+                </div>
+                <div class="grid-column-one-half">
+                    <img class="section__faa_img" src="/campaign/images/FAA-Screenshot.JPG" />
                 </div>
             </div>
-            <div class="grid-column-one-half">
-                <img class="section__faa_img" src="/campaign/images/FAA-Screenshot.JPG" />
-            </div>
-        </div>
-    </section>
+        </section>
+    }
 }
