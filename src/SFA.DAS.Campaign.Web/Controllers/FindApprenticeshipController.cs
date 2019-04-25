@@ -43,7 +43,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return Json(viewModel);
         }
 
-        public async Task<IActionResult> UpdateSearch(FindApprenticeshipSearchModel viewModel)
+        public IActionResult UpdateSearch(FindApprenticeshipSearchModel viewModel)
         {
             if (ModelState.IsValid)
             {
