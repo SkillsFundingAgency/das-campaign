@@ -17,6 +17,7 @@ namespace SFA.DAS.Campaign.Application.Vacancies
 {
     public class VacanciesService : IVacanciesService
     {
+        private const int _apiMaxPageSize = 250;
         private readonly ILivevacanciesAPI _vacanciesApi;
         private readonly IVacanciesMapper _vacanciesMapper;
         private readonly IGeocodeService _geocodeService;
@@ -53,14 +54,14 @@ namespace SFA.DAS.Campaign.Application.Vacancies
                 var vacancyApiList = GetVacancyList(distance, coordinates, pageNumber);
 
 
-                while (vacancyApiList.Count == 250 && vacancyApiList.Max(s => s.DistanceInMiles < distance))
+                while (vacancyApiList.Count == _apiMaxPageSize && vacancyApiList.Max(s => s.DistanceInMiles < distance))
                 {
                     pageNumber++;
 
                     var list = GetVacancyList(distance, coordinates, pageNumber);
                     vacancyApiList.AddRange(list);
 
-                    if (list.Count < 250)
+                    if (list.Count < _apiMaxPageSize)
                     {
                         break;
                     }
@@ -96,14 +97,14 @@ namespace SFA.DAS.Campaign.Application.Vacancies
                 int pageNumber = 1;
                 var vacancyApiList = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
 
-                while (vacancyApiList.Count == 250 && vacancyApiList.Max(s => s.DistanceInMiles < distance))
+                while (vacancyApiList.Count == _apiMaxPageSize && vacancyApiList.Max(s => s.DistanceInMiles < distance))
                 {
                     pageNumber++;
 
                     var list = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
                     vacancyApiList.AddRange(list);
 
-                    if (list.Count < 250)
+                    if (list.Count < _apiMaxPageSize)
                     {
                         break;
                     }
