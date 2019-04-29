@@ -17,9 +17,13 @@
     }
 
     <div class="main-content">
-        <div class="page">
-            @RenderBody()
-        </div>  
+        <div class="grid-row">
+            <div class="grid-column-full">
+                <div class="page page--full-width">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 

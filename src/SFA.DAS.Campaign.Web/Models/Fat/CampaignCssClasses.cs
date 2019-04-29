@@ -67,5 +67,28 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
         public string HeadingXLarge => $"{_heading}-xl";
         public string HeadingSmall => $"{_heading}-s";
         public string HeadingXSmall => $"{_heading}-xs";
+
+        public string ListBullet
+        {
+            get
+            {
+                if (String.IsNullOrWhiteSpace(ClassModifier))
+                {
+                    return $"{ClassPrefix}list--bullet";
+                }
+                else
+                {
+                    return $"{ClassPrefix}list--bullet list--bullet-{ClassModifier}";
+                }
+            }
+        }
+
+        public string Details => $"{ClassPrefix}details";
+
+        public string DetailsSummary => $"{Details}__summary";
+
+        public string DetailsSummaryText => $"{Details}__summary-text";
+
+        public string DetailsText => $"{Details}__text";
     }
 }
