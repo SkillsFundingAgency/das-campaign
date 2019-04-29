@@ -1,16 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Client" Version="0.11.98" />
-    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Types" Version="0.11.98" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Client" Version="0.11.129" />
+    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Types" Version="0.11.129" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Ifa.Api\Ifa.Api.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Models\SFA.DAS.Campaign.Models.csproj" />
+    <ProjectReference Include="..\SFA.DAS.Vacancies.Api\SFA.DAS.Vacancies.Api.csproj" />
   </ItemGroup>
 
 </Project>

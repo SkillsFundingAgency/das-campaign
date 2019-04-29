@@ -1,0 +1,14 @@
+﻿@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@{
+    ViewBag.Title = "FIND THE RIGHT APPRENTICESHIP FOR YOUR BUSINESS";
+    ViewBag.MetaTitle = "Find an apprenticeship";
+    ViewBag.PageID = "employer-hire-an-apprentice";
+    ViewBag.Section = "employer";
+    ViewBag.MetaDesc = "";
+    Layout = "_LayoutContentSidebar";
+    ViewBag.PageNavIndex = 3;
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeshipTraining })
+}

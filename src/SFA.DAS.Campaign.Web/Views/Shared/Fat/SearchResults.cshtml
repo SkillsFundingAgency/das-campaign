@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Find apprenticeship training";
+    ViewBag.MetaTitle = "Find an apprenticeship";
+    ViewBag.PageID = "employer-find-an-apprenticeship";
+    ViewBag.Section = "employer";
+    ViewBag.MetaDesc = "";
+    Layout = "_LayoutContentFull";
+    ViewBag.PageNavIndex = 3;
+}
+    @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model})

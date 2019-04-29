@@ -1,4 +1,12 @@
 ﻿@model SFA.DAS.Campaign.Web.ViewComponents.Sidebar.SidebarViewModel
 
-<partial name="@Model.ContentView" />
 
+<div class="sidebar @Model.Classes">
+
+    <div class="sidebar__hero">
+        <img src="@Model.ImgLocation" class="sidebar__hero-image" alt="" />
+    </div>
+    <partial name="@Model.ContentView" />
+
+
+</div>

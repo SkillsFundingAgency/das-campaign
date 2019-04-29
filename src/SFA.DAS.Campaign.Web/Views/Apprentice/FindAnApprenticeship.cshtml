@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@{
+    ViewBag.Title = "Find an apprenticeship";
+    ViewBag.MetaTitle = "Find an apprenticeship";
+    ViewBag.PageID = "apprentice-find-an-apprenticeship";
+    ViewBag.Section = "apprentice";
+    ViewBag.MetaDesc = "";
+    Layout = "_LayoutContentSidebar";
+    ViewBag.PageNavIndex = 3;
+}
+
+
+<ul class="pagination pagination--apprentice">
+    <li class="pagination__list-item">
+        <a class="pagination__link pagination__link--previous" asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" id="link-pagination-apprentice-1">Before you start </a>
+
+    </li>
+    <li class="pagination__list-item">
+        <a class="pagination__link pagination__link--next" asp-controller="Apprentice" asp-action="Application" id="link-pagination-apprentice-3">Application </a>
+    </li>
+</ul>
+
+
+@section pageFooter
+    {
+    <div class="grid-column">
+        <partial name="./Components/Cta/_find-an-apprenticeship" />
+
+    </div>
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeship})
+}

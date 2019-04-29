@@ -1,27 +1,32 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
-using SFA.DAS.Campaign.Web.ViewComponents.Modal;
+using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps;
 
 namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 {
     public class SidebarViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(SidebarType? type, int activeIndex, string imgLocation)
+        public async Task<IViewComponentResult> InvokeAsync(SidebarType? type, SidebarHeaderType? headerType, int activeIndex, string imgLocation, GoogleMapsViewModel googleMapsOptions, object formOptions)
         {
             string view;
             string title;
 
             if (type == null)
             {
-                
-                switch (ViewContext.RouteData.Values["Controller"])
+
+                switch (ViewContext.RouteData.Values["Controller"].ToString().ToLower())
                 {
-                    case "Apprentice":
+                    case "apprentice":
                         type = SidebarType.Apprentice;
                         break;
-                    case "Employer":
+                    case "employer":
+                        type = SidebarType.Employer;
+                        break;
+                    case "findapprenticeship":
+                        type = SidebarType.Apprentice;
+                        break;
+                    case "findapprenticeshiptraining":
                         type = SidebarType.Employer;
                         break;
                 }
@@ -41,9 +46,26 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
-            return View("Default", new SidebarViewModel((SidebarType)type, view, activeIndex, imgLocation));
+
+            if (headerType == null)
+            {
+                headerType = SidebarHeaderType.Image;
+            }
+
+            switch (headerType)
+            {
+                case SidebarHeaderType.GoogleMap:
+                    return View("mapsSidebar", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, googleMapsOptions));
+                case SidebarHeaderType.Form:
+                    return View("FormSidebar", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, formModel: formOptions));
+
+                default:
+                    return View("Default", new SidebarViewModel((SidebarType)type, (SidebarHeaderType)headerType, view, activeIndex, imgLocation, googleMapsOptions));
+
+            }
+
         }
     }
-    
+
 
 }

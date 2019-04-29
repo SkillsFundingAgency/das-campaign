@@ -1,0 +1,63 @@
+﻿@model SFA.DAS.Campaign.Web.Models.FindApprenticeshipSearchModel
+<section class="grid-row">
+    <div class="grid-column-two-thirds">
+        <form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
+            <div class="grid-row">
+                <div class="grid-column-full">
+                    <div class="form-group">
+                        <label for="Route" class="vh">Select interest</label>
+                        <select class="input" asp-for="Route" data-val="true" data-val-required="The interest field is required."
+                                id="Route" name="Route">
+                            <option selected disabled hidden>Select interest</option>
+                            <option value="Agriculture-environmental-and-animal-care">Agriculture, environmental and animal care</option>
+                            <option value="Business-and-administration">Business and administration</option>
+                            <option value="Care-services">Care services </option>
+                            <option value="Catering-and-hospitality">Catering and hospitality</option>
+                            <option value="Construction">Construction</option>
+                            <option value="Creative-and-design">Creative and design</option>
+                            <option value="Digital">Digital</option>
+                            <option value="Education-and-childcare">Education and childcare</option>
+                            <option value="Engineering-and-manufacturing">Engineering and manufacturing</option>
+                            <option value="Hair-and-beauty">Hair and beauty</option>
+                            <option value="Health-and-science">Health and science</option>
+                            <option value="Legal-finance-and-accounting">Legal, finance and accounting</option>
+                            <option value="Protective-services">Protective services</option>
+                            <option value="Sales-marketing-and-procurement">Sales, marketing and procurement</option>
+                            <option value="Transport-and-logistics">Transport and logistics</option>
+                        </select>
+                        <span asp-validation-for="Route" class="error-message--light"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-column-one-half">
+                    <div class="form-group">
+                        <label for="Postcode" class="vh">Enter a postcode</label>
+                        <input type="text" class="input input__postcode" asp-for="Postcode" placeholder="Enter a postcode" name="Postcode" />
+                        <span asp-validation-for="Postcode" class="error-message--light"></span>
+                    </div>
+                </div>
+                <div class="grid-column-one-half">
+                    <div class="form-group">
+                        <label for="Distance" class="vh">Select distance</label>
+                        <select class="input" asp-for="Distance" data-val="true" data-val-required="The Distance field is required."
+                                id="Distance" name="Distance">
+                            <option value="2">2 miles</option>
+                            <option value="5" selected="selected">5 miles</option>
+                            <option value="10">10 miles</option>
+                            <option value="15">15 miles</option>
+                            <option value="20">20 miles</option>
+                            <option value="30">30 miles</option>
+                            <option value="40">40 miles</option>
+                        </select>
+                        <span asp-validation-for="Distance" class="error-message--light"></span>
+                    </div>
+                </div>
+                <div class="grid-column-full">
+                    <button class="button button-apprentice" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+

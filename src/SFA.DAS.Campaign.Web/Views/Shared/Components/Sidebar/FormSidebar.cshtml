@@ -1,0 +1,20 @@
+﻿@model SFA.DAS.Campaign.Web.ViewComponents.Sidebar.SidebarViewModel
+@{
+    var activeClass = "sidebar-nav__section--active";
+}
+
+<div class="sidebar sidebar_fixed @Model.Classes">
+
+    <div class="sidebar__hero">
+        @await Component.InvokeAsync("Form", Model.FormModel)
+    </div>
+
+        <partial name="@Model.ContentView" />
+
+    <div class="trimmer">
+        <div class="sidebar__sub-content">
+            <a class="button button--sparks button--shadow " asp-action="index" asp-controller="RegisterInterest" id="btn-sidebar-register-interest-apprentice">Register Interest</a>
+        </div>
+    </div>
+</div>
+

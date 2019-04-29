@@ -1,0 +1,14 @@
+﻿@model SFA.DAS.Campaign.Web.ViewComponents.HeroHeadingViewModel
+<div class="hero" data-module="smoothScroll">
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+            <div class="hero-heading">
+                <span class="caption-m hero-heading__caption @Model.Class">@Model.Caption</span>
+                <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
+            </div>
+
+
+            @await Html.PartialAsync("./Components/Form/faa-search", Model.FaaSearchResultsViewModel)
+        </div>
+    </div>
+</div>
