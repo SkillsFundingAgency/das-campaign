@@ -178,7 +178,7 @@ namespace SFA.DAS.Campaign.Web
                 
                 await next();
 
-                //if (context.Response.StatusCode == 404 && !context.Response.HasStarted)
+                if (context.Response.StatusCode == 404 && !context.Response.HasStarted)
                 {
                     //Re-execute the request so the user gets the error page
                     var originalPath = context.Request.Path.Value;
