@@ -32,6 +32,11 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 
                     break;
                 case ApprenticeshipType.Standard:
+                    var standard = await _apprenticeshipOrchestrator.GetStandard(queryModel.Id);
+
+                    model.Id = standard.Id;
+                    model.Title = standard.Title;
+                    model.Overview = standard.Overview;
                     break;
             }
 

@@ -15,7 +15,7 @@ using Newtonsoft.Json.Serialization;
 using Sfa.Das.Sas.Core.Configuration;
 using Sfa.Das.Sas.Shared.Components.Configuration;
 using Sfa.Das.Sas.Shared.Components.DependencyResolution;
-using Sfa.Das.Sas.Shared.Components.Domain.Interfaces;
+using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
 using SFA.DAS.Campaign.Application.Core;
@@ -140,7 +140,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddSingleton(fs => fatConfig);
             services.AddFatSharedComponents(fatConfig);
 
-            services.AddTransient<ICssClasses, CampaignCssClasses>();
+            services.AddTransient<ICssViewModel, CampaignCssClasses>();
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
         }
@@ -198,14 +198,6 @@ namespace SFA.DAS.Campaign.Web
                     "Fat",
                     "employer/find-apprenticeships/{action=Search}/{keywords?}",
                     new { controller = "Fat" });
-                //routes.MapRoute(
-                //    "FatApprenticeshipDetails",
-                //    "employer/find-apprenticeship-training/Apprenticeship/{id?}",
-                //    new { controller = "Fat", action = "Apprenticeship" });
-                //routes.MapRoute(
-                //    "Fat",
-                //    "employer/find-apprenticeship-training/Search/{keywords?}",
-                //    new { controller = "Fat", action = "Search" });
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
