@@ -179,21 +179,17 @@ namespace SFA.DAS.Campaign.Web
                 await next();
 
                 //if (context.Response.StatusCode == 404 && !context.Response.HasStarted)
-                //{
-                //    //Re-execute the request so the user gets the error page
-                //    var originalPath = context.Request.Path.Value;
-                //    context.Items["originalPath"] = originalPath;
-                //    context.Request.Path = "/error/404";
-                //    await next();
-                //}
+                {
+                    //Re-execute the request so the user gets the error page
+                    var originalPath = context.Request.Path.Value;
+                    context.Items["originalPath"] = originalPath;
+                    context.Request.Path = "/error/404";
+                    await next();
+                }
             });
 
             app.UseMvc(routes =>
             {
-                //routes.MapRoute(
-                //    "FatSearch",
-                //    "employer/find-apprenticeships/{keywords?}",
-                //    new { controller = "Fat", action = "Search" });
                 routes.MapRoute(
                     "Fat",
                     "employer/find-apprenticeships/{action=Search}/{keywords?}",
