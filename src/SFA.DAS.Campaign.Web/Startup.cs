@@ -178,7 +178,7 @@ namespace SFA.DAS.Campaign.Web
                 
                 await next();
 
-                if (context.Response.StatusCode == 404 && !context.Response.HasStarted)
+                //if (context.Response.StatusCode == 404 && !context.Response.HasStarted)
                 {
                     //Re-execute the request so the user gets the error page
                     var originalPath = context.Request.Path.Value;
@@ -192,8 +192,16 @@ namespace SFA.DAS.Campaign.Web
             {
                 routes.MapRoute(
                     "Fat",
-                    "employer/find-apprenticeship-training/Search/{keywords?}",
-                    new { controller = "Fat", action = "Search" });
+                    "employer/find-apprenticeships/{action=Search}/{keywords?}",
+                    new { controller = "Fat" });
+                //routes.MapRoute(
+                //    "FatApprenticeshipDetails",
+                //    "employer/find-apprenticeship-training/Apprenticeship/{id?}",
+                //    new { controller = "Fat", action = "Apprenticeship" });
+                //routes.MapRoute(
+                //    "Fat",
+                //    "employer/find-apprenticeship-training/Search/{keywords?}",
+                //    new { controller = "Fat", action = "Search" });
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
