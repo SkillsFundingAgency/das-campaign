@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Sfa.Das.Sas.Shared.Components.Domain.Interfaces;
 using Sfa.Das.Sas.Shared.Components.Domain;
+using Sfa.Das.Sas.Shared.Components.ViewModels.Css;
+using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces;
 
 namespace SFA.DAS.Campaign.Web.Models.Fat
 {
-    public class CampaignCssClasses : ICssClasses
+    public class CampaignCssClasses : ICssViewModel
     {
-        public IUtilitiesCssClasses UtilitiesCss => new DefaultUtilitiesCssClasses("u");
+        public ITableCssViewModel Table => new DefaultTableCssViewModel(ClassPrefix);
+        public IUtilitiesCssViewModel UtilitiesCss => new DefaultUtilitiesCssViewModel("u");
         public string ClassModifier { get; set; } = "employer";
         public string ClassPrefix { get; set; } = string.Empty;
         private string _buttonCss => $"{ClassPrefix}button button--sparks";
@@ -45,6 +44,22 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
                 }
             }
         }
+
+
+        public string ListBullet
+        {
+            get
+            {
+                if (String.IsNullOrWhiteSpace(ClassModifier))
+                {
+                    return $"{ClassPrefix}list--bullet";
+                }
+                else
+                {
+                    return $"{ClassPrefix}list--bullet list--bullet-{ClassModifier}";
+                }
+            }
+        }
         public string ListNumber => $"{ClassPrefix}list--number";
         public string SearchList
         {
@@ -68,20 +83,6 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
         public string HeadingSmall => $"{_heading}-s";
         public string HeadingXSmall => $"{_heading}-xs";
 
-        public string ListBullet
-        {
-            get
-            {
-                if (String.IsNullOrWhiteSpace(ClassModifier))
-                {
-                    return $"{ClassPrefix}list--bullet";
-                }
-                else
-                {
-                    return $"{ClassPrefix}list--bullet list--bullet-{ClassModifier}";
-                }
-            }
-        }
 
         public string Details => $"{ClassPrefix}details";
 
