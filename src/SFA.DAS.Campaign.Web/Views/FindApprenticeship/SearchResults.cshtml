@@ -53,8 +53,8 @@
 
         @if (Model.Location.Latitude == 0)
         {
-            <span class="error-message heading-s" >
-           The postcode you have entered is invalid, please enter a valid postcode and update results.
+            <span class="error-message heading-s">
+                The postcode you have entered is invalid, please enter a valid postcode and update results.
             </span>
         }
 
@@ -65,7 +65,7 @@
     {
     <script defer src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvjlbjx6_-sz4utE2SVVNwc63PlUM_MLE&callback=DASFrontend.initMaps"
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=@(MappingConfig.Value.ApiKey)&callback=DASFrontend.initMaps"
             type="text/javascript"></script>
     <script defer src="/campaign/js/infobox.js"></script>
 
