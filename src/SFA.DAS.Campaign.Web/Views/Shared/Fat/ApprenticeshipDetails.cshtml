@@ -16,3 +16,14 @@
     
 
     @await Component.InvokeAsync("ApprenticeshipDetails", new { queryModel = Model})
+
+    <div class="grid-row">
+        <div class="grid-column-full">
+            <section class="cta-fat">
+                <div class="cta-fat__content">
+                    <h2 class="heading-l cta-fat__heading">SAVE THIS APPRENTICESHIP AND CREATE YOUR GOV.UK ACCOUNT TO START HIRING THE FUTURE...</h2>
+                    @await Component.InvokeAsync("SaveApprenticeship", Model.Id)
+                </div>
+            </section>
+        </div>
+    </div>
