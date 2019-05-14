@@ -30,10 +30,10 @@ using SFA.DAS.Campaign.Domain.Geocode;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using VacanciesApi;
 using SFA.DAS.Campaign.Domain.DataCollection;
-using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Models.Configuration;
 using SFA.DAS.Campaign.Web.Models.Fat;
+using SFA.DAS.Campaign.Infrastructure.Configuration;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -76,6 +76,7 @@ namespace SFA.DAS.Campaign.Web
             var mappingConfig = new MappingConfiguration();
             Configuration.Bind("Mapping", mappingConfig);
 
+            services.Configure<MappingConfiguration>(Configuration.GetSection("Mapping"));
 
             services.AddMiniProfiler(options =>
             {
