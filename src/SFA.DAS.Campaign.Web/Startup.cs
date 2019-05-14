@@ -76,6 +76,7 @@ namespace SFA.DAS.Campaign.Web
             var mappingConfig = new MappingConfiguration();
             Configuration.Bind("Mapping", mappingConfig);
 
+            services.Configure<MappingConfiguration>(Configuration.GetSection("Mapping"));
 
             services.AddMiniProfiler(options =>
             {
