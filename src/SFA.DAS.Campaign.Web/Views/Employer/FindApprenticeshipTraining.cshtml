@@ -1,6 +1,8 @@
-﻿@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @{
-    ViewBag.Title = "Find the right apprenticeship for your business";
+    ViewBag.Title = "Find the right apprenticeship";
     ViewBag.MetaTitle = "Find an apprenticeship";
     ViewBag.PageID = "employer-find-an-apprenticeship";
     ViewBag.Section = "employer";
@@ -8,6 +10,18 @@
     Layout = "_LayoutContentSidebar";
 }
 
+@{
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<div class="hero-heading__content">
+    <p class="lead-paragraph">For employers looking to take on apprentices.</p>
+    <p>Use this search to:</p>
+    <ul class="list list--bullet">
+        <li>look for apprenticeship training by job role or keyword</li>
+        <li>find training providers who offer the apprenticeship training you choose</li>
+        <li>save a named training provider you want to use</li>
+    </ul>
+</div>);
+}
+
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeshipTraining })
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeshipTraining, content = HeroHeadingContent() })
 }
