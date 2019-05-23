@@ -22,15 +22,12 @@
     </li>
 </ul>
 
-
-@section pageFooter
-    {
-    <div class="grid-column">
-        <partial name="./Components/Cta/_find-an-apprenticeship" />
-
-    </div>
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeship })
 }
 
-@section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeship})
+@section pageFooter {
+    <div class="grid-column-full">
+        <partial name="./Components/Cta/_find-an-apprenticeship" />
+    </div>
 }
