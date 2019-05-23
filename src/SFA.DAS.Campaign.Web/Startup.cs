@@ -136,7 +136,7 @@ namespace SFA.DAS.Campaign.Web
 
             services.AddMemoryCache();
 
-            IFatConfigurationSettings fatConfig = new FatSharedComponentsConfiguration();
+            FatSharedComponentsConfiguration fatConfig = new FatSharedComponentsConfiguration();
             Configuration.Bind("fatSharedComponents", fatConfig);
             services.AddSingleton(fs => fatConfig);
             services.AddFatSharedComponents(fatConfig);

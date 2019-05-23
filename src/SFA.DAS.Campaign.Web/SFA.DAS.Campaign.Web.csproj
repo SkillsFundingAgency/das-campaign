@@ -29,8 +29,10 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.0.165" />
-    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Client" Version="0.11.129" />
-    <PackageReference Include="Sfa.Das.Sas.Shared.Components" Version="0.0.14-alpha" />
+    <PackageReference Include="Polly" Version="7.1.0" />
+    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Client" Version="0.11.174" />
+    <PackageReference Include="SFA.DAS.Providers.Api.Client" Version="0.11.174" />
+    <PackageReference Include="Sfa.Das.Sas.Shared.Components" Version="0.0.23-alpha" />
     <PackageReference Include="StructureMap" Version="4.2.0.402" />
     <PackageReference Include="WebEssentials.AspNetCore.CdnTagHelpers" Version="1.0.16" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
