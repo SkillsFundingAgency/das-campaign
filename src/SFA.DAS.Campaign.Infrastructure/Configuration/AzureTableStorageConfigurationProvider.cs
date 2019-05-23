@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
-using Newtonsoft.Json;
 using SFA.DAS.Campaign.Models.Configuration;
 
 namespace SFA.DAS.Campaign.Infrastructure.Configuration
@@ -27,9 +25,11 @@ namespace SFA.DAS.Campaign.Infrastructure.Configuration
 
             var configItem = (ConfigurationItem)result.Result;
 
-            Data = JsonConvert.DeserializeObject<Dictionary<string, string>>(configItem.Data);            
+            using (var stream = configItem.Data.ToStream())
+            {
+                Data = JsonConfigurationParser.Parse(stream);
+            }
         }
-        
 
         private CloudTable GetTable()
         {

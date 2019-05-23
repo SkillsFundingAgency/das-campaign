@@ -11,9 +11,9 @@ using SFA.DAS.Campaign.Application.DataCollection.Services;
 using SFA.DAS.Campaign.Application.DataCollection.Validation;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.DataCollection;
-using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Models.Configuration;
+using SFA.DAS.Campaign.Infrastructure.Configuration;
 
 namespace SFA.DAS.Campaign.Web
 {
