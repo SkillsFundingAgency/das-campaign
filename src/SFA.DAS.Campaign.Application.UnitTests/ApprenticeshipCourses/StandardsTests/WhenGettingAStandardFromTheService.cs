@@ -10,6 +10,7 @@ using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Ifa.Api.Api;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.StandardsTests
@@ -19,7 +20,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
         private StandardsService _standardsService;
         private Mock<IApprenticeshipProgrammeApiClient> _apprenticeshipProgrammeApiClient;
         private Mock<IStandardsMapper> _standardsMApper;
-        private Mock<IFullStandardsApi> _fullStandardsApi;
+        private Mock<IApprenticeshipStandardsApi> _fullStandardsApi;
         private IMemoryCache _memoryCache;
 
         
@@ -32,7 +33,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
         {
             _standardsMApper = new Mock<IStandardsMapper>();
             _apprenticeshipProgrammeApiClient = new Mock<IApprenticeshipProgrammeApiClient>();
-            _fullStandardsApi = new Mock<IFullStandardsApi>();
+            _fullStandardsApi = new Mock<IApprenticeshipStandardsApi>();
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _apprenticeshipProgrammeApiClient.Setup(c => c.SearchAsync(It.IsAny<string>(), It.IsAny<int>()))
                 .ReturnsAsync(new List<ApprenticeshipSearchResultsItem>
@@ -60,43 +61,43 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
                     },
                 });
 
-            _fullStandardsApi.Setup(s => s.FullStandardsGetAllAsync())
-                .ReturnsAsync(new List<TempApprenticeshipStandard>()
+            _fullStandardsApi.Setup(s => s.ApprenticeshipStandardsGet_3Async())
+                .ReturnsAsync(new List<ApiApprenticeshipStandard>()
                 {
-                    new TempApprenticeshipStandard
+                    new ApiApprenticeshipStandard
                     {
                         ApprovedForDelivery = DateTime.Now.Subtract(new TimeSpan(3,0,0)),
                         Route = "1",
-                        Duration = 24,
+                        TypicalDuration = 24,
                         Title =  "Standard 123",
-                        ID = 123,
-                        IsPublished = true
+                        LarsCode = 123,
+                        Status = "Approved for delivery"
                     },
-                    new TempApprenticeshipStandard
+                    new ApiApprenticeshipStandard
                     {
                         ApprovedForDelivery = DateTime.Now.Subtract(new TimeSpan(3,0,0)),
                         Route = "2",
-                        Duration = 24,
+                        TypicalDuration = 24,
                         Title =  "Standard 234",
-                        ID = 234,
-                        IsPublished = true
+                        LarsCode = 234,
+                        Status = "Approved for delivery"
                     },
-                    new TempApprenticeshipStandard
+                    new ApiApprenticeshipStandard
                     {
                         ApprovedForDelivery = DateTime.Now.Subtract(new TimeSpan(3,0,0)),
                         Route = "3",
-                        Duration = 24,
+                        TypicalDuration = 24,
                         Title =  "Standard 345",
-                        ID = 345,
-                        IsPublished = true
+                        LarsCode = 345,
+                        Status = "Approved for delivery"
                     },
-                    new TempApprenticeshipStandard
+                    new ApiApprenticeshipStandard
                     {
                         Route = "1",
-                        Duration = 24,
+                        TypicalDuration = 24,
                         Title =  "Standard 456",
-                        ID = 456,
-                        IsPublished = false
+                        LarsCode = 456,
+                        Status = "Not Approved for delivery"
                     },
                 });
 
@@ -147,7 +148,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
             await _standardsService.GetByRoute(routeId);
 
             //Assert
-            _fullStandardsApi.Verify(x => x.FullStandardsGetAllAsync(), Times.Once);
+            _fullStandardsApi.Verify(x => x.ApprenticeshipStandardsGet_3Async(), Times.Once);
         }
         [Test]
         public async Task And_By_Route_And_Not_First_Call_Then_The_Cache_Is_Called_To_Get_Standards()
@@ -157,7 +158,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
             await _standardsService.GetByRoute(routeId);
             await _standardsService.GetByRoute(routeId);
 
-            _fullStandardsApi.Verify(x => x.FullStandardsGetAllAsync(), Times.Once);
+            _fullStandardsApi.Verify(x => x.ApprenticeshipStandardsGet_3Async(), Times.Once);
             
         }
 

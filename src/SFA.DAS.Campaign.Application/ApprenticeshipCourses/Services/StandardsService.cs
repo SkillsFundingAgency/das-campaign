@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ifa.Api;
+using Ifa.Api.Api;
 using Ifa.Api.Model;
 using Microsoft.Extensions.Caching.Memory;
 using SFA.DAS.Apprenticeships.Api.Client;
@@ -15,14 +16,14 @@ namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
     {
         private readonly IApprenticeshipProgrammeApiClient _apprenticeshipProgrammeApiClient;
         private readonly IStandardsMapper _standardsMapper;
-        private readonly IFullStandardsApi _fullStandardsApi;
+        private readonly IApprenticeshipStandardsApi _ifaApprenticeshipStandardsApi;
         private readonly IMemoryCache _memoryCache;
 
-        public StandardsService(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper, IFullStandardsApi fullStandardsApi, IMemoryCache memoryCache)
+        public StandardsService(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper, IApprenticeshipStandardsApi fullStandardsApi, IMemoryCache memoryCache)
         {
             _apprenticeshipProgrammeApiClient = apprenticeshipProgrammeApiClient;
             _standardsMapper = standardsMapper;
-            _fullStandardsApi = fullStandardsApi;
+            _ifaApprenticeshipStandardsApi = fullStandardsApi;
             _memoryCache = memoryCache;
         }
 
@@ -41,10 +42,10 @@ namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
             var cacheKey = "FullStandardsAPI";
             
 
-            if (!_memoryCache.TryGetValue(cacheKey, out List<TempApprenticeshipStandard> cacheEntry))
+            if (!_memoryCache.TryGetValue(cacheKey, out List<ApiApprenticeshipStandard> cacheEntry))
             {
                 // Key not in cache, so get data.
-                cacheEntry = (await _fullStandardsApi.FullStandardsGetAllAsync());
+                cacheEntry = (await _ifaApprenticeshipStandardsApi.ApprenticeshipStandardsGet_3Async());
 
                 var cacheEntryOptions = new MemoryCacheEntryOptions()
                     .SetAbsoluteExpiration(new TimeSpan(1, 0, 0, 0))
@@ -56,7 +57,7 @@ namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
 
             var result = cacheEntry;
 
-            result = result.Where(c => c.IsPublished == true & c.Route.ToLower() == routeId.ToLower()).ToList();
+            result = result.Where(c => c.Status.ToLower() == "approved for delivery" & c.Route.ToLower() == routeId.ToLower()).ToList();
 
 
             return result.Select(_standardsMapper.Map)
