@@ -27,9 +27,11 @@ using SFA.DAS.Campaign.Domain.Geocode;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using VacanciesApi;
 using SFA.DAS.Campaign.Domain.DataCollection;
+using SFA.DAS.Campaign.Domain.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Models.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
+using SFA.DAS.Campaign.Infrastructure.Services;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -65,6 +67,7 @@ namespace SFA.DAS.Campaign.Web
             });
 
             services.Configure<CampaignConfiguration>(Configuration);
+            services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
 
             var postcodeConfig = new PostcodeApiConfiguration();
             Configuration.Bind("Postcode", postcodeConfig);
@@ -126,6 +129,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IUserDataCollection, UserDataCollection>();
             services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
+            services.AddTransient<ICacheStorageService, CacheStorageService>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
@@ -133,6 +137,22 @@ namespace SFA.DAS.Campaign.Web
             services.AddMemoryCache();
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
+
+            var serviceProvider = services.BuildServiceProvider();
+
+            var connectionStrings = serviceProvider.GetService<ConnectionStrings>();
+
+            if (Configuration["Environment"] == "LOCAL")
+            {
+                services.AddDistributedMemoryCache();
+            }
+            else
+            {
+                services.AddStackExchangeRedisCache(options =>
+                {
+                    options.Configuration = connectionStrings.Redis;
+                });
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

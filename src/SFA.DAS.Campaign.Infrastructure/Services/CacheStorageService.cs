@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
-using SFA.DAS.Reservations.Domain.Interfaces;
+using SFA.DAS.Campaign.Domain.Interfaces;
 
 namespace SFA.DAS.Campaign.Infrastructure.Services
 {
@@ -15,13 +15,14 @@ namespace SFA.DAS.Campaign.Infrastructure.Services
             _distributedCache = distributedCache;
         }
 
-        public async Task SaveToCache<T>(string key, T item, int expirationInHours)
+        public async Task SaveToCache<T>(string key, T item, TimeSpan absoluteExpiration, TimeSpan slidingExpiration)
         {
             var json = JsonConvert.SerializeObject(item);
 
             await _distributedCache.SetStringAsync(key, json, new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(expirationInHours)
+                AbsoluteExpirationRelativeToNow = absoluteExpiration,
+                SlidingExpiration = slidingExpiration
             });
         }
 
