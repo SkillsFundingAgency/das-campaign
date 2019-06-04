@@ -20,7 +20,6 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(TrainingProviderSearchViewModel queryModel)
         {
-
             var apprenticeshipType = _apprenticeshipOrchestrator.GetApprenticeshipType(queryModel.ApprenticeshipId);
 
             var model = new TrainingProviderHeadingViewModel();
