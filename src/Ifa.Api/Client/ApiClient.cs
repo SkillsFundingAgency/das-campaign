@@ -49,7 +49,9 @@ namespace Ifa.Api.Client
                     {
                         OverrideSpecifiedNames = true
                     }
-                }
+                },
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore
         };
 
         public CustomJsonCodec(IReadableConfiguration configuration)

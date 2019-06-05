@@ -83,7 +83,7 @@ namespace Ifa.Api.Model
         /// <param name="cluster">cluster.</param>
         /// <param name="createdDate">createdDate.</param>
         /// <param name="lastUpdated">lastUpdated.</param>
-        public ApiApprenticeshipStandard(int larsCode = default(int), string referenceNumber = default(string), string title = default(string), string status = default(string), string url = default(string), string standardPageUrl = default(string), string overviewOfRole = default(string), int level = default(int), int typicalDuration = default(int), int maxFunding = default(int), string route = default(string), List<string> keywords = default(List<string>), List<string> jobRoles = default(List<string>), string entryRequirements = default(string), string qualifications = default(string), string assessmentPlanUrl = default(string), string ssa1 = default(string), string ssa2 = default(string), string version = default(string), string standardOccupationalCode = default(string), string occupationalStandardUrl = default(string), string occupationalSummary = default(string), List<ApiDutyDataModel> duties = default(List<ApiDutyDataModel>), List<ApiKnowledgeDataModel> knowledges = default(List<ApiKnowledgeDataModel>), List<ApiBehaviourDataModel> behaviours = default(List<ApiBehaviourDataModel>), List<ApiSkillDataModel> skills = default(List<ApiSkillDataModel>), List<ApiOptionDataModel> options = default(List<ApiOptionDataModel>), List<ApiProfessionalRecognition> professionalRecognition = default(List<ApiProfessionalRecognition>), DateTime proposalApproved = default(DateTime), DateTime standardApproved = default(DateTime), DateTime epaApprovalDate = default(DateTime), DateTime fundingApprovalDate = default(DateTime), ApiEqaProviderDataModel eQAProvider = default(ApiEqaProviderDataModel), DateTime approvedForDelivery = default(DateTime), string integratedDegree = default(string), string tbReference = default(string), string tbMainContact = default(string), string involvedEmployers = default(string), bool regulated = default(bool), string regulatedBody = default(string), List<ApiRegulatedStandardData> regulationDetail = default(List<ApiRegulatedStandardData>), bool coreAndOptions = default(bool), List<string> typicalJobTitles = default(List<string>), string englishAndMathsQualifications = default(string), string reviewDetails = default(string), string pathway = default(string), string cluster = default(string), DateTime createdDate = default(DateTime), DateTime lastUpdated = default(DateTime))
+        public ApiApprenticeshipStandard(int larsCode = default(int), string referenceNumber = default(string), string title = default(string), string status = default(string), string url = default(string), string standardPageUrl = default(string), string overviewOfRole = default(string), int level = default(int), int typicalDuration = default(int), int maxFunding = default(int), string route = default(string), List<string> keywords = default(List<string>), List<string> jobRoles = default(List<string>), string entryRequirements = default(string), string qualifications = default(string), string assessmentPlanUrl = default(string), string ssa1 = default(string), string ssa2 = default(string), string version = default(string), string standardOccupationalCode = default(string), string occupationalStandardUrl = default(string), string occupationalSummary = default(string), List<ApiDutyDataModel> duties = default(List<ApiDutyDataModel>), List<ApiKnowledgeDataModel> knowledges = default(List<ApiKnowledgeDataModel>), List<ApiBehaviourDataModel> behaviours = default(List<ApiBehaviourDataModel>), List<ApiSkillDataModel> skills = default(List<ApiSkillDataModel>), List<ApiOptionDataModel> options = default(List<ApiOptionDataModel>), List<ApiProfessionalRecognition> professionalRecognition = default(List<ApiProfessionalRecognition>), DateTime? proposalApproved = null, DateTime? standardApproved = null, DateTime? epaApprovalDate = null, DateTime? fundingApprovalDate = null, ApiEqaProviderDataModel eQAProvider = default(ApiEqaProviderDataModel), DateTime? approvedForDelivery = null, string integratedDegree = default(string), string tbReference = default(string), string tbMainContact = default(string), string involvedEmployers = default(string), bool regulated = default(bool), string regulatedBody = default(string), List<ApiRegulatedStandardData> regulationDetail = default(List<ApiRegulatedStandardData>), bool coreAndOptions = default(bool), List<string> typicalJobTitles = default(List<string>), string englishAndMathsQualifications = default(string), string reviewDetails = default(string), string pathway = default(string), string cluster = default(string), DateTime createdDate = default(DateTime), DateTime? lastUpdated = null)
         {
             this.LarsCode = larsCode;
             this.ReferenceNumber = referenceNumber;
@@ -314,25 +314,25 @@ namespace Ifa.Api.Model
         /// Gets or Sets ProposalApproved
         /// </summary>
         [DataMember(Name="proposalApproved", EmitDefaultValue=false)]
-        public DateTime ProposalApproved { get; set; }
+        public DateTime? ProposalApproved { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardApproved
         /// </summary>
         [DataMember(Name="standardApproved", EmitDefaultValue=false)]
-        public DateTime StandardApproved { get; set; }
+        public DateTime? StandardApproved { get; set; }
 
         /// <summary>
         /// Gets or Sets EpaApprovalDate
         /// </summary>
         [DataMember(Name="epaApprovalDate", EmitDefaultValue=false)]
-        public DateTime EpaApprovalDate { get; set; }
+        public DateTime? EpaApprovalDate { get; set; }
 
         /// <summary>
         /// Gets or Sets FundingApprovalDate
         /// </summary>
         [DataMember(Name="fundingApprovalDate", EmitDefaultValue=false)]
-        public DateTime FundingApprovalDate { get; set; }
+        public DateTime? FundingApprovalDate { get; set; }
 
         /// <summary>
         /// Gets or Sets EQAProvider
@@ -344,7 +344,7 @@ namespace Ifa.Api.Model
         /// Gets or Sets ApprovedForDelivery
         /// </summary>
         [DataMember(Name="approvedForDelivery", EmitDefaultValue=false)]
-        public DateTime ApprovedForDelivery { get; set; }
+        public DateTime? ApprovedForDelivery { get; set; }
 
         /// <summary>
         /// Gets or Sets IntegratedDegree
@@ -434,7 +434,7 @@ namespace Ifa.Api.Model
         /// Gets or Sets LastUpdated
         /// </summary>
         [DataMember(Name="lastUpdated", EmitDefaultValue=false)]
-        public DateTime LastUpdated { get; set; }
+        public DateTime? LastUpdated { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
