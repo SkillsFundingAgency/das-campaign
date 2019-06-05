@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SFA.DAS.Campaign.Models.Geocode
+﻿namespace SFA.DAS.Campaign.Models.Geocode
 {
     public sealed class CoordinatesResponse
     {

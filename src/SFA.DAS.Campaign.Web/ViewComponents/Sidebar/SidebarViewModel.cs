@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps;
-using SFA.DAS.Campaign.Web.ViewComponents.Modal;
 
 namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 {

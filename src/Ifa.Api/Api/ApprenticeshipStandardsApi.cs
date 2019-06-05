@@ -11,10 +11,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Mime;
 using Ifa.Api.Client;
 using Ifa.Api.Model;
 

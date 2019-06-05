@@ -1,6 +1,5 @@
 ﻿using Ifa.Api.Api;
 using Ifa.Api.Model;
-using Microsoft.Extensions.Caching.Memory;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Interfaces;

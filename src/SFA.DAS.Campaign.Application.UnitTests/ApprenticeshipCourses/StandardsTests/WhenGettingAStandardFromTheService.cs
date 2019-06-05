@@ -1,5 +1,4 @@
-﻿using Ifa.Api;
-using Ifa.Api.Model;
+﻿using Ifa.Api.Model;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Apprenticeships.Api.Client;
@@ -11,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ifa.Api.Api;
-using Microsoft.Extensions.Caching.Memory;
 using SFA.DAS.Campaign.Domain.Interfaces;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.StandardsTests
