@@ -22,6 +22,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
         private Mock<IApprenticeshipStandardsApi> _fullStandardsApi;
         private Mock<ICacheStorageService> _cacheService;
 
+
         
 
         //Arrange
@@ -150,7 +151,9 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
         [Test]
         public async Task And_By_Route_And_First_Call_Then_The_IFA_Api_Is_Called_To_Get_Standards()
         {
-            object cacheValue;
+         Mock<ICacheStorageService> noncacheService = new Mock<ICacheStorageService>();
+
+        _standardsService = new StandardsService(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, noncacheService.Object);
 
             //Act
             await _standardsService.GetByRoute(_routeId);
