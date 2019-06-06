@@ -161,18 +161,19 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
             //Assert
             _fullStandardsApi.Verify(x => x.ApprenticeshipStandardsGet_3Async(), Times.Once);
         }
-        //[Test]
-        //public async Task And_By_Route_And_Not_First_Call_Then_The_Cache_Is_Called_To_Get_Standards()
-        //{
-        //    //Act
-        //   var result = await _standardsService.GetByRoute(_routeId);
-        //    result = await _standardsService.GetByRoute(_routeId);
 
-        //    _cacheService.Verify(x => x.RetrieveFromCache<List<ApiApprenticeshipStandard>>(_cachedKey), Times.AtLeast(2));
+        [Test]
+        public async Task And_By_Route_And_First_Call_Then_The_Standards_Are_Stored_In_Cache()
+        {
+            _cacheService.Reset();
 
-        //    _fullStandardsApi.Verify(v => v.ApprenticeshipStandardsGet_3Async(),Times.Once);
-            
-        //}
+            //Act
+            var result = await _standardsService.GetByRoute(_routeId);
+
+            _cacheService.Verify(x => x.SaveToCache(_cachedKey, It.IsAny<List<ApiApprenticeshipStandard>>(), It.IsAny<TimeSpan>(), It.IsAny<TimeSpan>()), Times.Once);
+
+            _fullStandardsApi.Verify(v => v.ApprenticeshipStandardsGet_3Async(), Times.Once);
+        }
 
         [Test]
         public async Task And_By_Route_Then_The_Results_Are_Filtered_For_Route_And_Active_Standards()
