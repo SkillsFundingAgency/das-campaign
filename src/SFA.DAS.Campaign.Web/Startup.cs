@@ -146,7 +146,7 @@ namespace SFA.DAS.Campaign.Web
             {
                 services.AddStackExchangeRedisCache(options =>
                 {
-                    options.Configuration = connectionStrings.Redis;
+                    options.Configuration = connectionStrings.SharedRedis;
                 });
             }
         }
