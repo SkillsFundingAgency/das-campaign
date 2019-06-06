@@ -1,8 +1,8 @@
 ﻿using Ifa.Api.Api;
 using Ifa.Api.Model;
 using SFA.DAS.Apprenticeships.Api.Client;
+using SFA.DAS.Campaign.Application.Interfaces;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Campaign.Domain.Interfaces;
 using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
 using System;
 using System.Collections.Generic;

@@ -4,13 +4,13 @@ using NUnit.Framework;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Apprenticeships.Api.Types;
 using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
+using SFA.DAS.Campaign.Application.Interfaces;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ifa.Api.Api;
-using SFA.DAS.Campaign.Domain.Interfaces;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.StandardsTests
 {
