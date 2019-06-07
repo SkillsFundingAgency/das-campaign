@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.Geocode;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Web.Constants;
 using SFA.DAS.Campaign.Web.Models;
-using SFA.DAS.Campaign.Web.Models.Vacancy;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {

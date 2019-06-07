@@ -7,6 +7,6 @@ namespace SFA.DAS.Campaign.Domain.ApprenticeshipCourses
     public interface IStandardsMapper
     {
         StandardResultItem Map(ApprenticeshipSearchResultsItem item);
-        StandardResultItem Map(TempApprenticeshipStandard item);
+        StandardResultItem Map(ApiApprenticeshipStandard item);
     }
 }

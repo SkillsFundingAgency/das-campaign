@@ -4,7 +4,6 @@ using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.Configuration;
-using SFA.DAS.Campaign.Domain.Configuration.Models;
 using SFA.DAS.Campaign.Models.Vacancy;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.Geocode
