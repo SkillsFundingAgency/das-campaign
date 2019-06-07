@@ -73,7 +73,7 @@ namespace SFA.DAS.Campaign.Application.Geocode
             var staticMapsUrl =
                 $"https://maps.googleapis.com/maps/api/staticmap?markers={markers}&size={width}x{height}&scale=2&zoom=10&key={_apiKey}";
 
-            if (string.IsNullOrEmpty(_usablePrivateKey))
+            if (string.IsNullOrWhiteSpace(_usablePrivateKey))
             {
                 return staticMapsUrl;
             }
