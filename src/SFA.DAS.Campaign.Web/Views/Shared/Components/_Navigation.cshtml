@@ -148,11 +148,13 @@
                     </ol>
                 </div>
             </div>
-
         </li>
-
+        @{ 
+            if (ViewBag.HideRegisterInterest != true) {
         <li class="navigation__list-item navigation__list-item--with-button">
             <a class="button button--sparks button--shadow " asp-action="index" asp-controller="RegisterInterest" id="btn-register-interest-header">Register Interest</a>
         </li>
+                }
+            }
     </ul>
 </nav>
