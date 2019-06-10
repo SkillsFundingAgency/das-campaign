@@ -1,0 +1,18 @@
+﻿@model Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search.TrainingProviderSearchViewModel
+<div class="hero" data-module="smoothScroll">
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+            <div class="hero-heading">
+                <span class="caption-m hero-heading__caption hero-heading__caption--employer">Search apprenticeships  >  Training provider results</span>
+                <h1 class="heading-xl hero-heading__heading">@ViewBag.Title</h1>
+            </div>
+
+            @await Component.InvokeAsync("TrainingProviderSearchSummary", new { searchQueryModel = Model })
+
+            <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
+                <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" />
+            </a>
+
+        </div>
+    </div>
+</div>
