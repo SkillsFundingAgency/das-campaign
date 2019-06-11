@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Ifa.Api.Api;
+using Ifa.Api.Model;
+using SFA.DAS.Apprenticeships.Api.Client;
+using SFA.DAS.Campaign.Application.Interfaces;
+using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
+using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Ifa.Api;
-using Ifa.Api.Model;
-using Microsoft.Extensions.Caching.Memory;
-using SFA.DAS.Apprenticeships.Api.Client;
-using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
 
 namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
 {
@@ -15,15 +15,15 @@ namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
     {
         private readonly IApprenticeshipProgrammeApiClient _apprenticeshipProgrammeApiClient;
         private readonly IStandardsMapper _standardsMapper;
-        private readonly IFullStandardsApi _fullStandardsApi;
-        private readonly IMemoryCache _memoryCache;
+        private readonly IApprenticeshipStandardsApi _ifaApprenticeshipStandardsApi;
+        private readonly ICacheStorageService _cacheService;
 
-        public StandardsService(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper, IFullStandardsApi fullStandardsApi, IMemoryCache memoryCache)
+        public StandardsService(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper, IApprenticeshipStandardsApi fullStandardsApi, ICacheStorageService cacheService)
         {
             _apprenticeshipProgrammeApiClient = apprenticeshipProgrammeApiClient;
             _standardsMapper = standardsMapper;
-            _fullStandardsApi = fullStandardsApi;
-            _memoryCache = memoryCache;
+            _ifaApprenticeshipStandardsApi = fullStandardsApi;
+            _cacheService = cacheService;
         }
 
         public async Task<List<StandardResultItem>> GetBySearchTerm(string searchTerm)
@@ -39,27 +39,23 @@ namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
         public async Task<List<StandardResultItem>> GetByRoute(string routeId)
         {
             var cacheKey = "FullStandardsAPI";
-            
 
-            if (!_memoryCache.TryGetValue(cacheKey, out List<TempApprenticeshipStandard> cacheEntry))
+            var cacheEntry = await _cacheService.RetrieveFromCache<List<ApiApprenticeshipStandard>>(cacheKey);
+
+            if (cacheEntry == null)
             {
                 // Key not in cache, so get data.
-                cacheEntry = (await _fullStandardsApi.FullStandardsGetAllAsync());
-
-                var cacheEntryOptions = new MemoryCacheEntryOptions()
-                    .SetAbsoluteExpiration(new TimeSpan(1, 0, 0, 0))
-                    .SetSlidingExpiration(new TimeSpan(3, 0, 0));
+                cacheEntry = (await _ifaApprenticeshipStandardsApi.ApprenticeshipStandardsGet_3Async());
                 
+         
                 // Save data in cache.
-                _memoryCache.Set(cacheKey, cacheEntry, cacheEntryOptions);
+                await _cacheService.SaveToCache(cacheKey, cacheEntry, new TimeSpan(30, 0, 0, 0), new TimeSpan(1, 0, 0, 0));
             }
 
-            var result = cacheEntry;
+            cacheEntry = cacheEntry.Where(c =>
+                c.Status.ToLower() == "approved for delivery" & c.Route.ToLower() == routeId.ToLower()).ToList();
 
-            result = result.Where(c => c.IsPublished == true & c.Route.ToLower() == routeId.ToLower()).ToList();
-
-
-            return result.Select(_standardsMapper.Map)
+            return cacheEntry.Select(_standardsMapper.Map)
                 .ToList();
         }
     }

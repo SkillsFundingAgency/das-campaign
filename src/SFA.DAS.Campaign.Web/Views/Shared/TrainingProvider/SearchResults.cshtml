@@ -1,0 +1,17 @@
+﻿@model Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search.TrainingProviderSearchViewModel
+@{
+    ViewBag.Title = "TRAINING PROVIDER RESULTS";
+    ViewBag.MetaTitle = "TRAINING PROVIDER RESULTS";
+    ViewBag.PageID = "employer-find-an-apprenticeship";
+    ViewBag.Section = "employer";
+    ViewBag.MetaDesc = "";
+    Layout = "_LayoutContentFull";
+    ViewBag.PageNavIndex = 3;
+
+        }
+@section HeroHeading {
+    @await Component.InvokeAsync("TrainingProviderHeading",new { queryModel = Model} )
+}
+
+
+@await Component.InvokeAsync("TrainingProviderSearchResults", new { searchQueryModel = Model})

@@ -17,12 +17,12 @@ namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
                 Level = item.Level
             };
         }
-        public StandardResultItem Map(TempApprenticeshipStandard item)
+        public StandardResultItem Map(ApiApprenticeshipStandard item)
         {
             return new StandardResultItem
             {
-                Id = item.ID,
-                Duration = item.Duration,
+                Id = item.LarsCode,
+                Duration = item.TypicalDuration,
                 Title = item.Title,
                 Level = item.Level
             };

@@ -13,7 +13,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using SFA.DAS.Apprenticeships.Api.Types;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Models.ApprenticeshipCourses;
 using VacanciesApi;

@@ -8,7 +8,6 @@ using SFA.DAS.Campaign.Models.Vacancy;
 using SFA.DAS.Vacancies.Api.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using VacanciesApi;
 using Location = SFA.DAS.Campaign.Models.Vacancy.Location;
