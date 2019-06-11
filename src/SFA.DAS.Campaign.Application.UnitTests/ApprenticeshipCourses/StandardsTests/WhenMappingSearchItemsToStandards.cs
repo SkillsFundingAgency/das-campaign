@@ -41,21 +41,21 @@ namespace SFA.DAS.Campaign.Application.UnitTests.ApprenticeshipCourses.Standards
         public void And_TempApprenticeshipStandard_Then_The_Values_Are_Correctly_Mapped()
         {
             //Arrange
-            var toMap = new TempApprenticeshipStandard()
+            var toMap = new ApiApprenticeshipStandard()
             {
-                ID = 123,
+                LarsCode = 123,
                 Title= "Test",
                 Level = 1,
-                Duration = 10
+                TypicalDuration = 10
             };
 
             //Act
             var actual = _mapper.Map(toMap);
 
             //Assert
-            Assert.AreEqual(toMap.ID, actual.Id);
+            Assert.AreEqual(toMap.LarsCode, actual.Id);
             Assert.AreEqual(toMap.Title, actual.Title);
-            Assert.AreEqual(toMap.Duration, actual.Duration);
+            Assert.AreEqual(toMap.TypicalDuration, actual.Duration);
             Assert.AreEqual(toMap.Level, actual.Level);
         }
     }

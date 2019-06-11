@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ViewComponents;
 using NUnit.Framework;
-using SFA.DAS.Campaign.Web.Models;
-using SFA.DAS.Campaign.Web.Models.Components.Form;
 using SFA.DAS.Campaign.Web.ViewComponents.Modal;
 using System.Threading.Tasks;
 

@@ -1,22 +1,14 @@
-﻿using Microsoft.Rest;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Geocode;
-using SFA.DAS.Campaign.Application.Vacancies;
-using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Geocode;
-using SFA.DAS.Campaign.Models.Geocode;
-using SFA.DAS.Vacancies.Api.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Domain.Configuration;
-using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
 {

@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Vacancies.Api", "SF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Infrastructure", "SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj", "{93CE170F-44C8-4F8E-A749-9154C3555577}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ifa.Api", "Ifa.Api\Ifa.Api.csproj", "{4F9F8878-1B81-4432-BA05-5F2FD04F6163}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ifa.Api", "Ifa.Api\Ifa.Api.csproj", "{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +61,10 @@ Global
 		{93CE170F-44C8-4F8E-A749-9154C3555577}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93CE170F-44C8-4F8E-A749-9154C3555577}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93CE170F-44C8-4F8E-A749-9154C3555577}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F9F8878-1B81-4432-BA05-5F2FD04F6163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F9F8878-1B81-4432-BA05-5F2FD04F6163}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F9F8878-1B81-4432-BA05-5F2FD04F6163}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F9F8878-1B81-4432-BA05-5F2FD04F6163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

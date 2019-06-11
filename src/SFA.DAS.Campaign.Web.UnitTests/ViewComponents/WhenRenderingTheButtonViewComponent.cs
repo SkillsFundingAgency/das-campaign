@@ -1,11 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
-using Moq;
 using NUnit.Framework;
-using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Campaign.Domain.DataCollection;
-using SFA.DAS.Campaign.Web.Controllers;
 using SFA.DAS.Campaign.Web.Models;
 using SFA.DAS.Campaign.Web.ViewComponents.Button;
 

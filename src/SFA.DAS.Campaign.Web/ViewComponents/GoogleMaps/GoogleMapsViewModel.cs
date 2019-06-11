@@ -1,10 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc;
-using SFA.DAS.Campaign.Web.ViewComponents.Modal;
-
-namespace SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
+﻿namespace SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
 {
   
 
