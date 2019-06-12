@@ -22,13 +22,13 @@
             <p>
                 Here are the @if (Model.TotalResults >= 10)
                 {
-                    <span id=”tag-search-count”>10</span>
+                    <span id="tag-search-count">10</span>
                 }
                 else
                 {
-                    <span id=”tag-search-count”>@Model.TotalResults</span>
+                    <span id="tag-search-count">@Model.TotalResults</span>
                 }
-                <span id="tag-search-keyword" class="bold">@Model.Route</span> apprenticeships nearest to <span id=”tag-search-postcode”>@Model.Postcode</span>
+                <span id="tag-search-keyword" class="bold">@Model.Route</span> apprenticeships nearest to <span id="tag-search-postcode">@Model.Postcode</span>
             </p>
             <p>Visit <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship</a> to see all @Model.Route apprenticeships in your area.</p>
 
