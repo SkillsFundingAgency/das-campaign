@@ -13,9 +13,7 @@
     Layout = "_LayoutContentSidebar";
 }
 
-<div class="grid-row  search-results">
-
-    <div class="grid-column-full-width">
+<div class="search-results">
         @if (Model.TotalResults > 0)
         {
             <h1 class="heading-l">
@@ -63,8 +61,6 @@
                 The postcode you have entered is invalid, please enter a valid postcode and update results.
             </span>
         }
-
-    </div>
 </div>
 
 @section Scripts
