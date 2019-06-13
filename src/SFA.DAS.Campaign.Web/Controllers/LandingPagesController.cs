@@ -4,19 +4,19 @@ namespace SFA.DAS.Campaign.Web.Controllers
 {
     public class LandingPagesController : Controller
     {
-        [Route("eoi", Name = "ExpressionOfInterest")]
+        [Route("get-involved", Name = "ExpressionOfInterest")]
         public IActionResult ExpressionOfInterest()
         {
             return View();
         }
 
-        [Route("eoi/survey", Name = "ExpressionOfInterestSurvey")]
+        [Route("get-involved/survey", Name = "ExpressionOfInterestSurvey")]
         public IActionResult ExpressionOfInterestSurvey()
         {
             return View();
         }
 
-        [Route("eoi/thanks", Name = "ExpressionOfInterestThanks")]
+        [Route("get-involved/thank-you", Name = "ExpressionOfInterestThanks")]
         public IActionResult ExpressionOfInterestThank()
         {
             return View();
