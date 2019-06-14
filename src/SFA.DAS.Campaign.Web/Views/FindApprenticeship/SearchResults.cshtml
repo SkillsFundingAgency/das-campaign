@@ -13,9 +13,7 @@
     Layout = "_LayoutContentSidebar";
 }
 
-<div class="grid-row  search-results">
-
-    <div class="grid-column-full-width">
+<div class="search-results">
         @if (Model.TotalResults > 0)
         {
             <h1 class="heading-l">
@@ -24,17 +22,17 @@
             <p>
                 Here are the @if (Model.TotalResults >= 10)
                 {
-                    @:10
+                    <span id="tag-search-count">10</span>
                 }
                 else
                 {
-                    @Model.TotalResults
+                    <span id="tag-search-count">@Model.TotalResults</span>
                 }
-                <span class="bold">@Model.Route</span> apprenticeships nearest to @Model.Postcode
+                <span id="tag-search-keyword" class="bold">@Model.Route</span> apprenticeships nearest to <span id="tag-search-postcode">@Model.Postcode</span>
             </p>
             <p>Visit <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship</a> to see all @Model.Route apprenticeships in your area.</p>
 
-            <ol id="vacancy-search-results" class="search-results-list">
+            <ol id="vacancy-search-results" class="list list--number das-search-results__list das-search-results__list--apprentice">
 
                 @foreach (var vacancySearchResultItem in Model.Results)
                 {
@@ -50,11 +48,11 @@
             <h1 class="heading-l">
                 No matching results...
             </h1>
-            <p>Try expanding your search location or changing your area of interest.<</p>
+            <p>Try expanding your search location or changing your area of interest.</p>
 
             <p>Alternatively, visit <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship</a> to refine your search further.</p>
 
-            @await Html.PartialAsync("./Components/Form/faa-search", new FindApprenticeshipSearchModel(){Distance = Model.Distance, Postcode = Model.Postcode, Route = Model.Route})
+          //  @await Html.PartialAsync("./Components/Form/faa-search", new FindApprenticeshipSearchModel(){Distance = Model.Distance, Postcode = Model.Postcode, Route = Model.Route})
         }
 
         @if (Model.Location.Latitude == 0)
@@ -63,8 +61,6 @@
                 The postcode you have entered is invalid, please enter a valid postcode and update results.
             </span>
         }
-
-    </div>
 </div>
 
 @section Scripts
