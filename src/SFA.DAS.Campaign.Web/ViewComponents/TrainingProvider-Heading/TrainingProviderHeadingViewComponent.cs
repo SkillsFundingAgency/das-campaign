@@ -18,7 +18,22 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
             _trainingProviderOrchestrator = trainingProviderOrchestrator;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(TrainingProviderSearchViewModel queryModel)
+        public async Task<IViewComponentResult> InvokeAsync(TrainingProviderSearchViewModel queryModel, TrainingProviderDetailQueryViewModel detailsQueryModel)
+        {
+            if (queryModel != null)
+            {
+                return await GetSearchResultsHeader(queryModel);
+            }
+
+            return await GetDetailsHeader(detailsQueryModel);
+        }
+
+        private async Task<IViewComponentResult> GetDetailsHeader(TrainingProviderDetailQueryViewModel detailsQueryModel)
+        {
+            return View("Details", detailsQueryModel);
+        }
+
+        private async Task<IViewComponentResult> GetSearchResultsHeader(TrainingProviderSearchViewModel queryModel)
         {
             var apprenticeshipType = _apprenticeshipOrchestrator.GetApprenticeshipType(queryModel.ApprenticeshipId);
 
