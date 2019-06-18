@@ -53,7 +53,7 @@ namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
             }
 
             cacheEntry = cacheEntry.Where(c =>
-                c.Status.ToLower() == "approved for delivery" & c.Route.ToLower() == routeId.ToLower()).ToList();
+                c.Status.ToLower() == "approved for delivery" & c.Route.ToLower() == routeId.ToLower() & c.LarsCode != 0).ToList();
 
             return cacheEntry.Select(_standardsMapper.Map)
                 .ToList();
