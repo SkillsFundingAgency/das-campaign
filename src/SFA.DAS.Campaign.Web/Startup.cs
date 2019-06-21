@@ -117,10 +117,12 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IVacanciesService, VacanciesService>();
             services.AddTransient<IApprenticeshipStandardsApi, ApprenticeshipStandardsApi>();
 
-            var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(Configuration.GetValue<string>("VacanciesApi:BaseUrl")) };
+
+            var vacanciesBaseUrl = Configuration.GetValue<string>("VacanciesApi:BaseUrl");
+            var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(vacanciesBaseUrl) };
             vacanciesHttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Configuration.GetValue<string>("VacanciesApi:ApiKey"));
 
-            services.AddTransient<ILivevacanciesAPI>(client => new LivevacanciesAPI(vacanciesHttpClient, false));
+            services.AddTransient<ILivevacanciesAPI>(client => new LivevacanciesAPI(vacanciesHttpClient, false){BaseUri = new Uri(vacanciesBaseUrl)  });
             services.AddTransient<IGeocodeService, GeocodeService>();
             services.AddTransient<IRetryWebRequests, WebRequestRetryService>();
             services.AddTransient<IMappingService, GoogleMappingService>();
