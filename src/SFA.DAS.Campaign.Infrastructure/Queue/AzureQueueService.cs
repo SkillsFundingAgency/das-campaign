@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Queue;
 using Microsoft.Extensions.Options;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Queue;
 using Newtonsoft.Json;
 using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Models.Configuration;

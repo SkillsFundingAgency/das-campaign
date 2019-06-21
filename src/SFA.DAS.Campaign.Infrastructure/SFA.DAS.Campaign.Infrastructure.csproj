@@ -8,9 +8,9 @@
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="2.2.5" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.options" Version="2.2.0" />
-    <PackageReference Include="WindowsAzure.Storage" Version="7.2.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="10.0.3" />
   </ItemGroup>
 
   <ItemGroup>
