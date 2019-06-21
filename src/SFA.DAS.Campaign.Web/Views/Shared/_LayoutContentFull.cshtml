@@ -1,6 +1,4 @@
-﻿@using Microsoft.AspNetCore.Html
-@using SFA.DAS.Campaign.Web.ViewComponents.Modal
-@{
+﻿@{
     Layout = "_Layout-campaign";
 }
 
@@ -22,3 +20,8 @@
         </div>  
     </div>
 </main>
+
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SFA.DAS.Campaign.Models.DataCollection;
+﻿using SFA.DAS.Campaign.Models.DataCollection;
 using SFA.DAS.Campaign.Models.Validation;
 
 namespace SFA.DAS.Campaign.Domain.DataCollection

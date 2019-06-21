@@ -1,0 +1,37 @@
+﻿namespace SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
+{
+  
+
+    public class GoogleMapsViewModel
+    {
+        public GoogleMapsViewModel(string staticMapUrl)
+        {
+            StaticMapUrl = staticMapUrl;
+        }
+
+        
+
+        public string StaticMapUrl { get; internal set; }
+
+        public string Class { get; internal set; }
+
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public string MarkerDataUrl => generateMarkerDataUrl();
+
+        private string generateMarkerDataUrl()
+        {
+            if (!string.IsNullOrEmpty(Postcode) && Distance > 0 && !string.IsNullOrEmpty(Route))
+            {
+                return $"/FindApprenticeship/searchResults/Data/{Route}/{Postcode}/{Distance}";
+            }
+            return "";
+        }
+        public string Route { get; set; }
+        public int Distance { get; set; }
+        public string Postcode { get; set; }
+        
+
+    }
+
+}

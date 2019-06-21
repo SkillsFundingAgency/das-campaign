@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ViewComponents;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Web.Models;
-using SFA.DAS.Campaign.Web.ViewComponents.Button;
 using SFA.DAS.Campaign.Web.ViewComponents.Form;
 using System.Threading.Tasks;
 using SFA.DAS.Campaign.Web.Models.Components.Form;
@@ -24,7 +23,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         {
 
             //Act
-            var actual = await _sut.InvokeAsync(FormType.RegisterInterest,null);
+            var actual = await _sut.InvokeAsync(FormType.RegisterInterest,null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -38,7 +37,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         {
 
             //Act
-            var actual = await _sut.InvokeAsync(FormType.RegisterInterest,null);
+            var actual = await _sut.InvokeAsync(FormType.RegisterInterest,null,null);
 
             //Assert
             Assert.IsNotNull(actual);

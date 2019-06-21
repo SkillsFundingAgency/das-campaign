@@ -1,0 +1,9 @@
+﻿@model SFA.DAS.Campaign.Web.ViewComponents.HeroHeadingViewModel
+<div class="hero-banner hero-banner--header-slant hero-banner__map">
+
+    <span class="hero-banner__background">
+ 
+        @await Component.InvokeAsync("GoogleMaps", Model.GoogleMapsViewModel)
+
+    </span>
+</div>

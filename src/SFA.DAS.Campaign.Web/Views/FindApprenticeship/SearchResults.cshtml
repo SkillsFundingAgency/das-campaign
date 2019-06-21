@@ -1,0 +1,137 @@
+﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
+@using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
+@using SFA.DAS.Campaign.Web.ViewComponents.Sidebar
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model SearchResultsViewModel
+
+@{
+    ViewBag.Title = "Find an apprenticeship";
+    ViewBag.MetaTitle = "Find an apprenticeship";
+    ViewBag.PageID = "apprentice-search-results";
+    ViewBag.Section = "apprentice";
+    ViewBag.MetaDesc = "";
+    Layout = "_LayoutContentSidebar";
+
+    // Google Analytics meta info
+    <span class="meta vh" aria-hidden="true">
+        There are
+            <span id="tag-search-count">@Model.TotalResults</span> 
+            <span id="tag-search-keyword">@Model.Route</span>
+        apprenticeships within
+            <span id="tag-search-distance">@Model.Distance</span> 
+        miles of
+            <span id="tag-search-postcode">@Model.Postcode</span>.
+    </span>
+}
+
+<div class="search-results">
+
+    @if (Model.TotalResults > 0)
+    {
+        <h1 class="heading-l">
+            Your results...
+        </h1>
+        <p>
+            Here are the
+            @if (Model.TotalResults >= 10)
+            {
+                <span class="bold">10 </span>
+            }
+            else
+            {
+                <span class="bold">@Model.TotalResults</span>
+            }
+            <span class="bold">@Model.Route</span>
+            apprenticeships nearest to
+            <span class="bold">@Model.Postcode</span>.
+        </p>
+
+        <p>Visit <a id="link-faa-search-results" href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship</a> to see all @Model.Route apprenticeships in your area.</p>
+
+        <ol id="vacancy-search-results" class="list list--number das-search-results__list das-search-results__list--apprentice">
+
+            @foreach (var vacancySearchResultItem in Model.Results)
+            {
+
+                await Html.RenderPartialAsync("_searchResults", vacancySearchResultItem);
+
+            }
+
+        </ol>
+    }
+    else
+    {
+        <h1 class="heading-l">
+            No matching results...
+        </h1>
+
+        <p>Try expanding your search location or changing your area of interest.</p>
+
+        <p>Alternatively, visit <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship</a> to refine your search further.</p>
+
+        //  @await Html.PartialAsync("./Components/Form/faa-search", new FindApprenticeshipSearchModel(){Distance = Model.Distance, Postcode = Model.Postcode, Route = Model.Route})
+    }
+
+    @if (Model.Location.Latitude == 0)
+    {
+        <span class="error-message heading-s">
+            The postcode you have entered is invalid, please enter a valid postcode and update results.
+        </span>
+    }
+</div>
+
+@section Scripts
+    {
+    <script defer src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=@(MappingConfig.Value.ApiKey)&callback=DASFrontend.initMaps"
+            type="text/javascript"></script>
+    <script defer src="/campaign/js/infobox.js"></script>
+
+
+}
+
+@section Sidebar
+    {
+    @await Component.InvokeAsync("Sidebar", new { headerType = SidebarHeaderType.Form, formOptions = new { type = FormType.faaUpdateSearch, findApprenticeshipSearchModel = new FindApprenticeshipSearchModel() { Distance = Model.Distance, Postcode = Model.Postcode } } })
+}
+
+
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeshipResults, googleMapsOptions = new GoogleMapsViewModel(Model.StaticMapUrl) { Latitude = Model.Location.Latitude, Longitude = Model.Location.Longitude, Distance = Model.Distance, Postcode = Model.Postcode, Route = Model.Route } })
+}
+
+@section Resources {
+    @if (Model.TotalResults > 0)
+    {
+        <section class="section section--slant section--apprentice ">
+            <div class="grid-row">
+                <div class="grid-column-one-half">
+                    <h3 class="heading-l">view all my results on <img class="section__faa-logo-header-inline" src="/legacy/images/gov.uk_logotype_crown_white.svg" alt="GOV crown logo" /> gov.uk</h3>
+                    <p>
+                        We have provided you with the top
+                        @if (Model.TotalResults >= 10)
+                        {
+                            @:10
+                        }
+                        else
+                        {
+                            @Model.TotalResults
+                        }
+
+                        search results in your area, to see all your results you need to visit the Find an Apprenticeship website
+                    </p>
+
+                    <div class="section__faa-actions">
+
+                        <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="button button--shadow button--sparks" rel="external" target="_blank">visit gov.uk to see my results</a>
+                    </div>
+                </div>
+                <div class="grid-column-one-half">
+                    <img class="section__faa_img" src="/campaign/images/FAA-Screenshot.JPG" alt="Screenshot from all your search results" />
+                </div>
+            </div>
+        </section>
+    }
+}

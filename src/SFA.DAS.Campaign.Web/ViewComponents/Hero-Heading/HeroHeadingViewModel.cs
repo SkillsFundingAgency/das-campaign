@@ -1,8 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc;
-using SFA.DAS.Campaign.Web.ViewComponents.Modal;
+﻿using Microsoft.AspNetCore.Html;
+using SFA.DAS.Campaign.Web.Models;
+using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps;
+using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading;
 
 namespace SFA.DAS.Campaign.Web.ViewComponents
 {
@@ -10,11 +9,13 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 
     public class HeroHeadingViewModel
     {
-        public HeroHeadingViewModel(HeroHeadingType type, string caption, string classes, IHtmlContent content)
+        public HeroHeadingViewModel(HeroHeadingType type, string caption, string classes, IHtmlContent content, GoogleMapsViewModel googleMapsViewModel)
         {
             Type = type;
             Content = content;
             setDefaults();
+            GoogleMapsViewModel = googleMapsViewModel;
+            FaaSearchResultsViewModel = new FindApprenticeshipSearchModel();
 
             if (!string.IsNullOrWhiteSpace(caption))
             {
@@ -34,7 +35,8 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
         public string Caption { get; internal set; }
 
         public string Class { get; internal set; }
-
+        public GoogleMapsViewModel GoogleMapsViewModel { get; }
+        public FindApprenticeshipSearchModel FaaSearchResultsViewModel { get; }
         private string setDefaults()
         {
             var caption = "";

@@ -1,19 +1,33 @@
-﻿using System.IO;
+﻿using Ifa.Api.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
+using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Application.DataCollection.Services;
 using SFA.DAS.Campaign.Application.DataCollection.Validation;
+using SFA.DAS.Campaign.Application.Geocode;
+using SFA.DAS.Campaign.Application.Interfaces;
+using SFA.DAS.Campaign.Application.Vacancies;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
+using SFA.DAS.Campaign.Domain.Configuration;
+using SFA.DAS.Campaign.Domain.Configuration.Models;
 using SFA.DAS.Campaign.Domain.DataCollection;
-using SFA.DAS.Campaign.Infrastructure.Queue;
-using SFA.DAS.Campaign.Models.Configuration;
+using SFA.DAS.Campaign.Domain.Geocode;
+using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
+using SFA.DAS.Campaign.Infrastructure.Queue;
+using SFA.DAS.Campaign.Infrastructure.Services;
+using SFA.DAS.Campaign.Models.Configuration;
+using System;
+using System.IO;
+using System.Net.Http;
+using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -50,6 +64,18 @@ namespace SFA.DAS.Campaign.Web
 
             services.Configure<CampaignConfiguration>(Configuration);
 
+            var connectionStrings = new ConnectionStrings();
+
+            Configuration.Bind("ConnectionStrings", connectionStrings);
+
+            var postcodeConfig = new PostcodeApiConfiguration();
+            Configuration.Bind("Postcode", postcodeConfig);
+
+            var mappingConfig = new MappingConfiguration();
+            Configuration.Bind("Mapping", mappingConfig);
+
+            services.Configure<MappingConfiguration>(Configuration.GetSection("Mapping"));
+
             services.AddMiniProfiler(options =>
             {
                 // ALL of this is optional. You can simply call .AddMiniProfiler() for all defaults
@@ -82,18 +108,49 @@ namespace SFA.DAS.Campaign.Web
                 // Optionally disable "Connection Open()", "Connection Close()" (and async variants).
                 //options.TrackConnectionOpenClose = false;);
             });
-
+            services.AddSingleton<IPostcodeApiConfiguration>(postcodeConfig);
+            services.AddSingleton<IMappingConfiguration>(mappingConfig);
             services.AddTransient<IApprenticeshipProgrammeApiClient>(client => new ApprenticeshipProgrammeApiClient(Configuration["ApprenticeshipBaseUrl"]));
             services.AddTransient<IStandardsMapper, StandardsMapper>();
             services.AddTransient<IStandardsService, StandardsService>();
+            services.AddTransient<IVacanciesMapper, VacanciesMapper>();
+            services.AddTransient<IVacanciesService, VacanciesService>();
+            services.AddTransient<IApprenticeshipStandardsApi, ApprenticeshipStandardsApi>();
+
+
+            var vacanciesBaseUrl = Configuration.GetValue<string>("VacanciesApi:BaseUrl");
+            var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(vacanciesBaseUrl) };
+            vacanciesHttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Configuration.GetValue<string>("VacanciesApi:ApiKey"));
+
+            services.AddTransient<ILivevacanciesAPI>(client => new LivevacanciesAPI(vacanciesHttpClient, false){BaseUri = new Uri(vacanciesBaseUrl)  });
+            services.AddTransient<IGeocodeService, GeocodeService>();
+            services.AddTransient<IRetryWebRequests, WebRequestRetryService>();
+            services.AddTransient<IMappingService, GoogleMappingService>();
             services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
             services.AddTransient<IUserDataCollection, UserDataCollection>();
             services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
+            services.AddTransient<ICacheStorageService, CacheStorageService>();
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
+            services.AddMemoryCache();
+
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
+            
+
+            if (Configuration["Environment"] == "LOCAL")
+            {
+                services.AddDistributedMemoryCache();
+            }
+            else
+            {
+                services.AddStackExchangeRedisCache(options =>
+                {
+                    options.Configuration = connectionStrings.SharedRedis;
+                });
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -126,7 +183,7 @@ namespace SFA.DAS.Campaign.Web
                 }
 
                 context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
-                
+
                 await next();
 
                 if (context.Response.StatusCode == 404 && !context.Response.HasStarted)

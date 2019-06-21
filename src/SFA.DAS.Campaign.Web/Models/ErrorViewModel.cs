@@ -1,5 +1,3 @@
-using System;
-
 namespace SFA.DAS.Campaign.Web.Models
 {
     public class ErrorViewModel

@@ -1,0 +1,58 @@
+﻿@model SFA.DAS.Campaign.Web.ViewComponents.Sidebar.SidebarViewModel
+@{
+    var activeClass = "sidebar-nav__section--active";
+}
+
+<div class="sidebar @Model.Classes">
+
+    <div class="sidebar__hero">
+        @await Component.InvokeAsync("GoogleMaps", Model.GoogleMapsViewModel)
+    </div>
+    <div class="trimmer">
+        <div class="sidebar__header">
+            <h2 class="heading-s sidebar__heading">What are the steps to become an apprentice</h2>
+        </div>
+    </div>
+    <div class="sidebar__content">
+        <ol class="sidebar-nav">
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprenticeship-whats-an-apprenticeship" ? activeClass : null ) ">
+                <a asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" id="link-sidebar-apprentice-1">
+                    Before you start
+                </a>
+            </li>
+
+            <li class="sidebar-nav__section">
+                <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" id="link-sidebar-faa" rel="external" target="_blank">
+                    Find an apprenticeship
+                </a>
+            </li>
+
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-application" ? activeClass : null ) ">
+                <a asp-controller="Apprentice" asp-action="Application" id="link-sidebar-apprentice-3">
+                    Application
+                </a>
+            </li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-interview" ? activeClass : null ) ">
+                <a asp-controller="Apprentice" asp-action="Interview" id="link-sidebar-apprentice-4">
+                    Interview
+                </a>
+            </li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-your-apprenticeship" ? activeClass : null ) ">
+                <a asp-controller="Apprentice" asp-action="YourApprenticeship" id="link-sidebar-apprentice-5">
+                    Your apprenticeship
+                </a>
+            </li>
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-assessment-and-certification" ? activeClass : null ) ">
+                <a asp-controller="Apprentice" asp-action="AssessmentAndQualification" id="link-sidebar-apprentice-6">
+                    Assessment and certification
+                </a>
+            </li>
+        </ol>
+    </div>
+    <div class="trimmer">
+        <div class="sidebar__sub-content">
+            <a class="button button--sparks button--shadow " asp-action="index" asp-controller="RegisterInterest" id="btn-sidebar-register-interest-apprentice">Register Interest</a>
+        </div>
+    </div>
+</div>
+

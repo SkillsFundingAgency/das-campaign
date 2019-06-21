@@ -2,9 +2,7 @@
 @{
     var activeClass = "sidebar-nav__section--active";
 }
-
 <div class="sidebar @Model.Classes">
-
     <div class="sidebar__hero">
         <img src="@Model.ImgLocation" class="sidebar__hero-image" alt="" />
     </div>
@@ -21,12 +19,12 @@
                 </a>
             </li>
 
-            <li class="sidebar-nav__section">
-                <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" id="link-sidebar-faa"  rel="external" target="_blank">
+            <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-find-an-apprenticeship" ? activeClass : null )">
+                <a asp-controller="Apprentice" asp-action="FindAnApprenticeship" id="link-sidebar-faa">
                     Find an apprenticeship
                 </a>
             </li>
-        
+
             <li class="sidebar-nav__section @( ViewData["PageID"].ToString() == "apprentice-application" ? activeClass : null ) ">
                 <a asp-controller="Apprentice" asp-action="Application" id="link-sidebar-apprentice-3">
                     Application
@@ -51,8 +49,7 @@
     </div>
     <div class="trimmer">
         <div class="sidebar__sub-content">
-            <a class="button button--sparks button--shadow "  asp-action="index" asp-controller="RegisterInterest" id="btn-sidebar-register-interest-apprentice">Register Interest</a>
+            <a class="button button--sparks button--shadow " asp-action="index" asp-controller="RegisterInterest" id="btn-sidebar-register-interest-employer">Register Interest</a>
         </div>
     </div>
 </div>
-
