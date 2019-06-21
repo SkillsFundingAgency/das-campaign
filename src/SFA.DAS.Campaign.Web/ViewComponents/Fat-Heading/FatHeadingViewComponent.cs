@@ -15,7 +15,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
             _fatOrchestrator = fatOrchestrator;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(SearchQueryViewModel queryModel)
+        public IViewComponentResult Invoke(SearchQueryViewModel queryModel)
         {
            var model = _fatOrchestrator.GetSearchResults(queryModel);
 

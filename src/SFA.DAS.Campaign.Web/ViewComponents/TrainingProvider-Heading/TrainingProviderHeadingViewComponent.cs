@@ -6,7 +6,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 {
     public class TrainingProviderHeadingViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(TrainingProviderSearchViewModel queryModel)
+        public IViewComponentResult Invoke(TrainingProviderSearchViewModel queryModel)
         {
             return View("Default", queryModel);
         }

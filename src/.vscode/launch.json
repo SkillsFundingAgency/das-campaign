@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/SFA.DAS.Campaign.Web/bin/Debug/netcoreapp2.1/SFA.DAS.Campaign.Web.dll",
+            "program": "${workspaceFolder}/SFA.DAS.Campaign.Web/bin/Debug/netcoreapp2.2/SFA.DAS.Campaign.Web.dll",
             "args": [],
             "cwd": "${workspaceFolder}/SFA.DAS.Campaign.Web",
             "stopAtEntry": false,

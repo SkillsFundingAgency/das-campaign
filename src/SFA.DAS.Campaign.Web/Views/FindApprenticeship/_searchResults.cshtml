@@ -1,5 +1,5 @@
 ﻿@using SFA.DAS.Campaign.Web.Helpers;
-@model SFA.DAS.Campaign.Models.Vacancy.VacancySearchResultItem
+@model SFA.DAS.Campaign.Domain.Vacancies.VacancySearchResultItem
 
 <li class="search-result" data-id="@Model.VacancyReference" data-lat="@Model.Location.Latitude" data-lon="@Model.Location.Longitude">
     <h2 class="heading-m">
@@ -7,7 +7,8 @@
     </h2>
     <ul class="list  search-results__list-secondary">
         <li>@Model.Title</li>
-        <li>(Added @Model.PostedDate.ToFriendlyDaysAgo())
+        <li>
+            (Added @Model.PostedDate.ToFriendlyDaysAgo())
         </li>
     </ul>
     <p>
