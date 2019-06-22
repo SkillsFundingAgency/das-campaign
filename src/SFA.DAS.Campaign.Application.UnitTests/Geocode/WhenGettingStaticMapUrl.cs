@@ -33,7 +33,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Geocode
         }
 
         [Test]
-        public async Task WhenASingleLocationThenMapWithMarker()
+        public void WhenASingleLocationThenMapWithMarker()
         {
             var expectedResult = "https://maps.googleapis.com/maps/api/staticmap?markers=0,52&size=100x100&scale=2&zoom=10&key=12345";
 
@@ -45,7 +45,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Geocode
         }
 
         [Test]
-        public async Task WhenMultipleLocationsThenMapWithMarker()
+        public void WhenMultipleLocationsThenMapWithMarker()
         {
             var expectedResult = "https://maps.googleapis.com/maps/api/staticmap?markers=0,52|1,53&size=100x100&scale=2&zoom=10&key=12345";
             
@@ -56,7 +56,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.Geocode
 
         }
         [Test]
-        public async Task WhenMultipleLocationsWithSizeThenMapWithMarker()
+        public void WhenMultipleLocationsWithSizeThenMapWithMarker()
         {
             var expectedResult = "https://maps.googleapis.com/maps/api/staticmap?markers=0,52|1,53&size=300x300&scale=2&zoom=10&key=12345";
 

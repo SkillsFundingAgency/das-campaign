@@ -20,11 +20,11 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         }
 
         [Test]
-        public async Task When_Component_Then_The_ModalType_Is_Component()
+        public void When_Component_Then_The_ModalType_Is_Component()
         {
 
             //Act
-            var actual = await _sut.InvokeAsync(_id,ModalType.Component,_componentName,new {});
+            var actual = _sut.Invoke(_id,ModalType.Component,_componentName,new {});
 
             //Assert
             Assert.IsNotNull(actual);
@@ -41,11 +41,11 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
 
         }
         [Test]
-        public async Task When_Component_Then_The_ModalType_Is_PartialView()
+        public void When_Component_Then_The_ModalType_Is_PartialView()
         {
 
             //Act
-            var actual = await _sut.InvokeAsync(_id, ModalType.PartialView, _partialViewName, new { });
+            var actual = _sut.Invoke(_id, ModalType.PartialView, _partialViewName, new { });
 
             //Assert
             Assert.IsNotNull(actual);

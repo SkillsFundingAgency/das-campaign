@@ -19,11 +19,11 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         }
 
         [Test]
-        public async Task When_Default_Then_The_Type_Is_None_And_No_Caption()
+        public void When_Default_Then_The_Type_Is_None_And_No_Caption()
         {
             var headingType = HeroHeadingType.None;
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null,null,null,null);
+            var actual = _sut.Invoke(headingType, null,null,null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -40,12 +40,12 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         }
 
         [Test]
-        public async Task When_Apprentice_Then_The_Type_Is_Apprentice_And_Caption_Is_Apprentice()
+        public void When_Apprentice_Then_The_Type_Is_Apprentice_And_Caption_Is_Apprentice()
         {
             var headingType = HeroHeadingType.Apprentice;
             var caption = "Apprentice";
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null, null, null,null);
+            var actual = _sut.Invoke(headingType, null, null, null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -61,12 +61,12 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         }
 
         [Test]
-        public async Task When_Employer_Then_The_Type_Is_Employer_And_Caption_Is_Employer()
+        public void When_Employer_Then_The_Type_Is_Employer_And_Caption_Is_Employer()
         {
             var headingType = HeroHeadingType.Employer;
             var caption = "Employer";
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null, null, null,null);
+            var actual = _sut.Invoke(headingType, null, null, null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -82,12 +82,12 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         }
 
         [Test]
-        public async Task When_Employer_And_Custom_Caption_Then_The_Type_Is_Employer_And_Caption_Custom()
+        public void When_Employer_And_Custom_Caption_Then_The_Type_Is_Employer_And_Caption_Custom()
         {
             var headingType = HeroHeadingType.Employer;
             var caption = "Custom";
             //Act
-            var actual = await _sut.InvokeAsync(headingType, caption, null, null,null);
+            var actual = _sut.Invoke(headingType, caption, null, null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -103,12 +103,13 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         }
 
         [Test]
-        public async Task When_Apprentice_And_Custom_Caption_Then_The_Type_Is_Apprentice_And_Caption_Custom()
+        public void When_Apprentice_And_Custom_Caption_Then_The_Type_Is_Apprentice_And_Caption_Custom()
         {
             var headingType = HeroHeadingType.Apprentice;
             var caption = "Custom";
+
             //Act
-            var actual = await _sut.InvokeAsync(headingType, caption, null, null,null);
+            var actual = _sut.Invoke(headingType, caption, null, null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -124,14 +125,14 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         }
 
         [Test]
-        public async Task When_Employer_And_Custom_Class_Then_The_Type_Is_Employer_And_Class_Custom()
+        public void When_Employer_And_Custom_Class_Then_The_Type_Is_Employer_And_Class_Custom()
         {
             var headingType = HeroHeadingType.Employer;
             var customClasses = "custom-employer-class";
 
             var actualClass = "hero-heading__caption--employer " + customClasses;
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null, customClasses, null,null);
+            var actual = _sut.Invoke(headingType, null, customClasses, null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -147,13 +148,13 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         }
 
         [Test]
-        public async Task When_Apprentice_And_Custom_Class_Then_The_Type_Is_Apprentice_And_Class_Custom()
+        public void When_Apprentice_And_Custom_Class_Then_The_Type_Is_Apprentice_And_Class_Custom()
         {
             var headingType = HeroHeadingType.Apprentice;
             var customClasses = "custom-apprentice-class";
             var actualClass = "hero-heading__caption--apprentice " + customClasses;
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null, customClasses, null,null);
+            var actual = _sut.Invoke(headingType, null, customClasses, null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -169,12 +170,12 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         }
 
         [Test]
-        public async Task When_Content_Then_Content_Is_Populated()
+        public void When_Content_Then_Content_Is_Populated()
         {
             var headingType = HeroHeadingType.Employer;
             var content = customContent();
             //Act
-            var actual = await _sut.InvokeAsync(headingType, null, null, content,null);
+            var actual = _sut.Invoke(headingType, null, null, content,null);
 
             //Assert
             Assert.IsNotNull(actual);

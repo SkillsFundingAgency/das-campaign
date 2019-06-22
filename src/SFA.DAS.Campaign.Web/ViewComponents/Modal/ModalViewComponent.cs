@@ -1,11 +1,10 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace SFA.DAS.Campaign.Web.ViewComponents.Modal
 {
     public class ModalViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(string id,ModalType type,string name,object componentOptions)
+        public IViewComponentResult Invoke(string id,ModalType type,string name,object componentOptions)
         {
             var modalVM = new ModalViewModel()
             {

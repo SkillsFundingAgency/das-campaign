@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using SFA.DAS.Campaign.Web.Models;
 using SFA.DAS.Campaign.Web.ViewComponents.Form;
-using System.Threading.Tasks;
 using SFA.DAS.Campaign.Web.Models.Components.Form;
 
 namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
@@ -19,11 +18,11 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         }
 
         [Test]
-        public async Task When_RegisterInterest_Then_The_Correct_View_Returned()
+        public void When_RegisterInterest_Then_The_Correct_View_Returned()
         {
 
             //Act
-            var actual = await _sut.InvokeAsync(FormType.RegisterInterest,null,null);
+            var actual = _sut.Invoke(FormType.RegisterInterest,null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -33,11 +32,11 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
 
         }
         [Test]
-        public async Task When_RegisterInterest_Then_The_Correct_Model_Returned()
+        public void When_RegisterInterest_Then_The_Correct_Model_Returned()
         {
 
             //Act
-            var actual = await _sut.InvokeAsync(FormType.RegisterInterest,null,null);
+            var actual = _sut.Invoke(FormType.RegisterInterest,null,null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -50,6 +49,5 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsNotNull(formViewModel);
 
         }
-
     }
 }
