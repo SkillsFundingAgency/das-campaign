@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
+using SFA.DAS.Campaign.Application.Configuration;
+using SFA.DAS.Campaign.Application.Core;
+using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.DataCollection.Services;
-using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Models.Configuration;
 using SFA.DAS.Campaign.Models.DataCollection;
 using SFA.DAS.Campaign.Models.Validation;
@@ -17,7 +19,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
         private Mock<IUserDataCollectionValidator> _userDataCollectionValidator;
         private UserDataCollection _userDataCollection;
         private Mock<IQueueService<UserData>> _queueService;
-        private Mock<IOptions<CampaignConfiguration>> _options;
+        private Mock<IOptions<UserDataQueueNames>> _options;
         private Mock<IUserDataCryptographyService> _userDataCryptographyService;
         private UserData _userData;
         private const string StoreUserDataQueueName = "store-queue";
@@ -30,8 +32,8 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             _queueService = new Mock<IQueueService<UserData>>();
             _userDataCollectionValidator = new Mock<IUserDataCollectionValidator>();
             _userDataCollectionValidator.Setup(x => x.Validate(It.IsAny<UserData>())).Returns(new ValidationResult());
-            _options = new Mock<IOptions<CampaignConfiguration>>();
-            _options.Setup(x => x.Value).Returns(new CampaignConfiguration{StoreUserDataQueueName = StoreUserDataQueueName});
+            _options = new Mock<IOptions<UserDataQueueNames>>();
+            _options.Setup(x => x.Value).Returns(new UserDataQueueNames { StoreUserDataQueueName = StoreUserDataQueueName});
             _userDataCryptographyService = new Mock<IUserDataCryptographyService>();
             _userDataCryptographyService.Setup(x => x.GenerateEncodedUserEmail(It.Is<string>(c=>c.Equals(ExpectedEmail)))).Returns(ExpectedEncodedEmail);
 

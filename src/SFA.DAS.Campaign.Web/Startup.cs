@@ -7,21 +7,21 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using SFA.DAS.Apprenticeships.Api.Client;
-using SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services;
+using SFA.DAS.Campaign.Application.Configuration;
 using SFA.DAS.Campaign.Application.Core;
+using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.DataCollection.Services;
 using SFA.DAS.Campaign.Application.DataCollection.Validation;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Application.Interfaces;
-using SFA.DAS.Campaign.Application.Vacancies;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Campaign.Domain.Configuration;
-using SFA.DAS.Campaign.Domain.Configuration.Models;
-using SFA.DAS.Campaign.Domain.DataCollection;
-using SFA.DAS.Campaign.Domain.Geocode;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
+using SFA.DAS.Campaign.Infrastructure.Geocode;
+using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
+using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Campaign.Infrastructure.Queue;
+using SFA.DAS.Campaign.Infrastructure.Repositories;
 using SFA.DAS.Campaign.Infrastructure.Services;
 using SFA.DAS.Campaign.Models.Configuration;
 using System;
@@ -63,6 +63,8 @@ namespace SFA.DAS.Campaign.Web
             });
 
             services.Configure<CampaignConfiguration>(Configuration);
+
+            services.Configure<UserDataCryptography>(Configuration.GetSection("UserDataCryptography"));
 
             var connectionStrings = new ConnectionStrings();
 
@@ -112,9 +114,9 @@ namespace SFA.DAS.Campaign.Web
             services.AddSingleton<IMappingConfiguration>(mappingConfig);
             services.AddTransient<IApprenticeshipProgrammeApiClient>(client => new ApprenticeshipProgrammeApiClient(Configuration["ApprenticeshipBaseUrl"]));
             services.AddTransient<IStandardsMapper, StandardsMapper>();
-            services.AddTransient<IStandardsService, StandardsService>();
+            services.AddTransient<IStandardsRepository, StandardsRepository>();
             services.AddTransient<IVacanciesMapper, VacanciesMapper>();
-            services.AddTransient<IVacanciesService, VacanciesService>();
+            services.AddTransient<IVacanciesRepository, VacanciesRepository>();
             services.AddTransient<IApprenticeshipStandardsApi, ApprenticeshipStandardsApi>();
 
             var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(Configuration.GetValue<string>("VacanciesApi:BaseUrl")) };
@@ -136,7 +138,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddMemoryCache();
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
-            
+
 
             if (Configuration["Environment"] == "LOCAL")
             {

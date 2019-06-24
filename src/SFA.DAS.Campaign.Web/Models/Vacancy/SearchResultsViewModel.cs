@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SFA.DAS.Campaign.Models.Vacancy;
+using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Web.Models.Vacancy;
 
 namespace SFA.DAS.Campaign.Web.Models

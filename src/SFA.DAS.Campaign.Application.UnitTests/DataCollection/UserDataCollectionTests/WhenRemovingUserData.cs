@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
+using SFA.DAS.Campaign.Application.Configuration;
+using SFA.DAS.Campaign.Application.Core;
+using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.DataCollection.Services;
-using SFA.DAS.Campaign.Domain.DataCollection;
 using SFA.DAS.Campaign.Models.Configuration;
 using SFA.DAS.Campaign.Models.DataCollection;
 
@@ -15,7 +17,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
         private Mock<IUserDataCollectionValidator> _userDataCollectionValidator;
         private UserDataCollection _userDataCollection;
         private Mock<IQueueService<UserData>> _queueService;
-        private Mock<IOptions<CampaignConfiguration>> _options;
+        private Mock<IOptions<UserDataQueueNames>> _options;
         private Mock<IUserDataCryptographyService> _userDataCryptographyService;
         private const string RemoveUserDataQueueName = "remove-queue";
 
@@ -25,8 +27,8 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             _queueService = new Mock<IQueueService<UserData>>();
             _userDataCollectionValidator = new Mock<IUserDataCollectionValidator>();
             _userDataCollectionValidator.Setup(x => x.ValidateEmail(It.IsAny<string>())).Returns(true);
-            _options = new Mock<IOptions<CampaignConfiguration>>();
-            _options.Setup(x => x.Value).Returns(new CampaignConfiguration { RemoveUserDataQueueName = RemoveUserDataQueueName });
+            _options = new Mock<IOptions<UserDataQueueNames>>();
+            _options.Setup(x => x.Value).Returns(new UserDataQueueNames { RemoveUserDataQueueName = RemoveUserDataQueueName });
             _userDataCryptographyService = new Mock<IUserDataCryptographyService>();
 
             _userDataCollection = new UserDataCollection(_userDataCollectionValidator.Object, _queueService.Object, _options.Object, _userDataCryptographyService.Object);

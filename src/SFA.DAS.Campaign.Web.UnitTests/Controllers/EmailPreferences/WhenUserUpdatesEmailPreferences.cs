@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using SFA.DAS.Campaign.Domain.DataCollection;
+using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Web.Controllers;
 
 namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.EmailPreferences

@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Application.Geocode;
-using SFA.DAS.Campaign.Domain.Geocode;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Web.Constants;
 using SFA.DAS.Campaign.Web.Models;
@@ -13,11 +12,11 @@ namespace SFA.DAS.Campaign.Web.Controllers
     [Route("FindApprenticeship")]
     public class FindApprenticeshipController : Controller
     {
-        private IVacanciesService _vacanciesService;
+        private IVacanciesRepository _vacanciesService;
         private IGeocodeService _geocodeService;
         private readonly IMappingService _mappingService;
 
-        public FindApprenticeshipController(IVacanciesService vacanciesService, IGeocodeService geocodeService, IMappingService mappingService)
+        public FindApprenticeshipController(IVacanciesRepository vacanciesService, IGeocodeService geocodeService, IMappingService mappingService)
         {
             _vacanciesService = vacanciesService;
             _geocodeService = geocodeService;

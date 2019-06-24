@@ -3,8 +3,7 @@ using System.Linq;
 using System.Text;
 using HashidsNet;
 using Microsoft.Extensions.Options;
-using SFA.DAS.Campaign.Domain.DataCollection;
-using SFA.DAS.Campaign.Models.Configuration;
+using SFA.DAS.Campaign.Application.Configuration;
 
 namespace SFA.DAS.Campaign.Application.DataCollection.Services
 {
@@ -12,7 +11,7 @@ namespace SFA.DAS.Campaign.Application.DataCollection.Services
     {
         private readonly Hashids _hashedId;
 
-        public UserDataCryptographyService(IOptions<CampaignConfiguration> options)
+        public UserDataCryptographyService(IOptions<UserDataCryptography> options)
         {
             _hashedId = new Hashids(options.Value.UserUrlSalt,options.Value.UserUrlMinValue,options.Value.AllowedUrlCharacters);
         }

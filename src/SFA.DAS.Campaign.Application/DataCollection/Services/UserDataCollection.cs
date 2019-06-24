@@ -2,8 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
-using SFA.DAS.Campaign.Domain.DataCollection;
-using SFA.DAS.Campaign.Models.Configuration;
+using SFA.DAS.Campaign.Application.Configuration;
+using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Models.DataCollection;
 
 namespace SFA.DAS.Campaign.Application.DataCollection.Services
@@ -12,11 +12,11 @@ namespace SFA.DAS.Campaign.Application.DataCollection.Services
     {
         private readonly IUserDataCollectionValidator _validator;
         private readonly IQueueService<UserData> _queueService;
-        private readonly IOptions<CampaignConfiguration> _options;
+        private readonly IOptions<UserDataQueueNames> _options;
         private readonly IUserDataCryptographyService _userDataCryptographyService;
 
         public UserDataCollection(IUserDataCollectionValidator validator, IQueueService<UserData> queueService,
-            IOptions<CampaignConfiguration> options, IUserDataCryptographyService userDataCryptographyService)
+            IOptions<UserDataQueueNames> options, IUserDataCryptographyService userDataCryptographyService)
         {
             _validator = validator;
             _queueService = queueService;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
+using SFA.DAS.Campaign.Application.Configuration;
 using SFA.DAS.Campaign.Application.DataCollection.Services;
 using SFA.DAS.Campaign.Models.Configuration;
 
@@ -9,13 +10,13 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.Services
     public class WhenUsingTheUrlUserService
     {
         private UserDataCryptographyService _userDataCryptographyService;
-        private Mock<IOptions<CampaignConfiguration>> _options;
+        private Mock<IOptions<UserDataCryptography>> _options;
 
 
         [SetUp]
         public void Arrange()
         {
-            _options = new Mock<IOptions<CampaignConfiguration>>();
+            _options = new Mock<IOptions<UserDataCryptography>>();
             _options.Setup(x => x.Value.UserUrlSalt).Returns("Test Value");
             _options.Setup(x => x.Value.UserUrlMinValue).Returns(10);
             _options.Setup(x => x.Value.AllowedUrlCharacters).Returns("ABCDEFHJKLMNPRSTUV34689");

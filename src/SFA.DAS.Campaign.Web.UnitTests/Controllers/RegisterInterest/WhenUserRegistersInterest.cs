@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.Primitives;
 using Moq;
 using NUnit.Framework;
-using SFA.DAS.Campaign.Domain.DataCollection;
+using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Models.DataCollection;
 using SFA.DAS.Campaign.Web.Controllers;
 using SFA.DAS.Campaign.Web.Models;

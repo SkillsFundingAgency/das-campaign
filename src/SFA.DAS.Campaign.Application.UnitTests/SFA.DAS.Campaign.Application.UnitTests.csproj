@@ -13,5 +13,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj" />
+    <ProjectReference Include="..\SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Infrastructure\Repositories\" />
+    <Folder Include="Infrastructure\Mappers\" />
+    <Folder Include="Infrastructure\Geocode\" />
   </ItemGroup>
 </Project>

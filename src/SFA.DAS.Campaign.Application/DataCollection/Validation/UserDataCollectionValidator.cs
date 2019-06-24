@@ -1,5 +1,4 @@
-﻿using SFA.DAS.Campaign.Domain.DataCollection;
-using SFA.DAS.Campaign.Models.DataCollection;
+﻿using SFA.DAS.Campaign.Models.DataCollection;
 using SFA.DAS.Campaign.Models.Validation;
 
 namespace SFA.DAS.Campaign.Application.DataCollection.Validation
