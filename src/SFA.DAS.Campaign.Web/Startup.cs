@@ -62,6 +62,7 @@ namespace SFA.DAS.Campaign.Web
             services.Configure<CampaignConfiguration>(Configuration);
 
             services.Configure<UserDataCryptography>(Configuration.GetSection("UserDataCryptography"));
+            services.Configure<UserDataQueueNames>(Configuration.GetSection("UserDataQueueNames"));
 
             var connectionStrings = new ConnectionStrings();
 
