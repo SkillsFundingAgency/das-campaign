@@ -4,7 +4,7 @@ using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Configuration;
 using SFA.DAS.Campaign.Application.DataCollection;
 
-namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.Services
+namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection
 {
     public class WhenUsingTheUrlUserService
     {

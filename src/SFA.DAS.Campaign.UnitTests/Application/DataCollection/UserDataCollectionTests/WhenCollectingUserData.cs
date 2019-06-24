@@ -6,7 +6,6 @@ using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Configuration;
 using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.Core;
-using ValidationResult = SFA.DAS.Campaign.Application.ValidationResult;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollectionTests
 {

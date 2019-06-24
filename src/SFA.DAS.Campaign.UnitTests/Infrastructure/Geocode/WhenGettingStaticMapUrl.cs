@@ -5,7 +5,7 @@ using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
 
-namespace SFA.DAS.Campaign.In.UnitTests.Geocode
+namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Geocode
 {
     [TestFixture]
     public class WhenGettingStaticMapUrl

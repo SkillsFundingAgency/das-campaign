@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
     <PackageReference Include="Moq" Version="4.10.0" />
@@ -14,11 +15,20 @@
   <ItemGroup>
     <ProjectReference Include="..\SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj" />
+    <ProjectReference Include="..\SFA.DAS.Campaign.Web\SFA.DAS.Campaign.Web.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
     <Folder Include="Infrastructure\Repositories\" />
     <Folder Include="Infrastructure\Mappers\" />
     <Folder Include="Infrastructure\Geocode\" />
+    <Folder Include="Application\" />
+    <Folder Include="Application\DataCollection\" />
+    <Folder Include="Web\" />
+    <Folder Include="Web\Controllers\" />
+    <Folder Include="Web\ViewComponents\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove=".DS_Store" />
   </ItemGroup>
 </Project>
