@@ -13,7 +13,6 @@ using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Vacancies;
-using SFA.DAS.Campaign.Infrastructure;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Geocode;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;

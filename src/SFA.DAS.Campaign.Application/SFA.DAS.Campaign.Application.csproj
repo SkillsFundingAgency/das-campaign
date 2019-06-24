@@ -18,7 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Ifa.Api\Ifa.Api.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
-    <ProjectReference Include="..\SFA.DAS.Campaign.Models\SFA.DAS.Campaign.Models.csproj" />
     <ProjectReference Include="..\SFA.DAS.Vacancies.Api\SFA.DAS.Vacancies.Api.csproj" />
   </ItemGroup>
 
