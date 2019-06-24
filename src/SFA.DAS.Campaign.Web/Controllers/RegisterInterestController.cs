@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Application.DataCollection;
-using SFA.DAS.Campaign.Models.DataCollection;
 using SFA.DAS.Campaign.Web.Constants;
 using SFA.DAS.Campaign.Web.Models;
 

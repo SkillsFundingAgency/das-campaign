@@ -2,8 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Configuration;
-using SFA.DAS.Campaign.Application.DataCollection.Services;
-using SFA.DAS.Campaign.Models.Configuration;
+using SFA.DAS.Campaign.Application.DataCollection;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.Services
 {

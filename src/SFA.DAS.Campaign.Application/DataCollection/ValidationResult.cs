@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace SFA.DAS.Campaign.Models.Validation
+namespace SFA.DAS.Campaign.Application
 {
     public class ValidationResult
     {

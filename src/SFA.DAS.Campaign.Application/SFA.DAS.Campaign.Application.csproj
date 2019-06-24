@@ -30,7 +30,6 @@
 
   <ItemGroup>
     <Folder Include="Geocode\" />
-    <Folder Include="Vacancies\" />
     <Folder Include="Configuration\" />
   </ItemGroup>
 </Project>

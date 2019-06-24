@@ -1,7 +1,4 @@
-﻿using SFA.DAS.Campaign.Models.DataCollection;
-using SFA.DAS.Campaign.Models.Validation;
-
-namespace SFA.DAS.Campaign.Application.DataCollection.Validation
+﻿namespace SFA.DAS.Campaign.Application.DataCollection
 {
     public class UserDataCollectionValidator : IUserDataCollectionValidator
     {

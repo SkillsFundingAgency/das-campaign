@@ -4,9 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Application.Configuration;
 using SFA.DAS.Campaign.Application.Core;
-using SFA.DAS.Campaign.Models.DataCollection;
 
-namespace SFA.DAS.Campaign.Application.DataCollection.Services
+namespace SFA.DAS.Campaign.Application.DataCollection
 {
     public class UserDataCollection : IUserDataCollection
     {
@@ -29,7 +28,7 @@ namespace SFA.DAS.Campaign.Application.DataCollection.Services
             var validationResult = _validator.Validate(userData);
             if (!validationResult.IsValid)
             {
-                throw new ValidationException(new ValidationResult("UserData model failed Validation", validationResult.Results),null,null);
+                throw new ValidationException(new System.ComponentModel.DataAnnotations.ValidationResult("UserData model failed Validation", validationResult.Results), null, null);
             }
 
             userData.EncodedEmail = _userDataCryptographyService.GenerateEncodedUserEmail(userData.Email);

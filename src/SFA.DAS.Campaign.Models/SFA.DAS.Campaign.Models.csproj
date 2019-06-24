@@ -7,8 +7,4 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Vacancy\" />
-    <Folder Include="DataCollection\" />
-  </ItemGroup>
 </Project>

@@ -4,11 +4,8 @@ using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Configuration;
-using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Application.DataCollection;
-using SFA.DAS.Campaign.Application.DataCollection.Services;
-using SFA.DAS.Campaign.Models.Configuration;
-using SFA.DAS.Campaign.Models.DataCollection;
+using SFA.DAS.Campaign.Application.Core;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollectionTests
 {

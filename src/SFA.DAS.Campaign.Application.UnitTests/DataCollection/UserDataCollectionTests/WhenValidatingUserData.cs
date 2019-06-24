@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
-using SFA.DAS.Campaign.Application.DataCollection.Validation;
-using SFA.DAS.Campaign.Models.DataCollection;
+using SFA.DAS.Campaign.Application.DataCollection;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollectionTests
 {

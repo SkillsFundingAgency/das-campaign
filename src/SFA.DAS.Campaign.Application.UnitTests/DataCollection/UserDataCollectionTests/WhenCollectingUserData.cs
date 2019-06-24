@@ -4,13 +4,9 @@ using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Configuration;
-using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Application.DataCollection;
-using SFA.DAS.Campaign.Application.DataCollection.Services;
-using SFA.DAS.Campaign.Models.Configuration;
-using SFA.DAS.Campaign.Models.DataCollection;
-using SFA.DAS.Campaign.Models.Validation;
-using ValidationResult = SFA.DAS.Campaign.Models.Validation.ValidationResult;
+using SFA.DAS.Campaign.Application.Core;
+using ValidationResult = SFA.DAS.Campaign.Application.ValidationResult;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollectionTests
 {

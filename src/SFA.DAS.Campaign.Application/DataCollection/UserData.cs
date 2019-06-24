@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace SFA.DAS.Campaign.Models.DataCollection
+namespace SFA.DAS.Campaign.Application.DataCollection
 {
     public class UserData
     {

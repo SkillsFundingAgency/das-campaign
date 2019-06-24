@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace SFA.DAS.Campaign.Application.Interfaces
+namespace SFA.DAS.Campaign.Infrastructure.Services
 {
     public interface ICacheStorageService
     {

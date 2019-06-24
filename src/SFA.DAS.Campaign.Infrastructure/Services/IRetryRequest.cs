@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace SFA.DAS.Campaign.Application.Core
+namespace SFA.DAS.Campaign.Infrastructure.Services
 {
     public interface IRetryWebRequests
     {

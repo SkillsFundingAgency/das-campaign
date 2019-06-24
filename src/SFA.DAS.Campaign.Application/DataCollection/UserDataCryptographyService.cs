@@ -5,7 +5,7 @@ using HashidsNet;
 using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Application.Configuration;
 
-namespace SFA.DAS.Campaign.Application.DataCollection.Services
+namespace SFA.DAS.Campaign.Application.DataCollection
 {
     public class UserDataCryptographyService : IUserDataCryptographyService
     {

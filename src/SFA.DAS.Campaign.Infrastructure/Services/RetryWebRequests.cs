@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Polly;
 
-namespace SFA.DAS.Campaign.Application.Core
+namespace SFA.DAS.Campaign.Infrastructure.Services
 {
     public sealed class WebRequestRetryService : IRetryWebRequests
     {
