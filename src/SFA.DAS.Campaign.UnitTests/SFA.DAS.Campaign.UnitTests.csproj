@@ -17,18 +17,5 @@
     <ProjectReference Include="..\SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Web\SFA.DAS.Campaign.Web.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
-    <Folder Include="Infrastructure\Repositories\" />
-    <Folder Include="Infrastructure\Mappers\" />
-    <Folder Include="Infrastructure\Geocode\" />
-    <Folder Include="Application\" />
-    <Folder Include="Application\DataCollection\" />
-    <Folder Include="Web\" />
-    <Folder Include="Web\Controllers\" />
-    <Folder Include="Web\ViewComponents\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove=".DS_Store" />
-  </ItemGroup>
+
 </Project>

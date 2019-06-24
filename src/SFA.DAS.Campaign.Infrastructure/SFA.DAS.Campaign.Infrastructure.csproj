@@ -13,25 +13,16 @@
     <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="10.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="2.2.0" />
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.1" />
+    <PackageReference Include="Polly" Version="6.1.0" />
+    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Client" Version="0.11.98" />
+    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Types" Version="0.11.98" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
+    <ProjectReference Include="..\Ifa.Api\Ifa.Api.csproj" />
+    <ProjectReference Include="..\SFA.DAS.Vacancies.Api\SFA.DAS.Vacancies.Api.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Microsoft.AspNetCore.JsonPatch">
-      <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.jsonpatch\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.JsonPatch.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Mappers\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Geocode\" />
-    <Folder Include="Geocode\Models\" />
-    <Folder Include="Geocode\Configuration\" />
-  </ItemGroup>
 </Project>

@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Web", "SFA.DAS.Campaign.Web\SFA.DAS.Campaign.Web.csproj", "{78963483-FF2C-42AF-9C29-8DC42B98D6A6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A89024A5-7D28-42A4-840B-F2F81DF10635}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Application", "SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj", "{5D7E8906-1680-42CC-A074-1F3B494EAC01}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Domain", "SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj", "{ABA71A27-1FF0-4201-BBC6-E6E1D0ED44A4}"
