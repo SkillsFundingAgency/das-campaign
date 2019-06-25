@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
-    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Client" Version="0.11.129" />
-    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Types" Version="0.11.129" />
+    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Client" Version="0.11.174" />
+    <PackageReference Include="SFA.DAS.Apprenticeships.Api.Types" Version="0.11.174" />
   </ItemGroup>
 
   <ItemGroup>

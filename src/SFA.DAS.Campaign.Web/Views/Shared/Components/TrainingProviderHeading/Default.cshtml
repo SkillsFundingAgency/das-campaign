@@ -1,4 +1,5 @@
-﻿@model SFA.DAS.Campaign.Web.ViewComponents.TrainingProviderHeadingViewModel
+@model SFA.DAS.Campaign.Web.ViewComponents.TrainingProviderHeadingViewModel
+                                       
 <div class="hero" data-module="smoothScroll">
     <div class="grid-row">
         <div class="grid-column-one-half">
@@ -6,8 +7,8 @@
                 <span class="caption-m hero-heading__caption hero-heading__caption--employer">Search apprenticeships  >  Training provider results</span>
                 <h1 class="heading-xl hero-heading__heading">@ViewBag.Title</h1>
             </div>
-            
-            <p>There are @Model.SearchResults.TotalResults training options for the @Model.Apprenticeship.Title, level @Model.Apprenticeship.Level apprenticeship, results are ordered by distance from '@Model.SearchResults.SearchQuery.Postcode'.</p> 
+          
+            @await Component.InvokeAsync("TrainingProviderSearchSummary", new { searchQueryModel = Model })
 
             <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
                 <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" />

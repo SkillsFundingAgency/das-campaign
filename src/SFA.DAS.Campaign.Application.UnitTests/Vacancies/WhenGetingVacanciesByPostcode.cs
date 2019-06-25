@@ -9,12 +9,12 @@ using SFA.DAS.Campaign.Models.Geocode;
 using SFA.DAS.Vacancies.Api.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using VacanciesApi;
+using System.Linq;
 
 namespace SFA.DAS.Campaign.Application.UnitTests.Vacancies
 {
