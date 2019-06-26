@@ -1,18 +1,31 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ConfirmSaveViewModel
 
 @{
-    ViewBag.Title = "Save the Training Provider";
-    Layout = "_LayoutContentFull";
+    ViewBag.Title = "Save the training provider";
+    ViewBag.BackLink = "Back to training provider";
+    Layout = "_Layout-campaign";
     ViewBag.MetaTitle = "";
     ViewBag.MetaDesc = "";
-
-
-
 }
+<main id="main-content">
+    <div class="hero--no-clip " data-module="smoothScroll">
+        <div class="grid-row">
+            <div class="grid-column-one-half">
+                <div class="hero-heading">
+                    <a asp-controller="Home" asp-action="Index" class="caption-m hero-heading__caption hero-heading__caption--employer">@ViewContext.ViewBag.BackLink</a>
+                    <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
+                </div>
 
-<div>Ready to hire an apprentice? Save this training provider and go to gov.uk to create your account.</div>
-
-<div>
-    @await Component.InvokeAsync("SaveApprenticeship", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn })
-    <a asp-controller="Home" asp-action="Index">Cancel</a>
-</div>
+                <div class="hero-heading__content">
+                    <p class="lead-paragraph">
+                        Ready to hire an apprentice? Save this training provider and go to gov.uk to create your account.
+                    </p>
+                    <div class="cta-row">
+                        @await Component.InvokeAsync("SaveApprenticeship", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn })
+                        <a asp-controller="Home" asp-action="Index" class="hero-heading__cancel-link">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
