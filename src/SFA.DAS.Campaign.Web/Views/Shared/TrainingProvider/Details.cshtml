@@ -44,7 +44,13 @@
 </div>
 
 <div class="grid-row">
-    <div class="grid-column-two-thirds">@await Component.InvokeAsync("SaveApprenticeship", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn })</div>
+    <div class="grid-column-two-thirds">
+        <a class="button button--sparks button-employer"
+           asp-controller="Basket" 
+           asp-action="Confirm" 
+           asp-route-apprenticeshipId="@Model.ApprenticeshipId"
+           asp-route-ukprn="@Model.Ukprn">Save Apprenticeship</a>
+    </div>
     <div class="grid-column-one-third"></div>
 </div>
 

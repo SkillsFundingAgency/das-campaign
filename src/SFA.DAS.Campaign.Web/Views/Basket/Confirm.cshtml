@@ -1,0 +1,18 @@
+﻿@model SFA.DAS.Campaign.Web.Models.ConfirmSaveViewModel
+
+@{
+    ViewBag.Title = "Save the Training Provider";
+    Layout = "_LayoutContentFull";
+    ViewBag.MetaTitle = "";
+    ViewBag.MetaDesc = "";
+
+
+
+}
+
+<div>Ready to hire an apprentice? Save this training provider and go to gov.uk to create your account.</div>
+
+<div>
+    @await Component.InvokeAsync("SaveApprenticeship", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn })
+    <a asp-controller="Home" asp-action="Index">Cancel</a>
+</div>
