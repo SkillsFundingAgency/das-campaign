@@ -12,7 +12,12 @@
         <div class="grid-row">
             <div class="grid-column-one-half">
                 <div class="hero-heading">
-                    <a asp-controller="Home" asp-action="Index" class="caption-m hero-heading__caption hero-heading__caption--employer">@ViewContext.ViewBag.BackLink</a>
+                    <a class="caption-m hero-heading__caption hero-heading__caption--employer"
+                       asp-controller="TrainingProvider"
+                       asp-action="Details"
+                       asp-route-apprenticeshipId="@Model.ApprenticeshipId"
+                       asp-route-ukprn="@Model.Ukprn"
+                       asp-route-locationId="@Model.LocationId">@ViewContext.ViewBag.BackLink</a>
                     <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
                 </div>
 
@@ -22,7 +27,12 @@
                     </p>
                     <div class="cta-row">
                         @await Component.InvokeAsync("SaveApprenticeship", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn })
-                        <a asp-controller="Home" asp-action="Index" class="hero-heading__cancel-link">Cancel</a>
+                        <a class="hero-heading__cancel-link"
+                           asp-controller="TrainingProvider"
+                           asp-action="Details"
+                           asp-route-apprenticeshipId="@Model.ApprenticeshipId"
+                           asp-route-ukprn="@Model.Ukprn"
+                           asp-route-locationId="@Model.LocationId">Cancel</a>
                     </div>
                 </div>
             </div>

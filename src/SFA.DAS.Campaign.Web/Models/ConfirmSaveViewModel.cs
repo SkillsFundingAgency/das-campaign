@@ -4,5 +4,6 @@
     {
         public string ApprenticeshipId { get; set; }
         public int Ukprn { get; set; }
+        public int LocationId { get; set; }
     }
 }

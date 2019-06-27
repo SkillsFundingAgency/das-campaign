@@ -8,9 +8,14 @@ namespace SFA.DAS.Campaign.Web.Controllers
     {
         [HttpGet]
         [Route("confirm-save")]
-        public IActionResult Confirm(string apprenticeshipId, int ukprn)
+        public IActionResult Confirm(string apprenticeshipId, int ukprn, int locationId)
         {
-            return View(new ConfirmSaveViewModel { ApprenticeshipId = apprenticeshipId, Ukprn = ukprn });
+            return View(new ConfirmSaveViewModel
+            {
+                ApprenticeshipId = apprenticeshipId,
+                Ukprn = ukprn,
+                LocationId = locationId
+            });
         }
     }
 }
