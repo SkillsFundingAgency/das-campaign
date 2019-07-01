@@ -47,6 +47,8 @@ namespace SFA.DAS.Campaign.Application.ApprenticeshipCourses.Services
                 // Key not in cache, so get data.
                 cacheEntry = (await _ifaApprenticeshipStandardsApi.ApprenticeshipStandardsGet_3Async());
                 
+                //Remove any null objects returned by the API
+                cacheEntry = cacheEntry.Where(w => w != null).ToList();
          
                 // Save data in cache.
                 await _cacheService.SaveToCache(cacheKey, cacheEntry, new TimeSpan(30, 0, 0, 0), new TimeSpan(1, 0, 0, 0));
