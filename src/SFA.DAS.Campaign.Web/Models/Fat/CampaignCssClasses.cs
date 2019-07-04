@@ -93,5 +93,7 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
         public string DetailsSummaryText => $"{Details}__summary-text";
 
         public string DetailsText => $"{Details}__text";
+
+        public string VisuallyHidden => "visually-hidden";
     }
 }
