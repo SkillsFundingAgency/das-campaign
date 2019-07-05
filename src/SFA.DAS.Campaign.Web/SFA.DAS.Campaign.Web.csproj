@@ -33,7 +33,7 @@
     <PackageReference Include="Polly" Version="6.0.1" />
     <PackageReference Include="SFA.DAS.Apprenticeships.Api.Client" Version="0.11.174" />
     <PackageReference Include="SFA.DAS.Providers.Api.Client" Version="0.11.174" />
-    <PackageReference Include="Sfa.Das.Sas.Shared.Components" Version="0.0.37-alpha" />
+    <PackageReference Include="Sfa.Das.Sas.Shared.Components" Version="0.0.38-alpha" />
     <PackageReference Include="StructureMap" Version="4.2.0.402" />
     <PackageReference Include="WebEssentials.AspNetCore.CdnTagHelpers" Version="1.0.16" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
