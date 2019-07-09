@@ -1,21 +1,15 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     public class HomeController : Controller
     {
-        
-        public HomeController()
-        {
-        }
-
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-      
             return View("Index");
         }
+
         [Route("privacy")]
         public IActionResult Privacy()
         {
@@ -33,6 +27,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
+
         [Route("error/{errorCode}")]
         public IActionResult Error(string errorCode)
         {

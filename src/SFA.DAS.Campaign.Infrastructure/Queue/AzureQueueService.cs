@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Queue;
 using Microsoft.Extensions.Options;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Queue;
 using Newtonsoft.Json;
-using SFA.DAS.Campaign.Domain.DataCollection;
+using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Models.Configuration;
 
 namespace SFA.DAS.Campaign.Infrastructure.Queue
@@ -17,6 +17,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Queue
             var storageAccount = CloudStorageAccount.Parse(configuration.Value.QueueConnectionString);
             _queueClient = storageAccount.CreateCloudQueueClient();
         }
+
         public async Task AddMessageToQueue(T message, string queueName)
         {
             var queue = _queueClient.GetQueueReference(queueName);

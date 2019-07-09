@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
-using SFA.DAS.Campaign.Application.Interfaces;
+using SFA.DAS.Campaign.Application.Core;
 
 namespace SFA.DAS.Campaign.Infrastructure.Services
 {
