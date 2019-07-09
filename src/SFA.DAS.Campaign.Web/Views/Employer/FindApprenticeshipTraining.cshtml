@@ -7,7 +7,7 @@
     ViewBag.PageID = "employer-find-an-apprenticeship";
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
-    Layout = "_LayoutContentSidebar";
+    Layout = "_Layout-Campaign";
 }
 
 @{
@@ -22,6 +22,5 @@
 </div>);
 }
 
-@section HeroHeading {
+
     @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeshipTraining, content = HeroHeadingContent() })
-}
