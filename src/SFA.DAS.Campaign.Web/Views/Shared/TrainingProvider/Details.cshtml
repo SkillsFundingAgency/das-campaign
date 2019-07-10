@@ -1,0 +1,45 @@
+﻿@using Sfa.Das.Sas.Shared.Components.ViewModels
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProviderDetailQueryViewModel
+@inject ICssViewModel CssViewModel
+@{
+    ViewBag.Title = "TRAINING PROVIDER RESULTS";
+    ViewBag.MetaTitle = "TRAINING PROVIDER RESULTS";
+    ViewBag.PageID = "employer-find-an-apprenticeship";
+    ViewBag.Section = "employer";
+    ViewBag.MetaDesc = "";
+    Layout = "_LayoutContentFull";
+    ViewBag.PageNavIndex = 3;
+
+}
+@section HeroHeading {
+    @await Component.InvokeAsync("TrainingProviderHeading", new { detailsQueryModel = Model })
+}
+
+
+<div class="grid-row">
+    <div class="grid-column-two-thirds">&nbsp;</div>
+    <div class="grid-column-one-third">
+        <div class="sidebar sidebar--fixed-170 sidebar--employer">
+            <div class="sidebar__hero">
+                @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Contact })
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="grid-row">
+    <div class="grid-column-two-thirds">@await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Summary })</div>
+    <div class="grid-column-one-third">
+
+    </div>
+</div>
+
+<div class="grid-row">
+    <div class="grid-column-full-width grid-column-two-thirds-from-desktop">@await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model })</div>
+    <div class="grid-column-one-third">
+
+    </div>
+</div>
+

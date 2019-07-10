@@ -47,3 +47,9 @@
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
 }
+
+@section pageFooter {
+    <div class="grid-column-full">
+        <partial name="./Components/Cta/_find-apprenticeship-training" />
+    </div>
+}

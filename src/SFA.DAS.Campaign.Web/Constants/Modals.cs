@@ -10,9 +10,9 @@ namespace SFA.DAS.Campaign.Web.Constants
 
     public static class Helper
     {
-    public static IHtmlContent Body(Func<object, IHtmlContent> body)
-    {
-        return body(null);
-    }
+        public static IHtmlContent Body(Func<object, IHtmlContent> body)
+        {
+            return body(null);
+        }
     }
 }

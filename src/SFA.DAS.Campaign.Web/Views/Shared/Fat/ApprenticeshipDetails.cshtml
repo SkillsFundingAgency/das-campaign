@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Find apprenticeship training";
+    ViewBag.MetaTitle = "Find an apprenticeship";
+    ViewBag.PageID = "employer-find-an-apprenticeship";
+    ViewBag.Section = "employer";
+    ViewBag.MetaDesc = "";
+    Layout = "_LayoutContentFull";
+    ViewBag.PageNavIndex = 3;
+    @model Sfa.Das.Sas.Shared.Components.ViewModels.ApprenticeshipDetailQueryViewModel
+
+}
+    
+    @section HeroHeading {
+        @await Component.InvokeAsync("ApprenticeshipHeading",new { queryModel = Model} )
+    }   
+
+    @await Component.InvokeAsync("ApprenticeshipDetails", new { queryModel = Model})
+
+<div class="grid-row">
+    <div class="grid-column-full">
+        <section class="cta-fat">
+            <div class="cta-fat__content">
+                <h2 class="heading-l u-!-margin-top-0 u-!-margin-bottom-0">FIND A TRAINING PROVIDER</h2>
+                <p class="u-!-margin-top-0">Use the postcode for where the apprentice will work, are you a levy paying employer or a non-levy employer?</p>
+            </div>
+           
+            <div class="cta-fat__action">
+                @await Component.InvokeAsync("TrainingProviderSearch", new {apprenticeshipId = Model.Id})
+            </div>
+       
+
+        </section>
+
+    </div>
+</div>

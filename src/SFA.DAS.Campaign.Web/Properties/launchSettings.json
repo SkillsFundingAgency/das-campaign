@@ -4,7 +4,7 @@
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:50159/",
-      "sslPort": 44395
+      "sslPort": 44393
     }
   },
   "profiles": {
@@ -18,10 +18,11 @@
     "SFA.DAS.Campaign.Web": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "https://localhost:50160/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:50160/"
+      "applicationUrl": "https://localhost:50160/"
     }
   }
 }

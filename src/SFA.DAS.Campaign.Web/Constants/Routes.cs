@@ -4,7 +4,7 @@ namespace SFA.DAS.Campaign.Web.Constants
 {
     public static class Routes
     {
-        static Dictionary<string, string> _routes = new Dictionary<string, string>()
+        static Dictionary<string, string> _routes = new Dictionary<string, string>
         {
             {"Agriculture-environmental-and-animal-care", "Agriculture, environmental and animal care"},
             {"Business-and-administration", "Business and administration"},
@@ -22,10 +22,12 @@ namespace SFA.DAS.Campaign.Web.Constants
             {"Transport-and-logistics", "Transport and logistics"},
             {"Digital", "Digital"},
         };
+
         public static string GetRoute(string word)
         {
             // Try to get the result in the static Dictionary
             string result;
+
             if (_routes.TryGetValue(word, out result))
             {
                 return result;
