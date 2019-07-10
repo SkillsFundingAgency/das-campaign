@@ -67,9 +67,48 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
                     LarsCode = 456,
                     Status = "Not Approved for delivery"
                 },
+                null,
+                null
             };
 
-
+            var standardsCacheResult = new List<ApiApprenticeshipStandard>()
+            {
+                new ApiApprenticeshipStandard
+                {
+                    ApprovedForDelivery = DateTime.Now.Subtract(new TimeSpan(3, 0, 0)),
+                    Route = "1",
+                    TypicalDuration = 24,
+                    Title = "Standard 123",
+                    LarsCode = 123,
+                    Status = "Approved for delivery"
+                },
+                new ApiApprenticeshipStandard
+                {
+                    ApprovedForDelivery = DateTime.Now.Subtract(new TimeSpan(3, 0, 0)),
+                    Route = "2",
+                    TypicalDuration = 24,
+                    Title = "Standard 234",
+                    LarsCode = 234,
+                    Status = "Approved for delivery"
+                },
+                new ApiApprenticeshipStandard
+                {
+                    ApprovedForDelivery = DateTime.Now.Subtract(new TimeSpan(3, 0, 0)),
+                    Route = "3",
+                    TypicalDuration = 24,
+                    Title = "Standard 345",
+                    LarsCode = 345,
+                    Status = "Approved for delivery"
+                },
+                new ApiApprenticeshipStandard
+                {
+                    Route = "1",
+                    TypicalDuration = 24,
+                    Title = "Standard 456",
+                    LarsCode = 456,
+                    Status = "Not Approved for delivery"
+                }
+            };
             _standardsMApper = new Mock<IStandardsMapper>();
             _apprenticeshipProgrammeApiClient = new Mock<IApprenticeshipProgrammeApiClient>();
             _fullStandardsApi = new Mock<IApprenticeshipStandardsApi>();
@@ -100,12 +139,15 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
                     },
                 });
 
-            _fullStandardsApi.Setup(s => s.ApprenticeshipStandardsGet_3Async())
-                .ReturnsAsync(standardsApiResult);
+
 
             _cacheService
                 .Setup(s =>
                     s.RetrieveFromCache<List<ApiApprenticeshipStandard>>( _cachedKey))
+                .ReturnsAsync(standardsCacheResult);
+
+
+            _fullStandardsApi.Setup(s => s.ApprenticeshipStandardsGet_3Async())
                 .ReturnsAsync(standardsApiResult);
 
 
