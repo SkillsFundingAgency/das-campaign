@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
+﻿using Microsoft.Azure.Cosmos.Table;
+using Microsoft.Extensions.Configuration;
 using SFA.DAS.Campaign.Models.Configuration;
 
 namespace SFA.DAS.Campaign.Infrastructure.Configuration

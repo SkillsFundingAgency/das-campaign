@@ -19,12 +19,16 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Ifa.Api.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <NoWarn>1701;1702;1591;0472;0618;1574</NoWarn>
+  </PropertyGroup>
   <ItemGroup>
       <PackageReference Include="CompareNETObjects" Version="4.57.0" />
       <PackageReference Include="JsonSubTypes" Version="1.5.2" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
       <PackageReference Include="RestSharp" Version="106.6.7" />
       <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+      <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>

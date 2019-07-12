@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps;
@@ -9,11 +8,10 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 {
     public class HeroHeadingViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(HeroHeadingType? type, string caption, string classes, IHtmlContent content, GoogleMapsViewModel googleMapsOptions)
+        public IViewComponentResult Invoke(HeroHeadingType? type, string caption, string classes, IHtmlContent content, GoogleMapsViewModel googleMapsOptions)
         {
             if (type == null)
             {
-
                 switch (ViewContext.RouteData.Values["Controller"])
                 {
                     case "Apprentice":
@@ -63,7 +61,4 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
             return View(view, new HeroHeadingViewModel((HeroHeadingType)type, caption, classes, content, googleMapsOptions));
         }
     }
-
-   
-
 }
