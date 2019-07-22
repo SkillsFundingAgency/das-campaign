@@ -5,12 +5,17 @@
     "tasks": [
         {
             "label": "build",
-            "command": "dotnet build",
-            "type": "shell",
-            "group": "build",
-            "presentation": {
-                "reveal": "silent"
+            "group":{
+                "kind": "build",
+                "isDefault": true
             },
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/SFA.DAS.Campaign.sln",
+                "/p:GenerateFullPaths=true"
+            ],
             "problemMatcher": "$msCompile"
         }
     ]

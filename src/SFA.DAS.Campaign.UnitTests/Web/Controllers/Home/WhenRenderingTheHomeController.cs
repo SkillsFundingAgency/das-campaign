@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Web.Controllers;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
 {
@@ -11,7 +12,8 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         [SetUp]
         public void Arrange()
         {
-            _homeController = new HomeController();
+            var logger = new NullLogger<HomeController>();
+            _homeController = new HomeController(logger);
         }
 
         [Test]
