@@ -51,7 +51,7 @@
       "type": "int",
       "defaultValue": 2
     },
-    "loggingRedisConnectionString" :{
+    "loggingRedisConnectionString": {
       "type": "string"
     }
   },
