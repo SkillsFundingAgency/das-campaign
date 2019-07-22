@@ -50,6 +50,9 @@
     "appServicePlanInstances": {
       "type": "int",
       "defaultValue": 2
+    },
+    "loggingRedisConnectionString": {
+      "type": "string"
     }
   },
   "variables": {
@@ -186,6 +189,15 @@
               }
             ]
           },
+          "appServiceConnectionStrings": {
+            "value": [
+                {
+                    "name": "Redis",
+                    "connectionString": "[parameters('loggingRedisConnectionString')]",
+                    "type": "Custom"
+                }
+            ]
+        },
           "customHostName": {
             "value": "[parameters('customHostname')]"
           },
