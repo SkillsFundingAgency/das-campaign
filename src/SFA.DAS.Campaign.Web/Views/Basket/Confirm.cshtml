@@ -26,7 +26,7 @@
                         Ready to hire an apprentice? Save this training provider and go to gov.uk to create your account.
                     </p>
                     <div class="cta-row">
-                        @await Component.InvokeAsync("SaveApprenticeship", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn })
+                        @await Component.InvokeAsync("SaveBasket")
                         <a class="hero-heading__cancel-link"
                            asp-controller="TrainingProvider"
                            asp-action="Details"
