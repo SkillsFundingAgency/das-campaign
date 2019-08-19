@@ -6,7 +6,17 @@
                 <span class="caption-m hero-heading__caption hero-heading__caption--employer">Search apprenticeships  >  Training provider details</span>
                 <h1 class="heading-xl hero-heading__heading">@await Component.InvokeAsync("TrainingProviderTitle", new { searchQueryModel = Model })</h1>
             </div>
-          
+
+            <form asp-controller="Basket" asp-action="AddProviderFromDetails" method="post">
+                <input type="hidden" asp-for="@Model.ApprenticeshipId" />
+                <input type="hidden" asp-for="@Model.LocationId" />
+                <input type="hidden" asp-for="@Model.Page" />
+                <input type="hidden" asp-for="@Model.Ukprn" />
+                <div class="form-group">
+                    @await Component.InvokeAsync("AddToBasket", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn })
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
