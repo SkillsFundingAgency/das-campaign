@@ -1,4 +1,5 @@
-﻿using Ifa.Api.Model;
+﻿using System;
+using Ifa.Api.Model;
 using SFA.DAS.Apprenticeships.Api.Types;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 
@@ -23,7 +24,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Mappers
                 Id = item.LarsCode,
                 Duration = item.TypicalDuration,
                 Title = item.Title,
-                Level = item.Level
+                Level = Convert.ToInt32(item.Level)
             };
         }
     }
