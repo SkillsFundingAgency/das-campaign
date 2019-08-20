@@ -13,16 +13,15 @@
 @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model })
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeshipTraining })
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer })
 }
 
 
 @section Sidebar{
-    <div class="sidebar sidebar_fixed-170 sidebar--employer">
-        <div class="sidebar__hero">
-            <section class="sidebar__hero--employer">
-                @await Component.InvokeAsync("FatSearchFilter", new { searchQueryModel = Model })
-            </section>
+    <div class="sidebar-panel sidebar-panel--employer">
+        <div class="sidebar-panel__content">
+            @await Component.InvokeAsync("FatSearchFilter", new { searchQueryModel = Model })
+
         </div>
     </div>
 }
