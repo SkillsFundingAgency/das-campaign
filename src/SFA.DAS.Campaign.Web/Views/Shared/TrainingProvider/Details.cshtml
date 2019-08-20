@@ -18,29 +18,31 @@
 
 
 <div class="grid-row">
-    <div class="grid-column-two-thirds">&nbsp;</div>
-    <div class="grid-column-one-third">
-        <div class="sidebar sidebar--fixed-170 sidebar--employer">
-            <div class="sidebar__hero">
+    <div class="grid-column-one-third grid-column--pull-right">
+        <div class="sidebar-panel sidebar-panel--employer">
+            <div class="sidebar-panel__content">
                 @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Contact })
             </div>
         </div>
     </div>
-</div>
-
-
-<div class="grid-row">
-    <div class="grid-column-two-thirds">@await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Summary })</div>
-    <div class="grid-column-one-third">
-
+    <div class="grid-column-two-thirds">
+        <div class="page">
+            @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Summary })
+            @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model })
+        </div>
     </div>
 </div>
 
 <div class="grid-row">
-    <div class="grid-column-full-width grid-column-two-thirds-from-desktop">@await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model })</div>
-    <div class="grid-column-one-third">
-
+    <div class="grid-column-two-thirds">
+        <a class="button button--sparks button-employer"
+           asp-controller="Basket" 
+           asp-action="Confirm" 
+           asp-route-apprenticeshipId="@Model.ApprenticeshipId"
+           asp-route-ukprn="@Model.Ukprn"
+           asp-route-locationId="@Model.LocationId">Save Apprenticeship</a>
     </div>
+    <div class="grid-column-one-third"></div>
 </div>
 
 <div class="grid-row">
