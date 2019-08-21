@@ -11,19 +11,7 @@
 }
 
 @section HeroHeading {
-<div class="hero">
-    <div class="grid-row">
-        <div class="grid-column-one-half">
-            @await Component.InvokeAsync("BasketHeader")
-        </div>
-        <div class="grid-column-one-half">
-            <div class="hero__panel hero__panel--employer">
-                <p class="hero__panel-intro">Create an Apprenticeship Service account to save your choices and start hiring.</p>
-                <a href="#" class="button hero__panel-button">Create an account</a>
-            </div>
-        </div>
-    </div>
-</div>
+    @await Component.InvokeAsync("BasketHeader")
 }
 
 @await Component.InvokeAsync("BasketDetails")

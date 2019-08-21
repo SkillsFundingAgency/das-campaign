@@ -98,6 +98,6 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
 
         public string ButtonSecondary => throw new NotImplementedException();
 
-        public ICssGridViewModel GridCss => throw new NotImplementedException();
+        public ICssGridViewModel GridCss => new DefaultGridCssViewModel(ClassPrefix);
     }
 }
