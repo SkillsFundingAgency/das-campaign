@@ -23,6 +23,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View();
         }
 
+        [Route("cookie-details")]
+        public IActionResult CookieDetails()
+        {
+            return View();
+        }
+
         [Route("sitemap")]
         public IActionResult Sitemap()
         {
