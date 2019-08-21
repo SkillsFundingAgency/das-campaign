@@ -11,21 +11,22 @@
 }
 
 @section HeroHeading {
-    <div class="hero" data-module="smoothScroll">
-        <div class="grid-row">
-
+<div class="hero">
+    <div class="grid-row">
+        <div class="grid-column-one-half">
             @await Component.InvokeAsync("BasketHeader")
-
-            <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
-                <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" />
-            </a>
-
+        </div>
+        <div class="grid-column-one-half">
+            <div class="hero__panel hero__panel--employer">
+                <p class="hero__panel-intro">Create an Apprenticeship Service account to save your choices and start hiring.</p>
+                <a href="#" class="button hero__panel-button">Create an account</a>
+            </div>
         </div>
     </div>
-
-    @await Component.InvokeAsync("BasketDetails")
-
+</div>
 }
+
+@await Component.InvokeAsync("BasketDetails")
 
 
 
