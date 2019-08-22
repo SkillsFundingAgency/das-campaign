@@ -2,8 +2,20 @@
 @model SFA.DAS.Campaign.Web.ViewComponents.Modal.ModalViewModel
 
 <div class="modal" id="@Model.Id" aria-hidden="true">
-
     <div class="modal-dialog">
+
+        @switch (Model.Type)
+        {
+            case ModalType.Component:
+
+                @await Component.InvokeAsync(Model.Name, Model.ComponentOptions);
+                break;
+            case ModalType.PartialView:
+                <partial name="@Model.Name" />
+                break;
+
+        }
+
         <div class="modal-header">
             <a href="#" class="close">
                 <svg width="32" height="32" viewBox="0 0 32 32" class="">
@@ -13,18 +25,5 @@
                 <span class="vh">Close</span>
             </a>
         </div>
-
-        @switch (Model.Type)
-        {
-            case ModalType.Component:
-                
-                @await Component.InvokeAsync(Model.Name, Model.ComponentOptions);
-                break;
-            case ModalType.PartialView:
-                <partial name="@Model.Name" />
-                break;
-
-        }
-
     </div>
 </div>
