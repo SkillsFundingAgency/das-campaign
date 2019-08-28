@@ -93,8 +93,25 @@
 
     @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
 
+    @functions {
 
-    <partial name="./Components/_cookieBanner" />
+    private bool ParseHideCookieBanner()
+    {
+        if (ViewBag.HideCookieBanner is bool)
+        {
+            return ViewBag.HideCookieBanner;
+        }
+        return false;
+    }
+
+    }
+
+    @{
+        if (!ParseHideCookieBanner())
+        {
+            <partial name="./Components/_cookieBanner" />
+        }
+    }
 
 
     <script defer src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL" crossorigin="anonymous"></script>

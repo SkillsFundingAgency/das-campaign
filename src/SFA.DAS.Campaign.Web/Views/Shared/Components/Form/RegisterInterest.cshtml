@@ -68,9 +68,10 @@
         <div class="checkboxes__item">
             <input class="checkboxes__input" asp-for="AcceptTandCs" type="checkbox" value="true">
             <label class="label checkboxes__label" asp-for="AcceptTandCs">
-                I would like to receive information via emails from the Education and Skills Funding Agency in relation to apprenticeships. I can confirm that I am over the age of 13
+                I'd like to receive more information about apprenticeships from the Education and Skills Funding Agency via email, and i'm over the age of 13.
             </label>
         </div>
+        <p>To find out how we handle your personal data, please visit our <a asp-controller="Home" asp-action="Privacy">privacy notice</a>.</p>
     </div>
 
     <input asp-for="ReturnUrl" type="hidden" value="@Model.ReturnUrl" />
