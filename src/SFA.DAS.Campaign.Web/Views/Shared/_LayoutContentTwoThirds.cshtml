@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "_Layout-campaign";
+}
+
+<main id="main-content">
+
+    @if (IsSectionDefined("HeroHeading"))
+    {
+        @RenderSection("HeroHeading", required: false)
+    }
+    else
+    {
+
+        @await Component.InvokeAsync("HeroHeading")
+    }
+
+    <div class="main-content">
+        <div class="grid-row">
+            <div class="grid-column-two-thirds">
+                <div class="page">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
