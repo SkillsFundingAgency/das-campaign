@@ -1,17 +1,27 @@
-﻿@using Microsoft.AspNetCore.Html
-@using SFA.DAS.Campaign.Web.Constants
+﻿
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults
 @{
     ViewBag.Title = "Search results";
     ViewBag.MetaTitle = "Find an apprenticeship";
     ViewBag.PageID = "employer-find-an-apprenticeship-search-results";
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
-    Layout = "_LayoutContentFull";
+    Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 3;
 }
 @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model })
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeshipTraining })
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer })
+}
+
+
+@section Sidebar{
+    <div class="sidebar-panel sidebar-panel--employer">
+        <div class="sidebar-panel__content">
+            @await Component.InvokeAsync("FatSearchFilter", new { searchQueryModel = Model })
+
+        </div>
+    </div>
 }
