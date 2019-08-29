@@ -29,6 +29,8 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
             }
         }
 
+        public string ButtonSecondary => $"{ClassPrefix}button-inverted button--sparks";
+
         public string Input => $"{ClassPrefix}input";
         public string FormGroup => $"{ClassPrefix}form-group";
         public string Link => $"{ClassPrefix}link";
