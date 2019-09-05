@@ -13,7 +13,7 @@
 <p>Once you've searched and found the right apprenticeship for you, you can get on with the application process.</p>
 
 <p>
-    If you haven't found your ideal apprenticeship yet, you can <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" target="_blank" rel="external" id="link-faa">
+    If you haven't found your ideal apprenticeship yet, you can <a asp-controller="Apprentice" asp-action="FindAnApprenticeship" id="link-faa">
         search for the latest apprenticeship vacancies
     </a> by job title or employer, or just browse to see what’s available in your area.
 </p>
@@ -69,7 +69,7 @@
 
 <ul class="pagination pagination--apprentice">
     <li class="pagination__list-item">
-        <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" id="link-pagination-faa" class="pagination__link pagination__link--previous" rel="external" target="_blank">
+        <a asp-controller="Apprentice" asp-action="FindAnApprenticeship" id="link-pagination-faa" class="pagination__link pagination__link--previous">
             Find an apprenticeship
         </a>
     </li>
