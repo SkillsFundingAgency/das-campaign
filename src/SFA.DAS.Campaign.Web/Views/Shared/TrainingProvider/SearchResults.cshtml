@@ -1,17 +1,29 @@
-﻿@model Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search.TrainingProviderSearchViewModel
+﻿@using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults;
+@model Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search.TrainingProviderSearchViewModel
 @{
     ViewBag.Title = "TRAINING PROVIDER RESULTS";
     ViewBag.MetaTitle = "TRAINING PROVIDER RESULTS";
     ViewBag.PageID = "employer-find-an-apprenticeship";
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
-    Layout = "_LayoutContentFull";
+    Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 3;
 
-        }
+}
 @section HeroHeading {
-    @await Component.InvokeAsync("TrainingProviderHeading",new { queryModel = Model} )
+    @await Component.InvokeAsync("TrainingProviderHeading", new { queryModel = Model })
 }
 
 
-@await Component.InvokeAsync("TrainingProviderSearchResults", new { searchQueryModel = Model})
+@await Component.InvokeAsync("TrainingProviderSearchResults", new { searchQueryModel = Model })
+
+
+@section Sidebar{
+
+    <div class="sidebar-panel sidebar-panel--employer">
+        <div class="sidebar-panel__content">
+            @await Component.InvokeAsync("TrainingProviderSearchFilter", new { searchQueryModel = Model })
+        </div>
+    </div>
+
+}
