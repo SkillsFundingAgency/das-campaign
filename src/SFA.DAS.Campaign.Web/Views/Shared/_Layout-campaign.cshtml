@@ -1,5 +1,19 @@
 ﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
 @using SFA.DAS.Campaign.Web.ViewComponents.Modal
+
+@functions {
+
+private bool ParseHideCookieBanner()
+{
+    if (ViewBag.HideCookieBanner is bool)
+    {
+        return ViewBag.HideCookieBanner;
+    }
+    return false;
+}
+
+}
+
 <!DOCTYPE html>
 <html lang="en-gb">
 
@@ -25,7 +39,7 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-M4VJPRW');
 
-/**/</script>
+        /**/</script>
     <!-- End Google Tag Manager -->
 
     <meta charset="utf-8" />
@@ -83,7 +97,12 @@
 
         @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
 
-        <partial name="./Components/_cookieBanner" />
+        @{
+            if (!ParseHideCookieBanner())
+            {
+                <partial name="./Components/_cookieBanner" />
+            }
+        }
 
         <partial name="./Components/_Header" />
 
@@ -96,25 +115,9 @@
     <mini-profiler />
 
 
-    @functions {
 
-    private bool ParseHideCookieBanner()
-    {
-        if (ViewBag.HideCookieBanner is bool)
-        {
-            return ViewBag.HideCookieBanner;
-        }
-        return false;
-    }
 
-    }
 
-    @{
-        if (!ParseHideCookieBanner())
-        {
-            <partial name="./Components/_cookieBanner" />
-        }
-    }
 
 
     <script defer src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL" crossorigin="anonymous"></script>

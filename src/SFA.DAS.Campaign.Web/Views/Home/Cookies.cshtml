@@ -8,8 +8,6 @@
     ViewBag.HideCookieBanner = true;
 }
 
-
-
 <p>
     Cookies are files saved on your phone, tablet or computer when you visit a website.
 </p>
@@ -18,9 +16,10 @@
     We use cookies to store information about how you use the website, such as the pages you visit.
 </p>
 
-
+<div data-module="cookieBanner"></div>
 
 @await Component.InvokeAsync("Form", new { type = FormType.CookieSettings })
 
 <hr />
+
 <p><a href="/cookie-details">Find out more about cookies on this service</a></p>
