@@ -49,7 +49,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                 // Key not in cache, so get data.
                 cacheEntry = (await _ifaApprenticeshipStandardsApi.ApprenticeshipStandardsGet_3Async());
 
-                var fatStandardIds = GetAllIds().ToList();
+                var fatStandardIds = (await GetAllIds()).ToList();
                 //Remove any null objects returned by the API and any which dont exist in FAT
                 cacheEntry = cacheEntry.Where(w => w != null && fatStandardIds.Contains(w.LarsCode.ToString())).ToList();
          
@@ -64,9 +64,9 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                 .ToList();
         }
 
-        private IEnumerable<string> GetAllIds()
+        private async Task<IEnumerable<string>> GetAllIds()
         {
-            var result = (_apprenticeshipStandardApiClient.GetAll())
+            var result = (await _apprenticeshipStandardApiClient.GetAllAsync())
                 .Select(s => s.Id);
 
             return result;
