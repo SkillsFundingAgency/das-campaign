@@ -1,18 +1,5 @@
-﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
+@using SFA.DAS.Campaign.Web.Models.Components.Form
 @using SFA.DAS.Campaign.Web.ViewComponents.Modal
-
-@functions {
-
-private bool ParseHideCookieBanner()
-{
-    if (ViewBag.HideCookieBanner is bool)
-    {
-        return ViewBag.HideCookieBanner;
-    }
-    return false;
-}
-
-}
 
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -97,12 +84,7 @@ private bool ParseHideCookieBanner()
 
         @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
 
-        @{
-            if (!ParseHideCookieBanner())
-            {
-                <partial name="./Components/_cookieBanner" />
-            }
-        }
+        <partial name="./Components/_cookieBanner" />
 
         <partial name="./Components/_Header" />
 
@@ -113,12 +95,6 @@ private bool ParseHideCookieBanner()
     </div>
 
     <mini-profiler />
-
-
-
-
-
-
 
     <script defer src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL" crossorigin="anonymous"></script>
 

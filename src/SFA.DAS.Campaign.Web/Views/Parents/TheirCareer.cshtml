@@ -1,0 +1,235 @@
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@{
+    ViewBag.Title = "HELP SHAPE THEIR CAREER";
+    ViewBag.PageID = "parents-their-career";
+    ViewBag.Section = "parents";
+    ViewBag.MetaTitle = "Apprenticeship advice for parents and guardians";
+    ViewBag.MetaDesc = "Apprenticeships offer the chance to learn, earn and get a degree. As a parent, guardian or carer, you can support your child as they explore their options.";
+    Layout = "_LayoutContentSidebar";
+    ViewBag.PageNavIndex = 1;
+}
+
+
+
+<p class="lead-paragraph no-top-margin">
+    Setting off on a career path can be overwhelming for young people. As their parent, guardian
+    or carer, you’ll play a key role in guiding them as they take their next step. Whether they get
+    top grades or don’t thrive in academic environments, apprenticeships shouldn’t be overlooked.
+    With new higher and degree apprenticeships popping up each year, they could get the best of both
+    worlds – learning and earning at the same time.
+</p>
+
+<h2 class="heading-l" id="h1">Apprenticeships, but not as you know them</h2>
+
+<p>
+    Perceptions of apprenticeships as entry-level, trade-based, low-quality courses persist –
+    yet this couldn’t be further from today’s reality. Changes to funding, minimum requirements and
+    the development of occupation-focused standards have driven up the quality of apprenticeships,
+    and employers are taking notice. While earning a wage, apprentices gain highly transferable
+    skills and training (which could include a degree) to set them up for a wide range of career
+    paths. Alongside this, they’ll gain hands-on experience in a real-world setting – an invaluable
+    asset when it comes to future employment.
+</p>
+
+<h2 class="heading-m" id="h2">
+    They’ll earn a salary – and their training will be paid for
+</h2>
+
+<p>
+    An apprenticeship can boost a young person’s career, while offering great financial benefits.
+    They’ll be paid (at least the <a href="/apprentice/what-are-the-benefits-for-me#h2" class="link"></a>national minimum wage, but often a more competitive salary),
+    and  they’ll spend at least 20% of their time completing off-the-job training – at no cost to
+    them.
+    This could include working towards a degree or other qualifications. At the same time,
+    they’ll gain experience in a real workplace, and develop important soft skills as they transition
+    into the world of work.
+</p>
+
+<h2 class="heading-m" id="h3">
+    They’ll get experience in a relevant role, plus
+    career-boosting skills
+</h2>
+
+<p>
+    From digital marketing and teaching to dental healthcare and textile manufacturing, there’s
+    an apprenticeship for everyone – and the number available is constantly on the rise. 
+    You can use the <a class="link" asp-controller="Apprentice" asp-action="FindAnApprenticeship">Find an apprenticeship</a>
+    tool to see what’s on offer. During the apprenticeship, your child will gain important
+    insight into their chosen industry – and if they decide the occupation isn’t for them, they’ll be equipped with
+    skills and experience to make them extremely employable, no matter what step they take next. In
+    fact, 88% of apprentices remain in employment after completing their apprenticeship.
+</p>
+
+<h2 class="heading-m" id="h4">Levels of apprenticeships</h2>
+
+<p>
+    Apprenticeships have the following equivalent educational levels:
+</p>
+
+<table class="table table--parents">
+    <thead class="table__header">
+        <tr class="table__row table__header-row">
+            <th class="table__cell table__row-title table__header-row-title">Name</th>
+            <th class="table__cell  table__row-value--header">Level</th>
+            <th class="table__cell  table__row-value--header">Equivalent educational level</th>
+        </tr>
+    </thead>
+    <tbody class="table__body">
+        <tr class="table__row">
+            <td class="table__cell table__row-title">Intermediate</td>
+            <td class="table__cell">2</td>
+            <td class="table__cell">GCSE</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__cell table__row-title">Advanced</td>
+            <td class="table__cell">3</td>
+            <td class="table__cell">A level</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__cell table__row-title">Higher</td>
+            <td class="table__cell">4, 5, 6 and 7</td>
+            <td class="table__cell">Foundation degree and above</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__cell table__row-title">Degree</td>
+            <td class="table__cell">6 and 7</td>
+            <td class="table__cell">Bachelor’s or master’s degree</td>
+        </tr>
+
+    </tbody>
+</table>
+
+<p>
+    Some apprenticeships also give you an additional qualification such as a diploma.
+</p>
+
+<h2 class="heading-m" id="h5">Next steps</h2>
+
+<p>
+    If your child isn’t sure which route to take, it’s worth remembering that they can keep
+    their options open. They could apply for both university degrees and apprenticeships,
+    for example, and make their final decision when they’ve had more time to research and
+    reflect.
+</p>
+
+<p>
+    In the meantime, these useful resources will help you to support them:
+</p>
+
+<ul class="list list--bullet list--bullet-parents">
+    <li>
+        The
+        <a href="https://www.gov.uk/topic/further-education-skills/apprenticeships"
+           rel="external" target="_blank" class="external">
+            government website
+        </a>
+        is a great starting point for researching apprenticeships, from
+        application criteria to pay and conditions
+    </li>
+    <li>
+        The <a href="https://amazingapprenticeships.com/resources/" rel="external"
+               target="_blank" class="external">Amazing Apprenticeships</a>
+        website features a host of resources, including handy packs for parents
+    </li>
+    <li>
+        Which? University has teamed up with the National Apprenticeship Service to create a
+        downloadable
+        <a href="https://university.which.co.uk/teachers/introduce-higher-education-options/higher-and-degree-apprenticeships-guide-download"
+           rel="external" target="_blank" class="external">
+            guide to higher and degree apprenticeships
+        </a>
+    </li>
+    <li>
+        The National Careers Service website is packed with tips, from
+        <a href="https://nationalcareers.service.gov.uk/get-a-job/interview-advice"
+           rel="external" target="_blank" class="external">
+            interview advice
+        </a>
+        to the
+        <a href="https://nationalcareers.service.gov.uk/get-a-job/top-10-interview-questions"
+           rel="external" target="_blank" class="external">
+            top 10 questions
+        </a>
+        your child could be asked
+    </li>
+    <li>
+        The stories below will give you some great insight into apprentices’ real experiences
+    </li>
+</ul>
+
+
+@{
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#h1" class="hero__link">Apprenticeships, but not as you know them</a> </li>
+        <li>
+            <a href="#h2" class="hero__link">
+                They’ll earn a salary – and their training will be paid
+                for
+            </a>
+        </li>
+        <li>
+            <a href="#h3" class="hero__link">
+                They’ll get experience in a relevant role, plus
+                career-boosting skills
+            </a>
+        </li>
+        <li><a href="#h4" class="hero__link">Levels of apprenticeships</a> </li>
+        <li><a href="#h5" class="hero__link">Next steps</a> </li>
+    </ul>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { content = HeroHeadingContent() })
+}
+
+@section Resources {
+    <div class="grid-row">
+        <div class="grid-column">
+            <section class="section section--slant section--slant-after section--parent">
+                <figure class="quote-hero quote-hero--parent">
+                    <blockquote class="quote-hero__quote">
+                        My apprenticeship will give me the best stepping stone to become a highly trained
+                        firefighter, with regular assessments and development days
+                    </blockquote>
+                    <figcaption class="quote-hero__cite">
+                        <span class="quote-hero__cite-person">Claire Lester</span>
+                        <span class="quote-hero__cite-source">Staffordshire Fire and Rescue</span>
+                    </figcaption>
+                </figure>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="grid-row hero-banner hero-banner--parent cssmask-remove">
+        <div class="grid-column-full">
+            <div class="grid-row hero-banner__content">
+                <div class="grid-column-one-half  hero-banner__icon-play-container">
+                    <a class="hero-banner__icon-play" href="#player-1" id="play-1" data-module="videoPlayer"
+                       data-playerclass="video-player--parent" data-videoplayerid="plyr-1"
+                       data-videourl="https://www.youtube.com/embed/s0fcP0QgtGE?origin=https://www.apprenticeships.gov.uk&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
+                </div>
+                <div class="grid-column-one-half hero-banner__content-main">
+                    <h3 class="hero-banner__header">Valuable hands-on experience</h3>
+                    <p class="hero-banner__copy">
+                        "I wasn’t a hundred percent sure what I wanted to do after 6th form.
+                        Then, my mum showed me an ad in the local paper for an apprenticeship.
+                        I want to be earning six figures by the time I’m thirty. And that’s the beauty of
+                        starting young, it’s all possible."
+                    </p>
+                    <div class="hero-banner__cite">
+                        Ella <span class="hero-banner__cite-detail">
+                            22,
+                            Operations
+                            Manager, Chipping Campden
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <span class="hero-banner__background hero-banner__background--apprentice-ella"></span>
+        </div>
+
+    </div>
+}

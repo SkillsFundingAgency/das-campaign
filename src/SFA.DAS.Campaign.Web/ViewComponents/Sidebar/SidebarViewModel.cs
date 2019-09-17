@@ -35,6 +35,14 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                     }
                     Classes = "sidebar--employer";
                     break;
+                case SidebarType.Parent:
+
+                    if (imgLocation == null)
+                    {
+                        ImgLocation = "/campaign/images/worker-girl.jpg";
+                    }
+                    Classes = "sidebar--parent";
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }

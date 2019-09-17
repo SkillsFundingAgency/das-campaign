@@ -20,6 +20,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                     case "Employer":
                         type = HeroHeadingType.Employer;
                         break;
+                    case "Parents":
+                        type = HeroHeadingType.Parent;
+                        break;
                     default:
                         type = HeroHeadingType.None;
                         break;
@@ -35,6 +38,8 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                 case HeroHeadingType.Apprentice:
                     break;
                 case HeroHeadingType.Employer:
+                    break;
+                        case HeroHeadingType.Parent:
                     break;
                 case HeroHeadingType.FindApprenticeshipResults:
                     type = HeroHeadingType.Apprentice;
