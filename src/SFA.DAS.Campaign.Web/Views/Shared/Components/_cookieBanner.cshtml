@@ -1,6 +1,6 @@
 ﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
 @using SFA.DAS.Campaign.Web.ViewComponents.Modal
-<div class="cookiebanner cookiebanner--variant-1 visually-hidden"  data-module="cookieBanner">
+<div class="cookiebanner cookiebanner--variant-1 visually-hidden" data-module="cookieBanner">
     <div class="grid-row cookiebanner__content">
         <div class="grid-column-two-thirds cookiebanner__text">
             <h4 class="cookiebanner__heading">Cookies on this site</h4>
@@ -17,4 +17,22 @@
     </div>
 </div>
 
-@await Component.InvokeAsync("Modal", new { id = "modal-cookiesettings", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.CookieSettings } })
+@functions {
+
+    private bool ParseHideCookieBanner()
+    {
+        if (ViewBag.HideCookieBanner is bool)
+        {
+            return ViewBag.HideCookieBanner;
+        }
+        return false;
+    }
+
+}
+
+@{
+    if (!ParseHideCookieBanner())
+    {
+        @await Component.InvokeAsync("Modal", new { id = "modal-cookiesettings", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.CookieSettings } })
+    }
+}
