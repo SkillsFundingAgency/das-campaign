@@ -1,9 +1,11 @@
 ﻿using Microsoft.Rest;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
+using SFA.DAS.Campaign.Domain.Enums;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Vacancies.Api.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -94,34 +96,60 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                     Longitude = coordinates.Coordinates.Lon
                 };
 
-                int pageNumber = 1;
-                var vacancyApiList = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
+                searchResults.Country = MapToCountry(coordinates.Country) ;
+                searchResults.Results = new List<VacancySearchResultItem>();
 
-                while (vacancyApiList.Count == _apiMaxPageSize && vacancyApiList.Max(s => s.DistanceInMiles < distance))
+                if (searchResults.Country == Domain.Enums.Country.England)
                 {
-                    pageNumber++;
 
-                    var list = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
-                    vacancyApiList.AddRange(list);
+                    int pageNumber = 1;
+                    var vacancyApiList = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
 
-                    if (list.Count < _apiMaxPageSize)
+                    while (vacancyApiList.Count == _apiMaxPageSize && vacancyApiList.Max(s => s.DistanceInMiles < distance))
                     {
-                        break;
+                        pageNumber++;
+
+                        var list = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
+                        vacancyApiList.AddRange(list);
+
+                        if (list.Count < _apiMaxPageSize)
+                        {
+                            break;
+                        }
                     }
+
+                    searchResults.Results = vacancyApiList.Where(w => w.TrainingType == TrainingType.Standard)
+                        .Select(_vacanciesMapper.Map)
+                        .ToList();
+
+                    Parallel.ForEach(searchResults.Results,
+                        vacancy => { vacancy.StaticMapUrl = _mappingService.GetStaticMapsUrl(vacancy.Location); });
+                    
                 }
-
-                searchResults.Results = vacancyApiList.Where(w => w.TrainingType == TrainingType.Standard)
-                    .Select(_vacanciesMapper.Map)
-                    .ToList();
-
-                Parallel.ForEach(searchResults.Results,
-                    vacancy => { vacancy.StaticMapUrl = _mappingService.GetStaticMapsUrl(vacancy.Location); });
 
                 return searchResults;
             }
+            
             return null;
         }
 
+        private Country MapToCountry(string country)
+        {
+            switch (country)
+            {
+                case "England":
+                    return Country.England;
+                case "Wales":
+                    return Country.Wales;
+                case "Scotland":
+                    return Country.Scotland;
+                case "Northern Ireland":
+                    return Country.NorthernIreland;
+                default:
+                    return Country.Other;
+
+            }
+        }
 
         private List<Result> GetVacancyList(int distance, CoordinatesResponse coordinates, int pageNumber = 1)
         {
