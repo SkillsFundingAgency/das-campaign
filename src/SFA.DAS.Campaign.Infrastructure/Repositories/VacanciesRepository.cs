@@ -114,7 +114,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
 
                         if (list.Count < _apiMaxPageSize)
                         {
-                            break;
+                            break; 
                         }
                     }
 
@@ -124,7 +124,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
 
                     Parallel.ForEach(searchResults.Results,
                         vacancy => { vacancy.StaticMapUrl = _mappingService.GetStaticMapsUrl(vacancy.Location); });
-                    
+
+                   
                 }
 
                 return searchResults;
@@ -133,7 +134,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             return null;
         }
 
-        private Country MapToCountry(string country)
+        public Country MapToCountry(string country)
         {
             switch (country)
             {
@@ -180,5 +181,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             var vacancyList = ((VacancySearchResults)(result).Body).Results.ToList();
             return vacancyList;
         }
+
+        
     }
 }

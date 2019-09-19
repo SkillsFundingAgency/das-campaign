@@ -19,7 +19,7 @@ using Microsoft.Extensions.Logging;
 namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 {
     [TestFixture]
-    public class WhenGetingVacanciesByRouteAndPostcode
+    public class WhenGetingVacanciesByRouteAndPostcodeEngland
     {
         private Mock<IGeocodeService> _geocodeService;
         private Mock<IMappingService> _mappingService;
@@ -36,6 +36,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private CoordinatesResponse coordinatesResponse = new CoordinatesResponse()
         {
             Coordinates = new Coordinates() { Lat = 50, Lon = 50 },
+            Country = "England",
             ResponseCode = "OK"
         };
 
