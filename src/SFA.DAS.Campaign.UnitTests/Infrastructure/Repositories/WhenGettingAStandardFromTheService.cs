@@ -22,6 +22,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private Mock<IStandardsMapper> _standardsMApper;
         private Mock<IApprenticeshipStandardsApi> _fullStandardsApi;
         private Mock<ICacheStorageService> _cacheService;
+        private Mock<IStandardApiClient> _standardApiClient;
 
         //Arrange
         string _routeId = "1";
@@ -113,6 +114,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _apprenticeshipProgrammeApiClient = new Mock<IApprenticeshipProgrammeApiClient>();
             _fullStandardsApi = new Mock<IApprenticeshipStandardsApi>();
             _cacheService = new Mock<ICacheStorageService>();
+            _standardApiClient = new Mock<IStandardApiClient>();
             _apprenticeshipProgrammeApiClient.Setup(c => c.SearchAsync(It.IsAny<string>(), It.IsAny<int>()))
                 .ReturnsAsync(new List<ApprenticeshipSearchResultsItem>
                 {
@@ -151,7 +153,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
                 .ReturnsAsync(standardsApiResult);
 
 
-            _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, _cacheService.Object);
+            _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, _cacheService.Object, _standardApiClient.Object);
         }
 
         [Test]
@@ -193,13 +195,26 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         {
          Mock<ICacheStorageService> noncacheService = new Mock<ICacheStorageService>();
 
-        _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, noncacheService.Object);
+        _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, noncacheService.Object, _standardApiClient.Object);
 
             //Act
             await _standardsRepository.GetByRoute(_routeId);
 
             //Assert
             _fullStandardsApi.Verify(x => x.ApprenticeshipStandardsGet_3Async(), Times.Once);
+           }
+        [Test]
+        public async Task And_By_Route_And_First_Call_Then_The_FAT_Api_Is_Called_To_Get_Standards()
+        {
+            Mock<ICacheStorageService> noncacheService = new Mock<ICacheStorageService>();
+
+            _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, noncacheService.Object, _standardApiClient.Object);
+
+            //Act
+            await _standardsRepository.GetByRoute(_routeId);
+
+            //Assert
+            _standardApiClient.Verify(v => v.GetAllAsync());
         }
 
         [Test]
