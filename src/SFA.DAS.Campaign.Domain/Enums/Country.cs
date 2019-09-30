@@ -6,10 +6,10 @@ namespace SFA.DAS.Campaign.Domain.Enums
 {
     public enum Country
     {
-        England=0,
-        Wales=1,
-        Scotland=2,
-        NorthernIreland=3,
-        Other=4
+        England = 0,
+        Wales = 1,
+        Scotland = 2,
+        NorthernIreland = 3,
+        Other = 4
     }
 }

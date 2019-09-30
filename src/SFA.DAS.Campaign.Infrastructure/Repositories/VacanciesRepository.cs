@@ -23,25 +23,34 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         private readonly IGeocodeService _geocodeService;
         private readonly IMappingService _mappingService;
         private readonly IStandardsRepository _standardsService;
+<<<<<<< HEAD
         private readonly ILogger<VacanciesRepository> _logger;
 
         public VacanciesRepository(ILivevacanciesAPI vacanciesApi, IVacanciesMapper vacanciesMapper,
             IGeocodeService geocodeService, IMappingService mappingService, IStandardsRepository standardsService, ILogger<VacanciesRepository> logger)
+=======
+        private readonly ICountryMapper _countryMapper;
+
+        public VacanciesRepository(ILivevacanciesAPI vacanciesApi, IVacanciesMapper vacanciesMapper,
+            IGeocodeService geocodeService, IMappingService mappingService, IStandardsRepository standardsService, ICountryMapper countryMapper)
+>>>>>>> I have moved the MapToCountry method to its own class and tidied up some formatting errors.
         {
             _vacanciesApi = vacanciesApi;
             _vacanciesMapper = vacanciesMapper;
             _geocodeService = geocodeService;
             _mappingService = mappingService;
             _standardsService = standardsService;
+<<<<<<< HEAD
             _logger = logger;
+=======
+            _countryMapper = countryMapper;
+>>>>>>> I have moved the MapToCountry method to its own class and tidied up some formatting errors.
         }
 
         public async Task<VacancySearchResult> GetByPostcode(string postcode, int distance)
         {
 
             var coordinates = await _geocodeService.GetFromPostCode(postcode);
-
-
 
             if (coordinates.ResponseCode == "OK")
             {
@@ -51,10 +60,9 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                     Latitude = coordinates.Coordinates.Lat,
                     Longitude = coordinates.Coordinates.Lon
                 };
-
+                
                 int pageNumber = 1;
                 var vacancyApiList = GetVacancyList(distance, coordinates, pageNumber);
-
 
                 while (vacancyApiList.Count == _apiMaxPageSize && vacancyApiList.Max(s => s.DistanceInMiles < distance))
                 {
@@ -96,7 +104,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                     Longitude = coordinates.Coordinates.Lon
                 };
 
-                searchResults.Country = MapToCountry(coordinates.Country) ;
+                searchResults.Country = _countryMapper.MapToCountry(coordinates.Country) ;
                 searchResults.Results = new List<VacancySearchResultItem>();
 
                 if (searchResults.Country == Domain.Enums.Country.England)
@@ -125,31 +133,12 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                     Parallel.ForEach(searchResults.Results,
                         vacancy => { vacancy.StaticMapUrl = _mappingService.GetStaticMapsUrl(vacancy.Location); });
 
-                   
                 }
 
                 return searchResults;
             }
             
             return null;
-        }
-
-        public Country MapToCountry(string country)
-        {
-            switch (country)
-            {
-                case "England":
-                    return Country.England;
-                case "Wales":
-                    return Country.Wales;
-                case "Scotland":
-                    return Country.Scotland;
-                case "Northern Ireland":
-                    return Country.NorthernIreland;
-                default:
-                    return Country.Other;
-
-            }
         }
 
         private List<Result> GetVacancyList(int distance, CoordinatesResponse coordinates, int pageNumber = 1)

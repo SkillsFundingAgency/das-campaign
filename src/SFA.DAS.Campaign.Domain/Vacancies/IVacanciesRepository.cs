@@ -7,7 +7,5 @@ namespace SFA.DAS.Campaign.Domain.Vacancies
     {
         Task<VacancySearchResult> GetByPostcode(string postcode, int distance);
         Task<VacancySearchResult> GetByRoute(string routeId,string postcode, int distance);
-
-        Country MapToCountry(string country);
     }
 }

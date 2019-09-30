@@ -26,6 +26,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private Mock<ILivevacanciesAPI> _vacanciesApi;
         private Mock<IStandardsRepository> _standardsService;
         private VacanciesMapper _vacanciesMapper;
+        private CountryMapper _countryMapper;
 
         private IVacanciesRepository sut;
 
@@ -48,10 +49,11 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _vacanciesApi = new Mock<ILivevacanciesAPI>();
             _standardsService = new Mock<IStandardsRepository>();
             _vacanciesMapper = new VacanciesMapper();
+            _countryMapper = new CountryMapper();
 
             _geocodeService.Setup(s => s.GetFromPostCode(It.IsAny<string>())).ReturnsAsync(coordinatesResponse);
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _countryMapper);
 
         }
 
@@ -95,7 +97,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         [TestCase("Northern Ireland",Country.NorthernIreland)]
         public void coordinates_Map_To_Country(string country, Country testCountryEnum)
         {
-            var countryEnum = sut.MapToCountry(country);
+            var countryEnum = _countryMapper.MapToCountry(country);
 
             Assert.AreEqual(countryEnum, testCountryEnum);
         }

@@ -27,6 +27,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private Mock<IStandardsRepository> _standardsService;
         private VacanciesMapper _vacanciesMapper;
         private Mock<ILogger<VacanciesRepository>> _logger;
+        private CountryMapper _countryMapper;
 
         private IVacanciesRepository sut;
 
@@ -52,6 +53,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _standardsService = new Mock<IStandardsRepository>();
             _vacanciesMapper = new VacanciesMapper();
             _logger = new Mock<ILogger<VacanciesRepository>>();
+            _countryMapper = new CountryMapper();
 
             _standards = new List<StandardResultItem>()
             {
@@ -77,7 +79,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 
             _standardsService.Setup(s => s.GetByRoute(routeId)).ReturnsAsync(_standards);
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object, _countryMapper);
 
         }
 

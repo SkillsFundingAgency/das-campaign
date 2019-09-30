@@ -27,6 +27,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private Mock<IStandardsRepository> _standardsService;
         private VacanciesMapper _vacanciesMapper;
         private Mock<ILogger<VacanciesRepository>> _logger;
+        private CountryMapper _countryMapper;
 
 
         private IVacanciesRepository sut;
@@ -48,6 +49,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _standardsService = new Mock<IStandardsRepository>();
             _vacanciesMapper = new VacanciesMapper();
             _logger = new Mock<ILogger<VacanciesRepository>>();
+            _countryMapper = new CountryMapper();
 
 
             _geocodeService.Setup(s => s.GetFromPostCode(It.IsAny<string>())).ReturnsAsync(coordinatesResponse);
@@ -58,7 +60,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _mappingService.Setup(s => s.GetStaticMapsUrl(It.IsAny<SFA.DAS.Campaign.Domain.Vacancies.Location >())).Returns("url");
 
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object, _countryMapper);
 
         }
 
@@ -95,7 +97,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _vacanciesApi.Setup(s => s.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
                 It.Is<int>(a => a == 2), It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(mockSearchResults(_searchResultCount - 250));
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object,_logger. Object);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object,_logger. Object, _countryMapper);
 
             var results = sut.GetByPostcode(postcode, 20);
 
