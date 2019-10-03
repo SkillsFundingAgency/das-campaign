@@ -8,6 +8,13 @@
             </div>
             
             <p>@Model.Overview</p> 
+            
+            <form asp-controller="Basket" asp-action="AddApprenticeshipFromDetails" method="post">
+                <div class="form-group">
+                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
+                </div>
+
+            </form>
 
             <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
                 <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" />

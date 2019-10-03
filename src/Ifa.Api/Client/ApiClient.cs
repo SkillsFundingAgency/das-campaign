@@ -123,6 +123,8 @@ namespace Ifa.Api.Client
             // at this point, it must be a model (json)
             try
             {
+                response.Content = response.Content.Replace("[]", "null");
+
                 return JsonConvert.DeserializeObject(response.Content, type, _serializerSettings);
             }
             catch (Exception e)

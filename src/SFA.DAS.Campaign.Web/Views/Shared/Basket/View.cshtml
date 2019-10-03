@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model SFA.DAS.Campaign.Web.Models.ConfirmSaveViewModel
+
+@{
+    ViewBag.Title = "Your favourite apprenticeships and training providers";
+    ViewBag.BackLink = "Back to training provider";
+    Layout = "_LayoutContentFull";
+    ViewBag.MetaTitle = "";
+    ViewBag.MetaDesc = "";
+}
+
+
+
+@await Component.InvokeAsync("BasketDetails")
+
+@{
+    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+    System.IO.StringWriter writer = new System.IO.StringWriter(sb);
+    System.Text.Encoding asciiEncoding = System.Text.Encoding.ASCII;
+    System.Text.Encodings.Web.HtmlEncoder hEncoder= System.Text.Encodings.Web.HtmlEncoder.Default;
+    Component.InvokeAsync("BasketHeader").Result.WriteTo(writer, hEncoder);
+
+    var headerString = new HtmlContentBuilder().AppendHtml(writer.ToString());
+
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.None, content = headerString })
+}

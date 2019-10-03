@@ -11,6 +11,7 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
         public IUtilitiesCssViewModel UtilitiesCss => new DefaultUtilitiesCssViewModel("u");
 
         public IDefaultFormCssViewModel FormCss => new DefaultFormCssViewModel(ClassPrefix);
+        public ICssGridViewModel GridCss => new DefaultGridCssViewModel(ClassPrefix);
         public string ClassModifier { get; set; } = "employer";
         public string ClassPrefix { get; set; } = string.Empty;
         private string _buttonCss => $"{ClassPrefix}button";
@@ -78,6 +79,8 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
             }
         }
         public string ListNumber => $"{ClassPrefix}list--number";
+        public string ListNumbers => $"{ClassPrefix}list-numbers";
+
         public string SearchList
         {
             get
