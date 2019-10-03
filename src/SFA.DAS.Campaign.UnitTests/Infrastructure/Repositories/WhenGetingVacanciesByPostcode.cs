@@ -14,6 +14,7 @@ using VacanciesApi;
 using System.Linq;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
+using Microsoft.Extensions.Logging;
 
 namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 {
@@ -25,6 +26,8 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private Mock<ILivevacanciesAPI> _vacanciesApi;
         private Mock<IStandardsRepository> _standardsService;
         private VacanciesMapper _vacanciesMapper;
+        private Mock<ILogger<VacanciesRepository>> _logger;
+
 
         private IVacanciesRepository sut;
 
@@ -44,6 +47,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _vacanciesApi = new Mock<ILivevacanciesAPI>();
             _standardsService = new Mock<IStandardsRepository>();
             _vacanciesMapper = new VacanciesMapper();
+            _logger = new Mock<ILogger<VacanciesRepository>>();
 
 
             _geocodeService.Setup(s => s.GetFromPostCode(It.IsAny<string>())).ReturnsAsync(coordinatesResponse);
@@ -54,7 +58,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _mappingService.Setup(s => s.GetStaticMapsUrl(It.IsAny<SFA.DAS.Campaign.Domain.Vacancies.Location >())).Returns("url");
 
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object);
 
         }
 
@@ -91,7 +95,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _vacanciesApi.Setup(s => s.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
                 It.Is<int>(a => a == 2), It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(mockSearchResults(_searchResultCount - 250));
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object,_logger. Object);
 
             var results = sut.GetByPostcode(postcode, 20);
 
