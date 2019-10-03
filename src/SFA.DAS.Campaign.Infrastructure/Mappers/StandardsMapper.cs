@@ -18,13 +18,20 @@ namespace SFA.DAS.Campaign.Infrastructure.Mappers
         }
         public StandardResultItem Map(ApiApprenticeshipStandard item)
         {
-            return new StandardResultItem
+            try
             {
-                Id = item.LarsCode,
-                Duration = item.TypicalDuration,
-                Title = item.Title,
-                Level = item.Level
-            };
+                return new StandardResultItem
+                {
+                    Id = item.LarsCode,
+                    Duration = item.TypicalDuration,
+                    Title = item.Title,
+                    Level = item.Level
+                };
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
