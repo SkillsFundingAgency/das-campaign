@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VacanciesApi;
 using Location = SFA.DAS.Campaign.Domain.Vacancies.Location;
+using Microsoft.Extensions.Logging;
 
 namespace SFA.DAS.Campaign.Infrastructure.Repositories
 {
@@ -20,15 +21,17 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         private readonly IGeocodeService _geocodeService;
         private readonly IMappingService _mappingService;
         private readonly IStandardsRepository _standardsService;
+        private readonly ILogger<VacanciesRepository> _logger;
 
         public VacanciesRepository(ILivevacanciesAPI vacanciesApi, IVacanciesMapper vacanciesMapper,
-            IGeocodeService geocodeService, IMappingService mappingService, IStandardsRepository standardsService)
+            IGeocodeService geocodeService, IMappingService mappingService, IStandardsRepository standardsService, ILogger<VacanciesRepository> logger)
         {
             _vacanciesApi = vacanciesApi;
             _vacanciesMapper = vacanciesMapper;
             _geocodeService = geocodeService;
             _mappingService = mappingService;
             _standardsService = standardsService;
+            _logger = logger;
         }
 
         public async Task<VacancySearchResult> GetByPostcode(string postcode, int distance)
@@ -139,6 +142,12 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
 
             var result = (HttpOperationResponse<object>)_vacanciesApi.SearchApprenticeshipVacancies(
                 coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber, 250, distance, standardIds);
+
+            if (!result.Response.IsSuccessStatusCode)
+            {
+                _logger.LogError($"Unable to get vacancies for {routeId} from api: {result.Response.Content.ReadAsStringAsync().Result}");
+                throw new HttpOperationException(result.Response.Content.ReadAsStringAsync().Result);
+            }
 
             var vacancyList = ((VacancySearchResults)(result).Body).Results.ToList();
             return vacancyList;
