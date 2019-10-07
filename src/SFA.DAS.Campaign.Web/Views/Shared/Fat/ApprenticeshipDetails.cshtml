@@ -4,31 +4,45 @@
     ViewBag.PageID = "employer-find-an-apprenticeship";
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
-    Layout = "_LayoutContentFull";
+    Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 3;
     @model Sfa.Das.Sas.Shared.Components.ViewModels.ApprenticeshipDetailQueryViewModel
 
 }
-    
-    @section HeroHeading {
-        @await Component.InvokeAsync("ApprenticeshipHeading",new { queryModel = Model} )
-    }   
 
-    @await Component.InvokeAsync("ApprenticeshipDetails", new { queryModel = Model})
+@section HeroHeading {
+    @await Component.InvokeAsync("ApprenticeshipHeading", new { queryModel = Model })
+}
 
-<div class="grid-row">
-    <div class="grid-column-full">
-        <section class="cta-fat">
-            <div class="cta-fat__content">
-                <h2 class="heading-l u-!-margin-top-0">Find a training provider</h2>
-            </div>
-           
-            <div class="cta-fat__action">
-                @await Component.InvokeAsync("TrainingProviderSearch", new {apprenticeshipId = Model.Id})
-            </div>
-       
+@await Component.InvokeAsync("ApprenticeshipDetails", new { queryModel = Model })
 
-        </section>
+@section Resources {
+    <div class="grid-row">
+        <div class="grid-column-full">
+            <section class="cta-fat">
+                <div class="cta-fat__content">
+                    <h2 class="heading-l u-!-margin-top-0">Find a training provider</h2>
+                </div>
 
+                <div class="cta-fat__action">
+                    @await Component.InvokeAsync("TrainingProviderSearch", new { apprenticeshipId = Model.Id })
+                </div>
+
+
+            </section>
+
+        </div>
     </div>
-</div>
+
+}
+
+
+@section Sidebar {
+    <div class="sidebar-panel sidebar-panel--employer">
+        <div class="sidebar-panel__content">
+            <h2 class="heading-m u-!-margin-top-0">Find a training provider for this apprenticeship</h2>
+            @await Component.InvokeAsync("TrainingProviderSearch", new { apprenticeshipId = Model.Id })
+
+        </div>
+    </div>
+x}
