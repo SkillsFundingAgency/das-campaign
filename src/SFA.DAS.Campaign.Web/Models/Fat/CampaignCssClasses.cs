@@ -111,8 +111,6 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
 
         public string VisuallyHidden => "visually-hidden";
 
-        public string ButtonSecondary => throw new NotImplementedException();
-
         public ICssGridViewModel GridCss => new DefaultGridCssViewModel(ClassPrefix);
     }
 }
