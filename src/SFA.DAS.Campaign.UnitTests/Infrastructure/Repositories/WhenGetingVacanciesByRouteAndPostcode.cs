@@ -14,6 +14,7 @@ using SFA.DAS.Campaign.Domain.Vacancies;
 using VacanciesApi;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
+using Microsoft.Extensions.Logging;
 
 namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 {
@@ -25,6 +26,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private Mock<ILivevacanciesAPI> _vacanciesApi;
         private Mock<IStandardsRepository> _standardsService;
         private VacanciesMapper _vacanciesMapper;
+        private Mock<ILogger<VacanciesRepository>> _logger;
 
         private IVacanciesRepository sut;
 
@@ -48,6 +50,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _vacanciesApi = new Mock<ILivevacanciesAPI>();
             _standardsService = new Mock<IStandardsRepository>();
             _vacanciesMapper = new VacanciesMapper();
+            _logger = new Mock<ILogger<VacanciesRepository>>();
 
             _standards = new List<StandardResultItem>()
             {
@@ -73,7 +76,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 
             _standardsService.Setup(s => s.GetByRoute(routeId)).ReturnsAsync(_standards);
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object);
 
         }
 

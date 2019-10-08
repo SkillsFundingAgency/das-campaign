@@ -13,8 +13,23 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
         public IDefaultFormCssViewModel FormCss => new DefaultFormCssViewModel(ClassPrefix);
         public string ClassModifier { get; set; } = "employer";
         public string ClassPrefix { get; set; } = string.Empty;
-        private string _buttonCss => $"{ClassPrefix}button button--sparks";
+        private string _buttonCss => $"{ClassPrefix}button";
         public string Button
+        {
+            get
+            {
+                if (String.IsNullOrWhiteSpace(ClassModifier))
+                {
+                    return $"{_buttonCss} button--sparks";
+                }
+                else
+                {
+                    return $"{_buttonCss} button--sparks button-{ClassModifier}";
+                }
+            }
+        }
+
+        public string ButtonSecondary
         {
             get
             {
@@ -24,7 +39,7 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
                 }
                 else
                 {
-                    return $"{_buttonCss} button-{ClassModifier}";
+                    return $"{_buttonCss} button-inverted";
                 }
             }
         }

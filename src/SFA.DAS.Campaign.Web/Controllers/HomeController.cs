@@ -23,6 +23,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View();
         }
 
+        [Route("cookie-details")]
+        public IActionResult CookieDetails()
+        {
+            return View();
+        }
+
         [Route("sitemap")]
         public IActionResult Sitemap()
         {
@@ -34,7 +40,11 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View("Error", errorCode);
         }
+        [Route("countries")]
+        public IActionResult Countries()
+        {
+            return View("Countries");
+        }
 
-      
     }
 }

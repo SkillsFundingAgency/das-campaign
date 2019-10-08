@@ -51,6 +51,10 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                     Caption = "Employer";
                     Class = "hero-heading__caption--employer";
                     break;
+                case HeroHeadingType.Parent:
+                    Caption = "Parent";
+                    Class = "hero-heading__caption--parent";
+                    break;
             }
 
             return caption;
