@@ -15,6 +15,7 @@ using VacanciesApi;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
 using SFA.DAS.Campaign.Domain.Enums;
+using Microsoft.Extensions.Logging;
 
 namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 {
@@ -25,6 +26,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private Mock<IMappingService> _mappingService;
         private Mock<ILivevacanciesAPI> _vacanciesApi;
         private Mock<IStandardsRepository> _standardsService;
+        private Mock<ILogger<VacanciesRepository>> _logger;
         private VacanciesMapper _vacanciesMapper;
         private CountryMapper _countryMapper;
 
@@ -49,11 +51,12 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _vacanciesApi = new Mock<ILivevacanciesAPI>();
             _standardsService = new Mock<IStandardsRepository>();
             _vacanciesMapper = new VacanciesMapper();
+            _logger = new Mock<ILogger<VacanciesRepository>>();
             _countryMapper = new CountryMapper();
 
             _geocodeService.Setup(s => s.GetFromPostCode(It.IsAny<string>())).ReturnsAsync(coordinatesResponse);
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _countryMapper);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object, _countryMapper);
 
         }
 

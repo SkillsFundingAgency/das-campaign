@@ -23,28 +23,19 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         private readonly IGeocodeService _geocodeService;
         private readonly IMappingService _mappingService;
         private readonly IStandardsRepository _standardsService;
-<<<<<<< HEAD
         private readonly ILogger<VacanciesRepository> _logger;
-
-        public VacanciesRepository(ILivevacanciesAPI vacanciesApi, IVacanciesMapper vacanciesMapper,
-            IGeocodeService geocodeService, IMappingService mappingService, IStandardsRepository standardsService, ILogger<VacanciesRepository> logger)
-=======
         private readonly ICountryMapper _countryMapper;
-
         public VacanciesRepository(ILivevacanciesAPI vacanciesApi, IVacanciesMapper vacanciesMapper,
-            IGeocodeService geocodeService, IMappingService mappingService, IStandardsRepository standardsService, ICountryMapper countryMapper)
->>>>>>> I have moved the MapToCountry method to its own class and tidied up some formatting errors.
+            IGeocodeService geocodeService, IMappingService mappingService, IStandardsRepository standardsService, ILogger<VacanciesRepository> logger, ICountryMapper countryMapper)
+
         {
             _vacanciesApi = vacanciesApi;
             _vacanciesMapper = vacanciesMapper;
             _geocodeService = geocodeService;
             _mappingService = mappingService;
             _standardsService = standardsService;
-<<<<<<< HEAD
             _logger = logger;
-=======
             _countryMapper = countryMapper;
->>>>>>> I have moved the MapToCountry method to its own class and tidied up some formatting errors.
         }
 
         public async Task<VacancySearchResult> GetByPostcode(string postcode, int distance)
@@ -146,7 +137,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             var result = (HttpOperationResponse<object>)_vacanciesApi.SearchApprenticeshipVacancies(
                 coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber, 250, distance);
 
-
             var vacancyList = ((VacancySearchResults)(result).Body).Results.ToList();
             return vacancyList;
         }
@@ -171,6 +161,5 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             return vacancyList;
         }
 
-        
     }
 }
