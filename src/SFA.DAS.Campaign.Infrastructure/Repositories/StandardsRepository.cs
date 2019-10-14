@@ -14,16 +14,18 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
     public class StandardsRepository : IStandardsRepository
     {
         private readonly IApprenticeshipProgrammeApiClient _apprenticeshipProgrammeApiClient;
+        private readonly IStandardApiClient _apprenticeshipStandardApiClient;
         private readonly IStandardsMapper _standardsMapper;
         private readonly IApprenticeshipStandardsApi _ifaApprenticeshipStandardsApi;
         private readonly ICacheStorageService _cacheService;
 
-        public StandardsRepository(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper, IApprenticeshipStandardsApi fullStandardsApi, ICacheStorageService cacheService)
+        public StandardsRepository(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper, IApprenticeshipStandardsApi fullStandardsApi, ICacheStorageService cacheService, IStandardApiClient apprenticeshipStandardApiClient)
         {
             _apprenticeshipProgrammeApiClient = apprenticeshipProgrammeApiClient;
             _standardsMapper = standardsMapper;
             _ifaApprenticeshipStandardsApi = fullStandardsApi;
             _cacheService = cacheService;
+            _apprenticeshipStandardApiClient = apprenticeshipStandardApiClient;
         }
 
         public async Task<List<StandardResultItem>> GetBySearchTerm(string searchTerm)
@@ -46,9 +48,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             {
                 // Key not in cache, so get data.
                 cacheEntry = (await _ifaApprenticeshipStandardsApi.ApprenticeshipStandardsGet_3Async());
-                
-                //Remove any null objects returned by the API
-                cacheEntry = cacheEntry.Where(w => w != null).ToList();
+
+                var fatStandardIds = (await GetAllIds()).ToList();
+                //Remove any null objects returned by the API and any which dont exist in FAT
+                cacheEntry = cacheEntry.Where(w => w != null && fatStandardIds.Contains(w.LarsCode.ToString())).ToList();
          
                 // Save data in cache.
                 await _cacheService.SaveToCache(cacheKey, cacheEntry, new TimeSpan(30, 0, 0, 0), new TimeSpan(1, 0, 0, 0));
@@ -59,6 +62,14 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
 
             return cacheEntry.Select(_standardsMapper.Map)
                 .ToList();
+        }
+
+        private async Task<IEnumerable<string>> GetAllIds()
+        {
+            var result = (await _apprenticeshipStandardApiClient.GetAllAsync())
+                .Select(s => s.Id);
+
+            return result;
         }
     }
 }

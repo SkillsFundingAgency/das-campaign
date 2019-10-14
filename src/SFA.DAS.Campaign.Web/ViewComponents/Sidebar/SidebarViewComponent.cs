@@ -21,6 +21,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                     case "employer":
                         type = SidebarType.Employer;
                         break;
+                    case "parents":
+                        type = SidebarType.Parent;
+                        break;
                     case "findapprenticeship":
                         type = SidebarType.Apprentice;
                         break;
@@ -37,7 +40,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                     break;
                 case SidebarType.Employer:
                     view = "../Shared/Sidebar/_Employer";
-
+                    break;
+                case SidebarType.Parent:
+                    view = "../Shared/Sidebar/_Parent";
                     break;
                 case SidebarType.None:
                     return Content(string.Empty);
