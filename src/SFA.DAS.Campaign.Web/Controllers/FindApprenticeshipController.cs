@@ -68,6 +68,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 viewModel.Location = searchResults.searchLocation;
                 viewModel.StaticMapUrl = _mappingService.GetStaticMapsUrl(searchResults.Results.Select(p => p.Location), "680", "530");
 
+                viewModel.Country = searchResults.Country;
             }
 
 
