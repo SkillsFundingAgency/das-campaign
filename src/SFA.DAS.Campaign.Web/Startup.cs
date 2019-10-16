@@ -121,6 +121,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IVacanciesMapper, VacanciesMapper>();
             services.AddTransient<IVacanciesRepository, VacanciesRepository>();
             services.AddTransient<IApprenticeshipStandardsApi, ApprenticeshipStandardsApi>();
+            services.AddTransient<ICountryMapper,CountryMapper>();
 
 
             var vacanciesBaseUrl = Configuration.GetValue<string>("VacanciesApi:BaseUrl");

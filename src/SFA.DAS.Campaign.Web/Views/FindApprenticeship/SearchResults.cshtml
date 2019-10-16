@@ -2,6 +2,7 @@
 @using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
 @using SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@using SFA.DAS.Campaign.Domain.Enums
 @model SearchResultsViewModel
 
 @{
@@ -26,50 +27,60 @@
 
 <div class="search-results">
 
-    @if (Model.TotalResults > 0)
+    @if (Model.Country == Country.England)
     {
-        <h1 class="heading-l">
-            Your results...
-        </h1>
-        <p>
-            Here are the
-            @if (Model.TotalResults >= 10)
-            {
-                <span class="bold">10 </span>
-            }
-            else
-            {
-                <span class="bold">@Model.TotalResults</span>
-            }
-            <span class="bold">@Model.Route</span>
-            apprenticeships nearest to
-            <span class="bold">@Model.Postcode</span>.
-        </p>
+        @if (Model.TotalResults > 0)
+        {
+            <h1 class="heading-l">
+                Your results...
+            </h1>
+            <p>
+                Here are the
+                @if (Model.TotalResults >= 10)
+                {
+                    <span class="bold">10 </span>
+                }
+                else
+                {
+                    <span class="bold">@Model.TotalResults</span>
+                }
+                <span class="bold">@Model.Route</span>
+                apprenticeships nearest to
+                <span class="bold">@Model.Postcode</span>.
+            </p>
 
         <p>Visit <a id="link-faa-search-results" href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship on GOV.UK</a> to see all @Model.Route apprenticeships in your area.</p>
 
-        <ol id="vacancy-search-results" class="list list--number das-search-results__list das-search-results__list--apprentice">
+            <ol id="vacancy-search-results" class="list list--number das-search-results__list das-search-results__list--apprentice">
 
-            @foreach (var vacancySearchResultItem in Model.Results)
-            {
+                @foreach (var vacancySearchResultItem in Model.Results)
+                {
 
-                await Html.RenderPartialAsync("_searchResults", vacancySearchResultItem);
+                    await Html.RenderPartialAsync("_searchResults", vacancySearchResultItem);
 
-            }
+                }
 
-        </ol>
-    }
-    else
-    {
-        <h1 class="heading-l">
-            No matching results...
-        </h1>
+            </ol>
+        }
+        else
+        {
+            <h1 class="heading-l">
+                No matching results...
+            </h1>
 
-        <p>Try expanding your search location or changing your area of interest.</p>
+            <p>Try expanding your search location or changing your area of interest.</p>
 
         <p>Alternatively, visit <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship on GOV.UK</a> to refine your search further.</p>
 
-        //  @await Html.PartialAsync("./Components/Form/faa-search", new FindApprenticeshipSearchModel(){Distance = Model.Distance, Postcode = Model.Postcode, Route = Model.Route})
+            //  @await Html.PartialAsync("./Components/Form/faa-search", new FindApprenticeshipSearchModel(){Distance = Model.Distance, Postcode = Model.Postcode, Route = Model.Route})
+        }
+
+    }
+    else
+    {
+        <h1 class="heading-l"> Looking for apprenticeships in @GetCountryText(Model.Country)? </h1>
+        <p> Visit your local apprenticeships website to search for vacancies in your area. </p>
+        <p><a href="@GetCountryUrl(Model.Country)" class="link" rel="external" target="_blank">Explore apprenticeships in @GetCountryText(Model.Country)</a></p>
     }
 
     @if (Model.Location.Latitude == 0)
@@ -133,5 +144,38 @@
                 </div>
             </div>
         </section>
+    }
+}
+
+@functions 
+{
+    private string GetCountryText(Country country)
+    {
+        switch (country)
+        {
+            case Country.Wales:
+                return "Wales";
+            case Country.Scotland:
+                return "Scotland";
+            case Country.NorthernIreland:
+                return "Northern Ireland";
+            default:
+                return "Other";
+        }
+    }
+
+    private string GetCountryUrl(Country country)
+    {
+        switch (country)
+        {
+            case Country.Wales:
+                return "https://ams.careerswales.com/Public/Default.aspx?mode=vacancy";
+            case Country.Scotland:
+                return "https://www.apprenticeships.scot/find-a-vacancy/";
+            case Country.NorthernIreland:
+                return "https://www.nidirect.gov.uk/services/search-apprenticeship-opportunities";
+            default:
+                return "Other";
+        }
     }
 }

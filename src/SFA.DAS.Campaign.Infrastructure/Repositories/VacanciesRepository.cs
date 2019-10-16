@@ -1,9 +1,11 @@
 ﻿using Microsoft.Rest;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
+using SFA.DAS.Campaign.Domain.Enums;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Vacancies.Api.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,9 +24,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         private readonly IMappingService _mappingService;
         private readonly IStandardsRepository _standardsService;
         private readonly ILogger<VacanciesRepository> _logger;
-
+        private readonly ICountryMapper _countryMapper;
         public VacanciesRepository(ILivevacanciesAPI vacanciesApi, IVacanciesMapper vacanciesMapper,
-            IGeocodeService geocodeService, IMappingService mappingService, IStandardsRepository standardsService, ILogger<VacanciesRepository> logger)
+            IGeocodeService geocodeService, IMappingService mappingService, IStandardsRepository standardsService, ILogger<VacanciesRepository> logger, ICountryMapper countryMapper)
+
         {
             _vacanciesApi = vacanciesApi;
             _vacanciesMapper = vacanciesMapper;
@@ -32,14 +35,13 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             _mappingService = mappingService;
             _standardsService = standardsService;
             _logger = logger;
+            _countryMapper = countryMapper;
         }
 
         public async Task<VacancySearchResult> GetByPostcode(string postcode, int distance)
         {
 
             var coordinates = await _geocodeService.GetFromPostCode(postcode);
-
-
 
             if (coordinates.ResponseCode == "OK")
             {
@@ -49,10 +51,9 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                     Latitude = coordinates.Coordinates.Lat,
                     Longitude = coordinates.Coordinates.Lon
                 };
-
+                
                 int pageNumber = 1;
                 var vacancyApiList = GetVacancyList(distance, coordinates, pageNumber);
-
 
                 while (vacancyApiList.Count == _apiMaxPageSize && vacancyApiList.Max(s => s.DistanceInMiles < distance))
                 {
@@ -94,40 +95,47 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                     Longitude = coordinates.Coordinates.Lon
                 };
 
-                int pageNumber = 1;
-                var vacancyApiList = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
+                searchResults.Country = _countryMapper.MapToCountry(coordinates.Country) ;
+                searchResults.Results = new List<VacancySearchResultItem>();
 
-                while (vacancyApiList.Count == _apiMaxPageSize && vacancyApiList.Max(s => s.DistanceInMiles < distance))
+                if (searchResults.Country == Domain.Enums.Country.England)
                 {
-                    pageNumber++;
 
-                    var list = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
-                    vacancyApiList.AddRange(list);
+                    int pageNumber = 1;
+                    var vacancyApiList = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
 
-                    if (list.Count < _apiMaxPageSize)
+                    while (vacancyApiList.Count == _apiMaxPageSize && vacancyApiList.Max(s => s.DistanceInMiles < distance))
                     {
-                        break;
+                        pageNumber++;
+
+                        var list = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
+                        vacancyApiList.AddRange(list);
+
+                        if (list.Count < _apiMaxPageSize)
+                        {
+                            break; 
+                        }
                     }
+
+                    searchResults.Results = vacancyApiList.Where(w => w.TrainingType == TrainingType.Standard)
+                        .Select(_vacanciesMapper.Map)
+                        .ToList();
+
+                    Parallel.ForEach(searchResults.Results,
+                        vacancy => { vacancy.StaticMapUrl = _mappingService.GetStaticMapsUrl(vacancy.Location); });
+
                 }
-
-                searchResults.Results = vacancyApiList.Where(w => w.TrainingType == TrainingType.Standard)
-                    .Select(_vacanciesMapper.Map)
-                    .ToList();
-
-                Parallel.ForEach(searchResults.Results,
-                    vacancy => { vacancy.StaticMapUrl = _mappingService.GetStaticMapsUrl(vacancy.Location); });
 
                 return searchResults;
             }
+            
             return null;
         }
-
 
         private List<Result> GetVacancyList(int distance, CoordinatesResponse coordinates, int pageNumber = 1)
         {
             var result = (HttpOperationResponse<object>)_vacanciesApi.SearchApprenticeshipVacancies(
                 coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber, 250, distance);
-
 
             var vacancyList = ((VacancySearchResults)(result).Body).Results.ToList();
             return vacancyList;
@@ -152,5 +160,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             var vacancyList = ((VacancySearchResults)(result).Body).Results.ToList();
             return vacancyList;
         }
+
     }
 }

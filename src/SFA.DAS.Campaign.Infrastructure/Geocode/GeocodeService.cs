@@ -31,7 +31,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Geocode
         {
             var coordinates = new Coordinates();
             var uri = new Uri(_postcodeConfiguration.Url + "postcodes/" + postcode.Replace(" ", string.Empty));
-
+            
             try
             {
                 var stopwatch = Stopwatch.StartNew();
@@ -54,12 +54,13 @@ namespace SFA.DAS.Campaign.Infrastructure.Geocode
 
                     coordinates.Lat = result.Result.Latitude.Value;
                     coordinates.Lon = result.Result.Longitude.Value;
-
+                   
                     SendDependencyLog(response.StatusCode, uri, responseTime);
 
                     var coordinateResponse = new CoordinatesResponse
                     {
                         Coordinates = coordinates,
+                        Country = result.Result.Country,
                         ResponseCode = LocationLookupResponse.Ok
                     };
 
