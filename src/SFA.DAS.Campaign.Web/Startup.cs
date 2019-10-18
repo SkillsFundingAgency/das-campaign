@@ -33,6 +33,7 @@ using System.Globalization;
 using Refit;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using SFA.DAS.Campaign.Web.HealthChecks;
+using SFA.DAS.Campaign.Infrastructure.HealthChecks;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -87,8 +88,11 @@ namespace SFA.DAS.Campaign.Web
             var queueStorageConnectionString = Configuration.Get<CampaignConfiguration>().QueueConnectionString;
 
             services.AddHealthChecks()
-                .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check");
-
+                .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
+                .AddCheck<FatApiHealthCheck>("fat-api-check")
+                .AddCheck<IfaApiHealthCheck>("ifa-api-check")
+                .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check");
+            
             services.AddMiniProfiler(options =>
             {
                 // ALL of this is optional. You can simply call .AddMiniProfiler() for all defaults
