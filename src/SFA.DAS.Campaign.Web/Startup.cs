@@ -31,6 +31,8 @@ using System.Net.Http;
 using VacanciesApi;
 using System.Globalization;
 using Refit;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using SFA.DAS.Campaign.Web.HealthChecks;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -81,6 +83,11 @@ namespace SFA.DAS.Campaign.Web
             Configuration.Bind("Mapping", mappingConfig);
 
             services.Configure<MappingConfiguration>(Configuration.GetSection("Mapping"));
+
+            var queueStorageConnectionString = Configuration.Get<CampaignConfiguration>().QueueConnectionString;
+
+            services.AddHealthChecks()
+                .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check");
 
             services.AddMiniProfiler(options =>
             {
@@ -189,7 +196,12 @@ namespace SFA.DAS.Campaign.Web
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseHealthChecks("/health", new HealthCheckOptions
+            {
+                Predicate = _ => true,
+                ResponseWriter = HealthCheckResponseWriter.WriteJsonResponse
+            });
+
             app.UseStaticFiles();
             app.UseCookiePolicy(new CookiePolicyOptions
             {
