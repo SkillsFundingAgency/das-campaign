@@ -87,7 +87,7 @@ namespace SFA.DAS.Campaign.Web
 
             var queueStorageConnectionString = Configuration.Get<CampaignConfiguration>().QueueConnectionString;
 
-            services.AddHealthChecks()
+            var healthChecks = services.AddHealthChecks()
                 .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
                 .AddCheck<FatApiHealthCheck>("fat-api-check")
                 .AddCheck<IfaApiHealthCheck>("ifa-api-check")
@@ -179,6 +179,8 @@ namespace SFA.DAS.Campaign.Web
                 {
                     options.Configuration = connectionStrings.SharedRedis;
                 });
+
+                healthChecks.AddRedis(connectionStrings.SharedRedis, "redis-app-cache-check");
             }
         }
 
@@ -204,7 +206,6 @@ namespace SFA.DAS.Campaign.Web
 
             app.UseHealthChecks("/health", new HealthCheckOptions
             {
-                Predicate = _ => true,
                 ResponseWriter = HealthCheckResponseWriter.WriteJsonResponse
             });
 
