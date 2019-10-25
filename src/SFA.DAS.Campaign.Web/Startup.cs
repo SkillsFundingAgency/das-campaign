@@ -91,8 +91,10 @@ namespace SFA.DAS.Campaign.Web
                 .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
                 .AddCheck<FatApiHealthCheck>("fat-api-check")
                 .AddCheck<IfaApiHealthCheck>("ifa-api-check")
-                .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check");
-            
+                .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check")
+                .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
+
+
             services.AddMiniProfiler(options =>
             {
                 // ALL of this is optional. You can simply call .AddMiniProfiler() for all defaults
