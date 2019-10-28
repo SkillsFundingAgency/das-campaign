@@ -2,22 +2,36 @@
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
 
+@{
+
+    var errorOrder = new List<string>
+        ()
+{
+        "FirstName",
+        "LastName",
+    "Email",
+        "Route",
+        "AcceptTandCs"
+    };
+
+}
+
 <form asp-controller="RegisterInterest" asp-action="Index">
 
     <h2 class="heading-m">Keep me up to date with the latest information</h2>
-    <div class="form-validation-summary" style="@(ViewData.ModelState.IsValid ? "display: none" : "")">
+    <div class="form-validation-summary" style="@(ViewData.ModelState.IsValid ? " display: none" : "" )">
         <h3 class="heading-s form-validation-summary__heading">Sorry but there seems to be a problem with your registration</h3>
         <ul class="form-validation-summary__list">
             @{
                 var errorStringBuilder = new StringBuilder();
                 var errorCount = ViewData.ModelState.ErrorCount;
 
-                foreach (var error in ViewData.ModelState)
+                foreach (var error in errorOrder)
                 {
-                    if (error.Value.ValidationState == ModelValidationState.Invalid)
+                    if (ViewData.ModelState[error]?.ValidationState == ModelValidationState.Invalid)
                     {
-                        var errorKey = error.Key == "Route" ? "rbApprentice" : error.Key;
-                        errorStringBuilder.Append($"<li><a href=\"#{errorKey}\" class=\"form-validation-summary__link\">{Model.ValidationMessages[error.Key]}</a></li>");
+                        var errorKey = error == "Route" ? "rbApprentice" : error;
+                        errorStringBuilder.Append($" <li><a href =\"#{errorKey}\" class=\"form-validation-summary__link\">{Model.ValidationMessages[error]}</a></li>");
                     }
                 }
             }
