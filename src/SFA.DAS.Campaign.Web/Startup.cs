@@ -30,6 +30,7 @@ using System;
 using System.IO;
 using System.Net.Http;
 using VacanciesApi;
+using System.Globalization;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -170,6 +171,11 @@ namespace SFA.DAS.Campaign.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // By defualt app services have en-US locale set no matter what Region is being used.
+            var cultureInfo = new CultureInfo("en-GB");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
