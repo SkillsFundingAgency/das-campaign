@@ -12,7 +12,7 @@
 
             <form asp-controller="Basket" asp-action="AddApprenticeshipFromDetails" method="post">
                 <div class="form-group">
-                    @await Component.InvokeAsync("AddToBasket", new { apprenticeshipId = Model.Id })
+                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
                 </div>
             </form>
 

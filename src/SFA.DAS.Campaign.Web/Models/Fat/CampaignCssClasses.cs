@@ -78,6 +78,8 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
             }
         }
         public string ListNumber => $"{ClassPrefix}list--number";
+        public string ListNumbers => $"{ClassPrefix}list-numbers";
+
         public string SearchList
         {
             get
