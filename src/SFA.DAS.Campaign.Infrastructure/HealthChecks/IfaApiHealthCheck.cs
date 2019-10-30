@@ -1,5 +1,5 @@
-﻿using Ifa.Api.Api;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
+﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+using SFA.DAS.Campaign.Infrastructure.Repositories;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,7 +22,10 @@ namespace SFA.DAS.Campaign.Infrastructure.HealthChecks
 
             try
             {
-                var result = await _ifaApiClient.ApprenticeshipStandardsGet_3Async();
+                var result = await _ifaApiClient.GetAllStandardsAsync();
+
+                if (result == null)
+                    healthCheckResultHealthy = false; // Expecting results.
             }
             catch
             {
