@@ -28,11 +28,8 @@
                     <div class="cta-row">
                         @await Component.InvokeAsync("SaveBasket")
                         <a class="hero-heading__cancel-link"
-                           asp-controller="TrainingProvider"
-                           asp-action="Details"
-                           asp-route-apprenticeshipId="@Model.ApprenticeshipId"
-                           asp-route-ukprn="@Model.Ukprn"
-                           asp-route-locationId="@Model.LocationId">Cancel</a>
+                           asp-controller="Basket"
+                           asp-action="View">Cancel</a>
                     </div>
                 </div>
             </div>
