@@ -113,5 +113,7 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
         public string DetailsText => $"{Details}__text";
 
         public string VisuallyHidden => "visually-hidden";
+
+        public ICssGridViewModel GridCss => new DefaultGridCssViewModel(ClassPrefix);
     }
 }

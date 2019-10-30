@@ -1,0 +1,32 @@
+﻿@using Sfa.Das.Sas.Shared.Components.Extensions
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@model Sfa.Das.Sas.Shared.Components.ViewModels.Basket.BasketViewModel<Sfa.Das.Sas.Shared.Components.ViewModels.Apprenticeship.ApprenticeshipBasketItemViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject ICssViewModel CssViewModel
+@{
+    var apprenticeshipCount = Model.Items?.Count() ?? 0;
+    var providerCount = Model.Items?.SelectMany(w => w.TrainingProvider).Count() ?? 0;
+}
+
+
+
+<div class="hero">
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+            <div class="hero-heading">
+                <h1 class="hero-heading__heading heading-xl">Your favourite apprenticeships and training providers</h1>
+
+                <ul class="list-numbers">
+                    <li><span class="vh">You have</span> <span class="list-numbers__number">@apprenticeshipCount</span> @("Apprenticeship".Pluralize(apprenticeshipCount)) <span class="vh">in your basket</span></li>
+                    <li><span class="vh">You have</span> <span class="list-numbers__number">@providerCount</span> Training @("provider".Pluralize(providerCount)) <span class="vh">in your basket</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid-column-one-half">
+            <div class="hero__panel hero__panel--employer">
+                <p class="hero__panel-intro">Create an Apprenticeship Service account to save your choices and start hiring.</p>
+                <a asp-controller="Basket" asp-action="Confirm" class="button hero__panel-button">Create an account</a>
+            </div>
+        </div>
+    </div>
+</div>

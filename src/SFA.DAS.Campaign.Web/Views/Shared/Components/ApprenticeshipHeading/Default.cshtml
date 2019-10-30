@@ -6,14 +6,13 @@
                 <span class="caption-m hero-heading__caption hero-heading__caption--employer">Search apprenticeships  >  @Model.Title</span>
                 <h1 class="heading-xl hero-heading__heading">@Model.Title</h1>
             </div>
-            
+          
             <p>@Model.Overview</p> 
-            
+           
             <form asp-controller="Basket" asp-action="AddApprenticeshipFromDetails" method="post">
                 <div class="form-group">
                     @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
                 </div>
-
             </form>
 
             <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
