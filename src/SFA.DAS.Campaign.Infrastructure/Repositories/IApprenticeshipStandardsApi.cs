@@ -8,6 +8,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
     public interface IApprenticeshipStandardsApi
     {
         [Get("/api/ApprenticeshipStandards/")]
-        Task<List<ApiApprenticeshipStandard>> GetAllStandards();
+        Task<List<ApiApprenticeshipStandard>> GetAllStandardsAsync();
     }
 }

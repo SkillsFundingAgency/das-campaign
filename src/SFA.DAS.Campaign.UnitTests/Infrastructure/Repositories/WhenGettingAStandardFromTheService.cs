@@ -148,7 +148,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
                 .ReturnsAsync(standardsCacheResult);
 
 
-            _fullStandardsApi.Setup(s => s.GetAllStandards())
+            _fullStandardsApi.Setup(s => s.GetAllStandardsAsync())
                 .ReturnsAsync(standardsApiResult);
 
 
@@ -200,7 +200,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             await _standardsRepository.GetByRoute(_routeId);
 
             //Assert
-            _fullStandardsApi.Verify(x => x.GetAllStandards(), Times.Once);
+            _fullStandardsApi.Verify(x => x.GetAllStandardsAsync(), Times.Once);
            }
         [Test]
         public async Task And_By_Route_And_First_Call_Then_The_FAT_Api_Is_Called_To_Get_Standards()
@@ -226,7 +226,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 
             _cacheService.Verify(x => x.SaveToCache(_cachedKey, It.IsAny<List<ApiApprenticeshipStandard>>(), It.IsAny<TimeSpan>(), It.IsAny<TimeSpan>()), Times.Once);
 
-            _fullStandardsApi.Verify(v => v.GetAllStandards(), Times.Once);
+            _fullStandardsApi.Verify(v => v.GetAllStandardsAsync(), Times.Once);
         }
 
         [Test]

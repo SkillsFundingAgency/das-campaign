@@ -46,7 +46,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             if (cacheEntry == null)
             {
                 // Key not in cache, so get data.
-                cacheEntry = (await _ifaApprenticeshipStandardsApi.GetAllStandards());
+                cacheEntry = (await _ifaApprenticeshipStandardsApi.GetAllStandardsAsync());
 
                 var fatStandardIds = (await GetAllIds()).ToList();
                 //Remove any null objects returned by the API and any which dont exist in FAT
