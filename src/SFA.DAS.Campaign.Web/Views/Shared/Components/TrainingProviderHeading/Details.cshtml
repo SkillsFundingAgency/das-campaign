@@ -1,12 +1,36 @@
-﻿@model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProviderDetailQueryViewModel
+﻿@using Microsoft.AspNetCore.Html
+@model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProviderDetailQueryViewModel
+
+@{
+    var titleModifierClass = "";
+
+    System.Text.Encodings.Web.HtmlEncoder hEncoder = System.Text.Encodings.Web.HtmlEncoder.Default;
+
+    var pageHeading = new System.IO.StringWriter();
+
+    Component.InvokeAsync("TrainingProviderTitle", new { searchQueryModel = Model }).Result.WriteTo(pageHeading, hEncoder);
+
+    var pageHeadingStr = new HtmlContentBuilder().AppendHtml(pageHeading.ToString().Trim());
+
+    var pageHeadingLength = pageHeading.ToString().Trim().Length;
+
+    if (pageHeadingLength > 20)
+    {
+        titleModifierClass = "hero-heading__heading-l";
+    }
+    if (pageHeadingLength > 40)
+    {
+        titleModifierClass = "hero-heading__heading-m";
+    }
+}
+
 <div class="hero" data-module="smoothScroll">
     <div class="grid-row">
         <div class="grid-column-one-half">
             <div class="hero-heading">
-                <span class="caption-m hero-heading__caption hero-heading__caption--employer">Search apprenticeships  >  Training provider details</span>
-                <h1 class="heading-xl hero-heading__heading">@await Component.InvokeAsync("TrainingProviderTitle", new { searchQueryModel = Model })</h1>
+                <span class="caption-m hero-heading__caption hero-heading__caption--employer">Search apprenticeships  <span class="hero-heading__caption-separator">&gt;</span>  Training provider details</span>
+                <h1 class="heading-xl hero-heading__heading @titleModifierClass">@pageHeadingStr</h1>
             </div>
-          
         </div>
     </div>
 </div>
