@@ -1,5 +1,4 @@
-﻿using Ifa.Api.Api;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +30,7 @@ using System.IO;
 using System.Net.Http;
 using VacanciesApi;
 using System.Globalization;
+using Refit;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -121,9 +121,10 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IStandardsRepository, StandardsRepository>();
             services.AddTransient<IVacanciesMapper, VacanciesMapper>();
             services.AddTransient<IVacanciesRepository, VacanciesRepository>();
-            services.AddTransient<IApprenticeshipStandardsApi, ApprenticeshipStandardsApi>();
-            services.AddTransient<ICountryMapper,CountryMapper>();
+            services.AddTransient<ICountryMapper, CountryMapper>();
 
+            services.AddRefitClient<IApprenticeshipStandardsApi>()
+                .ConfigureHttpClient(c => c.BaseAddress = Configuration.GetValue<Uri>("IfaStandardsApiUrl"));
 
             var vacanciesBaseUrl = Configuration.GetValue<string>("VacanciesApi:BaseUrl");
             var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(vacanciesBaseUrl) };
