@@ -1,5 +1,4 @@
-﻿using Ifa.Api.Api;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +29,8 @@ using System;
 using System.IO;
 using System.Net.Http;
 using VacanciesApi;
+using System.Globalization;
+using Refit;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -120,8 +121,10 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IStandardsRepository, StandardsRepository>();
             services.AddTransient<IVacanciesMapper, VacanciesMapper>();
             services.AddTransient<IVacanciesRepository, VacanciesRepository>();
-            services.AddTransient<IApprenticeshipStandardsApi, ApprenticeshipStandardsApi>();
+            services.AddTransient<ICountryMapper, CountryMapper>();
 
+            services.AddRefitClient<IApprenticeshipStandardsApi>()
+                .ConfigureHttpClient(c => c.BaseAddress = Configuration.GetValue<Uri>("IfaStandardsApiUrl"));
 
             var vacanciesBaseUrl = Configuration.GetValue<string>("VacanciesApi:BaseUrl");
             var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(vacanciesBaseUrl) };
@@ -169,6 +172,11 @@ namespace SFA.DAS.Campaign.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // By defualt app services have en-US locale set no matter what Region is being used.
+            var cultureInfo = new CultureInfo("en-GB");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SFA.DAS.Campaign.Domain.Enums;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Web.Models.Vacancy;
 
@@ -19,5 +20,6 @@ namespace SFA.DAS.Campaign.Web.Models
         public int Distance { get; set; }
         public string StaticMapUrl { get; set; }
         public VacancySearchViewModel filterModel => new VacancySearchViewModel();
+        public Country Country { get; set; }
     }
 }

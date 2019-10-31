@@ -5,16 +5,17 @@
     ViewBag.MetaDesc = "Everything you need to know about how apprenticeships can fire up your career or organisation.";
 }
 <main id="main-content">
-    <h1 class="homepage-title">Fire <span>it up</span></h1>
     <section class="launcher__wrap">
         <div class="grid-row-full-width">
             <div class="grid-column-full-width-one-half">
                 <a asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" class="launcher__link-wrap">
                     <div class="launcher launcher--apprentice">
                         <div class="launcher__content">
+                            <h1 class="homepage-title homepage-title--relative">Fire <span>it up</span></h1>
+                            
                             <h2 class="launcher__section-heading">Apprentices</h2>
 
-                            <p class="launcher__heading">Blaze your own trail and become an apprentice</p>
+                            <h3 class="launcher__heading">Blaze your own trail and become an apprentice</h3>
                             <p class="launcher__intro">
                                 Find out what you need to do to become an apprentice, what
                                 careers are available and which employers are offering them.
@@ -30,9 +31,10 @@
                 <a asp-controller="Employer" asp-action="HowMuchIsItGoingToCost" class="launcher__link-wrap">
                     <div class="launcher launcher--employer">
                         <div class="launcher__content">
+                            
                             <h2 class="launcher__section-heading">Employers</h2>
 
-                            <p class="launcher__heading">Fire up your business with an apprentice</p>
+                            <h3 class="launcher__heading">Fire up your business with an apprentice</h3>
                             <p class="launcher__intro">
                                 Employing an apprentice is easier than you think and
                                 there's financial help and support available from the government.
@@ -66,7 +68,7 @@
                     }
                 </script>
                 <div class="grid-column-one-half  hero-banner__icon-play-container">
-                    <a class="hero-banner__icon-play" href="https://youtu.be/frWp3wP4IDo" id="play-1" data-module="videoPlayer" data-playerclass="video-player--apprentice" data-videoplayerid="plyr-1" data-videourl="https://www.youtube.com/embed/frWp3wP4IDo?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
+                    <a class="hero-banner__icon-play" href="https://youtu.be/frWp3wP4IDo" aria-label="Play the ‘Get the Confidence, Grab the Career’ video" id="play-1" data-module="videoPlayer" data-playerclass="video-player--apprentice" data-videoplayerid="plyr-1" data-videourl="https://www.youtube.com/embed/frWp3wP4IDo?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
                 </div>
                 <div class="grid-column-one-half hero-banner__content-main">
                     <p class="hero-banner__header">Get the confidence, grab the career.</p>
@@ -101,7 +103,7 @@
                     }
                 </script>
                 <div class="grid-column-one-half  hero-banner__icon-play-container">
-                    <a class="hero-banner__icon-play" href="http://youtu.be/jAoi3oE8klw" id="play-2" data-module="videoPlayer" data-playerclass="video-player--employer" data-videoplayerid="plyr-2" data-videourl="https://www.youtube.com/embed/jAoi3oE8klw?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
+                    <a class="hero-banner__icon-play" href="http://youtu.be/jAoi3oE8klw" aria-label="Play the ‘A real win-win for businesses, large and small’ video" id="play-2" data-module="videoPlayer" data-playerclass="video-player--employer" data-videoplayerid="plyr-2" data-videourl="https://www.youtube.com/embed/jAoi3oE8klw?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
                 </div>
                 <div class="grid-column-one-half hero-banner__content-main">
                     <p class="hero-banner__header">A real win-win for businesses, large and small.</p>

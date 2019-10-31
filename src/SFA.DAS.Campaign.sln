@@ -1,23 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Campaign.Web", "SFA.DAS.Campaign.Web\SFA.DAS.Campaign.Web.csproj", "{78963483-FF2C-42AF-9C29-8DC42B98D6A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Web", "SFA.DAS.Campaign.Web\SFA.DAS.Campaign.Web.csproj", "{78963483-FF2C-42AF-9C29-8DC42B98D6A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Campaign.Application", "SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj", "{5D7E8906-1680-42CC-A074-1F3B494EAC01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Application", "SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj", "{5D7E8906-1680-42CC-A074-1F3B494EAC01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Campaign.Domain", "SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj", "{ABA71A27-1FF0-4201-BBC6-E6E1D0ED44A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Domain", "SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj", "{ABA71A27-1FF0-4201-BBC6-E6E1D0ED44A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Vacancies.Api", "SFA.DAS.Vacancies.Api\SFA.DAS.Vacancies.Api.csproj", "{A4837F8C-5EA8-4342-9D3B-FF703B3D9085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Campaign.Infrastructure", "SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj", "{93CE170F-44C8-4F8E-A749-9154C3555577}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ifa.Api", "Ifa.Api\Ifa.Api.csproj", "{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Infrastructure", "SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj", "{93CE170F-44C8-4F8E-A749-9154C3555577}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{34C65FAA-B9B9-4934-95B0-4F0B9BF51EE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Campaign.UnitTests", "SFA.DAS.Campaign.UnitTests\SFA.DAS.Campaign.UnitTests.csproj", "{03B6C152-7554-44FB-9DB5-673F14C69E00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.UnitTests", "SFA.DAS.Campaign.UnitTests\SFA.DAS.Campaign.UnitTests.csproj", "{03B6C152-7554-44FB-9DB5-673F14C69E00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +43,6 @@ Global
 		{93CE170F-44C8-4F8E-A749-9154C3555577}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93CE170F-44C8-4F8E-A749-9154C3555577}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93CE170F-44C8-4F8E-A749-9154C3555577}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{03B6C152-7554-44FB-9DB5-673F14C69E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{03B6C152-7554-44FB-9DB5-673F14C69E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03B6C152-7554-44FB-9DB5-673F14C69E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -58,7 +52,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C4F9CCB1-EA2B-49E9-AE9B-14B7C6F46FE9} = {34C65FAA-B9B9-4934-95B0-4F0B9BF51EE4}
 		{A4837F8C-5EA8-4342-9D3B-FF703B3D9085} = {34C65FAA-B9B9-4934-95B0-4F0B9BF51EE4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

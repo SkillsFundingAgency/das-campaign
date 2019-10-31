@@ -1,6 +1,6 @@
-﻿using Ifa.Api.Model;
-using SFA.DAS.Apprenticeships.Api.Types;
+﻿using SFA.DAS.Apprenticeships.Api.Types;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
+using SFA.DAS.Campaign.Infrastructure.Models;
 
 namespace SFA.DAS.Campaign.Infrastructure.Mappers
 {

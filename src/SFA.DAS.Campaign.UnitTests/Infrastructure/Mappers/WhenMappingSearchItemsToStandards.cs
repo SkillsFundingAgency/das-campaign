@@ -1,7 +1,7 @@
-﻿using Ifa.Api.Model;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SFA.DAS.Apprenticeships.Api.Types;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
+using SFA.DAS.Campaign.Infrastructure.Models;
 
 namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Mappers
 {
