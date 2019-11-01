@@ -38,6 +38,9 @@
     "appServicePlanName": {
       "type": "string"
     },
+    "appServicePlanResourceGroupName": {
+      "type": "string"
+    },
     "appServicePlanSize": {
       "type": "string",
       "allowedValues": [
@@ -65,6 +68,7 @@
     {
       "apiVersion": "2017-05-10",
       "name": "campaignSSLCert",
+      "resourceGroup": "[parameters('appServicePlanResourceGroupName')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -124,7 +128,7 @@
             "value": "[variables('appServiceName')]"
           },
           "appServicePlanName": {
-            "value": "[parameters('appServicePlanName')]"
+            "value": "[parameters('appServicePlanResourceGroupName')]"
           },
           "appServicePlanResourceGroup": {
             "value": "[resourceGroup().name]"
