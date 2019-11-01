@@ -35,6 +35,9 @@
       "defaultValue": [
       ]
     },
+    "appServicePlanName": {
+      "type": "string"
+    },
     "appServicePlanSize": {
       "type": "string",
       "allowedValues": [
@@ -56,8 +59,7 @@
     "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/master/templates/",
     "appServicePrefix": "[concat('das-',toLower(parameters('resourceEnvironmentName')),'-cpg')]",
     "appServiceName": "[concat(variables('appServicePrefix'),'-as')]",
-    "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
-    "appServicePlanName": "[concat(variables('appServicePrefix'),'-asp')]"
+    "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]"
   },
   "resources": [
     {
@@ -72,7 +74,7 @@
         },
         "parameters": {
           "appServicePlanName": {
-            "value": "[variables('appServicePlanName')]"
+            "value": "[parameters('appServicePlanName')]"
           },
           "aspSize": {
             "value": "[parameters('appServicePlanSize')]"
