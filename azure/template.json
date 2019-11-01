@@ -151,7 +151,7 @@
             "value": "[variables('appServiceName')]"
           },
           "appServicePlanName": {
-            "value": "[variables('appServicePlanName')]"
+            "value": "[parameters('appServicePlanName')]"
           },
           "appServicePlanResourceGroup": {
             "value": "[resourceGroup().name]"
