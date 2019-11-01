@@ -64,29 +64,6 @@
   "resources": [
     {
       "apiVersion": "2017-05-10",
-      "name": "campaignAppServerPlan",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(variables('deploymentUrlBase'),'app-service-plan.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "appServicePlanName": {
-            "value": "[parameters('appServicePlanName')]"
-          },
-          "aspSize": {
-            "value": "[parameters('appServicePlanSize')]"
-          },
-          "aspInstances": {
-            "value": "[parameters('appServicePlanInstances')]"
-          }
-        }
-      }
-    },
-    {
-      "apiVersion": "2017-05-10",
       "name": "campaignSSLCert",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -104,9 +81,6 @@
           },
           "keyVaultResourceGroup": {
             "value": "[parameters('keyvaultResourceGroup')]"
-          },
-          "serverFarmId": {
-            "value": "[reference('campaignAppServerPlan').outputs.appServicePlanId.value]"
           }
         }
       }
@@ -136,7 +110,6 @@
       "name": "campaignAppService",
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
-        "campaignAppServerPlan",
         "campaignAppInsights",
         "campaignSSLCert"
       ],
