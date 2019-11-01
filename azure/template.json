@@ -17,14 +17,6 @@
     "cdnUrl": {
       "type": "string"
     },
-    "aseResourceGroup": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "aseHostingEnvironmentName": {
-      "type": "string",
-      "defaultValue": ""
-    },
     "keyvaultCertificateName": {
       "type": "string"
     },
@@ -37,6 +29,11 @@
     "customHostname": {
       "type": "string",
       "defaultValue": ""
+    },
+    "appServiceAllowedIPs": {
+      "type": "array",
+      "defaultValue": [
+      ]
     },
     "appServicePlanSize": {
       "type": "string",
@@ -76,12 +73,6 @@
         "parameters": {
           "appServicePlanName": {
             "value": "[variables('appServicePlanName')]"
-          },
-          "aseHostingEnvironmentName": {
-            "value": "[parameters('aseHostingEnvironmentName')]"
-          },
-          "aseResourceGroup": {
-            "value": "[parameters('aseResourceGroup')]"
           },
           "aspSize": {
             "value": "[parameters('appServicePlanSize')]"
@@ -144,7 +135,8 @@
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
         "campaignAppServerPlan",
-        "campaignAppInsights"
+        "campaignAppInsights",
+        "campaignSSLCert"
       ],
       "properties": {
         "mode": "Incremental",
@@ -191,18 +183,21 @@
           },
           "appServiceConnectionStrings": {
             "value": [
-                {
-                    "name": "Redis",
-                    "connectionString": "[parameters('loggingRedisConnectionString')]",
-                    "type": "Custom"
-                }
+              {
+                "name": "Redis",
+                "connectionString": "[parameters('loggingRedisConnectionString')]",
+                "type": "Custom"
+              }
             ]
-        },
+          },
           "customHostName": {
             "value": "[parameters('customHostname')]"
           },
           "certificateThumbprint": {
             "value": "[reference('campaignSSLCert').outputs.certificateThumbprint.value]"
+          },
+          "ipSecurityRestrictions": {
+            "value": "[parameters('appServiceAllowedIPs')]"
           }
         }
       }
