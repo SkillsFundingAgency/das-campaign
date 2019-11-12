@@ -80,8 +80,6 @@
 
     <div class="wrap">
 
-        @await Component.InvokeAsync("Modal", new { id = "modal-RegisterInterest", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.RegisterInterest } })
-
         @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
 
         <partial name="./Components/_cookieBanner" />
