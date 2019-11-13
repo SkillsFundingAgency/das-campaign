@@ -1,8 +1,7 @@
-﻿using Ifa.Api.Api;
-using Ifa.Api.Model;
-using SFA.DAS.Apprenticeships.Api.Client;
+﻿using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
+using SFA.DAS.Campaign.Infrastructure.Models;
 using SFA.DAS.Campaign.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
@@ -47,7 +46,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             if (cacheEntry == null)
             {
                 // Key not in cache, so get data.
-                cacheEntry = (await _ifaApprenticeshipStandardsApi.ApprenticeshipStandardsGet_3Async());
+                cacheEntry = (await _ifaApprenticeshipStandardsApi.GetAllStandardsAsync());
 
                 var fatStandardIds = (await GetAllIds()).ToList();
                 //Remove any null objects returned by the API and any which dont exist in FAT
