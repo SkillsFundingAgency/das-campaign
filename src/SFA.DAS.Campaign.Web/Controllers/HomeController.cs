@@ -45,6 +45,11 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View("Countries");
         }
+        [Route("accessibility")]
+        public IActionResult Accessibility()
+        {
+            return View("Accessibility");
+        }
 
     }
 }
