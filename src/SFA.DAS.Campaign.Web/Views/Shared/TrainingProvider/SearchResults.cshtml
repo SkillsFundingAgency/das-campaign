@@ -11,6 +11,10 @@
 
 }
 
+@section HeroHeading {
+    @await Component.InvokeAsync("TrainingProviderHeading", new { queryModel = Model, title = ViewBag.Title })
+}
+
 
 @await Component.InvokeAsync("TrainingProviderSearchResults", new { searchQueryModel = Model })
 
