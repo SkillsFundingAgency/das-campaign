@@ -1,36 +1,39 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using Refit;
 using Sfa.Das.Sas.Core.Configuration;
 using Sfa.Das.Sas.Shared.Components.Configuration;
 using Sfa.Das.Sas.Shared.Components.DependencyResolution;
 using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.Configuration;
+using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.Geocode;
-using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Geocode;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
+using SFA.DAS.Campaign.Infrastructure.HealthChecks;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
 using SFA.DAS.Campaign.Infrastructure.Services;
 using SFA.DAS.Campaign.Models.Configuration;
+using SFA.DAS.Campaign.Web.HealthChecks;
 using SFA.DAS.Campaign.Web.Models.Fat;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using VacanciesApi;
-using System.Globalization;
-using Refit;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -81,6 +84,16 @@ namespace SFA.DAS.Campaign.Web
             Configuration.Bind("Mapping", mappingConfig);
 
             services.Configure<MappingConfiguration>(Configuration.GetSection("Mapping"));
+
+            var queueStorageConnectionString = Configuration.Get<CampaignConfiguration>().QueueConnectionString;
+
+            var healthChecks = services.AddHealthChecks()
+                .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
+                .AddCheck<FatApiHealthCheck>("fat-api-check")
+                .AddCheck<IfaApiHealthCheck>("ifa-api-check")
+                .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check")
+                .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
+
 
             services.AddMiniProfiler(options =>
             {
@@ -166,6 +179,8 @@ namespace SFA.DAS.Campaign.Web
                 {
                     options.Configuration = connectionStrings.SharedRedis;
                 });
+
+                healthChecks.AddRedis(connectionStrings.SharedRedis, "redis-app-cache-check");
             }
         }
 
@@ -189,7 +204,11 @@ namespace SFA.DAS.Campaign.Web
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            app.UseHealthChecks("/health", new HealthCheckOptions
+            {
+                ResponseWriter = HealthCheckResponseWriter.WriteJsonResponse
+            });
+
             app.UseStaticFiles();
             app.UseCookiePolicy(new CookiePolicyOptions
             {
