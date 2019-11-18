@@ -13,7 +13,7 @@
                 <input type="hidden" asp-for="@Model.Page" />
                 <input type="hidden" asp-for="@Model.Ukprn" />
                 <div class="form-group">
-                    @await Component.InvokeAsync("AddToBasket", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn })
+                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn })
                 </div>
             </form>
 
