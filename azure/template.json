@@ -17,14 +17,6 @@
     "cdnUrl": {
       "type": "string"
     },
-    "aseResourceGroup": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "aseHostingEnvironmentName": {
-      "type": "string",
-      "defaultValue": ""
-    },
     "keyvaultCertificateName": {
       "type": "string"
     },
@@ -37,6 +29,17 @@
     "customHostname": {
       "type": "string",
       "defaultValue": ""
+    },
+    "appServiceAllowedIPs": {
+      "type": "array",
+      "defaultValue": [
+      ]
+    },
+    "appServicePlanName": {
+      "type": "string"
+    },
+    "appServicePlanResourceGroupName": {
+      "type": "string"
     },
     "appServicePlanSize": {
       "type": "string",
@@ -59,42 +62,13 @@
     "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/master/templates/",
     "appServicePrefix": "[concat('das-',toLower(parameters('resourceEnvironmentName')),'-cpg')]",
     "appServiceName": "[concat(variables('appServicePrefix'),'-as')]",
-    "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
-    "appServicePlanName": "[concat(variables('appServicePrefix'),'-asp')]"
+    "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]"
   },
   "resources": [
     {
       "apiVersion": "2017-05-10",
-      "name": "campaignAppServerPlan",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(variables('deploymentUrlBase'),'app-service-plan.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "appServicePlanName": {
-            "value": "[variables('appServicePlanName')]"
-          },
-          "aseHostingEnvironmentName": {
-            "value": "[parameters('aseHostingEnvironmentName')]"
-          },
-          "aseResourceGroup": {
-            "value": "[parameters('aseResourceGroup')]"
-          },
-          "aspSize": {
-            "value": "[parameters('appServicePlanSize')]"
-          },
-          "aspInstances": {
-            "value": "[parameters('appServicePlanInstances')]"
-          }
-        }
-      }
-    },
-    {
-      "apiVersion": "2017-05-10",
       "name": "campaignSSLCert",
+      "resourceGroup": "[parameters('appServicePlanResourceGroupName')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -111,9 +85,6 @@
           },
           "keyVaultResourceGroup": {
             "value": "[parameters('keyvaultResourceGroup')]"
-          },
-          "serverFarmId": {
-            "value": "[reference('campaignAppServerPlan').outputs.appServicePlanId.value]"
           }
         }
       }
@@ -143,8 +114,8 @@
       "name": "campaignAppService",
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
-        "campaignAppServerPlan",
-        "campaignAppInsights"
+        "campaignAppInsights",
+        "campaignSSLCert"
       ],
       "properties": {
         "mode": "Incremental",
@@ -157,10 +128,10 @@
             "value": "[variables('appServiceName')]"
           },
           "appServicePlanName": {
-            "value": "[variables('appServicePlanName')]"
+            "value": "[parameters('appServicePlanName')]"
           },
           "appServicePlanResourceGroup": {
-            "value": "[resourceGroup().name]"
+            "value": "[parameters('appServicePlanResourceGroupName')]"
           },
           "deployStagingSlot": {
             "value": true
@@ -191,18 +162,21 @@
           },
           "appServiceConnectionStrings": {
             "value": [
-                {
-                    "name": "Redis",
-                    "connectionString": "[parameters('loggingRedisConnectionString')]",
-                    "type": "Custom"
-                }
+              {
+                "name": "Redis",
+                "connectionString": "[parameters('loggingRedisConnectionString')]",
+                "type": "Custom"
+              }
             ]
-        },
+          },
           "customHostName": {
             "value": "[parameters('customHostname')]"
           },
           "certificateThumbprint": {
             "value": "[reference('campaignSSLCert').outputs.certificateThumbprint.value]"
+          },
+          "ipSecurityRestrictions": {
+            "value": "[parameters('appServiceAllowedIPs')]"
           }
         }
       }
