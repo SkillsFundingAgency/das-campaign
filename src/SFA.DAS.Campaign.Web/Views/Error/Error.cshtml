@@ -1,12 +1,15 @@
-﻿@model string
+@model ErrorViewModel
 
 @{
-    ViewBag.Title = "Error " + Model;
-    Layout = "_LayoutContent";
-    ViewBag.PageID = "error-" + Model;
-    ViewBag.MetaTitle = "Error " + Model;
-    ViewBag.MetaDesc = "";
+    ViewBag.Title = "Error " + Model.StatusCode;
+    Layout = "_Layout-campaign-Error";
+    ViewBag.PageID = "error-" + Model.StatusCode;
+    ViewBag.MetaTitle = "Error " + Model.StatusCode;
+    ViewBag.MetaDesc = "The server has encountered an error";
 }
+
+
+
 <main id="main-content" class="main-content">
     <div class="grid-row">
         <div class="grid-column-two-thirds">
