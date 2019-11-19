@@ -6,8 +6,8 @@
     <div class="grid-row">
         <div class="grid-column-one-half">
             <div class="hero-heading">
-                <span class="caption-m hero-heading__caption hero-heading__caption--employer">Search apprenticeships  <span class="hero-heading__caption-separator">&gt;</span>  Training provider results</span>
-                <h1 class="heading-xl hero-heading__heading">@ViewBag.Title</h1>
+                <span class="caption-m hero-heading__caption hero-heading__caption--employer">Search apprenticeships  >  Training provider results</span>
+                <h1 class="heading-xl hero-heading__heading">@await Component.InvokeAsync("TrainingProviderTitle", new { searchQueryModel = Model.SearchResults.SearchQuery })</h1>
             </div>
           
             @await Component.InvokeAsync("TrainingProviderSearchSummary", new { searchQueryModel = Model.SearchResults.SearchQuery})
