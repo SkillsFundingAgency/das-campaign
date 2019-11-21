@@ -8,7 +8,7 @@
 
     var pageHeading = new System.IO.StringWriter();
 
-    Component.InvokeAsync("TrainingProviderTitle", new { searchQueryModel = Model }).Result.WriteTo(pageHeading, hEncoder);
+    Component.InvokeAsync("TrainingProviderTitle", new { providerDetailsQueryModel = Model }).Result.WriteTo(pageHeading, hEncoder);
 
     var pageHeadingStr = new HtmlContentBuilder().AppendHtml(pageHeading.ToString().Trim());
 
