@@ -1,0 +1,93 @@
+﻿<header class="header" data-module="navigation">
+    <div class="header__logo">
+        <a asp-controller="Home" asp-action="Index"><img src="/campaign/images/apprenticeships-logo-black.png" alt="Apprenticeships Logo" class="header__logo-image" /></a>
+    </div>
+    <a href="#navigation" class="navigation__toggle">
+        <span class="navigation__toggle-label" id="nav-label">Menu</span>
+        <span class="navigation__toggle-icon"></span>
+    </a>
+    <nav id="navigation" class="nav nav--apprentice">
+        <ul class="nav__list">
+            <li>
+                <a href="#" class="nav-profile-switcher">
+                    Not a future apprentice?
+                    <span class="nav-profile-switcher__icon"></span>
+                </a>
+            </li>
+            <li class="nav__list-item nav__list-item--has-children">
+                <a asp-controller="RealStories" asp-action="Apprentice" class="nav__link--top-level">
+                    <span>Are apprenticeships right for you?</span>
+                    <span class="nav__ordered-list-toggle"></span>
+                    <span class="nav__ordered-list-toggle-icon"></span>
+                </a>
+                <ol class="nav__ordered-list">
+                    <li>
+                        <a asp-controller="RealStories" asp-action="Apprentice" class="nav__link" id="link-nav-app-real-stories">
+                            Real stories
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Apprentice" asp-action="WhatAreTheBenefitsToMe" class="nav__link" id="link-nav-app-benefits">
+                            The benefits of apprenticeships
+                        </a>
+                    </li>
+                </ol>
+            </li>
+            <li class="nav__list-item nav__list-item--has-children">
+                <a asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" class="nav__link--top-level">
+                    <span>How do they work?</span>
+                    <span class="nav__ordered-list-toggle"></span>
+                    <span class="nav__ordered-list-toggle-icon"></span>
+                </a>
+                <ol class="nav__ordered-list">
+                    <li>
+                        <a asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" class="nav__link" id="link-nav-app-step-1">
+                            What is an apprenticeship?
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Apprentice" asp-action="Application" class="nav__link" id="link-nav-app-step-3">
+                            Application
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Apprentice" asp-action="Interview" class="nav__link" id="link-nav-app-step-4">
+                            Interview
+                        </a>
+                    </li>
+                </ol>
+            </li>
+            <li class="nav__list-item nav__list-item--has-children">
+                <a asp-controller="Apprentice" asp-action="YourApprenticeship" class="nav__link--top-level">
+                    <span>Getting started</span>
+                    <span class="nav__ordered-list-toggle"></span>
+                    <span class="nav__ordered-list-toggle-icon"></span>
+                </a>
+                <ol class="nav__ordered-list">
+                    <li>
+                        <a asp-controller="Apprentice" asp-action="YourApprenticeship" class="nav__link" id="link-nav-app-step-5">
+                            Your apprenticeship
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Apprentice" asp-action="AssessmentAndQualification" class="nav__link" id="link-nav-app-step-6">
+                            Assessment and certification
+                        </a>
+                    </li>
+                </ol>
+            </li>
+            <li class="nav__list-item">
+                <a asp-controller="Apprentice" asp-action="FindAnApprenticeship" id="link-nav-app-step-2" class="nav__link--top-level">
+                    Find an apprenticeship
+                </a>
+            </li>
+            @{ 
+            if (ViewBag.HideRegisterInterest != true) {
+                    <li>
+                        <a class="nav-register-interest" asp-action="index" asp-controller="RegisterInterest" id="btn-register-interest-header">Register interest</a>
+                    </li>
+                }
+            }
+        </ul>
+    </nav>
+</header>
