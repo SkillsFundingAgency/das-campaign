@@ -8,26 +8,7 @@
     <link rel="preconnect" href="https://use.typekit.net">
     <link rel="preconnect" href="https://www.googletagmanager.com">
 
-    <!-- Google Tag Manager -->
-    <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start':
-                    new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-M4VJPRW');
-
-        /**/</script>
-    <!-- End Google Tag Manager -->
+     <partial name="./Components/_GtmHead" />
 
     <meta charset="utf-8" />
     <title>@(ViewData["MetaTitle"] != null ? ViewData["MetaTitle"] : ViewData["Title"])</title>
@@ -63,12 +44,7 @@
 
 <body class="page-template" id="@ViewData["PageID"]">
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4VJPRW"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
+     <partial name="./Components/_GtmBody" />
 
     <script>
         document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
@@ -76,13 +52,13 @@
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <partial name="./Components/_devolvedAuthorityBanner" />
+    <partial name="./Components/_DevolvedAuthorityBanner" />
 
     <div class="wrap">
 
         @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
 
-        <partial name="./Components/_cookieBanner" />
+        <partial name="./Components/_CookieBanner" />
 
         <partial name="./Components/_Header" />
 
