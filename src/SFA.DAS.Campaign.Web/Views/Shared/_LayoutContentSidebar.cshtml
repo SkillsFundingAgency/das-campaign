@@ -1,5 +1,9 @@
 ﻿@{
-    Layout = "_Layout-campaign";
+    if (ViewBag.Section != null) {
+        Layout = "_Layout-campaign-" + ViewBag.Section;
+    } else {
+        Layout = "_Layout-campaign";
+    }
 }
 
 <main id="main-content">
@@ -17,6 +21,7 @@
         <div class="grid-row">
             <div class="grid-column-two-thirds">
                 <div class="page">
+                
                     @RenderBody()
 
 
