@@ -95,7 +95,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                     Longitude = coordinates.Coordinates.Lon
                 };
 
-                searchResults.Country = _countryMapper.MapToCountry(coordinates.Country) ;
+                searchResults.Country = _countryMapper.MapToCountry(coordinates.Country);
                 searchResults.Results = new List<VacancySearchResultItem>();
 
                 if (searchResults.Country == Domain.Enums.Country.England)

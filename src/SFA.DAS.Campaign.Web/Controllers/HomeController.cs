@@ -34,16 +34,15 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-
-        [Route("error/{errorCode}")]
-        public IActionResult Error(string errorCode)
-        {
-            return View("Error", errorCode);
-        }
         [Route("countries")]
         public IActionResult Countries()
         {
             return View("Countries");
+        }
+        [Route("accessibility")]
+        public IActionResult Accessibility()
+        {
+            return View("Accessibility");
         }
 
     }

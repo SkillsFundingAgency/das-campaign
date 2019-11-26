@@ -61,7 +61,7 @@
 
 
 
-<body class="page-template" id="@ViewData["PageID"]">
+<body class="page-template" id="Error">
 
     <!-- Google Tag Manager (noscript) -->
     <noscript>
@@ -80,11 +80,11 @@
 
     <div class="wrap">
 
-        @await Component.InvokeAsync("Modal", new { id = "modal-register-thanks", type = ModalType.PartialView, name = "Components/Form/Register-Thanks" })
-
         <partial name="./Components/_cookieBanner" />
 
         <partial name="./Components/_Header" />
+
+        @await Component.InvokeAsync("HeroHeading")
 
         @RenderBody()
 
@@ -92,7 +92,6 @@
 
     </div>
 
-    <mini-profiler />
 
     <script defer src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL" crossorigin="anonymous"></script>
     <script defer src="/campaign/js/plyr.min.js" crossorigin="anonymous"></script>
@@ -105,7 +104,6 @@
         }
 
     </script>
-    @RenderSection("Scripts", required: false)
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
