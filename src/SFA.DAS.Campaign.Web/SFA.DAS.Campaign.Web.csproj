@@ -31,7 +31,7 @@
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="MiniProfiler.AspNetCore.Mvc" Version="4.0.165" />
-    <PackageReference Include="Sfa.Das.Sas.Shared.Components" Version="1.1.0.14-alpha-basket" />
+    <PackageReference Include="Sfa.Das.Sas.Shared.Components" Version="1.1.0.16-alpha-basket" />
     <PackageReference Include="Refit.HttpClientFactory" Version="4.7.51" />
     <PackageReference Include="WebEssentials.AspNetCore.CdnTagHelpers" Version="1.0.16" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
