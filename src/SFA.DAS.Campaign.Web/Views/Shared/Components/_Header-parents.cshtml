@@ -1,0 +1,31 @@
+﻿<header class="header" data-module="navigation">
+    <div class="header__logo">
+        <a asp-controller="Parents" asp-action="TheirCareer"><img src="/campaign/images/apprenticeships-logo-black.png" alt="Apprenticeships Logo" class="header__logo-image" /></a>
+    </div>
+    <a href="#navigation" class="navigation__toggle">
+        <span class="navigation__toggle-label" id="nav-label">Menu</span>
+        <span class="navigation__toggle-icon"></span>
+    </a>
+    <nav id="navigation" class="nav nav--parents">
+        <ul class="nav__list">
+            <li>
+                <a href="#" class="nav-profile-switcher">
+                    Not a parent?
+                    <span class="nav-profile-switcher__icon"></span>
+                </a>
+            </li>
+            <li class="nav__list-item">
+                <a asp-controller="Parents" asp-action="TheirCareer" class="nav__link--top-level" id="link-nav-parents">
+                    Thier career
+                </a>
+            </li>
+            @{ 
+            if (ViewBag.HideRegisterInterest != true) {
+                    <li>
+                        <a class="nav-register-interest" asp-action="index" asp-controller="RegisterInterest" id="btn-register-interest-header">Register interest</a>
+                    </li>
+                }
+            }
+        </ul>
+    </nav>
+</header>
