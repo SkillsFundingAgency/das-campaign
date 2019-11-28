@@ -43,9 +43,8 @@ namespace SFA.DAS.Campaign.Web
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json",true)
-                .AddJsonFile("appsettings.Local.json",true)
-                //.AddEnvironmentVariables()
+                .AddJsonFile("appsettings.json")	                
+                .AddEnvironmentVariables()
                 .AddAzureTableStorageConfiguration(
                     configuration["ConfigurationStorageConnectionString"],
                     configuration["Environment"],
