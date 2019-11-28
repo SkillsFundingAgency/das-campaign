@@ -1,4 +1,47 @@
-﻿<header class="header" data-module="navigation">
+﻿<div class="modal" id="switch-profiles" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <a href="#" class="close">
+                <svg width="32" height="32" viewBox="0 0 32 32" class="">
+                    <rect class="modal--icon-close" x="1.58691" y="0.0893555" width="16.0371" height="2.16583" transform="rotate(45 1.58691 0.0893555)"></rect>
+                    <rect class="modal--icon-close" x="0.0966797" y="11.34" width="16.0371" height="2.16583" transform="rotate(-45 0.0966797 11.34)"></rect>
+                </svg>
+                <span class="vh">Close this popup</span>
+            </a>
+        </div>
+        <h2 class="heading-m">Choose your preference...</h2>
+        <ul class="card__collection card__collection--profile-switch">
+            <li>
+                <a class="card card--employer" asp-controller="RealStories" asp-action="Employer">
+                    <div class="card__image">
+                        <span class="card__img"></span>
+                    </div>
+                    <div class="card__content">
+                        <h2 class="card__headline card__headline--ribbon">Employer</h2>
+                        <p class="card__summary">
+                            Be part of the change - employ an apprentice
+                        </p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="card card--parent" asp-controller="Parents" asp-action="TheirCareer">
+                    <div class="card__image">
+                        <span class="card__img"></span>
+                    </div>
+                    <div class="card__content">
+                        <h2 class="card__headline card__headline--ribbon">Parents</h2>
+                        <p class="card__summary">
+                            Help shape their career - support an apprentice
+                        </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<header class="header" data-module="navigation">
     <div class="header__logo">
         <a asp-controller="RealStories" asp-action="Apprentice"><img src="/campaign/images/apprenticeships-logo-black.png" alt="Apprenticeships Logo" class="header__logo-image" /></a>
     </div>
@@ -9,7 +52,7 @@
     <nav id="navigation" class="nav nav--apprentice">
         <ul class="nav__list">
             <li>
-                <a href="#" class="nav-profile-switcher">
+                <a href="#switch-profiles" class="nav-profile-switcher">
                     Not a future apprentice?
                     <span class="nav-profile-switcher__icon"></span>
                 </a>
