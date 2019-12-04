@@ -25,6 +25,13 @@
 
             <p>@Model.Overview</p>
 
+
+            <form asp-controller="Basket" asp-action="AddApprenticeshipFromDetails" method="post">
+                <div class="form-group">
+                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
