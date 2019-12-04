@@ -78,6 +78,8 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
             }
         }
         public string ListNumber => $"{ClassPrefix}list--number";
+        public string ListNumbers => $"{ClassPrefix}list-numbers";
+
         public string SearchList
         {
             get
@@ -110,5 +112,7 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
         public string DetailsText => $"{Details}__text";
 
         public string VisuallyHidden => "visually-hidden";
+
+        public ICssGridViewModel GridCss => new DefaultGridCssViewModel(ClassPrefix);
     }
 }
