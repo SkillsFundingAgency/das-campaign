@@ -129,6 +129,7 @@
                     Search for an apprenticeship
                 </a>
             </li>
+            @await Component.InvokeAsync("BasketIcon")
             @{ 
             if (ViewBag.HideRegisterInterest != true) {
                     <li>
