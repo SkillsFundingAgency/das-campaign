@@ -2,11 +2,36 @@
     Layout = "_Layout-campaign";
 }
 
+@section HeadScripts {
+    <script type="application/ld+json">
+    {
+    "@@context": "https://schema.org",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "Interests",
+        "item": "https://www.apprenticeships.gov.uk/industries"
+    },{
+        "@@type": "ListItem",
+        "position": 2,
+        "name": "@(ViewBag.Title)",
+        "item": "https://www.apprenticeships.gov.uk/industries/@(ViewBag.Route)"
+    }]
+    }
+    </script>
+}
+
 <main id="main-content">
     <div class="hero">
         <div class="grid-row">
             <div class="grid-column-one-half">
                 <div class="hero-heading">
+                    <span class="caption-m hero-heading__caption hero-heading__caption--interests">
+                        <a asp-controller="Industries" asp-action="Index" class="hero-heading__caption-link">Interests</a> 
+                        <span class="hero-heading__caption-separator">&gt;</span> 
+                        @(ViewBag.Title)
+                    </span>
                     <h1 class="heading-xl hero-heading__heading">@(ViewBag.Title)</h1>
                 </div>
                 <div class="hero-heading__content">
