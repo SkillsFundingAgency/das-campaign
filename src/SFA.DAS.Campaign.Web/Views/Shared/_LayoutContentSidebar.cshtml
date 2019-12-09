@@ -1,8 +1,7 @@
 ﻿@{
+    Layout = "_Layout-campaign";
     if (ViewBag.Section != null) {
-        Layout = "_Layout-campaign-" + ViewBag.Section;
-    } else {
-        Layout = "_Layout-campaign";
+        Layout += $"-{ViewBag.Section}";
     }
 }
 
