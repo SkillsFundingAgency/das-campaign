@@ -43,7 +43,10 @@
 
 <header class="header" data-module="navigation">
     <div class="header__logo">
-        <a asp-controller="RealStories" asp-action="Apprentice"><img src="/campaign/images/apprenticeships-logo-black.png" alt="Apprenticeships Logo" class="header__logo-image" /></a>
+        <a asp-controller="RealStories" asp-action="Apprentice">
+            <img src="/campaign/images/apprenticeships-logo-apprentice.png" alt="Apprenticeships Logo" class="header__logo-image" />
+            <span class="header__caption header__caption--apprentice">Apprentice hub</span>
+        </a>
     </div>
     <a href="#navigation" class="navigation__toggle">
         <span class="navigation__toggle-label" id="nav-label">Menu</span>
