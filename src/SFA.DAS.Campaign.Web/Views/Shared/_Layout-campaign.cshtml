@@ -59,6 +59,9 @@
     <link rel="preconnect" href="//youtube.com">
 
     @Html.Raw(JavaScriptSnippet.FullScript)
+
+    @RenderSection("HeadScripts", required: false)
+
 </head>
 
 
