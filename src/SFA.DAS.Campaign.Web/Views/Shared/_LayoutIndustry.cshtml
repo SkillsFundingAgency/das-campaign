@@ -1,4 +1,7 @@
 ﻿@{
+    ViewBag.PageUrl = "/industries/" + ViewBag.PageSlug;
+    ViewBag.Section = "industry";
+    ViewBag.PageID = ViewBag.Section + "-" + ViewBag.PageSlug;
     Layout = "_Layout-campaign";
 }
 
@@ -39,7 +42,7 @@
                 </div>
             </div>
             <div class="grid-column-one-half">
-                <img src="/campaign/images/industries/@(ViewBag.PageID).jpg" class="hero-heading__image" alt="@(ViewBag.HeroImageAltText)" />
+                <img src="/campaign/images/industries/industry-@(ViewBag.PageSlug).jpg" class="hero-heading__image" alt="@(ViewBag.HeroImageAltText)" />
             </div>
         </div>
     </div>
