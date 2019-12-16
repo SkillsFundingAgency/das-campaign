@@ -1,7 +1,7 @@
 ﻿<div class="modal" id="switch-profiles" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-header">
-            <a href="#" class="close">
+            <a href="#" class="close" id="close-modal-switch-profiles">
                 <svg width="32" height="32" viewBox="0 0 32 32" class="">
                     <rect class="modal--icon-close" x="1.58691" y="0.0893555" width="16.0371" height="2.16583" transform="rotate(45 1.58691 0.0893555)"></rect>
                     <rect class="modal--icon-close" x="0.0966797" y="11.34" width="16.0371" height="2.16583" transform="rotate(-45 0.0966797 11.34)"></rect>
@@ -12,7 +12,7 @@
         <h2 class="heading-m">Choose your preference...</h2>
         <ul class="card__collection card__collection--profile-switch">
             <li>
-                <a class="card card--apprentice" asp-controller="RealStories" asp-action="Apprentice">
+                <a class="card card--apprentice" asp-controller="RealStories" asp-action="Apprentice" id="link-switch-profiles-apprentice">
                     <div class="card__image">
                         <span class="card__img"></span>
                     </div>
@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li>
-                <a class="card card--parent" asp-controller="Parents" asp-action="TheirCareer">
+                <a class="card card--parent" asp-controller="Parents" asp-action="TheirCareer" id="link-switch-profiles-parents">
                     <div class="card__image">
                         <span class="card__img"></span>
                     </div>
@@ -54,14 +54,14 @@
     <nav id="navigation" class="nav nav--employer">
         <ul class="nav__list">
             <li>
-                <a href="#switch-profiles" class="nav-profile-switcher">
+                <a href="#switch-profiles" class="nav-profile-switcher" id="link-nav-switch-profiles">
                     Not an employer?
                     <span class="nav-profile-switcher__caption">Discover information for parents, guardians and future apprentices</span>
                     <span class="nav-profile-switcher__icon"></span>
                 </a>
             </li>
             <li class="nav__list-item nav__list-item--has-children">
-                <a asp-controller="RealStories" asp-action="Employer" class="nav__link--top-level">
+                <a asp-controller="RealStories" asp-action="Employer" class="nav__link--top-level" id="link-nav-employer-1">
                     <span>Are apprenticeships right for you?</span>
                     <span class="nav__ordered-list-toggle"></span>
                     <span class="nav__ordered-list-toggle-icon"></span>
@@ -80,7 +80,7 @@
                 </ol>
             </li>
             <li class="nav__list-item nav__list-item--has-children">
-                <a asp-controller="Employer" asp-action="HowMuchIsItGoingToCost" class="nav__link--top-level">
+                <a asp-controller="Employer" asp-action="HowMuchIsItGoingToCost" class="nav__link--top-level" id="link-nav-employer-2">
                     <span>How do they work?</span>
                     <span class="nav__ordered-list-toggle"></span>
                     <span class="nav__ordered-list-toggle-icon"></span>
@@ -109,7 +109,7 @@
                 </ol>
             </li>
             <li class="nav__list-item nav__list-item--has-children">
-                <a asp-controller="Employer" asp-action="TheRightApprenticeship" class="nav__link--top-level">
+                <a asp-controller="Employer" asp-action="TheRightApprenticeship" class="nav__link--top-level"  id="link-nav-employer-3">
                     <span>Setting it up</span>
                     <span class="nav__ordered-list-toggle"></span>
                     <span class="nav__ordered-list-toggle-icon"></span>
@@ -129,7 +129,7 @@
                 </ol>
             </li>
             <li class="nav__list-item">
-                <a asp-controller="Employer" asp-action="FindApprenticeshipTraining" class="nav__link--top-level" id="link-nav-emp-find-apprenticeship-training">
+                <a asp-controller="Employer" asp-action="FindApprenticeshipTraining" class="nav__link--top-level" id="link-nav-employer-4">
                     Search for an apprenticeship
                 </a>
             </li>
