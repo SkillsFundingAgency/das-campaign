@@ -68,7 +68,7 @@
                     }
                 </script>
                 <div class="grid-column-one-half  hero-banner__icon-play-container">
-                    <a class="hero-banner__icon-play" href="https://youtu.be/frWp3wP4IDo" aria-label="Play the ‘Get the Confidence, Grab the Career’ video" id="play-1" data-module="videoPlayer" data-playerclass="video-player--apprentice" data-videoplayerid="plyr-1" data-videourl="https://www.youtube.com/embed/frWp3wP4IDo?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
+                    <a class="hero-banner__icon-play" href="https://youtu.be/frWp3wP4IDo" aria-label="Play the 'Get the Confidence, Grab the Career' video" id="play-1" data-module="videoPlayer" data-playerclass="video-player--apprentice" data-videoplayerid="plyr-1" data-videourl="https://www.youtube.com/embed/frWp3wP4IDo?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
                 </div>
                 <div class="grid-column-one-half hero-banner__content-main">
                     <p class="hero-banner__header">Get the confidence, grab the career.</p>
@@ -103,7 +103,7 @@
                     }
                 </script>
                 <div class="grid-column-one-half  hero-banner__icon-play-container">
-                    <a class="hero-banner__icon-play" href="http://youtu.be/jAoi3oE8klw" aria-label="Play the ‘A real win-win for businesses, large and small’ video" id="play-2" data-module="videoPlayer" data-playerclass="video-player--employer" data-videoplayerid="plyr-2" data-videourl="https://www.youtube.com/embed/jAoi3oE8klw?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
+                    <a class="hero-banner__icon-play" href="http://youtu.be/jAoi3oE8klw" aria-label="Play the 'A real win-win for businesses, large and small' video" id="play-2" data-module="videoPlayer" data-playerclass="video-player--employer" data-videoplayerid="plyr-2" data-videourl="https://www.youtube.com/embed/jAoi3oE8klw?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
                 </div>
                 <div class="grid-column-one-half hero-banner__content-main">
                     <p class="hero-banner__header">A real win-win for businesses, large and small.</p>
@@ -124,3 +124,35 @@
         </div>
     </div>
 </main>
+
+@section HeadScripts {
+    <script type="application/ld+json">
+        {
+           "@@context":"https://schema.org",
+           "@@type":"Organization",
+           "name":"Education and Skills Funding Agency",
+           "legalName":"Education and Skills Funding Agency",
+           "url":"https://www.apprenticeships.gov.uk/",
+           "logo":"https://das-prd-frnt-end.azureedge.net/campaign/images/apprenticeships-logo-black.png",
+           "address":{
+              "@@type":"PostalAddress",
+              "streetAddress":"Cheylesmore House, 5 Quinton Rd",
+              "addressLocality":"Coventry",
+              "addressRegion":"West Midlands",
+              "postalCode":"CV1 2WT",
+              "addressCountry":"GB"
+           },
+           "contactPoint":{
+              "@@type":"ContactPoint",
+              "contactType":"National helpdesk",
+              "telephone":"0800 015 0400",
+              "email":"nationalhelpdesk@findapprenticeship.service.gov.uk"
+           },
+           "sameAs": [
+            "https://twitter.com/fireitup_apps",
+            "https://www.facebook.com/FireItUpApps/",
+            "https://www.instagram.com/fireitupapps/"
+           ]
+        }
+      </script>
+}
