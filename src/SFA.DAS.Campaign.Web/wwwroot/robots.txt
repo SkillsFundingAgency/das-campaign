@@ -1,2 +1,6 @@
+Sitemap: https://www.apprenticeships.gov.uk/sitemap.xml
 User-agent: *
 Disallow: /eoi/
+
+Disallow: /employer/find-apprenticeships?*
+Allow: /employer/find-apprenticeships?Keywords=*
