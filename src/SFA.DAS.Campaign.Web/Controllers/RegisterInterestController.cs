@@ -38,7 +38,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 url = Url.Action(actionName, controllerName);
             }
 
-            return View(new RegisterInterestModel{ReturnUrl = url});
+            return View("IndexV2", new RegisterInterestModel{ReturnUrl = url});
         }
 
         [HttpPost]

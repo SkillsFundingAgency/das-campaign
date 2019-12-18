@@ -1,0 +1,59 @@
+﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
+@model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
+
+@{
+    ViewBag.Title = "Register Interest v2";
+    Layout = "_LayoutContentFull";
+    ViewBag.MetaTitle = "Get the latest information about apprenticeships";
+    ViewBag.MetaDesc = "If you’re an employer or an apprentice, you can register your interest so that you get the right information delivered to you at the right time.";
+    ViewBag.Section = "employer";
+
+
+}
+
+@await Component.InvokeAsync("Form", new{type = FormType.RegisterInterest, formViewModel = Model})
+@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@*@model object
+@{
+    ViewBag.Title = "Assessment and certification";
+    ViewBag.MetaTitle = "The assessment and end of the apprenticeship";
+    ViewBag.HeroImageAltText = "A construction apprentice";
+    ViewBag.PageID = "employer-assessment-certification";
+    ViewBag.MetaDesc = "Find out how your apprentice will be assessed at the end of their apprenticeship and what they’ll need to demonstrate in order to successfully finish.";
+    ViewBag.Section = "employer";
+    Layout = "_LayoutContentSidebar";
+    ViewBag.PageNavIndex = 6;
+}
+
+<h2 class="heading-m" id="h1">Form v2</h2>
+
+<partial name="./components/Cta/_Contact-phoneNumber" />
+
+<ul class="pagination pagination--employer">
+    <li class="pagination__list-item"><a class="pagination__link pagination__link--previous" asp-controller="Employer" asp-action="PreparingAndMonitoring" id="link-pagination-employer-5"> Preparing and monitoring</a></li>
+</ul>
+
+@{
+
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#h1" class="hero__link">Assessment </a> </li>
+        <li><a href="#h2" class="hero__link">Where to find an end-point assessment organisation </a> </li>
+        <li><a href="#h3" class="hero__link">Certification </a> </li>
+    </ul>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}
+
+@section Resources {
+    <partial name="./Components/Resources/_employer" />
+}
+
+@section pageFooter {
+    <div class="grid-column-full">
+        <partial name="./Components/Cta/_find-apprenticeship-training" />
+    </div>
+}*@
