@@ -1,5 +1,8 @@
 @{
     Layout = "_Layout-campaign";
+    if (ViewBag.Section != null) {
+        Layout += $"-{ViewBag.Section}";
+    }
 }
 
 <main id="main-content">

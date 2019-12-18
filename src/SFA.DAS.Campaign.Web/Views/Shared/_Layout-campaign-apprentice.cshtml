@@ -38,9 +38,6 @@
     <link rel="preconnect" href="//youtube.com">
 
     @Html.Raw(JavaScriptSnippet.FullScript)
-
-    @RenderSection("HeadScripts", required: false)
-
 </head>
 
 
@@ -63,7 +60,7 @@
 
         <partial name="./Components/_CookieBanner" />
 
-        <partial name="./Components/_Header" />
+        <partial name="./Components/_Header-apprentice" />
 
         @RenderBody()
 

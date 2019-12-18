@@ -38,16 +38,13 @@
     <link rel="preconnect" href="//youtube.com">
 
     @Html.Raw(JavaScriptSnippet.FullScript)
-
-    @RenderSection("HeadScripts", required: false)
-
 </head>
 
 
 
 <body class="page-template" id="@ViewData["PageID"]">
 
-     <partial name="./Components/_GtmBody" />
+    <partial name="./Components/_GtmBody" />
 
     <script>
         document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
@@ -63,7 +60,7 @@
 
         <partial name="./Components/_CookieBanner" />
 
-        <partial name="./Components/_Header" />
+        <partial name="./Components/_Header-parents" />
 
         @RenderBody()
 
