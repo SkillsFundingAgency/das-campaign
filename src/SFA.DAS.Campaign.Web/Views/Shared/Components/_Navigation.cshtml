@@ -1,179 +1,35 @@
-﻿
-
-<a href="#navigation" class="navigation__toggle">
+﻿<a href="#navigation" class="navigation__toggle">
     <span class="navigation__toggle-label" id="nav-label">Menu</span>
     <span class="navigation__toggle-icon"></span>
 </a>
-
 <nav id="navigation" class="navigation" aria-labelledby="nav-label">
     <ul class="navigation__menu">
         <li class="navigation__list-item">
             <a asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" class="navigation__link--top-level navigation__link--top-level--apprentice" id="link-nav-apprentice">
                 Apprentice
-                <span class="navigation__sub-menu-toggle"></span>
-                <span class="navigation__sub-menu-icon"></span>
             </a>
-            <div class="grid-row navigation__sub-menu navigation__sub-menu--apprentice">
-                <div class="grid-column-one-half navigation__column">
-                    <h3 class="heading-s navigation_sub-heading">
-                        <span class="highlight">Why</span>
-                        <span class="secondary">you should become an apprentice...</span>
-                    </h3>
-                    <ul class="navigation__list">
-                        <li>
-                            <a asp-controller="RealStories" asp-action="Apprentice" class="navigation__link" id="link-nav-app-real-stories">
-                                Real stories
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Apprentice" asp-action="WhatAreTheBenefitsToMe" class="navigation__link" id="link-nav-app-benefits">
-                                What are the benefits for me?
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Industries" asp-action="Index" class="navigation__link" id="link-nav-app-interests">
-                                My interests - find your perfect apprenticeship
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="grid-column-one-half navigation__column">
-                    <h3 class="heading-s navigation_sub-heading">
-                        <span class="highlight">How</span>
-                        <span class="secondary">to become an apprentice</span>
-                    </h3>
-                    <ol class="navigation__ordered-list">
-                        <li>
-                            <a asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" class="navigation__link" id="link-nav-app-step-1">
-                                What is an apprenticeship?
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Apprentice" asp-action="FindAnApprenticeship" id="link-nav-app-step-2" class="navigation__link">
-                                Find an apprenticeship
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Apprentice" asp-action="Application" class="navigation__link" id="link-nav-app-step-3">
-                                Application
-                            </a>
-                        </li>
-
-
-                    </ol>
-                    <ol class="navigation__ordered-list navigation__ordered-list--reset-3" start="3">
-                        <li>
-                            <a asp-controller="Apprentice" asp-action="Interview" class="navigation__link" id="link-nav-app-step-4">
-                                Interview
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Apprentice" asp-action="YourApprenticeship" class="navigation__link" id="link-nav-app-step-5">
-                                Your apprenticeship
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Apprentice" asp-action="AssessmentAndQualification" class="navigation__link" id="link-nav-app-step-6">Assessment and certification</a>
-
-
-                        </li>
-                    </ol>
-                </div>
-            </div>
         </li>
         <li class="navigation__list-item">
             <a asp-controller="Employer" asp-action="HowMuchIsItGoingToCost" class="navigation__link--top-level  navigation__link--top-level--employer" id="link-nav-employer">
                 Employer
-                <span class="navigation__sub-menu-toggle"></span>
-                <span class="navigation__sub-menu-icon"></span>
             </a>
-            <div class="grid-row navigation__sub-menu navigation__sub-menu--employer">
-                <div class="grid-column-one-half navigation__column">
-                    <h3 class="heading-s navigation_sub-heading">
-                        <span class="highlight">Why</span>
-                        <span class="secondary">you should hire an apprentice...</span>
-                    </h3>
-                    <ul class="navigation__list">
-                        <li>
-                            <a asp-controller="Employer" asp-action="Benefits" class="navigation__link" id="link-nav-emp-benefits">
-                                Benefits to your organisation
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="RealStories" asp-action="Employer" class="navigation__link" id="link-nav-emp-real-stories">
-                                Real stories
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Employer" asp-action="FindApprenticeshipTraining" class="navigation__link" id="link-nav-emp-find-apprenticeship-training">
-                                Find the right apprenticeship
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="grid-column-one-half navigation__column">
-                    <h3 class="heading-s navigation_sub-heading">
-                        <span class="highlight">How</span>
-                        <span class="secondary">to hire an apprentice - step by step...</span>
-                    </h3>
-                    <ol class="navigation__ordered-list">
-                        <li>
-                            <a asp-controller="Employer" asp-action="HowMuchIsItGoingToCost" class="navigation__link" id="link-nav-emp-step-1">
-                                How much is it going to cost?
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Employer" asp-action="TheRightApprenticeship" class="navigation__link" id="link-nav-emp-step-2">
-                                The right apprenticeship
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Employer" asp-action="ChooseATrainingProvider" class="navigation__link" id="link-nav-emp-step-3">
-                                Choose a training provider
-                            </a>
-                        </li>
-                    </ol>
-                    <ol class="navigation__ordered-list navigation__ordered-list--reset-3" start="3">
-                        <li>
-                            <a asp-controller="Employer" asp-action="HireAnApprentice" class="navigation__link" id="link-nav-emp-step-4">
-                                Hire an apprentice
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Employer" asp-action="PreparingAndMonitoring" class="navigation__link" id="link-nav-emp-step-5">
-                                Preparing and monitoring
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Employer" asp-action="AssessmentAndQualification" class="navigation__link" id="link-nav-emp-step-6">
-                                Assessment and certification
-                            </a>
-                        </li>
-                    </ol>
-                </div>
-            </div>
         </li>
         <li class="navigation__list-item">
             <a asp-controller="Parents" asp-action="TheirCareer" class="navigation__link--top-level navigation__link--top-level--parent" id="link-nav-parents">
                 Parents
             </a>
         </li>
-
         <li class="navigation__list-item">
             <a asp-controller="Industries" asp-action="Index" class="navigation__link--top-level navigation__link--top-level--apprentice" id="link-nav-interests">
                 Interests
             </a>
         </li>
-
-        @{
-            if (ViewBag.HideRegisterInterest != true)
-            {
-                <li class="navigation__list-item navigation__list-item--with-button">
-                    <a class="button button--sparks button--shadow " asp-action="index" asp-controller="RegisterInterest" id="btn-register-interest-header">Register Interest</a>
-                </li>
+        @{ 
+            if (ViewBag.HideRegisterInterest != true) {
+        <li class="navigation__list-item navigation__list-item--with-button">
+            <a class="button button--sparks button--shadow " asp-action="index" asp-controller="RegisterInterest" id="btn-register-interest-header">Register Interest</a>
+        </li>
             }
         }
-
-        @await Component.InvokeAsync("BasketIcon")
     </ul>
 </nav>

@@ -266,3 +266,4 @@ src/Tools/PhantomJS/tools/phantomjs/ChangeLog
 *.stackdump
 desktop.ini
 App.Debug.config
+/src/SFA.DAS.Campaign.Web/appsettings.Local.json
