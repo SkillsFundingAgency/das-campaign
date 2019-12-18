@@ -1,8 +1,8 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ConfirmSaveViewModel
 
 @{
-    ViewBag.Title = "Save your basket";
-    ViewBag.BackLink = "Back to basket";
+    ViewBag.Title = "Save your favourites";
+    ViewBag.BackLink = "Back to favourites";
     Layout = "_Layout-campaign-employer";
     ViewBag.MetaTitle = "";
     ViewBag.MetaDesc = "";
@@ -20,7 +20,7 @@
 
                 <div class="hero-heading__content">
                     <p class="lead-paragraph">
-                        Ready to hire an apprentice? Save your basket and go to gov.uk to create your account.
+                        Ready to hire an apprentice? Save your favourites and go to gov.uk to create your account.
                     </p>
                     <div class="cta-row">
                         @await Component.InvokeAsync("SaveBasket")
