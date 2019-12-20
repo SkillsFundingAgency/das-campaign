@@ -22,8 +22,6 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/campaign/images/apple-touch-icon-152x152.png" />
     <link rel="apple-touch-icon" href="/campaign/images/apple-touch-icon.png" />
 
-    <link rel="canonical" href="https://www.apprenticeships.gov.uk@(ViewData["PageUrl"])" />
-
     <!--[if !IE 8]><!-->
 
     <link href="/campaign/css/screen.css" rel="stylesheet" />
@@ -40,9 +38,6 @@
     <link rel="preconnect" href="//youtube.com">
 
     @Html.Raw(JavaScriptSnippet.FullScript)
-
-    @RenderSection("HeadScripts", required: false)
-
 </head>
 
 
@@ -65,7 +60,7 @@
 
         <partial name="./Components/_CookieBanner" />
 
-        <partial name="./Components/_Header" />
+        <partial name="./Components/_Header-apprentice" />
 
         @RenderBody()
 
