@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model object
+@{
+    ViewBag.Title = "Thanks for subscribing!";
+    ViewBag.MetaTitle = "How can employing an apprentice benefit your business";
+    ViewBag.PageID = "employer-register-interest-downloads";
+    ViewBag.MetaDesc = "";
+    ViewBag.Section = "employer";
+    Layout = "_LayoutContentFull";
+    ViewBag.Section = "employer";
+}
+
+<p>
+    Apprenticeships have moved on from what they used to be and are an exciting option for
+    both apprentice and employer.
+    You can now employ apprentices at all different levels, from school leavers to people
+    that want to further their careers or change career direction completely.
+    An apprentice can be aged 16 or 100 plus!
+</p>
+
+<p>As an employer, you can get additional help with funding an apprentice from the government.</p>
+
+<h2 class="heading-m" id="h1">Thanks for subscribing</h2>
+<p>Hiring an apprentice is a productive and effective way for any organisation to grow talent and develop a motivated, skilled and qualified workforce.</p>
+
+<p>86% of employers said apprenticeships developed skills relevant to their organisation and 78% reported improved productivity. </p>
+
+<p>Other benefits that apprenticeships contribute to your organisation include:</p>
+<ul class="list list--bullet list--bullet-employer">
+    <li>90% of apprentices stay on in their place of work after completing an apprenticeship</li>
+    <li>there's a wide selection of apprenticeships available, covering lots of different job roles </li>
+    <li>you can adapt the training your apprentice receives according to the needs of your organisation</li>
+    <li>an apprenticeship allows you to diversify and freshen up your workforce</li>
+    <li>you can employ an apprentice who's aged 16 up to any age and from any background</li>
+</ul>
+
+<partial name="./components/Cta/_Contact-phoneNumber" />
+
+@{
+
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
+        <li><a href="#h1" class="hero__link">The benefits to your organisation </a> </li>
+    </ul>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}
+

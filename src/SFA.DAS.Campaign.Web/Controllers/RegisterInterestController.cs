@@ -19,7 +19,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _userDataCollection = userDataCollection;
         }
 
-        [HttpGet]
+        [HttpGet("Index")]
         public IActionResult Index()
         {
             var url = Request.Headers["Referer"].ToString();
@@ -38,7 +38,22 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 url = Url.Action(actionName, controllerName);
             }
 
-            return View("IndexV2", new RegisterInterestModel{ReturnUrl = url});
+            return View("Index", new RegisterInterestModel{ReturnUrl = url});
+        }
+
+        [HttpGet("IndexV2")]
+        public IActionResult IndexV2()
+        {
+            var url = Url.Action("downloads", "register-interest");
+
+
+            return View("IndexV2", new RegisterInterestModel { ReturnUrl = url });
+        }
+
+        [HttpGet("downloads")]
+        public IActionResult Downloads()
+        {
+            return View("EmployerDownloads");
         }
 
         [HttpPost]

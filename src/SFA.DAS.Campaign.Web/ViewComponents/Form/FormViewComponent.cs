@@ -11,10 +11,11 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Form
         {
             var returnUrl = ViewContext?.HttpContext?.Request?.Path.ToString() ?? "/";
             
+            
             switch (type)
             {
                 case FormType.RegisterInterest:
-                    return View("RegisterInterest", formViewModel ?? new RegisterInterestModel(){ReturnUrl = returnUrl});
+                    return View("RegisterInterest", formViewModel ?? new RegisterInterestModel(){ReturnUrl = returnUrl });
                 case FormType.CookieSettings:
                     return View("cookieSettings");
                 case FormType.faaUpdateSearch:
