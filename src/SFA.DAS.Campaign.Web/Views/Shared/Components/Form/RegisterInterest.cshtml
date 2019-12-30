@@ -4,21 +4,26 @@
 
 @{
 
-    var errorOrder = new List<string>
-        ()
-{
+    var errorOrder = new List<string>()
+    {
         "FirstName",
         "LastName",
-    "Email",
+        "Email",
         "Route",
         "AcceptTandCs"
     };
 
+    var url = (Model.Version == 2) ? "indexv2" : "index";
+    var submitButtonText = (Model.Version == 2) ? "Keep me updated" : "Register interest";
 }
 
-    <form asp-controller="RegisterInterest" asp-action="Index">
+    <form asp-controller="RegisterInterest" asp-action="@url">
+        @{ if (Model.Version == 1)
+            {
+                <h2 class="heading-m">Keep me up to date with the latest information</h2>
+            }
+        }
 
-        <h2 class="heading-m">Keep me up to date with the latest information</h2>
         <div class="form-validation-summary" style="@(ViewData.ModelState.IsValid ? " display: none" : "" )">
             <h3 class="heading-s form-validation-summary__heading">Sorry but there seems to be a problem with your registration</h3>
             <ul class="form-validation-summary__list">
@@ -80,5 +85,5 @@
         </div>
 
         <input asp-for="ReturnUrl" type="hidden" value="@Model.ReturnUrl" />
-        <button formnovalidate="true" class="button button-inverted " name="registerInterestSubmit" type="submit" id="btn-register-interest-complete">Register Interest </button>
+        <button formnovalidate="true" class="button button-inverted " name="registerInterestSubmit" type="submit" id="btn-register-interest-complete">@submitButtonText</button>
     </form>

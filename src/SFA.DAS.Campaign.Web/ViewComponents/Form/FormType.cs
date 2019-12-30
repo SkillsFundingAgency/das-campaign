@@ -4,6 +4,7 @@
     {
         RegisterInterest,
         CookieSettings,
-        faaUpdateSearch
+        faaUpdateSearch,
+        RegisterInterestV2
     }
 }

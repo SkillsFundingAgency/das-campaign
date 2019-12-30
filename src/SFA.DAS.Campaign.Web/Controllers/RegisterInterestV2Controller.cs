@@ -9,12 +9,12 @@ using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
-    [Route("register-interest")]
-    public class RegisterInterestController : Controller
+    [Route("register-interest-v2")]
+    public class RegisterInterestV2Controller : Controller
     {
         private readonly IUserDataCollection _userDataCollection;
 
-        public RegisterInterestController(IUserDataCollection userDataCollection)
+        public RegisterInterestV2Controller(IUserDataCollection userDataCollection)
         {
             _userDataCollection = userDataCollection;
         }
@@ -22,32 +22,10 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [HttpGet("Index")]
         public IActionResult Index()
         {
-            var url = Request.Headers["Referer"].ToString();
-
-            if (url == string.Empty 
-                || url.Contains(ControllerContext.ActionDescriptor.ControllerName,StringComparison.CurrentCultureIgnoreCase))
-            {
-                url = Url.Action("Index","Home");
-            }
-            else
-            {
-                var uri = new Uri(url);
-                var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/","");
-                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/","");
-
-                url = Url.Action(actionName, controllerName);
-            }
-
-            return View("Index", new RegisterInterestModel{ReturnUrl = url, Version = 1});
-        }
-
-        //[HttpGet("IndexV2")]
-        //public IActionResult IndexV2()
-        //{
-        //    var url = Url.Action("downloads", "register-interest");
+            var url = Url.Action("downloads", "register-interest");
             
-        //    return View("IndexV2", new RegisterInterestModel { ReturnUrl = url, Version = 2 });
-        //}
+            return View("../RegisterInterest/IndexV2", new RegisterInterestModel { ReturnUrl = url, Version = 2 });
+        }
 
         [HttpGet("downloads")]
         public IActionResult Downloads()
@@ -56,7 +34,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpPost("Index")]
-        //[HttpPost("IndexV2")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {
@@ -89,12 +66,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
             var path = Request.Path.Value.ToLower();
 
-            //if (Request.Path.Value.ToLower() == "/register-interest/indexv2")
-            //{
-            //    return View("EmployerDownloads", new RegisterInterestConfirmationModel() { FirstName = registerInterest.FirstName, LastName = registerInterest.LastName, Email = registerInterest.Email });
-            //}
-
-            return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
+           
+            return View("EmployerDownloads", new RegisterInterestConfirmationModel() { FirstName = registerInterest.FirstName, LastName = registerInterest.LastName, Email = registerInterest.Email });
+           
 
         }
     }
