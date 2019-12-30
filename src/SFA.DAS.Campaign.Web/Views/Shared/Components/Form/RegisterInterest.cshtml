@@ -13,11 +13,11 @@
         "AcceptTandCs"
     };
 
-    var url = (Model.Version == 2) ? "indexv2" : "index";
+    var actionUrl = (Model.Version == 2) ? "indexv2" : "index";
     var submitButtonText = (Model.Version == 2) ? "Keep me updated" : "Register interest";
 }
 
-    <form asp-controller="RegisterInterest" asp-action="@url">
+    <form asp-controller="RegisterInterest" asp-action="@actionUrl">
         @{ if (Model.Version == 1)
             {
                 <h2 class="heading-m">Keep me up to date with the latest information</h2>
@@ -78,10 +78,10 @@
             <div class="checkboxes__item">
                 <input class="checkboxes__input" asp-for="AcceptTandCs" type="checkbox" value="true">
                 <label class="checkboxes__label" asp-for="AcceptTandCs">
-                    I'd like to receive more information about apprenticeships from the Education and Skills Funding Agency via email, and i'm over the age of 13.
+                    I'd like to receive more information about apprenticeships from the Education and Skills Funding Agency via email.
                 </label>
             </div>
-            <p>To find out how we handle your personal data, please visit our <a asp-controller="Home" asp-action="Privacy">privacy notice</a>.</p>
+            <p>It's easy to unsubcribe if you change your mind, and we'll never share your email address with anyone else. To find out how we handle your personal data, please visit our <a asp-controller="Home" asp-action="Privacy">privacy notice</a>.</p>
         </div>
 
         <input asp-for="ReturnUrl" type="hidden" value="@Model.ReturnUrl" />

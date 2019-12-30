@@ -23,7 +23,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         public IActionResult Index()
         {
             var url = Request.Headers["Referer"].ToString();
-
+            
             if (url == string.Empty 
                 || url.Contains(ControllerContext.ActionDescriptor.ControllerName,StringComparison.CurrentCultureIgnoreCase))
             {
@@ -44,7 +44,21 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [HttpGet("IndexV2")]
         public IActionResult IndexV2()
         {
-            var url = Url.Action("downloads", "register-interest");
+            var url = Request.Headers["Referer"].ToString();
+
+            if (url == string.Empty
+                || url.Contains(ControllerContext.ActionDescriptor.ControllerName, StringComparison.CurrentCultureIgnoreCase))
+            {
+                url = Url.Action("Index", "Home");
+            }
+            else
+            {
+                var uri = new Uri(url);
+                var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/", "");
+                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/", "");
+
+                url = Url.Action(actionName, controllerName);
+            }
 
             return View("IndexV2", new RegisterInterestModel { ReturnUrl = url, Version = 2 });
         }
@@ -90,7 +104,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             if (Request.Path.Value.ToLower() == "/register-interest/indexv2")
             {
-                return View("EmployerDownloads", new RegisterInterestConfirmationModel() { FirstName = registerInterest.FirstName, LastName = registerInterest.LastName, Email = registerInterest.Email });
+                return View("EmployerDownloads", new RegisterInterestConfirmationModel() { FirstName = registerInterest.FirstName, LastName = registerInterest.LastName, Email = registerInterest.Email, ReturnUrl = registerInterest.ReturnUrl });
             }
 
             return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
