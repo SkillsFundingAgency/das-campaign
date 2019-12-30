@@ -87,7 +87,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
                 return View(registerInterest);
             }
-            var path = Request.Path.Value.ToLower();
+            //var path = Request.Path.Value.ToLower();
 
             //if (Request.Path.Value.ToLower() == "/register-interest/indexv2")
             //{
