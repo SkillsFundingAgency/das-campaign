@@ -62,7 +62,7 @@
                 </a>
             </li>
             <li class="nav__list-item nav__list-item--has-children">
-                <a asp-controller="RealStories" asp-action="Apprentice" class="nav__link--top-level"  id="link-nav-apprentice-1">
+                <a asp-controller="RealStories" asp-action="Apprentice" class="nav__link--top-level" id="link-nav-apprentice-1">
                     <span>Are apprenticeships right for you?</span>
                     <span class="nav__ordered-list-toggle"></span>
                     <span class="nav__ordered-list-toggle-icon"></span>
@@ -128,11 +128,16 @@
                     Find an apprenticeship
                 </a>
             </li>
-            @{ 
-            if (ViewBag.HideRegisterInterest != true) {
+            @{
+                if (ViewBag.HideRegisterInterest != true)
+                {
                     <li>
                         <a class="nav-register-interest" asp-action="index" asp-controller="RegisterInterest" id="btn-register-interest-header">Register interest</a>
                     </li>
+                    <li>
+                        <a class="nav-register-interest visually-hidden" asp-action="indexv2" asp-controller="RegisterInterest" id="btn-register-interest-header">Subscribe for updates and guides</a>	                        <a class="nav-register-interest visually-hidden" asp-action="indexv2" asp-controller="RegisterInterest" id="btn-register-interest-header-v2">Subscribe for updates and guides</a>
+                    </li>
+
                 }
             }
         </ul>
