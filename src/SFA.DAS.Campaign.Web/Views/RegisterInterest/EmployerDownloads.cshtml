@@ -13,17 +13,17 @@
     ViewBag.Section = "employer";
 }
 
-<h2 class="heading-m" id="h1">Thanks for subscribing, @Model.FirstName @Model.LastName. We've sent a confirmation email to @Model.Email.</h2>
-<p>
-    You'll soon start receiving the latest apprenticeship updates and downloadable employer guides straight to your inbox. In the meantime, you can download a few of our favourite guides below. We hope you find them useful.
-</p>
-<a href="@Model.ReturnUrl"> Return to previous content page </a>
+
+
 <div class="grid-row">
     <div class="grid-column-two-thirds">
-        <h2 class="heading-m">Thanks for subscribing, <em class="heading-emphasise heading-emphasise--employer">Name</em>. We've sent you a confirmation email to <em class="heading-emphasise heading-emphasise--employer">email@address.com</em></h2>
+        <h2 class="heading-m">Thanks for subscribing, <em class="heading-emphasise heading-emphasise--employer">@Model.FirstName @Model.LastName</em>. We've sent you a confirmation email to <em class="heading-emphasise heading-emphasise--employer"> @Model.Email</em></h2>
         <p>You'll soon start receiving the latest apprenticeship updates and downloadable employer guides straight to your inbox. In the meantime, you can download a few of our favourite guides below. We hope you find them useful.</p>
+
+        <a href="@Model.ReturnUrl"> Return to previous content page </a>
     </div>
 </div>
+
 <div class="grid-row card__collection card__collection--download">
     <div class="grid-column-one-third">
         <a class="card" href="#">
