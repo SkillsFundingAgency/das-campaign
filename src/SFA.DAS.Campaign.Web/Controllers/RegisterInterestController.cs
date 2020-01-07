@@ -19,7 +19,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _userDataCollection = userDataCollection;
         }
 
-        [HttpGet("Index")]
+        [HttpGet("v1")]
         public IActionResult Index()
         {
             var url = Request.Headers["Referer"].ToString();
@@ -41,7 +41,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View("Index", new RegisterInterestModel{ReturnUrl = url, Version = 1});
         }
 
-        [HttpGet("IndexV2")]
+        [HttpGet("v2")]
         public IActionResult IndexV2()
         {
             var url = Request.Headers["Referer"].ToString();
@@ -69,8 +69,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View("EmployerDownloads");
         }
 
-        [HttpPost("Index")]
-        [HttpPost("IndexV2")]
+        [HttpPost("v1")]
+        [HttpPost("v2")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {
@@ -102,7 +102,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 return View(registerInterest);
             }
 
-            if (Request.Path.Value.ToLower() == "/register-interest/indexv2")
+            if (Request.Path.Value.ToLower() == "/register-interest/v2")
             {
                 return View("EmployerDownloads", new RegisterInterestConfirmationModel() { FirstName = registerInterest.FirstName, LastName = registerInterest.LastName, Email = registerInterest.Email, ReturnUrl = registerInterest.ReturnUrl });
             }

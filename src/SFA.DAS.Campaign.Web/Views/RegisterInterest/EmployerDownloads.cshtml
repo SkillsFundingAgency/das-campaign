@@ -9,7 +9,7 @@
     ViewBag.PageID = "employer-register-interest-downloads";
     ViewBag.MetaDesc = "";
     ViewBag.Section = "employer";
-    Layout = "_LayoutContentTwoThirds";
+    Layout = "_LayoutContentFull";
     ViewBag.Section = "employer";
 }
 
@@ -18,9 +18,11 @@
 <div class="grid-row">
     <div class="grid-column-two-thirds">
         <h2 class="heading-m">Thanks for subscribing, <em class="heading-emphasise heading-emphasise--employer">@Model.FirstName @Model.LastName</em>. We've sent you a confirmation email to <em class="heading-emphasise heading-emphasise--employer"> @Model.Email</em></h2>
-        <p>You'll soon start receiving the latest apprenticeship updates and downloadable employer guides straight to your inbox. In the meantime, you can download a few of our favourite guides below. We hope you find them useful.</p>
-
-        <a href="@Model.ReturnUrl"> Return to previous content page </a>
+        <p>
+            You'll soon start receiving the latest apprenticeship updates and downloadable employer guides straight to your inbox. In the meantime, you can download a few of our favourite guides below. We hope you find them useful.
+            <br />
+            <a href="@Model.ReturnUrl"> Return to previous content page </a>
+        </p>
     </div>
 </div>
 
