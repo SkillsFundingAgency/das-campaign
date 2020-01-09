@@ -13,11 +13,11 @@
         "AcceptTandCs"
     };
 
-    var actionUrl = (Model.Version == 2) ? "indexv2" : "index";
+    var action = (Model.Version == 2) ? "indexv2" : "index";
     var submitButtonText = (Model.Version == 2) ? "Keep me updated" : "Register interest";
 }
 
-    <form asp-controller="RegisterInterest" asp-action="@actionUrl">
+    <form asp-controller="RegisterInterest" asp-action="@action">
         @{ if (Model.Version == 1)
             {
                 <h2 class="heading-m">Keep me up to date with the latest information</h2>

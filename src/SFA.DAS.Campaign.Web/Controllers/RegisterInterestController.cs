@@ -24,7 +24,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         public IActionResult Index()
         {
             var url = Request.Headers["Referer"].ToString();
-            
+
             if (url == string.Empty 
                 || url.Contains(ControllerContext.ActionDescriptor.ControllerName,StringComparison.CurrentCultureIgnoreCase))
             {
@@ -84,12 +84,11 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {
-          
             if (!ModelState.IsValid)
             {
                 return View(registerInterest);
             }
-                        
+          
             try
             {
                 await _userDataCollection.StoreUserData(new UserData

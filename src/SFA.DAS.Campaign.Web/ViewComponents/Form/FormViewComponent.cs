@@ -12,7 +12,6 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Form
             var returnUrl = ViewContext?.HttpContext?.Request?.Path.ToString() ?? "/";
             var version = (type == FormType.RegisterInterest) ? 1 : 2;
             
-            
             switch (type)
             {
                 case FormType.RegisterInterest:

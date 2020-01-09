@@ -45,8 +45,8 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             _httpContext = new Mock<HttpContext>();
             _httpContext.Setup(x => x.Request.Cookies).Returns(cookies);
             _httpContext.Setup(x => x.Request.Headers).Returns(headers);
-
             _httpContext.Setup(x => x.Request.Path).Returns("/");
+
             var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
             mockUrlHelper
                 .Setup(m => m.Action(It.IsAny<UrlActionContext>()))

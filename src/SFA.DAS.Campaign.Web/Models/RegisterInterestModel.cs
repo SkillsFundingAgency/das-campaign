@@ -38,7 +38,6 @@ namespace SFA.DAS.Campaign.Web.Models
         public bool AcceptTandCs { get; set; }
 
         public string ReturnUrl { get; set; }
-        public bool IsEmployer { get; set; }
 
         public int Version { get; set; }
     }
