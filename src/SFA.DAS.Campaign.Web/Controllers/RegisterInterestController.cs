@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Web.Constants;
 using SFA.DAS.Campaign.Web.Models;
@@ -66,7 +67,16 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [HttpGet("downloads")]
         public IActionResult Downloads()
         {
-            return View("EmployerDownloads");
+            var json = (string)TempData["confirmationModel"];
+
+            RegisterInterestModel model = new RegisterInterestModel();
+
+            if (json != null)
+            {
+                model = JsonConvert.DeserializeObject<RegisterInterestModel>(json);
+            }
+
+            return View("EmployerDownloads", model);
         }
 
         [HttpPost("v1")]
@@ -104,11 +114,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             if (Request.Path.Value.ToLower() == "/register-interest/v2")
             {
-                return View("EmployerDownloads", new RegisterInterestConfirmationModel() { FirstName = registerInterest.FirstName, LastName = registerInterest.LastName, Email = registerInterest.Email, ReturnUrl = registerInterest.ReturnUrl });
+                TempData["confirmationModel"] = JsonConvert.SerializeObject(registerInterest);
+              
+                return RedirectToAction("downloads");
             }
 
             return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
-
         }
     }
 }
