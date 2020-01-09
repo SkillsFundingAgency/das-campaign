@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Web.Constants;
 using SFA.DAS.Campaign.Web.Models;
@@ -25,21 +24,21 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             var url = Request.Headers["Referer"].ToString();
 
-            if (url == string.Empty 
-                || url.Contains(ControllerContext.ActionDescriptor.ControllerName,StringComparison.CurrentCultureIgnoreCase))
+            if (url == string.Empty
+                || url.Contains(ControllerContext.ActionDescriptor.ControllerName, StringComparison.CurrentCultureIgnoreCase))
             {
-                url = Url.Action("Index","Home");
+                url = Url.Action("Index", "Home");
             }
             else
             {
                 var uri = new Uri(url);
-                var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/","");
-                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/","");
+                var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/", "");
+                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/", "");
 
                 url = Url.Action(actionName, controllerName);
             }
 
-            return View("Index", new RegisterInterestModel{ReturnUrl = url, Version = 1});
+            return View("Index", new RegisterInterestModel { ReturnUrl = url, Version = 1 });
         }
 
         [HttpGet("v2")]
@@ -62,21 +61,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
 
             return View("IndexV2", new RegisterInterestModel { ReturnUrl = url, Version = 2 });
-        }
-
-        [HttpGet("downloads")]
-        public IActionResult Downloads()
-        {
-            var json = (string)TempData["confirmationModel"];
-
-            RegisterInterestModel model = new RegisterInterestModel();
-
-            if (json != null)
-            {
-                model = JsonConvert.DeserializeObject<RegisterInterestModel>(json);
-            }
-
-            return View("EmployerDownloads", model);
         }
 
         [HttpPost("v1")]
@@ -112,13 +96,24 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
 
             if (Request.Path.Value.ToLower() == "/register-interest/v2")
-            {
-                TempData["confirmationModel"] = JsonConvert.SerializeObject(registerInterest);
-              
-                return RedirectToAction("downloads");
+            { 
+                return RedirectToAction("downloads", registerInterest);
             }
 
             return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
+        }
+
+        [HttpGet("downloads")]
+        public IActionResult Downloads(RegisterInterestModel registerInterest)
+        {
+            RegisterInterestModel model = new RegisterInterestModel();
+
+            if (registerInterest.FirstName != null)
+            {
+                model = registerInterest;
+            }
+
+            return View("EmployerDownloads", model);
         }
     }
 }
