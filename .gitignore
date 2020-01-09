@@ -269,3 +269,4 @@ App.Debug.config
 /src/SFA.DAS.Campaign.Web/appsettings.Local.json
 
 /src/SFA.DAS.Campaign.Web/appsettings.Development.json
+launchSettings.json
