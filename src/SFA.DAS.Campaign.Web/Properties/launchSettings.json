@@ -17,7 +17,7 @@
     },
     "SFA.DAS.Campaign.Web": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "https://localhost:50160/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

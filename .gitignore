@@ -267,3 +267,5 @@ src/Tools/PhantomJS/tools/phantomjs/ChangeLog
 desktop.ini
 App.Debug.config
 /src/SFA.DAS.Campaign.Web/appsettings.Local.json
+
+/src/SFA.DAS.Campaign.Web/appsettings.Development.json
