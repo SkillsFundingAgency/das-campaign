@@ -1,13 +1,14 @@
+@using System.Web
 @{
     ViewBag.Title = "Find apprenticeship training";
     ViewBag.MetaTitle = "Find an apprenticeship";
     ViewBag.PageID = "employer-find-an-apprenticeship";
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
+    ViewBag.PageUrl = "/employer/find-apprenticeships/Apprenticeship?id=" + HttpUtility.UrlEncode(Context.Request.Query["id"]);
     Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 3;
     @model Sfa.Das.Sas.Shared.Components.ViewModels.ApprenticeshipDetailQueryViewModel
-
 }
 
 @section HeroHeading {

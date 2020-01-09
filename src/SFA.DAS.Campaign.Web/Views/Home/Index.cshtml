@@ -161,3 +161,35 @@
         </div>
     </div>
 </main>
+
+@section HeadScripts {
+    <script type="application/ld+json">
+        {
+           "@@context":"https://schema.org",
+           "@@type":"Organization",
+           "name":"Education and Skills Funding Agency",
+           "legalName":"Education and Skills Funding Agency",
+           "url":"https://www.apprenticeships.gov.uk/",
+           "logo":"https://das-prd-frnt-end.azureedge.net/campaign/images/apprenticeships-logo-black.png",
+           "address":{
+              "@@type":"PostalAddress",
+              "streetAddress":"Cheylesmore House, 5 Quinton Rd",
+              "addressLocality":"Coventry",
+              "addressRegion":"West Midlands",
+              "postalCode":"CV1 2WT",
+              "addressCountry":"GB"
+           },
+           "contactPoint":{
+              "@@type":"ContactPoint",
+              "contactType":"National helpdesk",
+              "telephone":"0800 015 0400",
+              "email":"nationalhelpdesk@findapprenticeship.service.gov.uk"
+           },
+           "sameAs": [
+            "https://twitter.com/fireitup_apps",
+            "https://www.facebook.com/FireItUpApps/",
+            "https://www.instagram.com/fireitupapps/"
+           ]
+        }
+      </script>
+}
