@@ -1,4 +1,5 @@
-﻿@using Sfa.Das.Sas.Shared.Components.ViewModels
+﻿@using System.Web
+@using Sfa.Das.Sas.Shared.Components.ViewModels
 @using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
 @model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProviderDetailQueryViewModel
 @inject ICssViewModel CssViewModel
@@ -8,6 +9,7 @@
     ViewBag.PageID = "employer-find-an-apprenticeship";
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
+    ViewBag.PageUrl = "/TrainingProvider/Details?ukprn=" + HttpUtility.UrlEncode(Context.Request.Query["ukprn"]) + "&apprenticeshipId=" + HttpUtility.UrlEncode(Context.Request.Query["apprenticeshipId"]) + "&LocationId=" + HttpUtility.UrlEncode(Context.Request.Query["LocationId"]) + "&postCode=" + HttpUtility.UrlEncode(Context.Request.Query["postCode"]);
     Layout = "_LayoutContentFull";
     ViewBag.PageNavIndex = 3;
 

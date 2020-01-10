@@ -22,11 +22,14 @@
                 </ul>
             </div>
         </div>
-        <div class="grid-column-one-half">
-            <div class="hero__panel hero__panel--employer">
-                <p class="hero__panel-intro">Create an Apprenticeship Service account to save your choices and start hiring.</p>
-                <a asp-controller="Basket" asp-action="Confirm" class="button hero__panel-button">Create an account</a>
+        @if (apprenticeshipCount > 0)
+        {
+            <div class="grid-column-one-half">
+                <div class="hero__panel hero__panel--employer">
+                    <p class="hero__panel-intro">Create an Apprenticeship Service account to save your choices and start hiring.</p>
+                    <a asp-controller="Basket" asp-action="Confirm" class="button hero__panel-button">Create an account</a>
+                </div>
             </div>
-        </div>
+        }
     </div>
 </div>

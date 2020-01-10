@@ -1,4 +1,5 @@
 ﻿
+@using System.Web
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults
 @{
@@ -7,6 +8,7 @@
     ViewBag.PageID = "employer-find-an-apprenticeship-search-results";
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
+    ViewBag.PageUrl = "/employer/find-apprenticeships?Keywords=" + HttpUtility.UrlEncode(Context.Request.Query["Keywords"]);
     Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 3;
 }
