@@ -1,4 +1,5 @@
-﻿@using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults;
+﻿@using System.Web
+@using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults;
 @model Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search.TrainingProviderSearchViewModel
 @{
     ViewBag.Title = "Training provider results";
@@ -6,6 +7,7 @@
     ViewBag.PageID = "employer-find-an-apprenticeship";
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
+    ViewBag.PageUrl = "/TrainingProvider/Search?Postcode=" +  HttpUtility.UrlEncode(Context.Request.Query["Postcode"]) + "&IsLevyPayer=" + HttpUtility.UrlEncode(Context.Request.Query["IsLevyPayer"]) + "&ApprenticeshipId=" + HttpUtility.UrlEncode(Context.Request.Query["ApprenticeshipId"]);
     Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 3;
 

@@ -44,6 +44,10 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View("Accessibility");
         }
-
+        [Route("thecalling")]
+        public IActionResult TheCalling()
+        {
+            return View("TheCalling");
+        }
     }
 }

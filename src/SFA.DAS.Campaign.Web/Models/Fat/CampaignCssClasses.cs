@@ -9,8 +9,8 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
     {
         public ITableCssViewModel Table => new DefaultTableCssViewModel(ClassPrefix);
         public IUtilitiesCssViewModel UtilitiesCss => new DefaultUtilitiesCssViewModel("u");
-
         public IDefaultFormCssViewModel FormCss => new DefaultFormCssViewModel(ClassPrefix);
+        public ICssGridViewModel GridCss => new DefaultGridCssViewModel(ClassPrefix);
         public IErrorCssViewModel ErrorCss => new DefaultErrorCssViewModel(ClassPrefix);
         public string ClassModifier { get; set; } = "employer";
         public string ClassPrefix { get; set; } = string.Empty;
@@ -114,6 +114,5 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
 
         public string VisuallyHidden => "visually-hidden";
 
-        public ICssGridViewModel GridCss => new DefaultGridCssViewModel(ClassPrefix);
     }
 }
