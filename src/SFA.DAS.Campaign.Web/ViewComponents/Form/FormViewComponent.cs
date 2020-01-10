@@ -15,9 +15,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Form
             switch (type)
             {
                 case FormType.RegisterInterest:
-                    return View("RegisterInterest", formViewModel ?? new RegisterInterestModel(){ReturnUrl = returnUrl, Version = version });
-                case FormType.RegisterInterestV2:
-                    return View("RegisterInterest", formViewModel ?? new RegisterInterestModel() { ReturnUrl = returnUrl, Version = version });
+                    return View("RegisterInterest", formViewModel ?? new RegisterInterestModel(){ReturnUrl = returnUrl, Version = version});
                 case FormType.CookieSettings:
                     return View("cookieSettings");
                 case FormType.faaUpdateSearch:

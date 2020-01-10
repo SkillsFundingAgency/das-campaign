@@ -19,9 +19,11 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _userDataCollection = userDataCollection;
         }
 
-        [HttpGet("v1")]
-        public IActionResult Index()
+        [HttpGet("index/{version}")]
+        public IActionResult Index(int version = 1)
         {
+
+
             var url = Request.Headers["Referer"].ToString();
 
             if (url == string.Empty
@@ -38,39 +40,19 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 url = Url.Action(actionName, controllerName);
             }
 
-            return View("Index", new RegisterInterestModel { ReturnUrl = url, Version = 1 });
+
+
+
+            return View($"IndexV{version}", new RegisterInterestModel { ReturnUrl = url, Version = version});
         }
 
-        [HttpGet("v2")]
-        public IActionResult IndexV2()
-        {
-            var url = Request.Headers["Referer"].ToString();
-
-            if (url == string.Empty
-                || url.Contains(ControllerContext.ActionDescriptor.ControllerName, StringComparison.CurrentCultureIgnoreCase))
-            {
-                url = Url.Action("Index", "Home");
-            }
-            else
-            {
-                var uri = new Uri(url);
-                var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/", "");
-                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/", "");
-
-                url = Url.Action(actionName, controllerName);
-            }
-
-            return View("IndexV2", new RegisterInterestModel { ReturnUrl = url, Version = 2 });
-        }
-
-        [HttpPost("v1")]
-        [HttpPost("v2")]
+        [HttpPost("index/{version}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
+        public async Task<IActionResult> Index (RegisterInterestModel registerInterest)
         {
             if (!ModelState.IsValid)
             {
-                return View(registerInterest);
+                return View($"IndexV{registerInterest.Version}",registerInterest);
             }
           
             try
@@ -95,8 +77,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 return View(registerInterest);
             }
 
-            if (Request.Path.Value.ToLower() == "/register-interest/v2")
-            { 
+            if (registerInterest.Route == "2")
+            {
                 return RedirectToAction("downloads", registerInterest);
             }
 

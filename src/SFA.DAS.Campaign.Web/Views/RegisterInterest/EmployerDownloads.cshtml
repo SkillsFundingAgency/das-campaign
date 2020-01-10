@@ -17,7 +17,9 @@
 {
     <div class="grid-row">
         <div class="grid-column-two-thirds">
-            <h2 class="heading-m">Thanks for subscribing, <em class="heading-emphasise heading-emphasise--employer">@Model.FirstName @Model.LastName</em>. We've sent you a confirmation email to <em class="heading-emphasise heading-emphasise--employer"> @Model.Email</em></h2>
+            <h2 class="heading-m">Thanks for subscribing, <em class="heading-emphasise heading-emphasise--employer">@Model.FirstName @Model.LastName</em></h2>
+            @*We've sent you a confirmation email to <em class="heading-emphasise heading-emphasise--employer"> @Model.Email</em>*@
+
             <p>
                 You'll soon start receiving the latest apprenticeship updates and downloadable employer guides straight to your inbox. In the meantime, you can download a few of our favourite guides below. We hope you find them useful.
                 <br />
@@ -30,7 +32,7 @@
 
 <div class="grid-row card__collection card__collection--download">
     <div class="grid-column-one-third">
-        <a class="card" href="#">
+        <a class="card" href="~/downloads/PDF-2-Why-are-standards-replacing-frameworks.pdf" target="_blank">
             <div class="card__image">
                 <span class="card__img card__img--pdf-1"></span>
             </div>
@@ -46,7 +48,7 @@
         </a>
     </div>
     <div class="grid-column-one-third">
-        <a class="card" href="#">
+        <a class="card" href="~/downloads/PDF-5-An-employers-guide-to-higher-and-degree-apprenticeships.pdf" target="_blank">
             <div class="card__image">
                 <span class="card__img card__img--pdf-2"></span>
             </div>
@@ -62,7 +64,7 @@
         </a>
     </div>
     <div class="grid-column-one-third">
-        <a class="card" href="#">
+        <a class="card" href="~/downloads/PDF-6-Your-guide-to-developing-new-standards.pdf" target="_blank">
             <div class="card__image">
                 <span class="card__img card__img--pdf-3"></span>
             </div>

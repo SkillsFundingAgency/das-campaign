@@ -66,7 +66,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         public void Then_When_Viewing_The_Form_The_Referring_Url_Is_Taken()
         {
             //Act
-            var actual = _controller.Index();
+            var actual = _controller.Index(1);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -102,7 +102,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index();
+            var actual = _controller.Index(1);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -129,7 +129,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index();
+            var actual = _controller.Index(1);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -166,7 +166,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index();
+            var actual = _controller.Index(1);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -203,7 +203,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index();
+            var actual = _controller.Index(1);
 
             //Assert
             Assert.IsNotNull(actual);

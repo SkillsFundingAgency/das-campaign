@@ -10,13 +10,16 @@
     ViewBag.MetaTitle = "Get the latest information about apprenticeships";
     ViewBag.MetaDesc = "If you’re an employer or an apprentice, you can register your interest so that you get the right information delivered to you at the right time.";
     ViewBag.Section = "employer";
+
+    Model.Route = "2";
+
 }
 
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
 }
 
-@await Component.InvokeAsync("Form", new { type = FormType.RegisterInterestV2, formViewModel = Model })
+@await Component.InvokeAsync("Form", new { type = FormType.RegisterInterest, formViewModel = Model })
 
 
 @{
