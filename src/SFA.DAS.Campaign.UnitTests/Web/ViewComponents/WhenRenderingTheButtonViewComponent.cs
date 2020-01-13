@@ -41,7 +41,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         public void When_Apprentice_And_Shadow_And_Sparks_Then_The_Correct_Classes_Applied()
         {
             var buttonText = "Apprentice";
-            var classes = "button button-apprentice button--sparks button--shadow ";
+            var classes = "button button--apprentice button--sparks button--shadow ";
             //Act
             var actual = _sut.Invoke(ButtonType.Anchor, ButtonStyle.Apprentice, _buttonName, buttonText,shadow: true, sparks:true);
 
@@ -59,7 +59,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         public void When_Apprentice_And_Shadow_And_No_Sparks_Then_The_Correct_Classes_Applied()
         {
             var buttonText = "Apprentice";
-            var classes = "button button-apprentice button--shadow ";
+            var classes = "button button--apprentice button--shadow ";
             //Act
             var actual = _sut.Invoke(ButtonType.Anchor, ButtonStyle.Apprentice, _buttonName, buttonText, shadow: true, sparks: false);
 
@@ -77,7 +77,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         public void When_Apprentice_And_No_Shadow_And_No_Sparks_Then_The_Correct_Classes_Applied()
         {
             var buttonText = "Apprentice";
-            var classes = "button button-apprentice ";
+            var classes = "button button--apprentice ";
             //Act
             var actual = _sut.Invoke(ButtonType.Anchor, ButtonStyle.Apprentice, _buttonName, buttonText, shadow: false, sparks: false);
 
@@ -95,7 +95,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         public void When_Apprentice_And_No_Shadow_And_Sparks_Then_The_Correct_Classes_Applied()
         {
             var buttonText = "Apprentice";
-            var classes = "button button-apprentice button--sparks ";
+            var classes = "button button--apprentice button--sparks ";
             //Act
             var actual = _sut.Invoke(ButtonType.Anchor, ButtonStyle.Apprentice, _buttonName, buttonText, shadow: false, sparks: true);
 
@@ -113,7 +113,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         public void When_Employer_And_No_Shadow_And_No_Sparks_Then_The_Correct_Classes_Applied()
         {
             var buttonText = "Apprentice";
-            var classes = "button button-employer ";
+            var classes = "button button--employer ";
             //Act
             var actual = _sut.Invoke(ButtonType.Anchor, ButtonStyle.Employer, _buttonName, buttonText, shadow: false, sparks: false);
 
@@ -149,7 +149,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         public void When_PrimaryInverted_And_No_Shadow_And_No_Sparks_Then_The_Correct_Classes_Applied()
         {
             var buttonText = "Primary";
-            var classes = "button button-inverted ";
+            var classes = "button button--inverted ";
             //Act
             var actual = _sut.Invoke(ButtonType.Anchor, ButtonStyle.PrimaryInverted, _buttonName, buttonText, shadow: false, sparks: false);
 

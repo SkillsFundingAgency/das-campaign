@@ -21,13 +21,13 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Button
                 case ButtonStyle.Primary:
                     break;
                 case ButtonStyle.PrimaryInverted:
-                    _styleClass = "button-inverted";
+                    _styleClass = "button--inverted";
                     break;
                 case ButtonStyle.Apprentice:
-                    _styleClass = "button-apprentice";
+                    _styleClass = "button--apprentice";
                     break;
                 case ButtonStyle.Employer:
-                    _styleClass = "button-employer";
+                    _styleClass = "button--employer";
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(buttonStyle), buttonStyle, null);
