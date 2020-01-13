@@ -35,6 +35,16 @@
             {
                 @await Component.InvokeAsync("ClosestLocations", new { Model.ApprenticeshipId, Model.Ukprn, Model.PostCode })
             }
+            <hr class="section-break">
+            <form asp-controller="Basket" asp-action="AddProviderFromDetails" method="post">
+                <input type="hidden" asp-for="@Model.ApprenticeshipId" />
+                <input type="hidden" asp-for="@Model.LocationId" />
+                <input type="hidden" asp-for="@Model.Page" />
+                <input type="hidden" asp-for="@Model.Ukprn" />
+                <div class="form-group">
+                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn, locationId = Model.LocationId })
+                </div>
+            </form>
         </div>
     </div>
 </div>

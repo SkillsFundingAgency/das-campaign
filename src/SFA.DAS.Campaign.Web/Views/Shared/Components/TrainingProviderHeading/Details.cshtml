@@ -31,7 +31,6 @@
                 <span class="caption-m hero-heading__caption hero-heading__caption--employer">Search apprenticeships  <span class="hero-heading__caption-separator">&gt;</span>  Training provider details</span>
                 <h1 class="heading-xl hero-heading__heading @titleModifierClass">@pageHeadingStr</h1>
             </div>
-
             <form asp-controller="Basket" asp-action="AddProviderFromDetails" method="post">
                 <input type="hidden" asp-for="@Model.ApprenticeshipId" />
                 <input type="hidden" asp-for="@Model.LocationId" />
