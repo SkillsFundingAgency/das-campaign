@@ -152,6 +152,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
             services.AddTransient<ICacheStorageService, CacheStorageService>();
+            services.AddTransient<Sfa.Das.Sas.ApplicationServices.Services.ICacheStorageService, Sfa.Das.Sas.ApplicationServices.Services.CacheStorageService>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
