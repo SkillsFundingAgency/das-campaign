@@ -17,24 +17,13 @@
 
 @await Component.InvokeAsync("ApprenticeshipDetails", new { queryModel = Model })
 
-@section Resources {
-    <div class="grid-row">
+@section pageFooter {
         <div class="grid-column-full">
             <section class="cta-fat">
-                <div class="cta-fat__content">
-                    <h2 class="heading-l u-!-margin-top-0">Find a training provider</h2>
-                </div>
-
-                <div class="cta-fat__action">
-                    @await Component.InvokeAsync("TrainingProviderSearch", new { apprenticeshipId = Model.Id })
-                </div>
-
-
+                <h2 class="heading-m u-!-margin-top-0">Find a training provider for this apprenticeship</h2>
+                @await Component.InvokeAsync("TrainingProviderSearch", new { apprenticeshipId = Model.Id })
             </section>
-
         </div>
-    </div>
-
 }
 
 
@@ -43,7 +32,6 @@
         <div class="sidebar-panel__content">
             <h2 class="heading-m u-!-margin-top-0">Find a training provider for this apprenticeship</h2>
             @await Component.InvokeAsync("TrainingProviderSearch", new { apprenticeshipId = Model.Id })
-
         </div>
     </div>
 }
