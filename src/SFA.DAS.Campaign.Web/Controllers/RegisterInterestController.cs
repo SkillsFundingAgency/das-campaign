@@ -19,37 +19,42 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _userDataCollection = userDataCollection;
         }
 
-        [HttpGet]
-        public IActionResult Index()
+        [HttpGet("index/{version}")]
+        public IActionResult Index(int version = 1)
         {
+
+
             var url = Request.Headers["Referer"].ToString();
 
-            if (url == string.Empty 
-                || url.Contains(ControllerContext.ActionDescriptor.ControllerName,StringComparison.CurrentCultureIgnoreCase))
+            if (url == string.Empty
+                || url.Contains(ControllerContext.ActionDescriptor.ControllerName, StringComparison.CurrentCultureIgnoreCase))
             {
-                url = Url.Action("Index","Home");
+                url = Url.Action("Index", "Home");
             }
             else
             {
                 var uri = new Uri(url);
-                var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/","");
-                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/","");
+                var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/", "");
+                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/", "");
 
                 url = Url.Action(actionName, controllerName);
             }
 
-            return View(new RegisterInterestModel{ReturnUrl = url});
+
+
+
+            return View($"IndexV{version}", new RegisterInterestModel { ReturnUrl = url, Version = version});
         }
 
-        [HttpPost]
+        [HttpPost("index/{version}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
+        public async Task<IActionResult> Index (RegisterInterestModel registerInterest)
         {
             if (!ModelState.IsValid)
             {
-                return View(registerInterest);
+                return View($"IndexV{registerInterest.Version}",registerInterest);
             }
-
+          
             try
             {
                 await _userDataCollection.StoreUserData(new UserData
@@ -72,8 +77,25 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 return View(registerInterest);
             }
 
+            if (registerInterest.Route == "2")
+            {
+                return RedirectToAction("downloads", registerInterest);
+            }
+
             return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
-            
+        }
+
+        [HttpGet("downloads")]
+        public IActionResult Downloads(RegisterInterestModel registerInterest)
+        {
+            RegisterInterestModel model = new RegisterInterestModel();
+
+            if (registerInterest.FirstName != null)
+            {
+                model = registerInterest;
+            }
+
+            return View("EmployerDownloads", model);
         }
     }
 }

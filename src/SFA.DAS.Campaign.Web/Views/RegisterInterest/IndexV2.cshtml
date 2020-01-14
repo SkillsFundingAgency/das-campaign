@@ -1,0 +1,34 @@
+﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
+@model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
+@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+
+@{
+    ViewBag.Title = "Subscribe for employer guides and updates";
+    Layout = "_LayoutContentFull";
+    ViewBag.MetaTitle = "Get the latest information about apprenticeships";
+    ViewBag.MetaDesc = "If you’re an employer or an apprentice, you can register your interest so that you get the right information delivered to you at the right time.";
+    ViewBag.Section = "employer";
+
+    Model.Route = "2";
+
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}
+
+@await Component.InvokeAsync("Form", new { type = FormType.RegisterInterest, formViewModel = Model })
+
+
+@{
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<div class="hero-heading__content">
+        <p class="lead-paragraph"> You'll get all the latest apprenticeship updates, plus downloadable guides to help you brush up on key topics. This could include: </p>
+        <ul class="list list--bullet">
+            <li>Assessment  </li>
+            <li>Where to find an end-point assessment organisation </li>
+            <li>Certification  </li>
+        </ul>
+    </div>);
+}
