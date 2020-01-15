@@ -26,6 +26,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         private const string ExpectedCookieId = "123FDSF.123";
         private const string ExpectedReferrerUrl = "http://test/cpg/test";
         private const string ExpectedDefaultUrl = "http://test/cpg/test";
+        private const string ExpectedUrlWithQueryString = "http://test/cpg/test/employer?Postcode=CV1+2WT";
 
         [SetUp]
         public void Arrange()
@@ -215,6 +216,45 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             mockUrlHelper.Verify(x=>x.Action(It.Is<UrlActionContext>(c=>c.Action.Equals("Index") && c.Controller.Equals("Home"))));
         }
 
+        [Test]
+        public void When_clicking_register_interest_from_a_search_result_page_then_query_string_is_appended()
+        {
+            //Arrange
+            var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
+            mockUrlHelper
+                .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
+                .Returns(ExpectedUrlWithQueryString).Verifiable();
+
+            _httpContext.Setup(x => x.Request.Headers)
+                .Returns(new HeaderDictionary(new Dictionary<string, StringValues>
+                {
+                    { "Referer", "https://test2/" }
+                }));
+
+            _controller = new RegisterInterestController(_userDataCollection.Object)
+            {
+                Url = mockUrlHelper.Object,
+                ControllerContext = {
+                    HttpContext = _httpContext.Object,
+                    ActionDescriptor = new ControllerActionDescriptor
+                    {
+                        ControllerName = "register-interest"
+                    }}
+            };
+
+            //Act
+            var actual = _controller.Index(1);
+
+            //Assert
+            Assert.IsNotNull(actual);
+
+            var viewResult = actual as ViewResult;
+            Assert.IsNotNull(viewResult);
+
+            var model = viewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(ExpectedUrlWithQueryString, model.ReturnUrl);
+        }
         [Test]
         public async Task Then_StoreData_Is_Called_On_The_UserDataCollection_Service()
         {
