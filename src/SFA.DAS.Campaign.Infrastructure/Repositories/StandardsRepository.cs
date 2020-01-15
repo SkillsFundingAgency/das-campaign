@@ -16,14 +16,14 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         private readonly IStandardApiClient _apprenticeshipStandardApiClient;
         private readonly IStandardsMapper _standardsMapper;
         private readonly IApprenticeshipStandardsApi _ifaApprenticeshipStandardsApi;
-        private readonly ICacheStorageService _cacheService;
+        private readonly IIfaStandardsCacheService _standardsCacheService;
 
-        public StandardsRepository(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper, IApprenticeshipStandardsApi fullStandardsApi, ICacheStorageService cacheService, IStandardApiClient apprenticeshipStandardApiClient)
+        public StandardsRepository(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper, IApprenticeshipStandardsApi fullStandardsApi, IIfaStandardsCacheService standardsCacheService, IStandardApiClient apprenticeshipStandardApiClient)
         {
             _apprenticeshipProgrammeApiClient = apprenticeshipProgrammeApiClient;
             _standardsMapper = standardsMapper;
             _ifaApprenticeshipStandardsApi = fullStandardsApi;
-            _cacheService = cacheService;
+            _standardsCacheService = standardsCacheService;
             _apprenticeshipStandardApiClient = apprenticeshipStandardApiClient;
         }
 
@@ -41,7 +41,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         {
             var cacheKey = "FullStandardsAPI";
 
-            var cacheEntry = await _cacheService.RetrieveFromCache<List<ApiApprenticeshipStandard>>(cacheKey);
+            var cacheEntry = await _standardsCacheService.RetrieveFromCache<List<ApiApprenticeshipStandard>>(cacheKey);
 
             if (cacheEntry == null)
             {
@@ -53,7 +53,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                 cacheEntry = cacheEntry.Where(w => w != null && fatStandardIds.Contains(w.LarsCode.ToString())).ToList();
          
                 // Save data in cache.
-                await _cacheService.SaveToCache(cacheKey, cacheEntry, new TimeSpan(30, 0, 0, 0), new TimeSpan(1, 0, 0, 0));
+                await _standardsCacheService.SaveToCache(cacheKey, cacheEntry, new TimeSpan(30, 0, 0, 0), new TimeSpan(1, 0, 0, 0));
             }
 
             cacheEntry = cacheEntry.Where(c =>
