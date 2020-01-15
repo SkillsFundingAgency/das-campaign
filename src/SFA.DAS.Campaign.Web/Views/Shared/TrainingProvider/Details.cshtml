@@ -22,6 +22,7 @@
     <div class="grid-column-one-third grid-column--pull-right">
         <div class="sidebar-panel sidebar-panel--employer">
             <div class="sidebar-panel__content">
+                
                 @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Contact })
             </div>
         </div>

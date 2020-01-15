@@ -1,0 +1,91 @@
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
+
+@{
+    ViewBag.Title = (Model.FirstName == null) ? "Downloadable Guides!" : "Thanks for subscribing!";
+    ViewBag.MetaTitle = "How can employing an apprentice benefit your business";
+    ViewBag.PageID = "employer-register-interest-downloads";
+    ViewBag.MetaDesc = "";
+    ViewBag.Section = "employer";
+    Layout = "_LayoutContentFull";
+    ViewBag.Section = "employer";
+}
+
+@if (Model.FirstName != null)
+{
+    <div class="grid-row">
+        <div class="grid-column-two-thirds">
+            <h2 class="heading-m">Thanks for subscribing, <em class="heading-emphasise heading-emphasise--employer">@Model.FirstName @Model.LastName</em></h2>
+            @*We've sent you a confirmation email to <em class="heading-emphasise heading-emphasise--employer"> @Model.Email</em>*@
+
+            <p>
+                You'll soon start receiving the latest apprenticeship updates and downloadable employer guides straight to your inbox. In the meantime, you can download a few of our favourite guides below. We hope you find them useful.
+                <br />
+                <a href="@Model.ReturnUrl">Return to previous content page </a>
+            </p>
+        </div>
+    </div>
+}
+
+
+<div class="grid-row card__collection card__collection--download">
+    <div class="grid-column-one-third">
+        <a class="card" href="~/downloads/PDF-2-Why-are-standards-replacing-frameworks.pdf" target="_blank">
+            <div class="card__image">
+                <span class="card__img card__img--pdf-1"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="heading-xs">
+                    <span class="card__icon icon--pdf"></span>
+                    Why are standards replacing frameworks?
+                </h2>
+                <p class="card__summary">
+                    From the start of the 2020/21 academic year, standards will completely replace frameworks.
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="grid-column-one-third">
+        <a class="card" href="~/downloads/PDF-5-An-employers-guide-to-higher-and-degree-apprenticeships.pdf" target="_blank">
+            <div class="card__image">
+                <span class="card__img card__img--pdf-2"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="heading-xs">
+                    <span class="card__icon icon--pdf"></span>
+                    An employer's guide to higher and degree apprenticeships
+                </h2>
+                <p class="card__summary">
+                    Think apprenticeships are only suitable for 16-year-olds leaving school? It's time to take another look.
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="grid-column-one-third">
+        <a class="card" href="~/downloads/PDF-6-Your-guide-to-developing-new-standards.pdf" target="_blank">
+            <div class="card__image">
+                <span class="card__img card__img--pdf-3"></span>
+            </div>
+            <div class="card__content">
+                <h2 class="heading-xs">
+                    <span class="card__icon icon--pdf"></span>
+                    Your guide to developing new standards
+                </h2>
+                <p class="card__summary">
+                    From digital marketing and teaching to dental healthcare and textile manufacturing, there's a great range of standards available, with new options appearing all the time.
+                </p>
+            </div>
+        </a>
+    </div>
+</div>
+@{
+
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<div></div>);
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+}
+

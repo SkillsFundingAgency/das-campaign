@@ -1,8 +1,8 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ConfirmSaveViewModel
 
 @{
-    ViewBag.Title = "Save the training provider";
-    ViewBag.BackLink = "Back to training provider";
+    ViewBag.Title = "Save your favourites";
+    ViewBag.BackLink = "Back to favourites";
     Layout = "_Layout-campaign-employer";
     ViewBag.MetaTitle = "";
     ViewBag.MetaDesc = "";
@@ -13,17 +13,14 @@
             <div class="grid-column-one-half">
                 <div class="hero-heading">
                     <a class="caption-m hero-heading__caption hero-heading__caption--employer"
-                       asp-controller="TrainingProvider"
-                       asp-action="Details"
-                       asp-route-apprenticeshipId="@Model.ApprenticeshipId"
-                       asp-route-ukprn="@Model.Ukprn"
-                       asp-route-locationId="@Model.LocationId">@ViewContext.ViewBag.BackLink</a>
+                        asp-controller="Basket"
+                        asp-action="View">@ViewContext.ViewBag.BackLink</a>
                     <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
                 </div>
 
                 <div class="hero-heading__content">
                     <p class="lead-paragraph">
-                        Ready to hire an apprentice? Save this training provider and go to gov.uk to create your account.
+                        Ready to hire an apprentice? Save your favourites and go to gov.uk to create your account.
                     </p>
                     <div class="cta-row">
                         @await Component.InvokeAsync("SaveBasket")

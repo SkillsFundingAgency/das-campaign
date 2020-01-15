@@ -3,6 +3,7 @@
     public enum FormType
     {
         RegisterInterest,
+        RegisterInterestV2,
         CookieSettings,
         faaUpdateSearch
     }
