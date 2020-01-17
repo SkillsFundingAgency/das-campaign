@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using Refit;
+using Sfa.Das.Sas.ApplicationServices.Services;
 using Sfa.Das.Sas.Core.Configuration;
 using Sfa.Das.Sas.Shared.Components.Configuration;
 using Sfa.Das.Sas.Shared.Components.DependencyResolution;
@@ -151,6 +152,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IUserDataCollection, UserDataCollection>();
             services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
+            services.AddTransient<IIfaStandardsCacheService, IfaStandardsCacheService>();
             services.AddTransient<ICacheStorageService, CacheStorageService>();
 
 
