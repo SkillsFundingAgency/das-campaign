@@ -8,7 +8,7 @@ namespace SFA.DAS.Campaign.Web.Models.Fat
     public class CampaignCssClasses : ICssViewModel
     {
         public ITableCssViewModel Table => new DefaultTableCssViewModel(ClassPrefix);
-        public IUtilitiesCssViewModel UtilitiesCss => new DefaultUtilitiesCssViewModel("u");
+        public IUtilitiesCssViewModel UtilitiesCss => new DefaultUtilitiesCssViewModel("u-");
         public IDefaultFormCssViewModel FormCss => new DefaultFormCssViewModel(ClassPrefix);
         public ICssGridViewModel GridCss => new DefaultGridCssViewModel(ClassPrefix);
         public IErrorCssViewModel ErrorCss => new DefaultErrorCssViewModel(ClassPrefix);
