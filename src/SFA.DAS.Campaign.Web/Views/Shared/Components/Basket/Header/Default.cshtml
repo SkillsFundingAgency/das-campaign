@@ -14,13 +14,14 @@
     <div class="grid-row">
         <div class="grid-column-one-half">
             <div class="hero-heading">
-                <h1 class="hero-heading__heading heading-xl">Your favourite apprenticeships and training providers</h1>
+                <h1 class="hero-heading__heading heading-xl hero-heading__heading-l">Your favourite apprenticeships and training providers</h1>
 
-                <ul class="list-numbers">
-                    <li><span class="vh">You have</span> <span class="list-numbers__number">@apprenticeshipCount</span> @("Apprenticeship".Pluralize(apprenticeshipCount)) <span class="vh">in your basket</span></li>
-                    <li><span class="vh">You have</span> <span class="list-numbers__number">@providerCount</span> Training @("provider".Pluralize(providerCount)) <span class="vh">in your basket</span></li>
-                </ul>
+                
             </div>
+            <ul class="list-numbers">
+                <li><span class="vh">You have</span> <span class="list-numbers__number">@apprenticeshipCount</span> @("Apprenticeship".Pluralize(apprenticeshipCount)) <span class="vh">in your basket</span></li>
+                <li><span class="vh">You have</span> <span class="list-numbers__number">@providerCount</span> Training @("provider".Pluralize(providerCount)) <span class="vh">in your basket</span></li>
+            </ul>
         </div>
         @if (apprenticeshipCount > 0)
         {
