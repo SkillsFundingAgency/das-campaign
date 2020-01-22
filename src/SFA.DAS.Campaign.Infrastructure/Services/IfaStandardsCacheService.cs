@@ -2,15 +2,14 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
-using SFA.DAS.Campaign.Application.Core;
 
 namespace SFA.DAS.Campaign.Infrastructure.Services
 {
-    public class CacheStorageService : ICacheStorageService
+    public class IfaStandardsCacheService : IIfaStandardsCacheService
     {
         private readonly IDistributedCache _distributedCache;
 
-        public CacheStorageService(IDistributedCache distributedCache)
+        public IfaStandardsCacheService(IDistributedCache distributedCache)
         {
             _distributedCache = distributedCache;
         }

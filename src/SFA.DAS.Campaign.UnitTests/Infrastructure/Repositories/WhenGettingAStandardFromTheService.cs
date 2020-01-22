@@ -20,7 +20,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private Mock<IApprenticeshipProgrammeApiClient> _apprenticeshipProgrammeApiClient;
         private Mock<IStandardsMapper> _standardsMApper;
         private Mock<IApprenticeshipStandardsApi> _fullStandardsApi;
-        private Mock<ICacheStorageService> _cacheService;
+        private Mock<IIfaStandardsCacheService> _standardsCacheService;
         private Mock<IStandardApiClient> _standardApiClient;
 
         //Arrange
@@ -112,7 +112,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _standardsMApper = new Mock<IStandardsMapper>();
             _apprenticeshipProgrammeApiClient = new Mock<IApprenticeshipProgrammeApiClient>();
             _fullStandardsApi = new Mock<IApprenticeshipStandardsApi>();
-            _cacheService = new Mock<ICacheStorageService>();
+            _standardsCacheService = new Mock<IIfaStandardsCacheService>();
             _standardApiClient = new Mock<IStandardApiClient>();
             _apprenticeshipProgrammeApiClient.Setup(c => c.SearchAsync(It.IsAny<string>(), It.IsAny<int>()))
                 .ReturnsAsync(new List<ApprenticeshipSearchResultsItem>
@@ -142,7 +142,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 
 
 
-            _cacheService
+            _standardsCacheService
                 .Setup(s =>
                     s.RetrieveFromCache<List<ApiApprenticeshipStandard>>( _cachedKey))
                 .ReturnsAsync(standardsCacheResult);
@@ -152,7 +152,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
                 .ReturnsAsync(standardsApiResult);
 
 
-            _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, _cacheService.Object, _standardApiClient.Object);
+            _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, _standardsCacheService.Object, _standardApiClient.Object);
         }
 
         [Test]
@@ -192,7 +192,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         [Test]
         public async Task And_By_Route_And_First_Call_Then_The_IFA_Api_Is_Called_To_Get_Standards()
         {
-         Mock<ICacheStorageService> noncacheService = new Mock<ICacheStorageService>();
+         Mock<IIfaStandardsCacheService> noncacheService = new Mock<IIfaStandardsCacheService>();
 
         _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, noncacheService.Object, _standardApiClient.Object);
 
@@ -205,7 +205,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         [Test]
         public async Task And_By_Route_And_First_Call_Then_The_FAT_Api_Is_Called_To_Get_Standards()
         {
-            Mock<ICacheStorageService> noncacheService = new Mock<ICacheStorageService>();
+            Mock<IIfaStandardsCacheService> noncacheService = new Mock<IIfaStandardsCacheService>();
 
             _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, noncacheService.Object, _standardApiClient.Object);
 
@@ -219,12 +219,12 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         [Test]
         public async Task And_By_Route_And_First_Call_Then_The_Standards_Are_Stored_In_Cache()
         {
-            _cacheService.Reset();
+            _standardsCacheService.Reset();
 
             //Act
             var result = await _standardsRepository.GetByRoute(_routeId);
 
-            _cacheService.Verify(x => x.SaveToCache(_cachedKey, It.IsAny<List<ApiApprenticeshipStandard>>(), It.IsAny<TimeSpan>(), It.IsAny<TimeSpan>()), Times.Once);
+            _standardsCacheService.Verify(x => x.SaveToCache(_cachedKey, It.IsAny<List<ApiApprenticeshipStandard>>(), It.IsAny<TimeSpan>(), It.IsAny<TimeSpan>()), Times.Once);
 
             _fullStandardsApi.Verify(v => v.GetAllStandardsAsync(), Times.Once);
         }
