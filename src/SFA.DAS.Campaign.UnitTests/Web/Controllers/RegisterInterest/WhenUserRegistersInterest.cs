@@ -212,7 +212,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             Assert.IsNotNull(viewResult);
             var model = viewResult.Model as RegisterInterestModel;
             Assert.IsNotNull(model);
-            
+           
             mockUrlHelper.Verify(x=>x.Action(It.Is<UrlActionContext>(c=>c.Action.Equals("Index") && c.Controller.Equals("Home"))));
         }
 
@@ -228,7 +228,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             _httpContext.Setup(x => x.Request.Headers)
                 .Returns(new HeaderDictionary(new Dictionary<string, StringValues>
                 {
-                    { "Referer", "https://test2/" }
+                    { "Referer", "http://test.gov.uk/cpg/test/employer?Postcode=CV1+2WT" }
                 }));
 
             _controller = new RegisterInterestController(_userDataCollection.Object)

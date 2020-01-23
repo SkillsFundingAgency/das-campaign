@@ -34,14 +34,15 @@ namespace SFA.DAS.Campaign.Web.Controllers
             else
             {
                 var uri = new Uri(url);
+
+                var pathandquery = uri.PathAndQuery;
                 var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/", "");
                 var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/", "");
 
-                url = Url.Action(actionName, controllerName) + uri.Query;
+                var oldurl = Url.Action(actionName, controllerName) + uri.Query;
+
+                url = uri.PathAndQuery;
             }
-
-
-
 
             return View($"IndexV{version}", new RegisterInterestModel { ReturnUrl = url, Version = version});
         }
