@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
@@ -8,14 +7,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
     {
         [HttpGet]
         [Route("confirm-save")]
-        public IActionResult Confirm(string apprenticeshipId, int ukprn, int locationId)
+        public IActionResult Confirm()
         {
-            return View(new ConfirmSaveViewModel
-            {
-                ApprenticeshipId = apprenticeshipId,
-                Ukprn = ukprn,
-                LocationId = locationId
-            });
+            return View();
         }
     }
 }
