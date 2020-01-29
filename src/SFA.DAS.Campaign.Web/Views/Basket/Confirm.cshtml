@@ -1,5 +1,4 @@
-﻿@model SFA.DAS.Campaign.Web.Models.ConfirmSaveViewModel
-
+﻿
 @{
     ViewBag.Title = "Save your favourites";
     ViewBag.BackLink = "Back to favourites";
@@ -23,7 +22,7 @@
                         Ready to hire an apprentice? Save your favourites and go to gov.uk to create your account.
                     </p>
                     <div class="cta-row">
-                        @await Component.InvokeAsync("SaveBasket")
+                        <partial name="./Components/Basket/Save/Default" />
                         <a class="hero-heading__cancel-link"
                            asp-controller="Basket"
                            asp-action="View">Cancel</a>
