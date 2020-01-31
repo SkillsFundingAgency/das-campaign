@@ -1,34 +1,50 @@
-﻿
+﻿@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+
 @{
-    ViewBag.Title = "Save your favourites";
-    ViewBag.BackLink = "Back to favourites";
-    Layout = "_Layout-campaign-employer";
+    ViewBag.Title = "Create an apprenticeship service account";
+    ViewBag.Section = "employer";
+    Layout = "_LayoutContentFull";
     ViewBag.MetaTitle = "";
     ViewBag.MetaDesc = "";
 }
-<main id="main-content">
-    <div class="hero--no-clip " data-module="smoothScroll">
-        <div class="grid-row">
-            <div class="grid-column-one-half">
-                <div class="hero-heading">
-                    <a class="caption-m hero-heading__caption hero-heading__caption--employer"
-                        asp-controller="Basket"
-                        asp-action="View">@ViewContext.ViewBag.BackLink</a>
-                    <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
-                </div>
 
-                <div class="hero-heading__content">
-                    <p class="lead-paragraph">
-                        Ready to hire an apprentice? Save your favourites and go to gov.uk to create your account.
-                    </p>
-                    <div class="cta-row">
-                        <partial name="./Components/Basket/Save/Default" />
-                        <a class="hero-heading__cancel-link"
-                           asp-controller="Basket"
-                           asp-action="View">Cancel</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="grid-row">
+    <div class="grid-column-two-thirds">
+        <p>Make sure you have the right details to hand. You’ll need:</p>
+
+        <ul class="list list--bullet list--bullet-employer">
+            <li>an email address you have access to </li>
+            <li>the Government Gateway login for your organisation (or you can use the accounts office reference number and employer PAYE scheme reference number if your annual pay bill is less than £3 million)</li>
+            <li>authority to add PAYE schemes to the account</li>
+            <li>authority to accept the employer agreement on behalf of your organisation </li>
+        </ul>
+
+        <p>We’ll ask you to:</p>
+
+        <ul class="list list--bullet list--bullet-employer">
+            <li>create an account</li>
+            <li>add a Pay As You Earn (PAYE) scheme on behalf of your organisation</li>
+            <li>accept the employer agreement with the Education and Skills Funding Agency (ESFA) </li>
+        </ul>
+
+        <p> For more tips, <a href="https://www.youtube.com/channel/UCROOCs9OvIwqFOy5_E0Jtfg" target="_blank">watch our Youtube video. </a></p>
+
+        <partial name="./Components/Basket/Save/Default" />
+
+        <p><a asp-controller="Basket" asp-action="View">Cancel</a></p>
     </div>
-</main>
+</div>
+
+@{ IHtmlContent HeroHeadingContent() => Helper.Body(@<div>
+
+        <p> You'll need to set up an apprenticeship service account on GOV.UK to access apprenticeship funding and post vacancies on <u>Find an Apprenticeship.</u></p>
+    </div>
+
+    );
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() , caption = ViewBag.Caption, captionLink = ViewBag.CaptionLink})
+}
