@@ -21,6 +21,9 @@
         <div class="page page--full-width">
             @RenderBody()
         </div>
+        <div class="grid-row">
+            @RenderSection("pageFooter", required: false)
+        </div>
     </div>
 </main>
 
