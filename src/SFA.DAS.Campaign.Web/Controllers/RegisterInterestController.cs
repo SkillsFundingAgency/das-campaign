@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Web.Constants;
 using SFA.DAS.Campaign.Web.Models;
@@ -34,14 +38,18 @@ namespace SFA.DAS.Campaign.Web.Controllers
             else
             {
                 var uri = new Uri(url);
+
                 var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/", "");
                 var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/", "");
+                
+                if (uri.Segments.Length == 6)
+                {
+                    actionName += $"/{string.Join("", uri.Segments.Skip(3).Take(3))}";
+                }
+               
 
-                url = Url.Action(actionName, controllerName);
+                url = HttpUtility.UrlDecode(Url.Action(actionName, controllerName) ) + uri.Query;
             }
-
-
-
 
             return View($"IndexV{version}", new RegisterInterestModel { ReturnUrl = url, Version = version});
         }
