@@ -128,7 +128,6 @@ namespace VacanciesApi
         /// </summary>
         private void Initialize()
         {
-            BaseUri = new System.Uri("https://apis.apprenticeships.sfa.bis.gov.uk/vacancies");
             SerializationSettings = new JsonSerializerSettings
             {
                 Formatting = Newtonsoft.Json.Formatting.Indented,
