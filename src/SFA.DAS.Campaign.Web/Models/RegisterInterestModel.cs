@@ -46,18 +46,29 @@ namespace SFA.DAS.Campaign.Web.Models
 
         private string GetRouteFromControllerAndActionName(string controllerName, string actionName)
         {
-            string route = "0";
-           
-            if (controllerName == "apprentice" || actionName == "apprentice" || controllerName == "parents")
+            switch (controllerName)
             {
-                route = "1";
+                case "apprentice":
+                case "parents":
+                    return "1";
+                case "employer":
+                case "basket":
+                    return "2";
+                default:
+                    break;
             }
-            else if (controllerName == "employer" || actionName == "employer")
+
+            switch (actionName)
             {
-                route = "2";
+                case "apprentice":
+                case "parents":
+                    return "1";
+                case "employer":
+                case "basket":
+                    return "2";
+                default:
+                    return "0";
             }
-      
-            return route;
         }
 
         private Dictionary<string, string> GetValidationMessages()
