@@ -26,32 +26,33 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [HttpGet("index/{version}")]
         public IActionResult Index(int version = 1)
         {
-
-
             var url = Request.Headers["Referer"].ToString();
+
+            string controllerName = "Home";
+            string actionName = "Index";
 
             if (url == string.Empty
                 || url.Contains(ControllerContext.ActionDescriptor.ControllerName, StringComparison.CurrentCultureIgnoreCase))
             {
-                url = Url.Action("Index", "Home");
+                url = Url.Action(actionName, controllerName);
             }
             else
             {
                 var uri = new Uri(url);
 
-                var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/", "");
-                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/", "");
-                
+                controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/", "");
+                actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/", "");
+
                 if (uri.Segments.Length == 6)
                 {
                     actionName += $"/{string.Join("", uri.Segments.Skip(3).Take(3))}";
                 }
-               
 
-                url = HttpUtility.UrlDecode(Url.Action(actionName, controllerName) ) + uri.Query;
+                url = HttpUtility.UrlDecode(Url.Action(actionName, controllerName)) + uri.Query;
+
             }
 
-            return View($"IndexV{version}", new RegisterInterestModel { ReturnUrl = url, Version = version});
+            return View($"IndexV{version}", new RegisterInterestModel(url, version, controllerName, actionName ) );
         }
 
         [HttpPost("index/{version}")]
