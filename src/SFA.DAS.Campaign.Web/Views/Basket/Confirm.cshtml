@@ -8,6 +8,8 @@
     Layout = "_LayoutContentFull";
     ViewBag.MetaTitle = "";
     ViewBag.MetaDesc = "";
+    ViewBag.ImageUrl = "/campaign/images/employer/employer-favourites-screenshot.gif";
+    ViewBag.ImageAltText = "Manage apprenticeships screenshot";
 }
 
 <div class="grid-row">
@@ -37,14 +39,14 @@
     </div>
 </div>
 
-@{ IHtmlContent HeroHeadingContent() => Helper.Body(@<div>
+@{ IHtmlContent HeroHeadingContent() => Helper.Body(@<div class="hero-heading__content">
 
-        <p> You'll need to set up an apprenticeship service account on GOV.UK to access apprenticeship funding and post vacancies on <u>Find an Apprenticeship.</u></p>
+        <p class="lead-paragraph"> You'll need to set up an apprenticeship service account on GOV.UK to access apprenticeship funding and post vacancies on <u>Find an Apprenticeship.</u></p>
     </div>
 
     );
 }
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() , caption = ViewBag.Caption, captionLink = ViewBag.CaptionLink})
+    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.EmployerWithImage, content = HeroHeadingContent() , caption = ViewBag.Caption, captionLink = ViewBag.CaptionLink, imageUrl = ViewBag.ImageUrl, imageAltText = ViewBag.ImageAltText})
 }

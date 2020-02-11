@@ -8,7 +8,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 {
     public class HeroHeadingViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(HeroHeadingType? type, string caption, string classes, IHtmlContent content, GoogleMapsViewModel googleMapsOptions)
+        public IViewComponentResult Invoke(HeroHeadingType? type, string caption, string classes, IHtmlContent content, GoogleMapsViewModel googleMapsOptions, string imageUrl, string imageAltText)
         {
             if (type == null)
             {
@@ -53,6 +53,10 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                     type = HeroHeadingType.Employer;
                     view = "FAT";
                     break;
+                case HeroHeadingType.EmployerWithImage:
+                    type = HeroHeadingType.Employer;
+                    view = "EmployerWithImage";
+                    break;
                 case null:
                     break;
                 default:
@@ -63,7 +67,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                
             }
 
-            return View(view, new HeroHeadingViewModel((HeroHeadingType)type, caption, classes, content, googleMapsOptions));
+            return View(view, new HeroHeadingViewModel((HeroHeadingType)type, caption, classes, content, googleMapsOptions, imageUrl, imageAltText));
         }
     }
 }

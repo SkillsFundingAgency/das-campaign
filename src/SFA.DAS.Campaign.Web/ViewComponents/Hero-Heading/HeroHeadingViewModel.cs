@@ -9,13 +9,15 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 
     public class HeroHeadingViewModel
     {
-        public HeroHeadingViewModel(HeroHeadingType type, string caption, string classes, IHtmlContent content, GoogleMapsViewModel googleMapsViewModel)
+        public HeroHeadingViewModel(HeroHeadingType type, string caption, string classes, IHtmlContent content, GoogleMapsViewModel googleMapsViewModel, string imageUrl, string imageAltText)
         {
             Type = type;
             Content = content;
             setDefaults();
             GoogleMapsViewModel = googleMapsViewModel;
             FaaSearchResultsViewModel = new FindApprenticeshipSearchModel();
+            ImageUrl = imageUrl;
+            ImageAltText = imageAltText;
 
             if (!string.IsNullOrWhiteSpace(caption))
             {
@@ -37,6 +39,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
         public string Class { get; internal set; }
         public GoogleMapsViewModel GoogleMapsViewModel { get; }
         public FindApprenticeshipSearchModel FaaSearchResultsViewModel { get; }
+        public string ImageUrl { get; set; }
+        public string ImageAltText { get; set; }
+
         private string setDefaults()
         {
             var caption = "";

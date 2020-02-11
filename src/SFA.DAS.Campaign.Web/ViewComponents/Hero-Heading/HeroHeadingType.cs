@@ -8,6 +8,7 @@
         FindApprenticeshipResults=3,
         FindApprenticeship = 4,
         FindApprenticeshipTraining = 5,
-        Parent = 6
+        Parent = 6,
+        EmployerWithImage = 7
     }
 }
