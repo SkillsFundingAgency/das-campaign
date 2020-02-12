@@ -13,11 +13,11 @@ namespace SFA.DAS.Campaign.Web.Models
             ValidationMessages = GetValidationMessages();
         }
 
-        public RegisterInterestModel(string returnUrl, int version, string controllerName, string actionName)
+        public RegisterInterestModel(string returnUrl, int version, string route)
         {
             ReturnUrl = returnUrl;
             Version = version;
-            Route = GetRouteFromControllerAndActionName(controllerName, actionName);
+            Route = route;
             ValidationMessages = GetValidationMessages();
         }
 
@@ -43,33 +43,6 @@ namespace SFA.DAS.Campaign.Web.Models
         public string ReturnUrl { get; set; }
 
         public int Version { get; set; }
-
-        private string GetRouteFromControllerAndActionName(string controllerName, string actionName)
-        {
-            switch (controllerName)
-            {
-                case "apprentice":
-                case "parents":
-                    return "1";
-                case "employer":
-                case "basket":
-                    return "2";
-                default:
-                    break;
-            }
-
-            switch (actionName)
-            {
-                case "apprentice":
-                case "parents":
-                    return "1";
-                case "employer":
-                case "basket":
-                    return "2";
-                default:
-                    return "0";
-            }
-        }
 
         private Dictionary<string, string> GetValidationMessages()
         {

@@ -24,7 +24,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpGet("index/{version}")]
-        public IActionResult Index(int version = 1)
+        [HttpGet("index/{version}/{route}")]
+        public IActionResult Index(int version = 1, string route = "0")
         {
             var url = Request.Headers["Referer"].ToString();
 
@@ -52,7 +53,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             }
 
-            return View($"IndexV{version}", new RegisterInterestModel(url, version, controllerName, actionName ) );
+            return View($"IndexV{version}", new RegisterInterestModel(url, version, route ) );
         }
 
         [HttpPost("index/{version}")]
