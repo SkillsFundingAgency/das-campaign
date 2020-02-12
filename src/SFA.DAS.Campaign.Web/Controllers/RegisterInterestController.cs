@@ -57,6 +57,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpPost("index/{version}")]
+        [HttpPost("index/{version}/{route}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index (RegisterInterestModel registerInterest)
         {
