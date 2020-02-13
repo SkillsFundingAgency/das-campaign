@@ -53,7 +53,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 url = HttpUtility.UrlDecode(Url.Action(actionName, controllerName)) + uri.Query;
 
             }
-            
             return View($"IndexV{version}", new RegisterInterestModel(url, version, route ) );
         }
 

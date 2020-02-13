@@ -10,7 +10,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
     public class WhenRenderingTheFormViewComponent
     {
         private FormViewComponent _sut;
-   
+
         [SetUp]
         public void Arrange()
         {
@@ -48,17 +48,16 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsNotNull(formViewModel);
         }
 
-        [TestCase("/", null)]
-        [TestCase("/parents/test", "1")]
-        [TestCase("/apprentice/test", "1")]
-        [TestCase("/test/apprentice", "1")]
-        [TestCase("/employer/test", "2")]
-        [TestCase("/test/employer", "2")]
+        [TestCase(null, "0")]
+        [TestCase("parent", "1")]
+        [TestCase("apprentice", "1")]
+        [TestCase("employer", "2")]
+
         public void When_RegisterInterest_The_Apprentice_Or_Employer_Question_Is_Preselected_And_Hidden_If_Directed_From_A_Known_Page
-            (string returnUrl, string route)
+            (string route, string expectedRouteResult)
         {
             //Act
-            var actual = _sut.Invoke(FormType.RegisterInterest, new RegisterInterestModel(returnUrl, 1, route), null);
+            var actual = _sut.Invoke(FormType.RegisterInterest, new RegisterInterestModel("register-interest-test", 1, route), null);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -68,8 +67,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsInstanceOf<RegisterInterestModel>(result.ViewData.Model);
 
             var formViewModel = (RegisterInterestModel)result.ViewData.Model;
-            Assert.AreEqual(returnUrl, formViewModel.ReturnUrl);
-            Assert.AreEqual(route, formViewModel.Route);
+            Assert.AreEqual(expectedRouteResult, formViewModel.Route);
         }
     }
 }
