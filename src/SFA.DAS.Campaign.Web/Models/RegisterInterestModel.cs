@@ -17,7 +17,7 @@ namespace SFA.DAS.Campaign.Web.Models
         {
             ReturnUrl = returnUrl;
             Version = version;
-            Route = route;
+            Route = GetRouteIdFromString(route);
             ValidationMessages = GetValidationMessages();
         }
 
@@ -54,6 +54,20 @@ namespace SFA.DAS.Campaign.Web.Models
                 {"Route", "Select if you want to become an apprentice or employ an apprentice"},
                 {"AcceptTandCs", "Confirm you would like to receive more information and are over 13 years old" }
             };
+        }
+
+        private string GetRouteIdFromString(string route)
+        {
+            switch (route)
+            {
+                case "apprentice":
+                case "parent":
+                    return "1";
+                case "employer":
+                    return "2";
+                default:
+                    return "0";
+            }
         }
     }
 }

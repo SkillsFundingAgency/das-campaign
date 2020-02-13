@@ -23,12 +23,13 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _userDataCollection = userDataCollection;
         }
 
-        [HttpGet("index/{version}")]
-        [HttpGet("index/{version}/{route}")]
+        [HttpGet("{version}")]
+        [HttpGet("{version}/{route}")]
         public IActionResult Index(int version = 1, string route = "0")
         {
             var url = Request.Headers["Referer"].ToString();
 
+            
             string controllerName = "Home";
             string actionName = "Index";
 
@@ -52,12 +53,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 url = HttpUtility.UrlDecode(Url.Action(actionName, controllerName)) + uri.Query;
 
             }
-
+            
             return View($"IndexV{version}", new RegisterInterestModel(url, version, route ) );
         }
 
-        [HttpPost("index/{version}")]
-        [HttpPost("index/{version}/{route}")]
+        [HttpPost("{version}")]
+        [HttpPost("{version}/{route}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index (RegisterInterestModel registerInterest)
         {
