@@ -23,9 +23,10 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _userDataCollection = userDataCollection;
         }
 
-        [HttpGet("{version}")]
-        [HttpGet("{version}/{route}")]
-        public IActionResult Index(int version = 1, string route = "0")
+        [HttpGet]
+        [HttpGet("{route}")]
+        [HttpGet("{route}/{version}")]
+        public IActionResult Index(RouteType route = RouteType.None, int version = 1 )
         {
             var url = Request.Headers["Referer"].ToString();
 
@@ -56,8 +57,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View($"IndexV{version}", new RegisterInterestModel(url, version, route ) );
         }
 
-        [HttpPost("{version}")]
-        [HttpPost("{version}/{route}")]
+        [HttpPost]
+        [HttpPost("{route}")]
+        [HttpPost("{route}/{version}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index (RegisterInterestModel registerInterest)
         {
@@ -74,7 +76,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                     LastName = registerInterest.LastName,
                     Email = registerInterest.Email,
                     CookieId = !string.IsNullOrEmpty(HttpContext.Request.Cookies["_ga"]) ? HttpContext.Request.Cookies["_ga"] : "not-available", 
-                    RouteId = registerInterest.Route,
+                    RouteId = ((int)registerInterest.Route).ToString(),
                     Consent = registerInterest.AcceptTandCs
                 });
             }
@@ -88,7 +90,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 return View(registerInterest);
             }
 
-            if (registerInterest.Route == "2")
+            if (registerInterest.Route == RouteType.Employer)
             {
                 return RedirectToAction("downloads", registerInterest);
             }

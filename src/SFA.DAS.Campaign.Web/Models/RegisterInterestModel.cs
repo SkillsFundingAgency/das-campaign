@@ -11,11 +11,11 @@ namespace SFA.DAS.Campaign.Web.Models
             ValidationMessages = GetValidationMessages();
         }
 
-        public RegisterInterestModel(string returnUrl, int version, string route)
+        public RegisterInterestModel(string returnUrl, int version, RouteType route)
         {
             ReturnUrl = returnUrl;
             Version = version;
-            Route = GetRouteIdFromString(route);
+            Route = route;
             ValidationMessages = GetValidationMessages();
         }
 
@@ -33,7 +33,7 @@ namespace SFA.DAS.Campaign.Web.Models
         public string Email { get; set; }
         [Required]
         [DisplayName("Registration type")]
-        public string Route { get; set; }
+        public RouteType Route { get; set; }
         [Required]
         [Range(typeof(bool), "true", "true", ErrorMessage = "You need to accept terms and conditions")]
         public bool AcceptTandCs { get; set; }
@@ -68,4 +68,14 @@ namespace SFA.DAS.Campaign.Web.Models
             }
         }
     }
+
+    public enum RouteType
+    {
+        None = 0,
+        Apprentice = 1,
+        Parent = 1,
+        Employer = 2
+
+    }
+
 }

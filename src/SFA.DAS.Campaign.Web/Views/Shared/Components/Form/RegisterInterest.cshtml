@@ -58,7 +58,7 @@
         <input class="input" asp-for="Email" type="text" placeholder="Email address" autocomplete="email">
     </div>
 
-    @if (!String.IsNullOrWhiteSpace(Model.Route) && Model.Route != "0")
+    @if (Model.Route != RouteType.None)
     {
         <input class="input radios__input" asp-for="Route" value="@Model.Route" type="hidden" />
     }
