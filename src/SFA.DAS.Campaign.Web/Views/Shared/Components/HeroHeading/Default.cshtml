@@ -14,8 +14,13 @@
             </a>
 
         </div>
-        <div class="grid-column-one-half">
 
-        </div>
+        @if (ViewContext.ViewBag.ImageUrl != null)
+        {
+            <div class="grid-column-one-half">
+                <img src="@ViewContext.ViewBag.ImageUrl" class="img--responsive hidden--mobile" alt="@ViewContext.ViewBag.ImageAltText" />
+            </div>
+        }
+
     </div>
 </div>

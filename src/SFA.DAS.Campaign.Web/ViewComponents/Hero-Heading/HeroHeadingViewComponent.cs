@@ -8,30 +8,17 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 {
     public class HeroHeadingViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(HeroHeadingType? type, string caption, string classes, IHtmlContent content, GoogleMapsViewModel googleMapsOptions, string imageUrl, string imageAltText)
+        public IViewComponentResult Invoke(HeroHeadingViewModel model)
         {
-            if (type == null)
-            {
-                switch (ViewContext.RouteData.Values["Controller"])
-                {
-                    case "Apprentice":
-                        type = HeroHeadingType.Apprentice;
-                        break;
-                    case "Employer":
-                        type = HeroHeadingType.Employer;
-                        break;
-                    case "Parents":
-                        type = HeroHeadingType.Parent;
-                        break;
-                    default:
-                        type = HeroHeadingType.None;
-                        break;
-                }
-            }
 
+            if (model == null)
+            {
+                model = new HeroHeadingViewModel();
+            }
+            
             var view = "Default";
 
-            switch (type)
+            switch (model.Type)
             {
                 case HeroHeadingType.None:
                     break;
@@ -39,35 +26,27 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                     break;
                 case HeroHeadingType.Employer:
                     break;
-                        case HeroHeadingType.Parent:
+                case HeroHeadingType.Parent:
                     break;
                 case HeroHeadingType.FindApprenticeshipResults:
-                    type = HeroHeadingType.Apprentice;
+                    model.Type = HeroHeadingType.Apprentice;
                     view = "GoogleMaps";
                     break;
                 case HeroHeadingType.FindApprenticeship:
-                    type = HeroHeadingType.Apprentice;
+                    model.Type = HeroHeadingType.Apprentice;
                     view = "FAA";
                     break;
                 case HeroHeadingType.FindApprenticeshipTraining:
-                    type = HeroHeadingType.Employer;
+                    model.Type = HeroHeadingType.Employer;
                     view = "FAT";
                     break;
-                case HeroHeadingType.EmployerWithImage:
-                    type = HeroHeadingType.Employer;
-                    view = "EmployerWithImage";
-                    break;
-                case null:
-                    break;
+
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
-            }
-            if (type == HeroHeadingType.FindApprenticeshipResults)
-            {
-               
+                    throw new ArgumentOutOfRangeException(nameof(model.Type), model.Type, null);
             }
 
-            return View(view, new HeroHeadingViewModel((HeroHeadingType)type, caption, classes, content, googleMapsOptions, imageUrl, imageAltText));
+
+            return View(view, model);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿
 @using System.Web
+@using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults
 @{
@@ -15,7 +16,7 @@
 @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model })
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer })
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Employer })
 }
 
 

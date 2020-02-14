@@ -3,6 +3,7 @@
 @using SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @using SFA.DAS.Campaign.Domain.Enums
+@using SFA.DAS.Campaign.Web.ViewComponents
 @model SearchResultsViewModel
 
 @{
@@ -110,7 +111,7 @@
 
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.FindApprenticeshipResults, googleMapsOptions = new GoogleMapsViewModel(Model.StaticMapUrl) { Latitude = Model.Location.Latitude, Longitude = Model.Location.Longitude, Distance = Model.Distance, Postcode = Model.Postcode, Route = Model.Route } })
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.FindApprenticeshipResults, GoogleMapsViewModel = new GoogleMapsViewModel(Model.StaticMapUrl) { Latitude = Model.Location.Latitude, Longitude = Model.Location.Longitude, Distance = Model.Distance, Postcode = Model.Postcode, Route = Model.Route } })
 }
 
 @section Resources {

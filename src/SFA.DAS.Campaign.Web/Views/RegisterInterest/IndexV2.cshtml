@@ -2,6 +2,7 @@
 @model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
 @using Microsoft.AspNetCore.Html
 @using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 
 @{
@@ -16,7 +17,7 @@
 }
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Employer, Content = HeroHeadingContent() })
 }
 
 @await Component.InvokeAsync("Form", new { type = FormType.RegisterInterest, formViewModel = Model })
