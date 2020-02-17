@@ -35,7 +35,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             {
                 Email = "a@a.com",
                 FirstName = "Test",
-                Route = "1",
+                Route = RouteType.Apprentice,
                 LastName = "test",
                 AcceptTandCs = true,
             };
@@ -67,7 +67,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         public void Then_When_Viewing_The_Form_The_Referring_Url_Is_Taken()
         {
             //Act
-            var actual = _controller.Index(1);
+            var actual = _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -103,7 +103,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(1);
+            var actual = _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -130,7 +130,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(1);
+            var actual = _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -167,7 +167,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(1);
+            var actual = _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -204,7 +204,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(1);
+            var actual = _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -246,7 +246,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(1);
+            var actual = _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -270,7 +270,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                    c.FirstName.Equals(_registerInterestModel.FirstName) &&
                    c.LastName.Equals(_registerInterestModel.LastName) &&
                    c.Consent.Equals(_registerInterestModel.AcceptTandCs) &&
-                   c.RouteId.Equals(_registerInterestModel.Route) &&
+                   c.RouteId.Equals(((int)_registerInterestModel.Route).ToString()) &&
                    c.CookieId.Equals(ExpectedCookieId)
                 )), Times.Once);
         }
@@ -356,7 +356,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(1);
+            var actual = _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
