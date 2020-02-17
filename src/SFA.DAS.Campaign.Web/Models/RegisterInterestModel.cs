@@ -50,7 +50,7 @@ namespace SFA.DAS.Campaign.Web.Models
                 {"LastName", "Enter your last name"},
                 {"Email", "Enter your email address"},
                 {"Route", "Select if you want to become an apprentice or employ an apprentice"},
-                {"AcceptTandCs", "Confirm you would like to receive more information and are over 13 years old" }
+                {"AcceptTandCs", "Confirm you would like to receive more information" }
             };
         }
 

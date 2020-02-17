@@ -67,7 +67,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             {
                 return View($"IndexV{registerInterest.Version}",registerInterest);
             }
-          
+
             try
             {
                 await _userDataCollection.StoreUserData(new UserData
