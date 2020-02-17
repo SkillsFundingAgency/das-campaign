@@ -17,6 +17,7 @@
 }
 
 <form asp-controller="RegisterInterest" asp-action="index">
+    <input type="hidden" asp-for="Version" />
     <div class="form-validation-summary" style="@(ViewData.ModelState.IsValid ? " display: none" : "" )">
         <h3 class="heading-s form-validation-summary__heading">Sorry but there seems to be a problem with your registration</h3>
         <ul class="form-validation-summary__list">
