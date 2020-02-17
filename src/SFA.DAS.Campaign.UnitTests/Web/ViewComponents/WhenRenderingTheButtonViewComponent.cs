@@ -127,24 +127,24 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
 
             Assert.AreEqual(classes, buttonViewModel.GetClasses());
         }
-        [Test]
-        public void When_Primary_And_No_Shadow_And_No_Sparks_Then_The_Correct_Classes_Applied()
-        {
-            var buttonText = "Primary";
-            var classes = "button ";
-            //Act
-            var actual = _sut.Invoke(ButtonType.Anchor, ButtonStyle.Primary, _buttonName, buttonText, shadow: false, sparks: false);
+        //[Test]
+        //public void When_Primary_And_No_Shadow_And_No_Sparks_Then_The_Correct_Classes_Applied()
+        //{
+        //    var buttonText = "Primary";
+        //    var classes = "button ";
+        //    //Act
+        //    var actual = _sut.Invoke(ButtonType.Anchor, ButtonStyle.Primary, _buttonName, buttonText, shadow: false, sparks: false);
 
-            //Assert
-            Assert.IsNotNull(actual);
-            var result = actual as ViewViewComponentResult;
-            Assert.IsNotNull(result);
+        //    //Assert
+        //    Assert.IsNotNull(actual);
+        //    var result = actual as ViewViewComponentResult;
+        //    Assert.IsNotNull(result);
 
-            Assert.IsInstanceOf<ButtonViewModel>(result.ViewData.Model);
-            var buttonViewModel = (ButtonViewModel)result.ViewData.Model;
+        //    Assert.IsInstanceOf<ButtonViewModel>(result.ViewData.Model);
+        //    var buttonViewModel = (ButtonViewModel)result.ViewData.Model;
 
-            Assert.AreEqual(classes, buttonViewModel.GetClasses());
-        }
+        //    Assert.AreEqual(classes, buttonViewModel.GetClasses());
+        //}
         [Test]
         public void When_PrimaryInverted_And_No_Shadow_And_No_Sparks_Then_The_Correct_Classes_Applied()
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ViewComponents;
+﻿using System;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 using NUnit.Framework;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
@@ -39,7 +40,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             var headingViewModel = (HeroHeadingViewModel) result.ViewData.Model;
 
             Assert.AreEqual(_sutModel.Type, headingViewModel.Type);
-            Assert.IsNull(headingViewModel.Caption);
+            Assert.AreEqual(String.Empty,headingViewModel.Caption);
 
         }
 
