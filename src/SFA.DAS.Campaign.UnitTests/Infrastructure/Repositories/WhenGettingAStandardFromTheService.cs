@@ -18,7 +18,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
     {
         private StandardsRepository _standardsRepository;
         private Mock<IApprenticeshipProgrammeApiClient> _apprenticeshipProgrammeApiClient;
-        private Mock<IStandardsMapper> _standardsMApper;
+        private IStandardsMapper _standardsMApper;
         private Mock<IApprenticeshipStandardsApi> _fullStandardsApi;
         private Mock<IIfaStandardsCacheService> _standardsCacheService;
         private Mock<IStandardApiClient> _standardApiClient;
@@ -109,7 +109,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
                     Status = "Not Approved for delivery"
                 }
             };
-            _standardsMApper = new Mock<IStandardsMapper>();
+            _standardsMApper = new StandardsMapper();
             _apprenticeshipProgrammeApiClient = new Mock<IApprenticeshipProgrammeApiClient>();
             _fullStandardsApi = new Mock<IApprenticeshipStandardsApi>();
             _standardsCacheService = new Mock<IIfaStandardsCacheService>();
@@ -152,7 +152,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
                 .ReturnsAsync(standardsApiResult);
 
 
-            _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, _standardsCacheService.Object, _standardApiClient.Object);
+            _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper, _fullStandardsApi.Object, _standardsCacheService.Object, _standardApiClient.Object);
         }
 
         [Test]
@@ -194,7 +194,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         {
          Mock<IIfaStandardsCacheService> noncacheService = new Mock<IIfaStandardsCacheService>();
 
-        _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, noncacheService.Object, _standardApiClient.Object);
+        _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper, _fullStandardsApi.Object, noncacheService.Object, _standardApiClient.Object);
 
             //Act
             await _standardsRepository.GetByRoute(_routeId);
@@ -207,7 +207,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         {
             Mock<IIfaStandardsCacheService> noncacheService = new Mock<IIfaStandardsCacheService>();
 
-            _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper.Object, _fullStandardsApi.Object, noncacheService.Object, _standardApiClient.Object);
+            _standardsRepository = new StandardsRepository(_apprenticeshipProgrammeApiClient.Object, _standardsMApper, _fullStandardsApi.Object, noncacheService.Object, _standardApiClient.Object);
 
             //Act
             await _standardsRepository.GetByRoute(_routeId);
