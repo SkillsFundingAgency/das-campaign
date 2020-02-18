@@ -32,6 +32,7 @@ namespace SFA.DAS.Campaign.Web.Models
         [DisplayName("Email address")]
         public string Email { get; set; }
         [Required]
+        [Range((int)RouteType.Apprentice, (int)RouteType.Employer)]
         [DisplayName("Registration type")]
         public RouteType Route { get; set; }
         [Required]
@@ -53,20 +54,6 @@ namespace SFA.DAS.Campaign.Web.Models
                 {"AcceptTandCs", "Confirm you would like to receive more information" }
             };
         }
-
-        private string GetRouteIdFromString(string route)
-        {
-            switch (route)
-            {
-                case "apprentice":
-                case "parent":
-                    return "1";
-                case "employer":
-                    return "2";
-                default:
-                    return "0";
-            }
-        }
     }
 
     public enum RouteType
@@ -75,7 +62,6 @@ namespace SFA.DAS.Campaign.Web.Models
         Apprentice = 1,
         Parent = 1,
         Employer = 2
-
     }
 
 }
