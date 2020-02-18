@@ -9,8 +9,7 @@
     Layout = "_LayoutContentFull";
     ViewBag.MetaTitle = "";
     ViewBag.MetaDesc = "";
-    ViewBag.ImageUrl = "/campaign/images/employer/employer-favourites-screenshot.gif";
-    ViewBag.ImageAltText = "Manage apprenticeships screenshot";
+    
 }
 
 <div class="grid-row">
@@ -42,7 +41,7 @@
 
 @{ IHtmlContent HeroHeadingContent() => Helper.Body(@<div class="hero-heading__content">
 
-        <p class="lead-paragraph"> You'll need to set up an apprenticeship service account on GOV.UK to access apprenticeship funding and post vacancies on <u>Find an Apprenticeship.</u></p>
+        <p class="lead-paragraph"> You'll need to set up an apprenticeship service account on GOV.UK to access apprenticeship funding and post vacancies on <a href="https://www.gov.uk/apply-apprenticeship" class="hero__link" target="_blank">Find an Apprenticeship.</a></p>
     </div>
 
     );
