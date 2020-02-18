@@ -234,7 +234,7 @@ namespace SFA.DAS.Campaign.Web
             {
                 routes.MapRoute(
                     "Fat",
-                    "employer/find-apprenticeships/{action=Search}/{keywords?}",
+                    "employer/find-apprenticeships/{action=Search}",
                     new { controller = "Fat" });
                 routes.MapRoute(
                     name: "default",
