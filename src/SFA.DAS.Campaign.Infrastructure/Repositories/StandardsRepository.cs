@@ -39,6 +39,14 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
 
         public async Task<List<StandardResultItem>> GetByRoute(string routeId)
         {
+            var standardIds = await GetAll();
+
+            return standardIds.Where(w => w.Route.ToLower() == routeId).ToList();
+        }
+
+        public async Task<List<StandardResultItem>> GetAll()
+        {
+            string routeId;
             var cacheKey = "FullStandardsAPI";
 
             var cacheEntry = await _standardsCacheService.RetrieveFromCache<List<ApiApprenticeshipStandard>>(cacheKey);
@@ -51,16 +59,16 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                 var fatStandardIds = (await GetAllIds()).ToList();
                 //Remove any null objects returned by the API and any which dont exist in FAT
                 cacheEntry = cacheEntry.Where(w => w != null && fatStandardIds.Contains(w.LarsCode.ToString())).ToList();
-         
+
                 // Save data in cache.
-                await _standardsCacheService.SaveToCache(cacheKey, cacheEntry, new TimeSpan(30, 0, 0, 0), new TimeSpan(1, 0, 0, 0));
+                await _standardsCacheService.SaveToCache(cacheKey, cacheEntry, new TimeSpan(30, 0, 0, 0),
+                    new TimeSpan(1, 0, 0, 0));
             }
 
             cacheEntry = cacheEntry.Where(c =>
-                c.Status.ToLower() == "approved for delivery" & c.Route.ToLower() == routeId.ToLower() & c.LarsCode != 0).ToList();
-
-            return cacheEntry.Select(_standardsMapper.Map)
+                    c.Status.ToLower() == "approved for delivery" & c.LarsCode != 0)
                 .ToList();
+            return cacheEntry.Select(_standardsMapper.Map).ToList();
         }
 
         private async Task<IEnumerable<string>> GetAllIds()

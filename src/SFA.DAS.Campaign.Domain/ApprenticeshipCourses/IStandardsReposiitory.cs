@@ -7,5 +7,6 @@ namespace SFA.DAS.Campaign.Domain.ApprenticeshipCourses
     {
         Task<List<StandardResultItem>> GetBySearchTerm(string searchTerm);
         Task<List<StandardResultItem>> GetByRoute(string routeId);
+        Task<List<StandardResultItem>> GetAll();
     }
 }

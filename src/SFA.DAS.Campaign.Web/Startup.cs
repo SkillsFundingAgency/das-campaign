@@ -96,6 +96,7 @@ namespace SFA.DAS.Campaign.Web
                 .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
 
 
+
             services.AddMiniProfiler(options =>
             {
                 // ALL of this is optional. You can simply call .AddMiniProfiler() for all defaults
