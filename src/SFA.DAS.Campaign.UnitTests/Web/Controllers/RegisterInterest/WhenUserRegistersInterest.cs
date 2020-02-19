@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Primitives;
 using Moq;
 using NUnit.Framework;
@@ -38,7 +39,9 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 Route = RouteType.Apprentice,
                 LastName = "test",
                 AcceptTandCs = true,
+                ShowRouteQuestion = false
             };
+
             _userDataCollection = new Mock<IUserDataCollection>();
 
             var cookies = new RequestCookieCollection(new Dictionary<string, string>{{ "_ga", ExpectedCookieId } } );
@@ -55,12 +58,16 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             _controller = new RegisterInterestController(_userDataCollection.Object)
             {
                 Url = mockUrlHelper.Object,
-                ControllerContext = {HttpContext = _httpContext.Object,
-                ActionDescriptor = new ControllerActionDescriptor
-                {
-                    ControllerName = "register-interest"
-                }}
+                ControllerContext = {
+                    HttpContext = _httpContext.Object,
+                    ActionDescriptor = new ControllerActionDescriptor
+                    {
+                        ControllerName = "register-interest"
+                    },
+                    RouteData = new RouteData()
+                }
             };
+
         }
 
         [Test]
@@ -99,7 +106,9 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                     ActionDescriptor = new ControllerActionDescriptor
                     {
                         ControllerName = "register-interest"
-                    }}
+                    },
+                    RouteData = new RouteData()
+                }
             };
 
             //Act
@@ -126,7 +135,10 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             _controller = new RegisterInterestController(_userDataCollection.Object)
             {
                 Url = mockUrlHelper.Object,
-                ControllerContext = { HttpContext = _httpContext.Object }
+                ControllerContext = { 
+                    HttpContext = _httpContext.Object,
+                    RouteData = new RouteData()
+                }
             };
 
             //Act
@@ -163,7 +175,9 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                     ActionDescriptor = new ControllerActionDescriptor
                     {
                         ControllerName = "register-interest"
-                    }}
+                    },
+                    RouteData = new RouteData()
+                }
             };
 
             //Act
@@ -200,7 +214,9 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                     ActionDescriptor = new ControllerActionDescriptor
                     {
                         ControllerName = "register-interest"
-                    }}
+                    },
+                    RouteData = new RouteData()
+                }
             };
 
             //Act
@@ -242,7 +258,9 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                     ActionDescriptor = new ControllerActionDescriptor
                     {
                         ControllerName = "register-interest"
-                    }}
+                    },
+                    RouteData = new RouteData()
+                }
             };
 
             //Act
@@ -286,7 +304,10 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
 
             _controller = new RegisterInterestController(_userDataCollection.Object)
             {
-                ControllerContext = { HttpContext = _httpContext.Object }
+                ControllerContext = { 
+                    HttpContext = _httpContext.Object,
+                    RouteData = new RouteData() 
+                }
             };
             
             //Act
@@ -311,6 +332,59 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             _userDataCollection.Verify(x => x.StoreUserData(It.IsAny<UserData>()), Times.Never);
         }
 
+        [Test]
+        public async Task Then_If_The_Model_Is_Not_Valid_And_Route_Is_Not_Known_Then_Show_Route_Question()
+        {
+            //Arrange
+            _controller.ModelState.AddModelError("FirstName", "First name");
+
+            //Act
+            var actual = await _controller.Index(_registerInterestModel);
+
+            Assert.IsNotNull(actual);
+            var viewResult = actual as ViewResult;
+            Assert.IsNotNull(viewResult);
+            var model = viewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+
+            Assert.IsTrue(model.ShowRouteQuestion);
+        }
+
+        [Test]
+        public async Task Then_If_The_Model_Is_Not_Valid_And_Route_Is_Known_Then_Dont_Show_Route_Question()
+        {
+            //Arrange
+            var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
+            mockUrlHelper
+                .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
+                .Returns(ExpectedDefaultUrl).Verifiable();
+
+            _controller = new RegisterInterestController(_userDataCollection.Object)
+            {
+                Url = mockUrlHelper.Object,
+                ControllerContext = {
+                    HttpContext = _httpContext.Object,
+                    ActionDescriptor = new ControllerActionDescriptor
+                    {
+                        ControllerName = "register-interest"
+                    },
+                    RouteData = new RouteData( new RouteValueDictionary{ {"route","apprentice" } })
+                }
+            };
+
+            _controller.ModelState.AddModelError("FirstName", "First name");
+
+            //Act
+            var actual = await _controller.Index(_registerInterestModel);
+
+            Assert.IsNotNull(actual);
+            var viewResult = actual as ViewResult;
+            Assert.IsNotNull(viewResult);
+            var model = viewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+
+            Assert.IsFalse(model.ShowRouteQuestion);
+        }
         [Test]
         public async Task Then_If_The_UserDataCollection_Fails_Validation_The_Errors_Are_Returned_To_The_View()
         {
@@ -352,7 +426,9 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                     ActionDescriptor = new ControllerActionDescriptor
                     {
                         ControllerName = "register-interest"
-                    }}
+                    },
+                    RouteData = new Microsoft.AspNetCore.Routing.RouteData()
+                }
             };
 
             //Act
