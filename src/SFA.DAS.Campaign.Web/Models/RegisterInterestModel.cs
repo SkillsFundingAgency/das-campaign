@@ -43,6 +43,8 @@ namespace SFA.DAS.Campaign.Web.Models
 
         public int Version { get; set; }
 
+        public bool ShowRouteQuestion { get; set; }
+
         private Dictionary<string, string> GetValidationMessages()
         {
             return new Dictionary<string, string>

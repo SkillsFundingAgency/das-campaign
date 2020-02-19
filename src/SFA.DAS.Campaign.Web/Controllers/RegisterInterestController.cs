@@ -26,11 +26,10 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [HttpGet]
         [HttpGet("{route}")]
         [HttpGet("{route}/{version}")]
-        public IActionResult Index(RouteType route = RouteType.None, int version = 1 )
+        public IActionResult Index(RouteType route = RouteType.None, int version = 1)
         {
             var url = Request.Headers["Referer"].ToString();
 
-            
             string controllerName = "Home";
             string actionName = "Index";
 
@@ -54,18 +53,21 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 url = HttpUtility.UrlDecode(Url.Action(actionName, controllerName)) + uri.Query;
 
             }
-            return View($"IndexV{version}", new RegisterInterestModel(url, version, route ) );
+
+            return View($"IndexV{version}", new RegisterInterestModel(url, version, route));
         }
 
         [HttpPost]
         [HttpPost("{route}")]
         [HttpPost("{route}/{version}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index (RegisterInterestModel registerInterest)
+        public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {
             if (!ModelState.IsValid)
-            {
-                return View($"IndexV{registerInterest.Version}",registerInterest);
+            { 
+                registerInterest.ShowRouteQuestion = this.RouteData.Values.ContainsKey("route") == false;
+
+                return View($"IndexV{registerInterest.Version}", registerInterest);
             }
 
             try
@@ -75,7 +77,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                     FirstName = registerInterest.FirstName,
                     LastName = registerInterest.LastName,
                     Email = registerInterest.Email,
-                    CookieId = !string.IsNullOrEmpty(HttpContext.Request.Cookies["_ga"]) ? HttpContext.Request.Cookies["_ga"] : "not-available", 
+                    CookieId = !string.IsNullOrEmpty(HttpContext.Request.Cookies["_ga"]) ? HttpContext.Request.Cookies["_ga"] : "not-available",
                     RouteId = ((int)registerInterest.Route).ToString(),
                     Consent = registerInterest.AcceptTandCs
                 });
