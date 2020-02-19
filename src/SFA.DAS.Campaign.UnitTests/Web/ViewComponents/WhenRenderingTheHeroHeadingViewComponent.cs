@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ViewComponents;
+﻿using System;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 using NUnit.Framework;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
@@ -11,19 +12,23 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
     public class WhenRenderingTheHeroHeadingViewComponent
     {
         private HeroHeadingViewComponent _sut;
+        private HeroHeadingViewModel _sutModel;
 
         [SetUp]
         public void Arrange()
         {
             _sut = new HeroHeadingViewComponent();
+            _sutModel = new HeroHeadingViewModel();
+            
+
         }
 
         [Test]
         public void When_Default_Then_The_Type_Is_None_And_No_Caption()
         {
-            var headingType = HeroHeadingType.None;
+            _sutModel.Type = HeroHeadingType.None;
             //Act
-            var actual = _sut.Invoke(headingType, null,null,null,null);
+            var actual = _sut.Invoke(_sutModel);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -34,18 +39,18 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsInstanceOf<HeroHeadingViewModel>(result.ViewData.Model);
             var headingViewModel = (HeroHeadingViewModel) result.ViewData.Model;
 
-            Assert.AreEqual(headingType, headingViewModel.Type);
-            Assert.IsNull(headingViewModel.Caption);
+            Assert.AreEqual(_sutModel.Type, headingViewModel.Type);
+            Assert.AreEqual(String.Empty,headingViewModel.Caption);
 
         }
 
         [Test]
         public void When_Apprentice_Then_The_Type_Is_Apprentice_And_Caption_Is_Apprentice()
         {
-            var headingType = HeroHeadingType.Apprentice;
-            var caption = "Apprentice";
+            _sutModel.Type = HeroHeadingType.Apprentice;
+            _sutModel.Caption = "Apprentice";
             //Act
-            var actual = _sut.Invoke(headingType, null, null, null,null);
+            var actual = _sut.Invoke(_sutModel);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -56,17 +61,17 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsInstanceOf<HeroHeadingViewModel>(result.ViewData.Model);
             var headingViewModel = (HeroHeadingViewModel)result.ViewData.Model;
 
-            Assert.AreEqual(headingType, headingViewModel.Type);
-            Assert.AreEqual(caption,headingViewModel.Caption);
+            Assert.AreEqual(_sutModel.Type, headingViewModel.Type);
+            Assert.AreEqual(_sutModel.Caption, headingViewModel.Caption);
         }
 
         [Test]
         public void When_Employer_Then_The_Type_Is_Employer_And_Caption_Is_Employer()
         {
-            var headingType = HeroHeadingType.Employer;
-            var caption = "Employer";
+            _sutModel.Type = HeroHeadingType.Apprentice;
+            _sutModel.Caption = "Employer";
             //Act
-            var actual = _sut.Invoke(headingType, null, null, null,null);
+            var actual = _sut.Invoke(_sutModel);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -77,17 +82,17 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsInstanceOf<HeroHeadingViewModel>(result.ViewData.Model);
             var headingViewModel = (HeroHeadingViewModel)result.ViewData.Model;
 
-            Assert.AreEqual(headingType, headingViewModel.Type);
-            Assert.AreEqual(caption, headingViewModel.Caption);
+            Assert.AreEqual(_sutModel.Type, headingViewModel.Type);
+            Assert.AreEqual(_sutModel.Caption, headingViewModel.Caption);
         }
 
         [Test]
         public void When_Employer_And_Custom_Caption_Then_The_Type_Is_Employer_And_Caption_Custom()
         {
-            var headingType = HeroHeadingType.Employer;
-            var caption = "Custom";
+            _sutModel.Type = HeroHeadingType.Employer;
+            _sutModel.Caption = "Custom";
             //Act
-            var actual = _sut.Invoke(headingType, caption, null, null,null);
+            var actual = _sut.Invoke(_sutModel);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -98,18 +103,18 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsInstanceOf<HeroHeadingViewModel>(result.ViewData.Model);
             var headingViewModel = (HeroHeadingViewModel)result.ViewData.Model;
 
-            Assert.AreEqual(headingType, headingViewModel.Type);
-            Assert.AreEqual(caption, headingViewModel.Caption);
+            Assert.AreEqual(_sutModel.Type, headingViewModel.Type);
+            Assert.AreEqual(_sutModel.Caption, headingViewModel.Caption);
         }
 
         [Test]
         public void When_Apprentice_And_Custom_Caption_Then_The_Type_Is_Apprentice_And_Caption_Custom()
         {
-            var headingType = HeroHeadingType.Apprentice;
-            var caption = "Custom";
+            _sutModel.Type = HeroHeadingType.Apprentice;
+            _sutModel.Caption = "Custom";
 
             //Act
-            var actual = _sut.Invoke(headingType, caption, null, null,null);
+            var actual = _sut.Invoke(_sutModel);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -120,19 +125,20 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsInstanceOf<HeroHeadingViewModel>(result.ViewData.Model);
             var headingViewModel = (HeroHeadingViewModel)result.ViewData.Model;
 
-            Assert.AreEqual(headingType, headingViewModel.Type);
-            Assert.AreEqual(caption, headingViewModel.Caption);
+            Assert.AreEqual(_sutModel.Type, headingViewModel.Type);
+            Assert.AreEqual(_sutModel.Caption, headingViewModel.Caption);
         }
 
         [Test]
         public void When_Employer_And_Custom_Class_Then_The_Type_Is_Employer_And_Class_Custom()
         {
-            var headingType = HeroHeadingType.Employer;
-            var customClasses = "custom-employer-class";
+            _sutModel.Type = HeroHeadingType.Employer;
+            var customClass = "custom-employer-class";
+            _sutModel.Class = customClass;
+            var actualClass = "hero-heading__caption--employer " + customClass;
 
-            var actualClass = "hero-heading__caption--employer " + customClasses;
             //Act
-            var actual = _sut.Invoke(headingType, null, customClasses, null,null);
+            var actual = _sut.Invoke(_sutModel);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -143,18 +149,19 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsInstanceOf<HeroHeadingViewModel>(result.ViewData.Model);
             var headingViewModel = (HeroHeadingViewModel)result.ViewData.Model;
 
-            Assert.AreEqual(headingType, headingViewModel.Type);
+            Assert.AreEqual(_sutModel.Type, headingViewModel.Type);
             Assert.AreEqual(actualClass, headingViewModel.Class);
         }
 
         [Test]
         public void When_Apprentice_And_Custom_Class_Then_The_Type_Is_Apprentice_And_Class_Custom()
         {
-            var headingType = HeroHeadingType.Apprentice;
-            var customClasses = "custom-apprentice-class";
-            var actualClass = "hero-heading__caption--apprentice " + customClasses;
+            _sutModel.Type = HeroHeadingType.Apprentice;
+            var customClass = "custom-apprentice-class";
+            _sutModel.Class = customClass;
+            var actualClass = "hero-heading__caption--apprentice " + customClass;
             //Act
-            var actual = _sut.Invoke(headingType, null, customClasses, null,null);
+            var actual = _sut.Invoke(_sutModel);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -165,17 +172,17 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsInstanceOf<HeroHeadingViewModel>(result.ViewData.Model);
             var headingViewModel = (HeroHeadingViewModel)result.ViewData.Model;
 
-            Assert.AreEqual(headingType, headingViewModel.Type);
+            Assert.AreEqual(_sutModel.Type, headingViewModel.Type);
             Assert.AreEqual(actualClass, headingViewModel.Class);
         }
 
         [Test]
         public void When_Content_Then_Content_Is_Populated()
         {
-            var headingType = HeroHeadingType.Employer;
-            var content = customContent();
+            _sutModel.Type = HeroHeadingType.Apprentice;
+            _sutModel.Content = customContent();
             //Act
-            var actual = _sut.Invoke(headingType, null, null, content,null);
+            var actual = _sut.Invoke(_sutModel);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -186,10 +193,36 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             Assert.IsInstanceOf<HeroHeadingViewModel>(result.ViewData.Model);
             var headingViewModel = (HeroHeadingViewModel)result.ViewData.Model;
 
-            Assert.AreEqual(headingType, headingViewModel.Type);
-            Assert.AreEqual(content.ToString(), headingViewModel.Content.ToString());
+            Assert.AreEqual(_sutModel.Type, headingViewModel.Type);
+            Assert.AreEqual(_sutModel.Content.ToString(), headingViewModel.Content.ToString());
         }
 
+        [Test]
+        public void When_Employer_With_Image_Then_Image_Is_Added_To_Header()
+        {
+            _sutModel.Type = HeroHeadingType.Employer;
+            _sutModel.Content = customContent();
+            _sutModel.ImageUrl = "testimage.jpg";
+            _sutModel.ImageAltText = "Header image description";
+
+
+
+            //Act
+            var actual = _sut.Invoke(_sutModel);
+
+            //Assert
+            Assert.IsNotNull(actual);
+            var result = actual as ViewViewComponentResult;
+            Assert.IsNotNull(result);
+
+            Assert.IsInstanceOf<HeroHeadingViewModel>(result.ViewData.Model);
+            var headingViewModel = (HeroHeadingViewModel)result.ViewData.Model;
+
+            Assert.AreEqual(HeroHeadingType.Employer, headingViewModel.Type);
+            Assert.AreEqual(_sutModel.Content.ToString(), headingViewModel.Content.ToString());
+            Assert.AreEqual(_sutModel.ImageUrl, headingViewModel.ImageUrl);
+            Assert.AreEqual(_sutModel.ImageAltText, headingViewModel.ImageAltText);
+        }
 
         private IHtmlContent customContent()
         {

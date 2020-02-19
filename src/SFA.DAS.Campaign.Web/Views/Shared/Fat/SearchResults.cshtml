@@ -1,5 +1,6 @@
 ﻿
 @using System.Web
+@using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults
 @inject Sfa.Das.Sas.Shared.Components.Orchestrators.IFatOrchestrator _fat;
@@ -28,7 +29,7 @@
 }
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer })
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Employer })
 }
 
 @if(searchResults.TotalResults == 0){

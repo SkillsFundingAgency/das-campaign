@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Html
 @using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @model object
 @{
@@ -79,7 +80,7 @@
 }
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new { type = HeroHeadingType.Employer, content = HeroHeadingContent() })
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Employer, Content = HeroHeadingContent() })
 }
 
 @section Resources {
