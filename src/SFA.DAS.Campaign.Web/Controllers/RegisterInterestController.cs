@@ -23,46 +23,53 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _userDataCollection = userDataCollection;
         }
 
-        [HttpGet("index/{version}")]
-        public IActionResult Index(int version = 1)
+        [HttpGet]
+        [HttpGet("{route}")]
+        [HttpGet("{route}/{version}")]
+        public IActionResult Index(RouteType route = RouteType.None, int version = 1)
         {
-
-
             var url = Request.Headers["Referer"].ToString();
+
+            string controllerName = "Home";
+            string actionName = "Index";
 
             if (url == string.Empty
                 || url.Contains(ControllerContext.ActionDescriptor.ControllerName, StringComparison.CurrentCultureIgnoreCase))
             {
-                url = Url.Action("Index", "Home");
+                url = Url.Action(actionName, controllerName);
             }
             else
             {
                 var uri = new Uri(url);
 
-                var controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/", "");
-                var actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/", "");
-                
+                controllerName = uri.Segments.Skip(1).Take(1).SingleOrDefault() == null ? "Home" : uri.Segments[1].Replace("/", "");
+                actionName = uri.Segments.Skip(2).Take(1).SingleOrDefault() == null ? "Index" : uri.Segments[2].Replace("/", "");
+
                 if (uri.Segments.Length == 6)
                 {
                     actionName += $"/{string.Join("", uri.Segments.Skip(3).Take(3))}";
                 }
-               
 
-                url = HttpUtility.UrlDecode(Url.Action(actionName, controllerName) ) + uri.Query;
+                url = HttpUtility.UrlDecode(Url.Action(actionName, controllerName)) + uri.Query;
+
             }
 
-            return View($"IndexV{version}", new RegisterInterestModel { ReturnUrl = url, Version = version});
+            return View($"IndexV{version}", new RegisterInterestModel(url, version, route));
         }
 
-        [HttpPost("index/{version}")]
+        [HttpPost]
+        [HttpPost("{route}")]
+        [HttpPost("{route}/{version}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index (RegisterInterestModel registerInterest)
+        public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {
             if (!ModelState.IsValid)
-            {
-                return View($"IndexV{registerInterest.Version}",registerInterest);
+            { 
+                registerInterest.ShowRouteQuestion = this.RouteData.Values.ContainsKey("route") == false;
+
+                return View($"IndexV{registerInterest.Version}", registerInterest);
             }
-          
+
             try
             {
                 await _userDataCollection.StoreUserData(new UserData
@@ -70,8 +77,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
                     FirstName = registerInterest.FirstName,
                     LastName = registerInterest.LastName,
                     Email = registerInterest.Email,
-                    CookieId = !string.IsNullOrEmpty(HttpContext.Request.Cookies["_ga"]) ? HttpContext.Request.Cookies["_ga"] : "not-available", 
-                    RouteId = registerInterest.Route,
+                    CookieId = !string.IsNullOrEmpty(HttpContext.Request.Cookies["_ga"]) ? HttpContext.Request.Cookies["_ga"] : "not-available",
+                    RouteId = ((int)registerInterest.Route).ToString(),
                     Consent = registerInterest.AcceptTandCs
                 });
             }
@@ -85,7 +92,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 return View(registerInterest);
             }
 
-            if (registerInterest.Route == "2")
+            if (registerInterest.Route == RouteType.Employer)
             {
                 return RedirectToAction("downloads", registerInterest);
             }

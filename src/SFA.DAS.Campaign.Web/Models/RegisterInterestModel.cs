@@ -8,14 +8,15 @@ namespace SFA.DAS.Campaign.Web.Models
     {
         public RegisterInterestModel()
         {
-            ValidationMessages = new Dictionary<string, string>
-            {
-                {"FirstName", "Enter your first name"},
-                {"LastName", "Enter your last name"},
-                {"Email", "Enter your email address"},
-                {"Route", "Select if you want to become an apprentice or employ an apprentice"},
-                {"AcceptTandCs", "Confirm you would like to receive more information and are over 13 years old"}
-            };
+            ValidationMessages = GetValidationMessages();
+        }
+
+        public RegisterInterestModel(string returnUrl, int version, RouteType route)
+        {
+            ReturnUrl = returnUrl;
+            Version = version;
+            Route = route;
+            ValidationMessages = GetValidationMessages();
         }
 
         public Dictionary<string, string> ValidationMessages { get; internal set; }
@@ -31,8 +32,9 @@ namespace SFA.DAS.Campaign.Web.Models
         [DisplayName("Email address")]
         public string Email { get; set; }
         [Required]
+        [Range((int)RouteType.Apprentice, (int)RouteType.Employer)]
         [DisplayName("Registration type")]
-        public string Route { get; set; }
+        public RouteType Route { get; set; }
         [Required]
         [Range(typeof(bool), "true", "true", ErrorMessage = "You need to accept terms and conditions")]
         public bool AcceptTandCs { get; set; }
@@ -40,5 +42,28 @@ namespace SFA.DAS.Campaign.Web.Models
         public string ReturnUrl { get; set; }
 
         public int Version { get; set; }
+
+        public bool ShowRouteQuestion { get; set; }
+
+        private Dictionary<string, string> GetValidationMessages()
+        {
+            return new Dictionary<string, string>
+            {
+                {"FirstName", "Enter your first name"},
+                {"LastName", "Enter your last name"},
+                {"Email", "Enter your email address"},
+                {"Route", "Select if you want to become an apprentice or employ an apprentice"},
+                {"AcceptTandCs", "Confirm you would like to receive more information" }
+            };
+        }
     }
+
+    public enum RouteType
+    {
+        None = 0,
+        Apprentice = 1,
+        Parent = 1,
+        Employer = 2
+    }
+
 }
