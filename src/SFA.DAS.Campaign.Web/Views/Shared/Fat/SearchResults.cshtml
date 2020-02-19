@@ -3,28 +3,59 @@
 @using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults
+@inject Sfa.Das.Sas.Shared.Components.Orchestrators.IFatOrchestrator _fat;
+
 @{
+    FatSearchResultsViewModel searchResults = await _fat.GetSearchResults(Model);
+
     ViewBag.Title = "Search results";
     ViewBag.MetaTitle = "Find an apprenticeship";
     ViewBag.PageID = "employer-find-an-apprenticeship-search-results";
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
     ViewBag.PageUrl = "/employer/find-apprenticeships?Keywords=" + HttpUtility.UrlEncode(Context.Request.Query["Keywords"]);
-    Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 3;
+    Layout = searchResults.TotalResults == 0 ? "_LayoutContentFull" : "_LayoutContentSidebar";
 }
-@await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model })
+
+@if(searchResults.TotalResults == 0){
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+            @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model })  
+        </div>
+    </div>
+} else {
+    @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model })
+}
 
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Employer })
 }
 
-
-@section Sidebar{
-    <div class="sidebar-panel sidebar-panel--dark">
-        <div class="sidebar-panel__content">
-            @await Component.InvokeAsync("FatSearchFilter", new { searchQueryModel = Model })
-
+@if(searchResults.TotalResults == 0){
+    @section pageFooter {
+        <div class="promotion promotion--employer">
+            <div class="promotion__content">
+                <h2 class="heading-m promotion__heading">Can't find what you're looking for</h2>
+                <p>
+                    If the standard you're looking for doesn't exist yet, you could develop it as part of a <strong>'trailblazer group'</strong>.
+                    You'll work with other employers to make sure the new standard meets your skill needs, the needs of your sector and those of the economy.
+                </p>
+                <a href="https://www.instituteforapprenticeships.org/developing-new-apprenticeships/forming-a-trailblazer-group" class="button button--inverted" target="_blank">Develop a new standard</a>
+            </div>
+            <div class="promotion__hero-image-wrap">
+                <img src="/campaign/images/employer/hajra-hero-1.jpg" alt="" class="promotion__hero-image" />
+            </div>
         </div>
-    </div>
+    }
+}
+
+@if(searchResults.TotalResults > 0) {
+    @section Sidebar {
+        <div class="sidebar-panel sidebar-panel--dark">
+            <div class="sidebar-panel__content">
+                @await Component.InvokeAsync("FatSearchFilter", new { searchQueryModel = Model })
+            </div>
+        </div>
+    }
 }

@@ -26,7 +26,8 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         private const string ExpectedCookieId = "123FDSF.123";
         private const string ExpectedReferrerUrl = "http://test/cpg/test";
         private const string ExpectedDefaultUrl = "http://test/cpg/test";
-
+        private const string ExpectedVacancySearchReferrerURl = "http://test/cpg/SearchResults/standard/postcode/distance";
+        
         [SetUp]
         public void Arrange()
         {
@@ -142,7 +143,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         }
 
         [Test]
-        public void Then_When_Viewing_The_RegisterInterest_Form_Only_The_Controller_And_Action_Segments_Are_Used()
+        public void Then_When_Viewing_The_RegisterInterest_Form_The_Controller_And_Action_Segments_Are_Used()
         {
             //Arrange
             var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
@@ -211,10 +212,52 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             Assert.IsNotNull(viewResult);
             var model = viewResult.Model as RegisterInterestModel;
             Assert.IsNotNull(model);
-            
+
+            Assert.AreEqual(ExpectedDefaultUrl, model.ReturnUrl);
             mockUrlHelper.Verify(x=>x.Action(It.Is<UrlActionContext>(c=>c.Action.Equals("Index") && c.Controller.Equals("Home"))));
         }
 
+        [Test]
+        public void When_clicking_register_interest_from_a_search_result_page_then_query_string_is_appended()
+        {
+            //Arrange
+            var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
+            mockUrlHelper
+                .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
+                .Returns(ExpectedDefaultUrl).Verifiable();
+
+            var ExpectedRefererUrlWithQuerystring = $"{ExpectedDefaultUrl}?Postcode=CV1+2WT";
+
+            _httpContext.Setup(x => x.Request.Headers)
+                .Returns(new HeaderDictionary(new Dictionary<string, StringValues>
+                {
+                    { "Referer", ExpectedRefererUrlWithQuerystring }
+                }));
+
+            _controller = new RegisterInterestController(_userDataCollection.Object)
+            {
+                Url = mockUrlHelper.Object,
+                ControllerContext = {
+                    HttpContext = _httpContext.Object,
+                    ActionDescriptor = new ControllerActionDescriptor
+                    {
+                        ControllerName = "register-interest"
+                    }}
+            };
+
+            //Act
+            var actual = _controller.Index(1);
+
+            //Assert
+            Assert.IsNotNull(actual);
+
+            var viewResult = actual as ViewResult;
+            Assert.IsNotNull(viewResult);
+
+            var model = viewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(ExpectedRefererUrlWithQuerystring, model.ReturnUrl);
+        }
         [Test]
         public async Task Then_StoreData_Is_Called_On_The_UserDataCollection_Service()
         {
@@ -286,6 +329,44 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             Assert.IsNotNull(actualViewResult);
             Assert.IsFalse(actualViewResult.ViewData.ModelState.IsValid);
             Assert.IsTrue(actualViewResult.ViewData.ModelState.ContainsKey("Email"));
+        }
+        
+        [Test]
+        public async Task When_Referring_From_An_FAA_Vacancy_Search_The_Full_Url_Is_Returned()
+        {
+            //Arrange
+            var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
+            mockUrlHelper
+                .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
+                .Returns(ExpectedDefaultUrl).Verifiable();
+            _httpContext.Setup(x => x.Request.Headers)
+                .Returns(new HeaderDictionary(new Dictionary<string, StringValues>
+                {
+                    { "Referer", ExpectedVacancySearchReferrerURl }
+                }));
+            _controller = new RegisterInterestController(_userDataCollection.Object)
+            {
+                Url = mockUrlHelper.Object,
+                ControllerContext = {
+                    HttpContext = _httpContext.Object,
+                    ActionDescriptor = new ControllerActionDescriptor
+                    {
+                        ControllerName = "register-interest"
+                    }}
+            };
+
+            //Act
+            var actual = _controller.Index(1);
+
+            //Assert
+            Assert.IsNotNull(actual);
+            var viewResult = actual as ViewResult;
+            Assert.IsNotNull(viewResult);
+            var model = viewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+
+            Assert.AreEqual(ExpectedDefaultUrl, model.ReturnUrl);
+            mockUrlHelper.Verify(x => x.Action(It.Is<UrlActionContext>(c => c.Action.Equals("SearchResults/standard/postcode/distance") && c.Controller.Equals("cpg"))));
         }
     }
 }
