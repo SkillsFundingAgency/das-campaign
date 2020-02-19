@@ -25,7 +25,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Mappers
                     Id = item.LarsCode,
                     Duration = item.TypicalDuration,
                     Title = item.Title,
-                    Level = item.Level
+                    Level = item.Level,
+                    Route = item.Route,
                 };
             }
             catch (System.Exception ex)
