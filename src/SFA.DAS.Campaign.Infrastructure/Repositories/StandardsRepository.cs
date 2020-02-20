@@ -41,7 +41,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         {
             var standardIds = await GetAll();
 
-            return standardIds.Where(w => w.Route.ToLower() == routeId).ToList();
+            var standardRoutes = standardIds.Where(w => w.Route.ToLower() == routeId.ToLower()).ToList();
+            return standardRoutes;
         }
 
         public async Task<List<StandardResultItem>> GetAll()
