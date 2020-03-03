@@ -100,10 +100,14 @@ ul#vacancy-search-results {
     margin-top: -115px;
 }
 
-    #map-canvas .gm-style > div:nth-child(2), [data-google-map-component] .gm-style > div:nth-child(2) {
-        bottom: 30px !important;
-        left: 195px !important;
-    }
-        #map-canvas .gm-style > div:nth-child(2):div div, [data-google-map-component] .gm-style > div:nth-child(2):div div {
-            cursor: default;
-        }
+
+.main-content-section {
+    padding: 5px 0 0 20px;
+    width: 107%;
+    left: -57px;
+    position: relative;
+}
+
+.main-content-section:after {
+    content: none;
+}

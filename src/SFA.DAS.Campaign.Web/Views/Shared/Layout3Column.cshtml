@@ -1,0 +1,24 @@
+﻿@model SFA.DAS.Campaign.Web.Models.CMS.Layout3Column
+
+<div class="grid-row">
+    <div class="grid-column-one-third">
+        @foreach (var module in Model.Column1)
+        {
+            @Html.Partial(module.GetType().Name, module)
+        }
+    </div>
+
+    <div class="grid-column-one-third">
+        @foreach (var module in Model.Column2)
+        {
+            @Html.Partial(module.GetType().Name, module)
+        }
+    </div>
+
+    <div class="grid-column-one-third">
+        @foreach (var module in Model.Column3)
+        {
+            @Html.Partial(module.GetType().Name, module)
+        }
+    </div>
+</div>

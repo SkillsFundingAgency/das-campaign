@@ -1,0 +1,30 @@
+﻿@model SFA.DAS.Campaign.Web.Models.CMS.SectionCompanies
+
+@{
+
+    var a = new Random();
+    var randomList = new List<int>();
+    int MyNumber = 0;
+
+    while (randomList.Count != Model.NumberToShow)
+    {
+        MyNumber = a.Next(0, Model.RealStories.Count);
+        if (!randomList.Contains(MyNumber))
+        {
+            randomList.Add(MyNumber);
+        }
+    }
+
+}
+
+<div class="main-content-section">
+    <h2 class="heading-m">@Model.Title</h2>
+    <div class="grid-row-full-width card__collection--grey card-stories__collection card-stories--employer">
+        @foreach (var index in randomList)
+        {
+            var module = Model.RealStories[index];
+
+            @Html.Partial(module.GetType().Name, module)
+        }
+    </div>
+</div>

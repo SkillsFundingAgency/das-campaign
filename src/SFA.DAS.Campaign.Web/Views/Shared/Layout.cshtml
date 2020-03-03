@@ -1,0 +1,9 @@
+﻿@model SFA.DAS.Campaign.Web.Models.CMS.Layout
+<div class="grid-row">
+    <div class="grid-column-full">
+        @foreach (var module in Model.ContentModules)
+        {
+            @Html.Partial(module.GetType().Name, module)
+        }
+    </div>
+</div>

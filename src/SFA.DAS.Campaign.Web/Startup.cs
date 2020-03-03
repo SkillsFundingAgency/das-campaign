@@ -34,7 +34,14 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
+using System.Reflection;
+using Contentful.AspNetCore;
+using Contentful.Core;
+using Contentful.Core.Models;
+using SFA.DAS.Campaign.Web.Configuration;
+using SFA.DAS.Campaign.Web.ViewModels.CMS;
 using VacanciesApi;
+using CampaignsHtmlRenderer = SFA.DAS.Campaign.Web.Models.CampaignsHtmlRenderer;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -185,6 +192,21 @@ namespace SFA.DAS.Campaign.Web
 
                 healthChecks.AddRedis(connectionStrings.SharedRedis, "redis-app-cache-check");
             }
+
+
+
+            //Contentful services
+
+            // This would normally not be needed, but since we want to load our ContentfulOptions from memory if they're changed within the application
+            // we provide our own implementation logic for the IContentfulClient
+            services.AddSingleton<IContentfulOptionsManager, ContentfulOptionsManager>();
+            services.AddContentful(Configuration);
+
+
+            services.AddTransient<CampaignsHtmlRenderer>();
+
+            services.AddTransient<IPageOrchestrator, PageOrchestrator>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,15 @@
+﻿@model SFA.DAS.Campaign.Web.Models.CMS.Company
+
+<div class="card-stories card-stories--company card-stories--employer">
+    <div class="card-stories__image" style="height:130px">
+        <span class="card-stories__img">
+            <img src="@Model.Image?.File?.Url" alt="@Model.Image?.Description" style="width: 100%;"/>
+        </span>
+    </div>
+    <div class="card-stories__content">
+        <h2 class="card-stories__headline heading-l">@Model.CompanyName</h2>
+       <contentful-rich-text-campaigns document="@Model.Description"></contentful-rich-text-campaigns>
+       
+
+    </div>
+</div>  

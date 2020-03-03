@@ -1,0 +1,20 @@
+﻿@model SFA.DAS.Campaign.Web.Models.CMS.RealStories
+
+<div class="card-stories card-stories--employer">
+    <div class="card-stories__image">
+        <span class="card-stories__img">
+            <img src="@Model.Image?.File?.Url" alt="@Model.Image?.Description"/>
+        </span>
+    </div>
+    <div class="card-stories__content">
+        <h2 class="card-stories__headline heading-l">@Model.Headline</h2>
+       <contentful-rich-text-campaigns document="@Model.ShortContent"></contentful-rich-text-campaigns>
+        <div class="card-stories__cite">
+            @Model.Name
+            <span class="card-stories__cite-detail">
+                @Model.Position, @Model.Company
+            </span>
+        </div>
+
+    </div>
+</div> 

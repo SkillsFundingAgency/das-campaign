@@ -1,24 +1,33 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using SFA.DAS.Campaign.Web.ViewModels.CMS;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     [Route("employer")]
     public class EmployerController : Controller
     {
-        [Route("how-much-is-it-going-to-cost")]
-        public IActionResult HowMuchIsItGoingToCost()
+        private readonly IPageOrchestrator _pageOrchestrator;
+
+        public EmployerController(IPageOrchestrator pageOrchestrator)
         {
-            return View();
+            _pageOrchestrator = pageOrchestrator;
+        }
+
+        [Route("how-much-is-it-going-to-cost")]
+        public async Task<IActionResult> HowMuchIsItGoingToCost()
+        {
+           return View("Page",await _pageOrchestrator.Get("how-much-will-it-cost"));
         }
         [Route("the-right-apprenticeship")]
-        public IActionResult TheRightApprenticeship()
+        public async Task<IActionResult> TheRightApprenticeship()
         {
-            return View();
+            return View("Page", await _pageOrchestrator.Get("the-right-apprenticeship"));
         }
         [Route("choose-training-provider")]
-        public IActionResult ChooseATrainingProvider()
+        public async Task<IActionResult> ChooseATrainingProvider()
         {
-            return View();
+            return View("Page", await _pageOrchestrator.Get("choose-a-training-provider"));
         }
         [Route("hire-an-apprentice")]
         public IActionResult HireAnApprentice()
@@ -46,6 +55,13 @@ namespace SFA.DAS.Campaign.Web.Controllers
         public IActionResult FindApprenticeshipTraining()
         {
             return View();
+        }
+
+        [Route("test")]
+        public async Task<IActionResult> Test()
+        {
+            return View("Page", await _pageOrchestrator.Get("matts-new-employer-page"));
+
         }
     }
 }

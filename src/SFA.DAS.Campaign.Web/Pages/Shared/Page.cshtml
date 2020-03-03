@@ -1,0 +1,40 @@
+﻿@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model SFA.DAS.Campaign.Web.ViewModels.CMS.PageViewModel
+@{
+    Layout = "_LayoutContentFullCms";
+    ViewBag.Title = Model.Page.Title;
+    ViewBag.Section = "employer";
+    ViewBag.PageID = "employer-what-are-the-costs-to-me";
+    ViewBag.MetaTitle = Model.Page.Title;
+    ViewBag.MetaDesc = "This policy explains how accessible the Fire it up apprenticeships website is. This is published by the Education and Skills Agency (ESFA).";
+}
+
+@if (Model.Page.Modules == null || Model.Page.Modules.Count == 0)
+{
+    // @Html.Partial("NoContent")
+}
+else
+{
+    @if (Model.Page.HeroHeading != null)
+    {
+        @Html.Partial(Model.Page.HeroHeading.GetType().Name, Model.Page.HeroHeading)
+    }
+    else
+    {
+        @await Component.InvokeAsync("HeroHeading")
+    }
+
+    <div class="main-content">
+        <div class="grid-row">
+            @foreach (var module in Model.Page.Modules.Where(w => nameof(w) != "HeroHeading"))
+            {
+
+                @Html.Partial(module.GetType().Name, module)
+
+                <hr class="section-break"/>
+            }
+        </div>
+    </div>
+}
+
