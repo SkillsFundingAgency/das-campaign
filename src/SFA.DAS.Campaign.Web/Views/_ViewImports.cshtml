@@ -1,4 +1,5 @@
 ﻿@using Microsoft.Extensions.Options
+@using Microsoft.Extensions.Configuration
 @using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration
 @using SFA.DAS.Campaign.Web
 @using SFA.DAS.Campaign.Web.Models
@@ -10,3 +11,4 @@
 @addTagHelper *, MiniProfiler.AspNetCore.Mvc
 @inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
 @inject IOptions<MappingConfiguration> MappingConfig
+@inject IConfiguration Configuration
