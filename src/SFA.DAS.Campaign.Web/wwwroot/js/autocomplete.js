@@ -1,4 +1,4 @@
-var $keywordsInput = $('#Keywords');
+var $keywordsInput = $('#Keywords.input');
 var configUrl = $('body').data('fat-api');
 
     if ($keywordsInput.length > 0 && configUrl) {
