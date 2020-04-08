@@ -10,7 +10,7 @@ using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Infrastructure.HealthChecks
 {
-    public class VacancyServiceApiHealthCheck : IHealthCheck
+    public class VacancyServiceApiHealthCheck : IVacancyServiceApiHealthCheck
     {
         private readonly ILivevacanciesAPI _vacancyApiClient;
         private readonly IStandardsRepository _standardsRepository;

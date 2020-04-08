@@ -155,7 +155,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
             services.AddTransient<IIfaStandardsCacheService, IfaStandardsCacheService>();
             services.AddTransient<ICacheStorageService, CacheStorageService>();
-
+            services.AddTransient<IVacancyServiceApiHealthCheck, VacancyServiceApiHealthCheck>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 

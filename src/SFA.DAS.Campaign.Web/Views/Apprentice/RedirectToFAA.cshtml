@@ -1,0 +1,21 @@
+﻿@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@{
+    ViewData["Title"] = "Search for apprenticeships on GOV.UK";
+    ViewBag.MetaTitle = "Find an apprenticeship";
+    ViewBag.HeroImageAltText = "An apprentice in the creative industry";
+    ViewBag.PageID = "apprentice-redirect-to-faa";
+    ViewBag.Section = "apprentice";
+    ViewBag.MetaDesc = "";
+    ViewBag.PageUrl = "/apprentice/find-an-apprenticeship";
+    Layout = "_LayoutContentSidebar";
+    ViewBag.PageNavIndex = 3;
+}
+
+<div class="gov-uk-grid-row">
+    <div class="govuk-column-tow-thirds">
+        <p>We’re unable to display apprenticeship vacancies on the Fire it up website at the moment. This service will be up and running again soon, but in the meantime you can start your search on GOV.UK.</p>
+
+        <a href="https://www.gov.uk/apply-apprenticeship" target="_blank" class="button button-apprentice"> Find an apprenticeship on GOV.UK</a>
+    </div>
+</div>

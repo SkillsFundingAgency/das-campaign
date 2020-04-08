@@ -1,10 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using SFA.DAS.Campaign.Infrastructure.HealthChecks;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     [Route("apprentice")]
     public class ApprenticeController : Controller
     {
+        public IVacancyServiceApiHealthCheck _vacancyServiceApiHealthCheck;
+       
+        public ApprenticeController(IVacancyServiceApiHealthCheck healthCheck)
+        {
+            _vacancyServiceApiHealthCheck = healthCheck;
+        }
+
         [Route("what-is-an-apprenticeship")]
         public IActionResult WhatIsAnApprenticeship()
         {
@@ -16,8 +27,15 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View();
         }
         [Route("find-an-apprenticeship")]
-        public IActionResult FindAnApprenticeship()
+        public async Task<IActionResult> FindAnApprenticeship()
         {
+            var health = await _vacancyServiceApiHealthCheck.CheckHealthAsync(new HealthCheckContext(), CancellationToken.None);
+
+            if (health.Status == HealthStatus.Unhealthy)
+            {
+                return View("~/Views/Apprentice/RedirectToFAA.cshtml");
+            }
+
             return View();
         }
         [Route("application")]
