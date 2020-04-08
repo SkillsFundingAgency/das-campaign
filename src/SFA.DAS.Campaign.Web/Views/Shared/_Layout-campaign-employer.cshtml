@@ -1,5 +1,7 @@
 ﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
 @using SFA.DAS.Campaign.Web.ViewComponents.Modal
+@using Sfa.Das.Sas.Core.Configuration
+@inject IFatConfigurationSettings fatSettings;
 
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -42,7 +44,7 @@
 
 
 
-<body class="page-template" id="@ViewData["PageID"]" data-fat-api="@(Configuration["FatSharedComponents:FatApiBaseUrl"])">
+<body class="page-template" id="@ViewData["PageID"]" data-fat-api="@(fatSettings.FatApiBaseUrl)">
 
     <partial name="./Components/_GtmBody" />
 
