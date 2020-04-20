@@ -40,6 +40,8 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                     break;
             }
 
+            model.AddRemoveBasketResponse = queryModel.AddRemoveBasketResponse;
+
             return View("Default", model);
         }
     }
