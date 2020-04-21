@@ -1,4 +1,27 @@
 ﻿@model SFA.DAS.Campaign.Web.ViewComponents.ApprenticeshipHeadingViewModel
+@using Sfa.Das.Sas.ApplicationServices.Commands
+
+@if (Model.AddRemoveBasketResponse != null)
+{
+    @if (Model.AddRemoveBasketResponse.BasketOperation == BasketOperation.Added)
+    {
+        <div class="toast">
+            <span class="toast__icon toast__icon--success"></span>
+            <div class="toast__content">
+                You've added <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> to your shortlist
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="toast">
+            <span class="toast__icon toast__icon--error"></span>
+            <div class="toast__content">
+                You've removed <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> from your shortlist
+            </div>
+        </div>
+    }
+}
 
 <div class="hero" data-module="smoothScroll">
     <div class="grid-row">
