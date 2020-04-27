@@ -1,0 +1,33 @@
+@{
+    ViewBag.Title = "Remove Confirmation";
+    ViewBag.MetaTitle = "Remove Confirmation";
+    ViewBag.PageID = "employer-view-basket";
+    ViewBag.Section = "employer";
+    ViewBag.MetaDesc = "";
+    ViewBag.PageUrl = "/Basket/RemoveConfirmation";
+    Layout = "_LayoutContentFull";
+    ViewBag.PageNavIndex = 3;
+    @model Sfa.Das.Sas.Shared.Components.ViewModels.Basket.RemoveConfirmationViewModel
+}
+
+<a href="@Model.ReturnPath">&lt; Back</a>
+
+<p>If you remove @Model.ApprenticeshipItem.Title from your shortlist, you'll also remove these saved training providers:</p>
+
+<ul>
+    @foreach (var tp in Model.ApprenticeshipItem.Providers)
+    {
+        <li>
+            @tp.Name
+        </li>
+    }
+</ul>
+
+<p>Do you want to remove this apprenticeship?</p>
+
+<form method="post">
+    <button id="continueButton" class="govuk-button" data-module="govuk-button" type="submit">
+        OK
+    </button>
+    <a href="@Model.ReturnPath">Cancel</a>
+</form>
