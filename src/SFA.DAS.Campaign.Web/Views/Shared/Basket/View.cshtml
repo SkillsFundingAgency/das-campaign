@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Sfa.Das.Sas.ApplicationServices.Commands
+@{
     ViewBag.Title = "View Basket";
     ViewBag.MetaTitle = "View Basket";
     ViewBag.PageID = "employer-view-basket";
@@ -7,12 +8,34 @@
     ViewBag.PageUrl = "/Basket/View";
     Layout = "_LayoutContentFull";
     ViewBag.PageNavIndex = 3;
-    @model Sfa.Das.Sas.Shared.Components.ViewModels.ApprenticeshipDetailQueryViewModel
+    @model Sfa.Das.Sas.Shared.Components.ViewModels.Basket.BasketViewModel<Sfa.Das.Sas.Shared.Components.ViewModels.Apprenticeship.ApprenticeshipBasketItemViewModel>
 
 }
 
 @section HeroHeading {
     @await Component.InvokeAsync("BasketHeader")
+}
+
+@if (Model.AddRemoveBasketResponse != null)
+{
+    @if (Model.AddRemoveBasketResponse.BasketOperation == BasketOperation.Added)
+    {
+        <div class="toast">
+            <span class="toast__icon toast__icon--success"></span>
+            <div class="toast__content">
+                You've added <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> to your shortlist
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="toast">
+            <span class="toast__icon toast__icon--error"></span>
+            <div class="toast__content">
+                You've removed <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> from your shortlist
+            </div>
+        </div>
+    }
 }
 
 @await Component.InvokeAsync("BasketDetails")
