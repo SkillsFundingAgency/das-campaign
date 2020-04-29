@@ -30,6 +30,11 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                     case "findapprenticeshiptraining":
                         type = SidebarType.Employer;
                         break;
+                    case "hiringanapprentice":
+                    case "fundinganapprenticeship":
+                    case "upskillorretrain":
+                        type = SidebarType.EmployerWithoutNavigation;
+                        break;
                 }
             }
 
@@ -40,6 +45,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                     break;
                 case SidebarType.Employer:
                     view = "../Shared/Sidebar/_Employer";
+                    break;
+                case SidebarType.EmployerWithoutNavigation:
+                    view = "../Shared/Sidebar/_Employer-without-navigation";
                     break;
                 case SidebarType.Parent:
                     view = "../Shared/Sidebar/_Parent";

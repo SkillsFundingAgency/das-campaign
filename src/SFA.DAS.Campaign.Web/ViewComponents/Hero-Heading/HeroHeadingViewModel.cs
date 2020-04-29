@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -104,6 +105,13 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
         public string ImageUrl { get; set; }
         public string ImageAltText { get; set; }
         public string Controller { internal get; set; }
+
+        public IEnumerable<Breadcrumb> Breadcrumbs { get; set; }
     }
 
+    public class Breadcrumb
+    {
+        public string Text { get; set; }
+        public string Link { get; set; }
+    }
 }

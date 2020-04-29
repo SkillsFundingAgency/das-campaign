@@ -1,0 +1,19 @@
+﻿@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model object
+@{
+    ViewBag.Title = "Funding an apprenticeship";
+    //ViewBag.MetaTitle = "What to think about to find the right apprenticeship for your business";
+    ViewBag.HeroImageAltText = "Apprentice in the digital industry";
+    ViewBag.PageID = "employer-hire-an-apprentice";
+    //ViewBag.MetaDesc = "When you've decided to employ an apprentice, think about offering an attractive salary, good career prospects and ask the right questions at the interview. ";
+    ViewBag.PageUrl = "/employer/funding-an-apprenticeship";
+    ViewBag.Section = "employer";
+    Layout = "_LayoutContentSidebar";
+    //ViewBag.PageNavIndex = 4;
+
+
+    var breadcrumb = new List<Breadcrumb> { new Breadcrumb { Text = "How do they work?", Link = $"{Url.Action("Index", "HowDoTheyWork")}" }, new Breadcrumb { Text = "Funding an apprenticeship" } };
+}
+
+<h1> Funding an apprenticeship</h1>

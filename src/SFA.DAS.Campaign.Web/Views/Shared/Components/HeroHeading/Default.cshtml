@@ -3,7 +3,34 @@
     <div class="grid-row">
         <div class="grid-column-one-half">
             <div class="hero-heading">
-                <span class="caption-m hero-heading__caption @Model.Class">@Model.Caption</span>
+                @if (Model.Breadcrumbs != null)
+                {
+                    <span class="caption-m hero-heading__caption @Model.Class">
+                        <div class="hero-breadcrumbs">
+                            <ol class="hero-breadcrumbs__list">
+                                @foreach (var breadcrumb in Model.Breadcrumbs)
+                                {
+                                    if (Model.Breadcrumbs.IndexOf(breadcrumb) != Model.Breadcrumbs.Count - 1)
+                                    {
+                                        <li class="hero-breadcrumbs__list-item">
+                                            <a class="hero-breadcrumbs__link" href="@breadcrumb.Link">@breadcrumb.Text</a>
+                                        </li>
+                                        <span class="hero-heading__caption-separator">&gt;</span>
+                                    }
+                                    else
+                                    {
+                                        <li class="hero-breadcrumbs__list-item--last"> @breadcrumb.Text </li>
+                                    }
+                                }
+                            </ol>
+                        </div>
+                    </span>
+                }
+                else
+                {
+                    <span class="caption-m hero-heading__caption @Model.Class">@Model.Caption</span>
+                }
+
                 <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
             </div>
 
