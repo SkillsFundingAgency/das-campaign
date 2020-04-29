@@ -1,0 +1,78 @@
+﻿@{
+    Layout = "_Layout-campaign-employer";
+}
+
+@section HeadScripts {
+    <script type="application/ld+json">
+    {
+    "@@context": "https://schema.org",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@@type": "ListItem",
+        "position": 1,
+        "name": "How do they work?",
+        "item": "https://www.apprenticeships.gov.uk/employer/how-do-they-work"
+    },{
+        "@@type": "ListItem",
+        "position": 2,
+        "name": "@(ViewBag.Title)",
+        "item": "https://www.apprenticeships.gov.uk/@(ViewBag.PageUrl)"
+    }]
+    }
+    </script>
+}
+
+<main id="main-content">
+    <div class="hero">
+        <div class="grid-row">
+            <div class="grid-column-two-thirds">
+                <div class="hero-heading">
+                    <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                        <a asp-controller="HowDoTheyWork" asp-action="Index" class="hero-heading__caption--employer hero-heading__caption-link">Interests</a> 
+                        <span class="hero-heading__caption-separator">&gt;</span> 
+                        @(ViewBag.Title)
+                    </span>
+                    <h1 class="heading-xl hero-heading__heading">@(ViewBag.Title)</h1>
+                </div>
+
+                <div class="hero-heading__content">
+
+                    <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
+                        <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" />
+                    </a>
+                </div>
+            </div>
+            <div class="grid-column-one-third">
+            
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="grid-row">
+            <div class="grid-column-two-thirds">
+                <div class="page">
+                    @RenderBody()
+                </div>
+            </div>
+
+            <div class="grid-column-one-third">
+                <div class="sidebar sidebar--employer">
+
+                    <div class="sidebar__hero">
+                        <img src="/campaign/images/sidebar/employer-hire-an-apprentice.jpg" class="sidebar__hero-image" alt="@ViewBag.HeroImageAltText" />
+                    </div>
+
+                    <partial name="~/Views/Shared/Sidebar/_employer-without-navigation.cshtml" />
+
+
+                </div>
+               
+            </div>
+
+        </div>
+        <div class="grid-row">
+            @RenderSection("pageFooter", required: false)
+        </div>
+
+    </div>
+</main>

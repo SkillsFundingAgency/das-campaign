@@ -105,5 +105,4 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
         public string ImageAltText { get; set; }
         public string Controller { internal get; set; }
     }
-
 }

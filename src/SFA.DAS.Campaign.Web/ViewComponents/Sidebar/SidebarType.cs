@@ -6,6 +6,5 @@
         Apprentice = 1,
         Employer = 2,
         Parent = 3
-
     }
 }
