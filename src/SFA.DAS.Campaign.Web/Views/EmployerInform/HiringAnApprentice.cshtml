@@ -1,7 +1,4 @@
-﻿@using Microsoft.AspNetCore.Html
-@using SFA.DAS.Campaign.Web.Constants
-@using SFA.DAS.Campaign.Web.ViewComponents
-@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+﻿
 @model object
 @{
     ViewBag.Title = "Hiring an apprentice";
@@ -11,11 +8,10 @@
     ViewBag.MetaDesc = "When you've decided to employ an apprentice, think about offering an attractive salary, good career prospects and ask the right questions at the interview. ";
     ViewBag.PageUrl = "/employer/hiring-an-apprentice";
     ViewBag.Section = "employer";
-    Layout = "_LayoutContentSidebar";
+    Layout = "_Layout-campaign-employer-inform";
     ViewBag.PageNavIndex = 4;
 
-    var breadcrumb = new List<Breadcrumb> { new Breadcrumb { Text = "How do they work?", Link = $"{Url.Action("Index", "HowDoTheyWork")}" }, new Breadcrumb { Text = "Hiring an apprentice" } };
-}
+  }
 
 <h2 class="heading-m" id="h1">Who can be an apprentice?</h2>
 
@@ -105,12 +101,6 @@
     <li class="pagination__list-item"><a class="pagination__link pagination__link--previous" asp-controller="Employer" asp-action="Benefits" id="link-pagination-employer-3"> The benefits of apprenticeships</a></li>
     <li class="pagination__list-item"><a class="pagination__link pagination__link--next" asp-controller="FundingAnApprenticeship" asp-action="Index" id="link-pagination-employer-5"> Funding an apprenticeship</a></li>
 </ul>
-
-
-@section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Employer, Breadcrumbs = breadcrumb })
-}
-
 
 @section pageFooter {
     <div class="grid-column-full">
