@@ -1,0 +1,147 @@
+@model SFA.DAS.Campaign.Web.Controllers.EmployerInform.LevyOptionViewModel
+@{
+    ViewBag.Title = "How do they work?";
+    // ViewBag.MetaTitle = "Which apprenticeship will suit my business needs the best";
+    // ViewBag.PageID = "employer-the-right-apprenticeship";
+    // ViewBag.MetaDesc = "You need to consider how much the apprenticeship will cost, whether it's the right one for your organisation and if the training fits with your business needs. ";
+    Layout = "_Layout-campaign-employer";
+}
+<div class="grid-row">
+    <div class="grid-column-one-half">
+        <div class="hero-heading">
+
+            <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                <a href="javascript:history.back()">&lt; &nbsp; Back</a>
+            </span>
+            <h1 class="heading-xl hero-heading__heading" id="apprenticeship-title">How do they work?</h1>
+        </div>
+
+        <div class="text-wrapper">
+            <p class="lead-paragraph">
+                Discover the practical details of apprenticeships, from the hiring process to accessing government funding.
+            </p>
+
+            <p>
+                If you answer the following question before you explore this section, we’ll tailor some of the information
+                more closely to your organisation.
+            </p>
+
+            <div id="how-they-work-levy-question" class="cta-row" style="">
+
+                <form method="post">
+                    <div class="form-group radios no-top-margin">
+                        <p class="no-top-margin">
+                            <strong class="larger-font">As an employer, is your pay bill more than £3 million per year?</strong><br>
+                            If you’re receiving a transfer of apprenticeship funds from another employer, please choose ‘Yes’.
+                        </p>
+                        <div class="radios__item">
+                            <input asp-for="GreaterThanThreeMillion" value="Yes" type="radio"/>
+                            <label class="label radios__label" for="LevyPayerYes">Yes</label>
+                        </div>
+                        <div class="radios__item">
+                            <input asp-for="GreaterThanThreeMillion" value="No" type="radio"/>
+                            <label class="label radios__label" for="LevyPayerNo">No</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="button button--shadow button--sparks">Continue</button>
+                    
+                    <p class="lead-paragraph">
+                        <a asp-action="Index" asp-controller="HiringAnApprentice">I don't know, continue</a>
+                    </p>
+                </form>
+            </div>
+
+            <div id="without-levy-question" class="cta-row" style="">
+                <p class="no-top-margin">
+                    <strong class="larger-font">Start by exploring your options</strong><br>
+                    You can either employer an apprentice or upskill your exsiting staff, it's that easy.
+                </p>
+                <a id="continue-user-type" asp-action="Index" asp-controller="HiringAnApprentice" class="button button--shadow button--sparks">Continue</a>
+            </div>
+
+        </div>
+
+        <a href="https://www.gov.uk/" class="hmrc-gov">gov.uk</a>
+
+    </div>
+    <div class="grid-column-one-half">
+
+        <div class="illustration-wrapper">
+
+            <!-- SECTION 1 - START -->
+            <a asp-action="Index" asp-controller="HiringAnApprentice" class="illustrative-journey section-1">
+                <div class="image">
+                    <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-1.svg"/>
+                </div>
+                <div class="text">
+                    <h3 class="heading-xs">Hiring an apprentice</h3>
+                </div>
+            </a>
+            <!-- SECTION 1 - END -->
+
+            <!-- SECTION 2 - START -->
+            <a asp-action="Index" asp-controller="Upskilling" class="illustrative-journey section-2">
+                <div class="border">
+                    <span class="spot top"></span>
+                    <span class="spot bottom"></span>
+                </div>
+                <div class="image">
+                    <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-2.svg"/>
+                </div>
+                <div class="text">
+                    <h3 class="heading-xs">Upskilling your current staff</h3>
+                </div>
+            </a>
+            <!-- SECTION 2 - END -->
+
+            <!-- SECTION 3 - START -->
+            <a asp-action="Index" asp-controller="Funding" class="illustrative-journey section-3">
+                <div class="border">
+                    <span class="spot top"></span>
+                    <span class="spot bottom"></span>
+                </div>
+                <div class="image">
+                    <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-3.svg"/>
+                </div>
+                <div class="text">
+                    <h3 class="heading-xs">Funding an apprenticeship</h3>
+                </div>
+            </a>
+            <!-- SECTION 3 - END -->
+
+            <!-- SECTION 4 - START -->
+            <a asp-action="Index" asp-controller="Training" class="illustrative-journey section-4">
+                <div class="border">
+                    <span class="spot top"></span>
+                    <span class="spot bottom"></span>
+                </div>
+                <div class="image">
+                    <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-4.svg"/>
+                </div>
+                <div class="text">
+                    <h3 class="heading-xs">Training your apprentice</h3>
+                </div>
+            </a>
+            <!-- SECTION 4 - END -->
+
+            <!-- SECTION 5 - START -->
+            <a asp-action="Index" asp-controller="EndPointAssessments" class="illustrative-journey section-5">
+                <div class="border">
+                    <span class="spot top"></span>
+                    <span class="spot bottom"></span>
+                </div>
+                <div class="image">
+                    <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-5.svg"/>
+                </div>
+                <div class="text">
+                    <h3 class="heading-xs">End-point assessments</h3>
+                </div>
+            </a>
+            <!-- SECTION 5 - END -->
+
+
+        </div>
+
+    </div>
+</div>
