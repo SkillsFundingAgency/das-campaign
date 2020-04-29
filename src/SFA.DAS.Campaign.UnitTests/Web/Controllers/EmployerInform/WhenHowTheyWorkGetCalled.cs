@@ -9,7 +9,7 @@ using SFA.DAS.Campaign.Web.Helpers;
 namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform
 {
     [TestFixture]
-    public class WhenHowTheyWorkCalled
+    public class WhenHowTheyWorkGetCalled
     {
         [Test]
         public void ThenViewIsReturned()
