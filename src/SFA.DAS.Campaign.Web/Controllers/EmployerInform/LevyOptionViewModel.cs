@@ -3,12 +3,12 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
     public class LevyOptionViewModel
     {
         public bool PreviouslySet { get; set; }
-        public GreaterThanThreeMillion GreaterThanThreeMillion { get; set; }
+        public LevyStatus LevyStatus { get; set; }
     }
     
-    public enum GreaterThanThreeMillion
+    public enum LevyStatus
     {
-        Yes,
-        No
+        Levy,
+        NoneLevy
     }
 }

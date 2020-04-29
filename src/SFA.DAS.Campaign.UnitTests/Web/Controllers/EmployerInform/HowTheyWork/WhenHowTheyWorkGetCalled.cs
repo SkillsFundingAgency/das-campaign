@@ -1,12 +1,11 @@
 using FluentAssertions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Web.Controllers.EmployerInform;
 using SFA.DAS.Campaign.Web.Helpers;
 
-namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform
+namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.HowTheyWork
 {
     [TestFixture]
     public class WhenHowTheyWorkGetCalled
@@ -17,7 +16,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>("LevyOptionViewModel")).Returns(new LevyOptionViewModel
             {
-                GreaterThanThreeMillion = GreaterThanThreeMillion.Yes
+                LevyStatus = LevyStatus.Levy
             });
             
             var controller = new HowDoTheyWorkController(sessionService.Object);
@@ -26,7 +25,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform
 
             result.Should().BeOfType<ViewResult>();
             result.As<ViewResult>().Model.Should().BeOfType<LevyOptionViewModel>();
-            result.As<ViewResult>().Model.As<LevyOptionViewModel>().GreaterThanThreeMillion.Should().Be(GreaterThanThreeMillion.Yes);
+            result.As<ViewResult>().Model.As<LevyOptionViewModel>().LevyStatus.Should().Be(LevyStatus.Levy);
         }
 
         [Test]
@@ -39,8 +38,8 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform
 
             var result = controller.Index();
 
-
-            result.As<ViewResult>().Model.As<LevyOptionViewModel>().GreaterThanThreeMillion.Should().Be(GreaterThanThreeMillion.No);
+            result.As<ViewResult>().Model.As<LevyOptionViewModel>().LevyStatus.Should().Be(LevyStatus.NoneLevy);
+            result.As<ViewResult>().Model.As<LevyOptionViewModel>().PreviouslySet.Should().BeFalse();
         }
     }
 }

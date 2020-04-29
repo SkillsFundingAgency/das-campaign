@@ -1,23 +1,279 @@
-﻿
-@model object
+﻿@using SFA.DAS.Campaign.Web.Controllers.EmployerInform
+@model SFA.DAS.Campaign.Web.Controllers.EmployerInform.LevyOptionViewModel
 @{
     ViewBag.Title = "Funding an apprenticeship";
     //ViewBag.MetaTitle = "What to think about to find the right apprenticeship for your business";
     ViewBag.HeroImageAltText = "Apprentice in the digital industry";
-    ViewBag.PageID = "employer-hire-an-apprentice";
+    ViewBag.PageID = "employer-funding-an-apprenticeship";
     //ViewBag.MetaDesc = "When you've decided to employ an apprentice, think about offering an attractive salary, good career prospects and ask the right questions at the interview. ";
     ViewBag.PageUrl = "/employer/funding-an-apprenticeship";
     ViewBag.Section = "employer";
-   
+    ViewBag.HideSidebarNavigation = true;
     Layout = "_Layout-campaign-employer-inform";
-    //ViewBag.PageNavIndex = 4;
-
 }
 
-<h1> Funding an apprenticeship</h1>
+
+@if (!Model.PreviouslySet)
+{
+    @await Html.PartialAsync("_levyNonLevyQuestion", Model)
+}
+
+@if (Model.LevyStatus == LevyStatus.Levy)
+{
+    <div class="levy-content" style="">
+        <h2 class="heading-m no-top-margin" id="heading1">Apprenticeship funding from the government</h2>
+        <h2 class="heading-s no-top-margin">Apprenticeship training and assessment</h2>
+
+        <p>
+            As an employer with a pay bill of more than £3 million, you’re required to pay the apprenticeship levy.
+            You’ll receive funds through the apprenticeship service to spend on training and assessing your apprentices.
+        </p>
+
+        <p>
+            The amount of funding entering your account each month is calculated as follows:
+        </p>
+
+        <ul class="list list--bullet list--bullet-employer">
+            <li>the levy you declare to HMRC through the <a href="https://www.gov.uk/paye-for-employers/paye-and-payroll" target="_blank" rel="external" class="external">PAYE process</a></li>
+            <li>multiplied by the proportion of your bill paid to your workforce who live in England</li>
+            <li>plus a 10% government top-up on this amount</li>
+        </ul>
+
+        <p>
+            When you’re ready to get started, you’ll need to
+            <a href="/campaign/employer/gov-transition-NO-FAT" class="external">sign in or create a new account</a>
+            on the apprenticeship service.
+        </p>
+    </div>
+}
+else
+{
+    <div class="non-levy-content">
+        <h2 class="heading-m no-top-margin" id="heading1">Apprenticeship funding from the government</h2>
+        <h2 class="heading-s no-top-margin">Apprenticeship training and assessment</h2>
+
+        <p>
+            As an employer with a pay bill of less than £3 million per year, you’ll share apprenticeship costs with
+            the government if you have at least 50 employees. This means:
+        </p>
+
+        <ul class="list list--bullet list--bullet-employer">
+            <li>you’ll pay 5% towards the cost of training and assessing your apprentice</li>
+            <li>the government will pay the remaining 95%, up to the&nbsp;<a href="https://www.gov.uk/government/publications/apprenticeship-funding-bands" target="_blank" rel="external" class="external">funding band maximum</a></li>
+            <li>if your apprentice’s training and assessment cost more than this, you’ll pay the difference</li>
+        </ul>
+
+        <h2 class="heading-s no-top-margin">Employers with fewer than 50 employees</h2>
+
+        <p>
+            If you’re an employer with fewer than 50 employees, the government will fund all the apprenticeship training
+            costs up to the
+            <a href="https://www.gov.uk/government/publications/apprenticeship-funding-bands" target="_blank" rel="external" class="external">funding band maximum</a>
+            if the apprentice is:
+        </p>
+
+        <ul class="list list--bullet list--bullet-employer">
+            <li>between 16 and 18 years old (or 15 years old if the apprentice’s 16th birthday is between the last Friday of June and 31 August)</li>
+            <li>between 19 and 24 years old and has either an Education, Health and Care (EHC) plan provided by their local authority or has been in the care of their local authority</li>
+        </ul>
+
+        <p>
+            This means you won’t have to pay the 5% co-investment amount.
+        </p>
+
+        <h2 class="heading-m" id="heading2">Training young apprentices</h2>
+
+        <p>
+            All employers will receive <strong>£1,000</strong> if, at the start of the apprenticeship, the apprentice is:
+        </p>
+
+        <ul class="list list--bullet list--bullet-employer">
+            <li>between 16 and 18 years old (or 15 years old if the apprentice’s 16th birthday is between the last Friday of June and 31 August)</li>
+            <li>between 19 and 24 years old and has either an Education, Health and Care (EHC) plan provided by their local authority or has been in the care of their local authority</li>
+        </ul>
+
+        <p>
+            This will be paid to you in two equal instalments, 3 months and 12 months into the apprenticeships, via your training provider.
+        </p>
+
+        <h2 class="heading-m" id="heading3">Example training and assessment costs</h2>
+
+        <p>
+            These examples show the breakdown of costs for funding an apprentice’s training and assessment. They do not include other
+            costs, such as salary, which are detailed below.
+        </p>
+
+        <h2 class="heading-s no-top-margin">EXAMPLE COSTS 1:</h2>
+
+        <table class="table table--employer">
+            <thead class="table__header">
+            <tr class="table__row table__header-row">
+                <th class="table__cell table__row-title table__header-row-title">Financial services administrator</th>
+                <th class="table__cell  table__row-value--header">Level 3 - (<a href="https://www.gov.uk/what-different-qualification-levels-mean/list-of-qualification-levels" target="_blank" rel="external" id="link-qualification-levels-1">levels explained</a>)</th>
+            </tr>
+            </thead>
+            <tbody class="table__body">
+            <tr class="table__row">
+                <th class="table__cell table__row-title" scope="row">Number of apprentices</th>
+                <td class="table__cell">1</td>
+            </tr>
+            <tr class="table__row">
+                <th class="table__cell table__row-title" scope="row">Funding band maximum</th>
+                <td class="table__cell">£12,000</td>
+            </tr>
+            <tr class="table__row">
+                <th class="table__cell table__row-title" scope="row">Agreed price with training provider</th>
+                <td class="table__cell">£12,000</td>
+            </tr>
+            <tr class="table__row">
+                <th class="table__cell table__row-title" scope="row">The government will pay</th>
+                <td class="table__cell">£11,400</td>
+            </tr>
+            </tbody>
+            <tfoot class="table__footer">
+            <tr class="table__row">
+                <th class="table__cell table__row-title" scope="row">Cost to you</th>
+                <td class="table__cell">£600</td>
+            </tr>
+            </tfoot>
+        </table>
+
+        <h2 class="heading-s no-top-margin">EXAMPLE COSTS 2:</h2>
+
+        <table class="table table--employer">
+            <thead class="table__header">
+            <tr class="table__row table__header-row">
+                <th class="table__cell table__row-title table__row-title--header">Rail Infrastructure Operator</th>
+                <th class="table__cell table__row-value--header">Level 2 - (<a href="https://www.gov.uk/what-different-qualification-levels-mean/list-of-qualification-levels" target="_blank" rel="external" id="link-qualification-levels-2">levels explained</a>)</th>
+            </tr>
+            </thead>
+            <tbody class="table__body">
+            <tr class="table__row">
+                <th class="table__cell table__row-title" scope="row">Number of apprentices</th>
+                <td class="table__cell">1</td>
+            </tr>
+            <tr class="table__row">
+                <th class="table__cell table__row-title" scope="row">Funding band maximum</th>
+                <td class="table__cell">£12,000</td>
+            </tr>
+            <tr class="table__row">
+                <th class="table__cell table__row-title" scope="row">Agreed price with training provider</th>
+                <td class="table__cell">£10,000</td>
+            </tr>
+            <tr class="table__row">
+                <th class="table__cell table__row-title" scope="row">The government will pay</th>
+                <td class="table__cell">£9,500</td>
+            </tr>
+            </tbody>
+            <tfoot class="table__footer">
+            <tr class="table__row">
+                <th class="table__cell table__row-title" scope="row">Cost to you</th>
+                <td class="table__cell">£500</td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+}
+
+<h2 class="heading-m" id="heading3">Apprenticeship costs paid by you</h2>
+<h2 class="heading-s no-top-margin">Your apprentice’s salary</h2>
+
+<p>
+    You must pay your apprentice a salary for their normal working hours and the training they
+    undertake as part of the apprenticeship.
+</p>
+
+<p>
+    If they’re aged 16 to 18 or in the first year of their apprenticeship, you must pay them at least
+    the apprentice minimum wage, which is currently <strong>£4.15</strong>.
+</p>
+
+<p>
+    If they’re aged 19 or over and have completed the first year of their apprenticeship,
+    they’re entitled to the <a href="https://www.gov.uk/national-minimum-wage-rates" target="_blank" rel="external" class="external">National Minimum Wage</a>
+    for their age.
+</p>
+
+<h2 class="heading-s">Other costs and responsibilities</h2>
+
+<p>
+    Along with any training and assessment costs you’re required to pay, you’ll need to supervise
+    your apprentice throughout their apprenticeship. This includes providing on-the-job training to
+    help them develop new skills.
+</p>
+
+<p>
+    Depending on your circumstances, you may choose to assign a member of staff to be your apprentice’s
+    mentor and arrange weekly catch-ups to check how your apprentice is progressing.
+</p>
+
+@if (Model.LevyStatus == LevyStatus.Levy)
+{
+
+    <div class="levy-content" style="">
+        <h2 class="heading-m" id="heading4">Transferring funds to another employer</h2>
+
+        <p>
+            If you have unused apprenticeship funds, you can
+            <a href="https://www.gov.uk/guidance/transferring-apprenticeship-service-funds" target="_blank" rel="external" class="external">
+                transfer them to another employer
+                using the
+            </a><a href="#" target="_blank" rel="external" class="external">apprenticeship service</a>.
+        </p>
+
+        <p>
+            You can find employers who want to receive a transfer by:
+        </p>
+
+        <ul class="list list--bullet list--bullet-employer">
+            <li>working with employers in your supply chain</li>
+            <li>getting in touch with employers in your industry</li>
+            <li>contacting an Apprenticeship Training Agency (ATA)</li>
+            <li>working with regional partners</li>
+        </ul>
+
+    </div>
+}
+
+<h2 class="heading-m" id="heading5">Paying for apprenticeships using a transfer of apprenticeship funds</h2>
+
+<p>
+    Employers who already have an apprenticeship service account can transfer unused apprenticeship funds to another employer.
+</p>
+
+<p>
+    <a href="https://www.gov.uk/guidance/transferring-apprenticeship-service-funds" target="_blank" rel="external" class="external">Transferred funds</a>
+    can be used to pay for new apprenticeship training and assessment for
+    <a href="https://www.apprenticeships.gov.uk/employer/the-right-apprenticeship#available-apprenticeships" target="_blank" rel="external" class="external">apprenticeship standards</a>.
+    They can’t be used for apprenticeship frameworks, which are being phased out.
+</p>
+
+<p>&nbsp;</p>
+
+<hr>
+
+<h2 class="heading-m">Apprenticeships in Scotland, Northern Ireland and Wales</h2>
+
+<p>
+    This page details the costs and funding rules for apprenticeships in England.
+    You can find information about apprenticeships in
+    <a href="https://www.apprenticeships.scot/" target="_blank" rel="external" class="external">Scotland</a>,
+    <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external" class="external">Northern Ireland</a> or
+    <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external" class="external">Wales</a>
+    on the relevant apprenticeships website.
+</p>
+
+<ul class="pagination pagination--employer">
+    <li class="pagination__list-item pagination__list-item--previous">
+        <a class="pagination__link pagination__link--previous" asp-action="Index" asp-controller="HiringAnApprentice">HIRING AN APPRENTICE</a>
+    </li>
+    <li class="pagination__list-item pagination__list-item--next">
+        <a class="pagination__link pagination__link--next" asp-action="Index" asp-controller="TrainingYourApprentice">Training your apprentice</a>
+    </li>
+</ul>
 
 @section pageFooter {
     <div class="grid-column-full">
-        <partial name="./Components/Cta/_find-apprenticeship-training-with-search" />
+        <partial name="./Components/Cta/_find-apprenticeship-training-with-search"/>
     </div>
 }

@@ -21,37 +21,9 @@
                 Discover the practical details of apprenticeships, from the hiring process to accessing government funding.
             </p>
 
-            <p>
-                If you answer the following question before you explore this section, we’ll tailor some of the information
-                more closely to your organisation.
-            </p>
-
             @if (!Model.PreviouslySet)
             {
-                <div id="how-they-work-levy-question" class="cta-row" style="">
-                    <form method="post">
-                        <div class="form-group radios no-top-margin">
-                            <p class="no-top-margin">
-                                <strong class="larger-font">As an employer, is your pay bill more than £3 million per year?</strong><br>
-                                If you’re receiving a transfer of apprenticeship funds from another employer, please choose ‘Yes’.
-                            </p>
-                            <div class="radios__item">
-                                <input asp-for="GreaterThanThreeMillion" value="Yes" type="radio"/>
-                                <label class="label radios__label" for="LevyPayerYes">Yes</label>
-                            </div>
-                            <div class="radios__item">
-                                <input asp-for="GreaterThanThreeMillion" value="No" type="radio"/>
-                                <label class="label radios__label" for="LevyPayerNo">No</label>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="button button--shadow button--sparks">Continue</button>
-
-                        <p class="lead-paragraph">
-                            <a asp-action="Index" asp-controller="HiringAnApprentice">I don't know, continue</a>
-                        </p>
-                    </form>
-                </div>
+               @await Html.PartialAsync("_levyNonLevyQuestion", Model)
             }
             else
             {
@@ -85,7 +57,7 @@
             <!-- SECTION 1 - END -->
 
             <!-- SECTION 2 - START -->
-            <a asp-action="Index" asp-controller="Upskilling" class="illustrative-journey section-2">
+            <a asp-action="Index" asp-controller="UpskillOrRetrain" class="illustrative-journey section-2">
                 <div class="border">
                     <span class="spot top"></span>
                     <span class="spot bottom"></span>
@@ -100,7 +72,7 @@
             <!-- SECTION 2 - END -->
 
             <!-- SECTION 3 - START -->
-            <a asp-action="Index" asp-controller="Funding" class="illustrative-journey section-3">
+            <a asp-action="Index" asp-controller="FundingAnApprenticeship" class="illustrative-journey section-3">
                 <div class="border">
                     <span class="spot top"></span>
                     <span class="spot bottom"></span>
