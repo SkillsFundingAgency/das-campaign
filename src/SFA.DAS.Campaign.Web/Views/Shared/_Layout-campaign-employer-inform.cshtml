@@ -56,8 +56,17 @@
             </div>
 
             <div class="grid-column-one-third">
-                @await Component.InvokeAsync("Sidebar", new { imgLocation = "/campaign/images/sidebar/employer-hire-an-apprentice.jpg" })
+                <div class="sidebar sidebar--employer">
 
+                    <div class="sidebar__hero">
+                        <img src="/campaign/images/sidebar/employer-hire-an-apprentice.jpg" class="sidebar__hero-image" alt="@ViewBag.HeroImageAltText" />
+                    </div>
+
+                    <partial name="~/Views/Shared/Sidebar/_employer-without-navigation.cshtml" />
+
+
+                </div>
+               
             </div>
 
         </div>
