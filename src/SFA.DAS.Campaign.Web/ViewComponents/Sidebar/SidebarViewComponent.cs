@@ -6,7 +6,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
 {
     public class SidebarViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(SidebarType? type, SidebarHeaderType? headerType, int activeIndex, string imgLocation, GoogleMapsViewModel googleMapsOptions, object formOptions, bool hideNavigation)
+        public IViewComponentResult Invoke(SidebarType? type, SidebarHeaderType? headerType, int activeIndex, string imgLocation, GoogleMapsViewModel googleMapsOptions, object formOptions)
         {
             string view;
 
