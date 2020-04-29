@@ -26,39 +26,43 @@
                 more closely to your organisation.
             </p>
 
-            <div id="how-they-work-levy-question" class="cta-row" style="">
+            @if (!Model.PreviouslySet)
+            {
+                <div id="how-they-work-levy-question" class="cta-row" style="">
+                    <form method="post">
+                        <div class="form-group radios no-top-margin">
+                            <p class="no-top-margin">
+                                <strong class="larger-font">As an employer, is your pay bill more than £3 million per year?</strong><br>
+                                If you’re receiving a transfer of apprenticeship funds from another employer, please choose ‘Yes’.
+                            </p>
+                            <div class="radios__item">
+                                <input asp-for="GreaterThanThreeMillion" value="Yes" type="radio"/>
+                                <label class="label radios__label" for="LevyPayerYes">Yes</label>
+                            </div>
+                            <div class="radios__item">
+                                <input asp-for="GreaterThanThreeMillion" value="No" type="radio"/>
+                                <label class="label radios__label" for="LevyPayerNo">No</label>
+                            </div>
+                        </div>
 
-                <form method="post">
-                    <div class="form-group radios no-top-margin">
-                        <p class="no-top-margin">
-                            <strong class="larger-font">As an employer, is your pay bill more than £3 million per year?</strong><br>
-                            If you’re receiving a transfer of apprenticeship funds from another employer, please choose ‘Yes’.
+                        <button type="submit" class="button button--shadow button--sparks">Continue</button>
+
+                        <p class="lead-paragraph">
+                            <a asp-action="Index" asp-controller="HiringAnApprentice">I don't know, continue</a>
                         </p>
-                        <div class="radios__item">
-                            <input asp-for="GreaterThanThreeMillion" value="Yes" type="radio"/>
-                            <label class="label radios__label" for="LevyPayerYes">Yes</label>
-                        </div>
-                        <div class="radios__item">
-                            <input asp-for="GreaterThanThreeMillion" value="No" type="radio"/>
-                            <label class="label radios__label" for="LevyPayerNo">No</label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="button button--shadow button--sparks">Continue</button>
-                    
-                    <p class="lead-paragraph">
-                        <a asp-action="Index" asp-controller="HiringAnApprentice">I don't know, continue</a>
+                    </form>
+                </div>
+            }
+            else
+            {
+                <div id="without-levy-question" class="cta-row" style="">
+                    <p class="no-top-margin">
+                        <strong class="larger-font">Start by exploring your options</strong><br>
+                        You can either employer an apprentice or upskill your exsiting staff, it's that easy.
                     </p>
-                </form>
-            </div>
-
-            <div id="without-levy-question" class="cta-row" style="">
-                <p class="no-top-margin">
-                    <strong class="larger-font">Start by exploring your options</strong><br>
-                    You can either employer an apprentice or upskill your exsiting staff, it's that easy.
-                </p>
-                <a id="continue-user-type" asp-action="Index" asp-controller="HiringAnApprentice" class="button button--shadow button--sparks">Continue</a>
-            </div>
+                    <a id="continue-user-type" asp-action="Index" asp-controller="HiringAnApprentice" class="button button--shadow button--sparks">Continue</a>
+                </div>
+            }
 
         </div>
 

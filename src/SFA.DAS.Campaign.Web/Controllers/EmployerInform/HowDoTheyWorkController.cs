@@ -19,12 +19,13 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
                 _sessionService.Get<LevyOptionViewModel>("LevyOptionViewModel") 
                 ?? new LevyOptionViewModel() {GreaterThanThreeMillion = GreaterThanThreeMillion.No};
 
-            return View(vm);
+            return View("~/Views/EmployerInform/HowDoTheyWork.cshtml", vm);
         }
 
         [HttpPost("employer/how-do-they-work")]
         public IActionResult Index(LevyOptionViewModel vm)
         {
+            vm.PreviouslySet = true;
             _sessionService.Set("LevyOptionViewModel", vm);
 
             return RedirectToAction("Index", "HiringAnApprentice");
