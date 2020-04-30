@@ -17,7 +17,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
         {
             var vm = 
                 _sessionService.Get<LevyOptionViewModel>("LevyOptionViewModel") 
-                ?? new LevyOptionViewModel() {LevyStatus = LevyStatus.NoneLevy};
+                ?? new LevyOptionViewModel() {LevyStatus = LevyStatus.NonLevy};
 
             return View("~/Views/EmployerInform/HowDoTheyWork.cshtml", vm);
         }

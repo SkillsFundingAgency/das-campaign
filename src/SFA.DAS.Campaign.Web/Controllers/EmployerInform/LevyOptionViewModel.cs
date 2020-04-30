@@ -9,6 +9,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
     public enum LevyStatus
     {
         Levy,
-        NoneLevy
+        NonLevy
     }
 }
