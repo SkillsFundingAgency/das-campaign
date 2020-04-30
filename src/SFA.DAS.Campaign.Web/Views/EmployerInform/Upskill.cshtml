@@ -1,0 +1,94 @@
+﻿@model object
+@{
+    ViewBag.Title = "UPSKILLING YOUR CURRENT STAFF";
+    //ViewBag.MetaTitle = "What to think about to find the right apprenticeship for your business";
+    ViewBag.HeroImageAltText = "Apprentice in the digital industry";
+    ViewBag.PageID = "employer-upskill";
+    //ViewBag.MetaDesc = "When you've decided to employ an apprentice, think about offering an attractive salary, good career prospects and ask the right questions at the interview. ";
+    ViewBag.PageUrl = "/employer/funding-an-apprenticeship";
+    ViewBag.Section = "employer";
+    Layout = "_Layout-campaign-employer-inform";
+    //ViewBag.PageNavIndex = 4;
+
+}
+
+
+<h2 class="heading-m no-top-margin" id="heading1">Boost staff performance and retention</h2>
+
+<p>
+    Apprenticeships are suitable for <a asp-action="Index" asp-controller="HiringAnApprentice">hiring new staff</a>, but they’re also ideal for upskilling
+    or retraining your existing workforce.
+</p>
+
+<p>
+    Perhaps you have an employee who’s keen to develop their existing skills, or someone who has shown a flair for something new.
+    Giving them the opportunity to complete an apprenticeship could:
+</p>
+
+<ul class="list list--bullet list--bullet-employer">
+    <li>fill key skill gaps in your business</li>
+    <li>boost staff motivation by investing in their development</li>
+    <li>improve staff retention</li>
+</ul>
+
+<div id="change-recruit-journey">
+    <div id="scroller-anchor" class="scroller-anchor"></div>
+    <div id="scroller" class="scroller" style="position: relative;">
+        <a href="#" class="close employer-retrain-journey">close</a>
+        <h3 class="heading-s">Hiring an apprentice</h3>
+        <p>
+            Looking to bring valuable skills into your business by hiring someone new?
+            Apprenticeships are suitable for people at any level.
+        </p>
+        <a asp-action="Index" asp-controller="HiringAnApprentice" class="button button--shadow button--sparks search">Hire an apprentice</a>
+    </div>
+</div>
+
+<h2 class="heading-m" id="heading2">Develop new skills at any level</h2>
+
+<p>
+    Apprenticeships are suitable for people of any age and from GCSE to degree level. The apprenticeship must:
+</p>
+
+<ul class="list list--bullet list--bullet-employer">
+    <li>allow the apprentice to develop new skills to help them succeed in their chosen occupation</li>
+    <li>be linked to their current job role</li>
+    <li>include learning that’s different to any qualifications they already hold</li>
+</ul>
+
+<p>
+    If they’re taking a repeat or lower-level apprenticeship, you need to provide evidence that it’s supporting the
+    apprentice to acquire new skills and knowledge.
+</p>
+
+<h2 class="heading-m" id="heading3">You do not have to give them a different job</h2>
+
+<p>
+    The employee does not need to be given a different job to complete the apprenticeship, and you’re not required
+    to change any of the terms or conditions of their employment.
+</p>
+
+<p>
+    You’ll need to create and sign an apprenticeship agreement, and continue to pay them a salary of at least the National
+    Minimum Wage (relevant to their age). Explore our guidance on
+    <a asp-action="Index" asp-controller="FundingAnApprenticeship">apprenticeship costs and funding</a> for more details.
+</p>
+
+<ul class="pagination pagination--employer">
+    <li class="pagination__list-item">
+        <a class="pagination__link pagination__link--previous" asp-action="Index" asp-controller="HiringAnApprentice">
+            Hire an apprentice
+        </a>
+    </li>
+    <li class="pagination__list-item">
+        <a class="pagination__link pagination__link--next" asp-action="Index" asp-controller="FundingAnApprenticeship">
+            Funding an apprenticeship
+        </a>
+    </li>
+</ul>
+
+@section pageFooter {
+    <div class="grid-column-full">
+        <partial name="./Components/Cta/_find-apprenticeship-training-with-search"/>
+    </div>
+}
