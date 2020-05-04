@@ -1,9 +1,9 @@
-<section class="cta-panel cta-panel--employer">
-    <div class="cta-panel__column cta-panel__column--two-thirds">
-        <h2 class="heading-m cta-panel__heading">Embrace change and employ an apprentice</h2>
-        <p class="cta-panel__content">Search for the ideal apprenticeship training that fits with your business needs and start the journey of taking on an apprentice. </p>
-
-        <br />
-        <span>@await Component.InvokeAsync("FatSearch", new { inline = true }) </span>
+<section class="cta-fat display--block">
+    <h2 class="heading-m cta-panel__heading">Embrace change and employ an apprentice</h2>
+    <p>Search for the ideal apprenticeship training that fits with your business needs and start the journey of taking on an apprentice. </p>
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+            @await Component.InvokeAsync("FatSearch", new { inline = true })
+        </div>
     </div>
 </section>

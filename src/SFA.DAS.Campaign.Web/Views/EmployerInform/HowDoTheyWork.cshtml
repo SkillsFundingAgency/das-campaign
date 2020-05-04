@@ -4,120 +4,87 @@
     // ViewBag.MetaTitle = "Which apprenticeship will suit my business needs the best";
     // ViewBag.PageID = "employer-the-right-apprenticeship";
     // ViewBag.MetaDesc = "You need to consider how much the apprenticeship will cost, whether it's the right one for your organisation and if the training fits with your business needs. ";
-    Layout = "_Layout-campaign-employer";
+    Layout = "_Layout-Campaign-employer";
 }
-<div class="grid-row">
-    <div class="grid-column-one-half">
-        <div class="hero-heading">
 
-            <span class="caption-m hero-heading__caption hero-heading__caption--employer">
-                <a href="javascript:history.back()">&lt; &nbsp; Back</a>
-            </span>
-            <h1 class="heading-xl hero-heading__heading" id="apprenticeship-title">How do they work?</h1>
-        </div>
-
-        <div class="text-wrapper">
-            <p class="lead-paragraph">
-                Discover the practical details of apprenticeships, from the hiring process to accessing government funding.
-            </p>
-
-            @if (!Model.PreviouslySet)
-            {
-               @await Html.PartialAsync("_levyNonLevyQuestion", Model)
-            }
-            else
-            {
-                <div id="without-levy-question" class="cta-row" style="">
-                    <p class="no-top-margin">
-                        <strong class="larger-font">Start by exploring your options</strong><br>
-                        You can either employer an apprentice or upskill your exsiting staff, it's that easy.
-                    </p>
-                    <a id="continue-user-type" asp-action="Index" asp-controller="HiringAnApprentice" class="button button--shadow button--sparks">Continue</a>
+<main id="main-content">
+    <div class="hero--no-clip">
+        <div class="grid-row">
+            <div class="grid-column-one-half">
+                <div class="hero-heading">
+                    <h1 class="heading-xl hero-heading__heading" id="apprenticeship-title">How do they work?</h1>
                 </div>
-            }
+                <p class="lead-paragraph">
+                    Discover the practical details of apprenticeships, from the hiring process to accessing government funding.
+                </p>
 
+                @if (!Model.PreviouslySet)
+                {
+                    @await Html.PartialAsync("_levyNonLevyQuestion", Model)
+                }
+                else
+                {
+                    <div id="without-levy-question" class="cta-row" style="">
+                        <p class="no-top-margin">
+                            <strong class="larger-font">Start by exploring your options</strong><br>
+                            You can either employer an apprentice or upskill your exsiting staff, it's that easy.
+                        </p>
+                        <a id="continue-user-type" asp-action="Index" asp-controller="HiringAnApprentice" class="button button--shadow button--sparks">Continue</a>
+                    </div>
+                }
+            </div>
+            <div class="grid-column-one-half">
+                <div class="flow">
+                     <div class="flow__links">
+                        <a asp-action="Index" asp-controller="HiringAnApprentice" class="flow__link flow__link--1">
+                           <span class="flow__link-image-wrap">
+                              <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                           </span>
+                           <span class="flow__link-text">
+                              Hiring an apprentice
+                           </span>
+                        </a>
+                        <a asp-action="Index" asp-controller="Upskill" class="flow__link flow__link--2">
+                           <span class="flow__link-image-wrap">
+                              <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                           </span>
+                           <span class="flow__link-text">
+                              Upskilling your current staff
+                           </span>
+                        </a>   
+                        <a asp-action="Index" asp-controller="FundingAnApprenticeship" class="flow__link flow__link--3">
+                           <span class="flow__link-image-wrap">
+                              <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                           </span>
+                           <span class="flow__link-text">
+                              Funding an apprenticeship
+                           </span>
+                        </a>
+                        <a asp-action="Index" asp-controller="TrainingYourApprentice" class="flow__link flow__link--4">
+                           <span class="flow__link-image-wrap">
+                              <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                           </span>
+                           <span class="flow__link-text">
+                              Training your apprentice
+                           </span>
+                        </a>
+                        <a asp-action="Index" asp-controller="EndPointAssessments" class="flow__link flow__link--5">
+                           <span class="flow__link-image-wrap">
+                              <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                           </span>
+                           <span class="flow__link-text">
+                              End-point assessments
+                           </span>
+                        </a>
+                     </div>
+                     <div class="flow__lines">
+                        <span class="flow__line flow__line--1"></span>
+                        <span class="flow__line flow__line--2"></span>
+                        <span class="flow__line flow__line--3"></span>
+                        <span class="flow__line flow__line--4"></span>
+                     </div>
+                  </div>
+            </div>
         </div>
-
-        <a href="https://www.gov.uk/" class="hmrc-gov">gov.uk</a>
-
     </div>
-    <div class="grid-column-one-half">
-
-        <div class="illustration-wrapper">
-
-            <!-- SECTION 1 - START -->
-            <a asp-action="Index" asp-controller="HiringAnApprentice" class="illustrative-journey section-1">
-                <div class="image">
-                    <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-1.svg"/>
-                </div>
-                <div class="text">
-                    <h3 class="heading-xs">Hiring an apprentice</h3>
-                </div>
-            </a>
-            <!-- SECTION 1 - END -->
-
-            <!-- SECTION 2 - START -->
-            <a asp-action="Index" asp-controller="Upskill" class="illustrative-journey section-2">
-                <div class="border">
-                    <span class="spot top"></span>
-                    <span class="spot bottom"></span>
-                </div>
-                <div class="image">
-                    <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-2.svg"/>
-                </div>
-                <div class="text">
-                    <h3 class="heading-xs">Upskilling your current staff</h3>
-                </div>
-            </a>
-            <!-- SECTION 2 - END -->
-
-            <!-- SECTION 3 - START -->
-            <a asp-action="Index" asp-controller="FundingAnApprenticeship" class="illustrative-journey section-3">
-                <div class="border">
-                    <span class="spot top"></span>
-                    <span class="spot bottom"></span>
-                </div>
-                <div class="image">
-                    <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-3.svg"/>
-                </div>
-                <div class="text">
-                    <h3 class="heading-xs">Funding an apprenticeship</h3>
-                </div>
-            </a>
-            <!-- SECTION 3 - END -->
-
-            <!-- SECTION 4 - START -->
-            <a asp-action="Index" asp-controller="TrainingYourApprentice" class="illustrative-journey section-4">
-                <div class="border">
-                    <span class="spot top"></span>
-                    <span class="spot bottom"></span>
-                </div>
-                <div class="image">
-                    <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-4.svg"/>
-                </div>
-                <div class="text">
-                    <h3 class="heading-xs">Training your apprentice</h3>
-                </div>
-            </a>
-            <!-- SECTION 4 - END -->
-
-            <!-- SECTION 5 - START -->
-            <a asp-action="Index" asp-controller="EndPointAssessments" class="illustrative-journey section-5">
-                <div class="border">
-                    <span class="spot top"></span>
-                    <span class="spot bottom"></span>
-                </div>
-                <div class="image">
-                    <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-5.svg"/>
-                </div>
-                <div class="text">
-                    <h3 class="heading-xs">End-point assessments</h3>
-                </div>
-            </a>
-            <!-- SECTION 5 - END -->
-
-
-        </div>
-
-    </div>
-</div>
+</main>

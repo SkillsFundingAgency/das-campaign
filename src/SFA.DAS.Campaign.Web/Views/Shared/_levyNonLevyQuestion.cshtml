@@ -1,31 +1,28 @@
 @model SFA.DAS.Campaign.Web.Controllers.EmployerInform.LevyOptionViewModel
 <div id="non-levy-levy-journey">
-    <p class="no-top-margin">
-        If you answer the following question before you explore this page, we’ll be able to tailor the information to your organisation.
-    </p>
-
-    <div id="how-they-work-levy-question" class="cta-row" style="">
+    <p>If you answer the following question before you explore this page, we’ll be able to tailor the information to your organisation.</p>
+    <div id="how-they-work-levy-question">
         <form method="post">
-            <div class="form-group radios no-top-margin">
-                <p class="no-top-margin">
-                    <strong class="larger-font">As an employer, is your pay bill more than £3 million per year?</strong><br>
-                    If you’re receiving a transfer of apprenticeship funds from another employer, please choose ‘Yes’.
-                </p>
-                <div class="radios__item">
-                    <input id="levyPayerYes" asp-for="LevyStatus" value="Levy" type="radio"/>
-                    <label class="label radios__label" for="levyPayerYes">Yes</label>
-                </div>
-                <div class="radios__item">
-                    <input id="levyPayerNo" asp-for="LevyStatus" value="NonLevy" type="radio"/>
-                    <label class="label radios__label" for="levyPayerNo">No</label>
+            <p>
+                <strong>As an employer, is your pay bill more than £3 million per year?</strong><br>
+                If you’re receiving a transfer of apprenticeship funds from another employer, please choose ‘Yes’.
+            </p>
+            <div class="form-group">
+                <div class="radios--inline">
+                    <div class="radios__item">
+                        <input id="levyPayerYes" asp-for="LevyStatus" value="Levy" type="radio" class="radios__input"/>
+                        <label class="label radios__label" for="levyPayerYes">Yes</label>
+                    </div>
+                    <div class="radios__item">
+                        <input id="levyPayerNo" asp-for="LevyStatus" value="NonLevy" type="radio" class="radios__input"/>
+                        <label class="label radios__label" for="levyPayerNo">No</label>
+                    </div>
                 </div>
             </div>
-
-            <button type="submit" class="button button--shadow button--sparks">Continue</button>
-
-            <p class="lead-paragraph">
-                <a asp-action="Index" asp-controller="HiringAnApprentice">I don't know, continue</a>
-            </p>
+            <div class="form-group">
+                <button type="submit" class="button button--employer button--sparks">Continue</button>
+                <a asp-action="Index" asp-controller="HiringAnApprentice" class="button button--text">I don't know, continue</a>
+            </div>
         </form>
     </div>
 </div>
