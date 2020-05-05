@@ -3,12 +3,11 @@
 @{
     ViewBag.Title = "Funding an apprenticeship";
     //ViewBag.MetaTitle = "What to think about to find the right apprenticeship for your business";
-    ViewBag.HeroImageAltText = "Apprentice in the digital industry";
-    ViewBag.PageID = "employer-funding-an-apprenticeship";
+    ViewBag.HeroImageAltText = "Transport and logistics apprentice";
+    ViewBag.PageID = "employer-what-are-the-costs-to-me";
     //ViewBag.MetaDesc = "When you've decided to employ an apprentice, think about offering an attractive salary, good career prospects and ask the right questions at the interview. ";
     ViewBag.PageUrl = "/employer/funding-an-apprenticeship";
     ViewBag.Section = "employer";
-
     Layout = "_Layout-campaign-employer-inform";
 }
 
@@ -20,37 +19,32 @@
 
 @if (Model.LevyStatus == LevyStatus.Levy)
 {
-    <div class="levy-content" style="">
-        <h2 class="heading-m no-top-margin" id="heading1">Apprenticeship funding from the government</h2>
-        <h2 class="heading-s no-top-margin">Apprenticeship training and assessment</h2>
-
+        <h2 class="heading-m">Apprenticeship funding from the government</h2>
+        <h3 class="heading-s">Apprenticeship training and assessment</h3>
         <p>
             As an employer with a pay bill of more than £3 million, you're required to pay the apprenticeship levy.
             You'll receive funds through the apprenticeship service to spend on training and assessing your apprentices.
         </p>
-
         <p>
             The amount of funding entering your account each month is calculated as follows:
         </p>
-
         <ul class="list list--bullet list--bullet-employer">
             <li>the levy you declare to HMRC through the <a href="https://www.gov.uk/paye-for-employers/paye-and-payroll" target="_blank" rel="external" class="external">PAYE process</a></li>
             <li>multiplied by the proportion of your bill paid to your workforce who live in England</li>
             <li>plus a 10% government top-up on this amount</li>
         </ul>
-
         <p>
             When you're ready to get started, you'll need to
             <a href="/campaign/employer/gov-transition-NO-FAT" class="external">sign in or create a new account</a>
             on the apprenticeship service.
         </p>
-    </div>
+   
 }
 else
 {
-    <div class="non-levy-content">
-        <h2 class="heading-m no-top-margin" id="heading1">Apprenticeship funding from the government</h2>
-        <h2 class="heading-s no-top-margin">Apprenticeship training and assessment</h2>
+
+        <h2 class="heading-m">Apprenticeship funding from the government</h2>
+        <h3 class="heading-s">Apprenticeship training and assessment</h3>
 
         <p>
             As an employer with a pay bill of less than £3 million per year, you'll share apprenticeship costs with
@@ -81,7 +75,7 @@ else
             This means you won't have to pay the 5% co-investment amount.
         </p>
 
-        <h2 class="heading-m" id="heading2">Training young apprentices</h2>
+        <h2 class="heading-m">Training young apprentices</h2>
 
         <p>
             All employers will receive <strong>£1,000</strong> if, at the start of the apprenticeship, the apprentice is:
@@ -96,14 +90,14 @@ else
             This will be paid to you in two equal instalments, 3 months and 12 months into the apprenticeships, via your training provider.
         </p>
 
-        <h2 class="heading-m" id="heading3">Example training and assessment costs</h2>
+        <h2 class="heading-m">Example training and assessment costs</h2>
 
         <p>
             These examples show the breakdown of costs for funding an apprentice's training and assessment. They do not include other
             costs, such as salary, which are detailed below.
         </p>
 
-        <h2 class="heading-s no-top-margin">EXAMPLE COSTS 1:</h2>
+        <h2 class="heading-s">Example costs 1:</h2>
 
         <table class="table table--employer">
             <thead class="table__header">
@@ -138,7 +132,7 @@ else
             </tfoot>
         </table>
 
-        <h2 class="heading-s no-top-margin">EXAMPLE COSTS 2:</h2>
+        <h2 class="heading-s">Example costs 2:</h2>
 
         <table class="table table--employer">
             <thead class="table__header">
@@ -172,7 +166,7 @@ else
             </tr>
             </tfoot>
         </table>
-    </div>
+    
 }
 
 <h2 class="heading-m" id="heading3">Apprenticeship costs paid by you</h2>
@@ -190,7 +184,7 @@ else
 
 <p>
     If they're aged 19 or over and have completed the first year of their apprenticeship,
-    they're entitled to the <a href="https://www.gov.uk/national-minimum-wage-rates" target="_blank" rel="external" class="external">National Minimum Wage</a>
+    they're entitled to the <a href="https://www.gov.uk/national-minimum-wage-rates" target="_blank" rel="external">National Minimum Wage</a>
     for their age.
 </p>
 
@@ -210,15 +204,14 @@ else
 @if (Model.LevyStatus == LevyStatus.Levy)
 {
 
-    <div class="levy-content" style="">
-        <h2 class="heading-m" id="heading4">Transferring funds to another employer</h2>
 
+        <h2 class="heading-m">Transferring funds to another employer</h2>
         <p>
             If you have unused apprenticeship funds, you can
-            <a href="https://www.gov.uk/guidance/transferring-apprenticeship-service-funds" target="_blank" rel="external" class="external">
+            <a href="https://www.gov.uk/guidance/transferring-apprenticeship-service-funds" target="_blank" rel="external">
                 transfer them to another employer
-                using the
-            </a><a href="#" target="_blank" rel="external" class="external">apprenticeship service</a>.
+                using the apprenticeship service
+            </a>.
         </p>
 
         <p>
@@ -231,35 +224,31 @@ else
             <li>contacting an Apprenticeship Training Agency (ATA)</li>
             <li>working with regional partners</li>
         </ul>
-
-    </div>
 }
 
-<h2 class="heading-m" id="heading5">Paying for apprenticeships using a transfer of apprenticeship funds</h2>
+<h2 class="heading-m">Paying for apprenticeships using a transfer of apprenticeship funds</h2>
 
 <p>
     Employers who already have an apprenticeship service account can transfer unused apprenticeship funds to another employer.
 </p>
 
 <p>
-    <a href="https://www.gov.uk/guidance/transferring-apprenticeship-service-funds" target="_blank" rel="external" class="external">Transferred funds</a>
+    <a href="https://www.gov.uk/guidance/transferring-apprenticeship-service-funds" target="_blank" rel="external">Transferred funds</a>
     can be used to pay for new apprenticeship training and assessment for
-    <a href="https://www.apprenticeships.gov.uk/employer/the-right-apprenticeship#available-apprenticeships" target="_blank" rel="external" class="external">apprenticeship standards</a>.
+    <a href="https://www.apprenticeships.gov.uk/employer/the-right-apprenticeship#available-apprenticeships" target="_blank" rel="external">apprenticeship standards</a>.
     They can't be used for apprenticeship frameworks, which are being phased out.
 </p>
 
-<p>&nbsp;</p>
-
-<hr>
+<hr class="section-break">
 
 <h2 class="heading-m">Apprenticeships in Scotland, Northern Ireland and Wales</h2>
 
 <p>
     This page details the costs and funding rules for apprenticeships in England.
     You can find information about apprenticeships in
-    <a href="https://www.apprenticeships.scot/" target="_blank" rel="external" class="external">Scotland</a>,
-    <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external" class="external">Northern Ireland</a> or
-    <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external" class="external">Wales</a>
+    <a href="https://www.apprenticeships.scot/" target="_blank" rel="external">Scotland</a>,
+    <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external">Northern Ireland</a> or
+    <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external">Wales</a>
     on the relevant apprenticeships website.
 </p>
 
