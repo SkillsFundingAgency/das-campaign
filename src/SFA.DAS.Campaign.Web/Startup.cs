@@ -34,6 +34,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
+using Contentful.AspNetCore;
 using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Web
@@ -157,6 +158,8 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<ICacheStorageService, CacheStorageService>();
             services.AddTransient<IVacancyServiceApiHealthCheck, VacancyServiceApiHealthCheck>();
 
+            services.AddContentful(Configuration);
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.AddMemoryCache();
