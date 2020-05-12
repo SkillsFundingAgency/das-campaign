@@ -107,17 +107,14 @@
 
                 </div>
                 <div class="card-stories__content">
-                    <h2 class="card-stories__headline heading-l">My mum found my apprenticeship, and I've never looked back</h2>
-                    <p class="card-stories__summary">
-                        Being an apprentice has been the best time of my life, I've been able to do things that I'm passionate about.
-                    </p>
-                    <p class="card-stories__summary">
-                        I've been able to meet so many different people. I've built up my confidence. It's been the best experience it could have been.
-                    </p>
+                    <h2 class="card-stories__headline heading-l">@realStory.Title</h2>
+                    
+                    <contentful-rich-text document="@realStory.Story" ></contentful-rich-text>
+                    
                     <div class="card-stories__cite">
-                        Alim,
+                        @realStory.Author,
                         <span class="card-stories__cite-detail">
-                            22, Channel 4, London
+                            @realStory.AgeLocation
                         </span>
                     </div>
 
