@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Contentful.Core.Models.ContentfulCollection<SFA.DAS.Campaign.Web.Controllers.Interest>
+
+@{
     ViewBag.Title = "Find the right apprenticeship for you by searching the different sectors. ";
     Layout = "_Layout-campaign";
     ViewBag.PageID = "industries";
@@ -22,64 +24,83 @@
     <span class="hero-banner__background hero-banner__background--industry"></span>
 </div>
 <div class="grid-row-full-width card__collection card__collection--industry">
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="AgricultureEnvironmentAnimalCare" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--agriculture-environment-animal-care"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Agriculture, environment and animal care</h2>
-                <p class="card__summary">Want to work outside, work with animals or do you just feel passionate about working for the environment? Here you go.</p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Agriculture, environment and animal care industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="BusinessAdministration" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--business-administration"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Business and administration</h2>
-                <p class="card__summary">
-                    Where could a business-centric apprenticeship take you? Manager? CEO? Check out the
-                    current opportunities and see if you could go global.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Business and administration industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="CareServices" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--care-services"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Care services</h2>
-                <p class="card__summary">
-                    Care service apprentices are making a real difference in their local communities. Every day,
-                    they're helping vulnerable children, young people, adults and the elderly,
-                    across a range of different community care and support services.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Care services industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="CateringHospitality" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--catering-hospitality"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Catering and hospitality</h2>
-                <p class="card__summary">
-                    Are you fascinated by cooking? Perhaps you love working with food and drink? Or
-                    maybe 'front of house' or customer service are more your thing. Let's find out.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Catering and hospitality industry">Find out more</p>
-            </div>
-        </a>
-    </div>
+    @foreach (var interest in Model)
+    {
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="Industry" asp-route-slug="@interest.Slug" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img" style="background: url('@interest.ThumbnailUrl'); background-size: cover; background-position: center;"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">@interest.Title</h2>
+                    <p class="card__summary">
+                        <contentful-rich-text document="@interest.Summary" ></contentful-rich-text>
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the @interest.Title">Find out more</p>
+                </div>
+            </a>
+        </div>
+    }
+    
+    @* *@
+    @* <div class="grid-column-full-width-one-quarter"> *@
+    @*     <a class="card" asp-controller="Industries" asp-action="AgricultureEnvironmentAnimalCare" tabindex="-1" role="presentation"> *@
+    @*         <div class="card__image"> *@
+    @*             <span class="card__img card__img--agriculture-environment-animal-care"></span> *@
+    @*         </div> *@
+    @*         <div class="card__content"> *@
+    @*             <h2 class="card__headline heading-s">Agriculture, environment and animal care</h2> *@
+    @*             <p class="card__summary">Want to work outside, work with animals or do you just feel passionate about working for the environment? Here you go.</p> *@
+    @*             <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Agriculture, environment and animal care industry">Find out more</p> *@
+    @*         </div> *@
+    @*     </a> *@
+    @* </div> *@
+    @* <div class="grid-column-full-width-one-quarter"> *@
+    @*     <a class="card" asp-controller="Industries" asp-action="BusinessAdministration" tabindex="-1" role="presentation"> *@
+    @*         <div class="card__image"> *@
+    @*             <span class="card__img card__img--business-administration"></span> *@
+    @*         </div> *@
+    @*         <div class="card__content"> *@
+    @*             <h2 class="card__headline heading-s">Business and administration</h2> *@
+    @*             <p class="card__summary"> *@
+    @*                 Where could a business-centric apprenticeship take you? Manager? CEO? Check out the *@
+    @*                 current opportunities and see if you could go global. *@
+    @*             </p> *@
+    @*             <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Business and administration industry">Find out more</p> *@
+    @*         </div> *@
+    @*     </a> *@
+    @* </div> *@
+    @* <div class="grid-column-full-width-one-quarter"> *@
+    @*     <a class="card" asp-controller="Industries" asp-action="CareServices" tabindex="-1" role="presentation"> *@
+    @*         <div class="card__image"> *@
+    @*             <span class="card__img card__img--care-services"></span> *@
+    @*         </div> *@
+    @*         <div class="card__content"> *@
+    @*             <h2 class="card__headline heading-s">Care services</h2> *@
+    @*             <p class="card__summary"> *@
+    @*                 Care service apprentices are making a real difference in their local communities. Every day, *@
+    @*                 they're helping vulnerable children, young people, adults and the elderly, *@
+    @*                 across a range of different community care and support services. *@
+    @*             </p> *@
+    @*             <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Care services industry">Find out more</p> *@
+    @*         </div> *@
+    @*     </a> *@
+    @* </div> *@
+    @* <div class="grid-column-full-width-one-quarter"> *@
+    @*     <a class="card" asp-controller="Industries" asp-action="CateringHospitality" tabindex="-1" role="presentation"> *@
+    @*         <div class="card__image"> *@
+    @*             <span class="card__img card__img--catering-hospitality"></span> *@
+    @*         </div> *@
+    @*         <div class="card__content"> *@
+    @*             <h2 class="card__headline heading-s">Catering and hospitality</h2> *@
+    @*             <p class="card__summary"> *@
+    @*                 Are you fascinated by cooking? Perhaps you love working with food and drink? Or *@
+    @*                 maybe 'front of house' or customer service are more your thing. Let's find out. *@
+    @*             </p> *@
+    @*             <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Catering and hospitality industry">Find out more</p> *@
+    @*         </div> *@
+    @*     </a> *@
+    @* </div> *@
 
 </div>
 <div class="grid-row-full-width card__collection card__collection--industry">

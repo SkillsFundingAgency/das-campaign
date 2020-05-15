@@ -1,14 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Contentful.Core;
+using Contentful.Core.Models;
+using Contentful.Core.Search;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     [Route("employer")]
     public class EmployerController : Controller
     {
-        [Route("how-much-is-it-going-to-cost")]
-        public IActionResult HowMuchIsItGoingToCost()
+        private readonly IContentfulClient _contentfulClient;
+
+        public EmployerController(IContentfulClient contentfulClient)
         {
-            return View();
+            _contentfulClient = contentfulClient;
+        }
+
+        [Route("how-much-is-it-going-to-cost")]
+        public async Task<IActionResult> HowMuchIsItGoingToCost()
+        {
+            var builder = QueryBuilder<InfoPage>.New.FieldEquals(i => i.Slug, "how-much-is-it-going-to-cost");
+            var infoPageContent = (await _contentfulClient.GetEntriesByType<InfoPage>("infoPage", builder)).FirstOrDefault();
+            
+            return View(infoPageContent);
         }
         [Route("the-right-apprenticeship")]
         public IActionResult TheRightApprenticeship()
@@ -47,5 +63,18 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
+    }
+
+    public class InfoPageSection
+    {
+        public string Title { get; set; }
+        public Document Body { get; set; }
+    }
+
+    public class InfoPage
+    {
+        public string Slug { get; set; }
+        public string Title { get; set; }
+        public List<InfoPageSection> Sections { get; set; }
     }
 }

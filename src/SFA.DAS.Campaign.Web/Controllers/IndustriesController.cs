@@ -1,4 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Contentful.Core;
+using Contentful.Core.Models;
+using Contentful.Core.Search;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
@@ -6,30 +13,50 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
     public class IndustriesController : Controller
     {
-        public IActionResult Index()
+        private readonly IContentfulClient _contentfulClient;
+
+        public IndustriesController(IContentfulClient contentfulClient)
         {
-            return View();
+            _contentfulClient = contentfulClient;
         }
-        [Route("agriculture-environment-animal-care")]
-        public IActionResult AgricultureEnvironmentAnimalCare()
+        
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var interests = await _contentfulClient.GetEntriesByType<Interest>("interest");
+            
+            return View(interests);
         }
-        [Route("business-administration")]
-        public IActionResult BusinessAdministration()
+
+        [Route("{slug}")]
+        public async Task<IActionResult> Industry(string slug)
         {
-            return View();
+            var builder = QueryBuilder<Interest>.New.FieldEquals(i => i.Slug, slug);
+            var interest = (await _contentfulClient.GetEntriesByType<Interest>("interest", builder)).FirstOrDefault();
+
+            return View(interest);
         }
-        [Route("care-services")]
-        public IActionResult CareServices()
-        {
-            return View();
-        }
-        [Route("catering-hospitality")]
-        public IActionResult CateringHospitality()
-        {
-            return View();
-        }
+        
+        
+        // [Route("agriculture-environment-animal-care")]
+        // public IActionResult AgricultureEnvironmentAnimalCare()
+        // {
+        //     return View();
+        // }
+        // [Route("business-administration")]
+        // public IActionResult BusinessAdministration()
+        // {
+        //     return View();
+        // }
+        // [Route("care-services")]
+        // public IActionResult CareServices()
+        // {
+        //     return View();
+        // }
+        // [Route("catering-hospitality")]
+        // public IActionResult CateringHospitality()
+        // {
+        //     return View();
+        // }
         [Route("construction")]
         public IActionResult Construction()
         {
@@ -86,5 +113,16 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View();
         }
 
+    }
+
+    public class Interest
+    {
+        public string Slug { get; set; }
+        public string Title { get; set; }
+        public Document Summary { get; set; }
+        public string ThumbnailUrl { get; set; }
+        public Document Body { get; set; }
+        public List<string> Includes { get; set; }
+        public Asset Image { get; set; }
     }
 }

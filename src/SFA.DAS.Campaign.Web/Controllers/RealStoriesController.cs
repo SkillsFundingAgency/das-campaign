@@ -18,7 +18,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("apprentice")]
         public async Task<IActionResult> Apprentice()
         {
-            var realStories = await _contentfulClient.GetEntries<RealStory>();
+            var realStories = await _contentfulClient.GetEntriesByType<RealStory>("realStory");
             
             return View(realStories);
         }
