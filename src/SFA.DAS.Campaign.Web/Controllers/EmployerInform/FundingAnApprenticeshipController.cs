@@ -17,7 +17,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
         public IActionResult Index()
         {
             var vm = 
-                _sessionService.Get<LevyOptionViewModel>("LevyOptionViewModel") 
+                _sessionService.Get<LevyOptionViewModel>(_sessionService.LevyOptionViewModelKey) 
                 ?? new LevyOptionViewModel() {LevyStatus = LevyStatus.NonLevy};
 
             return View("~/Views/EmployerInform/FundingAnApprenticeship.cshtml", vm);
@@ -27,7 +27,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
         public IActionResult Index(LevyOptionViewModel vm)
         {
             vm.PreviouslySet = true;
-            _sessionService.Set("LevyOptionViewModel", vm);
+            _sessionService.Set(_sessionService.LevyOptionViewModelKey, vm);
 
             return RedirectToAction("Index", "FundingAnApprenticeship");
         }

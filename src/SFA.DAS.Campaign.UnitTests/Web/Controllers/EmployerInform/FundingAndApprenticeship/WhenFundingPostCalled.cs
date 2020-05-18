@@ -19,7 +19,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
             var levyOptionViewModel = new LevyOptionViewModel() {LevyStatus = LevyStatus.Levy};
             controller.Index(levyOptionViewModel);
             
-            sessionService.Verify(ss => ss.Set("LevyOptionViewModel", levyOptionViewModel));
+            sessionService.Verify(ss => ss.Set(sessionService.Object.LevyOptionViewModelKey, levyOptionViewModel), Times.Once());
         }
 
         [Test]

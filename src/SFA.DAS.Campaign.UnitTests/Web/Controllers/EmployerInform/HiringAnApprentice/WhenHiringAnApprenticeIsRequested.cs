@@ -9,7 +9,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.HiringAnAppr
     public class WhenHiringAnApprenticeIsRequested
     {
         [Test]
-        public void ThenTheCorrectViewIsReturned()
+        public void ThenTheHiringAnApprenticeViewIsReturned()
         {
             var controller = new HiringAnApprenticeController();
 

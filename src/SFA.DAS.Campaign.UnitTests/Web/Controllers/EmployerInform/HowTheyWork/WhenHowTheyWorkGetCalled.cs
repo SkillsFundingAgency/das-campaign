@@ -14,7 +14,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.HowTheyWork
         public void ThenViewIsReturned()
         {
             var sessionService = new Mock<ISessionService>();
-            sessionService.Setup(ss => ss.Get<LevyOptionViewModel>("LevyOptionViewModel")).Returns(new LevyOptionViewModel
+            sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(new LevyOptionViewModel
             {
                 LevyStatus = LevyStatus.Levy
             });
@@ -32,7 +32,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.HowTheyWork
         public void AndNoVmStoredInSession_ThenDefaultVmReturnedInView()
         {
             var sessionService = new Mock<ISessionService>();
-            sessionService.Setup(ss => ss.Get<LevyOptionViewModel>("LevyOptionViewModel")).Returns(default(LevyOptionViewModel));
+            sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(default(LevyOptionViewModel));
             
             var controller = new HowDoTheyWorkController(sessionService.Object);
 
