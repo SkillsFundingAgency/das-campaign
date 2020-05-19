@@ -1,4 +1,6 @@
-﻿@model object
+﻿@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model object
 @{
     ViewBag.Title = "Upskilling your current staff";
     ViewBag.MetaTitle = "Apprenticeships to train your current staff";
@@ -69,8 +71,12 @@
     </li>
 </ul>
 
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork") })
+}
+
 @section pageFooter {
     <div class="grid-column-full">
-        <partial name="./Components/Cta/_find-apprenticeship-training-with-search"/>
+        <partial name="./Components/Cta/_find-apprenticeship-training-with-search" />
     </div>
 }

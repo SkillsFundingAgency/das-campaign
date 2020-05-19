@@ -1,4 +1,6 @@
-﻿@model object
+﻿@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model object
 @{
     ViewBag.Title = "Training your apprentice";
     ViewBag.MetaTitle = "How apprenticeship training works";
@@ -9,7 +11,7 @@
     ViewBag.Section = "employer";
     Layout = "_Layout-campaign-employer-inform";
 }
-    
+
 <h2 class="heading-m">Apprentices are trained to make an impact </h2>
 
 <p>Throughout the apprenticeship, you'll supervise the apprentice and provide them with on-the-job training to help them develop new skills.</p>
@@ -42,7 +44,7 @@
 
 <p>As a rule of thumb, an activity should count towards apprenticeship off-the-job training if you can answer <strong>'yes'</strong> to all these questions:</p>
 
-<ol class="list list--number list--number-employer" >
+<ol class="list list--number list--number-employer">
     <li>Is the person signed up to the apprenticeship programme?</li>
     <li>Is the activity directly relevant to the apprenticeship?</li>
     <li>Is the activity teaching new knowledge, skills and behaviours?</li>
@@ -58,6 +60,9 @@
     <li class="pagination__list-item"><a class="pagination__link pagination__link--next" asp-controller="EndPointAssessments" asp-action="Index" id="link-pagination-employer-5"> End-point assessments</a></li>
 </ul>
 
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork") })
+}
 
 @section pageFooter {
     <div class="grid-column-full">

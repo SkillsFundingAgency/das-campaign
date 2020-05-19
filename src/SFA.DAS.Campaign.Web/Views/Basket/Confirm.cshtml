@@ -48,5 +48,5 @@
 }
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Content = HeroHeadingContent() , Caption = ViewBag.Caption, ImageUrl = ViewBag.ImageUrl, ImageAltText = ViewBag.ImageAltText})
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Content = HeroHeadingContent() , SectionTitle = ViewBag.Caption, ImageUrl = ViewBag.ImageUrl, ImageAltText = ViewBag.ImageAltText})
 }

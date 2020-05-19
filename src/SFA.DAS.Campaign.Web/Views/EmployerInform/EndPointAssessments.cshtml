@@ -1,4 +1,6 @@
-﻿@model object
+﻿@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model object
 @{
     ViewBag.Title = "End-point Assessments";
     ViewBag.MetaTitle = "Apprenticeship end-point assessment";
@@ -33,11 +35,11 @@
 <h2 class="heading-m">The cost of an end-point assessment</h2>
 
 <p>We expect that the cost of the end-point assessment will not usually exceed 20% of the funding band maximum. This cost is included in the overall price agreed with the training provider for the apprenticeship.</p>
-   
+
 <h2 class="heading-m">Certification</h2>
 
 <p>When your apprentice successfully completes their apprenticeship, they'll be awarded a certificate. The end-point assessment organisation will request this certificate on your behalf.</p>
-   
+
 <ul class="pagination pagination--employer">
     <li class="pagination__list-item pagination__list-item--previous">
         <a class="pagination__link pagination__link--previous" asp-action="Index" asp-controller="TrainingYourApprentice">Training your apprentice</a>
@@ -46,6 +48,10 @@
         <a class="pagination__link pagination__link--next" asp-action="TheRightApprenticeship" asp-controller="Employer">Choosing the right apprenticeship</a>
     </li>
 </ul>
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork") })
+}
 
 @section pageFooter {
     <div class="grid-column-full">

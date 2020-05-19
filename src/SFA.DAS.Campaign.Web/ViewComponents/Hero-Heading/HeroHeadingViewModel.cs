@@ -15,7 +15,7 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
         private HeroHeadingType _type;
         private string _controller;
         private string _class;
-        private string _caption;
+        private string _sectionTitle;
 
         public IHtmlContent Content { get; set; }
 
@@ -50,11 +50,11 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
             set => _type = value;
         }
 
-        public string Caption
+        public string SectionTitle
         {
             get
             {
-                if (String.IsNullOrWhiteSpace(_caption))
+                if (String.IsNullOrWhiteSpace(_sectionTitle))
                 {
                     switch (_type)
                     {
@@ -63,15 +63,15 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                         case HeroHeadingType.Employer:
                             return "Employer";
                         case HeroHeadingType.Parent:
-                            return "Parent";
+                            return "Parents";
                     }
                     return String.Empty;
                 }
 
-                return _caption;
+                return _sectionTitle;
 
             }
-            set => _caption = value;
+            set => _sectionTitle = value;
         }
 
         public string Class
@@ -104,5 +104,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
         public string ImageUrl { get; set; }
         public string ImageAltText { get; set; }
         public string Controller { internal get; set; }
+
+        public string SectionUrl { get; set; }
+        public string SubSectionTitle { get; set; }
+        public string SubSectionUrl { get; set; }
     }
 }
