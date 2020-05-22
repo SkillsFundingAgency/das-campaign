@@ -80,7 +80,7 @@
 }
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Employer, Content = HeroHeadingContent() })
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Employer, Content = HeroHeadingContent(), SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork")  })
 }
 
 @section Resources {
