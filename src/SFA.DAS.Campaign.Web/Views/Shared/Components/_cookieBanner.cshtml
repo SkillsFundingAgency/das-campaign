@@ -11,7 +11,7 @@
                 <img src="/campaign/images/icon-circle-tick.svg" class="button__icon" alt="" />
                 <span class="button__text">Accept all cookies</span>
             </a>
-            <a class="cookiebanner__link cookiebanner--close" href="#modal-cookiesettings" id="link-cookie-settings">Set cookie preferences</a>
+            <a class="cookiebanner__link cookiebanner--close" href="/cookies" id="link-cookie-settings">Set cookie preferences</a>
         </div>
     </div>
 </div>
@@ -33,5 +33,7 @@
     if (!ParseHideCookieBanner())
     {
         @await Component.InvokeAsync("Modal", new { id = "modal-cookiesettings", type = ModalType.Component, name = "Form", componentOptions = new { type = FormType.CookieSettings } })
+    } else {
+        <span data-module="cookieSettingsPage"></span>
     }
 }
