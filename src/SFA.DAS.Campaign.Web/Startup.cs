@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
@@ -34,6 +35,8 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
+using Microsoft.AspNetCore.DataProtection;
+using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
 using VacanciesApi;
 
@@ -191,6 +194,11 @@ namespace SFA.DAS.Campaign.Web
                 });
 
                 healthChecks.AddRedis(connectionStrings.SharedRedis, "redis-app-cache-check");
+                
+                var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},DefaultDatabase=3");
+                services.AddDataProtection()
+                    .SetApplicationName("das-campaign-web")
+                    .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys");
             }
         }
 
