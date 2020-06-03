@@ -16,6 +16,7 @@
 
 @if (!Model.PreviouslySet)
 {
+    <p>Answer this question before viewing the funding guidance so we can show you the most relevant information.</p>
     @await Html.PartialAsync("_levyNonLevyQuestion", Model)
 }
 
@@ -23,28 +24,28 @@
 {
     <h2 class="heading-m">The key facts</h2>
     <p>As an employer with a pay bill of more than £3 million, you're required to pay the apprenticeship levy. You'll receive funds through the apprenticeship service to spend on training and assessing your apprentices.</p>
-    <p>You'll need to pay the apprentice's salary, which will be at least the hourly <a>minimum wage rate</a> for their circumstances.</p>
+    <p>You'll need to pay the apprentice's salary, which will be at least the hourly <a href="https://www.gov.uk/national-minimum-wage-rates" target="_blank" rel="external">minimum wage rate</a> for their circumstances.</p>
 
     <h2 class="heading-m">Apprenticeship funding from the government</h2>
     <p>The amount of funding entering your account each month is calculated as follows:</p>
     <ul class="list list--bullet list--bullet-employer">
-        <li>the levy you declare to HMRC through the <a href="https://www.gov.uk/paye-for-employers/paye-and-payroll">PAYE process</a></li>
+        <li>the levy you declare to HMRC through the <a href="https://www.gov.uk/paye-for-employers/paye-and-payroll" target="_blank" rel="external">PAYE process</a></li>
         <li>multiplied by the proportion of your bill paid to your workforce who live in England</li>
         <li>plus a 10% government top-up on this amount</li>
     </ul>
-    <p>When you're ready to get started, you'll need to <a href="https://accounts.manage-apprenticeships.service.gov.uk/service/index">sign in or create an account</a> on the apprenticeship service.</p>
+    <p>When you're ready to get started, you'll need to <a href="https://accounts.manage-apprenticeships.service.gov.uk/service/index" target="_blank" rel="external">sign in or create an account</a> on the apprenticeship service.</p>
 }
 else
 {
     <h2 class="heading-m">The key facts</h2>
     <p>As an employer with a pay bill of less than £3 million per year, you'll get funding from the government to pay towards training and assessing apprentices. The amount of funding you get depends on the number of employees you have and the apprentice you're hiring.</p>
-    <p>You'll need to pay the apprentice's salary, which will be at least the hourly <a>minimum wage rate</a> for their circumstances.</p>
+    <p>You'll need to pay the apprentice's salary, which will be at least the hourly <a href="https://www.gov.uk/national-minimum-wage-rates" target="_blank" rel="external">minimum wage rate</a> for their circumstances.</p>
     <p>Head to the <a>help centre</a> for more advice and support, including contact details if you want to get in touch.</p>
 
     <h2 class="heading-m">Apprenticeship funding from the government</h2>
 
     <h3 class="heading-s">Employers with fewer than 50 employees</h3>
-    <p>If you're an employer with fewer than 50 employees, the government will fund all the apprenticeship training costs up to the funding band maximum if, on the first day of the apprenticeship, the apprentice is:</p>
+    <p>If you're an employer with fewer than 50 employees, the government will fund all the apprenticeship training costs up to the <a href="https://www.gov.uk/government/publications/apprenticeship-funding-bands" target="_blank" rel="external">funding band maximum</a> if, on the first day of the apprenticeship, the apprentice is:</p>
     <ul class="list list--bullet list--bullet-employer">
         <li>between 16 and 18 years old (or 15 years old if the apprentice's 16th birthday is between the last Friday of June and 31 August)</li>
         <li>between 19 and 24 years old and has an Education, Health and Care (EHC) plan provided by their local authority or has been in the care of their local authority</li>
@@ -55,7 +56,7 @@ else
 <p>If you have at least 50 employees or your apprentice does not meet the criteria above, you'll share apprenticeship costs with the government. This means:</p>
 <ul class="list list--bullet list--bullet-employer">
     <li>you'll pay 5% towards the cost of training and assessing your apprentice</li>
-    <li>the government will pay the remaining 95%, up to the funding band maximum</li>
+    <li>the government will pay the remaining 95%, up to the <a href="https://www.gov.uk/government/publications/apprenticeship-funding-bands" target="_blank" rel="external">funding band maximum</a></li>
     <li>if your apprentice's training and assessment cost more than this, you'll pay the difference</li>
 </ul>
 
@@ -147,10 +148,10 @@ else
 <h2 class="heading-m" id="heading3">Apprenticeship costs paid by you</h2>
 <h3 class="heading-s">Your apprentice's salary</h3>
 <p>You must pay your apprentice a salary for their normal working hours and the training they undertake as part of the apprenticeship.</p>
-<p>If they're aged 16 to 18 or in the first year of their apprenticeship, you must pay them at least the hourly minimum wage for an apprentice. If they're aged 19 or over and have completed the first year of their apprenticeship, they're entitled to the National Minimum Wage for their age. Take a look at the current National Minimum Wage rates.</p>
+<p>If they're aged 16 to 18 or in the first year of their apprenticeship, you must pay them at least the hourly minimum wage for an apprentice. If they're aged 19 or over and have completed the first year of their apprenticeship, they're entitled to the National Minimum Wage for their age. Take a look at the current <a href="https://www.gov.uk/national-minimum-wage-rates" target="_blank" rel="external">National Minimum Wage rates</a>.</p>
 <h3 class="heading-s">Other costs and responsibilities</h3>
 <p>Along with any training and assessment costs you need to pay, you'll be responsible for supervising your apprentice. Depending on your circumstances, you could assign a member of staff to be your apprentice's mentor and arrange weekly catch-ups to check their progress.</p>
-<p>Your apprentice will spend at least 20% of their normal working hours completing off-the-job training with a training provider, learning the knowledge, skills and behaviours set out in the standard. You'll be responsible for providing any on-the-job training your apprentice needs to perform the work you've hired them for. For more details, read our guidance on training your apprentice.</p>
+<p>Your apprentice will spend at least 20% of their normal working hours completing off-the-job training with a training provider, learning the knowledge, skills and behaviours set out in the standard. You'll be responsible for providing any on-the-job training your apprentice needs to perform the work you've hired them for. For more details, read our guidance on <a class="pagination__link pagination__link--next" asp-action="Index" asp-controller="TrainingYourApprentice">training your apprentice</a>.</p>
 
 @if (Model.LevyStatus == LevyStatus.Levy)
 {
@@ -177,10 +178,8 @@ else
 <p>This will be paid to you in two equal instalments, 3 months and 12 months into the apprenticeship, through your training provider.</p>
 
 <h2 class="heading-m">Apprenticeships in Scotland, Northern Ireland and Wales</h2>
-<p>This page details the costs and funding rules for apprenticeships in England. You can find information about apprenticeships in Scotland, Northern Ireland or Wales on the relevant apprenticeships website.</p>
+<p>This page details the costs and funding rules for apprenticeships in England. You can find information about apprenticeships in <a href="https://www.apprenticeships.scot/" target="_blank" rel="external">Scotland</a>, <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external">Northern Ireland</a> or <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external">Wales</a> on the relevant apprenticeships website.</p>
 <p>If you answer the following question before you explore this page, we'll be able to tailor the information to your organisation.</p>
-
-
 
 <ul class="pagination pagination--employer">
     <li class="pagination__list-item pagination__list-item--previous">
