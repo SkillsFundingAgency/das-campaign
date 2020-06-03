@@ -35,10 +35,11 @@ namespace SFA.DAS.Campaign.Web.Models
         [Range((int)RouteType.Apprentice, (int)RouteType.Employer)]
         [DisplayName("Registration type")]
         public RouteType Route { get; set; }
-        [Required]
-        [Range(typeof(bool), "true", "true", ErrorMessage = "You need to accept terms and conditions")]
+        
         public bool AcceptTandCs { get; set; }
 
+        public bool IncludeInUR { get; set; }
+        
         public string ReturnUrl { get; set; }
 
         public int Version { get; set; }
