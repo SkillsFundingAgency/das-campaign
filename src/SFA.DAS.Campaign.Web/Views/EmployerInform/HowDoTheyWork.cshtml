@@ -20,7 +20,7 @@
 
                 @if (!Model.PreviouslySet)
                 {
-                   <p>If you answer the following question before you explore this page, we’ll be able to tailor the information to your organisation.</p>
+                   <p>Answer this question before you explore the section so we can show you the most relevant information.</p>
                     @await Html.PartialAsync("_levyNonLevyQuestion", Model)
                 }
                 else
