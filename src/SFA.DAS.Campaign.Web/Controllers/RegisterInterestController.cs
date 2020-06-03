@@ -81,7 +81,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
                     Email = registerInterest.Email,
                     CookieId = !string.IsNullOrEmpty(HttpContext.Request.Cookies["_ga"]) ? HttpContext.Request.Cookies["_ga"] : "not-available",
                     RouteId = ((int)registerInterest.Route).ToString(),
-                    Consent = registerInterest.AcceptTandCs
+                    Consent = registerInterest.AcceptTandCs,
+                    IncludeInUR = registerInterest.IncludeInUR
                 });
             }
             catch (ValidationException e)
