@@ -7,7 +7,7 @@
                 If you’re receiving a transfer of apprenticeship funds from another employer, please choose ‘Yes’.
             </p>
             <div class="form-group">
-                <div class="radios--inline">
+                <div class="radios">
                     <div class="radios__item">
                         <input id="levyPayerYes" asp-for="LevyStatus" value="Levy" type="radio" class="radios__input"/>
                         <label class="label radios__label" for="levyPayerYes">Yes</label>
@@ -16,11 +16,14 @@
                         <input id="levyPayerNo" asp-for="LevyStatus" value="NonLevy" type="radio" class="radios__input"/>
                         <label class="label radios__label" for="levyPayerNo">No</label>
                     </div>
+                    <div class="radios__item">
+                        <input id="levyPayerDontKnow" asp-for="LevyStatus" value="DontKnow" type="radio" class="radios__input"/>
+                        <label class="label radios__label" for="levyPayerDontKnow">I'm not sure</label>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <button type="submit" class="button button--employer button--sparks">Continue</button>
-                <a asp-action="Index" asp-controller="HiringAnApprentice" class="text-link-inline-button">I don't know, continue</a>
             </div>
         </form>
     </div>

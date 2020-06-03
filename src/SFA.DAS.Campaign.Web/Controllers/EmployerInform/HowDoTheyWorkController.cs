@@ -25,7 +25,11 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
         [HttpPost("employer/how-do-they-work")]
         public IActionResult Index(LevyOptionViewModel vm)
         {
-            vm.PreviouslySet = true;
+            if (vm.LevyStatus != LevyStatus.DontKnow)
+            {
+                vm.PreviouslySet = true;    
+            }
+            
             _sessionService.Set(_sessionService.LevyOptionViewModelKey, vm);
 
             return RedirectToAction("Index", "HiringAnApprentice");

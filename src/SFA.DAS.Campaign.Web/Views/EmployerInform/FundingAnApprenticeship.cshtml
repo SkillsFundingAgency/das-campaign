@@ -20,6 +20,11 @@
     @await Html.PartialAsync("_levyNonLevyQuestion", Model)
 }
 
+@if (Model.LevyStatus == LevyStatus.DontKnow)
+{
+    <p>If you pay the apprenticeship levy, this funding guidance will not apply to your organisation. You can read our guidance for levy-paying employers instead.</p>
+}
+
 @if (Model.LevyStatus == LevyStatus.Levy)
 {
     <h2 class="heading-m">The key facts</h2>
