@@ -56,7 +56,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         {
             _sutModel.Type = HeroHeadingType.Apprentice;
             _sutModel.SectionTitle = "Apprentice";
-            _mockUrlHelper.Setup(url => url.Action(It.IsAny<UrlActionContext>())).Returns("www.apprenticeships.gov.uk/real-stories/apprentice");
 
             //Act
             var actual = _sut.Invoke(_sutModel);
@@ -79,7 +78,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         {
             _sutModel.Type = HeroHeadingType.Apprentice;
             _sutModel.SectionTitle = "Employer";
-            _mockUrlHelper.Setup(url => url.Action(It.IsAny<UrlActionContext>())).Returns("www.apprenticeships.gov.uk/real-stories/employer");
 
             //Act
             var actual = _sut.Invoke(_sutModel);
@@ -102,7 +100,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         {
             _sutModel.Type = HeroHeadingType.Employer;
             _sutModel.SectionTitle = "Custom";
-            _mockUrlHelper.Setup(url => url.Action(It.IsAny<UrlActionContext>())).Returns("www.apprenticeships.gov.uk/real-stories/employer");
 
             //Act
             var actual = _sut.Invoke(_sutModel);
@@ -125,7 +122,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         {
             _sutModel.Type = HeroHeadingType.Apprentice;
             _sutModel.SectionTitle = "Custom";
-            _mockUrlHelper.Setup(url => url.Action(It.IsAny<UrlActionContext>())).Returns("www.apprenticeships.gov.uk/real-stories/apprentice");
 
             //Act
             var actual = _sut.Invoke(_sutModel);
@@ -150,7 +146,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             var customClass = "custom-employer-class";
             _sutModel.Class = customClass;
             var actualClass = "hero-heading__caption--employer " + customClass;
-            _mockUrlHelper.Setup(url => url.Action(It.IsAny<UrlActionContext>())).Returns("www.apprenticeships.gov.uk/real-stories/employer");
 
             //Act
             var actual = _sut.Invoke(_sutModel);
@@ -175,7 +170,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             var customClass = "custom-apprentice-class";
             _sutModel.Class = customClass;
             var actualClass = "hero-heading__caption--apprentice " + customClass;
-            _mockUrlHelper.Setup(url => url.Action(It.IsAny<UrlActionContext>())).Returns("www.apprenticeships.gov.uk/real-stories/apprentice");
 
             //Act
             var actual = _sut.Invoke(_sutModel);
@@ -198,7 +192,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
         {
             _sutModel.Type = HeroHeadingType.Apprentice;
             _sutModel.Content = customContent();
-            _mockUrlHelper.Setup(url => url.Action(It.IsAny<UrlActionContext>())).Returns("www.apprenticeships.gov.uk/real-stories/apprentice");
 
             //Act
             var actual = _sut.Invoke(_sutModel);
@@ -223,7 +216,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
             _sutModel.Content = customContent();
             _sutModel.ImageUrl = "testimage.jpg";
             _sutModel.ImageAltText = "Header image description";
-            _mockUrlHelper.Setup(url => url.Action(It.IsAny<UrlActionContext>())).Returns("www.apprenticeships.gov.uk/real-stories/employer");
 
             //Act
             var actual = _sut.Invoke(_sutModel);
