@@ -1,4 +1,6 @@
+using System;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace SFA.DAS.Campaign.Web.Helpers
@@ -13,12 +15,14 @@ namespace SFA.DAS.Campaign.Web.Helpers
     public class SessionService : ISessionService
     {
         private readonly IHttpContextAccessor _contextAccessor;
+        private readonly ILogger<SessionService> _logger;
 
         public string LevyOptionViewModelKey => "LevyOptionViewModel";
 
-        public SessionService(IHttpContextAccessor contextAccessor)
+        public SessionService(IHttpContextAccessor contextAccessor, ILogger<SessionService> logger)
         {
             _contextAccessor = contextAccessor;
+            _logger = logger;
         }
 
 
@@ -35,8 +39,10 @@ namespace SFA.DAS.Campaign.Web.Helpers
             {
                 return JsonConvert.DeserializeObject<T>(jsonString);
             }
-            catch
+            catch (JsonSerializationException ex)
             {
+                _logger.LogError(ex,"Attempted to deserialize json from session for key '{0}', and was not successful.", key);
+
                 return default(T);
             }
         }
