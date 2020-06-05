@@ -11,25 +11,25 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.HowTheyWork
     public class WhenHowTheyWorkGetCalled
     {
         [Test]
-        public void ThenViewIsReturned()
+        public void AndVmStoredInSession_ThenVmIsReturnedFromSessionInView()
         {
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(new LevyOptionViewModel
             {
-                LevyStatus = LevyStatus.Levy
+                LevyStatus = LevyStatus.Levy,
+                PreviouslySet = true
             });
             
             var controller = new HowDoTheyWorkController(sessionService.Object);
 
             var result = controller.Index();
 
-            result.Should().BeOfType<ViewResult>();
-            result.As<ViewResult>().Model.Should().BeOfType<LevyOptionViewModel>();
             result.As<ViewResult>().Model.As<LevyOptionViewModel>().LevyStatus.Should().Be(LevyStatus.Levy);
+            result.As<ViewResult>().Model.As<LevyOptionViewModel>().PreviouslySet.Should().BeTrue();
         }
 
         [Test]
-        public void AndNoVmStoredInSession_ThenDefaultVmReturnedInView()
+        public void AndNoVmStoredInSession_ThenDefaultVmIsReturnedInView()
         {
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(default(LevyOptionViewModel));

@@ -23,8 +23,6 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
 
             var result = controller.Index();
 
-            result.Should().BeOfType<ViewResult>();
-            result.As<ViewResult>().Model.Should().BeOfType<LevyOptionViewModel>();
             result.As<ViewResult>().Model.As<LevyOptionViewModel>().LevyStatus.Should().Be(LevyStatus.Levy);
         }
 
@@ -41,8 +39,6 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
 
             var result = controller.Index();
 
-            result.Should().BeOfType<ViewResult>();
-            result.As<ViewResult>().Model.Should().BeOfType<LevyOptionViewModel>();
             result.As<ViewResult>().Model.As<LevyOptionViewModel>().LevyStatus.Should().Be(LevyStatus.NonLevy);
         }
 
