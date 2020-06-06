@@ -17,7 +17,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.HowTheyWork
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(new LevyOptionViewModel
             {
                 LevyStatus = LevyStatus.Levy,
-                PreviouslySet = true
+                OptionChosenByUser = true
             });
             
             var controller = new HowDoTheyWorkController(sessionService.Object);
@@ -25,7 +25,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.HowTheyWork
             var result = controller.Index();
 
             result.As<ViewResult>().Model.As<LevyOptionViewModel>().LevyStatus.Should().Be(LevyStatus.Levy);
-            result.As<ViewResult>().Model.As<LevyOptionViewModel>().PreviouslySet.Should().BeTrue();
+            result.As<ViewResult>().Model.As<LevyOptionViewModel>().OptionChosenByUser.Should().BeTrue();
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.HowTheyWork
             var result = controller.Index();
 
             result.As<ViewResult>().Model.As<LevyOptionViewModel>().LevyStatus.Should().Be(LevyStatus.NonLevy);
-            result.As<ViewResult>().Model.As<LevyOptionViewModel>().PreviouslySet.Should().BeFalse();
+            result.As<ViewResult>().Model.As<LevyOptionViewModel>().OptionChosenByUser.Should().BeFalse();
         }
     }
 }

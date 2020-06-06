@@ -52,7 +52,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
 
             var result = controller.Index();
 
-            result.As<ViewResult>().Model.As<LevyOptionViewModel>().PreviouslySet.Should().BeFalse();
+            result.As<ViewResult>().Model.As<LevyOptionViewModel>().OptionChosenByUser.Should().BeFalse();
         }
 
         [Test]

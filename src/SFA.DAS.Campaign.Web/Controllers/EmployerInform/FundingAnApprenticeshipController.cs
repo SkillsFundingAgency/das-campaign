@@ -26,7 +26,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
         [HttpPost]
         public IActionResult Index(LevyOptionViewModel vm)
         {
-            vm.PreviouslySet = true;
+            vm.OptionChosenByUser = true;
 
             _sessionService.Set(_sessionService.LevyOptionViewModelKey, vm);
 

@@ -14,7 +14,7 @@
 }
 
 
-@if (!Model.PreviouslySet)
+@if (!Model.OptionChosenByUser)
 {
     <p>Answer this question before viewing the funding guidance so we can show you the most relevant information.</p>
     @await Html.PartialAsync("_levyNonLevyQuestion", Model)
