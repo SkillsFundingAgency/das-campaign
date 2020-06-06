@@ -1,0 +1,91 @@
+@model SFA.DAS.Campaign.Web.Controllers.EmployerInform.LevyOptionViewModel
+@{
+    ViewBag.Title = "How do they work?";
+    ViewBag.MetaTitle = "How do apprenticeships work?";
+    ViewBag.PageID = "employer-how-do-apprenticeships-work";
+    ViewBag.MetaDesc = "Learn the practical details of apprenticeships, from the hiring process and accessing government funding to how you can tailor off-the-job training to suit you.";
+    Layout = "_Layout-Campaign-employer";
+}
+
+<main id="main-content">
+    <div class="hero--no-clip">
+        <div class="grid-row">
+            <div class="grid-column-one-half">
+                <div class="hero-heading">
+                    <h1 class="heading-xl hero-heading__heading" id="apprenticeship-title">How do they work?</h1>
+                </div>
+                <p class="lead-paragraph">
+                    Discover the practical details of apprenticeships, from the hiring process to accessing government funding.
+                </p>
+
+                @if (!Model.OptionChosenByUser)
+                {
+                   <p>Answer this question before you explore the section so we can show you the most relevant information.</p>
+                    @await Html.PartialAsync("_levyNonLevyQuestion", Model)
+                }
+                else
+                {
+                    <div id="without-levy-question" class="cta-row" style="">
+                        <p class="no-top-margin">
+                            <strong class="larger-font">Start by exploring your options</strong><br>
+                            You can either employer an apprentice or upskill your exsiting staff, it's that easy.
+                        </p>
+                        <a id="continue-user-type" asp-action="Index" asp-controller="HiringAnApprentice" class="button button--shadow button--sparks">Continue</a>
+                    </div>
+                }
+            </div>
+            <div class="grid-column-one-half">
+                <div class="flow">
+                     <div class="flow__links">
+                        <a asp-action="Index" asp-controller="HiringAnApprentice" class="flow__link flow__link--1" id="flow-link-1">
+                           <span class="flow__link-image-wrap">
+                              <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                           </span>
+                           <span class="flow__link-text">
+                              Hiring an apprentice
+                           </span>
+                        </a>
+                        <a asp-action="Index" asp-controller="Upskill" class="flow__link flow__link--2" id="flow-link-2">
+                           <span class="flow__link-image-wrap">
+                              <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                           </span>
+                           <span class="flow__link-text">
+                              Upskilling your current staff
+                           </span>
+                        </a>   
+                        <a asp-action="Index" asp-controller="FundingAnApprenticeship" class="flow__link flow__link--3" id="flow-link-3">
+                           <span class="flow__link-image-wrap">
+                              <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                           </span>
+                           <span class="flow__link-text">
+                              Funding an apprenticeship
+                           </span>
+                        </a>
+                        <a asp-action="Index" asp-controller="TrainingYourApprentice" class="flow__link flow__link--4" id="flow-link-4">
+                           <span class="flow__link-image-wrap">
+                              <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                           </span>
+                           <span class="flow__link-text">
+                              Training your apprentice
+                           </span>
+                        </a>
+                        <a asp-action="Index" asp-controller="EndPointAssessments" class="flow__link flow__link--5" id="flow-link-5">
+                           <span class="flow__link-image-wrap">
+                              <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                           </span>
+                           <span class="flow__link-text">
+                              End-point assessments
+                           </span>
+                        </a>
+                     </div>
+                     <div class="flow__lines">
+                        <span class="flow__line flow__line--1"></span>
+                        <span class="flow__line flow__line--2"></span>
+                        <span class="flow__line flow__line--3"></span>
+                        <span class="flow__line flow__line--4"></span>
+                     </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</main>

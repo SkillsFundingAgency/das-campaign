@@ -3,7 +3,12 @@
     <div class="grid-row">
         <div class="grid-column-two-thirds">
             <div class="hero-heading">
-                <span class="caption-m hero-heading__caption @Model.Class">@Model.Caption</span>
+                <span class="caption-m hero-heading__caption @Model.Class">
+                    <a href="@Model.SectionUrl" class="hero-heading__caption-link @Model.Class" style="">@Model.SectionTitle</a>
+                    <span class="hero-heading__caption-separator">&gt;</span>
+
+                    <span class="hero-heading__caption--current"> @ViewContext.ViewBag.Title </span>
+                </span>
                 <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
             </div>
 

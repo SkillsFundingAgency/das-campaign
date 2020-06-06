@@ -1,4 +1,6 @@
-﻿@{
+﻿@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@{
     ViewBag.Title = "Application";
     ViewBag.MetaTitle = "How to apply for an apprenticeship and what's needed from you";
     ViewBag.PageID = "apprentice-application";
@@ -79,6 +81,10 @@
         <a class="pagination__link pagination__link--next" asp-controller="Apprentice" asp-action="Interview" id="link-pagination-apprentice-4">Interview </a>
     </li>
 </ul>
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Apprentice })
+}
 
 @section pageFooter {
     <div class="grid-column-full">

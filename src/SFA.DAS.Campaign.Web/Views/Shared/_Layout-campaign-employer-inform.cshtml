@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "_Layout-campaign-employer";
+}
+
+<main id="main-content">
+
+    @if (IsSectionDefined("HeroHeading"))
+    {
+        @RenderSection("HeroHeading", required: false)
+    }
+    else
+    {
+        @await Component.InvokeAsync("HeroHeading")
+    }
+
+    <div class="main-content">
+        <div class="grid-row">
+            <div class="grid-column-two-thirds">
+                <div class="page">
+                    @RenderBody()
+                </div>
+            </div>
+
+            <div class="grid-column-one-third">
+                <div class="sidebar sidebar--employer">
+
+                    <div class="sidebar__hero">
+                        <img src="/campaign/images/sidebar/@(ViewBag.PageId).jpg" class="sidebar__hero-image" alt="@ViewBag.HeroImageAltText" />
+                    </div>
+
+                    <partial name="~/Views/Shared/Sidebar/_employer-without-navigation.cshtml" />
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="grid-row">
+            @RenderSection("pageFooter", required: false)
+        </div>
+
+    </div>
+</main>

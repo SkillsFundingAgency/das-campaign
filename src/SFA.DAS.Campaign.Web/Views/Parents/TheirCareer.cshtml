@@ -199,7 +199,7 @@
 }
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Content = HeroHeadingContent() })
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Parent, Content = HeroHeadingContent() })
 }
 
 @section Resources {
