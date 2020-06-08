@@ -1,0 +1,98 @@
+@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model object
+@{
+    ViewBag.Title = "Are Apprenticeships right for you?";
+    ViewBag.MetaTitle = "Are Apprenticeships right for you?";
+    ViewBag.HeroImageAltText = "";
+    ViewBag.PageID = "are-apprenticeships-right-for-you";
+    ViewBag.Content = "If you’re wondering whether an apprenticeship will work for your organisation, this is the place to start.";
+    ViewBag.PageUrl = "/employer/are-apprenticeships-right-for-you";
+    ViewBag.Section = "employer";
+    Layout = "_Layout-campaign-employer-inform";
+}
+
+
+
+<main id="main-content" class="main-content explore-content employer">
+
+    <!-- /////////////////////////////// PRIMARY CONTENT - START /////////////////////////////// -->
+    <div class="grid-row intro-text">
+        <div class="grid-column-full">
+            <h2 class="heading-l">Need tailored apprenticeship advice?</h2>
+            <p>
+                If you’re working as a sole trader, as part of a large business or anything in between,
+                we’ll help you decide whether apprenticeships could work for you.
+            </p>
+        </div>
+    </div>
+
+    <div class="section-wrapper">
+
+        <!-- SECTION ONE - START -->
+        <section class="journey-section section-1">
+            <!-- <div class="border visually-hidden">
+                <span class="spot top"></span>
+                <span class="spot bottom"></span>
+            </div> -->
+            <div class="image">
+                <img src="/dist/campaign/images/employer/explore/index-icon-1.svg"/>
+            </div>
+            <div class="text">
+                <div class="flex-wrapper">
+                    <h3 class="heading-m">Answer a few simple questions</h3>
+                    <p>
+                        We’ll ask six easy questions to find out more about your organisation and what you’re
+                        looking for. It takes about <strong>5 minutes</strong> to complete this step.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- SECTION ONE - END -->
+
+        <!-- SECTION TWO - START -->
+        <section class="journey-section section-2">
+            <div class="border">
+                <span class="spot top"></span>
+                <span class="spot bottom"></span>
+            </div>
+            <div class="image aos-init aos-animate" data-aos="fade-left">
+                <img src="/dist/campaign/images/employer/explore/index-icon-2.svg"/>
+                <div class="text">
+                    <div class="flex-wrapper">
+                        <h3 class="heading-m">Get tailored information</h3>
+                        <p>
+                            Based on your answers, we’ll give you tailored information to help you decide whether
+                            apprenticeships are right for you. This could include case studies and videos from your
+                            industry, apprenticeships that suit your needs and relevant statistics.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECTION TWO - END -->
+
+        <!-- SECTION THREE - START -->
+        <section class="journey-section section-3">
+            <div class="border">
+                <span class="spot top"></span>
+                <span class="spot bottom"></span>
+            </div>
+            <div class="image aos-init" data-aos="fade-right">
+                <img src="/dist/campaign/images/employer/explore/index-icon-3.svg"/>
+                <div class="text">
+                    <div class="flex-wrapper">
+                        <h3 class="heading-m">Find out more</h3>
+                        <p>
+                            If you’re interested in learning more about apprenticeships, take a look around the
+                            site for more advice - from funding guidance to tips for training apprentices.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECTION THREE - END -->
+
+    </div>
+
+</main>
