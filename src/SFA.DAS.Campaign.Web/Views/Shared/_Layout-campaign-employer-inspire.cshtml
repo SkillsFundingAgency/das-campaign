@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "_Layout-campaign-employer";
+}
+
+<div class="hero fat-hero padding-top">
+    <div class="grid-row">
+        <div class="grid-column-two-thirds">
+            <div class="hero-heading">
+                <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                    <a href="@ViewBag.BackLink">&lt; &nbsp; Back</a>
+                </span>
+                <h1 class="heading-xl hero-heading__heading">@ViewBag.Title</h1>
+            </div>
+            <p class="intro-text no-bottom-margin">@ViewBag.SubTitle</p>
+        </div>
+
+        @if (ViewBag.CurrentInspirePage > 0)
+        {
+            <div class="grid-column-one-third"> 
+                <ul class="counter"> 
+                    @for (int i = 1; i <= 4; i++)
+                    {
+                        <li class="@(i == ViewBag.CurrentInspirePage ? "active": "")"></li>
+                    }
+                </ul>
+            </div> 
+        }
+    </div>
+</div>
+
+<main id="main-content" class="main-content explore-content employer">
+
+
+    @RenderBody()
+
+
+
+</main>
+@* *@
+@* <main id="main-content"> *@
+@*     <div class="main-content"> *@
+@*         <div class="grid-row"> *@
+@*             <div class="grid-column-two-thirds"> *@
+@*                 <div class="page"> *@
+@*                     @RenderBody() *@
+@*                 </div> *@
+@*             </div> *@
+@* *@
+@* *@
+@*         </div> *@
+@*         <div class="grid-row"> *@
+@*             @RenderSection("pageFooter", required: false) *@
+@*         </div> *@
+@*     </div> *@
+@* </main> *@

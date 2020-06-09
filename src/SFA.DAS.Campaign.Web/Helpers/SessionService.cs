@@ -9,7 +9,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
     {
         T Get<T>(string key);
         void Set<T>(string key, T toStore);
-        string LevyOptionViewModelKey { get; }
+        string LevyOptionKey { get; }
     }
 
     public class SessionService : ISessionService
@@ -17,7 +17,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ILogger<SessionService> _logger;
 
-        public string LevyOptionViewModelKey => "LevyOptionViewModel";
+        public string LevyOptionKey => "LevyOption";
 
         public SessionService(IHttpContextAccessor contextAccessor, ILogger<SessionService> logger)
         {

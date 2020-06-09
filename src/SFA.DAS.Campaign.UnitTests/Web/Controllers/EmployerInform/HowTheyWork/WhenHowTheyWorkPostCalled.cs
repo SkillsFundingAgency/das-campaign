@@ -16,10 +16,10 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.HowTheyWork
             var sessionService = new Mock<ISessionService>();
             var controller = new HowDoTheyWorkController(sessionService.Object);
 
-            var levyOptionViewModel = new LevyOptionViewModel() {LevyStatus = LevyStatus.Levy};
+            var levyOptionViewModel = new LevyOption() {LevyStatus = LevyStatus.Levy};
             controller.Index(levyOptionViewModel);
             
-            sessionService.Verify(ss => ss.Set(sessionService.Object.LevyOptionViewModelKey, levyOptionViewModel));
+            sessionService.Verify(ss => ss.Set(sessionService.Object.LevyOptionKey, levyOptionViewModel));
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.HowTheyWork
             var sessionService = new Mock<ISessionService>();
             var controller = new HowDoTheyWorkController(sessionService.Object);
 
-            var levyOptionViewModel = new LevyOptionViewModel() {LevyStatus = LevyStatus.Levy};
+            var levyOptionViewModel = new LevyOption() {LevyStatus = LevyStatus.Levy};
             var result = controller.Index(levyOptionViewModel);
             
             result.Should().BeOfType<RedirectToActionResult>();

@@ -16,18 +16,18 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
         public IActionResult Index()
         {
             var vm = 
-                _sessionService.Get<LevyOptionViewModel>(_sessionService.LevyOptionViewModelKey) 
-                ?? new LevyOptionViewModel() {LevyStatus = LevyStatus.NonLevy};
+                _sessionService.Get<LevyOption>(_sessionService.LevyOptionKey) 
+                ?? new LevyOption() {LevyStatus = LevyStatus.NonLevy};
 
             return View("~/Views/EmployerInform/HowDoTheyWork.cshtml", vm);
         }
 
         [HttpPost("employer/how-do-they-work")]
-        public IActionResult Index(LevyOptionViewModel vm)
+        public IActionResult Index(LevyOption vm)
         {
             vm.OptionChosenByUser = true;
             
-            _sessionService.Set(_sessionService.LevyOptionViewModelKey, vm);
+            _sessionService.Set(_sessionService.LevyOptionKey, vm);
 
             return RedirectToAction("Index", "HiringAnApprentice");
         }

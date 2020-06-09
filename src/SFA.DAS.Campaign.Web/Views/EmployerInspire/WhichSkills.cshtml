@@ -1,0 +1,38 @@
+@model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspireJourneyChoices
+@{
+    Layout = "_Layout-campaign-employer-inspire";
+    ViewBag.Title = "Which SelectedSkills do you want your apprentice to develop?";
+    ViewBag.SubTitle = "This is the type of apprenticeship your apprentice could take, rather than your industry. For example, if you’re looking for a digital apprentice in the health and science industry, select 'digital'.";
+    ViewBag.CurrentInspirePage = 1;
+    ViewBag.BackLink = Url.Action("Index", "AreApprenticeshipsRightForYou");
+}
+<form method="post">
+    <div class="text-wrapper inspire-form">
+        <div class="form-group radios">
+            @foreach (var skill in Model.Skills)
+            {
+                <div class="checkboxes__item">
+                    <input class="input checkboxes__input" type="checkbox" value="@skill.Key" id="@skill.Id" name="SelectedSkills" @(Model.SelectedSkills.Contains(@skill.Key) ? "checked='checked'" : "") >
+                    <label class="label checkboxes__label" for="@skill.Id">
+                        @skill.Title
+                        <br><span>@skill.Examples</span>
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="explore-questions">
+        <button type="submit">
+            Continue
+            <span class="counter">
+                <p>
+                    <span id="SelectedSkills-clicks" class="number">0</span>
+                    <br>
+                    <span class="sub-text">SelectedSkills</span>
+                </p>
+            </span>
+        </button>
+        <a href="@Url.Action("Index", "AreApprenticeshipsRightForYou")" class="back">&lt; &nbsp; Back</a>
+    </div>
+</form>

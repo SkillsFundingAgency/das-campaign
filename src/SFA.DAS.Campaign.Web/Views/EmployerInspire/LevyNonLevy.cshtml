@@ -1,0 +1,42 @@
+@using SFA.DAS.Campaign.Web.Controllers.EmployerInform
+@model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspireJourneyChoices
+@{
+    Layout = "_Layout-campaign-employer-inspire";
+    ViewBag.Title = "How big is your Organisation's annual pay bill?";
+    ViewBag.SubTitle = "This affects how apprenticeship funding works, so your answer will help us to give you more specific guidance.";
+    ViewBag.CurrentInspirePage = 2;
+    ViewBag.BackLink = Url.Action("Index", "WhichSkills");
+}
+<form method="post">
+    <div class="text-wrapper inspire-form">
+        <div class="form-group radios">
+            <div class="radios__item active">
+                <input class="input radios__input" type="radio" value="NonLevy" id="non-levy-payer" name="LevyOption" @(Model.LevyOption.LevyStatus == LevyStatus.NonLevy ? "checked='checked'" : "")>
+                <label class="label radios__label" for="non-levy-payer">
+                    Less than £3 million
+                </label>
+            </div>
+
+            <div class="radios__item">
+                <input class="input radios__input" type="radio" value="Levy" id="levy-payer" name="LevyOption" @(Model.LevyOption.LevyStatus == LevyStatus.Levy ? "checked='checked'" : "")>
+                <label class="label radios__label" for="levy-payer">
+                    More than £3 million
+                </label>
+            </div>
+
+            <div class="radios__item">
+                <input class="input radios__input" type="radio" value="DontKnow" id="levy-not-sure" name="LevyOption" @(Model.LevyOption.LevyStatus == LevyStatus.DontKnow ? "checked='checked'" : "")>
+                <label class="label radios__label" for="levy-not-sure">
+                    I’m not sure
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="explore-questions">
+        <button type="submit">
+            Continue
+        </button>
+        <a href="@Url.Action("Index", "WhichSkills")" class="back">&lt; &nbsp; Back</a>
+    </div>
+</form>
