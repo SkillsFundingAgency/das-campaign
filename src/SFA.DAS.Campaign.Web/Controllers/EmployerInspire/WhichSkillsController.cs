@@ -4,6 +4,7 @@ using SFA.DAS.Campaign.Web.Helpers;
 
 namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
 {
+    [Route("employer/which-skills")]
     public class WhichSkillsController : Controller
     {
         private readonly ISessionService _sessionService;
@@ -13,7 +14,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
             _sessionService = sessionService;
         }
 
-        [HttpGet("employer/which-skills")]
+        [HttpGet]
         public IActionResult Index()
         {
             var inspireJourneyChoices = _sessionService.Get<InspireJourneyChoices>(typeof(InspireJourneyChoices).Name) ?? new InspireJourneyChoices();
@@ -21,7 +22,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
             return View("~/Views/EmployerInspire/WhichSkills.cshtml", inspireJourneyChoices);
         }
 
-        [HttpPost("employer/which-skills")]
+        [HttpPost]
         public IActionResult SaveChanges(InspireJourneyChoices vm)
         {
             var storedInspireJourneyChoices = _sessionService.Get<InspireJourneyChoices>(typeof(InspireJourneyChoices).Name) ?? new InspireJourneyChoices();

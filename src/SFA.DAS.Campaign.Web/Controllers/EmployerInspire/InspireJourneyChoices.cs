@@ -33,6 +33,8 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
 
         public List<string> SelectedSkills { get; set; }
         public LevyOption LevyOption { get; set; }
+        public HireSomeoneOptions? HireSomeoneOptions { get; set; }
+        public string Postcode { get; set; }
     }
 
     public class Skill

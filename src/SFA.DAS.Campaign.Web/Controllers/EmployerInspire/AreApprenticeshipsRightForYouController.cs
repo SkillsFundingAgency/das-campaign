@@ -4,11 +4,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
 {
     public class AreApprenticeshipsRightForYouController : Controller
     {
-        public AreApprenticeshipsRightForYouController()
-        {
-            
-        }
-
         [HttpGet("employer/are-apprenticeships-right-for-you")]
         public IActionResult Index()
         {

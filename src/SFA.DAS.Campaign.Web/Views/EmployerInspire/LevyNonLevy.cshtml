@@ -11,21 +11,21 @@
     <div class="text-wrapper inspire-form">
         <div class="form-group radios">
             <div class="radios__item active">
-                <input class="input radios__input" type="radio" value="NonLevy" id="non-levy-payer" name="LevyOption" @(Model.LevyOption.LevyStatus == LevyStatus.NonLevy ? "checked='checked'" : "")>
+                <input class="input radios__input" type="radio" value="NonLevy" id="non-levy-payer" name="LevyOption.LevyStatus" @(Model.LevyOption.LevyStatus == LevyStatus.NonLevy ? "checked='checked'" : "")>
                 <label class="label radios__label" for="non-levy-payer">
                     Less than £3 million
                 </label>
             </div>
 
             <div class="radios__item">
-                <input class="input radios__input" type="radio" value="Levy" id="levy-payer" name="LevyOption" @(Model.LevyOption.LevyStatus == LevyStatus.Levy ? "checked='checked'" : "")>
+                <input class="input radios__input" type="radio" value="Levy" id="levy-payer" name="LevyOption.LevyStatus" @(Model.LevyOption.LevyStatus == LevyStatus.Levy ? "checked='checked'" : "")>
                 <label class="label radios__label" for="levy-payer">
                     More than £3 million
                 </label>
             </div>
 
             <div class="radios__item">
-                <input class="input radios__input" type="radio" value="DontKnow" id="levy-not-sure" name="LevyOption" @(Model.LevyOption.LevyStatus == LevyStatus.DontKnow ? "checked='checked'" : "")>
+                <input class="input radios__input" type="radio" value="DontKnow" id="levy-not-sure" name="LevyOption.LevyStatus" @(Model.LevyOption.LevyStatus == LevyStatus.DontKnow ? "checked='checked'" : "")>
                 <label class="label radios__label" for="levy-not-sure">
                     I’m not sure
                 </label>
