@@ -14,5 +14,10 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire.ViewComponents
             _sessionService = sessionService;
             _fatOrchestrator = fatOrchestrator;
         }
+        
+        public IViewComponentResult Invoke()
+        {
+            return View();
+        }
     }
 }

@@ -1,24 +1,13 @@
-@model object
 @{
     Layout = "_Layout-campaign-employer";
-    // ViewBag.Title = "ARE APPRENTICESHIPS RIGHT FOR YOU?";
-    // ViewBag.SubTitle = "If you’re wondering whether an apprenticeship will work for your organisation, this is the place to start.";
-    // ViewBag.PageCount = 2;
-
-
-    // ViewBag.MetaTitle = "Are Apprenticeships right for you?";
-    // ViewBag.HeroImageAltText = "";
-    // ViewBag.PageID = "are-apprenticeships-right-for-you";
-    // ViewBag.Content = "If you’re wondering whether an apprenticeship will work for your organisation, this is the place to start.";
-    // ViewBag.PageUrl = "/employer/are-apprenticeships-right-for-you";
-    // ViewBag.Section = "employer";
-
+    ViewBag.Title = "Are apprenticeships right for you?";
+    ViewBag.MetaTitle = "Should you hire an apprentice?";
+    ViewBag.MetaDesc = "Discover the benefits of employing an apprentice, get tailored apprenticeship advice and see case studies from other employers.";
 }
 <div class="hero FAT-basket FAT-save-standard padding-top">
     <div class="grid-row">
         <div class="grid-column-one-half">
             <div class="hero-heading">
-
                 <span class="caption-m hero-heading__caption hero-heading__caption--employer">
                     <a href="/campaign/hub-employer">Employer</a>
                     <div class="sep">&gt;</div>
@@ -37,19 +26,12 @@
                     Browse some <a href="@Url.Action("Employer", "RealStories")">real stories</a> to learn more about other employers’ experiences, and take a
                     look at the <a href="@Url.Action("Benefits", "Employer")">benefits of apprenticeships</a> to see what hiring an apprentice could do for your organisation.
                 </p>
-
             </div>
-
             <p>&nbsp;</p>
-
             <a href="https://www.gov.uk/" class="hmrc-gov">gov.uk</a>
-
         </div>
         <div class="grid-column-one-half">
-
             <div class="illustration-wrapper">
-
-                <!-- SECTION 1 - START -->
                 <div class="illustrative-journey inpsire-section-1">
                     <div class="image">
                         <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-1.svg"/>
@@ -61,9 +43,7 @@
                         <h3 class="heading-xs">4 quick questions for tailored advice</h3>
                     </div>
                 </div>
-                <!-- SECTION 1 - END -->
-
-                <!-- SECTION 2 - START -->
+                
                 <div class="illustrative-journey inpsire-section-2">
                     <div class="border">
                         <span class="spot top"></span>
@@ -76,9 +56,7 @@
                         <h3 class="heading-xs">Your TAILORED APPRENTICESHIP ADVICE</h3>
                     </div>
                 </div>
-                <!-- SECTION 2 - END -->
-
-                <!-- SECTION 3 - START -->
+                
                 <div class="illustrative-journey inpsire-section-3">
                     <div class="border">
                         <span class="spot top"></span>
@@ -91,10 +69,7 @@
                         <h3 class="heading-xs">Where next is up to you...</h3>
                     </div>
                 </div>
-                <!-- SECTION 3 - END -->
-
             </div>
-
         </div>
     </div>
 </div>
