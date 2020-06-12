@@ -27,6 +27,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
             var inspireJourneyChoices = _sessionService.Get<InspireJourneyChoices>(typeof(InspireJourneyChoices).Name) ?? new InspireJourneyChoices();
 
             inspireJourneyChoices.Postcode = vm.Postcode;
+            inspireJourneyChoices.Completed = true;
             
             _sessionService.Set(typeof(InspireJourneyChoices).Name, inspireJourneyChoices);
 

@@ -1,0 +1,111 @@
+@model object
+@{
+    Layout = "_Layout-campaign-employer";
+    // ViewBag.Title = "ARE APPRENTICESHIPS RIGHT FOR YOU?";
+    // ViewBag.SubTitle = "If you’re wondering whether an apprenticeship will work for your organisation, this is the place to start.";
+    // ViewBag.PageCount = 2;
+
+
+    // ViewBag.MetaTitle = "Are Apprenticeships right for you?";
+    // ViewBag.HeroImageAltText = "";
+    // ViewBag.PageID = "are-apprenticeships-right-for-you";
+    // ViewBag.Content = "If you’re wondering whether an apprenticeship will work for your organisation, this is the place to start.";
+    // ViewBag.PageUrl = "/employer/are-apprenticeships-right-for-you";
+    // ViewBag.Section = "employer";
+
+}
+<div class="hero FAT-basket FAT-save-standard padding-top">
+     <div class="grid-row">
+          <div class="grid-column-one-half">
+               <div class="hero-heading">
+
+                    <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                         <a href="/campaign/hub-employer">Employer</a>
+                         <div class="sep">&gt;</div>
+                         Tailored apprenticeship advice
+                    </span>
+                    <h1 class="heading-xl hero-heading__heading" id="apprenticeship-title" style="font-size: 33.3333px;">Tailored apprenticeship advice</h1>
+               </div>
+
+               <div class="text-wrapper">
+                    <p class="lead-paragraph">
+                         Whether your organisation is large or small, and whichever skills you want to boost,
+                         we’ll help you decide whether apprenticeships are right for you.
+                    </p>
+
+                    <p>
+                         Simply answer 4 quick questions and we’ll show you how apprenticeships could work for your organisation.
+                         Your tailored advice will include:
+                    </p>
+
+                    <ul class="list list--arrows">
+                         <li>potential apprenticeships to meet your needs</li>
+                         <li>case studies and videos that are relevant to you</li>
+                         <li>statistics showing how apprenticeships have worked for similar employers</li>
+                         <li>information about funding for your type of organisation</li>
+                    </ul>
+
+                    <div class="cta-row">
+                         <a id="continue-user-type" href="@Url.Action("Index", "WhichSkills")" class="button button--shadow button--sparks">Start now</a>
+                    </div>
+
+               </div>
+
+               <p>&nbsp;</p>
+
+               <a href="https://www.gov.uk/" class="hmrc-gov">gov.uk</a>
+
+          </div>
+          <div class="grid-column-one-half">
+          
+                         <div class="illustration-wrapper">
+          
+                              <!-- SECTION 1 - START -->
+                              <a href="@Url.Action("Index", "GetTailoredApprenticeshipAdvice")" class="illustrative-journey inpsire-section-1">
+                                   <div class="image">
+                                        <img src="/dist/campaign/images/employer/explore/index-icon-1.svg"/>
+                                        <img src="/dist/campaign/images/employer/explore/index-icon-1.svg"/>
+                                        <img src="/dist/campaign/images/employer/explore/index-icon-1.svg"/>
+                                        <img src="/dist/campaign/images/employer/explore/index-icon-1.svg"/>
+                                   </div>
+                                   <div class="text">
+                                        <h3 class="heading-xs">Get tailored apprenticeship advice</h3>
+                                   </div>
+                              </a>
+                              <!-- SECTION 1 - END -->
+          
+                              <!-- SECTION 2 - START -->
+                              <a href="@Url.Action("Employer", "RealStories")" class="illustrative-journey inpsire-section-2">
+                                   <div class="border">
+                                        <span class="spot top"></span>
+                                        <span class="spot bottom"></span>
+                                   </div>
+                                   <div class="image">
+                                        <img src="/dist/campaign/images/employer/explore/index-icon-2.svg"/>
+                                   </div>
+                                   <div class="text">
+                                        <h3 class="heading-xs">real stories</h3>
+                                   </div>
+                              </a>
+                              <!-- SECTION 2 - END -->
+          
+                              <!-- SECTION 3 - START -->
+                              <a href="@Url.Action("Benefits", "Employer")" class="illustrative-journey inpsire-section-3">
+                                   <div class="border">
+                                        <span class="spot top"></span>
+                                        <span class="spot bottom"></span>
+                                   </div>
+                                   <div class="image">
+                                        <img src="/dist/campaign/images/employer/explore/index-icon-3.svg"/>
+                                   </div>
+                                   <div class="text">
+                                        <h3 class="heading-xs">the benefits of apprenticeships</h3>
+                                   </div>
+                              </a>
+                              <!-- SECTION 3 - END -->
+          
+                         </div>
+          
+                    </div>
+     </div>
+</div>

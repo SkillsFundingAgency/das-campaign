@@ -43,7 +43,7 @@
 <header class="header" data-module="navigation">
     <div class="header__logo">
         <a asp-controller="RealStories" asp-action="Employer">
-            <img src="/campaign/images/apprenticeships-logo-employer.png" alt="Apprenticeships Logo" class="header__logo-image" />
+            <img src="/campaign/images/apprenticeships-logo-employer.png" alt="Apprenticeships Logo" class="header__logo-image"/>
             <span class="header__caption header__caption--employer">Employer hub</span>
         </a>
     </div>
@@ -67,6 +67,14 @@
                     <span class="nav__ordered-list-toggle-icon"></span>
                 </a>
                 <ol class="nav__ordered-list">
+                    <li>
+
+                        @await Component.InvokeAsync("GetOrViewTailoredAdvice")
+
+                        @* <a asp-controller="RealStories" asp-action="Employer" class="nav__link" id="link-nav-app-real-stories"> *@
+                                                @*     Real stories *@
+                                                @* </a> *@
+                    </li>
                     <li>
                         <a asp-controller="RealStories" asp-action="Employer" class="nav__link" id="link-nav-app-real-stories">
                             Real stories
@@ -150,6 +158,6 @@
         </ul>
     </nav>
 
-    <partial name="./FeedbackBanner/_feedbackBanner.cshtml" />
+    <partial name="./FeedbackBanner/_feedbackBanner.cshtml"/>
 
 </header>

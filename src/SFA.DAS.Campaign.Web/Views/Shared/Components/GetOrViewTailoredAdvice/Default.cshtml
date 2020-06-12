@@ -1,0 +1,14 @@
+@model bool
+
+@if (Model)
+{
+     <a asp-controller="GetTailoredApprenticeshipAdvice" asp-action="Index" class="nav__link" id="link-nav-app-real-stories"> 
+         View my tailored apprenticeship advice
+     </a> 
+}
+else
+{
+    <a asp-controller="GetTailoredApprenticeshipAdvice" asp-action="Index" class="nav__link" id="link-nav-app-real-stories"> 
+        Get tailored apprenticeship advice
+    </a> 
+}
