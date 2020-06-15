@@ -2,42 +2,51 @@
 @using SFA.DAS.Campaign.Web.Controllers.EmployerInspire
 @model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspireJourneyChoices
 @{
-    Layout = "_Layout-campaign-employer-inspire";
+    Layout = "_Layout-campaign-employer";
     ViewBag.Title = "Do you want to hire someone new?";
     ViewBag.SubTitle = "Apprenticeships are ideal for bringing in new staff, but they can also be used to upskill or retrain your current workforce. Let us know which option suits your needs.";
     ViewBag.CurrentInspirePage = 3;
     ViewBag.BackLink = Url.Action("Index", "LevyNonLevy");
 }
-<form method="post">
-    <div class="text-wrapper inspire-form">
-        <div class="form-group radios">
-            <div class="radios__item active">
-                <input class="input radios__input" type="radio" value="SomeoneNew" id="non-levy-payer" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.SomeoneNew ? "checked='checked'" : "")>
-                <label class="label radios__label" for="non-levy-payer">
-                    I’m looking to hire someone new
-                </label>
-            </div>
+<main id="main-content">
+    <div class="hero--no-clip">
+        <div class="grid-row">
+            <div class="grid-column-one-half">
+                <div class="hero-heading">
+                    <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                        <a href="@Url.Action("Index", "LevyNonLevy")"  class="hero-heading__caption-link hero-heading__caption--employer">&lt; Back</a>
+                    </span>
+                    <h1 class="heading-xl hero-heading__heading">@ViewBag.Title</h1>
+                </div>
+                <p>@ViewBag.SubTitle</p>
+                <form method="post">
+                    <div class="form-group radios">
+                        <div class="radios__item active">
+                            <input class="input radios__input" type="radio" value="SomeoneNew" id="non-levy-payer" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.SomeoneNew ? "checked='checked'" : "")>
+                            <label class="label radios__label" for="non-levy-payer">
+                                I'm looking to hire someone new
+                            </label>
+                        </div>
 
-            <div class="radios__item">
-                <input class="input radios__input" type="radio" value="TrainExisting" id="levy-payer" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.TrainExisting ? "checked='checked'" : "")>
-                <label class="label radios__label" for="levy-payer">
-                    I want to train existing staff
-                </label>
-            </div>
+                        <div class="radios__item">
+                            <input class="input radios__input" type="radio" value="TrainExisting" id="levy-payer" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.TrainExisting ? "checked='checked'" : "")>
+                            <label class="label radios__label" for="levy-payer">
+                                I want to train existing staff
+                            </label>
+                        </div>
 
-            <div class="radios__item">
-                <input class="input radios__input" type="radio" value="Both" id="levy-not-sure" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.Both ? "checked='checked'" : "")>
-                <label class="label radios__label" for="levy-not-sure">
-                    I’m open to both
-                </label>
+                        <div class="radios__item">
+                            <input class="input radios__input" type="radio" value="Both" id="levy-not-sure" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.Both ? "checked='checked'" : "")>
+                            <label class="label radios__label" for="levy-not-sure">
+                                I'm open to both
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="button button--employer">
+                        Continue
+                    </button>
+                </form>
             </div>
         </div>
     </div>
-
-    <div class="explore-questions">
-        <button type="submit">
-            Continue
-        </button>
-        <a href="@Url.Action("Index", "LevyNonLevy")" class="back">&lt; &nbsp; Back</a>
-    </div>
-</form>
+</main>

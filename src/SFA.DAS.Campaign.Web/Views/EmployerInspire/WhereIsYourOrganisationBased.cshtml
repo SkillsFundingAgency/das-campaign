@@ -2,29 +2,39 @@
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspirePostcodeViewModel
 @{
-    Layout = "_Layout-campaign-employer-inspire";
+    Layout = "_Layout-campaign-employer";
     ViewBag.Title = "Finally, where is your organisation based?";
     ViewBag.SubTitle = "Entering your organisation’s postcode will help us to show you statistics and apprenticeships that are relevant to you.";
     ViewBag.CurrentInspirePage = 4;
     ViewBag.BackLink = Url.Action("Index", "HireSomeoneNew");
 }
-<form method="post">
-   
-    <div class="form-group" das-validation-for="Postcode" das-validationerror-class="form-group-validation-error">
-        @if (ViewData.ModelState["Postcode"]?.ValidationState == ModelValidationState.Invalid)
-        {
-            <p>@ViewData.ModelState["Postcode"].Errors.First().ErrorMessage</p>
-        }
-        <label class="label visually-hidden" asp-for="Postcode">
-            Post code
-        </label>
-        <input id="postCode-employer" class="input" type="text" placeholder="Post code" autocomplete="given-name" asp-for="Postcode">
-        <button class="button button-employer" name="exploreSubmit" id="inspire-question-4">Continue</button>
+<main id="main-content">
+    <div class="hero--no-clip">
+        <div class="grid-row">
+            <div class="grid-column-one-half">
+                <div class="hero-heading">
+                    <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                        <a href="@Url.Action("Index", "HireSomeoneNew")"  class="hero-heading__caption-link hero-heading__caption--employer">&lt; Back</a>
+                    </span>
+                    <h1 class="heading-xl hero-heading__heading">@ViewBag.Title</h1>
+                </div>
+                <p>@ViewBag.SubTitle</p>
+                <form method="post">
+                    <div class="form-group das-form-group-inline" das-validation-for="Postcode" das-validationerror-class="form-group-validation-error">
+                        @if (ViewData.ModelState["Postcode"]?.ValidationState == ModelValidationState.Invalid)
+                        {
+                            <p>@ViewData.ModelState["Postcode"].Errors.First().ErrorMessage</p>
+                        }
+                        <label class="label visually-hidden" asp-for="Postcode">
+                            Post code
+                        </label>
+                        <input id="Postcode" class="input" type="text" placeholder="Post code" autocomplete="postal-code" asp-for="Postcode" maxlength="10">
+                        <div class="das-form-group-inline__button-wrap">
+                            <button class="button button-employer" name="exploreSubmit" id="inspire-question-4">Continue</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <div class="text-wrapper no-top-margin">
-        <p class="no-top-margin">
-            <a href="@Url.Action("Index", "HireSomeoneNew")" class="back">&lt; &nbsp; Back</a>
-        </p>
-    </div>
-</form>
+</main>

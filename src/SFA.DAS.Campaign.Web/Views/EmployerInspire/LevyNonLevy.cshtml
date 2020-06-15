@@ -1,42 +1,49 @@
 @using SFA.DAS.Campaign.Web.Controllers.EmployerInform
 @model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspireJourneyChoices
 @{
-    Layout = "_Layout-campaign-employer-inspire";
+    Layout = "_Layout-campaign-employer";
     ViewBag.Title = "How big is your Organisation's annual pay bill?";
     ViewBag.SubTitle = "This affects how apprenticeship funding works, so your answer will help us to give you more specific guidance.";
     ViewBag.CurrentInspirePage = 2;
     ViewBag.BackLink = Url.Action("Index", "WhichSkills");
 }
-<form method="post">
-    <div class="text-wrapper inspire-form">
-        <div class="form-group radios">
-            <div class="radios__item active">
-                <input class="input radios__input" type="radio" value="NonLevy" id="non-levy-payer" name="LevyOption.LevyStatus" @(Model.LevyOption.LevyStatus == LevyStatus.NonLevy ? "checked='checked'" : "")>
-                <label class="label radios__label" for="non-levy-payer">
-                    Less than £3 million
-                </label>
-            </div>
-
-            <div class="radios__item">
-                <input class="input radios__input" type="radio" value="Levy" id="levy-payer" name="LevyOption.LevyStatus" @(Model.LevyOption.LevyStatus == LevyStatus.Levy ? "checked='checked'" : "")>
-                <label class="label radios__label" for="levy-payer">
-                    More than £3 million
-                </label>
-            </div>
-
-            <div class="radios__item">
-                <input class="input radios__input" type="radio" value="DontKnow" id="levy-not-sure" name="LevyOption.LevyStatus" @(Model.LevyOption.LevyStatus == LevyStatus.DontKnow ? "checked='checked'" : "")>
-                <label class="label radios__label" for="levy-not-sure">
-                    I’m not sure
-                </label>
+<main id="main-content">
+    <div class="hero--no-clip">
+        <div class="grid-row">
+            <div class="grid-column-one-half">
+                <div class="hero-heading">
+                    <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                        <a href="@Url.Action("Index", "WhichSkills")"  class="hero-heading__caption-link hero-heading__caption--employer">&lt; Back</a>
+                    </span>
+                    <h1 class="heading-xl hero-heading__heading">@ViewBag.Title</h1>
+                </div>
+                <p>@ViewBag.SubTitle</p>
+                <form method="post">
+                    <div class="form-group">
+                        <div class="radios__item">
+                            <input class="input radios__input" type="radio" value="NonLevy" id="non-levy-payer" name="LevyOption.LevyStatus" @(Model.LevyOption.LevyStatus == LevyStatus.NonLevy ? "checked='checked'" : "")>
+                            <label class="label radios__label" for="non-levy-payer">
+                                Less than £3 million
+                            </label>
+                        </div>
+                        <div class="radios__item">
+                            <input class="input radios__input" type="radio" value="Levy" id="levy-payer" name="LevyOption.LevyStatus" @(Model.LevyOption.LevyStatus == LevyStatus.Levy ? "checked='checked'" : "")>
+                            <label class="label radios__label" for="levy-payer">
+                                More than £3 million
+                            </label>
+                        </div>
+                        <div class="radios__item">
+                            <input class="input radios__input" type="radio" value="DontKnow" id="levy-not-sure" name="LevyOption.LevyStatus" @(Model.LevyOption.LevyStatus == LevyStatus.DontKnow ? "checked='checked'" : "")>
+                            <label class="label radios__label" for="levy-not-sure">
+                                I'm not sure
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="button button--employer">
+                        Continue
+                    </button>
+                </form>
             </div>
         </div>
     </div>
-
-    <div class="explore-questions">
-        <button type="submit">
-            Continue
-        </button>
-        <a href="@Url.Action("Index", "WhichSkills")" class="back">&lt; &nbsp; Back</a>
-    </div>
-</form>
+</main>
