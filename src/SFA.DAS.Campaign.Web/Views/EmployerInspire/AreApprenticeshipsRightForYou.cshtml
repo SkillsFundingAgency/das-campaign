@@ -4,72 +4,73 @@
     ViewBag.MetaTitle = "Should you hire an apprentice?";
     ViewBag.MetaDesc = "Discover the benefits of employing an apprentice, get tailored apprenticeship advice and see case studies from other employers.";
 }
-<div class="hero FAT-basket FAT-save-standard padding-top">
-    <div class="grid-row">
-        <div class="grid-column-one-half">
-            <div class="hero-heading">
-                <span class="caption-m hero-heading__caption hero-heading__caption--employer">
-                    <a href="/campaign/hub-employer">Employer</a>
-                    <div class="sep">&gt;</div>
-                    Are apprenticeships right for you?
-                </span>
-                <h1 class="heading-xl hero-heading__heading" id="apprenticeship-title" style="font-size: 33.3333px;">Are apprenticeships right for you?</h1>
-            </div>
-
-            <div class="text-wrapper">
+<main id="main-content">
+    <div class="hero--no-clip">
+        <div class="grid-row">
+            <div class="grid-column-one-half">
+                <div class="hero-heading">
+                    <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                        <a href="@Url.Action("Employer", "RealStories")"  class="hero-heading__caption-link hero-heading__caption--employer">Employer</a>
+                        <span class="hero-heading__caption-separator">&gt;</span>
+                        <span class="hero-heading__caption--current">@ViewBag.Title</span>
+                    </span>
+                    <h1 class="heading-xl hero-heading__heading">@ViewBag.Title</h1>
+                </div>
                 <p class="lead-paragraph">
                     If you’re not sure whether you should hire an apprentice, you can answer a few simple questions
-                    to get <a href="@Url.Action("Index", "GetTailoredApprenticeshipAdvice")">tailored apprenticeship advice</a>.
+                    to get <a href="@Url.Action("Index", "GetTailoredApprenticeshipAdvice")" class="hero-heading__caption-link">tailored apprenticeship advice</a>.
                 </p>
-
-                <p class="lead-paragraph">
-                    Browse some <a href="@Url.Action("Employer", "RealStories")">real stories</a> to learn more about other employers’ experiences, and take a
-                    look at the <a href="@Url.Action("Benefits", "Employer")">benefits of apprenticeships</a> to see what hiring an apprentice could do for your organisation.
+                <p>
+                    Browse some <a href="@Url.Action("Employer", "RealStories")" class="hero-heading__caption-link">real stories</a> to learn more about other employers’ experiences, and take a
+                    look at the <a href="@Url.Action("Benefits", "Employer")" class="hero-heading__caption-link">benefits of apprenticeships</a> to see what hiring an apprentice could do for your organisation.
                 </p>
+                <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
+                    <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" />
+                </a>
             </div>
-            <p>&nbsp;</p>
-            <a href="https://www.gov.uk/" class="hmrc-gov">gov.uk</a>
-        </div>
-        <div class="grid-column-one-half">
-            <div class="illustration-wrapper">
-                <div class="illustrative-journey inpsire-section-1">
-                    <div class="image">
-                        <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-1.svg"/>
-                        <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-1.svg"/>
-                        <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-1.svg"/>
-                        <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-1.svg"/>
+            <div class="grid-column-one-half">
+                <div class="flow">
+                    <div class="flow__links">
+                    <a class="flow__link flow__link--inspire-1" href="@Url.Action("Index", "WhichSkills")">
+                        <span class="flow__link-image-wrap">
+                            <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                        </span>
+                        <span class="flow__link-image-wrap flow__link-image-wrap--multiple">
+                            <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                        </span>
+                        <span class="flow__link-image-wrap flow__link-image-wrap--multiple-2">
+                            <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                        </span>
+                        <span class="flow__link-image-wrap flow__link-image-wrap--multiple-3">
+                            <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                        </span>
+                        <span class="flow__link-text">
+                            Get tailored apprenticeship advice
+                        </span>
+                    </a>
+                    <a class="flow__link flow__link--inspire-2" href="@Url.Action("Employer", "RealStories")">
+                        <span class="flow__link-image-wrap">
+                            <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                        </span>
+                        <span class="flow__link-text">
+                            Real stories
+                        </span>
+                    </a>
+                    <a class="flow__link flow__link--inspire-3" href="@Url.Action("Benefits", "Employer")">
+                        <span class="flow__link-image-wrap">
+                            <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                        </span>
+                        <span class="flow__link-text">
+                            The benefits of apprenticeships
+                        </span>
+                    </a>
                     </div>
-                    <div class="text">
-                        <h3 class="heading-xs">4 quick questions for tailored advice</h3>
+                    <div class="flow__lines">
+                        <span class="flow__line flow__line--inspire-1"></span>
+                        <span class="flow__line flow__line--inspire-2"></span>
                     </div>
-                </div>
-                
-                <div class="illustrative-journey inpsire-section-2">
-                    <div class="border">
-                        <span class="spot top"></span>
-                        <span class="spot bottom"></span>
-                    </div>
-                    <div class="image">
-                        <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-2.svg"/>
-                    </div>
-                    <div class="text">
-                        <h3 class="heading-xs">Your TAILORED APPRENTICESHIP ADVICE</h3>
-                    </div>
-                </div>
-                
-                <div class="illustrative-journey inpsire-section-3">
-                    <div class="border">
-                        <span class="spot top"></span>
-                        <span class="spot bottom"></span>
-                    </div>
-                    <div class="image">
-                        <img src="/dist/campaign/images/employer/how-do-they-work/index-icon-3.svg"/>
-                    </div>
-                    <div class="text">
-                        <h3 class="heading-xs">Where next is up to you...</h3>
-                    </div>
-                </div>
+                </div>   
             </div>
         </div>
     </div>
-</div>
+</main>
