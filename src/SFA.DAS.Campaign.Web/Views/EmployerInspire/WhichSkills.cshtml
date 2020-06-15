@@ -1,38 +1,38 @@
 @model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspireJourneyChoices
 @{
-    Layout = "_Layout-campaign-employer-inspire";
+    Layout = "_Layout-campaign-employer";
     ViewBag.Title = "Which skills do you want your apprentice to develop?";
     ViewBag.SubTitle = "This is the type of apprenticeship your apprentice could take, rather than your industry. For example, if you’re looking for a digital apprentice in the health and science industry, select 'digital'.";
     ViewBag.CurrentInspirePage = 1;
     ViewBag.BackLink = Url.Action("Index", "AreApprenticeshipsRightForYou");
 }
-<form method="post">
-    <div class="text-wrapper inspire-form">
-        <div class="form-group radios">
-            @foreach (var skill in Model.Skills)
-            {
-                <div class="checkboxes__item">
-                    <input class="input checkboxes__input" type="checkbox" value="@skill.Key" id="@skill.Id" name="SelectedSkills" @(Model.SelectedSkills.Contains(@skill.Key) ? "checked='checked'" : "") >
-                    <label class="label checkboxes__label" for="@skill.Id">
-                        @skill.Title
-                        <br><span>@skill.Examples</span>
-                    </label>
-                </div>
-            }
+<div class="hero--no-clip">
+    <div class="grid-row">
+        <div class="grid-column-one-half">
+            <div class="hero-heading">
+                <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                    <a href="@Url.Action("Index", "GetTailoredApprenticeshipAdvice")"  class="hero-heading__caption-link hero-heading__caption--employer">&lt; Back</a>
+                </span>
+                <h1 class="heading-xl hero-heading__heading">Which skills do you want your apprentice to develop?</h1>
+            </div>
+            <p>
+                This is the type of apprenticeship your apprentice could take, rather than your industry. For example, if you’re looking for a digital apprentice in the health and science industry, select ‘digital’.
+            </p>
+            <form method="post">
+                @foreach (var skill in Model.Skills)
+                {
+                    <div class="checkboxes__item">
+                        <input class="input checkboxes__input" type="checkbox" value="@skill.Key" id="@skill.Id" name="SelectedSkills" @(Model.SelectedSkills.Contains(@skill.Key) ? "checked='checked'" : "") >
+                        <label class="label checkboxes__label" for="@skill.Id">
+                            <span class="checkboxes__label-title">@skill.Title</span>
+                            <span class="checkboxes__label-hint">@skill.Examples</span>
+                        </label>
+                    </div>
+                }
+                <button type="submit" class="button button--employer">
+                    Continue      
+                </button>
+            </form>
         </div>
     </div>
-
-    <div class="explore-questions">
-        <button type="submit">
-            Continue
-            <span class="counter">
-                <p>
-                    <span id="SelectedSkills-clicks" class="number">0</span>
-                    <br>
-                    <span class="sub-text">SelectedSkills</span>
-                </p>
-            </span>
-        </button>
-        <a href="@Url.Action("Index", "AreApprenticeshipsRightForYou")" class="back">&lt; &nbsp; Back</a>
-    </div>
-</form>
+</div>
