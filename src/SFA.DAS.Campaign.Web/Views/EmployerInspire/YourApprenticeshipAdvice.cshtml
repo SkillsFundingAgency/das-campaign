@@ -1,106 +1,81 @@
-@model object
 @{
     Layout = "_Layout-campaign-employer";
-    // ViewBag.Title = "ARE APPRENTICESHIPS RIGHT FOR YOU?";
+    ViewBag.Title = "Your apprenticeship advice";
     // ViewBag.SubTitle = "If you’re wondering whether an apprenticeship will work for your organisation, this is the place to start.";
-    // ViewBag.PageCount = 2;
-
-
-    // ViewBag.MetaTitle = "Are Apprenticeships right for you?";
-    // ViewBag.HeroImageAltText = "";
-    // ViewBag.PageID = "are-apprenticeships-right-for-you";
-    // ViewBag.Content = "If you’re wondering whether an apprenticeship will work for your organisation, this is the place to start.";
-    // ViewBag.PageUrl = "/employer/are-apprenticeships-right-for-you";
-    // ViewBag.Section = "employer";
-
+    ViewBag.MetaTitle = "Your apprenticeship advice";
 }
 
 <div class="hero content-hero padding-top">
+    <div class="scroll-down"><span class="icon scroll"></span>SCROLL</div>
+    <div class="grid-row">
+        <div class="grid-column-two-thirds">
+            <div class="hero-heading">
+                <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                    <a href="@Url.Action("Index", "WhereIsYourOrganisationBased")">&lt; &nbsp; Back</a>
+                </span>
+                <h1 class="heading-xl hero-heading__heading">Your apprenticeship advice</h1>
+            </div>
 
-     <div class="scroll-down"><span class="icon scroll"></span>SCROLL</div>
-     <div class="grid-row">
-          <div class="grid-column-two-thirds">
-               <div class="hero-heading">
-                    <span class="caption-m hero-heading__caption hero-heading__caption--employer">
-                         <a href="javascript:history.back()">&lt; &nbsp; Back</a>
-                    </span>
-                    <h1 class="heading-xl hero-heading__heading">Your apprenticeship advice</h1>
-               </div>
-               <!-- <p class="lead-paragraph">How could apprenticeships work for you?</p> -->
+            <p class="lead-paragraph">
+                Based on your answers, here are some potential apprenticeships, real-life stories and tailored hints
+                and tips to get you started. They’ll give you a taste of how apprenticeships could work for your
+                organisation.
+            </p>
 
-               <p class="lead-paragraph">
-                    Based on your answers, here are some potential apprenticeships, real-life stories and tailored hints
-                    and tips to get you started. They’ll give you a taste of how apprenticeships could work for your
-                    organisation.
-               </p>
+            <div class="main-ctas">
+                <div id="scroller-anchor" class="scroller-anchor"></div>
+                <div id="scroller" class="scroller" style="position: relative;">
+                    <a href="#section-1" id="section-1-cta" class="main-cta-button active" data-offset-top="150">
+                        <span class="number">01</span>
+                        <div class="text-wrapper">
+                            First things first... <span>key facts</span>
+                        </div>
+                    </a>
+                    <a href="#section-2" id="section-2-cta" class="main-cta-button next" data-offset-top="150">
+                        <span class="number">02</span>
+                        <div class="text-wrapper">
+                            Your potential apprenticeships
+                        </div>
+                    </a>
+                    <a href="#section-3" id="section-3-cta" class="main-cta-button" data-offset-top="150">
+                        <span class="number">03</span>
+                        <div class="text-wrapper">
+                            Real stories for you
+                        </div>
+                    </a>
+                    <a href="#section-4" id="section-4-cta" class="main-cta-button" data-offset-top="150">
+                        <span class="number">04</span>
+                        <div class="text-wrapper">
+                            You might be interested to hear...
+                        </div>
+                    </a>
+                    <a href="#section-5" id="section-5-cta" class="main-cta-button" data-offset-top="150">
+                        <span class="number">05</span>
+                        <div class="text-wrapper">
+                            Funding your apprenticeship
+                        </div>
+                    </a>
 
-               <div class="main-ctas">
-                    <div id="scroller-anchor" class="scroller-anchor"></div>
-                    <div id="scroller" class="scroller" style="position: relative;">
-                         <a href="#section-1" id="section-1-cta" class="main-cta-button active" data-offset-top="150">
-                              <span class="number">01</span>
-                              <div class="text-wrapper">
-                                   <!-- <span class="border"></span> -->
-                                   First things first... <span>key facts</span>
-                              </div>
-                         </a>
-                         <a href="#section-2" id="section-2-cta" class="main-cta-button next" data-offset-top="150">
-                              <span class="number">02</span>
-                              <div class="text-wrapper">
-                                   <!-- <span class="border"></span> -->
-                                   Your potential apprenticeships
-                              </div>
-                         </a>
-                         <a href="#section-3" id="section-3-cta" class="main-cta-button" data-offset-top="150">
-                              <span class="number">03</span>
-                              <div class="text-wrapper">
-                                   <!-- <span class="border"></span> -->
-                                   Real stories for you
-                              </div>
-                         </a>
-                         <a href="#section-4" id="section-4-cta" class="main-cta-button" data-offset-top="150">
-                              <span class="number">04</span>
-                              <div class="text-wrapper">
-                                   <!-- <span class="border"></span> -->
-                                   You might be interested to hear...
-                              </div>
-                         </a>
-                         <a href="#section-5" id="section-5-cta" class="main-cta-button" data-offset-top="150">
-                              <span class="number">05</span>
-                              <div class="text-wrapper">
-                                   <!-- <span class="border"></span> -->
-                                   Funding your apprenticeship
-                              </div>
-                         </a>
-
-                         <a href="#section-6" id="section-6-cta" class="main-cta-button" data-offset-top="150">
-                              <span class="number">06</span>
-                              <div class="text-wrapper">
-                                   <!-- <span class="border"></span> -->
-                                   So, what’s next?
-                              </div>
-                         </a>
-
-                         <!-- ////////////////////////// CHANGE PAGE COMPONENT - START ////////////////////////// -->
-                         <div id="save-inspire-journey">
-                              <a href="#" class="close inspire-journey">close</a>
-                              <h3 class="heading-s">Email me for later</h3>
-                              <!-- <p>
-                                   We can email me all your personailised information for another day and pick up exactly where you left off...
-                              </p> -->
-                              <a href="/campaign/register/employer-register-interest.html" class="">Save my information</a>
-                              <hr>
-                              <a href="/campaign/explore/1-question" class="edit">Edit my answers</a>
-                         </div>
-                         <!-- ////////////////////////// CHANGE PAGE COMPONENT - START ////////////////////////// -->
-
-                    </div>
-               </div>
-          </div>
-     </div>
+                    <a href="#section-6" id="section-6-cta" class="main-cta-button" data-offset-top="150">
+                        <span class="number">06</span>
+                        <div class="text-wrapper">
+                            So, what’s next?
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-@(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section1.cshtml")) 
+@(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section1.cshtml"))
+
+@(await Component.InvokeAsync("Section2PotentialApprenticeships"))
+
+<div id="save-inspire-journey">
+    <a href="#" class="close inspire-journey">close</a>
+    <a href="@Url.Action("Index", "WhichSkills")" class="edit">Edit my answers</a>
+</div>
 
 @* *@
 @* *@
