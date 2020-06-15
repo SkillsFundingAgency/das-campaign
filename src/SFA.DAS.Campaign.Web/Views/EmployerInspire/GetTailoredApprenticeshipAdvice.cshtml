@@ -4,98 +4,80 @@
     ViewBag.MetaTitle = "Tailored apprenticeship advice for employers";
     ViewBag.MetaDesc = "Not sure whether apprenticeships are right for you? Answer 4 quick questions to get free advice, including apprenticeships that could suit your needs and ";
 }
-<div class="hero FAT-basket FAT-save-standard padding-top">
+<div class="hero--no-clip">
     <div class="grid-row">
         <div class="grid-column-one-half">
             <div class="hero-heading">
-
                 <span class="caption-m hero-heading__caption hero-heading__caption--employer">
-                    <a href="@Url.Action("Employer", "RealStories")">Employer</a>
-                    <div class="sep">&gt;</div>
-                    Tailored apprenticeship advice
+                    <a href="@Url.Action("Employer", "RealStories")"  class="hero-heading__caption-link hero-heading__caption--employer">Employer</a>
+                    <span class="hero-heading__caption-separator">&gt;</span>
+                    <span class="hero-heading__caption--current">Tailored apprenticeship advice</span>
                 </span>
                 <h1 class="heading-xl hero-heading__heading" id="apprenticeship-title" style="font-size: 33.3333px;">Tailored apprenticeship advice</h1>
             </div>
-
-            <div class="text-wrapper">
-                <p class="lead-paragraph">
-                    Whether your organisation is large or small, and whichever skills you want to boost,
-                    we’ll help you decide whether apprenticeships are right for you.
-                </p>
-
-                <p>
-                    Simply answer 4 quick questions and we’ll show you how apprenticeships could work for your organisation.
-                    Your tailored advice will include:
-                </p>
-
-                <ul class="list list--arrows">
-                    <li>potential apprenticeships to meet your needs</li>
-                    <li>case studies and videos that are relevant to you</li>
-                    <li>statistics showing how apprenticeships have worked for similar employers</li>
-                    <li>information about funding for your type of organisation</li>
-                </ul>
-
-                <div class="cta-row">
-                    <a id="continue-user-type" href="@Url.Action("Index", "WhichSkills")" class="button button--shadow button--sparks">Start now</a>
-                </div>
-
+            <p class="lead-paragraph">
+                Whether your organisation is large or small, and whichever skills you want to boost,
+                we'll help you decide whether apprenticeships are right for you.
+            </p>
+            <p>
+                Simply answer 4 quick questions and we'll show you how apprenticeships could work for your organisation.
+                Your tailored advice will include:
+            </p>
+            <ul class="list list--arrows">
+                <li>potential apprenticeships to meet your needs</li>
+                <li>case studies and videos that are relevant to you</li>
+                <li>statistics showing how apprenticeships have worked for similar employers</li>
+                <li>information about funding for your type of organisation</li>
+            </ul>
+            <div class="das-form-group-inline">
+                <a href="@Url.Action("Index", "WhichSkills")" class="button button--employer button--sparks">Start now</a>
             </div>
-
-            <p>&nbsp;</p>
-
-            <a href="https://www.gov.uk/" class="hmrc-gov">gov.uk</a>
-
+            <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
+                <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" />
+            </a>
         </div>
         <div class="grid-column-one-half">
-
-            <div class="illustration-wrapper">
-
-                <!-- SECTION 1 - START -->
-                <a href="@Url.Action("Index", "GetTailoredApprenticeshipAdvice")" class="illustrative-journey inpsire-section-1">
-                    <div class="image">
-                        <img src="/dist/campaign/images/employer/explore/index-icon-1.svg"/>
-                        <img src="/dist/campaign/images/employer/explore/index-icon-1.svg"/>
-                        <img src="/dist/campaign/images/employer/explore/index-icon-1.svg"/>
-                        <img src="/dist/campaign/images/employer/explore/index-icon-1.svg"/>
-                    </div>
-                    <div class="text">
-                        <h3 class="heading-xs">Get tailored apprenticeship advice</h3>
-                    </div>
+            <div class="flow">
+                <div class="flow__links">
+                <a class="flow__link flow__link--inspire-1" href="@Url.Action("Index", "WhichSkills")">
+                    <span class="flow__link-image-wrap">
+                        <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                    </span>
+                    <span class="flow__link-image-wrap flow__link-image-wrap--multiple">
+                        <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                    </span>
+                    <span class="flow__link-image-wrap flow__link-image-wrap--multiple-2">
+                        <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                    </span>
+                    <span class="flow__link-image-wrap flow__link-image-wrap--multiple-3">
+                        <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                    </span>
+                    <span class="flow__link-text">
+                        4 quick questions for tailored advice
+                    </span>
                 </a>
-                <!-- SECTION 1 - END -->
-
-                <!-- SECTION 2 - START -->
-                <a href="@Url.Action("Employer", "RealStories")" class="illustrative-journey inpsire-section-2">
-                    <div class="border">
-                        <span class="spot top"></span>
-                        <span class="spot bottom"></span>
-                    </div>
-                    <div class="image">
-                        <img src="/dist/campaign/images/employer/explore/index-icon-2.svg"/>
-                    </div>
-                    <div class="text">
-                        <h3 class="heading-xs">real stories</h3>
-                    </div>
+                <a class="flow__link flow__link--inspire-2" href="@Url.Action("Index", "WhichSkills")">
+                    <span class="flow__link-image-wrap">
+                        <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                    </span>
+                    <span class="flow__link-text">
+                        Your tailored apprenticeship advice
+                    </span>
                 </a>
-                <!-- SECTION 2 - END -->
-
-                <!-- SECTION 3 - START -->
-                <a href="@Url.Action("Benefits", "Employer")" class="illustrative-journey inpsire-section-3">
-                    <div class="border">
-                        <span class="spot top"></span>
-                        <span class="spot bottom"></span>
-                    </div>
-                    <div class="image">
-                        <img src="/dist/campaign/images/employer/explore/index-icon-3.svg"/>
-                    </div>
-                    <div class="text">
-                        <h3 class="heading-xs">the benefits of apprenticeships</h3>
-                    </div>
+                <a class="flow__link flow__link--inspire-3" href="@Url.Action("Index", "WhichSkills")">
+                    <span class="flow__link-image-wrap">
+                        <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
+                    </span>
+                    <span class="flow__link-text">
+                        Where next is up to you...
+                    </span>
                 </a>
-                <!-- SECTION 3 - END -->
-
-            </div>
-
+                </div>
+                <div class="flow__lines">
+                    <span class="flow__line flow__line--inspire-1"></span>
+                    <span class="flow__line flow__line--inspire-2"></span>
+                </div>
+            </div>       
         </div>
     </div>
 </div>
