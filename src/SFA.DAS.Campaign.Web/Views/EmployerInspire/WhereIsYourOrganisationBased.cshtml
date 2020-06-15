@@ -1,4 +1,6 @@
-@model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspireJourneyChoices
+@using System.Text
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspirePostcodeViewModel
 @{
     Layout = "_Layout-campaign-employer-inspire";
     ViewBag.Title = "Finally, where is your organisation based?";
@@ -7,11 +9,16 @@
     ViewBag.BackLink = Url.Action("Index", "HireSomeoneNew");
 }
 <form method="post">
-    <div class="form-group">
-        <label class="label visually-hidden" for="postCode">
+   
+    <div class="form-group" das-validation-for="Postcode" das-validationerror-class="form-group-validation-error">
+        @if (ViewData.ModelState["Postcode"]?.ValidationState == ModelValidationState.Invalid)
+        {
+            <p>@ViewData.ModelState["Postcode"].Errors.First().ErrorMessage</p>
+        }
+        <label class="label visually-hidden" asp-for="Postcode">
             Post code
         </label>
-        <input id="postCode-employer" class="input" type="text" placeholder="Post code" autocomplete="given-name" name="postCode" value="">
+        <input id="postCode-employer" class="input" type="text" placeholder="Post code" autocomplete="given-name" asp-for="Postcode">
         <button class="button button-employer" name="exploreSubmit" id="inspire-question-4">Continue</button>
     </div>
 
