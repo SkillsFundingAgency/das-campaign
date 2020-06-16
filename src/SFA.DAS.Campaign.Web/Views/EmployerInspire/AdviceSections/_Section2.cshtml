@@ -1,1 +1,12 @@
+@model List<SFA.DAS.Campaign.Web.Controllers.EmployerInspire.ViewComponents.ApprenticeshipViewModel>
+
 <p>Section 2</p>
+
+
+@foreach (var apprenticeship in Model)
+{
+    <div>
+        <p>@apprenticeship.Name</p>
+        <p>@apprenticeship.NumberOfProviders</p>
+    </div>
+}

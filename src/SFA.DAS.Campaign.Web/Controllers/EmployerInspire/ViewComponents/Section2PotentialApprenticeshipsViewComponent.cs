@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -26,18 +28,56 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire.ViewComponents
         {
             var inspireJourneyChoices = _sessionService.Get<InspireJourneyChoices>(typeof(InspireJourneyChoices).Name);
 
+            var apprenticeships = new List<ApprenticeshipViewModel>();
+            
             foreach (var skill in inspireJourneyChoices.SelectedSkills)
             {
                 var skillDescription = inspireJourneyChoices.Skills.Single(s => s.Key == skill).Title;
                 var searchResult = await _searchApi.SearchActiveApprenticeshipsAsync(skillDescription);
 
-                var firstSearchResult = searchResult.Results.First();
-
-                var providersSearch = await _providerSearchService.SearchProviders(firstSearchResult.Id, inspireJourneyChoices.Postcode, new Pagination() {Page = 1, Take = 20}, new[] {""}, true, false, 0);
-
+                apprenticeships.AddRange(searchResult.Results.Select(sr => new ApprenticeshipViewModel{ Id = sr.Id, Name = sr.Title}));
             }
+
+            apprenticeships.Shuffle(new Random());
+
+            int numberOfResults = 0;
             
-            return View("~/Views/EmployerInspire/AdviceSections/_Section2.cshtml");
+            
+            
+            
+            
+            var sixAtRandom = apprenticeships.Take(6).ToList();
+
+            foreach (var randomApprenticeship in sixAtRandom)
+            {
+                var providersSearch = await _providerSearchService.SearchProviders(randomApprenticeship.Id, inspireJourneyChoices.Postcode, new Pagination() {Page = 1, Take = 100}, new[] {""}, true, false, 0);
+                randomApprenticeship.NumberOfProviders = providersSearch.TotalResults;
+            }
+
+            return View("~/Views/EmployerInspire/AdviceSections/_Section2.cshtml", sixAtRandom);
         }
+    }
+
+    public static class ListExtensions
+    {
+        public static void Shuffle<T>(this IList<T> list, Random rnd)
+        {
+            for(var i=list.Count; i > 0; i--)
+                list.Swap(0, rnd.Next(0, i));
+        }
+
+        private static void Swap<T>(this IList<T> list, int i, int j)
+        {
+            var temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+        }
+    }
+    
+    public class ApprenticeshipViewModel
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public long NumberOfProviders { get; set; }
     }
 }
