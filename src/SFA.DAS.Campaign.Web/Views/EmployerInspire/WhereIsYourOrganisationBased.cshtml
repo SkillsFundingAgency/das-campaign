@@ -20,11 +20,12 @@
                 </div>
                 <p>@ViewBag.SubTitle</p>
                 <form method="post">
-                    <div class="form-group das-form-group-inline" das-validation-for="Postcode" das-validationerror-class="form-group-validation-error">
-                        @if (ViewData.ModelState["Postcode"]?.ValidationState == ModelValidationState.Invalid)
-                        {
-                            <p>@ViewData.ModelState["Postcode"].Errors.First().ErrorMessage</p>
-                        }
+                    @if (ViewData.ModelState["Postcode"]?.ValidationState == ModelValidationState.Invalid)
+                    {
+                        <p class="error-message">@ViewData.ModelState["Postcode"].Errors.First().ErrorMessage</p>
+                    }
+                    <div class="form-group das-form-group-inline">
+                        
                         <label class="label visually-hidden" asp-for="Postcode">
                             Post code
                         </label>
