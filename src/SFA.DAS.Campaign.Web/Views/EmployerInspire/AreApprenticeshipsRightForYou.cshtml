@@ -1,6 +1,7 @@
 @{
     Layout = "_Layout-campaign-employer";
     ViewBag.Title = "Are apprenticeships right for you?";
+    ViewBag.PageID = "page-inspire-apprenticeships-right-for-you";
     ViewBag.MetaTitle = "Should you hire an apprentice?";
     ViewBag.MetaDesc = "Discover the benefits of employing an apprentice, get tailored apprenticeship advice and see case studies from other employers.";
 }
@@ -31,7 +32,7 @@
             <div class="grid-column-one-half">
                 <div class="flow">
                     <div class="flow__links">
-                    <a class="flow__link flow__link--inspire-1" href="@Url.Action("Index", "WhichSkills")">
+                    <a class="flow__link flow__link--inspire-1" href="@Url.Action("Index", "WhichSkills")" id="link-flow2-inspire-1">
                         <span class="flow__link-image-wrap">
                             <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
                         </span>
@@ -48,7 +49,7 @@
                             Get tailored apprenticeship advice
                         </span>
                     </a>
-                    <a class="flow__link flow__link--inspire-2" href="@Url.Action("Employer", "RealStories")">
+                    <a class="flow__link flow__link--inspire-2" href="@Url.Action("Employer", "RealStories")" id="link-flow2-inspire-2">
                         <span class="flow__link-image-wrap">
                             <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
                         </span>
@@ -56,7 +57,7 @@
                             Real stories
                         </span>
                     </a>
-                    <a class="flow__link flow__link--inspire-3" href="@Url.Action("Benefits", "Employer")">
+                    <a class="flow__link flow__link--inspire-3" href="@Url.Action("Benefits", "Employer")" id="link-flow2-inspire-3">
                         <span class="flow__link-image-wrap">
                             <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
                         </span>

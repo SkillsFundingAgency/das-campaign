@@ -1,6 +1,7 @@
 @{
     Layout = "_Layout-campaign-employer";
     ViewBag.Title = "Tailored apprenticeship advice";
+    ViewBag.PageID = "page-inspire-tailored-advice";
     ViewBag.MetaTitle = "Tailored apprenticeship advice for employers";
     ViewBag.MetaDesc = "Not sure whether apprenticeships are right for you? Answer 4 quick questions to get free advice, including apprenticeships that could suit your needs and ";
 }
@@ -31,7 +32,7 @@
                     <li>information about funding for your type of organisation</li>
                 </ul>
                 <div class="das-form-group-inline">
-                    <a href="@Url.Action("Index", "WhichSkills")" class="button button--employer button--sparks">Start now</a>
+                    <a href="@Url.Action("Index", "WhichSkills")" class="button button--employer button--sparks" id="button-inspire-start">Start now</a>
                 </div>
                 <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
                     <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" />
@@ -40,7 +41,7 @@
             <div class="grid-column-one-half">
                 <div class="flow">
                     <div class="flow__links">
-                    <a class="flow__link flow__link--inspire-1" href="@Url.Action("Index", "WhichSkills")">
+                    <a class="flow__link flow__link--inspire-1" href="@Url.Action("Index", "WhichSkills")" id="link-flow-inspire-1">
                         <span class="flow__link-image-wrap">
                             <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
                         </span>
@@ -57,7 +58,7 @@
                             4 quick questions for tailored advice
                         </span>
                     </a>
-                    <a class="flow__link flow__link--inspire-2" href="@Url.Action("Index", "WhichSkills")">
+                    <a class="flow__link flow__link--inspire-2" href="@Url.Action("Index", "WhichSkills")" id="link-flow-inspire-2">
                         <span class="flow__link-image-wrap">
                             <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
                         </span>
@@ -65,7 +66,7 @@
                             Your tailored apprenticeship advice
                         </span>
                     </a>
-                    <a class="flow__link flow__link--inspire-3" href="@Url.Action("Index", "WhichSkills")">
+                    <a class="flow__link flow__link--inspire-3" href="@Url.Action("Index", "WhichSkills")" id="link-flow-inspire-3">
                         <span class="flow__link-image-wrap">
                             <img src="/campaign/images/icon-page.svg" alt="" class="flow__link-image" />
                         </span>

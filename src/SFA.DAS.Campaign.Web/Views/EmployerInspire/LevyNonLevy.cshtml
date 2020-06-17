@@ -4,7 +4,7 @@
     Layout = "_Layout-campaign-employer";
     ViewBag.Title = "How big is your Organisation's annual pay bill?";
     ViewBag.SubTitle = "This affects how apprenticeship funding works, so your answer will help us to give you more specific guidance.";
-    ViewBag.CurrentInspirePage = 2;
+    ViewBag.PageID = "page-inspire-levy-non-levy";
     ViewBag.BackLink = Url.Action("Index", "WhichSkills");
 }
 <main id="main-content">
@@ -39,7 +39,7 @@
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="button button--employer">
+                    <button type="submit" class="button button--employer" id="button-inspire-levy-non-levy">
                         Continue
                     </button>
                 </form>

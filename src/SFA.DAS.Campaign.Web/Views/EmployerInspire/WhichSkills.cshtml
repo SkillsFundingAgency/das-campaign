@@ -3,7 +3,7 @@
     Layout = "_Layout-campaign-employer";
     ViewBag.Title = "Which skills do you want your apprentice to develop?";
     ViewBag.SubTitle = "This is the type of apprenticeship your apprentice could take, rather than your industry. For example, if you’re looking for a digital apprentice in the health and science industry, select 'digital'.";
-    ViewBag.CurrentInspirePage = 1;
+    ViewBag.PageID = "page-inspire-which-skills";
     ViewBag.BackLink = Url.Action("Index", "AreApprenticeshipsRightForYou");
 }
 <main id="main-content">
@@ -30,7 +30,7 @@
                             </label>
                         </div>
                     }
-                    <button type="submit" class="button button--employer">
+                    <button type="submit" class="button button--employer" id="button-inspire-skills-continue">
                         Continue      
                     </button>
                 </form>

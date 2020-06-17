@@ -5,7 +5,7 @@
     Layout = "_Layout-campaign-employer";
     ViewBag.Title = "Do you want to hire someone new?";
     ViewBag.SubTitle = "Apprenticeships are ideal for bringing in new staff, but they can also be used to upskill or retrain your current workforce. Let us know which option suits your needs.";
-    ViewBag.CurrentInspirePage = 3;
+    ViewBag.PageID = "page-inspire-hire-someone-new";
     ViewBag.BackLink = Url.Action("Index", "LevyNonLevy");
 }
 <main id="main-content">
@@ -22,27 +22,27 @@
                 <form method="post">
                     <div class="form-group radios">
                         <div class="radios__item active">
-                            <input class="input radios__input" type="radio" value="SomeoneNew" id="non-levy-payer" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.SomeoneNew ? "checked='checked'" : "")>
-                            <label class="label radios__label" for="non-levy-payer">
+                            <input class="input radios__input" type="radio" value="SomeoneNew" id="someone-new" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.SomeoneNew ? "checked='checked'" : "")>
+                            <label class="label radios__label" for="someone-new">
                                 I'm looking to hire someone new
                             </label>
                         </div>
 
                         <div class="radios__item">
-                            <input class="input radios__input" type="radio" value="TrainExisting" id="levy-payer" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.TrainExisting ? "checked='checked'" : "")>
-                            <label class="label radios__label" for="levy-payer">
+                            <input class="input radios__input" type="radio" value="TrainExisting" id="train-existing" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.TrainExisting ? "checked='checked'" : "")>
+                            <label class="label radios__label" for="train-existing">
                                 I want to train existing staff
                             </label>
                         </div>
 
                         <div class="radios__item">
-                            <input class="input radios__input" type="radio" value="Both" id="levy-not-sure" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.Both ? "checked='checked'" : "")>
-                            <label class="label radios__label" for="levy-not-sure">
+                            <input class="input radios__input" type="radio" value="Both" id="both" name="HireSomeoneOptions" @(Model.HireSomeoneOptions == HireSomeoneOptions.Both ? "checked='checked'" : "")>
+                            <label class="label radios__label" for="both">
                                 I'm open to both
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="button button--employer">
+                    <button type="submit" class="button button--employer" id="button-inspire-hire-options">
                         Continue
                     </button>
                 </form>
