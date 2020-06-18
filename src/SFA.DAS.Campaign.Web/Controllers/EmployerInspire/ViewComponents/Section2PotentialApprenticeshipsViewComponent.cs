@@ -28,6 +28,13 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire.ViewComponents
         {
             var inspireJourneyChoices = _sessionService.Get<InspireJourneyChoices>(typeof(InspireJourneyChoices).Name);
 
+            var resultsToReturn = new List<ApprenticeshipViewModel>();
+
+            if (inspireJourneyChoices.SelectedSkills.Count == 0)
+            {
+                return View("~/Views/EmployerInspire/AdviceSections/_Section2.cshtml", resultsToReturn);
+            }
+            
             var apprenticeships = new List<ApprenticeshipViewModel>();
             
             foreach (var skill in inspireJourneyChoices.SelectedSkills)
@@ -40,21 +47,23 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire.ViewComponents
 
             apprenticeships.Shuffle(new Random());
 
-            int numberOfResults = 0;
+            int resultIndex = 0;
             
-            
-            
-            
-            
-            var sixAtRandom = apprenticeships.Take(6).ToList();
-
-            foreach (var randomApprenticeship in sixAtRandom)
+            while (resultsToReturn.Count < 6)
             {
-                var providersSearch = await _providerSearchService.SearchProviders(randomApprenticeship.Id, inspireJourneyChoices.Postcode, new Pagination() {Page = 1, Take = 100}, new[] {""}, true, false, 0);
-                randomApprenticeship.NumberOfProviders = providersSearch.TotalResults;
+                var apprenticeship = apprenticeships[resultIndex];
+                var providersSearch = await _providerSearchService.SearchProviders(apprenticeship.Id, inspireJourneyChoices.Postcode, new Pagination() {Page = 1, Take = 100}, new[] {""}, true, false, 0);
+
+                if (providersSearch.Hits.Any())
+                {
+                    apprenticeship.NumberOfProviders = providersSearch.TotalResults;
+                    resultsToReturn.Add(apprenticeship);
+                }
+                
+                resultIndex++;
             }
 
-            return View("~/Views/EmployerInspire/AdviceSections/_Section2.cshtml", sixAtRandom);
+            return View("~/Views/EmployerInspire/AdviceSections/_Section2.cshtml", resultsToReturn);
         }
     }
 

@@ -1,12 +1,46 @@
 @model List<SFA.DAS.Campaign.Web.Controllers.EmployerInspire.ViewComponents.ApprenticeshipViewModel>
 
-<p>Section 2</p>
+<div id="section-2" class="bespoke-content-section">
+    <section class="sector-jobs">
+        <div class="text-content">
+            <div class="title-wrapper aos-init aos-animate" data-aos="fade-left">
+                <h2 class="heading-m">Section 02</h2>
+                <h3 class="heading-l">Your potential apprenticeships</h3>
+            </div>
+            @if (Model.Any())
+            {
+                <p class="lead-paragraph no-top-margin aos-init aos-animate" data-aos="fade-right">
+                    These apprenticeship standards could boost the skills you need in your organisation.
+                </p>
+                
+                <p>
+                    <a href="@Url.Action("FindApprenticeshipTraining", "Employer")" class="aos-init aos-animate" data-aos="fade-right">View more apprenticeship standards.</a>
+                </p>
+            }
+            else
+            {
+                <p class="lead-paragraph no-top-margin aos-init aos-animate" data-aos="fade-right">
+                    Select the skills your organisation needs and we'll show you some suitable apprenticeships. <a href="@Url.Action("Index", "WhichSkills")" class="edit">Go back and select some skills.</a>
+                </p>
+            }
+        </div>
 
-
-@foreach (var apprenticeship in Model)
-{
-    <div>
-        <p>@apprenticeship.Name</p>
-        <p>@apprenticeship.NumberOfProviders</p>
-    </div>
-}
+        @if (Model.Any())
+        {
+            <div class="jobs-wrapper">
+                @foreach (var apprenticeship in Model)
+                {
+                    <a href="@Url.Action("Apprenticeship", "Fat", new {Id = apprenticeship.Id})" class="job aos-init aos-animate" target="_blank" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="500" data-aos-offset="0">
+                        <span class="number">1</span>
+                        <h2 class="heading-xs">@apprenticeship.Name</h2>
+                        <h3 class="heading-xs">
+                            <div class="number-wrapper">
+                                <span class="number">@apprenticeship.NumberOfProviders</span>
+                            </div> training providers
+                        </h3>
+                    </a>
+                }
+            </div>
+        }
+    </section>
+</div>
