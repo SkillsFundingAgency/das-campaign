@@ -15,7 +15,9 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
 
         public IActionResult Index()
         {
-            return View("~/Views/EmployerInspire/YourApprenticeshipAdvice.cshtml");
+            var inspireJourneyChoices = _sessionService.Get<InspireJourneyChoices>(typeof(InspireJourneyChoices).Name);
+            
+            return View("~/Views/EmployerInspire/YourApprenticeshipAdvice.cshtml", inspireJourneyChoices);
         }
     }
 }

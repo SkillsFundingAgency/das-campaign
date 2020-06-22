@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using SFA.DAS.Campaign.Web.Controllers.EmployerInform;
 
 namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
@@ -36,6 +38,12 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
         public HireSomeoneOptions? HireSomeoneOptions { get; set; }
         public string Postcode { get; set; }
         public bool Completed { get; set; }
+
+        public string GetRandomSelectedSkill()
+        {
+            var rnd = new Random();
+            return SelectedSkills[rnd.Next(0, SelectedSkills.Count - 1)];
+        }
     }
 
     public class Skill

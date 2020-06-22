@@ -1,3 +1,5 @@
+@model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspireJourneyChoices
+
 @{
     Layout = "_Layout-campaign-employer";
     ViewBag.Title = "Your apprenticeship advice";
@@ -71,6 +73,8 @@
 @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section1.cshtml"))
 
 @(await Component.InvokeAsync("Section2PotentialApprenticeships"))
+
+@(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section3.cshtml", Model))
 
 <div id="save-inspire-journey">
     <a href="#" class="close inspire-journey">close</a>

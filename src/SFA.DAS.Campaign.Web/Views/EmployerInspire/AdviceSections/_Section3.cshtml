@@ -1,0 +1,53 @@
+@using SFA.DAS.Campaign.Web.Controllers.EmployerInform
+@model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspireJourneyChoices 
+
+<div id="section-3" class="bespoke-content-section">
+    <div class="text-content aos-init aos-animate" data-aos="fade-up">
+        <div class="title-wrapper aos-init aos-animate" data-aos="fade-left">
+            <h2 class="heading-m">Section 03</h2>
+            <h3 class="heading-l">Real stories for you</h3>
+        </div>
+        <p class="lead-paragraph">
+            We’ve picked out the real-life apprenticeship stories we think you’ll find most useful.
+        </p>
+        <p>
+            Below is a look at how <strong class="inspire-sectors"></strong> apprenticeships can boost your business.
+        </p>
+        <hr>
+        <p>
+            <a href="/campaign/real-stories/employers" class="">Discover more of our real stories.</a>
+        </p>
+    </div>
+    <div class="real-stories">
+
+        @switch (Model.LevyOption.LevyStatus)
+        {
+            case LevyStatus.Levy:
+                <iframe width="450" height="400" src="https://www.youtube.com/embed/uD47su97gqk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-aos="fade-left" class="aos-init aos-animate"></iframe>
+                break;
+            case LevyStatus.NonLevy:
+                <iframe width="450" height="400" src="https://www.youtube.com/embed/5hGuBfCx85M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-aos="fade-left" class="aos-init aos-animate"></iframe>
+                break;
+            case LevyStatus.DontKnow:
+            case null:
+                <iframe width="450" height="400" src="https://www.youtube.com/embed/jAoi3oE8klw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-aos="fade-left" class="aos-init aos-animate"></iframe>
+                break;
+        }
+    </div>
+</div>
+
+
+<div id="quoteOneModal" class="explore-quotes">
+   @if (Model.SelectedSkills.Count == 1)
+   {
+       @(await @Html.PartialAsync($"~/Views/EmployerInspire/AdviceSections/Section3Quotes/{Model.SelectedSkills.Single()}.cshtml"))
+   }
+   else if (Model.SelectedSkills.Count == 0)
+   {
+       @(await @Html.PartialAsync($"~/Views/EmployerInspire/AdviceSections/Section3Quotes/hair-and-beauty.cshtml"))
+   }
+   else
+   {
+       @(await @Html.PartialAsync($"~/Views/EmployerInspire/AdviceSections/Section3Quotes/{Model.GetRandomSelectedSkill()}.cshtml"))
+   }
+</div>
