@@ -65,25 +65,9 @@
     </nav>
 
     @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section1.cshtml"))
+    @(await Component.InvokeAsync("Section2PotentialApprenticeships"))
+    @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section3.cshtml", Model))
 
-    <section class="section-advice section-advice--white" id="section-2">
-        <div class="section-advice__content">
-            <span class="section-advice__caption">Section 02</span>
-            <h1 class="section-advice__heading">Your potential apprenticeships</h1>
-            <div class="section-advice__intro">
-                <p>These apprenticeship standards could boost the skills you need in your organisation.</p>
-            </div>
-        </div>
-    </section>
-    <section class="section-advice" id="section-3">
-        <div class="section-advice__content">
-            <span class="section-advice__caption">Section 03</span>
-            <h1 class="section-advice__heading">Real stories for you</h1>
-            <div class="section-advice__intro">
-                <p>Intro</p>
-            </div>
-        </div>
-    </section>
     <section class="section-advice section-advice--white" id="section-4">
         <div class="section-advice__content">
             <span class="section-advice__caption">Section 04</span>
@@ -111,6 +95,11 @@
             </div>
         </div>
     </section>
+
+    
+
+
+
 
 
 <div id="save-inspire-journey">
