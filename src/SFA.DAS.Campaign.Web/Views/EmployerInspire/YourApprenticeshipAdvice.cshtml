@@ -7,74 +7,100 @@
     ViewBag.MetaTitle = "Your apprenticeship advice";
 }
 
-<div class="hero content-hero padding-top">
-    <div class="scroll-down"><span class="icon scroll"></span>SCROLL</div>
-    <div class="grid-row">
-        <div class="grid-column-two-thirds">
-            <div class="hero-heading">
-                <span class="caption-m hero-heading__caption hero-heading__caption--employer">
-                    <a href="@Url.Action("Index", "WhereIsYourOrganisationBased")">&lt; &nbsp; Back</a>
-                </span>
-                <h1 class="heading-xl hero-heading__heading">Your apprenticeship advice</h1>
-            </div>
 
-            <p class="lead-paragraph">
-                Based on your answers, here are some potential apprenticeships, real-life stories and tailored hints
-                and tips to get you started. They’ll give you a taste of how apprenticeships could work for your
-                organisation.
-            </p>
 
-            <div class="main-ctas">
-                <div id="scroller-anchor" class="scroller-anchor"></div>
-                <div id="scroller" class="scroller" style="position: relative;">
-                    <a href="#section-1" id="section-1-cta" class="main-cta-button active" data-offset-top="150">
-                        <span class="number">01</span>
-                        <div class="text-wrapper">
-                            First things first... <span>key facts</span>
-                        </div>
-                    </a>
-                    <a href="#section-2" id="section-2-cta" class="main-cta-button next" data-offset-top="150">
-                        <span class="number">02</span>
-                        <div class="text-wrapper">
-                            Your potential apprenticeships
-                        </div>
-                    </a>
-                    <a href="#section-3" id="section-3-cta" class="main-cta-button" data-offset-top="150">
-                        <span class="number">03</span>
-                        <div class="text-wrapper">
-                            Real stories for you
-                        </div>
-                    </a>
-                    <a href="#section-4" id="section-4-cta" class="main-cta-button" data-offset-top="150">
-                        <span class="number">04</span>
-                        <div class="text-wrapper">
-                            You might be interested to hear...
-                        </div>
-                    </a>
-                    <a href="#section-5" id="section-5-cta" class="main-cta-button" data-offset-top="150">
-                        <span class="number">05</span>
-                        <div class="text-wrapper">
-                            Funding your apprenticeship
-                        </div>
-                    </a>
-
-                    <a href="#section-6" id="section-6-cta" class="main-cta-button" data-offset-top="150">
-                        <span class="number">06</span>
-                        <div class="text-wrapper">
-                            So, what’s next?
-                        </div>
-                    </a>
+ <main id="main-content">
+    <div class="hero--no-clip">
+        <div class="grid-row">
+            <div class="grid-column-two-thirds">
+                <div class="hero-heading">
+                    <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                        <a href="/employer/which-skills" class="hero-heading__caption-link hero-heading__caption--employer">&lt; Back</a>
+                    </span>
+                    <h1 class="heading-xl hero-heading__heading">Your apprenticeship advice</h1>
                 </div>
+                <p>Based on your answers, here are some potential apprenticeships, real-life stories and tailored hints and tips to get you started. They'll give you a taste of how apprenticeships could work for your organisation.</p>
             </div>
         </div>
     </div>
-</div>
+    <nav class="tab-nav" data-module="smoothScroll">
+        <ul class="tab-nav__list">
+            <li class="tab-nav__list-item">
+                <a href="#section-1" class="tab-nav__link tab-nav__link--one">
+                    <span class="tab-nav__link-number">01</span>
+                    <span class="tab-nav__link-text">First things first&hellip; key facts</span>
+                </a>
+            </li>
+            <li class="tab-nav__list-item">
+                <a href="#section-2" class="tab-nav__link tab-nav__link--two">
+                    <span class="tab-nav__link-number">02</span>
+                    <span class="tab-nav__link-text">Your potential apprenticeship</span>
+                </a>
+            </li>
+            <li class="tab-nav__list-item">
+                <a href="#section-3" class="tab-nav__link tab-nav__link--three">
+                    <span class="tab-nav__link-number">03</span>
+                    <span class="tab-nav__link-text">Real stories for you</span>
+                </a>
+            </li>
+            <li class="tab-nav__list-item">
+                <a href="#section-4" class="tab-nav__link tab-nav__link--four">
+                    <span class="tab-nav__link-number">04</span>
+                    <span class="tab-nav__link-text">You might be interested to hear&hellip;</span>
+                </a>
+            </li>
+            <li class="tab-nav__list-item">
+                <a href="#section-5" class="tab-nav__link tab-nav__link--five">
+                    <span class="tab-nav__link-number">05</span>
+                    <span class="tab-nav__link-text">Funding your apprenticeship</span>
+                </a>
+            </li>
+            <li class="tab-nav__list-item">
+                <a href="#section-6" class="tab-nav__link tab-nav__link--six">
+                    <span class="tab-nav__link-number">06</span>
+                    <span class="tab-nav__link-text">So, what's next?</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-@(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section1.cshtml"))
+    @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section1.cshtml"))
+    @(await Component.InvokeAsync("Section2PotentialApprenticeships"))
+    @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section3.cshtml", Model))
 
-@(await Component.InvokeAsync("Section2PotentialApprenticeships"))
+    <section class="section-advice section-advice--white" id="section-4">
+        <div class="section-advice__content">
+            <span class="section-advice__caption">Section 04</span>
+            <h1 class="section-advice__heading">You might be interested to hear&hellip;</h1>
+            <div class="section-advice__intro">
+                <p>Intro</p>
+            </div>
+        </div>
+    </section>
+    <section class="section-advice" id="section-5">
+        <div class="section-advice__content">
+            <span class="section-advice__caption">Section 05</span>
+            <h1 class="section-advice__heading">Funding your apprenticeship</h1>
+            <div class="section-advice__intro">
+                <p>Intro</p>
+            </div>
+        </div>
+    </section>
+    <section class="section-advice section-advice--gray" id="section-6">
+        <div class="section-advice__content">
+            <span class="section-advice__caption">Section 06</span>
+            <h1 class="section-advice__heading">So, what's next?</h1>
+            <div class="section-advice__intro">
+                <p>If you want to learn more, take a look around!</p>
+            </div>
+        </div>
+    </section>
 
-@(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section3.cshtml", Model))
+    
+
+
+
+
 
 @* @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section5.cshtml", Model)) *@
 
@@ -82,3 +108,5 @@
     <a href="#" class="close inspire-journey">close</a>
     <a href="@Url.Action("Index", "WhichSkills")" class="edit">Edit my answers</a>
 </div>
+
+</main>
