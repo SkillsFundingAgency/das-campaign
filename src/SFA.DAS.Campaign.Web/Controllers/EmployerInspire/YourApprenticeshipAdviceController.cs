@@ -16,6 +16,11 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
         public IActionResult Index()
         {
             var inspireJourneyChoices = _sessionService.Get<InspireJourneyChoices>(typeof(InspireJourneyChoices).Name);
+
+            if (inspireJourneyChoices is null || string.IsNullOrWhiteSpace(inspireJourneyChoices.Postcode))
+            {
+                return RedirectToAction("Index", "GetTailoredApprenticeshipAdvice");
+            }
             
             return View("~/Views/EmployerInspire/YourApprenticeshipAdvice.cshtml", inspireJourneyChoices);
         }
