@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://use.typekit.net">
     <link rel="preconnect" href="https://www.googletagmanager.com">
 
-     <partial name="./Components/_GtmHead" />
+    <partial name="./Components/_GtmHead" />
 
     <meta charset="utf-8" />
     <title>@(ViewData["MetaTitle"] != null ? ViewData["MetaTitle"] : ViewData["Title"])</title>
@@ -36,10 +36,11 @@
     <!--<![endif]-->
 
     <meta property="og:image" content="/campaign/images/opengraph.png" cdn-prop />
-    
+
     <link rel="preconnect" href="//youtube.com">
 
     @Html.Raw(JavaScriptSnippet.FullScript)
+    @RenderSection("HeadScripts", required: false)
 </head>
 
 

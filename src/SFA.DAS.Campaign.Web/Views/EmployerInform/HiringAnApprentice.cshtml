@@ -1,0 +1,115 @@
+﻿
+@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+
+@model object
+@{
+    ViewBag.Title = "Hiring an apprentice";
+    ViewBag.MetaTitle = "How to recruit an apprentice";
+    ViewBag.HeroImageAltText = "Apprentice in the digital industry";
+    ViewBag.PageID = "employer-hire-an-apprentice";
+    ViewBag.MetaDesc = "Apprenticeships can help you to boost key skills in your business. Find out how to employ an apprentice and who is eligible.";
+    ViewBag.PageUrl = "/employer/hiring-an-apprentice";
+    ViewBag.Section = "employer";
+    Layout = "_Layout-campaign-employer-inform";
+}
+
+<h2 class="heading-m">Who can be an apprentice?</h2>
+
+<p> Apprenticeships can help you to bring valuable skills into your business by employing someone new or <a asp-action="Index" asp-controller="Upskill">upskilling a current employee</a>.</p>
+
+<p>
+    They're suitable for people at any level - for example, an intermediate apprenticeship (level 2) is equivalent to GCSE level, while a degree apprenticeship (level 6 or 7) is equivalent to a bachelor's or master's degree.
+</p>
+
+<p> An apprentice must: </p>
+
+<ul class="list list--bullet list--bullet-employer">
+    <li>be 16 or over by the end of the summer holidays</li>
+    <li>live in England</li>
+    <li>not be in full-time education</li>
+</ul>
+
+<h2 class="heading-m">Preparing to find an apprentice</h2>
+
+<p>
+    If you've decided to recruit an apprentice from outside your business, you'll need to think about what you're looking for. A person specification is a good place to start, including:
+</p>
+<ul class="list list--bullet list--bullet-employer">
+    <li>essential and desirable knowledge they'll have</li>
+    <li>previous experience they should have</li>
+    <li>the specific skills you're looking for </li>
+</ul>
+
+<p>
+    You should also write a job description, including:
+</p>
+
+<ul class="list list--bullet list--bullet-employer">
+    <li>a job title</li>
+    <li>the main duties and purpose of the role</li>
+    <li>information about the company and the job location</li>
+    <li>the salary you'll pay the apprentice</li>
+</ul>
+
+<p> By hiring an apprentice, you'll make a valuable investment in your business with the government's support. Before you start your search, you should consider the long-term impact the apprentice could make within your business. This includes thinking about their future career prospects and salary.</p>
+
+<h2 class="heading-m">Advertising apprenticeships</h2>
+
+<p> Next, it's time to think about where to advertise the apprenticeship.</p>
+
+<p>
+    <a href="https://www.gov.uk/recruit-apprentice" rel="external" target="_blank">Recruit an apprentice</a> is the official government service for posting and managing apprenticeship vacancies and traineeship opportunities in England. The system can be managed by training providers on your behalf or by you directly.
+</p>
+
+<p>To create your advert, complete the apprenticeship vacancy template. Write as clearly as possible so candidates who are searching through the vacancies can quickly understand whether your apprenticeship is right for them. </p>
+
+<p> Budding apprentices can search and apply for apprenticeship vacancies using <a asp-action="FindAnApprenticeship" asp-controller="Apprentice">Find an apprenticeship.</a></p>
+
+<p> Other ways to find an apprentice include:</p>
+
+<ul class="list list--bullet list--bullet-employer">
+    <li>holding open days at your organisation</li>
+    <li>participating in shows, such as WorldSkills UK Live</li>
+    <li>inviting potential apprentices to your organisation for a day</li>
+</ul>
+
+<h2 class="heading-m">Choosing the right apprentice</h2>
+
+<p> You can work with your training provider to choose the best method of shortlisting candidates who have applied for your vacancy. You might ask them to send you copies of all the applications that have been submitted, or to choose the most suitable applications on your behalf.</p>
+
+<p> To select candidates to interview, you should refer to the job description and person specification, eliminating those who do not have the basic requirements for the job.</p>
+
+<h2 class="heading-m">Interview questions to ask apprentices</h2>
+
+<p> Take time to think about what you really need to know and how you'll find out if the candidate is right for your business.</p>
+
+<p> Here are some sample questions:</p>
+
+<ul class="list list--bullet list--bullet-employer">
+    <li>can you tell me an interesting fact about yourself?</li>
+    <li>what would you consider your biggest achievement in school/college/work?</li>
+    <li>what's your timekeeping like?</li>
+    <li>do you work well in a team?</li>
+    <li>what are your strengths?</li>
+    <li>what are your weaknesses?</li>
+    <li>why do you think we should hire you?</li>
+    <li>why would you like to work for our organisation?</li>
+    <li>do you have any questions you'd like to ask us?</li>
+</ul>
+
+<ul class="pagination pagination--employer">
+    <li class="pagination__list-item"><a class="pagination__link pagination__link--previous" asp-controller="Employer" asp-action="Benefits" id="link-pagination-employer-3"> The benefits of apprenticeships</a></li>
+    <li class="pagination__list-item"><a class="pagination__link pagination__link--next" asp-controller="FundingAnApprenticeship" asp-action="Index" id="link-pagination-employer-5"> Funding an apprenticeship</a></li>
+</ul>
+
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork")})
+}
+
+@section pageFooter {
+    <div class="grid-column-full">
+        <partial name="./Components/Cta/_find-apprenticeship-training-with-search" />
+    </div>
+}

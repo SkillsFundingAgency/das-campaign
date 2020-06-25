@@ -37,6 +37,7 @@ using System.IO;
 using System.Net.Http;
 using Microsoft.AspNetCore.DataProtection;
 using StackExchange.Redis;
+using SFA.DAS.Campaign.Web.Helpers;
 using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Web
@@ -159,7 +160,8 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IIfaStandardsCacheService, IfaStandardsCacheService>();
             services.AddTransient<ICacheStorageService, CacheStorageService>();
             services.AddTransient<IVacancyServiceApiHealthCheck, VacancyServiceApiHealthCheck>();
-
+            services.AddTransient<ISessionService, SessionService>();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.AddMemoryCache();
@@ -174,6 +176,11 @@ namespace SFA.DAS.Campaign.Web
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             if (Configuration["Environment"] == "LOCAL")
             {
@@ -239,6 +246,8 @@ namespace SFA.DAS.Campaign.Web
                 await next();
             });
 
+            app.UseSession();
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

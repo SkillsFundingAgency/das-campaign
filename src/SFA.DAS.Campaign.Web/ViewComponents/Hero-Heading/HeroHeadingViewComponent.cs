@@ -23,10 +23,13 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                 case HeroHeadingType.None:
                     break;
                 case HeroHeadingType.Apprentice:
+                    model.SectionUrl = Url.Action("Apprentice", "RealStories");
                     break;
                 case HeroHeadingType.Employer:
+                    model.SectionUrl = Url.Action("Employer", "RealStories");
                     break;
                 case HeroHeadingType.Parent:
+                    model.SectionUrl = Url.Action("TheirCareer", "Parents");
                     break;
                 case HeroHeadingType.FindApprenticeshipResults:
                     model.Type = HeroHeadingType.Apprentice;
@@ -34,10 +37,12 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
                     break;
                 case HeroHeadingType.FindApprenticeship:
                     model.Type = HeroHeadingType.Apprentice;
+                    model.SectionUrl = Url.Action("Apprentice", "RealStories");
                     view = "FAA";
                     break;
                 case HeroHeadingType.FindApprenticeshipTraining:
                     model.Type = HeroHeadingType.Employer;
+                    model.SectionUrl = Url.Action("Employer", "RealStories");
                     view = "FAT";
                     break;
 

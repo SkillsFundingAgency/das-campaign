@@ -80,30 +80,35 @@
                 </ol>
             </li>
             <li class="nav__list-item nav__list-item--has-children">
-                <a asp-controller="Employer" asp-action="HowMuchIsItGoingToCost" class="nav__link--top-level" id="link-nav-employer-2">
+                <a asp-controller="HowDoTheyWork" asp-action="Index" class="nav__link--top-level" id="link-nav-employer-2">
                     <span>How do they work?</span>
                     <span class="nav__ordered-list-toggle"></span>
                     <span class="nav__ordered-list-toggle-icon"></span>
                 </a>
                 <ol class="nav__ordered-list">
                     <li>
-                        <a asp-controller="Employer" asp-action="HowMuchIsItGoingToCost" class="nav__link" id="link-nav-emp-step-1">
-                            Funding an apprenticeship
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="Employer" asp-action="HireAnApprentice" class="nav__link" id="link-nav-emp-step-4">
+                        <a asp-controller="HiringAnApprentice" asp-action="Index" class="nav__link" id="link-nav-emp-hdw-1">
                             Hiring an apprentice
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="Employer" asp-action="AssessmentAndQualification" class="nav__link" id="link-nav-emp-step-6">
-                            End point assessments
+                        <a asp-controller="Upskill" asp-action="Index" class="nav__link" id="link-nav-emp-hdw-2">
+                            Upskilling your current staff
                         </a>
                     </li>
                     <li>
-                        <a asp-controller="Employer" asp-action="PreparingAndMonitoring" class="nav__link" id="link-nav-emp-step-5">
-                            Preparing and monitoring
+                        <a asp-controller="FundingAnApprenticeship" asp-action="Index" class="nav__link" id="link-nav-emp-hdw-3">
+                            Funding an apprenticeship
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="TrainingYourApprentice" asp-action="Index" class="nav__link" id="link-nav-emp-hdw-4">
+                            Training your apprentice
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="EndPointAssessments" asp-action="Index" class="nav__link" id="link-nav-emp-hdw-6">
+                            End-point assessments
                         </a>
                     </li>
                 </ol>

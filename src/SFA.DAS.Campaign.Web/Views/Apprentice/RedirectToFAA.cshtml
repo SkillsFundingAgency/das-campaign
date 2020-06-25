@@ -19,3 +19,7 @@
         <a href="https://www.gov.uk/apply-apprenticeship" target="_blank" class="button button-apprentice"> Find an apprenticeship on GOV.UK</a>
     </div>
 </div>
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Apprentice })
+} 
