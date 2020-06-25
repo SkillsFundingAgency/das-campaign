@@ -9,7 +9,7 @@
             <div class="section-advice__intro">
                 <p>These apprenticeship standards could boost the skills you need in your organisation.</p>
             </div>
-            
+
             <p>
                 <a href="@Url.Action("FindApprenticeshipTraining", "Employer")" class="aos-init aos-animate" data-aos="fade-right">View more apprenticeship standards.</a>
             </p>
@@ -21,23 +21,23 @@
             </p>
         }
 
-
-    @if (Model.Any())
-    {
-        <ol class="jobs-wrapper">
-            @foreach (var apprenticeship in Model)
-            {
-                <li>
-                    <a href="@Url.Action("Apprenticeship", "Fat", new {Id = apprenticeship.Id})" class="job aos-init aos-animate" target="_blank" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="500" data-aos-offset="0">
-                        <h2 class="heading-s">@apprenticeship.Name</h2>
-                        <h3 class="heading-xs">
-                            <span class="number-wrapper">
-                                <span class="number">@apprenticeship.NumberOfProviders</span>
-                            </span> training providers
-                        </h3>
-                    </a>
-                </li>
-            }
-        </ol>
-    }
+        @if (Model.Any())
+        {
+            <ol class="jobs-wrapper">
+                @foreach (var apprenticeship in Model)
+                {
+                    <li>
+                        <a href="@Url.Action("Apprenticeship", "Fat", new {Id = apprenticeship.Id})" class="job aos-init aos-animate" target="_blank" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="500" data-aos-offset="0">
+                            <h2 class="heading-s">@apprenticeship.Name</h2>
+                            <h3 class="heading-xs">
+                                <span class="number-wrapper">
+                                    <span class="number">@apprenticeship.NumberOfProviders</span>
+                                </span> training providers
+                            </h3>
+                        </a>
+                    </li>
+                }
+            </ol>
+        }
+    </div>
 </section>

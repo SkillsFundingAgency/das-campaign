@@ -27,6 +27,9 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInspire
             var inspireJourneyChoices = _sessionService.Get<InspireJourneyChoices>(typeof(InspireJourneyChoices).Name) ?? new InspireJourneyChoices();
             inspireJourneyChoices.LevyOption.LevyStatus = vm.LevyOption.LevyStatus;
             _sessionService.Set(typeof(InspireJourneyChoices).Name, inspireJourneyChoices);
+
+            inspireJourneyChoices.LevyOption.OptionChosenByUser = true;
+            _sessionService.Set(_sessionService.LevyOptionKey, inspireJourneyChoices.LevyOption);
             
             return RedirectToAction("Index", "HireSomeoneNew");
         }

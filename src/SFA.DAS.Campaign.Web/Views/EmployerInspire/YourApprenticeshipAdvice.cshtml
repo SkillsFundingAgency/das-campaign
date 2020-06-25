@@ -67,42 +67,8 @@
     @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section1.cshtml"))
     @(await Component.InvokeAsync("Section2PotentialApprenticeships"))
     @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section3.cshtml", Model))
-
-    <section class="section-advice section-advice--white" id="section-4">
-        <div class="section-advice__content">
-            <span class="section-advice__caption">Section 04</span>
-            <h1 class="section-advice__heading">You might be interested to hear&hellip;</h1>
-            <div class="section-advice__intro">
-                <p>Intro</p>
-            </div>
-        </div>
-    </section>
-    <section class="section-advice" id="section-5">
-        <div class="section-advice__content">
-            <span class="section-advice__caption">Section 05</span>
-            <h1 class="section-advice__heading">Funding your apprenticeship</h1>
-            <div class="section-advice__intro">
-                <p>Intro</p>
-            </div>
-        </div>
-    </section>
-    <section class="section-advice section-advice--gray" id="section-6">
-        <div class="section-advice__content">
-            <span class="section-advice__caption">Section 06</span>
-            <h1 class="section-advice__heading">So, what's next?</h1>
-            <div class="section-advice__intro">
-                <p>If you want to learn more, take a look around!</p>
-            </div>
-        </div>
-    </section>
-
-    
-
-
-
-
-
-@* @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section5.cshtml", Model)) *@
+    @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section5.cshtml", Model))
+    @(await @Html.PartialAsync("~/Views/EmployerInspire/AdviceSections/_Section6.cshtml", Model))
 
 <div id="save-inspire-journey">
     <a href="#" class="close inspire-journey">close</a>
