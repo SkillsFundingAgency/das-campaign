@@ -7,33 +7,25 @@
         @if (Model.Any())
         {
             <div class="section-advice__intro">
-                <p>These apprenticeship standards could boost the skills you need in your organisation.</p>
+                <p>These apprenticeship standards could boost the skills you need in your organisation. <a href="@Url.Action("FindApprenticeshipTraining", "Employer")" class="link--no-visited-state">View more apprenticeship standards.</a></p>
             </div>
-
-            <p>
-                <a href="@Url.Action("FindApprenticeshipTraining", "Employer")" class="aos-init aos-animate" data-aos="fade-right">View more apprenticeship standards.</a>
-            </p>
         }
         else
         {
-            <p class="lead-paragraph no-top-margin aos-init aos-animate" data-aos="fade-right">
-                Select the skills your organisation needs and we'll show you some suitable apprenticeships. <a href="@Url.Action("Index", "WhichSkills")" class="edit">Go back and select some skills.</a>
+            <p>
+                Select the skills your organisation needs and we'll show you some suitable apprenticeships. <a href="@Url.Action("Index", "WhichSkills")" class="link--no-visited-state">Go back and select some skills.</a>
             </p>
         }
 
         @if (Model.Any())
         {
-            <ol class="jobs-wrapper">
+            <ol class="list--standards">
                 @foreach (var apprenticeship in Model)
                 {
-                    <li>
-                        <a href="@Url.Action("Apprenticeship", "Fat", new {Id = apprenticeship.Id})" class="job aos-init aos-animate" target="_blank" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="500" data-aos-offset="0">
-                            <h2 class="heading-s">@apprenticeship.Name</h2>
-                            <h3 class="heading-xs">
-                                <span class="number-wrapper">
-                                    <span class="number">@apprenticeship.NumberOfProviders</span>
-                                </span> training providers
-                            </h3>
+                    <li class="list--standards__list-item">
+                        <a href="@Url.Action("Apprenticeship", "Fat", new {Id = apprenticeship.Id})"  class="list--standards__link" target="_blank">
+                            <h2 class="list--standards__heading heading-s">@apprenticeship.Name</h2>
+                            <p class="list--standards__sub-heading heading-xs"><span class="list--standards__number">@apprenticeship.NumberOfProviders</span> training providers</p>
                         </a>
                     </li>
                 }
