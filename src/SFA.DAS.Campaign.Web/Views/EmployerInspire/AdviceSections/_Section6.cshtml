@@ -1,35 +1,39 @@
 @using SFA.DAS.Campaign.Web.Controllers.EmployerInform
 @model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspireJourneyChoices 
 
-<div id="section-6" class="bespoke-content-section">
-    <div class="text-content">
-        <div class="title-wrapper">
-            <h2 class="heading-m">Section 06</h2>
-            <h3 class="heading-l">So, what’s next?</h3>
+<section class="section-advice section-advice--gray" id="section-6">
+    <div class="section-advice__content">
+        <span class="section-advice__caption">Section 05</span>
+        <h1 class="section-advice__heading">So, what’s next?</h1>
+        <div class="grid-row">
+            <div class="grid-column-two-thirds">
+                <div class="">
+                    <p class="lead-paragraph">
+                        If you want to learn more, take a look around!
+                    </p>
+                    <p>
+                        There’s plenty of information about <a href="@Url.Action("Index", "HiringAnApprentice")" class="link">hiring an apprentice</a>
+                        from outside your organisation and <a href="@Url.Action("Index", "Upskill")" class="link">upskilling your current staff</a>.
+                    </p>
+                    <p>
+                        View our guidance on <a href="@Url.Action("Index", "FundingAnApprenticeship")" class="link">funding an apprenticeship</a> for
+                        more detailed information about the financial side of things.
+                    </p>
+                    <p>
+                        Not sure how training works? Take a look at our
+                        <a href="@Url.Action("Index", "TrainingYourApprentice")" class="link">tips for training an apprentice</a>, and learn about
+                        the <a href="@Url.Action("Index", "EndPointAssessments")" class="link">end-point assessment</a>
+                        they’ll need to take at the end of the apprenticeship.
+                    </p>
+
+                    <hr class="section-break">
+
+                    <h3 class="heading-m">Ready to take a look at the full selection of standards?</h3>
+                    <p>
+                        You can <a href="@Url.Action("Apprenticeship", "Fat")" class="link">search for an apprenticeship</a> and suitable training providers now.
+                    </p>
+                </div>
+            </div>
         </div>
-        <p class="lead-paragraph no-top-margin">
-            If you want to learn more, take a look around!
-        </p>
-        <p>
-            There’s plenty of information about <a href="@Url.Action("Index", "HiringAnApprentice")">hiring an apprentice</a>
-            from outside your organisation and <a href="@Url.Action("Index", "Upskill")">upskilling your current staff</a>.
-        </p>
-        <p>
-            View our guidance on <a href="@Url.Action("Index", "FundingAnApprenticeship")">funding an apprenticeship</a> for
-            more detailed information about the financial side of things.
-        </p>
-        <p>
-            Not sure how training works? Take a look at our
-            <a href="@Url.Action("Index", "TrainingYourApprentice")">tips for training an apprentice</a>, and learn about
-            the <a href="@Url.Action("Index", "EndPointAssessments")">end-point assessment</a>
-            they’ll need to take at the end of the apprenticeship.
-        </p>
-
-        <hr>
-
-        <h3 class="heading-m no-top-margin no-bottom-margin">Ready to take a look at the full selection of standards?</h3>
-        <p class="no-bottom-margin">
-            You can <a href="@Url.Action("Apprenticeship", "Fat")">search for an apprenticeship</a> and suitable training providers now.
-        </p>
     </div>
-</div>
+</section>
