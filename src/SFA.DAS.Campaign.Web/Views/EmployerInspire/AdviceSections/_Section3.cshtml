@@ -3,35 +3,42 @@
 
 <section class="section-advice" id="section-3">
     <div class="section-advice__content">
-
-        <span class="section-advice__caption">Section 03</span>
-        <h1 class="section-advice__heading">Real stories for you</h1>
-        <div class="section-advice__intro">
-            <p class="lead-paragraph">
-                We've picked out the real-life apprenticeship stories we think you'll find most useful.
-            </p>
-            <p>
-                Below is a look at how apprenticeships can boost your business.
-            </p>
-            <p>
-                <a href="/campaign/real-stories/employers">Discover more of our real stories.</a>
-            </p>
-
-            @switch (Model.LevyOption.LevyStatus)
-            {
-                case LevyStatus.Levy:
-                    <iframe width="450" height="400" src="https://www.youtube.com/embed/uD47su97gqk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-aos="fade-left" class="aos-init aos-animate"></iframe>
-                    break;
-                case LevyStatus.NonLevy:
-                    <iframe width="450" height="400" src="https://www.youtube.com/embed/5hGuBfCx85M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-aos="fade-left" class="aos-init aos-animate"></iframe>
-                    break;
-                case LevyStatus.DontKnow:
-                case null:
-                    <iframe width="450" height="400" src="https://www.youtube.com/embed/jAoi3oE8klw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-aos="fade-left" class="aos-init aos-animate"></iframe>
-                    break;
-            }
-
-         </div>
+        <div class="grid-row">
+            <div class="grid-column-one-half">
+                <span class="section-advice__caption">Section 03</span>
+                <h1 class="section-advice__heading">Real stories for you</h1>
+                <div class="section-advice__intro">
+                    <p class="lead-paragraph">
+                        We've picked out the real-life apprenticeship stories we think you'll find most useful.
+                    </p>
+                    <p>
+                        Below is a look at how apprenticeships can boost your business.
+                    </p>
+                    <p>
+                        <a href="/campaign/real-stories/employers" class="link">Discover more of our real stories.</a>
+                    </p>
+                </div>
+            </div>
+            <div class="grid-column-one-half">
+                <div class="inline-video__wrap u-!-margin-bottom-0 inline-video--border">
+                    <div class="inline-video__inner-wrap">
+                        @switch (Model.LevyOption.LevyStatus)
+                        {
+                            case LevyStatus.Levy:
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/uD47su97gqk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-aos="fade-left" class="aos-init aos-animate"></iframe>
+                                break;
+                            case LevyStatus.NonLevy:
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/5hGuBfCx85M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-aos="fade-left" class="aos-init aos-animate"></iframe>
+                                break;
+                            case LevyStatus.DontKnow:
+                            case null:
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/jAoi3oE8klw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-aos="fade-left" class="aos-init aos-animate"></iframe>
+                                break;
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
    @if (Model.SelectedSkills.Count == 1)

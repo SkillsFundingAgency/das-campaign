@@ -1,73 +1,65 @@
 @using SFA.DAS.Campaign.Web.Controllers.EmployerInform
 @model SFA.DAS.Campaign.Web.Controllers.EmployerInspire.InspireJourneyChoices 
 
-
-<div id="section-5" class="bespoke-content-section">
-    <span class="decor one"></span>
-    <span class="decor two"></span>
-    <span class="decor three"></span>
-    <div class="text-content">
-        <div class="title-wrapper aos-init aos-animate" data-aos="fade-right">
-            <h2 class="heading-m">Section 05</h2>
-            <h3 class="heading-l">Funding your apprenticeship</h3>
+<section class="section-advice" id="section-3">
+    <div class="section-advice__content">
+        <div class="grid-row">
+            <div class="grid-column-one-third">
+                <span class="section-advice__caption">Section 04</span>
+                <h1 class="section-advice__heading">Funding your apprenticeship</h1>
+                <p><a href="@Url.Action("Index", "FundingAnApprenticeship")" class="link">Read more about funding your apprenticeship.</a></p>
+            </div>
+            <div class="grid-column-two-thirds">
+                @switch (Model.LevyOption.LevyStatus)
+                {
+                    case LevyStatus.Levy:
+                        <ol class="list list--number-decimal">
+                            <li>
+                                As an employer with a pay bill of more than £3 million, you’re required to pay the apprenticeship levy.
+                            </li>
+                            <li>
+                                You’ll receive funds through the apprenticeship service to spend on training and assessing your apprentices.
+                            </li>
+                            <li>
+                                You’ll need to pay the apprentice’s salary, which will be at least the hourly
+                                <a href="https://www.gov.uk/national-minimum-wage-rates" class="link" rel="external" target="_blank">minimum wage rate</a> rate for an apprentice (currently £4.15).
+                            </li>
+                        </ol>
+                        break;
+                    case LevyStatus.NonLevy:
+                        <ol class="list list--number-decimal">
+                            <li>
+                                As an employer with a pay bill of less than £3 million per year, you’ll get funding from the government to pay
+                                towards training and assessing apprentices.
+                            </li>
+                            <li>
+                                The amount of funding you get depends on the number of employees you have and the apprentice you’re hiring.
+                            </li>
+                            <li>
+                                You’ll need to pay the apprentice’s salary, which will be at least the hourly
+                                <a href="https://www.gov.uk/national-minimum-wage-rates" class="link" rel="external" target="_blank">minimum wage rate</a> rate for an apprentice (currently £4.15).
+                            </li>
+                        </ol>
+                        break;
+                    case LevyStatus.DontKnow:
+                        <ol class="list list--number-decimal">
+                            <li>
+                                If your pay bill is less than £3 million per year, you’ll get funding from the government to pay towards training and assessing apprentices.
+                                The amount depends on the number of employees you have and the apprentice you’re hiring.
+                            </li>
+                            <li>
+                                If your pay bill is more than £3 million, you’re required to pay the apprenticeship levy.
+                                This means you’ll receive funds through the apprenticeship service to spend on training and assessing your apprentices.
+                            </li>
+                            <li>
+                                Either way, you’ll need to pay the apprentice’s salary. This will be at least the hourly
+                                <a href="https://www.gov.uk/national-minimum-wage-rates" class="link" rel="external" target="_blank">minimum wage rate</a> for an apprentice (currently £4.15).
+                            </li>
+                        </ol>
+                        break;
+                }
+            </div>
         </div>
+        
     </div>
-
-    @switch (Model.LevyOption.LevyStatus)
-    {
-        case LevyStatus.Levy:
-            <ol class="inspire-decision levy-content aos-init aos-animate" data-aos="fade-left" style="display: none;">
-                <li>
-                    As an employer with a pay bill of more than £3 million, you’re required to pay the apprenticeship levy.
-                </li>
-                <li>
-                    You’ll receive funds through the apprenticeship service to spend on training and assessing your apprentices.
-                </li>
-                <li>
-                    You’ll need to pay the apprentice’s salary, which will be at least the hourly
-                    <a href="https://www.gov.uk/national-minimum-wage-rates" class="external" rel="external" target="_blank">minimum wage rate</a> rate for an apprentice (currently £4.15).
-                </li>
-            </ol>
-            <p>
-                <a href="@Url.Action("Index", "FundingAnApprenticeship")" class="">Read more about funding your apprenticeship.</a>
-            </p>
-            break;
-        case LevyStatus.NonLevy:
-            <ol class="inspire-decision non-levy-content aos-init aos-animate" data-aos="fade-left">
-                <li>
-                    As an employer with a pay bill of less than £3 million per year, you’ll get funding from the government to pay
-                    towards training and assessing apprentices.
-                </li>
-                <li>
-                    The amount of funding you get depends on the number of employees you have and the apprentice you’re hiring.
-                </li>
-                <li>
-                    You’ll need to pay the apprentice’s salary, which will be at least the hourly
-                    <a href="https://www.gov.uk/national-minimum-wage-rates" class="external" rel="external" target="_blank">minimum wage rate</a> rate for an apprentice (currently £4.15).
-                </li>
-            </ol>
-            <p>
-                <a href="@Url.Action("Index", "FundingAnApprenticeship")" class="">Read more about funding your apprenticeship.</a>
-            </p>
-            break;
-        case LevyStatus.DontKnow:
-            <ol class="inspire-decision i-dont-know-content aos-init aos-animate" data-aos="fade-left" style="display: none;">
-                <li>
-                    If your pay bill is less than £3 million per year, you’ll get funding from the government to pay towards training and assessing apprentices.
-                    The amount depends on the number of employees you have and the apprentice you’re hiring.
-                </li>
-                <li>
-                    If your pay bill is more than £3 million, you’re required to pay the apprenticeship levy.
-                    This means you’ll receive funds through the apprenticeship service to spend on training and assessing your apprentices.
-                </li>
-                <li>
-                    Either way, you’ll need to pay the apprentice’s salary. This will be at least the hourly
-                    <a href="https://www.gov.uk/national-minimum-wage-rates" class="external" rel="external" target="_blank">minimum wage rate</a> for an apprentice (currently £4.15).
-                </li>
-            </ol>
-            <p>
-                <a href="@Url.Action("Index", "FundingAnApprenticeship")" class="">Read more about funding your apprenticeship.</a>
-            </p>
-            break;
-    }
-</div>
+</section>
