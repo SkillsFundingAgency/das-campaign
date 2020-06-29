@@ -28,7 +28,6 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Sidebar
                     Classes = "sidebar--apprentice";
                     break;
                 case SidebarType.Employer:
-                   
                     if (imgLocation == null)
                     {
                         ImgLocation = "/campaign/images/worker-girl.jpg";

@@ -1,0 +1,97 @@
+﻿@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@model object
+@{
+    ViewBag.Title = "End-point Assessments";
+    ViewBag.MetaTitle = "Apprenticeship end-point assessment";
+    ViewBag.HeroImageAltText = "A construction apprentice";
+    ViewBag.PageID = "employer-assessment-certification";
+    ViewBag.MetaDesc = "Find out how your apprentice will be assessed at the end of their apprenticeship and what they'll need to demonstrate to finish successfully.";
+    ViewBag.PageUrl = "/employer/end-point-asessments";
+    ViewBag.Section = "employer";
+    Layout = "_Layout-campaign-employer-inform";
+}
+
+<h2 class="heading-m no-top-margin" id="heading1">Assessing your apprentice</h2>
+
+<p>
+    Apprenticeship standards are developed by groups of employers, known as ‘trailblazers’, to make
+    sure they’re occupation-focused. Each standard sets out key knowledge, skills and behaviours
+    (KSBs) that employers have identified they need.
+</p>
+
+<p>
+    Your apprentice will be assessed to demonstrate what they’ve learnt, and that they can perform all
+    aspects of the occupation. This ‘end-point assessment’ is conducted by an organisation that is
+    independent from the training provider. They’ll make sure all apprentices following the same
+    standard are assessed consistently.
+</p>
+
+<p>
+    Each standard includes an end-point assessment plan, which describes how the apprentice should be
+    tested against appropriate criteria, using suitable methods. For example, your apprentice may
+    need to complete:
+</p>
+
+<ul class="list list--bullet list--bullet-employer">
+    <li>a practical assessment</li>
+    <li>an interview</li>
+    <li>a project</li>
+    <li>written and/or multiple-choice tests</li>
+    <li>a presentation</li>
+</ul>
+
+<h2 class="heading-m" id="heading2">Finding an end-point assessment organisation</h2>
+
+<p>
+    Only organisations on the
+    <a href="https://www.gov.uk/guidance/register-of-end-point-assessment-organisations" class="external" rel="external" target="_blank">register of end-point assessment organisations</a>
+    are eligible to conduct the assessment. You must select an organisation from the register
+    and agree a price for them to carry it out.
+</p>
+
+<p>
+    Although the training provider will be involved in arranging the end-point assessment, the
+    assessment itself must be independent. The training provider must work with the end-point
+    assessment organisation on your behalf and have a written agreement in place to pay them for
+    conducting the assessment.
+</p>
+
+<p>
+    It’s worth getting in touch with the end-point assessment organisation early on in the
+    apprenticeship to check what the assessment involves. This will give your apprentice plenty
+    of time to prepare - for example, they may need to gather evidence to show how they’ve
+    been working towards the core knowledge, skills and behaviours.
+</p>
+
+<h2 class="heading-m" id="heading3">The cost of an end-point assessment</h2>
+
+<p>
+    The cost of the end-point assessment is included in the overall price agreed with the training provider for the apprenticeship. This cost will not usually exceed 20% of the funding band maximum. Check our <a asp-controller="FundingAnApprenticeship" asp-action="Index">funding guidance</a> to learn about apprenticeship costs and government funding.
+</p>
+
+<h2 class="heading-m" id="heading4">Certification</h2>
+
+<p>
+    When your apprentice successfully completes their apprenticeship, they’ll be awarded a certificate. The end-point
+    assessment organisation will request this certificate on your behalf.
+</p>
+
+<ul class="pagination pagination--employer">
+    <li class="pagination__list-item pagination__list-item--previous">
+        <a class="pagination__link pagination__link--previous" asp-action="Index" asp-controller="TrainingYourApprentice">Training your apprentice</a>
+    </li>
+    <li class="pagination__list-item pagination__list-item--next">
+        <a class="pagination__link pagination__link--next" asp-action="TheRightApprenticeship" asp-controller="Employer">Choosing the right apprenticeship</a>
+    </li>
+</ul>
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() {Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork")})
+}
+
+@section pageFooter {
+    <div class="grid-column-full">
+        <partial name="./Components/Cta/_find-apprenticeship-training-with-search"/>
+    </div>
+}

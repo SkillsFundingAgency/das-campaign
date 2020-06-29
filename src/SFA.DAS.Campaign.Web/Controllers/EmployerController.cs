@@ -39,7 +39,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("hire-an-apprentice")]
         public IActionResult HireAnApprentice()
         {
-            return View();
+            return RedirectToAction("Index", "HiringAnApprentice");
         }
         [Route("preparing-and-monitoring")]
         public IActionResult PreparingAndMonitoring()
@@ -49,7 +49,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("assessment-and-certification")]
         public IActionResult AssessmentAndQualification()
         {
-            return View();
+            return RedirectToAction("Index", "EndPointAssessments");
         }
         
         [Route("benefits")]
