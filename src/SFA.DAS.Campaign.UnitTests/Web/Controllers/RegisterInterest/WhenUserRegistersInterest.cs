@@ -38,7 +38,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 FirstName = "Test",
                 Route = RouteType.Apprentice,
                 LastName = "test",
-                AcceptTandCs = true,
                 ShowRouteQuestion = false
             };
 
@@ -287,7 +286,6 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 c=>c.Email.Equals(_registerInterestModel.Email) &&
                    c.FirstName.Equals(_registerInterestModel.FirstName) &&
                    c.LastName.Equals(_registerInterestModel.LastName) &&
-                   c.Consent.Equals(_registerInterestModel.AcceptTandCs) &&
                    c.RouteId.Equals(((int)_registerInterestModel.Route).ToString()) &&
                    c.CookieId.Equals(ExpectedCookieId)
                 )), Times.Once);

@@ -35,8 +35,6 @@ namespace SFA.DAS.Campaign.Web.Models
         [Range((int)RouteType.Apprentice, (int)RouteType.Employer)]
         [DisplayName("Registration type")]
         public RouteType Route { get; set; }
-        
-        public bool AcceptTandCs { get; set; }
 
         public bool IncludeInUR { get; set; }
         
