@@ -1,30 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Contentful.Core;
-using Contentful.Core.Models;
-using Contentful.Core.Search;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SFA.DAS.Campaign.Application.Content;
+using SFA.DAS.Campaign.Application.Content.ContentTypes;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     [Route("employer")]
     public class EmployerController : Controller
     {
-        private readonly IContentfulClient _contentfulClient;
+        private readonly IContentService _contentService;
 
-        public EmployerController(IContentfulClient contentfulClient)
+        public EmployerController(IContentService contentService)
         {
-            _contentfulClient = contentfulClient;
+            _contentService = contentService;
         }
 
         [Route("how-much-is-it-going-to-cost")]
         public async Task<IActionResult> HowMuchIsItGoingToCost()
         {
-            var builder = QueryBuilder<InfoPage>.New.FieldEquals(i => i.Slug, "how-much-is-it-going-to-cost");
-            var infoPageContent = (await _contentfulClient.GetEntriesByType<InfoPage>("infoPage", builder)).FirstOrDefault();
-            
-            return View(infoPageContent);
+            return RedirectToAction("Index", "FundingAnApprenticeship");
         }
         [Route("the-right-apprenticeship")]
         public IActionResult TheRightApprenticeship()
@@ -53,9 +47,11 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
         
         [Route("benefits")]
-        public IActionResult Benefits()
+        public async Task<IActionResult> Benefits()
         {
-            return View();
+            var content = await _contentService.GetContentById<InfoPage>("6m46ydU0VFGF1Q2b5h4XmD");
+            
+            return View(content);
         }
 
         [Route("find-apprenticeship-training")]
@@ -65,16 +61,5 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
     }
 
-    public class InfoPageSection
-    {
-        public string Title { get; set; }
-        public Document Body { get; set; }
-    }
-
-    public class InfoPage
-    {
-        public string Slug { get; set; }
-        public string Title { get; set; }
-        public List<InfoPageSection> Sections { get; set; }
-    }
+    
 }

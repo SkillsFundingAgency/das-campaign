@@ -3,29 +3,39 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using SFA.DAS.Campaign.Infrastructure.HealthChecks;
 using System.Threading;
 using System.Threading.Tasks;
+using SFA.DAS.Campaign.Application.Content;
+using SFA.DAS.Campaign.Application.Content.ContentTypes;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     [Route("apprentice")]
     public class ApprenticeController : Controller
     {
-        public IVacancyServiceApiHealthCheck _vacancyServiceApiHealthCheck;
-       
-        public ApprenticeController(IVacancyServiceApiHealthCheck healthCheck)
+        private readonly IVacancyServiceApiHealthCheck _vacancyServiceApiHealthCheck;
+        private readonly IContentService _contentService;
+
+        public ApprenticeController(IVacancyServiceApiHealthCheck healthCheck, IContentService contentService)
         {
             _vacancyServiceApiHealthCheck = healthCheck;
+            _contentService = contentService;
         }
 
         [Route("what-is-an-apprenticeship")]
-        public IActionResult WhatIsAnApprenticeship()
+        public async Task<IActionResult> WhatIsAnApprenticeship()
         {
-            return View();
+            var applicationContent = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+            
+            return View(applicationContent);
         }
+        
         [Route("what-are-the-benefits-for-me")]
-        public IActionResult WhatAreTheBenefitsToMe()
+        public async Task<IActionResult> WhatAreTheBenefitsToMe()
         {
-            return View();
+            var applicationContent = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+            
+            return View(applicationContent);
         }
+        
         [Route("find-an-apprenticeship")]
         public async Task<IActionResult> FindAnApprenticeship()
         {
@@ -38,30 +48,37 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             return View();
         }
-        [Route("application")]
-        public IActionResult Application()
-        {
-            return View();
-        }
-        [Route("interview")]
-        public IActionResult Interview()
-        {
-            return View();
-        }
-        [Route("your-apprenticeship")]
-        public IActionResult YourApprenticeship()
-        {
-            return View();
-        }
-        [Route("assessment-and-certification")]
-        public IActionResult AssessmentAndQualification()
-        {
-            return View();
-        }
-
-
         
-
-
+        [Route("application")]
+        public async Task<IActionResult> Application()
+        {
+            var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+            
+            return View(content);
+        }
+        
+        [Route("interview")]
+        public async Task<IActionResult> Interview()
+        {
+            var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+            
+            return View(content);
+        }
+        
+        [Route("your-apprenticeship")]
+        public async Task<IActionResult> YourApprenticeship()
+        {
+            var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+            
+            return View(content);
+        }
+        
+        [Route("assessment-and-certification")]
+        public async Task<IActionResult> AssessmentAndQualification()
+        {
+            var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+            
+            return View(content);
+        }
     }
 }

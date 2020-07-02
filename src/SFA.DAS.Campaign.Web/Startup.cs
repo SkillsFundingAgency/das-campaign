@@ -39,6 +39,7 @@ using Microsoft.AspNetCore.DataProtection;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
 using Contentful.AspNetCore;
+using SFA.DAS.Campaign.Application.Content;
 using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Web
@@ -162,8 +163,8 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<ICacheStorageService, CacheStorageService>();
             services.AddTransient<IVacancyServiceApiHealthCheck, VacancyServiceApiHealthCheck>();
             services.AddTransient<ISessionService, SessionService>();
+            services.AddTransient<IContentService, ContentService>();
             
-
             services.AddContentful(Configuration);
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());

@@ -1,70 +1,22 @@
-﻿@using Microsoft.AspNetCore.Html
+﻿@model SFA.DAS.Campaign.Application.Content.ContentTypes.InfoPage
+
+@using Microsoft.AspNetCore.Html
 @using SFA.DAS.Campaign.Web.Constants
 @using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @{
-    ViewBag.Title = "Your apprenticeship";
-    ViewBag.MetaTitle = "Your apprenticeship - what happens next?";
+    ViewBag.Title = @Model.Title;
+    ViewBag.MetaTitle = @Model.PageTitle;
     ViewBag.PageID = "apprentice-your-apprenticeship";
     ViewBag.HeroImageAltText = "An apprentice in the legal industry";
     ViewBag.Section = "apprentice";
-    ViewBag.MetaDesc = "Find out what's expected of you now you've secured your apprenticeship and what you should expect when you start.";
-    ViewBag.PageUrl = "/apprentice/your-apprenticeship";
+    ViewBag.MetaDesc = @Model.MetaDescription;
+    ViewBag.PageUrl = @Model.Slug;
     Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 5;
 }
-<h2 class="heading-m" id="h1">What to bring, and other useful info</h2>
-<p>
-    Your employer will be in touch beforehand to let you know your working hours,
-    and when they'd like you to start on your first day. If however, you already work at the place where you're
-    going to start your apprenticeship, then you can ask your employer directly.
 
-</p>
-
-<p>
-    At this point you could also ask some of the following:
-</p>
-<ul class="list list--bullet list--bullet-apprentice">
-    <li>
-        what you will need to bring - notebook/pens/ID
-    </li>
-    <li>
-        what time you need to arrive
-    </li>
-    <li>
-        how your should dress - suit or jeans
-    </li>
-    <li>
-        how much money you will need to bring for lunch etc
-    </li>
-    <li>
-        who you should ask for when you arrive
-    </li>
-    <li>
-        where to get the bus/train or park your car
-    </li>
-</ul>
-
-
-
-<h2 class="heading-m" id="h2">Meet your new team</h2>
-
-<p>
-    When you start your apprenticeship, you'll meet the people you'll be working with. They will show
-    you around and answer any questions you might have.
-
-</p>
-
-<h2 class="heading-m" id="h3">What comes after my apprenticeship?</h2>
-<p>
-    Apprenticeships are designed to make you 'job-ready' in the role you're training for.
-    Once your apprenticeship is up and running, and you're gaining more experience and learning new skills,
-    you can start to plan for the next step.
-</p>
-<p>
-    Most apprentices stay on in employment or further training after their apprenticeship.  It's
-    always worth discussing your future career with your current employer, as well as doing some research yourself.
-</p>
+<info-page-sections info-page="@Model"></info-page-sections>
 
 <partial name="./components/Cta/_Contact-phoneNumber-apprentice" />
 
@@ -78,11 +30,7 @@
 </ul>
 
 @{
-    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
-        <li><a href="#h1" class="hero__link">What to bring, and other useful info</a> </li>
-        <li><a href="#h2" class="hero__link">Meet your new team</a> </li>
-        <li><a href="#h3" class="hero__link">What comes after my apprenticeship?</a> </li>
-    </ul>);
+    IHtmlContent HeroHeadingContent() => Helper.Body(@<info-page-header-links info-page="@Model"></info-page-header-links>);
 }
 
 @section HeroHeading {
@@ -91,6 +39,6 @@
 
 @section pageFooter {
     <div class="grid-column-full">
-        <partial name="./Components/Cta/_find-an-apprenticeship" />
+        <partial name="./Components/Cta/_find-an-apprenticeship" model="null" />
     </div>
 }

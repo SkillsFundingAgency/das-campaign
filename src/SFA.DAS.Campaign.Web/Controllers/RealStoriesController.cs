@@ -1,24 +1,24 @@
 ﻿using System.Threading.Tasks;
-using Contentful.Core;
-using Contentful.Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using SFA.DAS.Campaign.Application.Content;
+using SFA.DAS.Campaign.Application.Content.ContentTypes;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     [Route("real-stories")]
     public class RealStoriesController : Controller
     {
-        private readonly IContentfulClient _contentfulClient;
+        private readonly IContentService _contentService;
 
-        public RealStoriesController(IContentfulClient contentfulClient)
+        public RealStoriesController(IContentService contentService)
         {
-            _contentfulClient = contentfulClient;
+            _contentService = contentService;
         }
         
         [Route("apprentice")]
         public async Task<IActionResult> Apprentice()
         {
-            var realStories = await _contentfulClient.GetEntriesByType<RealStory>("realStory");
+            var realStories = await _contentService.GetContentByType<RealStory>();
             
             return View(realStories);
         }
@@ -27,17 +27,5 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-    }
-
-    public class RealStory
-    {
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public Document Story { get; set; }
-        public string AgeLocation { get; set; }
-//        public string Thumbnail { get; set; }
-        public string YoutubeLink { get; set; }
-        public string ThumbnailUrl { get; set; }
-        public string EmbedUrl { get; set; }
     }
 }
