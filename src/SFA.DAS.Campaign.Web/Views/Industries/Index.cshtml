@@ -7,257 +7,258 @@
     ViewBag.MetaDesc = "Find the right apprenticeship for you by sector and choose from the employers who are offering apprenticeships in your chosen field. ";
     ViewBag.MetaTitle = "Look at the different industries that are offering apprenticeships";
 }
-
-<div class="hero-banner">
-    <div class="grid-row">
-        <div class="grid-column-one-half">
-            <div class="hero-heading">
-                <h1 class="heading-xl hero-heading__heading">My interests</h1>
+<main id="main-content">
+    <div class="hero-banner">
+        <div class="grid-row">
+            <div class="grid-column-one-half">
+                <div class="hero-heading">
+                    <h1 class="heading-xl hero-heading__heading">My interests</h1>
+                </div>
+                <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
+                    <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" />
+                </a>
             </div>
-            <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
-                <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" />
+        </div>
+        <span class="hero-banner__background hero-banner__background--industry"></span>
+    </div>
+    <div class="grid-row-full-width card__collection card__collection--industry">
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="AgricultureEnvironmentAnimalCare" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--agriculture-environment-animal-care"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Agriculture, environment and animal care</h2>
+                    <p class="card__summary">Want to work outside, work with animals or do you just feel passionate about working for the environment? Here you go.</p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Agriculture, environment and animal care industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="BusinessAdministration" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--business-administration"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Business and administration</h2>
+                    <p class="card__summary">
+                        Where could a business-centric apprenticeship take you? Manager? CEO? Check out the
+                        current opportunities and see if you could go global.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Business and administration industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="CareServices" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--care-services"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Care services</h2>
+                    <p class="card__summary">
+                        Care service apprentices are making a real difference in their local communities. Every day,
+                        they're helping vulnerable children, young people, adults and the elderly,
+                        across a range of different community care and support services.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Care services industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="CateringHospitality" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--catering-hospitality"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Catering and hospitality</h2>
+                    <p class="card__summary">
+                        Are you fascinated by cooking? Perhaps you love working with food and drink? Or
+                        maybe 'front of house' or customer service are more your thing. Let's find out.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Catering and hospitality industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <div class="grid-row-full-width card__collection card__collection--industry">
+
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="Construction" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--construction"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Construction</h2>
+                    <p class="card__summary">
+                        The multi-billion pound building industry covers a range of different apprenticeships,
+                        from traditional and specialist skills, civil engineering to joinery and more.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Construction industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="CreativeDesign" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--creative-design"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Creative and design</h2>
+                    <p class="card__summary">
+                        Excited by the idea of designing your own video game or crafting your own fashion label?
+                        Keen photographer or passionate composer-in-the making? If you have a flair for the artistic, the creative or the outrageous, look no further.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Creative and design industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="Digital" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--digital"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Digital</h2>
+                    <p class="card__summary">
+                        Apprenticeships in digital span a huge range of careers,
+                        as new technology transforms businesses large and small, traditional
+                        and start-ups, across the country. Ready to get connected?
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Digital industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="EducationChildcare" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--education-childcare"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Education and childcare</h2>
+                    <p class="card__summary">
+                        If you can see yourself helping children and
+                        young people develop the skills they need to succeed, this is the apprenticeship sector for you.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Education and childcare industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <div class="grid-row-full-width card__collection card__collection--industry">
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="EngineeringManufacturing" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--engineering-manufacturing"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Engineering and manufacturing</h2>
+                    <p class="card__summary">
+                        From nuclear reactors and software systems to product design and automotive,
+                        engineering and manufacturing apprenticeships take many forms. Ready to switch on?
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Engineering and manufacturing industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="HairBeauty" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--hair-beauty"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Hair and beauty</h2>
+                    <p class="card__summary">
+                        From high street salons and spas to theatre dressing rooms and film
+                        and TV sets. Who knows where a hair and beauty apprenticeship could take you…
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Hair and beauty industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="HealthScience" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--health-science"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Health and science</h2>
+                    <p class="card__summary">
+                        These apprenticeships give you the training to embark on a range of different science and
+                        research-based careers, including NHS and community health roles, chemical and pharmaceutical
+                        businesses, biotechnology and nuclear manufacturing.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Health and science industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="LegalFinanceAccounting" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--legal-finance-accounting"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Legal, finance and accounting</h2>
+                    <p class="card__summary">
+                        Companies large and small need teams of people
+                        to look after their finances, legal affairs and accounts. Which means
+                        you could start an apprenticeship in any one of hundreds of different businesses.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Legal, finance and accounting industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+    <div class="grid-row-full-width card__collection card__collection--industry">
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="ProtectiveServices" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--protective-services"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Protective services</h2>
+                    <p class="card__summary">
+                        Discover apprenticeships that are all about keeping people safe,
+                        including fire services, waste management, and HM Armed Forces.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Protective services industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="SalesMarketingProcurement" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--sales-marketing-procurement"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Sales, marketing and procurement</h2>
+                    <p class="card__summary">
+                        Explore a host of apprenticeships across a wide range of different sales, promotion
+                        and procurement industries. From retail and customer services to digital marketing. National
+                        and local employers are always on the lookout for new apprentices.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Sales, marketing and procurement industry">Find out more</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-column-full-width-one-quarter">
+            <a class="card" asp-controller="Industries" asp-action="TransportLogistics" tabindex="-1" role="presentation">
+                <div class="card__image">
+                    <span class="card__img card__img--transport-logistics"></span>
+                </div>
+                <div class="card__content">
+                    <h2 class="card__headline heading-s">Transport and logistics</h2>
+                    <p class="card__summary">
+                        How about helping to keep the nation's transport systems running smoothly?
+                        Across everything from aviation to coach travel. Or try a career in logistics,
+                        making sure products show up at the right place, at the right time.
+                    </p>
+                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Transport and logistics industry">Find out more</p>
+                </div>
             </a>
         </div>
     </div>
-    <span class="hero-banner__background hero-banner__background--industry"></span>
-</div>
-<div class="grid-row-full-width card__collection card__collection--industry">
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="AgricultureEnvironmentAnimalCare" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--agriculture-environment-animal-care"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Agriculture, environment and animal care</h2>
-                <p class="card__summary">Want to work outside, work with animals or do you just feel passionate about working for the environment? Here you go.</p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Agriculture, environment and animal care industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="BusinessAdministration" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--business-administration"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Business and administration</h2>
-                <p class="card__summary">
-                    Where could a business-centric apprenticeship take you? Manager? CEO? Check out the
-                    current opportunities and see if you could go global.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Business and administration industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="CareServices" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--care-services"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Care services</h2>
-                <p class="card__summary">
-                    Care service apprentices are making a real difference in their local communities. Every day,
-                    they're helping vulnerable children, young people, adults and the elderly,
-                    across a range of different community care and support services.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Care services industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="CateringHospitality" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--catering-hospitality"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Catering and hospitality</h2>
-                <p class="card__summary">
-                    Are you fascinated by cooking? Perhaps you love working with food and drink? Or
-                    maybe 'front of house' or customer service are more your thing. Let's find out.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Catering and hospitality industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-
-</div>
-<div class="grid-row-full-width card__collection card__collection--industry">
-
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="Construction" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--construction"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Construction</h2>
-                <p class="card__summary">
-                    The multi-billion pound building industry covers a range of different apprenticeships,
-                    from traditional and specialist skills, civil engineering to joinery and more.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Construction industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="CreativeDesign" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--creative-design"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Creative and design</h2>
-                <p class="card__summary">
-                    Excited by the idea of designing your own video game or crafting your own fashion label?
-                    Keen photographer or passionate composer-in-the making? If you have a flair for the artistic, the creative or the outrageous, look no further.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Creative and design industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="Digital" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--digital"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Digital</h2>
-                <p class="card__summary">
-                    Apprenticeships in digital span a huge range of careers,
-                    as new technology transforms businesses large and small, traditional
-                    and start-ups, across the country. Ready to get connected?
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Digital industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="EducationChildcare" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--education-childcare"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Education and childcare</h2>
-                <p class="card__summary">
-                    If you can see yourself helping children and
-                    young people develop the skills they need to succeed, this is the apprenticeship sector for you.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Education and childcare industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-
-</div>
-<div class="grid-row-full-width card__collection card__collection--industry">
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="EngineeringManufacturing" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--engineering-manufacturing"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Engineering and manufacturing</h2>
-                <p class="card__summary">
-                    From nuclear reactors and software systems to product design and automotive,
-                    engineering and manufacturing apprenticeships take many forms. Ready to switch on?
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Engineering and manufacturing industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="HairBeauty" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--hair-beauty"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Hair and beauty</h2>
-                <p class="card__summary">
-                    From high street salons and spas to theatre dressing rooms and film
-                    and TV sets. Who knows where a hair and beauty apprenticeship could take you…
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Hair and beauty industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="HealthScience" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--health-science"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Health and science</h2>
-                <p class="card__summary">
-                    These apprenticeships give you the training to embark on a range of different science and
-                    research-based careers, including NHS and community health roles, chemical and pharmaceutical
-                    businesses, biotechnology and nuclear manufacturing.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Health and science industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="LegalFinanceAccounting" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--legal-finance-accounting"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Legal, finance and accounting</h2>
-                <p class="card__summary">
-                    Companies large and small need teams of people
-                    to look after their finances, legal affairs and accounts. Which means
-                    you could start an apprenticeship in any one of hundreds of different businesses.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Legal, finance and accounting industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-
-</div>
-<div class="grid-row-full-width card__collection card__collection--industry">
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="ProtectiveServices" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--protective-services"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Protective services</h2>
-                <p class="card__summary">
-                    Discover apprenticeships that are all about keeping people safe,
-                    including fire services, waste management, and HM Armed Forces.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Protective services industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="SalesMarketingProcurement" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--sales-marketing-procurement"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Sales, marketing and procurement</h2>
-                <p class="card__summary">
-                    Explore a host of apprenticeships across a wide range of different sales, promotion
-                    and procurement industries. From retail and customer services to digital marketing. National
-                    and local employers are always on the lookout for new apprentices.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Sales, marketing and procurement industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-    <div class="grid-column-full-width-one-quarter">
-        <a class="card" asp-controller="Industries" asp-action="TransportLogistics" tabindex="-1" role="presentation">
-            <div class="card__image">
-                <span class="card__img card__img--transport-logistics"></span>
-            </div>
-            <div class="card__content">
-                <h2 class="card__headline heading-s">Transport and logistics</h2>
-                <p class="card__summary">
-                    How about helping to keep the nation's transport systems running smoothly?
-                    Across everything from aviation to coach travel. Or try a career in logistics,
-                    making sure products show up at the right place, at the right time.
-                </p>
-                <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Transport and logistics industry">Find out more</p>
-            </div>
-        </a>
-    </div>
-</div>
+</main>

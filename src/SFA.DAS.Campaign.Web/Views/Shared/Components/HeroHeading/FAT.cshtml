@@ -1,24 +1,28 @@
 ﻿@model SFA.DAS.Campaign.Web.ViewComponents.HeroHeadingViewModel
-<div class="hero--no-clip" data-module="smoothScroll">
-    <div class="grid-row">
-        <div class="grid-column-two-thirds">
-            <div class="hero-heading">
-                <span class="caption-m hero-heading__caption @Model.Class">
-                    <a href="@Model.SectionUrl" class="hero-heading__caption-link @Model.Class" style="">@Model.SectionTitle</a>
-                    <span class="hero-heading__caption-separator">&gt;</span>
+<main id="main-content">
 
-                    <span class="hero-heading__caption--current"> @ViewContext.ViewBag.Title </span>
-                </span>
-                <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
+    <div class="hero--no-clip" data-module="smoothScroll">
+        <div class="grid-row">
+            <div class="grid-column-two-thirds">
+                <div class="hero-heading">
+                    <span class="caption-m hero-heading__caption @Model.Class">
+                        <a href="@Model.SectionUrl" class="hero-heading__caption-link @Model.Class" style="">@Model.SectionTitle</a>
+                        <span class="hero-heading__caption-separator">&gt;</span>
+
+                        <span class="hero-heading__caption--current"> @ViewContext.ViewBag.Title </span>
+                    </span>
+                    <h1 class="heading-xl hero-heading__heading">@ViewContext.ViewBag.Title</h1>
+                </div>
+
+                @Model.Content
+
+                @await Component.InvokeAsync("FatSearch", new { FatSearchRoute = "employer/find-apprenticeship-training/Search", inline = true })
+
+                <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
+                    <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" />
+                </a>
             </div>
-
-            @Model.Content
-
-            @await Component.InvokeAsync("FatSearch", new { FatSearchRoute = "employer/find-apprenticeship-training/Search", inline = true })
-
-            <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
-                <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" />
-            </a>
         </div>
     </div>
-</div>
+
+</main>
