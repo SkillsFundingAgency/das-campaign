@@ -2,7 +2,7 @@
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @{
     ViewData["Title"] = "Search for apprenticeships on GOV.UK";
-    ViewBag.MetaTitle = "Find an apprenticeship";
+    ViewBag.MetaTitle = "Search for apprenticeships on GOV.UK";
     ViewBag.HeroImageAltText = "An apprentice in the creative industry";
     ViewBag.PageID = "apprentice-redirect-to-faa";
     ViewBag.Section = "apprentice";
@@ -22,4 +22,4 @@
 
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Apprentice })
-} 
+}
