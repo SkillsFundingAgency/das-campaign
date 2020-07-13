@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SFA.DAS.Campaign.Application.Content;
 
 namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Apprentice
 {
@@ -23,7 +24,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Apprentice
         {
             _vacancyServiceHealthCheck = new Mock<IVacancyServiceApiHealthCheck>();
 
-            sut = new ApprenticeController(_vacancyServiceHealthCheck.Object);
+            sut = new ApprenticeController(_vacancyServiceHealthCheck.Object, new Mock<IContentService>().Object);
         }
 
         [Test]
