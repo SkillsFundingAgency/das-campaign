@@ -24,7 +24,7 @@ namespace SFA.DAS.Campaign.Application.Content.TagHelpers
             var headerIndex = 1;
             foreach (var section in InfoPage.Sections)
             {
-                if (!string.IsNullOrWhiteSpace(section.Title))
+                if (!string.IsNullOrWhiteSpace(section.Title) && section.ShowHeaderLink)
                 {
                     var linkBuilder = new TagBuilder("a");
                     linkBuilder.AddCssClass("hero__link"); 

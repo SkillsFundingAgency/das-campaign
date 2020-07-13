@@ -17,10 +17,29 @@
     ViewBag.PageNavIndex = 2;
 }
 
-<info-page-sections info-page="@Model"></info-page-sections>
+<info-page-sections info-page="@Model" section-container-class="someSectionClass"></info-page-sections>
 
 <partial name="./components/Cta/_Contact-phoneNumber-apprentice" />
 
+@if (Model.PreviousPage != null || Model.NextPage != null)
+{
+    <ul class="pagination pagination--apprentice">
+        @if (Model.PreviousPage != null)
+        {
+            <li class="pagination__list-item">
+                <a class="pagination__link pagination__link--previous" href="/@Model.PreviousPage.Hub.ToLower()/@Model.PreviousPage.Slug" id="link-pagination-apprentice-3">@Model.PreviousPage.Title</a>
+            </li>
+        }
+        @if (Model.NextPage != null)
+        {
+            <li class="pagination__list-item">
+                <a class="pagination__link pagination__link--next" href="/@Model.NextPage.Hub.ToLower()/@Model.NextPage.Slug" id="link-pagination-apprentice-5">@Model.NextPage.Title</a>
+            </li>
+        }
+    </ul>
+}
+    
+    
 <hr class="section-break" />
 
 @{

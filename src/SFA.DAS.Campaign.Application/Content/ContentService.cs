@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Contentful.Core;
 using Contentful.Core.Search;
+using SFA.DAS.Campaign.Application.Content.ContentTypes;
 
 namespace SFA.DAS.Campaign.Application.Content
 {

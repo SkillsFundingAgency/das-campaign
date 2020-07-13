@@ -6,5 +6,6 @@ namespace SFA.DAS.Campaign.Application.Content.ContentTypes
     {
         public string Title { get; set; }
         public Document Body { get; set; }
+        public bool ShowHeaderLink { get; set; }
     }
 }

@@ -20,21 +20,61 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _contentService = contentService;
         }
 
-        [Route("what-is-an-apprenticeship")]
-        public async Task<IActionResult> WhatIsAnApprenticeship()
+        [Route("{slug}")]
+        public async Task<IActionResult> Index(string slug)
         {
-            var applicationContent = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+            var applicationContent = await _contentService.GetContentBySlug<InfoPage>(slug);
             
-            return View(applicationContent);
+            return View("~/Views/Apprentice/ApprenticeInfoPage.cshtml", applicationContent);
         }
         
-        [Route("what-are-the-benefits-for-me")]
-        public async Task<IActionResult> WhatAreTheBenefitsToMe()
-        {
-            var applicationContent = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
-            
-            return View(applicationContent);
-        }
+        // [Route("what-is-an-apprenticeship")]
+        // public async Task<IActionResult> WhatIsAnApprenticeship()
+        // {
+        //     var applicationContent = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+        //     
+        //     return View(applicationContent);
+        // }
+        
+        // [Route("what-are-the-benefits-for-me")]
+        // public async Task<IActionResult> WhatAreTheBenefitsToMe()
+        // {
+        //     var applicationContent = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+        //     
+        //     return View(applicationContent);
+        // }
+        
+        // [Route("application")]
+        // public async Task<IActionResult> Application()
+        // {
+        //     var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+        //     
+        //     return View(content);
+        // }
+        //
+        // [Route("interview")]
+        // public async Task<IActionResult> Interview()
+        // {
+        //     var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+        //     
+        //     return View(content);
+        // }
+        //
+        // [Route("your-apprenticeship")]
+        // public async Task<IActionResult> YourApprenticeship()
+        // {
+        //     var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+        //     
+        //     return View(content);
+        // }
+        
+        // [Route("assessment-and-certification")]
+        // public async Task<IActionResult> AssessmentAndQualification()
+        // {
+        //     var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
+        //     
+        //     return View(content);
+        // }
         
         [Route("find-an-apprenticeship")]
         public async Task<IActionResult> FindAnApprenticeship()
@@ -47,38 +87,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
 
             return View();
-        }
-        
-        [Route("application")]
-        public async Task<IActionResult> Application()
-        {
-            var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
-            
-            return View(content);
-        }
-        
-        [Route("interview")]
-        public async Task<IActionResult> Interview()
-        {
-            var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
-            
-            return View(content);
-        }
-        
-        [Route("your-apprenticeship")]
-        public async Task<IActionResult> YourApprenticeship()
-        {
-            var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
-            
-            return View(content);
-        }
-        
-        [Route("assessment-and-certification")]
-        public async Task<IActionResult> AssessmentAndQualification()
-        {
-            var content = await _contentService.GetContentBySlug<InfoPage>(HttpContext.Request.Path);
-            
-            return View(content);
         }
     }
 }

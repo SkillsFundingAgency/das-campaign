@@ -19,8 +19,12 @@ namespace SFA.DAS.Campaign.Application.Content.TagHelpers
         
         public InfoPage InfoPage { get; set; }
         
+        public string SectionContainerClass { get; set; }
+        
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
+            output.TagName = "";
+            
             if(InfoPage?.Sections is null || !InfoPage.Sections.Any())
             {
                 return;
@@ -29,18 +33,24 @@ namespace SFA.DAS.Campaign.Application.Content.TagHelpers
             var headerIndex = 1;
             foreach (var section in InfoPage.Sections)
             {
+                var container = new TagBuilder("div");
+                container.AddCssClass(SectionContainerClass);
+                
                 if (!string.IsNullOrWhiteSpace(section.Title))
                 {
                     var headerBuilder = new TagBuilder("h2");
                     headerBuilder.AddCssClass("heading-m"); 
                     headerBuilder.Attributes.Add("id", "h" + headerIndex);
                     headerBuilder.InnerHtml.Append(section.Title);
-                    output.Content.AppendHtml(headerBuilder);
+                    container.InnerHtml.AppendHtml(headerBuilder);
                 }
             
                 var html = await _htmlRenderer.ToHtml(section.Body);
 
-                output.Content.AppendHtml(html);
+                container.InnerHtml.AppendHtml(html);
+                
+                output.Content.AppendHtml(container);
+                
                 headerIndex++;
             }
         }

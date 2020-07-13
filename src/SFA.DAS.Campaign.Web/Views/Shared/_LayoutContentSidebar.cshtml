@@ -33,7 +33,7 @@
                 }
                 else
                 {
-                    @await Component.InvokeAsync("Sidebar", new { imgLocation = "/campaign/images/sidebar/" + ViewBag.PageId + ".jpg" })
+                    @await Component.InvokeAsync("Sidebar", new { imgLocation = "https:" + ViewBag.HeroImageUrl })
                 }
 
             </div>
