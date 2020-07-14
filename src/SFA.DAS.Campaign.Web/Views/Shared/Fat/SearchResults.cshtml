@@ -21,7 +21,7 @@
 @if(searchResults.TotalResults == 0){
     <div class="grid-row">
         <div class="grid-column-one-half">
-            @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model })  
+            @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model })
         </div>
     </div>
 } else {
@@ -41,7 +41,7 @@
                     If the standard you're looking for doesn't exist yet, you could develop it as part of a <strong>'trailblazer group'</strong>.
                     You'll work with other employers to make sure the new standard meets your skill needs, the needs of your sector and those of the economy.
                 </p>
-                <a href="https://www.instituteforapprenticeships.org/developing-new-apprenticeships/forming-a-trailblazer-group" class="button button--inverted" target="_blank">Develop a new standard</a>
+                <a href="https://www.instituteforapprenticeships.org/developing-new-apprenticeships/forming-a-trailblazer-group" class="button button--inverted" target="_blank">Develop a new standard<span class="visually-hidden"> (Opens in a new window)</span></a>
             </div>
             <div class="promotion__hero-image-wrap">
                 <img src="/campaign/images/employer/hajra-hero-1.jpg" alt="" class="promotion__hero-image" />
