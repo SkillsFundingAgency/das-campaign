@@ -40,6 +40,7 @@ using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
 using Contentful.AspNetCore;
 using SFA.DAS.Campaign.Application.Content;
+using SFA.DAS.Campaign.Application.Services;
 using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Web

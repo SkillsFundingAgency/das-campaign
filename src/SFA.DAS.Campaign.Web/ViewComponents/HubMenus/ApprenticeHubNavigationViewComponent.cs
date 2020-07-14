@@ -1,7 +1,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Application.Content;
-using SFA.DAS.Campaign.Web.Helpers;
+using SFA.DAS.Campaign.Application.Content.ContentTypes;
+using SFA.DAS.Campaign.Application.Services;
+using SFA.DAS.Campaign.Infrastructure.Services;
 
 namespace SFA.DAS.Campaign.Web.ViewComponents.HubMenus
 {
@@ -18,8 +20,12 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.HubMenus
         
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var navBar = await _contentService.GetNavigationFor(HubTypes.Apprentice);
+            var navBar = _sessionService.Get<NavigationBar>("apprenticeNavigationBar");
+            if (!(navBar is null)) return View(navBar);
             
+            navBar = await _contentService.GetNavigationFor(HubTypes.Apprentice);
+            _sessionService.Set("apprenticeNavigationBar", navBar);
+
             return View(navBar);
         }
     }

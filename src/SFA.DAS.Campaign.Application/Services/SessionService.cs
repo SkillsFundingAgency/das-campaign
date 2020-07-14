@@ -1,9 +1,8 @@
-using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace SFA.DAS.Campaign.Web.Helpers
+namespace SFA.DAS.Campaign.Application.Services
 {
     public interface ISessionService
     {

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Contentful.Core;
 using Contentful.Core.Search;
 using SFA.DAS.Campaign.Application.Content.ContentTypes;
+using SFA.DAS.Campaign.Application.Services;
 
 namespace SFA.DAS.Campaign.Application.Content
 {
@@ -28,8 +29,10 @@ namespace SFA.DAS.Campaign.Application.Content
                 .FieldEquals(i => i.Slug, slug)
                 .FieldEquals(i => i.Hub, hub)
                 .Include(includeLevel);
+
+            var content = (await _contentfulClient.GetEntriesByType(typeof(T).Name.FirstCharacterToLower(), builder)).FirstOrDefault();
             
-            return (await _contentfulClient.GetEntriesByType(typeof(T).Name.FirstCharacterToLower(), builder)).FirstOrDefault();
+            return content;
         }
 
         public async Task<List<T>> GetContentByType<T>() where T : ContentBase
