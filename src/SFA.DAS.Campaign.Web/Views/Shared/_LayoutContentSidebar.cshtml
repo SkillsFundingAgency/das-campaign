@@ -33,7 +33,14 @@
                 }
                 else
                 {
-                    @await Component.InvokeAsync("Sidebar", new { imgLocation = "https:" + ViewBag.HeroImageUrl })
+                    if (string.IsNullOrWhiteSpace(ViewBag.HeroImageUrl))
+                    {
+                        @await Component.InvokeAsync("Sidebar", new { imgLocation = "/campaign/images/sidebar/" + ViewBag.PageId + ".jpg" })
+                    }
+                    else
+                    {
+                        @await Component.InvokeAsync("Sidebar", new { imgLocation = "https:" + ViewBag.HeroImageUrl })
+                    }
                 }
 
             </div>

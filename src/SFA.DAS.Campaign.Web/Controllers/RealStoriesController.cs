@@ -5,7 +5,6 @@ using SFA.DAS.Campaign.Application.Content.ContentTypes;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
-    [Route("real-stories")]
     public class RealStoriesController : Controller
     {
         private readonly IContentService _contentService;
@@ -15,14 +14,14 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _contentService = contentService;
         }
         
-        [Route("apprentice")]
+        [Route("/apprentice/real-stories")]
         public async Task<IActionResult> Apprentice()
         {
             var realStories = await _contentService.GetContentByType<RealStory>();
             
             return View(realStories);
         }
-        [Route("employer")]
+        [Route("/employer/real-stories")]
         public IActionResult Employer()
         {
             return View();

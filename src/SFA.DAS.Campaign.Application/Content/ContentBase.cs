@@ -6,5 +6,6 @@ namespace SFA.DAS.Campaign.Application.Content
     {
         public SystemProperties Sys { get; set; }
         public string Slug { get; set; }
+        public string Hub { get; set; }
     }
 }

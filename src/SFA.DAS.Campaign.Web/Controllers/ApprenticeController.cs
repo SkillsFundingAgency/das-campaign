@@ -23,7 +23,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("{slug}")]
         public async Task<IActionResult> Index(string slug)
         {
-            var applicationContent = await _contentService.GetContentBySlug<InfoPage>(slug);
+            var applicationContent = await _contentService.GetContentBySlug<InfoPage>(HubTypes.Apprentice, slug);
             
             return View("~/Views/Apprentice/ApprenticeInfoPage.cshtml", applicationContent);
         }

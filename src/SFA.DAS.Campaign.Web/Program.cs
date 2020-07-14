@@ -20,7 +20,7 @@ namespace SFA.DAS.Campaign.Web
                     logging.ClearProviders();
                     logging.SetMinimumLevel(LogLevel.Trace);
                 })
-                .UseUrls("https://localhost:50160")
+                .UseUrls("https://localhost:50160;http://localhost:50166")
                 .UseNLog();
     }
 }
