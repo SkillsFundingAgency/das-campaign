@@ -17,7 +17,7 @@
     ViewBag.PageNavIndex = 2;
 }
 
-<info-page-sections info-page="@Model" section-container-class="someSectionClass"></info-page-sections>
+<info-page-sections info-page="@Model" section-container-class="content-section"></info-page-sections>
 
 <partial name="./components/Cta/_Contact-phoneNumber-apprentice" />
 
@@ -32,15 +32,12 @@
         }
         @if (Model.NextPage != null)
         {
-            <li class="pagination__list-item">
+            <li class="pagination__list-item pagination__list-item--next">
                 <a class="pagination__link pagination__link--next" href="/@Model.NextPage.Hub.ToLower()/@Model.NextPage.Slug" id="link-pagination-apprentice-5">@Model.NextPage.Title</a>
             </li>
         }
     </ul>
 }
-    
-    
-<hr class="section-break" />
 
 @{
     IHtmlContent HeroHeadingContent() => Helper.Body(@<info-page-header-links info-page="@Model"></info-page-header-links>);
