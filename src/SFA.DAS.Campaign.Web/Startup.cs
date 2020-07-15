@@ -167,6 +167,8 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IContentService, ContentService>();
             
             services.AddContentful(Configuration);
+
+            services.AddResponseCaching();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
@@ -211,6 +213,8 @@ namespace SFA.DAS.Campaign.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            
+            
             // By defualt app services have en-US locale set no matter what Region is being used.
             var cultureInfo = new CultureInfo("en-GB");
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
@@ -253,6 +257,8 @@ namespace SFA.DAS.Campaign.Web
             });
 
             app.UseSession();
+            
+            app.UseResponseCaching();
             
             app.UseMvc(routes =>
             {

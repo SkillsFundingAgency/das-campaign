@@ -1,25 +1,13 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using SFA.DAS.Campaign.Application.Content;
-using SFA.DAS.Campaign.Application.Content.ContentTypes;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     public class RealStoriesController : Controller
     {
-        private readonly IContentService _contentService;
-
-        public RealStoriesController(IContentService contentService)
-        {
-            _contentService = contentService;
-        }
-        
         [Route("/apprentice/real-stories")]
-        public async Task<IActionResult> Apprentice()
+        public IActionResult Apprentice()
         {
-            var realStories = await _contentService.GetContentByType<RealStory>();
-            
-            return View(realStories);
+            return View();
         }
         [Route("/employer/real-stories")]
         public IActionResult Employer()

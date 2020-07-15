@@ -23,11 +23,22 @@ namespace SFA.DAS.Campaign.Application.Content
             return (await _contentfulClient.GetEntries(builder)).FirstOrDefault();
         }
 
-        public async Task<T> GetContentBySlug<T>(string hub, string slug, int includeLevel = 1) where T : ContentBase
+        public async Task<T> GetContentByHubAndSlug<T>(string hub, string slug, int includeLevel = 1) where T : ContentBase
         {
             var builder = QueryBuilder<T>.New
                 .FieldEquals(i => i.Slug, slug)
                 .FieldEquals(i => i.Hub, hub)
+                .Include(includeLevel);
+
+            var content = (await _contentfulClient.GetEntriesByType(typeof(T).Name.FirstCharacterToLower(), builder)).FirstOrDefault();
+            
+            return content;
+        }
+
+        public async Task<T> GetContentBySlug<T>(string slug, int includeLevel = 1) where T : ContentBase
+        {
+            var builder = QueryBuilder<T>.New
+                .FieldEquals(i => i.Slug, slug)
                 .Include(includeLevel);
 
             var content = (await _contentfulClient.GetEntriesByType(typeof(T).Name.FirstCharacterToLower(), builder)).FirstOrDefault();

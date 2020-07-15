@@ -1,4 +1,4 @@
-﻿@model SFA.DAS.Campaign.Web.Controllers.Interest 
+﻿@model SFA.DAS.Campaign.Application.Content.ContentTypes.Interest 
 
 @{
     ViewBag.PageUrl = "/industries/" + Model.Slug;
@@ -33,7 +33,7 @@
             <div class="grid-column-one-half">
                 <div class="hero-heading">
                     <span class="caption-m hero-heading__caption hero-heading__caption--interests">
-                        <a asp-controller="Industries" asp-action="Index" class="hero-heading__caption-link">Interests</a> 
+                        <a asp-controller="Interests" asp-action="Index" class="hero-heading__caption-link">Interests</a> 
                         <span class="hero-heading__caption-separator">&gt;</span> 
                         @(Model.Title)
                     </span>
@@ -44,7 +44,8 @@
                 </div>
             </div>
             <div class="grid-column-one-half">
-                <contentful-image asset-id="@Model.Image.SystemProperties.Id"></contentful-image>
+                @* <contentful-image asset-id="@Model.Image.SystemProperties.Id"></contentful-image> *@
+                <img src="https:@Model.Image.File.Url" class="hero-heading__image" alt="@(ViewBag.HeroImageAltText)"/>
                 @* <img src="/campaign/images/industries/industry-@(Model.Image..PageSlug).jpg" class="hero-heading__image" alt="@(ViewBag.HeroImageAltText)"/> *@
             </div>
         </div>

@@ -1,5 +1,3 @@
-@model List<SFA.DAS.Campaign.Application.Content.ContentTypes.RealStory>
-
 @{
     ViewBag.Title = "Real stories";
     ViewBag.MetaTitle = "Real apprentices share their stories";
@@ -27,7 +25,7 @@
             </a>
         </div>
     </div>
-    <span class="hero-banner__background hero-banner__background--apprentice-hosanna-2"></span>
+    <span class="hero-banner__background hero-banner__background--apprentice-michelle"></span>
 
 </div>
 
@@ -76,7 +74,7 @@
     <div class="grid-column-full">
         <section class="main-content-section">
 
-            <partial name="./Components/Cta/_find-an-apprenticeship" model="null" />
+            <partial name="./Components/Cta/_find-an-apprenticeship" />
         </section>
     </div>
 </div>
@@ -85,44 +83,6 @@
 <div class="main-content-section">
     <div class="grid-row-full-width card__collection--grey card-stories__collection card-stories--apprentice">
 
-        @foreach (var realStory in Model)
-        {
-            <div class="card-stories">
-                <div class="card-stories__image">
-                    <span class="card-stories__img" style="background: url(@realStory.ThumbnailUrl)"></span>
-                                                                               <a class="card-stories__icon-play" href="@realStory.YoutubeLink" id="play-3" data-module="videoPlayer" data-playerclass="video-player--apprentice" data-videoplayerid="plyr-3" data-videourl="@realStory.EmbedUrl?origin=https://@(Context.Request.Host.Value)&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"></a>
-
-                                                                               <script type="application/ld+json">
-                        {
-                        "@@context": "http://schema.org",
-                        "@@type": "VideoObject",
-                        "name": "Alim - Channel 4 Apprentice",
-                        "description": "Alim share's his apprenticeship story as part of the new Fire It Up apprenticeship campaign.",
-                        "thumbnailUrl": "@realStory.ThumbnailUrl",
-                        "uploadDate": "2019-01-21T08:33:23.000Z",
-                        "duration": "PT1M4S",
-                        "contentUrl": "@realStory.EmbedUrl"
-                        }
-                  </script>
-
-                </div>
-                <div class="card-stories__content">
-                    <h2 class="card-stories__headline heading-l">@realStory.Title</h2>
-                    
-                    <contentful-rich-text document="@realStory.Story" ></contentful-rich-text>
-                    
-                    <div class="card-stories__cite">
-                        @realStory.Author,
-                        <span class="card-stories__cite-detail">
-                            @realStory.AgeLocation
-                        </span>
-                    </div>
-
-                </div>
-            </div>
-        }
-        
-        
         <div class="card-stories">
             <div class="card-stories__image">
                 <span class="card-stories__img card-stories__img--apprentice-alim"></span>

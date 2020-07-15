@@ -9,6 +9,7 @@ using SFA.DAS.Campaign.Application.Content.ContentTypes;
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     [Route("apprentice")]
+    
     public class ApprenticeController : Controller
     {
         private readonly IVacancyServiceApiHealthCheck _vacancyServiceApiHealthCheck;
@@ -23,7 +24,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("{slug}")]
         public async Task<IActionResult> ContentPage(string slug)
         {
-            var applicationContent = await _contentService.GetContentBySlug<InfoPage>(HubTypes.Apprentice, slug);
+            var applicationContent = await _contentService.GetContentByHubAndSlug<InfoPage>(HubTypes.Apprentice, slug);
             
             return View("~/Views/Apprentice/ApprenticeInfoPage.cshtml", applicationContent);
         }
