@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Contentful.Core.Search;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Application.Content;
 using SFA.DAS.Campaign.Application.Content.ContentTypes;

@@ -10,7 +10,7 @@
     ViewBag.Route = "Agriculture-environmental-and-animal-care";
 }
 
-<contentful-rich-text document="@Model.Body"></contentful-rich-text>
+<rich-text-content class="content-section" document="@Model.Body"></rich-text-content>
 
 <dl class="inline-list">
     <dt class="inline-list__title">@Model.Title includes:</dt>
@@ -34,7 +34,7 @@
                         </h2>
                         <h3 class="heading-l">@Model.RealStory.Title</h3>
 
-                        <contentful-rich-text document="@Model.RealStory.Story"></contentful-rich-text>
+                        <rich-text-content class="content-section" document="@Model.RealStory.Story"></rich-text-content>
                         
                         <p>
                             <a asp-controller="RealStories" asp-action="Apprentice" class="quote-feature__link">View more success stories</a>
