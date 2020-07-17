@@ -34,7 +34,12 @@
         <p> For more tips, <a href="https://www.youtube.com/channel/UCROOCs9OvIwqFOy5_E0Jtfg" target="_blank">watch our Youtube video.<span class="visually-hidden"> (Opens in a new window).</span></a></p>
 
         <partial name="./Components/Basket/Save/Default" />
-
+        <script>
+            window.onload = function() {
+                jQuery('#main-content').find('.button.button--sparks.button-employer')
+                .append('<span class="visually-hidden"> (Opens in a new window).</span>');
+            };
+        </script>
         <p><a asp-controller="Basket" asp-action="View">Cancel</a></p>
     </div>
 </div>
