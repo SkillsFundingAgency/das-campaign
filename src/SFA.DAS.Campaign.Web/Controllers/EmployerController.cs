@@ -28,16 +28,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return RedirectToActionPermanent("Index", "FundingAnApprenticeship");
         }
-        // [Route("the-right-apprenticeship")]
-        // public IActionResult TheRightApprenticeship()
-        // {
-        //     return View();
-        // }
-        // [Route("choose-training-provider")]
-        // public IActionResult ChooseATrainingProvider()
-        // {
-        //     return View();
-        // }
+        
         [Route("hire-an-apprentice")]
         public IActionResult HireAnApprentice()
         {
@@ -49,14 +40,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return RedirectToActionPermanent("Index", "EndPointAssessments");
         }
-        //
-        // [Route("benefits")]
-        // public async Task<IActionResult> Benefits()
-        // {
-        //     var content = await _contentService.GetContentById<InfoPage>("6m46ydU0VFGF1Q2b5h4XmD");
-        //     
-        //     return View(content);
-        // }
 
         [Route("find-apprenticeship-training")]
         public IActionResult FindApprenticeshipTraining()
@@ -64,6 +47,4 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View();
         }
     }
-
-    
 }
