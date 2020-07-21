@@ -1,13 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using SFA.DAS.Campaign.Application.Content;
+using SFA.DAS.Campaign.Application.Content.ContentTypes;
 
 namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
 {
     public class HiringAnApprenticeController : Controller
     {
-        [HttpGet("employer/hiring-an-apprentice")]
-        public IActionResult Index()
+        private readonly IContentService _contentService;
+
+        public HiringAnApprenticeController(IContentService contentService)
         {
-            return View("~/Views/EmployerInform/HiringAnApprentice.cshtml");
+            _contentService = contentService;
+        }
+        
+        
+        [HttpGet("employer/hiring-an-apprentice")]
+        public async Task<IActionResult> Index()
+        {
+            var content = await _contentService.GetContentByHubAndSlug<InfoPage>(HubTypes.Employer, "hiring-an-apprentice");
+            
+            return View("~/Views/EmployerInform/HiringAnApprentice.cshtml", content);
         }
     }
 }

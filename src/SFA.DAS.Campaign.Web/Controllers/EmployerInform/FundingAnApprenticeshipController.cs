@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using SFA.DAS.Campaign.Application.Content;
+using SFA.DAS.Campaign.Application.Content.ContentTypes;
 using SFA.DAS.Campaign.Application.Services;
-using SFA.DAS.Campaign.Infrastructure.Services;
-using SFA.DAS.Campaign.Web.Helpers;
 
 namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
 {
@@ -9,18 +10,27 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
     public class FundingAnApprenticeshipController : Controller
     {
         private readonly ISessionService _sessionService;
+        private readonly IContentService _contentService;
 
-        public FundingAnApprenticeshipController(ISessionService sessionService)
+        public FundingAnApprenticeshipController(ISessionService sessionService, IContentService contentService)
         {
             _sessionService = sessionService;
+            _contentService = contentService;
         }
         
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var vm = 
+            var levyOption  = 
                 _sessionService.Get<LevyOptionViewModel>(_sessionService.LevyOptionViewModelKey) 
                 ?? new LevyOptionViewModel() {LevyStatus = LevyStatus.NonLevy};
+
+            var vm = new LevyQuestionDrivenViewModel();
+            vm.LevyOptionViewModel = levyOption;
+            
+            var content = await _contentService.GetContentByHubAndSlug<InfoPage>(HubTypes.Employer, "funding-an-apprenticeship");
+
+            vm.InfoPage = content;
 
             return View("~/Views/EmployerInform/FundingAnApprenticeship.cshtml", vm);
         }
@@ -34,5 +44,11 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
 
             return RedirectToAction("Index", "FundingAnApprenticeship");
         }
+    }
+
+    public class LevyQuestionDrivenViewModel
+    {
+        public LevyOptionViewModel LevyOptionViewModel { get; set; }
+        public InfoPage InfoPage { get; set; }
     }
 }

@@ -40,6 +40,7 @@ using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
 using Contentful.AspNetCore;
 using SFA.DAS.Campaign.Application.Content;
+using SFA.DAS.Campaign.Application.Content.TagHelpers;
 using SFA.DAS.Campaign.Application.Services;
 using VacanciesApi;
 
@@ -168,6 +169,8 @@ namespace SFA.DAS.Campaign.Web
             
             services.AddContentful(Configuration);
 
+            services.AddTransient<HtmlRenderer>();
+            
             services.AddResponseCaching();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());

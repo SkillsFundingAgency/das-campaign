@@ -1,71 +1,35 @@
 ﻿@using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
-@model object
+@model SFA.DAS.Campaign.Application.Content.ContentTypes.InfoPage
 @{
-    ViewBag.Title = "Training your apprentice";
-    ViewBag.MetaTitle = "How apprenticeship training works";
-    ViewBag.HeroImageAltText = "Apprentice in the catering industry";
-    ViewBag.PageID = "employer-training-your-apprentice";
-    ViewBag.MetaDesc = "Apprentices spend at least 20% of their time completing off-the-job training. Learn how to work with your training provider to deliver the training you need.";
-    ViewBag.PageUrl = "/employer/training-your-apprentice";
-    ViewBag.Section = "employer";
+    ViewBag.Title = Model.Title;
+    ViewBag.MetaTitle = Model.PageTitle;
+    ViewBag.HeroImageUrl = @Model.HeroImage.File.Url;
+    ViewBag.HeroImageAltText = Model.HeroImage.Description;
+    ViewBag.PageID = Model.Slug;
+    ViewBag.MetaDesc = Model.MetaDescription;
+    ViewBag.PageUrl = Model.Slug;
+    ViewBag.Section = Model.Hub;
     Layout = "_Layout-campaign-employer-inform";
 }
 
-<h2 class="heading-m">The key facts</h2>
-<p>During the apprenticeship, your apprentice will receive two different types of training.</p>
-<p>Off-the-job training will be delivered by a training provider during your apprentice's normal working hours. This training will teach your apprentice the knowledge, skills and behaviours set out in the apprenticeship standard so they can achieve occupational competence.</p>
-<p>On-the-job training will be delivered by you, as your apprentice's employer. You'll need to give the apprentice training and supervision to help them perform the work you've hired them for.</p>
-
-<h2 class="heading-m">Off-the-job training</h2>
-<p>Apprentices must spend at least 20% of their time completing off-the-job training. You can agree how this will be delivered when you <a asp-action="FindApprenticeshipTraining" asp-controller="Employer">find a training provider</a>.</p>
-<p>From practical exercises to written assignments, off-the-job training is hugely valuable for both you and your apprentice. It's designed to teach your apprentice the knowledge, skills and behaviours that are set out in the apprenticeship standard, preparing them to carry out all aspects of their chosen occupation. This investment in your apprentice's development helps to improve their productivity, boosting the impact they can make in your organisation.</p>
-<p>Any English and maths training will not count towards the 20% off-the-job training requirement. If your apprentice needs English and maths training up to and including level 2, your training provider will make sure your apprentice works towards achieving <a href="https://www.gov.uk/government/collections/functional-skills-qualifications-requirements" target="_blank" rel="external">functional skills qualifications</a>, which will be funded by the government.</p>
-
-<h2 class="heading-m">Training and supervision on the job</h2>
-<p>Throughout the apprenticeship, you'll supervise your apprentice and provide them with on-the-job training. This includes any training your apprentice needs to perform the work you've hired them for. It's not linked specifically to the knowledge, skills and behaviours set out in the apprenticeship standard, which is why it does not count towards the off-the-job training requirement.</p>
-<p>For example, an advanced baker apprentice might need to understand the equipment, machinery and process limitations within their organisation. This knowledge is not listed in the advanced baker standard, so the apprentice's employer will need to help them develop it.</p>
-
-<h2 class="heading-m">Flexible delivery to suit your organisation</h2>
-<p>Off-the-job training must be delivered within the apprentice's normal working hours (excluding overtime), away from their working duties. But you can work with your training provider to decide when, where and how it's delivered – for example:</p>
-<ul class="list list--bullet list--bullet-employer">
-    <li>at the apprentice's usual place of work, or at an external location</li>
-    <li>as part of each day, a day a week, one week out of five or as block release</li>
-</ul>
-
-<h2 class="heading-m">A clear commitment statement – not hours of paperwork</h2>
-<p>A commitment statement must be in place from the beginning of the apprenticeship. This will set out how you, your apprentice and the training provider will support the achievement of the apprenticeship, including:</p>
-<ul class="list list--bullet list--bullet-employer">
-    <li>the planned content and schedule for training</li>
-    <li>what is expected and offered by the employer, the training provider and the apprentice</li>
-    <li>how to resolve queries or complaints</li>
-</ul>
-<p>You can check the employer <a href="https://www.gov.uk/guidance/apprenticeship-funding-rules" target="_blank" rel="external">funding rules</a> to find out what else is included in the commitment statement.</p>
-<p>The apprentice's evidence pack needs to show the training that has been delivered against the agreements set out in the commitment statement.</p>
-
-<h2 class="heading-m">Which activities count as off-the-job training?</h2>
-<p>As a rule of thumb, an activity should count towards apprenticeship off-the-job training if you can answer 'yes' to all these questions:</p>
-<ol class="list list--number list--number-employer">
-    <li>Is the activity directly relevant to the apprenticeship?</li>
-    <li>Is the activity teaching new knowledge, skills and behaviours?</li>
-    <li>Is the learning taking place in the apprentice's paid working hours?</li>
-</ol>
-
-<h2 class="heading-m">Creating a gov.uk account</h2>
-
-<p>Ready to get started? You can <a asp-action="Confirm" asp-controller="Basket">set up an apprenticeship service account</a> on GOV.UK to access apprenticeship funding and post vacancies.</p>
+<info-page-sections info-page="@Model" section-container-class="content-section"></info-page-sections>
 
 <ul class="pagination pagination--employer">
-    <li class="pagination__list-item"><a class="pagination__link pagination__link--previous" asp-controller="FundingAnApprenticeship" asp-action="Index" id="link-pagination-employer-3"> Funding an apprenticeship</a></li>
-    <li class="pagination__list-item"><a class="pagination__link pagination__link--next" asp-controller="EndPointAssessments" asp-action="Index" id="link-pagination-employer-5"> End-point assessments</a></li>
+    <li class="pagination__list-item">
+        <a class="pagination__link pagination__link--previous" asp-controller="FundingAnApprenticeship" asp-action="Index" id="link-pagination-employer-3"> Funding an apprenticeship</a>
+    </li>
+    <li class="pagination__list-item">
+        <a class="pagination__link pagination__link--next" asp-controller="EndPointAssessments" asp-action="Index" id="link-pagination-employer-5"> End-point assessments</a>
+    </li>
 </ul>
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork") })
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() {Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork")})
 }
 
 @section pageFooter {
     <div class="grid-column-full">
-        <partial name="./Components/Cta/_find-apprenticeship-training-with-search" />
+        <partial name="./Components/Cta/_find-apprenticeship-training-with-search"/>
     </div>
 }

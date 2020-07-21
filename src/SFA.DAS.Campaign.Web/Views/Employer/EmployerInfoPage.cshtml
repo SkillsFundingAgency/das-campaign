@@ -13,16 +13,16 @@
     ViewBag.MetaDesc = Model.MetaDescription;
     ViewBag.PageUrl = Model.Slug;
     ViewBag.Section = Model.Hub;
-    Layout = "_Layout-campaign-employer-inform";
+    Layout = "_LayoutContentSidebar";
 }
 
 <info-page-sections info-page="@Model" section-container-class="content-section"></info-page-sections>
 
-<partial name="./components/Cta/_Contact-phoneNumber-apprentice" />
+<partial name="./components/Cta/_Contact-phoneNumber" />
 
 @if (Model.PreviousPage != null || Model.NextPage != null)
 {
-    <ul class="pagination pagination--apprentice">
+    <ul class="pagination pagination--employer">
         @if (Model.PreviousPage != null)
         {
             <li class="pagination__list-item">
@@ -44,6 +44,10 @@
 
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Apprentice, Content = HeroHeadingContent() })
+}
+
+@section Resources {
+    <partial name="./Components/Resources/_employer" />
 }
 
 @section pageFooter {

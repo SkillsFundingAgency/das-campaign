@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Contentful.Core.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using SFA.DAS.Campaign.Application.Content.ContentTypes;

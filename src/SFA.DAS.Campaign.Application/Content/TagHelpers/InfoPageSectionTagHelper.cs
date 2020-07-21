@@ -1,5 +1,6 @@
+using System;
+using System.Linq;
 using System.Threading.Tasks;
-using Contentful.Core.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using SFA.DAS.Campaign.Application.Content.ContentTypes;
@@ -14,7 +15,13 @@ namespace SFA.DAS.Campaign.Application.Content.TagHelpers
         /// <summary>
         /// The InfoPageSection to render.
         /// </summary>
-        public InfoPageSection InfoPageSection { get; set; }
+        public InfoPage InfoPage { get; set; }
+        
+        /// <summary>
+        /// The InfoPageSection to render.
+        /// </summary>
+        public string SectionSlug { get; set; }
+        public string SectionContainerClass { get; set; }
 
         public int HeaderIndex { get; set; }
 
@@ -29,21 +36,35 @@ namespace SFA.DAS.Campaign.Application.Content.TagHelpers
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            if(InfoPageSection == null)
+            if (InfoPage == null || string.IsNullOrWhiteSpace(SectionSlug))
             {
                 return;
             }
 
-            if (!string.IsNullOrWhiteSpace(InfoPageSection.Title))
+            var section = InfoPage.Sections.FirstOrDefault(s => s.Slug == SectionSlug);
+
+            if (section is null)
+            {
+                return;
+            }
+
+            output.TagName = "div";
+            
+            if (SectionContainerClass != null)
+            {
+                output.Attributes.Add("class", SectionContainerClass);   
+            }
+            
+            if (!string.IsNullOrWhiteSpace(section.Title))
             {
                 var headerBuilder = new TagBuilder("h2");
                 headerBuilder.AddCssClass("heading-m"); 
                 headerBuilder.Attributes.Add("id", "h" + HeaderIndex);
-                headerBuilder.InnerHtml.Append(InfoPageSection.Title);
+                headerBuilder.InnerHtml.Append(section.Title);
                 output.Content.AppendHtml(headerBuilder);
             }
             
-            var html = await _htmlRenderer.ToHtml(InfoPageSection.Body);
+            var html = await _htmlRenderer.ToHtml(section.Body);
 
             output.Content.AppendHtml(html);
         }
