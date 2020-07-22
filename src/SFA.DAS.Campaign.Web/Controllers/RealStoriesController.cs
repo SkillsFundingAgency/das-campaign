@@ -14,5 +14,16 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
+
+        [Route("real-stories/apprentice")]
+        public IActionResult ApprenticeRedirect()
+        {
+            return RedirectToActionPermanent("Apprentice");
+        }
+        [Route("real-stories/employer")]
+        public IActionResult EmployerRedirect()
+        {
+            return RedirectToActionPermanent("Employer");
+        }
     }
 }
