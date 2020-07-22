@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SFA.DAS.Campaign.Application.Content.ContentTypes
+namespace SFA.DAS.Campaign.Content.ContentTypes
 {
     public class NavigationBar : ContentBase
     {

@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Contentful.Core.Models;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace SFA.DAS.Campaign.Application.Content.TagHelpers
+namespace SFA.DAS.Campaign.Content.TagHelpers
 {
     [HtmlTargetElement("rich-text-content", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class RichTextContentTagHelper : TagHelper

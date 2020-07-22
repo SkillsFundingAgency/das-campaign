@@ -2,16 +2,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using SFA.DAS.Campaign.Application.Content.ContentTypes;
+using SFA.DAS.Campaign.Content.ContentTypes;
 
-namespace SFA.DAS.Campaign.Application.Content.TagHelpers
+namespace SFA.DAS.Campaign.Content.TagHelpers
 {
     [HtmlTargetElement("info-page-header-links", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class InfoPageHeaderLinksTagHelper : TagHelper
     {
         public InfoPage InfoPage { get; set; }
         
-        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+        public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if(InfoPage?.Sections is null || !InfoPage.Sections.Any())
             {

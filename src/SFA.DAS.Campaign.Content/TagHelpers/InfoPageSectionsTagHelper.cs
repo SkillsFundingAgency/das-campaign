@@ -2,9 +2,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using SFA.DAS.Campaign.Application.Content.ContentTypes;
+using SFA.DAS.Campaign.Content.ContentTypes;
 
-namespace SFA.DAS.Campaign.Application.Content.TagHelpers
+namespace SFA.DAS.Campaign.Content.TagHelpers
 {
     [HtmlTargetElement("info-page-sections", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class InfoPageSectionsTagHelper : TagHelper

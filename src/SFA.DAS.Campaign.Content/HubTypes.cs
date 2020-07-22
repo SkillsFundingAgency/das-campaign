@@ -1,4 +1,4 @@
-namespace SFA.DAS.Campaign.Application.Content
+namespace SFA.DAS.Campaign.Content
 {
     public static class HubTypes
     {

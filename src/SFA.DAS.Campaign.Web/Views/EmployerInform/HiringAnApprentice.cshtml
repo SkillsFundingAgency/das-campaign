@@ -1,7 +1,7 @@
 ﻿@using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 
-@model SFA.DAS.Campaign.Application.Content.ContentTypes.InfoPage
+@model SFA.DAS.Campaign.Content.ContentTypes.InfoPage
 @{
     ViewBag.Title = Model.Title;
     ViewBag.MetaTitle = Model.PageTitle;
@@ -17,7 +17,7 @@
 <info-page-sections info-page="@Model" section-container-class="content-section"></info-page-sections>
 
 <ul class="pagination pagination--employer">
-    <li class="pagination__list-item"><a class="pagination__link pagination__link--previous" asp-controller="Employer" asp-action="Benefits" id="link-pagination-employer-3"> The benefits of apprenticeships</a></li>
+    <li class="pagination__list-item"><a class="pagination__link pagination__link--previous" href="/employer/benefits" id="link-pagination-employer-3"> The benefits of apprenticeships</a></li>
     <li class="pagination__list-item"><a class="pagination__link pagination__link--next" asp-controller="FundingAnApprenticeship" asp-action="Index" id="link-pagination-employer-5"> Funding an apprenticeship</a></li>
 </ul>
 

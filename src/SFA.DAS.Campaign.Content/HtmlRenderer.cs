@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Contentful.Core.Models;
 
-namespace SFA.DAS.Campaign.Application.Content
+namespace SFA.DAS.Campaign.Content
 {
     /// <summary>
     /// Renderer that turns a document into HTML.

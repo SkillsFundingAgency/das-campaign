@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Services;
+using SFA.DAS.Campaign.Content;
 using SFA.DAS.Campaign.Infrastructure.Services;
 using SFA.DAS.Campaign.Web.Controllers.EmployerInform;
 using SFA.DAS.Campaign.Web.Helpers;
@@ -16,7 +17,8 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
         public void ThenVmIsStoredInSession()
         {
             var sessionService = new Mock<ISessionService>();
-            var controller = new FundingAnApprenticeshipController(sessionService.Object);
+            var contentService = new Mock<IContentService>();
+            var controller = new FundingAnApprenticeshipController(sessionService.Object, contentService.Object);
 
             var levyOptionViewModel = new LevyOptionViewModel() {LevyStatus = LevyStatus.Levy};
             controller.Index(levyOptionViewModel);
@@ -28,7 +30,8 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
         public void ThenRedirectToActionIsReturned()
         {
             var sessionService = new Mock<ISessionService>();
-            var controller = new FundingAnApprenticeshipController(sessionService.Object);
+            var contentService = new Mock<IContentService>();
+            var controller = new FundingAnApprenticeshipController(sessionService.Object, contentService.Object);
 
             var levyOptionViewModel = new LevyOptionViewModel() {LevyStatus = LevyStatus.Levy};
             var result = controller.Index(levyOptionViewModel);

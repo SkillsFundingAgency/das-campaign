@@ -1,26 +1,19 @@
-﻿using Microsoft.Rest;
+﻿using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Vacancies.Api.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+using SFA.DAS.Campaign.Domain.Enums;
 using SFA.DAS.Campaign.Domain.Vacancies;
-using VacanciesApi;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
-using SFA.DAS.Campaign.Domain.Enums;
-using Microsoft.Extensions.Logging;
+using VacanciesApi;
 
-namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
+namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Repositories
 {
     
-    public class WhenGetingVacanciesByRouteAndPostcodeNonEngland
+    public class WhenGettingVacanciesByRouteAndPostcodeNonEngland
     {
         private Mock<IGeocodeService> _geocodeService;
         private Mock<IMappingService> _mappingService;
@@ -30,18 +23,16 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private VacanciesMapper _vacanciesMapper;
         private CountryMapper _countryMapper;
 
-        private IVacanciesRepository sut;
+        private IVacanciesRepository _sut;
 
-        private string postcode = "CF10 3AT";
-        private int _searchResultCount = 200;
-        private CoordinatesResponse coordinatesResponse = new CoordinatesResponse()
+        private readonly string postcode = "CF10 3AT";
+        
+        private readonly CoordinatesResponse _coordinatesResponse = new CoordinatesResponse()
         {
             Coordinates = new Coordinates() { Lat = 50, Lon = 50 },
             Country = "Wales",
             ResponseCode = "OK"
         };
-
-        private string _standardIds;
 
         [SetUp]
         public void Arrange()
@@ -54,9 +45,9 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _logger = new Mock<ILogger<VacanciesRepository>>();
             _countryMapper = new CountryMapper();
 
-            _geocodeService.Setup(s => s.GetFromPostCode(It.IsAny<string>())).ReturnsAsync(coordinatesResponse);
+            _geocodeService.Setup(s => s.GetFromPostCode(It.IsAny<string>())).ReturnsAsync(_coordinatesResponse);
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object, _countryMapper);
+            _sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object, _countryMapper);
 
         }
 
@@ -66,10 +57,10 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         public void GetVacancyListByRoute_Function_Not_Ran(string postcode)
         {
 
-            var results =  sut.GetByRoute("1", postcode, 10);
+            var results =  _sut.GetByRoute("1", postcode, 10);
 
             _vacanciesApi.Verify(v => v.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
-                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.Is<string>(s => s.Equals(_standardIds))), Times.Never());
+                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.Is<string>(s => s.Equals(null))), Times.Never());
 
         }
 
@@ -77,7 +68,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         public void Then_Coordinates_Are_Retrieved_For_Postcode_By_GeocodeService()
         {
 
-            var results = sut.GetByRoute("1", postcode, 10);
+            var results = _sut.GetByRoute("1", postcode, 10);
 
             _geocodeService.Verify(s => s.GetFromPostCode(postcode), Times.Once);
 
@@ -86,12 +77,10 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         [Test]
         public async Task Then_Location_Is_Returned()
         {
-            _searchResultCount = 200;
+            var results = await _sut.GetByRoute("1", postcode, 20);
 
-            var results = await sut.GetByRoute("1", postcode, 20);
-
-            Assert.AreEqual(results.searchLocation.Longitude, coordinatesResponse.Coordinates.Lon);
-            Assert.AreEqual(results.searchLocation.Latitude, coordinatesResponse.Coordinates.Lat);
+            Assert.AreEqual(results.searchLocation.Longitude, _coordinatesResponse.Coordinates.Lon);
+            Assert.AreEqual(results.searchLocation.Latitude, _coordinatesResponse.Coordinates.Lat);
         }
 
         [TestCase("England", Country.England)]

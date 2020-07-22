@@ -1,6 +1,9 @@
-﻿using FluentAssertions;
+﻿using System.Threading.Tasks;
+using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 using NUnit.Framework;
+using SFA.DAS.Campaign.Content;
 using SFA.DAS.Campaign.Web.Controllers.EmployerInform;
 
 namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.TrainingYourApprentice
@@ -9,11 +12,11 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.TrainingYour
     public class WhenTrainingYourApprenticeIsRequested
     {
         [Test]
-        public void ThenTheCorrectViewIsReturned()
+        public async Task ThenTheCorrectViewIsReturned()
         {
-            var controller = new TrainingYourApprenticeController();
+            var controller = new TrainingYourApprenticeController(new Mock<IContentService>().Object);
 
-            var result = controller.Index();
+            var result = await controller.Index();
 
             result.Should().BeOfType<ViewResult>();
             result.As<ViewResult>().ViewName.Should().Be("~/Views/EmployerInform/TrainingYourApprentice.cshtml");

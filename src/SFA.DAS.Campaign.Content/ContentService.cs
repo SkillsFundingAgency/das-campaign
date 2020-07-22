@@ -3,10 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Contentful.Core;
 using Contentful.Core.Search;
-using SFA.DAS.Campaign.Application.Content.ContentTypes;
-using SFA.DAS.Campaign.Application.Services;
+using SFA.DAS.Campaign.Content.ContentTypes;
 
-namespace SFA.DAS.Campaign.Application.Content
+namespace SFA.DAS.Campaign.Content
 {
     public class ContentService : IContentService
     {

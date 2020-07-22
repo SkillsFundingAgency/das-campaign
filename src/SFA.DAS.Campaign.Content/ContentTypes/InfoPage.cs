@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Contentful.Core.Models;
 
-namespace SFA.DAS.Campaign.Application.Content.ContentTypes
+namespace SFA.DAS.Campaign.Content.ContentTypes
 {
     public class InfoPage : ContentBase
     {

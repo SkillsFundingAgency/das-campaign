@@ -35,13 +35,10 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
-using Microsoft.AspNetCore.DataProtection;
 using StackExchange.Redis;
-using SFA.DAS.Campaign.Web.Helpers;
 using Contentful.AspNetCore;
-using SFA.DAS.Campaign.Application.Content;
-using SFA.DAS.Campaign.Application.Content.TagHelpers;
 using SFA.DAS.Campaign.Application.Services;
+using SFA.DAS.Campaign.Content;
 using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Web

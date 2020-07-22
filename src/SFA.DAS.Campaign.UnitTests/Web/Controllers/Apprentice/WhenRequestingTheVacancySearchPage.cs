@@ -4,12 +4,9 @@ using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Infrastructure.HealthChecks;
 using SFA.DAS.Campaign.Web.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using SFA.DAS.Campaign.Application.Content;
+using SFA.DAS.Campaign.Content;
 
 namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Apprentice
 {

@@ -3,8 +3,8 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using SFA.DAS.Campaign.Infrastructure.HealthChecks;
 using System.Threading;
 using System.Threading.Tasks;
-using SFA.DAS.Campaign.Application.Content;
-using SFA.DAS.Campaign.Application.Content.ContentTypes;
+using SFA.DAS.Campaign.Content;
+using SFA.DAS.Campaign.Content.ContentTypes;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {

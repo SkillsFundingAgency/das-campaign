@@ -17,5 +17,9 @@
   <ItemGroup>
     <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content" />
+  </ItemGroup>
   
 </Project>

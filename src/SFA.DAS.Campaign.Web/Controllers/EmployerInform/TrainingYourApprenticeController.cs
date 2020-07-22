@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SFA.DAS.Campaign.Application.Content;
-using SFA.DAS.Campaign.Application.Content.ContentTypes;
+using SFA.DAS.Campaign.Content;
+using SFA.DAS.Campaign.Content.ContentTypes;
 
 namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
 {

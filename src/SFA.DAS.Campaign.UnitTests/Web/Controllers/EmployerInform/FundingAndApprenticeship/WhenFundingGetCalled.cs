@@ -1,11 +1,11 @@
+using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Services;
-using SFA.DAS.Campaign.Infrastructure.Services;
+using SFA.DAS.Campaign.Content;
 using SFA.DAS.Campaign.Web.Controllers.EmployerInform;
-using SFA.DAS.Campaign.Web.Helpers;
 
 namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndApprenticeship
 {
@@ -13,7 +13,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
     public class WhenFundingGetCalled
     {
         [Test]
-        public void AndLevyStatusIsSavedAsLevy_ThenViewModelLevyStatusIsLevy()
+        public async Task AndLevyStatusIsSavedAsLevy_ThenViewModelLevyStatusIsLevy()
         {
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(new LevyOptionViewModel
@@ -21,15 +21,15 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
                 LevyStatus = LevyStatus.Levy
             });
             
-            var controller = new FundingAnApprenticeshipController(sessionService.Object);
+            var controller = new FundingAnApprenticeshipController(sessionService.Object, new Mock<IContentService>().Object);
 
-            var result = controller.Index();
+            var result = await controller.Index();
 
-            result.As<ViewResult>().Model.As<LevyOptionViewModel>().LevyStatus.Should().Be(LevyStatus.Levy);
+            result.As<ViewResult>().Model.As<LevyQuestionDrivenViewModel>().LevyOptionViewModel.LevyStatus.Should().Be(LevyStatus.Levy);
         }
 
         [Test]
-        public void AndLevyStatusIsSavedAsNonLevy_ThenViewModelLevyStatusIsNonLevy()
+        public async Task AndLevyStatusIsSavedAsNonLevy_ThenViewModelLevyStatusIsNonLevy()
         {
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(new LevyOptionViewModel
@@ -37,37 +37,37 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
                 LevyStatus = LevyStatus.NonLevy
             });
 
-            var controller = new FundingAnApprenticeshipController(sessionService.Object);
+            var controller = new FundingAnApprenticeshipController(sessionService.Object, new Mock<IContentService>().Object);
 
-            var result = controller.Index();
+            var result = await controller.Index();
 
-            result.As<ViewResult>().Model.As<LevyOptionViewModel>().LevyStatus.Should().Be(LevyStatus.NonLevy);
+            result.As<ViewResult>().Model.As<LevyQuestionDrivenViewModel>().LevyOptionViewModel.LevyStatus.Should().Be(LevyStatus.NonLevy);
         }
 
         [Test]
-        public void AndNoVmStoredInSession_ThenDefaultVmReturnedInView()
+        public async Task AndNoVmStoredInSession_ThenDefaultVmReturnedInView()
         {
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(default(LevyOptionViewModel));
             
-            var controller = new FundingAnApprenticeshipController(sessionService.Object);
+            var controller = new FundingAnApprenticeshipController(sessionService.Object, new Mock<IContentService>().Object);
 
-            var result = controller.Index();
+            var result = await controller.Index();
 
-            result.As<ViewResult>().Model.As<LevyOptionViewModel>().OptionChosenByUser.Should().BeFalse();
+            result.As<ViewResult>().Model.As<LevyQuestionDrivenViewModel>().LevyOptionViewModel.OptionChosenByUser.Should().BeFalse();
         }
 
         [Test]
-        public void AndNoVmStoredInSession_ThenLevyStatusShouldBeNonLevy()
+        public async Task AndNoVmStoredInSession_ThenLevyStatusShouldBeNonLevy()
         {
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(default(LevyOptionViewModel));
 
-            var controller = new FundingAnApprenticeshipController(sessionService.Object);
+            var controller = new FundingAnApprenticeshipController(sessionService.Object, new Mock<IContentService>().Object);
 
-            var result = controller.Index();
+            var result = await controller.Index();
 
-            result.As<ViewResult>().Model.As<LevyOptionViewModel>().LevyStatus.Should().Be(LevyStatus.NonLevy);
+            result.As<ViewResult>().Model.As<LevyQuestionDrivenViewModel>().LevyOptionViewModel.LevyStatus.Should().Be(LevyStatus.NonLevy);
         }
     }
 }

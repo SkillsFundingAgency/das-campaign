@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SFA.DAS.Campaign.Application.Content.ContentTypes;
+using SFA.DAS.Campaign.Content.ContentTypes;
 
-namespace SFA.DAS.Campaign.Application.Content
+namespace SFA.DAS.Campaign.Content
 {
     public interface IContentService
     {
