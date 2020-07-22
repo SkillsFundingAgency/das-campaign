@@ -5,7 +5,6 @@ using SFA.DAS.Campaign.Application.Content.ContentTypes;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
-    [Route("employer")]
     public class EmployerController : Controller
     {
         private readonly IContentService _contentService;
@@ -15,7 +14,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _contentService = contentService;
         }
         
-        [Route("{slug}")]
         public async Task<IActionResult> ContentPage(string slug)
         {
             var applicationContent = await _contentService.GetContentByHubAndSlug<InfoPage>(HubTypes.Employer, slug);
@@ -23,25 +21,25 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View("~/Views/Employer/EmployerInfoPage.cshtml", applicationContent);
         }
 
-        [Route("how-much-is-it-going-to-cost")]
+        [Route("/employer/how-much-is-it-going-to-cost")]
         public async Task<IActionResult> HowMuchIsItGoingToCost()
         {
             return RedirectToActionPermanent("Index", "FundingAnApprenticeship");
         }
         
-        [Route("hire-an-apprentice")]
+        [Route("/employer/hire-an-apprentice")]
         public IActionResult HireAnApprentice()
         {
             return RedirectToActionPermanent("Index", "HiringAnApprentice");
         }
-
-        [Route("assessment-and-certification")]
+        
+        [Route("/employer/assessment-and-certification")]
         public IActionResult AssessmentAndQualification()
         {
             return RedirectToActionPermanent("Index", "EndPointAssessments");
         }
 
-        [Route("find-apprenticeship-training")]
+        [Route("/employer/find-apprenticeship-training")]
         public IActionResult FindApprenticeshipTraining()
         {
             return View();
