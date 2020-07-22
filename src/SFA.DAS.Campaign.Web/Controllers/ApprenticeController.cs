@@ -16,11 +16,17 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _vacancyServiceApiHealthCheck = healthCheck;
         }
 
-        [Route("what-is-an-apprenticeship")]
+        [Route("what-is-apprenticeship")]
         public IActionResult WhatIsAnApprenticeship()
         {
             return View();
         }
+        [Route("what-is-an-apprenticeship")]
+        public IActionResult WhatIsAnApprenticeshipRedirect()
+        {
+            return RedirectToActionPermanent("WhatIsAnApprenticeship");
+        }
+
         [Route("what-are-the-benefits-for-me")]
         public IActionResult WhatAreTheBenefitsToMe()
         {
