@@ -47,7 +47,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("thecalling")]
         public IActionResult TheCalling()
         {
-            return View("TheCalling");
+            return RedirectToActionPermanent("Index");
         }
     }
 }
