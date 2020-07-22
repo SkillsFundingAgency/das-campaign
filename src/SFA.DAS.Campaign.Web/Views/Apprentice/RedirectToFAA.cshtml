@@ -1,7 +1,7 @@
 ﻿@using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @{
-    ViewData["Title"] = "Search for apprenticeships on GOV.UK";
+    ViewData["Title"] = "Find an apprenticeship";
     ViewBag.MetaTitle = "Find an apprenticeship";
     ViewBag.HeroImageAltText = "An apprentice in the creative industry";
     ViewBag.PageID = "apprentice-redirect-to-faa";
@@ -14,12 +14,12 @@
 
 <div class="gov-uk-grid-row">
     <div class="govuk-column-tow-thirds">
-        <p>We’re unable to display apprenticeship vacancies on the Fire it up website at the moment. This service will be up and running again soon, but in the meantime you can start your search on GOV.UK.</p>
+        <p>We're unable to display apprenticeship vacancies on the Fire it up website at the moment. This service will be up and running again soon, but in the meantime you can start your search on GOV.UK.</p>
 
-        <a href="https://www.gov.uk/apply-apprenticeship" target="_blank" class="button button-apprentice"> Find an apprenticeship on GOV.UK</a>
+        <a href="https://www.gov.uk/apply-apprenticeship" target="_blank" class="button button-apprentice">Find an apprenticeship on GOV.UK<span class="visually-hidden"> (Opens in a new window)</span></a>
     </div>
 </div>
 
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Apprentice })
-} 
+}

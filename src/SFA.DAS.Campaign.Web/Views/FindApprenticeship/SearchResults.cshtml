@@ -17,10 +17,10 @@
     // Google Analytics meta info
     <span class="meta vh" aria-hidden="true">
         There are
-            <span id="tag-search-count">@Model.TotalResults</span> 
+            <span id="tag-search-count">@Model.TotalResults</span>
             <span id="tag-search-keyword">@Model.Route</span>
         apprenticeships within
-            <span id="tag-search-distance">@Model.Distance</span> 
+            <span id="tag-search-distance">@Model.Distance</span>
         miles of
             <span id="tag-search-postcode">@Model.Postcode</span>.
     </span>
@@ -50,7 +50,7 @@
                 <span class="bold">@Model.Postcode</span>.
             </p>
 
-        <p>Visit <a id="link-faa-search-results" href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship on GOV.UK</a> to see all @Model.Route apprenticeships in your area.</p>
+        <p>Visit <a id="link-faa-search-results" href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship on GOV.UK<span class="visually-hidden"> (Opens in a new window)</span></a> to see all @Model.Route apprenticeships in your area.</p>
 
             <ol id="vacancy-search-results" class="list list--number das-search-results__list das-search-results__list--apprentice">
 
@@ -71,7 +71,7 @@
 
             <p>Try expanding your search location or changing your area of interest.</p>
 
-        <p>Alternatively, visit <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship on GOV.UK</a> to refine your search further.</p>
+        <p>Alternatively, visit <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="link" rel="external" target="_blank">Find an apprenticeship on GOV.UK<span class="visually-hidden"> (Opens in a new window)</span></a> to refine your search further.</p>
 
             //  @await Html.PartialAsync("./Components/Form/faa-search", new FindApprenticeshipSearchModel(){Distance = Model.Distance, Postcode = Model.Postcode, Route = Model.Route})
         }
@@ -81,7 +81,7 @@
     {
         <h1 class="heading-l"> Looking for apprenticeships in @GetCountryText(Model.Country)? </h1>
         <p> Visit your local apprenticeships website to search for vacancies in your area. </p>
-        <p><a href="@GetCountryUrl(Model.Country)" class="link" rel="external" target="_blank">Explore apprenticeships in @GetCountryText(Model.Country)</a></p>
+        <p><a href="@GetCountryUrl(Model.Country)" class="link" rel="external" target="_blank">Explore apprenticeships in @GetCountryText(Model.Country)<span class="visually-hidden"> (Opens in a new window)</span></a></p>
     }
 
     @if (Model.Location.Latitude == 0)
@@ -137,7 +137,7 @@
 
                     <div class="section__faa-actions">
 
-                        <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="button button--shadow button--sparks" rel="external" target="_blank">visit gov.uk to see my results</a>
+                        <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="button button--shadow button--sparks" rel="external" target="_blank">visit gov.uk to see my results<span class="visually-hidden"> (Opens in a new window)</span></a>
                     </div>
                 </div>
                 <div class="grid-column-one-half">
@@ -148,7 +148,7 @@
     }
 }
 
-@functions 
+@functions
 {
     private string GetCountryText(Country country)
     {
