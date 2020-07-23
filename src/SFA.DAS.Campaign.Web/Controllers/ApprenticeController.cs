@@ -10,7 +10,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
     public class ApprenticeController : Controller
     {
         public IVacancyServiceApiHealthCheck _vacancyServiceApiHealthCheck;
-       
+
         public ApprenticeController(IVacancyServiceApiHealthCheck healthCheck)
         {
             _vacancyServiceApiHealthCheck = healthCheck;
@@ -44,10 +44,15 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             return View();
         }
-        [Route("application")]
+        [Route("application-process")]
         public IActionResult Application()
         {
             return View();
+        }
+        [Route("application")]
+        public IActionResult ApplicationRedirect()
+        {
+            return RedirectToActionPermanent("Application");
         }
         [Route("interview")]
         public IActionResult Interview()
@@ -66,7 +71,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
 
-        
+
 
 
     }
