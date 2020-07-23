@@ -59,10 +59,15 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-        [Route("your-apprenticeship")]
+        [Route("starting-apprenticeship")]
         public IActionResult YourApprenticeship()
         {
             return View();
+        }
+        [Route("your-apprenticeship")]
+        public IActionResult YourApprenticeshipRedirect()
+        {
+            return RedirectToActionPermanent("YourApprenticeship");
         }
         [Route("assessment-and-certification")]
         public IActionResult AssessmentAndQualification()
