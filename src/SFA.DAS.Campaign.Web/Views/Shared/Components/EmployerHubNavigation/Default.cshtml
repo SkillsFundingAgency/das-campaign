@@ -14,14 +14,14 @@
         <h2 class="heading-m">Choose your preference...</h2>
         <ul class="card__collection card__collection--profile-switch">
             <li>
-                <a class="card card--employer" asp-controller="RealStories" asp-action="Employer" id="link-switch-profiles-employer">
+                <a class="card card--apprentice" asp-controller="RealStories" asp-action="Apprentice" id="link-switch-profiles-apprentice">
                     <div class="card__image">
                         <span class="card__img"></span>
                     </div>
                     <div class="card__content">
-                        <h2 class="card__headline card__headline--ribbon">Employer</h2>
+                        <h2 class="card__headline card__headline--ribbon">Apprenticeships</h2>
                         <p class="card__summary">
-                            Be part of the change - employ an apprentice
+                            Start your journey - become an apprentice
                         </p>
                     </div>
                 </a>
@@ -42,24 +42,23 @@
         </ul>
     </div>
 </div>
-
 <header class="header" data-module="navigation">
     <div class="header__logo">
-        <a asp-controller="RealStories" asp-action="Apprentice">
-            <img src="/campaign/images/apprenticeships-logo-apprentice.png" alt="Apprenticeships Logo" class="header__logo-image" />
-            <span class="header__caption header__caption--apprentice">Apprentice hub</span>
+        <a asp-controller="RealStories" asp-action="Employer">
+            <img src="/campaign/images/apprenticeships-logo-employer.png" alt="Apprenticeships Logo" class="header__logo-image" />
+            <span class="header__caption header__caption--employer">Employer hub</span>
         </a>
     </div>
     <a href="#navigation" class="navigation__toggle">
         <span class="navigation__toggle-label" id="nav-label">Menu</span>
         <span class="navigation__toggle-icon"></span>
     </a>
-    <nav id="navigation" class="nav nav--apprentice">
+    <nav id="navigation" class="nav nav--employer">
         <ul class="nav__list">
             <li>
                 <a href="#switch-profiles" class="nav-profile-switcher" id="link-nav-switch-profiles">
-                    Not a future apprentice?
-                    <span class="nav-profile-switcher__caption">Discover information for employers, parents and guardians</span>
+                    Not an employer?
+                    <span class="nav-profile-switcher__caption">Discover information for parents, guardians and future apprentices</span>
                     <span class="nav-profile-switcher__icon"></span>
                 </a>
             </li>
@@ -67,12 +66,12 @@
             
             @foreach (var navmenu in Model.NavBarEntries)
             {
-                @if (navmenu.PageLinks.Count == 1 || !string.IsNullOrWhiteSpace(navmenu.TopLevelSlug))
+                @if (navmenu.PageLinks?.Count == 1 || (navmenu.PageLinks is null && !string.IsNullOrWhiteSpace(navmenu.TopLevelSlug)))
                 {
                     if (!string.IsNullOrWhiteSpace(navmenu.TopLevelSlug))
                     {
                         <li class="nav__list-item">
-                            <a href="/apprentice/@navmenu.TopLevelSlug" class="nav__link--top-level" id="link-nav-apprentice-4">
+                            <a href="/employer/@navmenu.TopLevelSlug" class="nav__link--top-level" id="link-nav-employer">
                                 @navmenu.Title
                             </a>
                         </li>
@@ -80,7 +79,7 @@
                     else
                     {
                         <li class="nav__list-item">
-                            <a href="/apprentice/@navmenu.PageLinks[0].PageSlug" class="nav__link--top-level" id="link-nav-apprentice-4">
+                            <a href="/employer/@navmenu.PageLinks[0].PageSlug" class="nav__link--top-level" id="link-nav-employer">
                                 @navmenu.PageLinks[0].Title
                             </a>
                         </li>    
@@ -89,17 +88,30 @@
                 else
                 {
                     <li class="nav__list-item nav__list-item--has-children">
-                        <a href="/apprentice/@navmenu.PageLinks[0].PageSlug" class="nav__link--top-level" id="link-nav-apprentice-1">
-                            <span>@navmenu.Title</span>
-                            <span class="nav__ordered-list-toggle"></span>
-                            <span class="nav__ordered-list-toggle-icon"></span>
-                        </a>
-                    
+                        @if (!string.IsNullOrWhiteSpace(navmenu.TopLevelSlug))
+                        {
+                            <a href="/employer/@navmenu.TopLevelSlug" class="nav__link--top-level" id="link-nav-employer">
+                                <span>@navmenu.Title</span>
+                                <span class="nav__ordered-list-toggle"></span>
+                                <span class="nav__ordered-list-toggle-icon"></span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/employer/@navmenu.PageLinks[0].PageSlug" class="nav__link--top-level" id="link-nav-employer">
+                                <span>@navmenu.Title</span>
+                                <span class="nav__ordered-list-toggle"></span>
+                                <span class="nav__ordered-list-toggle-icon"></span>
+                            </a>
+                        }
+                        
+                        
+
                         <ol class="nav__ordered-list">
                             @foreach (var pageLink in navmenu.PageLinks)
                             {
                                 <li>
-                                    <a href="/apprentice/@pageLink.PageSlug" class="nav__link" id="link-nav-app-real-stories">
+                                    <a href="/employer/@pageLink.PageSlug" class="nav__link" id="link-nav-emp">
                                         @pageLink.Title
                                     </a>
                                 </li>
@@ -108,15 +120,18 @@
                     </li>
                 }
             }
+            @await Component.InvokeAsync("BasketIcon")
             @{
                 if (ViewBag.HideRegisterInterest != true)
                 {
                     <li>
-                        <a class="nav-register-interest" asp-action="index" asp-controller="RegisterInterest" asp-route-route="apprentice" id="btn-register-interest-header">Register interest</a>
+                        <a class="nav-register-interest" asp-action="index" asp-controller="RegisterInterest" asp-route-route="employer" id="btn-register-interest-header">Register interest</a>
                     </li>
                 }
             }
         </ul>
     </nav>
-</header>
 
+    <partial name="~/Views/Shared/Components/FeedbackBanner/_feedbackBanner.cshtml" />
+
+</header>

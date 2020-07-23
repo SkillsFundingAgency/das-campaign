@@ -11,6 +11,8 @@ namespace SFA.DAS.Campaign.Content.ContentTypes
     {
         public string Title { get; set; }
         public List<NavigationPageLink> PageLinks { get; set; }
+
+        public string TopLevelSlug { get; set; }
     }
 
     public class NavigationPageLink

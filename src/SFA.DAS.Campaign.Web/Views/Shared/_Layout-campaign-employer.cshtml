@@ -61,7 +61,7 @@
 
         <partial name="./Components/_CookieBanner" />
 
-        <partial name="./Components/_Header-employer" />
+        @await Component.InvokeAsync("EmployerHubNavigation")
 
         @RenderBody()
 
