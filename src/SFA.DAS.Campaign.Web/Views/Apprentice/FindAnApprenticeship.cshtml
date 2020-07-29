@@ -16,7 +16,6 @@
 <ul class="pagination pagination--apprentice">
     <li class="pagination__list-item">
         <a class="pagination__link pagination__link--previous" asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" id="link-pagination-apprentice-1">Before you start </a>
-
     </li>
     <li class="pagination__list-item">
         <a class="pagination__link pagination__link--next" asp-controller="Apprentice" asp-action="Application" id="link-pagination-apprentice-3">Application </a>
@@ -25,12 +24,4 @@
 
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.FindApprenticeship })
-}
-
-@section pageFooter {
-    @*
-    <div class="grid-column-full">
-        <partial name="./Components/Cta/_find-an-apprenticeship" />
-    </div>
-    *@
 }
