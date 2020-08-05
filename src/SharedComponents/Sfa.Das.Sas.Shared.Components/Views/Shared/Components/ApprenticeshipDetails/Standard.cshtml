@@ -1,0 +1,106 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Sfa.Das.Sas.Shared.Components.Extensions
+@model Sfa.Das.Sas.Shared.Components.ViewComponents.ApprenticeshipDetails.StandardDetailsViewModel;
+@inject Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces.ICssViewModel CssClasses;
+
+
+<h2 class="@CssClasses.HeadingLarge @CssClasses.UtilitiesCss.Margin("top",0)">Summary of this apprenticeship</h2>
+
+@if (Model.EffectiveTo.HasValue && Model.EffectiveTo.Value > DateTime.Today)
+{
+    <div class="@CssClasses.WarningText">
+        <span class="@(CssClasses.WarningText)__icon" aria-hidden="true"></span>
+        <strong class="@(CssClasses.WarningText)__text">
+            <span class="@(CssClasses.WarningText)__assistive">Warning</span>
+            This apprenticeship is available to new starters until @Model.EffectiveTo.Value.ToLongDateString()
+        </strong>
+    </div>
+}
+<dl class="@CssClasses.List  das-definition-list__results">
+    <dt>Title</dt>
+    <dd>@Model.Title</dd>
+
+    <dt>Type</dt>
+    <dd>Standard</dd>
+    <dt>Level</dt>
+    <dd>@Model.Level (Equivalent to @Model.EquivalentText)</dd>
+
+    <dt>Typical length</dt>
+    <dd>@Model.Duration months</dd>
+
+    <dt>Current funding band</dt>
+    <dd>
+        Up to @Model.FundingCap per apprentice.<br>
+        <a href="https://www.gov.uk/guidance/employing-an-apprentice-technical-guide-for-employers#funding-for-your-apprenticeship" target="_blank" rel="external" class="external">More information about funding</a>
+    </dd>
+
+    <dt>Entry requirements</dt>
+    <dd>@Html.MarkdownToHtml(Model.EntryRequirements)</dd>
+
+    <dt>What apprentices will learn</dt>
+    <dd>@Html.MarkdownToHtml(Model.WhatApprenticesWillLearn)</dd>
+
+    <dt>Qualifications</dt>
+    <dd>@Html.MarkdownToHtml(Model.Qualifications)</dd>
+
+    <dt>Professional registration</dt>
+    <dd>@Html.MarkdownToHtml(Model.ProfessionalRegistration)</dd>
+
+    @if (Model.AssessmentOrganisationPresent)
+    {
+        <dt>End Point Assessment</dt>
+        <dd>
+            <details class="@CssClasses.Details">
+                <summary class="@CssClasses.DetailsSummary">
+                    <span class="@CssClasses.DetailsSummaryText">View a list of end point assessment organisations for this standard</span>
+                </summary>
+                <div class="@CssClasses.DetailsText">
+                    <table class="@CssClasses.Table.Table responsive">
+                        <thead class="@CssClasses.Table.Head">
+                            <tr class="@CssClasses.Table.Row">
+                                <th class="@CssClasses.Table.Header" scope="col">Organisation</th>
+                                <th class="@CssClasses.Table.Header" scope="col">Phone Number</th>
+                                <th class="@CssClasses.Table.Header" scope="col">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody class="@CssClasses.Table.Body">
+                            @foreach (var org in Model.AssessmentOrganisations)
+                            {
+                                <tr class="@CssClasses.Table.Row">
+                                    <td class="@CssClasses.Table.Cell" data-label="organisation">
+                                        @if (!string.IsNullOrWhiteSpace(org.Name))
+                                        {
+                                            <a href="@org.Website" target="_blank" class="@CssClasses.Link">@org.Name</a>
+                                        }
+                                        else
+                                        {
+                                            @org.Name
+                                        }
+
+                                    </td>
+                                    <td class="@CssClasses.Table.Cell" data-label="phone-number">@org.Phone</td>
+                                    <td class="@CssClasses.Table.Cell" data-label="email"><a href="mailto:@org.Email" target="_blank" class="@CssClasses.Link">@org.Email</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        </dd>
+    }
+    else
+    {
+        <dt>How apprentices are assessed</dt>
+        <dd>
+            <p> A government-approved organisation must assess apprentices towards the end of their apprenticeship.</p>
+            <p>This end-point assessment ensures apprentices achieve the skills, training and any qualifications necessary to complete their apprenticeship. </p>
+            <p>
+                You can download the assessment plan from the Institute for Apprenticeships. There are no end-point assessment organisations for this apprenticeship yet.
+                Please email <a href="mailto:apprentice.assessment@education.gov.uk">apprentice.assessment@education.gov.uk </a> if you urgently need an end-point
+                assessment organisation.
+            </p>
+        </dd>
+    }
+    <dt>More Information</dt>
+    <dd>The <a href="https://www.instituteforapprenticeships.org" target="_blank" rel="external">Institute for Apprenticeships and Technical Education</a> has more detailed information about this apprenticeship.</dd>
+</dl>

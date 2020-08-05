@@ -1,0 +1,81 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProviderDetailsViewModel
+@inject ICssViewModel CssViewModel
+
+
+<section class="das-provider__contact-details">
+    <h2 class="@CssViewModel.HeadingLarge">Contact details</h2>
+
+    <dl class="@CssViewModel.List das-provider__contact-details-definition-list">
+        @if (!string.IsNullOrWhiteSpace(Model.ContactInformation.Website))
+        {
+            <dt>Website:</dt>
+            <dd>
+                <a href="@Model.ContactInformation.Website" rel="external" target="_blank" class="@CssViewModel.Link external">
+                    @Model.Name website
+                </a>
+            </dd>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.ContactInformation.Phone))
+        {
+            <dt class="phone-title">Phone number:</dt>
+            <dd>@Model.ContactInformation.Phone</dd>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.ContactInformation.Email))
+        {
+            <dt>Email:</dt>
+            <dd>
+                <a class="@CssViewModel.Link" href="mailto:@Model.ContactInformation.Email">@Model.ContactInformation.Email</a>
+            </dd>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.ContactInformation.ContactUsUrl))
+        {
+            <dt>Contact page:</dt>
+            <dd>
+                <a href="@Model.ContactInformation.ContactUsUrl" rel="external" target="_blank" class="@CssViewModel.Link external">
+                    contact this training provider
+                </a>
+            </dd>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.LocationAddressLine))
+        {
+            <dt>Address:</dt>
+            <dd>
+                @if (Model.DeliveryModes.Count == 1 && Model.DeliveryModes.Contains("100PercentEmployer"))
+                {
+                    @:Training takes place at your location
+                }
+                else
+                {
+                    @Model.LocationAddressLine
+                }
+            </dd>
+        }
+    </dl>
+</section>
+
+
+
+@functions
+{
+
+    string GetTrainingOptionsStatusClass(string trainingOption, IList<string> options)
+    {
+        var cssClass = "das-search-results__training-options";
+        var classSuffix = string.Empty;
+
+        if (options.Contains(trainingOption, StringComparer.OrdinalIgnoreCase))
+        {
+            classSuffix = "--tick";
+        }
+        else
+        {
+            classSuffix = "--cross";
+        }
+
+        return $"{cssClass}{classSuffix}";
+    }
+
+
+} 

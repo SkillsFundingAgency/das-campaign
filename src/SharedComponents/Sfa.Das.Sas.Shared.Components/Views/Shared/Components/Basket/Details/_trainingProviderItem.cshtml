@@ -1,0 +1,6 @@
+﻿@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@model Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.TrainingProviderSearchResultsItem
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject ICssViewModel CssViewModel
+
+<a asp-controller="TrainingProvider" asp-action="Details" asp-route-ukprn="@Model.Ukprn">Provider name</a> 

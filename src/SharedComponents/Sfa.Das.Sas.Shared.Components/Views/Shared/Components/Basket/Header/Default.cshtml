@@ -1,0 +1,17 @@
+﻿@using Sfa.Das.Sas.Shared.Components.Extensions
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@model Sfa.Das.Sas.Shared.Components.ViewModels.Basket.BasketViewModel<Sfa.Das.Sas.Shared.Components.ViewModels.Apprenticeship.ApprenticeshipBasketItemViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject ICssViewModel CssViewModel
+@{
+    var apprenticeshipCount = Model.Items?.Count() ?? 0;
+    var providerCount = Model.Items?.SelectMany(w => w.TrainingProvider).Count() ?? 0;
+}
+
+@if (Model.HasItems)
+{
+    <ul class="@CssViewModel.ListNumbers">
+        <li><span class="vh">You have</span> <span class="@(CssViewModel.ListNumbers)__number">@(apprenticeshipCount)</span> @("Apprenticeship".Pluralize(apprenticeshipCount)) <span class="vh">in your basket</span></li>
+        <li><span class="vh">You have</span> <span class="@(CssViewModel.ListNumbers)__number">@providerCount</span> Training @("provider".Pluralize(providerCount)) <span class="vh">in your basket</span></li>
+    </ul>
+}

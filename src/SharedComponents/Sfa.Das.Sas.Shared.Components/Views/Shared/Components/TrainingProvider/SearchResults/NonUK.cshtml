@@ -1,0 +1,17 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@using  Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search;
+@model Sfa.Das.Sas.Shared.Components.ViewModels.SearchResultsViewModel<Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.TrainingProviderSearchResultsItem, TrainingProviderSearchViewModel>
+@inject ICssViewModel cssViewModel
+
+
+<p>
+    Sorry, we’re unable to provide results for locations outside the UK. You can use this website to find training providers in England,
+    or visit the relevant websites to find apprenticeship training in
+    <a class="@cssViewModel.Link" href="https://www.apprenticeships.scot/for-employers/find-a-learning-provider/" target="_blank">Scotland</a>,
+    <a class="@cssViewModel.Link" href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank">Northern Ireland</a> and
+    <a class="@cssViewModel.Link" href="https://gov.wales/apprenticeships-skills-and-training" target="_blank">Wales</a>.
+</p>
+<p>
+    <a class="@cssViewModel.Link" asp-controller="Fat" asp-action="Search">Return to Find apprenticeship training</a>
+</p>

@@ -1,0 +1,57 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@using Humanizer
+@model Sfa.Das.Sas.Shared.Components.ViewModels.ClosestLocationsViewModel
+@inject ICssViewModel CssViewModel
+
+<h2 class="heading-m"><span class="badge-round badge-round--employer">@Model.Locations.Count</span> nearest @("location".ToQuantity(Model.Locations.Count, ShowQuantityAs.None)) for @Model.ProviderName:</h2>
+<details class="details">
+    <summary class="details__summary"><span class="details__summary-text">View locations</span></summary>
+    <div class="details__text">
+
+        <form asp-controller="Basket" asp-action="AddProviderFromDetails" method="post">
+            <input type="hidden" asp-for="@Model.ApprenticeshipId" />
+            <input type="hidden" asp-for="@Model.LocationId" />
+            <input type="hidden" asp-for="@Model.Ukprn" />
+            <input type="hidden" asp-for="@Model.PostCode" />
+
+            <table class="table table--simple">
+                <tr class="table__row">
+                    <th scope="col" class="table__cell--header">Address</th>
+                    <th scope="col" class="table__cell--header-numeric">Favourite</th>
+                </tr>
+
+                @for (int i = 0; i < Model.Locations.Count; i++)
+                {
+                    var item = @Model.Locations[i];
+                    <tr class="table__row table__row--highlight">
+                        <td class="table__cell">
+                            @if (i == 0)
+                            {
+                                <span class="badge badge--highlight badge--employer">Nearest</span>
+                            }
+                            <dl class="das-definition-list--inline">
+                                <dt class="das-definition-list__title">Address</dt>
+                                @if (string.IsNullOrWhiteSpace(item.AddressWithoutPostCode))
+                                {
+                                    <dd class="das-definition-list__definition"><strong>@item.PostCode</strong></dd>
+                                }
+                                else
+                                {
+                                    <dd class="das-definition-list__definition">@item.AddressWithoutPostCode, <strong>@item.PostCode</strong></dd>
+                                }
+                                <dt class="das-definition-list__title">Distance</dt>
+                                <dd class="das-definition-list__definition">@Model.Locations[i].Distance miles</dd>
+                            </dl>
+                        </td>
+                        <td class="table__cell table__cell--numeric">
+                            @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn, locationId = item.LocationId })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </form>
+    </div>
+    <p><a asp-controller="Fat" asp-action="Apprenticeship" asp-route-Id="@Model.ApprenticeshipId">Search for training providers in a different location</a></p>
+</details>
+
