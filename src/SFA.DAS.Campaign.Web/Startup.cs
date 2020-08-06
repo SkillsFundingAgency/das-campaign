@@ -60,8 +60,8 @@ namespace SFA.DAS.Campaign.Web
                 .Build();
 
             
-            var mvcBuilder = serviceProvider.GetService<IMvcBuilder>();
-            new MvcConfiguration().ConfigureMvc(mvcBuilder);
+            // var mvcBuilder = serviceProvider.GetService<IMvcBuilder>();
+            // new MvcConfiguration().ConfigureMvc(mvcBuilder);
             
             Configuration = config;
         }
