@@ -10,17 +10,23 @@ namespace SFA.DAS.Campaign.Web.Controllers
     public class ApprenticeController : Controller
     {
         public IVacancyServiceApiHealthCheck _vacancyServiceApiHealthCheck;
-       
+
         public ApprenticeController(IVacancyServiceApiHealthCheck healthCheck)
         {
             _vacancyServiceApiHealthCheck = healthCheck;
         }
 
-        [Route("what-is-an-apprenticeship")]
+        [Route("what-is-apprenticeship")]
         public IActionResult WhatIsAnApprenticeship()
         {
             return View();
         }
+        [Route("what-is-an-apprenticeship")]
+        public IActionResult WhatIsAnApprenticeshipRedirect()
+        {
+            return RedirectToActionPermanent("WhatIsAnApprenticeship");
+        }
+
         [Route("what-are-the-benefits-for-me")]
         public IActionResult WhatAreTheBenefitsToMe()
         {
@@ -38,20 +44,30 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             return View();
         }
-        [Route("application")]
+        [Route("application-process")]
         public IActionResult Application()
         {
             return View();
+        }
+        [Route("application")]
+        public IActionResult ApplicationRedirect()
+        {
+            return RedirectToActionPermanent("Application");
         }
         [Route("interview")]
         public IActionResult Interview()
         {
             return View();
         }
-        [Route("your-apprenticeship")]
+        [Route("starting-apprenticeship")]
         public IActionResult YourApprenticeship()
         {
             return View();
+        }
+        [Route("your-apprenticeship")]
+        public IActionResult YourApprenticeshipRedirect()
+        {
+            return RedirectToActionPermanent("YourApprenticeship");
         }
         [Route("assessment-and-certification")]
         public IActionResult AssessmentAndQualification()
@@ -60,7 +76,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
 
-        
+
 
 
     }

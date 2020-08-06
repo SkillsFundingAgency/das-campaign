@@ -3,8 +3,8 @@
 @using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @{
-    ViewBag.Title = "Find the right apprenticeship";
-    ViewBag.MetaTitle = "Find the right apprenticeship";
+    ViewBag.Title = "Find apprenticeship training";
+    ViewBag.MetaTitle = "Find apprenticeship training";
     ViewBag.PageID = "employer-find-an-apprenticeship";
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
@@ -12,17 +12,30 @@
     Layout = "_Layout-Campaign-employer";
 }
 
-@{
-    IHtmlContent HeroHeadingContent() => Helper.Body(@<div class="hero-heading__content">
-    <p class="lead-paragraph">For employers looking to take on apprentices.</p>
-    <p>Use this search to:</p>
-    <ul class="list list--bullet">
-        <li>look for apprenticeship training by job role or keyword</li>
-        <li>find training providers who offer the apprenticeship training you choose</li>
-        <li>save apprenticeships and named training providers you're interested in</li>
-    </ul>
-</div>);
-}
+<main id="main-content">
+    <div class="hero--no-clip" data-module="smoothScroll">
+        <div class="grid-row">
+            <div class="grid-column-two-thirds">
+                <div class="hero-heading">
+                    <span class="caption-m hero-heading__caption hero-heading__caption--employer">
+                        <a asp-controller="RealStories" asp-action="Employer" class="hero-heading__caption-link hero-heading__caption--employer">Employer</a>
+                        <span class="hero-heading__caption-separator">&gt;</span>
+                        <span class="hero-heading__caption--current"> @ViewBag.Title </span>
+                    </span>
+                    <h1 class="heading-xl hero-heading__heading">@ViewBag.Title</h1>
+                </div>
+                <div class="hero-heading__content">
+                    <p class="lead-paragraph">Search for apprenticeship training that’s suitable for your business.</p>
+                    <p>You can save any apprenticeships or training providers that you're interested in.</p>
+                </div>
+                
+                @await Component.InvokeAsync("FatSearch", new { FatSearchRoute = "employer/find-apprenticeship-training/Search", inline = true })
 
+                <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
+                    <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" /><span class="visually-hidden">(Opens in a new window)</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.FindApprenticeshipTraining, Content = HeroHeadingContent() })
+</main>
