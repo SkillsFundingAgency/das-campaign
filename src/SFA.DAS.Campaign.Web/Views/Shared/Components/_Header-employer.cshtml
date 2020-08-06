@@ -1,13 +1,13 @@
 ﻿<div class="modal" id="switch-profiles" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-header">
-            <button class="close" id="close-modal-switch-profiles">
+            <a href="#" role="button" class="close" id="close-modal-switch-profiles">
                 <svg width="32" height="32" viewBox="0 0 32 32" class="">
                     <rect class="modal--icon-close" x="1.58691" y="0.0893555" width="16.0371" height="2.16583" transform="rotate(45 1.58691 0.0893555)"></rect>
                     <rect class="modal--icon-close" x="0.0966797" y="11.34" width="16.0371" height="2.16583" transform="rotate(-45 0.0966797 11.34)"></rect>
                 </svg>
                 <span class="vh">Close this popup</span>
-            </button>
+            </a>
         </div>
         <h2 class="heading-m">Choose your preference...</h2>
         <ul class="card__collection card__collection--profile-switch">
@@ -42,10 +42,7 @@
 </div>
 <header class="header" data-module="navigation">
     <div class="header__logo">
-        <a asp-controller="RealStories" asp-action="Employer">
-            <img src="/campaign/images/apprenticeships-logo-employer.png" alt="Apprenticeships Logo" class="header__logo-image" />
-            <span class="header__caption header__caption--employer">Employer hub</span>
-        </a>
+        <a asp-controller="Home" asp-action="Index"><img src="/campaign/images/apprenticeships-logo-black.png" alt="Apprenticeships Logo" class="header__logo-image" /></a>
     </div>
     <a href="#navigation" class="navigation__toggle">
         <span class="navigation__toggle-label" id="nav-label">Menu</span>
