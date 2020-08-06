@@ -45,7 +45,7 @@ namespace SFA.DAS.Campaign.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IServiceProvider serviceProvider)
+        public Startup(IConfiguration configuration)
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -58,10 +58,6 @@ namespace SFA.DAS.Campaign.Web
                     )
                 .AddUserSecrets<Startup>()
                 .Build();
-
-            
-            // var mvcBuilder = serviceProvider.GetService<IMvcBuilder>();
-            // new MvcConfiguration().ConfigureMvc(mvcBuilder);
             
             Configuration = config;
         }
