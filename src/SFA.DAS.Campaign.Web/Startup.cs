@@ -38,13 +38,14 @@ using System.Net.Http;
 using Microsoft.AspNetCore.DataProtection;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
+using SFA.DAS.Campaign.Web.Infrastructure;
 using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IServiceProvider serviceProvider)
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -58,6 +59,10 @@ namespace SFA.DAS.Campaign.Web
                 .AddUserSecrets<Startup>()
                 .Build();
 
+            
+            var mvcBuilder = serviceProvider.GetService<IMvcBuilder>();
+            new MvcConfiguration().ConfigureMvc(mvcBuilder);
+            
             Configuration = config;
         }
 
