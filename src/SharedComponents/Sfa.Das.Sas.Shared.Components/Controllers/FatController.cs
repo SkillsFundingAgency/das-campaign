@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Sfa.Das.Sas.ApplicationServices.Commands;
-using Sfa.Das.Sas.Shared.Components.ViewComponents;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
+using Sfa.Das.Sas.Shared.Components.ViewModels.Fat.Search;
 
 namespace Sfa.Das.Sas.Shared.Components.Controllers
 {

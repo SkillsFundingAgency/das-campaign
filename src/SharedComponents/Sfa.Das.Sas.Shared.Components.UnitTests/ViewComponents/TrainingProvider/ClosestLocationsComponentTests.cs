@@ -8,6 +8,7 @@ using Sfa.Das.Sas.Shared.Components.Orchestrators;
 using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
 using System.Collections.Generic;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.ClosestLocations;
 
 namespace Sfa.Das.Sas.Shared.Components.UnitTests.ViewComponents.Basket
 {

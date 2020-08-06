@@ -5,9 +5,6 @@ using NUnit.Framework;
 using Sfa.Das.Sas.ApplicationServices.Models;
 using Sfa.Das.Sas.ApplicationServices.Responses;
 using Sfa.Das.Sas.Shared.Components.Mapping;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
 
 namespace Sfa.Das.Sas.Shared.Components.UnitTests.Mapping.TrainingProvider

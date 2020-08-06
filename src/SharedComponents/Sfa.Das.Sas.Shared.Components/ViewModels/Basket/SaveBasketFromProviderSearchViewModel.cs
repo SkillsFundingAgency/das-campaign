@@ -1,5 +1,5 @@
 ﻿using System;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Search;
 
 namespace Sfa.Das.Sas.Shared.Components.ViewModels.Basket
 {

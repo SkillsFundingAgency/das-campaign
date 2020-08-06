@@ -1,6 +1,4 @@
-﻿using Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search;
-
-namespace Sfa.Das.Sas.Shared.Components.ViewModels.Basket
+﻿namespace Sfa.Das.Sas.Shared.Components.ViewModels.Basket
 {
     public class DeleteFromBasketViewModel
     {

@@ -2,8 +2,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Sfa.Das.Sas.ApplicationServices.Queries;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Search;
 
 namespace Sfa.Das.Sas.Shared.Components.Controllers
 {

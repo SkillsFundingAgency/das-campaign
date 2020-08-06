@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Sfa.Das.Sas.ApplicationServices.Models;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.ApprenticeshipDetails;
+using Sfa.Das.Sas.Shared.Components.ViewModels.ApprenticeshipDetails;
 
 namespace Sfa.Das.Sas.Shared.Components.Orchestrators
 {

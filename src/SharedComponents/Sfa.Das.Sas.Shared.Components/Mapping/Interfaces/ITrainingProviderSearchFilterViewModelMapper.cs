@@ -1,6 +1,6 @@
 ﻿using Sfa.Das.Sas.ApplicationServices.Responses;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Search;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.SearchFilter;
 
 namespace Sfa.Das.Sas.Shared.Components.Mapping
 {

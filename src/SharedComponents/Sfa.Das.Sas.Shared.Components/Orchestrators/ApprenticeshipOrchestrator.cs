@@ -7,8 +7,8 @@ using Sfa.Das.Sas.ApplicationServices.Responses;
 using Sfa.Das.Sas.ApplicationServices.Services;
 using Sfa.Das.Sas.Core.Configuration;
 using Sfa.Das.Sas.Shared.Components.Mapping;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.ApprenticeshipDetails;
 using SFA.DAS.NLog.Logger;
+using Sfa.Das.Sas.Shared.Components.ViewModels.ApprenticeshipDetails;
 
 namespace Sfa.Das.Sas.Shared.Components.Orchestrators
 {

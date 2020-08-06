@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Moq;
 using NUnit.Framework;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat;
 using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults;
 using System.Threading.Tasks;
 using Sfa.Das.Sas.Shared.Components.Orchestrators;

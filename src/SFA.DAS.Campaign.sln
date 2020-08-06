@@ -33,8 +33,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sfa.Das.Sas.Shared.Basket",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sfa.Das.Sas.Shared.Components", "SharedComponents\Sfa.Das.Sas.Shared.Components\Sfa.Das.Sas.Shared.Components.csproj", "{CEF10D0A-2CEA-43C8-9E53-DC37565353B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sfa.Das.Sas.Shared.Components.UnitTests", "SharedComponents\Sfa.Das.Sas.Shared.Components.UnitTests\Sfa.Das.Sas.Shared.Components.UnitTests.csproj", "{F0C7BEB8-01E2-477B-AD60-DFB12E52398D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,10 +91,6 @@ Global
 		{CEF10D0A-2CEA-43C8-9E53-DC37565353B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEF10D0A-2CEA-43C8-9E53-DC37565353B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEF10D0A-2CEA-43C8-9E53-DC37565353B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F0C7BEB8-01E2-477B-AD60-DFB12E52398D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F0C7BEB8-01E2-477B-AD60-DFB12E52398D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F0C7BEB8-01E2-477B-AD60-DFB12E52398D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F0C7BEB8-01E2-477B-AD60-DFB12E52398D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,7 +104,6 @@ Global
 		{D08AEC6A-3EDA-4B24-A75F-6C0E2D6FB672} = {F0184249-2C2E-49F9-ACCA-A7B57E915F85}
 		{356C3086-9032-4681-9835-95E0427940C3} = {F0184249-2C2E-49F9-ACCA-A7B57E915F85}
 		{CEF10D0A-2CEA-43C8-9E53-DC37565353B8} = {F0184249-2C2E-49F9-ACCA-A7B57E915F85}
-		{F0C7BEB8-01E2-477B-AD60-DFB12E52398D} = {F0184249-2C2E-49F9-ACCA-A7B57E915F85}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF997E03-26CD-4805-8114-38F71532A883}

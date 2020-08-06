@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using Sfa.Das.Sas.ApplicationServices;
 using Sfa.Das.Sas.Shared.Components.Mapping;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
 using Sfa.Das.Sas.ApplicationServices.Services;
 using Sfa.Das.Sas.Core.Configuration;
+using Sfa.Das.Sas.Shared.Components.ViewModels.Fat.SearchFilter;
+using Sfa.Das.Sas.Shared.Components.ViewModels.Fat.SearchResults;
 
 namespace Sfa.Das.Sas.Shared.Components.Orchestrators
 {

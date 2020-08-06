@@ -1,8 +1,8 @@
-﻿using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat;
-using System.Linq;
+﻿using System.Linq;
 using Sfa.Das.Sas.ApplicationServices.Responses;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Search;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.SearchResults;
 
 namespace Sfa.Das.Sas.Shared.Components.Mapping
 {

@@ -2,6 +2,7 @@
 using Sfa.Das.Sas.ApplicationServices.Responses;
 using Sfa.Das.Sas.Core.Domain.Model;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Details;
 using Sfa.Das.Sas.Web.Services.MappingActions.Helpers;
 
 namespace Sfa.Das.Sas.Shared.Components.Mapping

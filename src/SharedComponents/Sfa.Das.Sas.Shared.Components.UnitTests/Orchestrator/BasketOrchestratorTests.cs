@@ -17,6 +17,7 @@ using Sfa.Das.Sas.Shared.Components.Orchestrators;
 using Sfa.Das.Sas.Shared.Components.ViewModels.Apprenticeship;
 using Sfa.Das.Sas.Shared.Components.ViewModels.Basket;
 using Sfa.Das.Sas.Core.Configuration;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Search;
 
 namespace Sfa.Das.Sas.Shared.Components.UnitTests.Orchestrator
 {
@@ -260,7 +261,7 @@ namespace Sfa.Das.Sas.Shared.Components.UnitTests.Orchestrator
         private static SaveBasketFromProviderSearchViewModel GetProviderResultsRequestModel() => new SaveBasketFromProviderSearchViewModel
         {
             ItemId = $"{UKPRN.ToString()},{LOCATION_ID_TO_ADD}",
-            SearchQuery = new Components.ViewComponents.TrainingProvider.Search.TrainingProviderSearchViewModel
+            SearchQuery = new TrainingProviderSearchViewModel
             {
                 ApprenticeshipId = APPRENTICESHIP_ID,
                 IsLevyPayer = true,

@@ -1,6 +1,7 @@
 ﻿using Sfa.Das.Sas.Shared.Components.ViewModels;
 using SFA.DAS.Apprenticeships.Api.Types.Providers;
 using System.Linq;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Details;
 
 namespace Sfa.Das.Sas.Shared.Components.Mapping
 {

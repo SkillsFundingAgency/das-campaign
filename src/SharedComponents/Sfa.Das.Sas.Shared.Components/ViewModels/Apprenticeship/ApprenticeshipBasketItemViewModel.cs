@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Sfa.Das.Sas.ApplicationServices.Models;
 using Sfa.Das.Sas.Resources;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.SearchResults;
 
 namespace Sfa.Das.Sas.Shared.Components.ViewModels.Apprenticeship
 {

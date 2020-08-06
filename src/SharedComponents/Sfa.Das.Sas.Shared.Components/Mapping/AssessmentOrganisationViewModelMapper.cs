@@ -1,5 +1,5 @@
 ﻿using Sfa.Das.Sas.Core.Domain;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.ApprenticeshipDetails;
+using Sfa.Das.Sas.Shared.Components.ViewModels.ApprenticeshipDetails;
 
 namespace Sfa.Das.Sas.Shared.Components.Mapping
 {

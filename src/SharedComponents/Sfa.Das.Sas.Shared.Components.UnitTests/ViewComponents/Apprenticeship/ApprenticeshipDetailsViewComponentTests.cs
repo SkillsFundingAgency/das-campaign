@@ -6,8 +6,8 @@ using NUnit.Framework;
 using Sfa.Das.Sas.ApplicationServices.Models;
 using Sfa.Das.Sas.Shared.Components.Orchestrators;
 using Sfa.Das.Sas.Shared.Components.UnitTests.ViewComponents.Fat;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.ApprenticeshipDetails;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
+using Sfa.Das.Sas.Shared.Components.ViewModels.ApprenticeshipDetails;
 
 namespace Sfa.Das.Sas.Shared.Components.UnitTests.ViewComponents.Apprenticeship
 {

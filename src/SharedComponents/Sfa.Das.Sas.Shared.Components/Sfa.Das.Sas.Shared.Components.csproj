@@ -39,14 +39,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Shared\Components\TrainingProvider\SearchResults\NorthernIreland.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\Shared\Components\TrainingProvider\SearchResults\Scotland.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Views\Shared\Components\TrainingProvider\SearchResults\Wales.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
+    <Folder Include="ViewComponents" />
+    <Folder Include="Views\Shared\Components\Basket" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\Basket\Header\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\Basket\BasketIcon\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\Basket\Details\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\Basket\Details\_apprenticeshipItem.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\Basket\Details\_trainingProviderItem.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\Basket\Save\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\ApprenticeshipDetails\Framework.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\ApprenticeshipDetails\Standard.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\FatSearch\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\FatSearch\Inline.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\FatSearchFilter\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\FatSearchResults\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\FatSearchResults\_searchResultsItem.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\FatSearchResults\_searchResultsSort.cshtml" />
   </ItemGroup>
 </Project>

@@ -10,7 +10,6 @@ using Sfa.Das.Sas.Core.Configuration;
 using Sfa.Das.Sas.Shared.Components.Configuration;
 using Sfa.Das.Sas.Shared.Components.Mapping;
 using Sfa.Das.Sas.Shared.Components.Orchestrators;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
 
 namespace Sfa.Das.Sas.Shared.Components.UnitTests.Orchestrator

@@ -18,6 +18,7 @@ using Sfa.Das.Sas.ApplicationServices.Models;
 using Sfa.Das.Sas.ApplicationServices.Queries;
 using Sfa.Das.Sas.Shared.Basket.Models;
 using Sfa.Das.Sas.Shared.Components.Orchestrators;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Search;
 
 namespace Sfa.Das.Sas.Shared.Components.UnitTests.Controller
 {
@@ -274,7 +275,7 @@ namespace Sfa.Das.Sas.Shared.Components.UnitTests.Controller
         private static SaveBasketFromProviderSearchViewModel GetProviderResultsRequestModel() => new SaveBasketFromProviderSearchViewModel
         {
             ItemId = $"{UKPRN.ToString()},{LOCATION_ID_TO_ADD}",
-            SearchQuery = new Components.ViewComponents.TrainingProvider.Search.TrainingProviderSearchViewModel
+            SearchQuery = new TrainingProviderSearchViewModel
             {
                 ApprenticeshipId = APPRENTICESHIP_ID,
                 IsLevyPayer = true,

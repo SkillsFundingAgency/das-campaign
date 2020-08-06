@@ -6,6 +6,7 @@ using Sfa.Das.Sas.ApplicationServices.Models;
 using Sfa.Das.Sas.ApplicationServices.Responses;
 using Sfa.Das.Sas.Shared.Components.Mapping;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.ClosestLocations;
 
 namespace Sfa.Das.Sas.Shared.Components.UnitTests.Mapping.TrainingProvider
 {

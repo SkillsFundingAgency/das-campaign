@@ -3,6 +3,7 @@ using Sfa.Das.Sas.Core.Domain.Model;
 using Sfa.Das.Sas.Shared.Components.Extensions.Domain;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
 using System.Linq;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.ClosestLocations;
 
 namespace Sfa.Das.Sas.Shared.Components.Mapping
 {

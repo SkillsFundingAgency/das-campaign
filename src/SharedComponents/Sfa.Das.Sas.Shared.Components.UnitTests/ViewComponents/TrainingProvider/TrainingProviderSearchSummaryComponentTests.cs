@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using Moq;
 using Sfa.Das.Sas.ApplicationServices.Responses;
 using Sfa.Das.Sas.Shared.Components.Orchestrators;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.ApprenticeshipDetails;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.Search;
 using Sfa.Das.Sas.Shared.Components.ViewComponents.TrainingProvider.SearchSummary;
 using Sfa.Das.Sas.Shared.Components.ViewModels;
+using Sfa.Das.Sas.Shared.Components.ViewModels.ApprenticeshipDetails;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Search;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.SearchResults;
 
 namespace Sfa.Das.Sas.Shared.Components.UnitTests.ViewComponents.Fat
 {

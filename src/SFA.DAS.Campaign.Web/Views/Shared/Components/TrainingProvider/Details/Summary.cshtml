@@ -1,0 +1,85 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Details.TrainingProviderDetailsViewModel
+@inject ICssViewModel CssViewModel
+
+
+<dl class="@CssViewModel.List das-provider__training-information-definition-list__results">
+    @if (Model.CurrentlyNotStartingNewApprentices == true)
+    {  
+        <div class="@CssViewModel.WarningText">
+            <span class="@(CssViewModel.WarningText)__icon" aria-hidden="true"></span>
+            <strong class="@(CssViewModel.WarningText)__text">
+                <span class="@(CssViewModel.WarningText)__assistive">Warning</span>
+                This provider is not currently accepting new starters
+            </strong>
+        </div>
+    }
+    <dt>Apprenticeship:</dt>
+    <dd>@Model.Apprenticeship.Title</dd>
+    <dt>Level:</dt>
+    <dd>@Model.Apprenticeship.Level (equivalent to @Model.Apprenticeship.EquivalentText)</dd>
+
+    <dt>Training options:</dt>
+    <dd>
+        <ul class="@CssViewModel.List @CssViewModel.ListBullet">
+            <li><span class="@GetTrainingOptionsStatusClass("dayrelease",Model.DeliveryModes)">day release</span></li>
+            <li><span class="@GetTrainingOptionsStatusClass("blockrelease",Model.DeliveryModes)">block release</span></li>
+            <li><span class="@GetTrainingOptionsStatusClass("100percentemployer",Model.DeliveryModes)">at your location</span></li>
+        </ul>
+        <details class="@CssViewModel.Details">
+            <summary class="@CssViewModel.DetailsSummary">
+                <span class="@CssViewModel.DetailsSummaryText @CssViewModel.Link">Explain training options</span>
+            </summary>
+            <div class="@CssViewModel.DetailsText">
+                <p><span class="das-provider__copy--black">Day release:</span> for example one day a week at the training provider's location.</p>
+                <p><span class="das-provider__copy--black">Block release:</span> for example 3-4 weeks at the training provider's location.</p>
+                <p><span class="das-provider__copy--black">At your location:</span> the training provider comes to your workplace.</p>
+            </div>
+        </details>
+    </dd>
+
+    <dt>Achievement rates:</dt>
+    <dd>
+        <div>Acheivement average: <span class="das-provider__copy--black">@Model.AchievementRate%</span></div>
+        <progress class="das-provider__progress-bar" max="100" value="@Model.AchievementRate"></progress>
+
+        <div>National average: <span class="das-provider__copy--black">@Model.NationalAchievementRate%</span></div>
+        <progress class="das-provider__progress-bar" max="100" value="@Model.NationalAchievementRate"></progress>
+
+        <details class="@CssViewModel.Details">
+            <summary class="@CssViewModel.DetailsSummary">
+                <span class="@CssViewModel.DetailsSummaryText @CssViewModel.Link">Explain achievement rates</span>
+            </summary>
+            <div class="@CssViewModel.DetailsText">
+                <p>Percentage of apprentices who successfully achieved a similar apprenticeship with this training provider.</p>
+                <p>Based on the latest data for 50 apprentices.</p>
+                <p>Source: <a href="https://www.gov.uk/government/collections/sfa-national-success-rates-tables" target="_blank" rel="external">Skills Funding Agency apprenticeship achievement rates</a></p>
+            </div>
+        </details>
+    </dd>
+</dl>
+
+
+@functions
+{
+
+    string GetTrainingOptionsStatusClass(string trainingOption, IList<string> options)
+    {
+        var cssClass = "das-search-results__training-options";
+        var classSuffix = string.Empty;
+
+        if (options.Contains(trainingOption, StringComparer.OrdinalIgnoreCase))
+        {
+            classSuffix = "--tick";
+        }
+        else
+        {
+            classSuffix = "--cross";
+        }
+
+        return $"{cssClass}{classSuffix}";
+    }
+
+
+}

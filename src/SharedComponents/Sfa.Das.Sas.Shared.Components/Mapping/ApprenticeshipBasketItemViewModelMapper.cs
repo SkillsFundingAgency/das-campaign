@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Sfa.Das.Sas.ApplicationServices.Models;
-using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat;
 using Sfa.Das.Sas.Shared.Components.ViewModels.Apprenticeship;
+using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.SearchResults;
 
 namespace Sfa.Das.Sas.Shared.Components.Mapping
 {
