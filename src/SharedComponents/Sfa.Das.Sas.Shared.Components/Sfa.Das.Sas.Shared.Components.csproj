@@ -39,11 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewComponents\Basket\Save\" />
-    <Folder Include="Views\Shared\Components\TrainingProvider\NewFolder\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Views\Shared\Components\TrainingProvider\SearchResults\NorthernIreland.cshtml">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
