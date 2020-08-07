@@ -60,7 +60,15 @@
 
         <partial name="./Components/_Header-apprentice" />
 
-        <partial name="_CovidBanner" />
+        <div class="banner banner--covid visually-hidden" style="margin-top: 129px;" data-module="alertBanner" data-cookieName="covid19" >
+            <div class="banner__inner-wrap">
+                <p class="banner__content">Coronavirus (COVID-19): <span style="font-weight: normal;">to find out about changes to apprenticeships and ways of working,
+                    <a href="https://help.apprenticeships.education.gov.uk/hc/en-gb/sections/360003798540-Apprentice" target="_blank" class="link">read our guidance for apprentices<span class="visually-hidden"> (Opens in a new window)</span></a>. If you're an apprentice who's been made redundant or at risk of redundancy, use the <a href="https://engage.apprenticeships.gov.uk/redundancy-apprentice.html" target="_blank" class="link">redundancy support service for apprentices<span class="visually-hidden"> (Opens in a new window)</span></a>.</span>
+                </p>
+                <a href="#" class="link banner__close" data-alert-close="true" >Hide message</a>
+            </div>
+        </div>
+        @* duplicate HTML in Views > Home > Index *@
         
         @RenderBody()
 
