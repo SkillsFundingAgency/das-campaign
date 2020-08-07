@@ -6,13 +6,19 @@
                 <strong>As an employer, is your pay bill more than £3 million per year?</strong><br>
                 If you’re receiving a transfer of apprenticeship funds from another employer, please choose ‘Yes’.
             </p>
+            <p>Depending on your answer, we’ll show you relevant information about government funding.</p>
+            
+            <div class="form-validation-summary" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
+                Please select an option before continuing
+            </div>
+            
             <div class="form-group">
                 <fieldset class="fieldset">
                     <legend class="vh">Your pay bill</legend>
 
                     <div class="radios">
                         <div class="radios__item">
-                            <input id="levyPayerYes" asp-for="LevyStatus" value="Levy" type="radio" class="radios__input"/>
+                            <input id="levyPayerYes" asp-for="LevyStatus" value="Levy" type="radio" class="radios__input" />
                             <label class="label radios__label" for="levyPayerYes">Yes</label>
                         </div>
                         <div class="radios__item">
