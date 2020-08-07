@@ -22,20 +22,5 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
 
             return View("~/Views/EmployerInform/FundingAnApprenticeshipLevyPayers.cshtml", vm);
         }
-        
-        //
-        // [HttpPost]
-        // public IActionResult Index(LevyOptionViewModel vm)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return View("~/Views/EmployerInform/FundingAnApprenticeship.cshtml", vm);
-        //     }
-        //     _sessionService.Set(_sessionService.LevyOptionViewModelKey, vm);
-        //     
-        //     
-        //
-        //     return RedirectToAction("Index", "FundingAnApprenticeship");
-        // }
     }
 }
