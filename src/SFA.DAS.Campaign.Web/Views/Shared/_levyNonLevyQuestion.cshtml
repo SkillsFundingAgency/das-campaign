@@ -7,11 +7,11 @@
                 If you’re receiving a transfer of apprenticeship funds from another employer, please choose ‘Yes’.
             </p>
             <p>Depending on your answer, we’ll show you relevant information about government funding.</p>
-            
+
             <div class="form-validation-summary" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
                 Please select an option before continuing
             </div>
-            
+
             <div class="form-group">
                 <fieldset class="fieldset">
                     <legend class="vh">Your pay bill</legend>
@@ -38,3 +38,11 @@
         </form>
     </div>
 </div>
+
+<script>
+    window.onload = function() {//disable js form val
+        jQuery('#how-they-work-levy-question').find('form').validate({
+            onsubmit : false
+        });
+    };
+</script>
