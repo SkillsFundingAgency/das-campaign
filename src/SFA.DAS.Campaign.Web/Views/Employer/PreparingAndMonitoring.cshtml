@@ -58,11 +58,6 @@
 
 <partial name="./components/Cta/_Get-free-advice" />
 
-<ul class="pagination pagination--employer">
-    <li class="pagination__list-item"><a class="pagination__link pagination__link--previous" asp-controller="Employer" asp-action="HireAnApprentice" id="link-pagination-employer-4"> Hire an apprentice</a> </li>
-    <li class="pagination__list-item"><a class="pagination__link pagination__link--next" asp-controller="Employer" asp-action="AssessmentAndQualification" id="link-pagination-employer-6"> Assessment and certification</a></li>
-</ul>
-
 @{
 
     IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">

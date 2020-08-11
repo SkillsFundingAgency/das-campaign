@@ -58,19 +58,6 @@
     Minimum Wage (relevant to their age). Explore our guidance on <a asp-action="Index" asp-controller="FundingAnApprenticeship">apprenticeship costs and funding</a> for more details.
 </p>
 
-<ul class="pagination pagination--employer">
-    <li class="pagination__list-item">
-        <a class="pagination__link pagination__link--previous" asp-action="Index" asp-controller="HiringAnApprentice">
-            Hire an apprentice
-        </a>
-    </li>
-    <li class="pagination__list-item">
-        <a class="pagination__link pagination__link--next" asp-action="Index" asp-controller="FundingAnApprenticeship">
-            Funding an apprenticeship
-        </a>
-    </li>
-</ul>
-
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork") })
 }
