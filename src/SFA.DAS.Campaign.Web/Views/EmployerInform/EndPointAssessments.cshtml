@@ -77,15 +77,6 @@
     assessment organisation will request this certificate on your behalf.
 </p>
 
-<ul class="pagination pagination--employer">
-    <li class="pagination__list-item pagination__list-item--previous">
-        <a class="pagination__link pagination__link--previous" asp-action="Index" asp-controller="TrainingYourApprentice">Training your apprentice</a>
-    </li>
-    <li class="pagination__list-item pagination__list-item--next">
-        <a class="pagination__link pagination__link--next" asp-action="TheRightApprenticeship" asp-controller="Employer">Choosing the right apprenticeship</a>
-    </li>
-</ul>
-
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() {Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork")})
 }

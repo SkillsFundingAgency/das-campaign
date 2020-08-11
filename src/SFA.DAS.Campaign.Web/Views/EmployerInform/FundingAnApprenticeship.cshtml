@@ -186,15 +186,6 @@ else
 <p>This page details the costs and funding rules for apprenticeships in England. You can find information about apprenticeships in <a href="https://www.apprenticeships.scot/" target="_blank" rel="external">Scotland<span class="visually-hidden"> (Opens in a new window)</span></a>, <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external">Northern Ireland<span class="visually-hidden"> (Opens in a new window)</span></a> or <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external">Wales<span class="visually-hidden"> (Opens in a new window)</span></a> on the relevant apprenticeships website.</p>
 <p>If you answer the following question before you explore this page, we'll be able to tailor the information to your organisation.</p>
 
-<ul class="pagination pagination--employer">
-    <li class="pagination__list-item pagination__list-item--previous">
-        <a class="pagination__link pagination__link--previous" asp-action="Index" asp-controller="HiringAnApprentice">Hiring an apprentice</a>
-    </li>
-    <li class="pagination__list-item pagination__list-item--next">
-        <a class="pagination__link pagination__link--next" asp-action="Index" asp-controller="TrainingYourApprentice">Training your apprentice</a>
-    </li>
-</ul>
-
 @section HeroHeading {
     @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork") })
 }
