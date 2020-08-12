@@ -32,7 +32,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
             var result = controller.Index(levyOptionViewModel);
             
             result.Should().BeOfType<RedirectToActionResult>();
-            result.As<RedirectToActionResult>().ControllerName.Should().Be("FundingAnApprenticeship");
+            result.As<RedirectToActionResult>().ControllerName.Should().Be("FundingAnApprenticeshipLevy");
             result.As<RedirectToActionResult>().ActionName.Should().Be("Index");
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Web.Helpers;
 
 namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
@@ -18,7 +19,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
         {
             var vm = 
                 _sessionService.Get<LevyOptionViewModel>(_sessionService.LevyOptionViewModelKey) 
-                ?? new LevyOptionViewModel() {LevyStatus = LevyStatus.NonLevy};
+                ?? new LevyOptionViewModel();
 
             return View("~/Views/EmployerInform/FundingAnApprenticeship.cshtml", vm);
         }
@@ -26,11 +27,13 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
         [HttpPost]
         public IActionResult Index(LevyOptionViewModel vm)
         {
-            vm.OptionChosenByUser = true;
-
+            if (!ModelState.IsValid)
+            {
+                return View("~/Views/EmployerInform/FundingAnApprenticeship.cshtml", vm);
+            }
             _sessionService.Set(_sessionService.LevyOptionViewModelKey, vm);
 
-            return RedirectToAction("Index", "FundingAnApprenticeship");
+            return RedirectToAction("Index", vm.LevyStatus == LevyStatus.Levy ? "FundingAnApprenticeshipLevy" : "FundingAnApprenticeshipNonLevy");
         }
     }
 }

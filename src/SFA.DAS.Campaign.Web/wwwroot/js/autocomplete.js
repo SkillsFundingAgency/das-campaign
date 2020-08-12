@@ -33,6 +33,6 @@ var configUrl = $('body').data('fat-api');
             displayMenu: 'overlay',
             showNoOptionsFound: false,
             source: getSuggestions,
-            placeholder: "Apprenticeship name or job role..."
+            placeholder: "Job role or keyword..."
         });
     }

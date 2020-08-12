@@ -8,85 +8,35 @@
     ViewBag.PageID = "apprenticeship-whats-an-apprenticeship";
     ViewBag.HeroImageAltText = "Apprentice in the catering industry";
     ViewBag.Section = "apprentice";
-    ViewBag.MetaTitle = "Everything you need to know about apprenticeships and how to become one";
+    ViewBag.MetaTitle = "What is an apprenticeship?";
     ViewBag.MetaDesc = "An apprenticeship gives you hands-on experience, a salary and the opportunity to train while you work as an apprentice. ";
     ViewBag.PageUrl = "/apprentice/what-is-an-apprenticeship";
     Layout = "_LayoutContentSidebar";
     ViewBag.PageNavIndex = 1;
 }
 
-<p>
-    It's a real job, with hands-on experience, a salary
-    and the chance to train while you work. You're treated just like all the other employees, with a contract of employment and holiday leave.
 
-</p>
-<p>
-    If you're 16 or over, you can become an apprentice as long as
-    you spend at least 50% of your working hours in England - for the duration of the
-    apprenticeship and you are not in full-time education.
-
-<p>
-    If you live in
-    <a href="https://www.apprenticeships.scot/" target="_blank" rel="external" id="link-scotland">Scotland<span class="visually-hidden"> (Opens in a new window)</span></a>,
-    <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external" id="link-wales">Wales<span class="visually-hidden"> (Opens in a new window)</span></a>, or <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external" id="link-northern-ireland">Northern Ireland<span class="visually-hidden"> (Opens in a new window)</span></a>, check out your apprenticeship options.
-</p>
-<p>
-    When you're an apprentice:
-</p>
+<p>An apprenticeship is a real job where you learn, gain experience and get paid.</p>
+<p>You're an employee with a contract of employment and holiday leave. By the end of an apprenticeship, you'll have the right skills and knowledge needed for your chosen career.</p>
+<p>It can take between one and six years to complete an apprenticeship depending on which one you choose, what level it is and your previous experience. It's funded from contributions made by the government and your employer.</p>
+<p>To become an apprentice, you must:</p>
 <ul class="list list--bullet list--bullet-apprentice">
-    <li>
-        you get paid and train at the same time, with at least
-        20% of your time spent in off the job training, often at a college,
-        university or with a training provider
-    </li>
-    <li>
-        you train to be fully competent in your chosen occupation
-    </li>
-    <li>
-        you're on a career path - with lots of future potential for you
-    </li>
-
+    <li>be 16 or over</li>
+    <li>not already be in full time education</li>
+    <li>spend at least 50% of your working hours in England</li>
 </ul>
 
+<p>If you don't live in England, check out apprenticeship options in <a href="https://www.apprenticeships.scot/" target="_blank" rel="external" id="link-scotland">Scotland<span class="visually-hidden"> (Opens in a new window)</span></a>, <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external" id="link-wales">Wales<span class="visually-hidden"> (Opens in a new window)</span></a>, or <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external" id="link-northern-ireland">Northern Ireland<span class="visually-hidden"> (Opens in a new window)</span></a>.</p>
+<p>As an apprentice you'll:</p>
+<ul class="list list--bullet list--bullet-apprentice">
+    <li>learn and gain hands-on experience in a real job</li>
+    <li>get paid </li>
+    <li>get training for a specific job role </li>
+    <li>be on a career path w§ith lots of future potential</li>
+</ul>
+<p>You can find an apprenticeship whether you're starting your career, want a change or are returning to work.</p>
+<p>If you think you need more skills and work experience before starting an apprenticeship, you can <a href="https://www.gov.uk/find-traineeship" target="_blank" rel="external" id="link-traineeship">find a traineeship<span class="visually-hidden"> (Opens in a new window)</span></a> instead.</p>
 
-
-<p>
-    Your apprenticeship can take between one and six years to complete, depending on which
-    apprenticeship you choose, what level it's at, and your previous experience.
-</p><p>
-    Different apprenticeships are available all over England, at
-    companies large and small, in a wide range of industries and
-    organisations. From local organisations to large national brands.
-</p><p>
-    You get valuable hands-on experience working whilst you learn, which helps you progress in your working life.
-
-</p><p>
-    Completing your apprenticeship means you've earned and learned. Given your training is
-    funded by contributions from the government and your employer, and you receive a regular salary,
-    apprenticeships are a great option for getting on the job ladder or supercharging your career.
-
-
-</p>
-<h2 class="heading-m" id="h1">What are the different types of apprenticeships?</h2>
-
-<p>
-    There are hundreds of different apprenticeships to choose from.
-    Whether you're at the start of your career, want to change career
-    direction, or if you're returning to work after a break.
-
-
-<p>
-    All apprenticeships make sure you're 'job ready' for the role you have trained for.
-</p>
-
-<p>
-    Apprentices earn a salary right from day one of their employment and training.
-</p>
-
-<p>
-    If you think you need better skills and need more work experience so that you're ready to apply for your chosen apprenticeship - you could consider
-    <a href="https://www.gov.uk/find-traineeship" target="_blank" rel="external" id="link-traineeship">doing a traineeship<span class="visually-hidden"> (Opens in a new window)</span></a>.
-</p>
 
 <partial name="./components/Cta/_Contact-phoneNumber-apprentice" />
 
@@ -98,14 +48,10 @@
     </li>
 </ul>
 
-@{
-    IHtmlContent HeroHeadingContent() => Helper.Body(@<ul class="list list--arrows">
-        <li><a href="#h1" class="hero__link">What are the different types of apprenticeships?</a> </li>
-    </ul>);
-}
+
 
 @section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Apprentice, Content = HeroHeadingContent() })
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Apprentice })
 }
 
 @section pageFooter {

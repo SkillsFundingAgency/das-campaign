@@ -1,8 +1,8 @@
 ﻿@using SFA.DAS.Campaign.Web.ViewComponents
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @{
-    ViewBag.Title = "Application";
-    ViewBag.MetaTitle = "How to apply for an apprenticeship and what's needed from you";
+    ViewBag.Title = "Application process";
+    ViewBag.MetaTitle = "Application process";
     ViewBag.PageID = "apprentice-application";
     ViewBag.HeroImageAltText = "Apprentice in the digital industry";
     ViewBag.Section = "apprentice";
@@ -12,63 +12,23 @@
     ViewBag.PageNavIndex = 3;
 }
 
-<h2 class="heading-m">So, you've found the apprenticeship you'd like to apply for?</h2>
-
-<p>Once you've searched and found the right apprenticeship for you, you can get on with the application process.</p>
-
-<p>
-    If you haven't found your ideal apprenticeship yet, you can <a asp-controller="Apprentice" asp-action="FindAnApprenticeship" id="link-faa">
-        search for the latest apprenticeship vacancies
-    </a> by job title or employer, or just browse to see what's available in your area.
-</p>
-<p>
-    You can then manage your applications and even get alerts about new apprenticeships.
-</p>
-
-<h3 class="heading-s">Apply for the job and send the application to the employer</h3>
-<p>
-    <a href="https://nationalcareersservice.direct.gov.uk/get-a-job/cv-sections" target="_blank" rel="external" id="link-ncs">Get help<span class="visually-hidden"> (Opens in a new window)</span></a> with writing applications, creating a good CV and covering letter.
-</p>
-
-<h3 class="heading-s">Wait for the applications to be shortlisted</h3>
-<p>
-    If you haven't applied for many jobs before, this can be the nail-biting bit, where you're waiting to hear back from the employer.
-    Sometimes it might help to
-    check when the closing date was for applications - this should give you a clue as to when
-    they'll be in touch.
-</p>
-<p>
-    It's a good idea to apply for more than one apprenticeship vacancy at one time. Try and get a number of applications to potential employers; that way you're increasing your options and not waiting for a response from one employer.
-</p>
-<p>
-    If you don't get an interview, don't take it personally.  It's usual to apply for a number of vacancies before
-    you find the right apprenticeship for you.  This happens to everyone and it's part of the normal process.
-</p>
 
 
-<h3 class="heading-s">
-    If you're on the shortlist, you'll be invited
-    for an interview with the employer
-</h3>
-<p>
-    This first interview could be an online chat or video call,
-    rather than a face-to-face one. Remember to brush up your
-    research into the organisation for each stage of the interview
-    process.
-</p>
-
-<h3 class="heading-s">Training providers</h3>
-<p>
-    Your employer will find a training provider that is best suited to deliver the training for your apprenticeship.
-    Some training providers also offer support to help you apply for an apprenticeship.
-</p>
+<p>Once you find the right apprenticeship, you can start the application process. You'll need to create a CV, make an application and maybe write a cover letter. If you need help, you can find out <a href="https://nationalcareersservice.direct.gov.uk/get-a-job/cv-sections" target="_blank" rel="external">how to write a CV<span class="visually-hidden"> (Opens in a new window)</span></a>.</p>
 
 <p>
-    Your teacher or careers adviser can help you find out about training providers and how to get in touch.
-    There are also other local organisations that can help you find out more, like a job centre or other community programmes.
+    If you haven't found the right apprenticeship yet, search for one now using <a asp-controller="Apprentice" asp-action="FindAnApprenticeship" id="link-faa">find an apprenticeship</a>.
 </p>
 
-<partial name="./components/Cta/_Contact-phoneNumber-apprentice" />
+<h2 class="heading-m">While you wait</h2>
+
+<p>It's normal to be nervous when you're waiting to hear back from an employer. While you wait, find out the closing date for the application - this may give you a clue as to when they'll be in touch.</p>
+
+<p>It's also a good idea to apply for a few apprenticeships at a time. That way you're increasing your chances and not waiting for a response from one employer.</p>
+
+<p>It usually takes a few applications to find the right apprenticeship. So if you don’t hear back or get an interview don’t take it personally - it’s normal and happens to everyone. If you do get an interview, research the organisation and each stage of the interview process. It could be a phone call or video chat, rather than in person.</p>
+
+<partial name="./components/Cta/_Contact-for-free-advice" />
 
 <ul class="pagination pagination--apprentice">
     <li class="pagination__list-item">
