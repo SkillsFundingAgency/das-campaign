@@ -35,10 +35,8 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
-using Microsoft.AspNetCore.DataProtection;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
-using SFA.DAS.Campaign.Web.Infrastructure;
 using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Web
