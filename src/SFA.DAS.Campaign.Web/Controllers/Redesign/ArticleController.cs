@@ -7,6 +7,8 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [HttpGet("/{hub}/{article}")]
         public IActionResult Index(string hub, string article)
         {
+            
+            
             return View($"~/Views/Articles/{hub}/{article}.cshtml");
         }
     }

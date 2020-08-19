@@ -7,19 +7,19 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [HttpGet("/apprentices/are-apprenticeships-right-for-me")]
         public IActionResult AreApprenticeshipsRightForMe()
         {
-            return View("~/Views/LandingPages/AreApprenticeshipsRightForMe.cshtml");
+            return View("~/Views/LandingPages/Apprentices/AreApprenticeshipsRightForMe.cshtml");
         }
         
         [HttpGet("/apprentices/how-do-they-work")]
         public IActionResult HowDoTheyWork()
         {
-            return View("~/Views/LandingPages/HowDoTheyWork.cshtml");
+            return View("~/Views/LandingPages/Apprentices/HowDoTheyWork.cshtml");
         }
         
         [HttpGet("/apprentices/getting-started")]
         public IActionResult GettingStarted()
         {
-            return View("~/Views/LandingPages/GettingStarted.cshtml");
+            return View("~/Views/LandingPages/Apprentices/GettingStarted.cshtml");
         }
     }
 }
