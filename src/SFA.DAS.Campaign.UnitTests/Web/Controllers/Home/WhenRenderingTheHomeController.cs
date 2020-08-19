@@ -6,19 +6,19 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.Home
 {
     public class WhenRenderingTheHomeController
     {
-        private HomeController _homeController;
+        private OldHomeController _oldHomeController;
 
         [SetUp]
         public void Arrange()
         {
-            _homeController = new HomeController();
+            _oldHomeController = new OldHomeController();
         }
 
         [Test]
         public void Then_The_Correct_View_Is_Displayed()
         {
             //Act
-            var actual = _homeController.Index();
+            var actual = _oldHomeController.Index();
 
             //Assert
             Assert.IsNotNull(actual);

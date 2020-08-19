@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
-    public class HomeController : Controller
+    public class OldHomeController : Controller
     {
         [HttpGet]
         public IActionResult Index()

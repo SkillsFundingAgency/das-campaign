@@ -1,0 +1,48 @@
+@{
+    Layout = "Redesign_Layout";
+}
+
+<div style="border: green 2px solid">
+    <h2>Hub Layout</h2>
+    
+    <ul>
+        <li>
+            <a href="/apprentices/are-apprenticeships-right-for-me">Are apprenticeships right for me?</a>
+        </li>
+        <li>
+            <a href="/apprentices/how-do-they-work">How do they work?</a>
+        </li>
+        <li>
+            <a href="/apprentices/getting-started">Getting started</a>
+        </li>
+        <li>
+            <a href="/apprentice/find-an-apprenticeship">Finding an apprenticeship</a>
+        </li>
+    </ul>
+
+    <div class="breadcrumbs">
+        <a href="/">Home</a> <text>&gt;</text>
+        @if (ViewBag.LandingPageSlug is null)
+        {
+            <span>Apprentices</span>
+        }
+        else
+        {
+            <a href="/apprentices/">Apprentices</a><text> &gt; </text>
+            @if (ViewBag.ArticlePageSlug is null)
+            {
+                <span>@ViewBag.LandingPageTitle</span>    
+            }
+            else
+            {
+                <a href="/apprentices/@ViewBag.LandingPageSlug">@ViewBag.LandingPageTitle</a><text> &gt; </text>
+                <span>@ViewBag.ArticlePageTitle</span>
+            }
+        }
+    </div>
+    
+    <h1>@ViewBag.PageTitle</h1>
+    <p>@ViewBag.PageSummary</p>
+
+    @RenderBody()
+</div>
