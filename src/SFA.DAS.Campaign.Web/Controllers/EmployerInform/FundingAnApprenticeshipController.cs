@@ -4,7 +4,7 @@ using SFA.DAS.Campaign.Web.Helpers;
 
 namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
 {
-    [Route("employer/funding-an-apprenticeship")]
+    [Route("employers/funding-an-apprenticeship")]
     public class FundingAnApprenticeshipController : Controller
     {
         private readonly ISessionService _sessionService;
@@ -33,7 +33,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
             }
             _sessionService.Set(_sessionService.LevyOptionViewModelKey, vm);
 
-            return RedirectToAction("Index", vm.LevyStatus == LevyStatus.Levy ? "FundingAnApprenticeshipLevy" : "FundingAnApprenticeshipNonLevy");
+            return Redirect(vm.LevyStatus == LevyStatus.Levy ? "/employers/funding-an-apprenticeship-levy-payers" : "/employers/funding-an-apprenticeship-non-levy");
         }
     }
 }

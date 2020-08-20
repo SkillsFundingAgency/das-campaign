@@ -1,46 +1,44 @@
-﻿@using SFA.DAS.Campaign.Web.ViewComponents
-@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
-@using SFA.DAS.Campaign.Web.Controllers.EmployerInform
-@model SFA.DAS.Campaign.Web.Controllers.EmployerInform.LevyOptionViewModel
 @{
-    ViewBag.Title = "Funding an apprenticeship for levy payers";
-    ViewBag.MetaTitle = "Funding an apprenticeship for levy payers";
-    ViewBag.HeroImageAltText = "Transport and logistics apprentice";
-    ViewBag.PageID = "employer-what-are-the-costs-to-me";
-    ViewBag.MetaDesc = "How much does it cost to hire an apprentice? Learn about apprenticeship costs for employers, including apprenticeship funding you could get from the government.";
-    ViewBag.PageUrl = "/employer/funding-an-apprenticeship-levy-payers";
-    ViewBag.Section = "employer";
-    Layout = "_Layout-campaign-employer-inform";
+    ViewBag.Title="Apprenticeship costs and funding rules";
+    Layout="Redesign_Layout_EmployersHub";
+    ViewBag.PageTitle="Apprenticeship costs and funding rules";
+    ViewBag.PageSummary="Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.";
+    ViewBag.LandingPageSlug="how-do-they-work";
+    ViewBag.LandingPageTitle="How do they work?";
+    ViewBag.ArticlePageSlug="funding-an-apprenticeship-non-levy";
+    ViewBag.ArticlePageTitle="Apprenticeship costs and funding rules";
 }
 
-<h1 class="heading-l">Using your apprenticeship levy</h1>
-<p>As an employer with a pay bill of more than £3 million, you’re required to pay the apprenticeship levy. You can manage funds using the apprenticeship service and spend it on training and assessing your apprentices. </p>
-<p>The government will apply a 10% top up to the funds you have in your account. </p>
-<p>If you don’t have enough funds, you just pay 5% of the outstanding balance and the government will pay the rest. This is up to the funding band maximum allocated to each specific apprenticeship.</p>
-<p>For apprentices that started before 1 April 2019, you need to contribute 10%.</p>
-<p>If you exceed the funding band maximum, you’ll need to pay all the additional costs.</p>
-<p>If you don’t already have an account, find out <a href="https://www.gov.uk/guidance/manage-apprenticeship-funds" target="_blank" rel="external">how to register and use the apprenticeship service as an employer<span class="visually-hidden"> (Opens in a new window)</span></a>.</p>
 
-<h1 class="heading-l">Find apprenticeship training</h1>
+<h2 class="heading-m">HOW MUCH IT COSTS</h2>
+<p>As an employer that doesn’t pay the apprenticeship levy, you pay just 5% towards the cost of training and assessing an apprentice. </p>
+<p>The government will pay the rest up to the funding band maximum.</p>
+<p>You’ll pay the training provider directly and agree on a payment schedule.</p>
+<p>If you employ fewer than 50 employees then the government will pay 100% of the costs of apprenticeship training.</p>
+<p>If you exceed the funding band maximum, you’ll need to pay all the additional costs.</p>
+<p>If your apprentice started before 1 April 2019, you pay 10% towards the cost of training and assessing your apprentice and the government pays the rest. This rate continues until your apprentice completes their training.</p>
+
+<h2 class="heading-m">FIND APPRENTICESHIP TRAINING</h2>
 <p>Apprenticeships vary by duration, level and type of occupation. </p>
 <p>Use <a href="/employer/find-apprenticeship-training">find apprenticeship training</a> to see different apprenticeships, their funding band maximums and available training providers.</p>
 
-<h1 class="heading-l">INCENTIVE PAYMENTS FOR HIRING A NEW APPRENTICE</h1>
-<p>To help businesses offer new apprenticeships, <a href="https://engage.apprenticeships.gov.uk/incentives.html" target="_blank" rel="external">employers will be able to claim an incentive payment for hiring a new apprentice between 1 August 2020 and 31 January 2021<span class="visually-hidden"> (Opens in a new window)</span></a>.</p>
+<h2 class="heading-m">INCENTIVE PAYMENTS FOR HIRING A NEW APPRENTICE</h2>
+<p>To help businesses offer new apprenticeships, employers will be able to claim an incentive payment for hiring a new apprentice between 1 August 2020 and 31 January 2021.</p>
 <p>For every apprentice that is a new employee to your business, you will get up to £2,000 if they are aged 16 to 24 and up to £1,500 if they are 25 or over.</p>
-<p>The incentive payment for hiring a new apprentice is designed to support employers to find the skills they need to help recover from the economic impact of Covid-19 whilst creating new jobs.</p>
+<p>The <a href="https://engage.apprenticeships.gov.uk/incentives.html" target="_blank" rel="external">incentive payment for hiring a new apprentice<span class="visually-hidden"> (Opens in a new window)</span></a> is designed to support employers to find the skills they need to help recover from the economic impact of Covid-19 whilst creating new jobs.</p>
 <p>Employers can also receive an additional payment of £1,000 if the apprentice starts the apprenticeship aged:</p>
 <ul class="list list--bullet list--bullet-employer">
     <li>16 to 18</li>
     <li>19 to 24 years old and has an Education, Health and Care (EHC) plan provided by their local authority or has been in the care of their local authority</li>
 </ul>
+
 <h2 class="heading-m">HIRE AN APPRENTICE WHO HAS BEEN MADE REDUNDANT</h2>
 <p>You can also use a new government service to <a href="https://engage.apprenticeships.gov.uk/redundancy-employer" target="_blank" rel="external">help you hire apprentices who have been made redundant<span class="visually-hidden"> (Opens in a new window)</span></a>.</p>
 <p>Many of these apprentices may already have the skills and knowledge you need. Hiring a new apprentice in this way could mean you have a work-ready apprentice who can quickly add value to your business, shortening the time you’ll see a return on your investment.</p>
 <p>It also means you are supporting an apprentice to complete their training and achieve their apprenticeship.</p>
 <p>If you hire an apprentice that has been made redundant, you can <a href="https://help.apprenticeships.education.gov.uk/hc/en-gb/articles/360015391139-Incentive-payments-for-hiring-a-new-apprentice-" target="_blank" rel="external">apply for incentive payments for hiring a new apprentice<span class="visually-hidden"> (Opens in a new window)</span></a>.</p>
 
-<h1 class="heading-l">PAYING YOUR APPRENTICE</h1>
+<h2 class="heading-m">PAYING YOUR APPRENTICE</h2>
 <p>You’re responsible for paying your apprentice for their normal working hours and any training they do as part of the apprenticeship.</p>
 <p>You must pay them at least the National Minimum Wage rate depending on their age and the year of apprenticeship training they’re in. </p>
 <p>The rates from April 2020 are:</p>
@@ -72,23 +70,14 @@
     </tbody>
 </table>
 
-<h1 class="heading-l">Transfer funds to another employer</h1>
-<p>If you have unused apprenticeship funds, you can transfer them to another employer using the apprenticeship service. This will support them to pay for apprenticeship training and assessment.</p>
-<p>You can find employers who want to receive a transfer by:</p>
+<h2 class="heading-m">RECEIVING TRANSFER OF LEVY FUNDS</h2>
+<p>Employers who pay the apprenticeship levy can choose to transfer any unused funds to another employer, using the apprenticeship service.</p>
+<p>This would help them to pay for apprenticeship training and assessment.</p>
+<p>You can find employers who may want to transfer funds by:</p>
 <ul class="list list--bullet list--bullet-employer">
+    <li>speaking to training providers</li>
     <li>working with employers in your supply chain</li>
     <li>getting in touch with employers in your industry</li>
-    <li>contacting an Apprenticeship Training Agency (ATA)</li>
     <li>working with regional partners</li>
 </ul>
-<p>You can transfer a maximum of 25% of your levy funds.</p>
-
-@section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork") })
-}
-
-@section pageFooter {
-    <div class="grid-column-full">
-        <partial name="./Components/Cta/_find-apprenticeship-training-with-search" />
-    </div>
-}
+<p>A levy-paying employer can transfer a maximum of 25% of their levy funds.</p>

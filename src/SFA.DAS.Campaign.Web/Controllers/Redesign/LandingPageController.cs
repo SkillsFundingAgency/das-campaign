@@ -21,5 +21,23 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return View("~/Views/LandingPages/Apprentices/GettingStarted.cshtml");
         }
+        
+        [HttpGet("/employers/are-apprenticeships-right-for-me")]
+        public IActionResult EmployersAreApprenticeshipsRightForMe()
+        {
+            return View("~/Views/LandingPages/Employers/AreApprenticeshipsRightForMe.cshtml");
+        }
+        
+        [HttpGet("/employers/how-do-they-work")]
+        public IActionResult EmployersHowDoTheyWork()
+        {
+            return View("~/Views/LandingPages/Employers/HowDoTheyWork.cshtml");
+        }
+        
+        [HttpGet("/employers/setting-it-up")]
+        public IActionResult SettingItUp()
+        {
+            return View("~/Views/LandingPages/Employers/SettingItUp.cshtml");
+        }
     }
 }

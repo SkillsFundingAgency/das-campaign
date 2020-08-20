@@ -23,5 +23,29 @@
         </li>
     </ul>
 
+    <div class="breadcrumbs">
+            <a href="/">Home</a> <text>&gt;</text>
+            @if (ViewBag.LandingPageSlug is null)
+            {
+                <span>Employers</span>
+            }
+            else
+            {
+                <a href="/employers/">Employers</a><text> &gt; </text>
+                @if (ViewBag.ArticlePageSlug is null)
+                {
+                    <span>@ViewBag.LandingPageTitle</span>    
+                }
+                else
+                {
+                    <a href="/employers/@ViewBag.LandingPageSlug">@ViewBag.LandingPageTitle</a><text> &gt; </text>
+                    <span>@ViewBag.ArticlePageTitle</span>
+                }
+            }
+        </div>
+        
+        <h1>@ViewBag.PageTitle</h1>
+        <p>@ViewBag.PageSummary</p>
+    
     @RenderBody()
 </div>
