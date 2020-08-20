@@ -12,5 +12,6 @@ namespace SFA.DAS.Campaign.Content.ContentTypes
         public Asset HeroImage { get; set; }
         public InfoPage PreviousPage { get; set; }
         public InfoPage NextPage { get; set; }
+
     }
 }

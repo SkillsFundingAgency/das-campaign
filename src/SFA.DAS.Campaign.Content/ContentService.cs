@@ -1,62 +1,58 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Contentful.Core;
-using Contentful.Core.Search;
+using Contentful.Core.Models.Management;
+using Newtonsoft.Json;
 using SFA.DAS.Campaign.Content.ContentTypes;
+using SFA.DAS.Campaign.Domain.Content;
+using InfoPage = SFA.DAS.Campaign.Content.ContentTypes.InfoPage;
 
 namespace SFA.DAS.Campaign.Content
 {
     public class ContentService : IContentService
     {
-        private readonly IContentfulClient _contentfulClient;
+        private IContentRepo _contentRepo;
 
-        public ContentService(IContentfulClient contentfulClient)
+        public ContentService(IContentRepo contentRepo)
         {
-            _contentfulClient = contentfulClient;
-        }
-        
-        public async Task<T> GetContentById<T>(string id, int includeLevel = 1)  where T : ContentBase
-        {
-            var builder = new QueryBuilder<T>().FieldEquals(f => f.Sys.Id, id).Include(includeLevel);
-            return (await _contentfulClient.GetEntries(builder)).FirstOrDefault();
+            _contentRepo = contentRepo;
         }
 
-        public async Task<T> GetContentByHubAndSlug<T>(string hub, string slug, int includeLevel = 1) where T : ContentBase
+        public async Task<Page<T>> GetContent<T>(string hub, string slug, ContentType contentType)
         {
-            var builder = QueryBuilder<T>.New
-                .FieldEquals(i => i.Slug, slug)
-                .FieldEquals(i => i.Hub, hub)
-                .Include(includeLevel);
 
-            var content = (await _contentfulClient.GetEntriesByType(typeof(T).Name.FirstCharacterToLower(), builder)).FirstOrDefault();
-            
-            return content;
+            string content = "";
+
+            switch (contentType)
+            {
+                case ContentType.infopage:
+                    content = await _contentRepo.GetContentByHubAndSlug<InfoPage>(hub, slug, 1);
+                    break;
+            }
+
+            return JsonConvert.DeserializeObject<Page<T>>(content);
+
         }
 
-        public async Task<T> GetContentBySlug<T>(string slug, int includeLevel = 1) where T : ContentBase
+        public async Task<Page<T>> GetContent<T>(string slug, ContentType contentType)
         {
-            var builder = QueryBuilder<T>.New
-                .FieldEquals(i => i.Slug, slug)
-                .Include(includeLevel);
+            string content = "";
 
-            var content = (await _contentfulClient.GetEntriesByType(typeof(T).Name.FirstCharacterToLower(), builder)).FirstOrDefault();
-            
-            return content;
+            switch (contentType)
+            {
+                case ContentType.infopage:
+                    content = await _contentRepo.GetContentBySlug<InfoPage>(slug, 1);
+                    break;
+            }
+
+            return JsonConvert.DeserializeObject<Page<T>>(content);
         }
 
-        public async Task<List<T>> GetContentByType<T>() where T : ContentBase
-        {
-            return (await _contentfulClient.GetEntriesByType<T>(typeof(T).Name.FirstCharacterToLower())).ToList();
-        }
 
-        public async Task<NavigationBar> GetNavigationFor(string hub)
-        {
-            var builder = QueryBuilder<NavigationBar>.New
-                .FieldEquals(i => i.Hub, hub)
-                .Include(3);
 
-            return (await _contentfulClient.GetEntriesByType<NavigationBar>("navigationBar",builder)).FirstOrDefault();
+        public enum ContentType
+        {
+            infopage = 0,
+            article = 1
         }
     }
 }

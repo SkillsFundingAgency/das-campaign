@@ -5,6 +5,10 @@
         <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
+    </ItemGroup>
     
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>

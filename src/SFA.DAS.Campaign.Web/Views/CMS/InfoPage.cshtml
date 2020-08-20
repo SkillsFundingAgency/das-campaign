@@ -1,0 +1,53 @@
+﻿@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.InfoPage>
+
+@using Microsoft.AspNetCore.Html
+@using SFA.DAS.Campaign.Web.Constants
+@using SFA.DAS.Campaign.Web.ViewComponents
+@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.MetaTitle = Model.PageTitle;
+    ViewBag.HeroImageUrl = @Model.HeroImage.File.Url;
+    ViewBag.HeroImageAltText = Model.HeroImage.Description;
+    ViewBag.PageID = Model.Slug;
+    ViewBag.MetaDesc = Model.MetaDescription;
+    ViewBag.PageUrl = Model.Slug;
+    ViewBag.Section = Model.Hub;
+    Layout = "_LayoutContentSidebar";
+}
+
+@Model.Content.Sections
+
+<partial name="./components/Cta/_Contact-phoneNumber" />
+
+@if (Model.Content.PrevLink != null || Model.Content.NextLink != null)
+{
+    <ul class="pagination pagination--employer">
+        @if (Model.Content.PrevLink != null)
+        {
+            <li class="pagination__list-item">
+                <a class="pagination__link pagination__link--previous" href="/@Model.Content.PrevLink.Href" id="link-pagination-apprentice-3">@Model.Content.PrevLink.Title</a>
+            </li>
+        }
+        @if (Model.Content.NextLink != null)
+        {
+            <li class="pagination__list-item pagination__list-item--next">
+                <a class="pagination__link pagination__link--next" href="/@Model.Content.NextLink.Href" id="link-pagination-apprentice-5">@Model.Content.NextLink.Title</a>
+            </li>
+        }
+    </ul>
+}
+
+@section HeroHeading {
+    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Apprentice, Content = Model.Content.HeaderLinks })
+}
+
+@section Resources {
+    <partial name="./Components/Resources/_employer" />
+}
+
+@section pageFooter {
+    <div class="grid-column-full">
+        <partial name="./Components/Cta/_find-an-apprenticeship" model="null" />
+    </div>
+}
