@@ -1,18 +1,63 @@
-<!DOCTYPE html>
-<html lang="en-gb">
+<!doctype html>
+<html lang="en" class="fiu-template">
+
 <head>
+	<meta charset="utf-8">
+	<title>@(ViewData["MetaTitle"] != null ? ViewData["MetaTitle"] : ViewData["Title"])</title>
+	<meta name="description" content="@(ViewData["MetaDesc"])" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="theme-color" content="#0b0c0c" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <meta charset="utf-8"/>
-    <title>@(ViewData["MetaTitle"] != null ? ViewData["MetaTitle"] : ViewData["Title"])</title>
+	<meta property="og:title" content="" />
+	<meta property="og:type" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:image" content="" />
 
-    <meta name="description" content="@(ViewData["MetaDesc"])"/>
+	<link rel="apple-touch-icon" href="/fiu/assets/images/apple-touch-icon.png" />
+
+	<link rel="stylesheet" href="https://use.typekit.net/xwy5uap.css" />
+	<link rel="stylesheet" href="/fiu/css/all.css" />
+
+	<meta property="og:image" content="/fiu/assets/images/opengraph.png" />
+
 </head>
-<body>
 
-<div style="border: red 1px solid">
-    <h1>Main Layout</h1>
+<body class="fiu-template__body">
+	<script>
+		document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+	</script>
+
+	<a href="#main" class="govuk-skip-link">Skip to main content</a>
+
+    <header class="fiu-header">
+        <div class="fiu-width-container fiu-clearfix">
+            <a href="/" class="fiu-header__apprenticeship-logo-link">
+                <img src="/fiu/assets/images/apprenticeships-logo-black.png" alt="Apprenticeships logo" class="fiu-header__apprenticeship-logo" />
+            </a>
+            <nav class="fiu-header__nav">
+                <ul id="fiu-nav" class="fiu-header__navigation">
+                    <li class="fiu-header__navigation-item">
+                        <a class="fiu-header__link" asp-controller="Hub" asp-action="Apprentices">
+                            Apprentices
+                        </a>
+                    </li>
+                    <li class="fiu-header__navigation-item">
+                        <a class="fiu-header__link" asp-controller="Hub" asp-action="Employers">
+                            Employers
+                        </a>
+                    </li>
+                    <li class="fiu-header__navigation-item">
+                        <a href="/fiu/register" class="fiu-button">Register interest</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     @RenderBody()
-</div>
+
+	<script src="/fiu/js/app.min.js"></script>
 
 </body>
 </html>
