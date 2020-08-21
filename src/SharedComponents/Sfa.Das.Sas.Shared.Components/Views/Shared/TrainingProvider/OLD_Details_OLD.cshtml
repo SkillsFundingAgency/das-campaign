@@ -1,0 +1,43 @@
+﻿@using Sfa.Das.Sas.Shared.Components.ViewModels
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProviderDetailQueryViewModel
+@inject ICssViewModel CssViewModel
+
+<h1 class="@CssViewModel.HeadingXLarge">@await Component.InvokeAsync("TrainingProviderTitle", new { providerDetailsQueryModel = Model })</h1>
+
+<div class="grid-row">
+    <form asp-controller="Basket" asp-action="AddProviderFromDetails" method="post">
+        <input type="hidden" asp-for="@Model.ApprenticeshipId" />
+        <input type="hidden" asp-for="@Model.LocationId" />
+        <input type="hidden" asp-for="@Model.Page" />
+        <input type="hidden" asp-for="@Model.Ukprn" />
+        <div class="@(CssViewModel.FormCss.FormGroup)">
+            @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn, locationId = Model.LocationId })
+        </div>
+    </form>
+</div>
+
+<div class="grid-row">
+    <div class="grid-column-two-thirds">&nbsp;</div>
+    <div class="grid-column-one-third"> @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Contact })</div>
+</div>
+
+<div class="grid-row">
+    <div class="grid-column-two-thirds grid-column-two-thirds-from-desktop">
+
+        <h2 class="@CssViewModel.HeadingLarge @CssViewModel.UtilitiesCss.Margin("Top",0)">Training Information</h2>
+
+        @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Summary })
+        @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model })
+        @if (!string.IsNullOrEmpty(Model.PostCode))
+        {
+            @await Component.InvokeAsync("ClosestLocations", new { Model.ApprenticeshipId, Model.Ukprn, Model.LocationId, Model.PostCode })
+        }
+    </div>
+    <div class="grid-column-one-third">
+
+    </div>
+</div>
+
+

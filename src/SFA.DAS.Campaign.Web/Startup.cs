@@ -35,7 +35,6 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
-using Microsoft.AspNetCore.DataProtection;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
 using VacanciesApi;
@@ -57,7 +56,7 @@ namespace SFA.DAS.Campaign.Web
                     )
                 .AddUserSecrets<Startup>()
                 .Build();
-
+            
             Configuration = config;
         }
 

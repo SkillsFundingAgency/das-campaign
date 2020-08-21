@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Sfa.Das.Sas.Core\Sfa.Das.Sas.Core.csproj" />
+      <ProjectReference Include="..\Sfa.Das.Sas.Shared.Basket\Sfa.Das.Sas.Shared.Basket.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FeatureToggle" Version="3.4.0" />
+      <PackageReference Include="FluentValidation" Version="6.2.1" />
+      <PackageReference Include="MediatR" Version="6.0.0" />
+      <PackageReference Include="SFA.DAS.Providers.Api.Client" Version="0.11.75" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    </ItemGroup>
+
+</Project>
