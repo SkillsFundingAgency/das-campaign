@@ -1,0 +1,18 @@
+@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.Article>
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout=$"Redesign_Layout_{Model.HubType}Hub";
+    ViewBag.PageTitle = Model.PageTitle; 
+    ViewBag.PageSummary="Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.";
+    ViewBag.LandingPageSlug = Model.LandingPageSlug;
+    ViewBag.LandingPageTitle = Model.LandingPageTitle;
+    ViewBag.ArticlePageSlug = Model.Slug;
+    ViewBag.ArticlePageTitle = Model.Title;
+}
+
+@foreach (var articleSection in Model.Content.Sections)
+{
+    <h2>@articleSection.Title</h2>
+    @Html.Raw(articleSection.Body)
+}

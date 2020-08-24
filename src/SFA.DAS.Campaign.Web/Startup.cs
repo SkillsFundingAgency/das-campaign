@@ -36,6 +36,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using Microsoft.AspNetCore.DataProtection;
+using SFA.DAS.Campaign.Domain.Content;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
 using VacanciesApi;
@@ -161,6 +162,13 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<ICacheStorageService, CacheStorageService>();
             services.AddTransient<IVacancyServiceApiHealthCheck, VacancyServiceApiHealthCheck>();
             services.AddTransient<ISessionService, SessionService>();
+
+            services.AddTransient<IContentService, ContentService>();
+            services.AddTransient<IDatabase>(client =>
+            {
+                var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},DefaultDatabase=3");
+                return redis.GetDatabase();
+            });
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
