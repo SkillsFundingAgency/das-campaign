@@ -69,15 +69,19 @@
                     <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
                 </div>
             </div>
+            @if (ViewBag.SubHeading != null)
+            {
+                <h2 class="govuk-heading-l fiu-page-header__sub-heading">
+                    @ViewBag.SubHeading
+                </h2>
+            }
         </div>
 	</div>
+    @RenderBody()
 </main>
 
 <div style="border: green 2px solid">
     <h2>Hub Layout</h2>
-    
-    <h1>@ViewBag.PageTitle</h1>
-    <p>@ViewBag.PageSummary</p>
 
-    @RenderBody()
+    
 </div>
