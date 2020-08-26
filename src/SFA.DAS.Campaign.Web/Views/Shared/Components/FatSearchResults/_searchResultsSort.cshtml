@@ -1,0 +1,21 @@
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@model Sfa.Das.Sas.Shared.Components.ViewModels.SearchQueryViewModel
+@inject ICssViewModel CssViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+    <form asp-controller="Fat" asp-action="Search" id="fat-search-result-sort" method="get" class="js-select-change-submit das-search-results__header-sort-by">
+        <input type="hidden" name="Keywords" asp-for="Keywords" />
+        @foreach (var level in Model.SelectedLevels)
+        {
+            <input type="hidden" name="SelectedLevels" value="@level" />
+        }
+
+        <label asp-for="SortOrder" class="@(CssViewModel.VisuallyHidden)">Sort by</label>
+        <select name="SortOrder" asp-for="SortOrder" class="select">
+            <option value="1">Best match</option>
+            <option value="2">Level (high to low)</option>
+            <option value="3">Level (low to high)</option>
+        </select>
+        <button type="submit" value="Sort" class="@(CssViewModel.Button)">Sort</button>
+    </form>

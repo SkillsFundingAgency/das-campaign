@@ -1,0 +1,100 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@model Sfa.Das.Sas.Shared.Components.ViewModels.ApprenticeshipDetails.FrameworkDetailsViewModel;
+@inject ICssViewModel CssViewModel;
+
+
+<h2 class="@CssViewModel.HeadingLarge @CssViewModel.UtilitiesCss.Margin("top",0)">Summary of this apprenticeship</h2>
+
+
+@if (Model.EffectiveTo.HasValue && Model.EffectiveTo.Value > DateTime.Today)
+{
+    <div class="@CssViewModel.WarningText">
+        <span class="@(CssViewModel.WarningText)__icon" aria-hidden="true"></span>
+        <strong class="@(CssViewModel.WarningText)__text">
+            <span class="@(CssViewModel.WarningText)__assistive">Warning</span>
+            This apprenticeship is available to new starters until @Model.EffectiveTo.Value.AddDays(1).ToLongDateString()
+        </strong>
+    </div>
+}
+<dl class="@CssViewModel.List das-definition-list__results">
+    <dt>Title</dt>
+    <dd>@Model.Title</dd>
+
+    <dt>Type</dt>
+    <dd>Framework</dd>
+    <dt>Level</dt>
+    <dd>@Model.Level (Equivalent to @Model.EquivalentText)</dd>
+
+    <dt>Typical length</dt>
+    <dd>@Model.Duration months</dd>
+
+    <dt>Current funding band</dt>
+    <dd>
+        Up to @Model.FundingCap per apprentice.<br>
+        <a href="https://www.gov.uk/guidance/employing-an-apprentice-technical-guide-for-employers#funding-for-your-apprenticeship" target="_blank" rel="external" class="external">More information about funding</a>
+    </dd>
+
+    <dt>Entry requirements</dt>
+    <dd>Set by employer.</dd>
+
+    @if (Model.JobRoles?.Any() == true)
+    {
+        <dt>Suitable roles for apprentices</dt>
+        <dd>
+            <ul class="@CssViewModel.List @CssViewModel.ListBullet">
+                @foreach (var jobRole in Model.JobRoles)
+                {
+                    <li>@jobRole</li>
+                }
+            </ul>
+            <p> Your chosen training provider can advise you about the kinds of skills apprentices will learn.</p>
+        </dd>
+    }
+    <dt>Qualifications</dt>
+    <dd>
+        @if (Model.CompetencyQualification?.Any() == true)
+        {
+            <p>Apprentices will achieve a practical (or 'competence') qualification:</p>
+            <ul class="@CssViewModel.List @CssViewModel.ListBullet">
+                @foreach (var competencyQualification in Model.CompetencyQualification)
+                {
+                    <li>@competencyQualification</li>
+                }
+            </ul>
+        }
+
+        @if (Model.KnowledgeQualification?.Any() == true)
+        {
+            <p>Apprentices will also achieve a theory-based (or 'knowledge') qualification:</p>
+            <ul class="@CssViewModel.List @CssViewModel.ListBullet">
+                @foreach (var qualification in Model.KnowledgeQualification)
+                {
+                    <li>@qualification</li>
+                }
+            </ul>
+        }
+
+        @if (Model.CombinedQualification?.Any() == true)
+        {
+            <p>Apprentices will achieve a practical and theory-based (or 'combined') qualification:</p>
+            <ul class="@CssViewModel.List @CssViewModel.ListBullet">
+                @foreach (var qualification in Model.CombinedQualification)
+                {
+                    <li>@qualification</li>
+                }
+            </ul>
+        }
+
+        @if (Model.CompletionQualifications != string.Empty)
+        {
+            <p>@Model.CompletionQualifications</p>
+        }
+
+    </dd>
+
+    <dt>Professional registration</dt>
+    <dd>@Model.ProfessionalRegistration</dd>
+
+
+</dl>
