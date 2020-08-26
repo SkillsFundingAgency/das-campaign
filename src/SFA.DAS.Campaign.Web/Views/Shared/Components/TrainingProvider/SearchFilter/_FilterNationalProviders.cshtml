@@ -1,0 +1,16 @@
+﻿@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.SearchFilter.TrainingProviderSearchFilterViewModel
+@inject ICssViewModel CssViewModel
+
+
+<div class="@(CssViewModel.FormCss.FormGroup)">
+    <p class="@(CssViewModel.UtilitiesCss.FontWeightBold)">National training providers:</p>
+    <div class="@CssViewModel.FormCss.Checkbox">
+
+        <div class="@CssViewModel.FormCss.CheckboxItem">
+
+            <input class="@CssViewModel.FormCss.CheckboxInput" value="true" name="NationalProvidersOnly" id="NationalProvidersOnly" type="checkbox" @Html.Raw(Model.NationalProvidersOnly == true ? "checked" : "") @Html.Raw(Model.HasNationalProviders == false ? "disabled" : "") />
+            <label class="@Html.Raw(Model.HasNationalProviders == false ? "disabled" : "") @(CssViewModel.FormCss.CheckboxLabel)" for="NationalProvidersOnly">National providers only</label>
+        </div>
+    </div>
+</div>

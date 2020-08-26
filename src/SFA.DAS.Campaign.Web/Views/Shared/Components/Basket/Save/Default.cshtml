@@ -1,0 +1,5 @@
+﻿@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject ICssViewModel CssViewModel
+
+    <a asp-action="Save" asp-controller="Basket" class="@(CssViewModel.Button)" target="_blank"> Create an account on GOV.UK </a>
