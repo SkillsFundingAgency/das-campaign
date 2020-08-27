@@ -11,10 +11,10 @@
         <nav class="fiu-navigation__nav" data-fiu-nav-menu="true" id="navigation">
             <h3 class="govuk-heading-s fiu-navigation__heading" id="fiu-nav-title-citizens">Apprentices</h3>
             <ul class="fiu-navigation__list" aria-labelledby="fiu-nav-title-citizens">
-                <li class="fiu-navigation__list-item"><a href="/apprentices/are-apprenticeships-right-for-me" class="fiu-navigation__link">Are apprenticeship right for you?</a> </li>
-                <li class="fiu-navigation__list-item"><a href="/apprentices/how-do-they-work" class="fiu-navigation__link">How do they work?</a> </li>
-                <li class="fiu-navigation__list-item"><a href="/apprentices/getting-started" class="fiu-navigation__link">Getting started</a> </li>
-                <li class="fiu-navigation__list-item"><a href="/apprentice/find-an-apprenticeship" class="fiu-navigation__link">Find an apprenticeship</a> </li>
+                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-1" href="/apprentices/are-apprenticeships-right-for-me" class="fiu-navigation__link">Are apprenticeship right for you?</a> </li>
+                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-2" href="/apprentices/how-do-they-work" class="fiu-navigation__link">How do they work?</a> </li>
+                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-3" href="/apprentices/getting-started" class="fiu-navigation__link">Getting started</a> </li>
+                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-4" href="/apprentice/find-an-apprenticeship" class="fiu-navigation__link">Find an apprenticeship</a> </li>
             </ul>
 		</nav>
 	</div>
@@ -32,7 +32,7 @@
             <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
                 <ol class="govuk-breadcrumbs__list">
                     <li class="govuk-breadcrumbs__list-item">
-                        <a class="govuk-breadcrumbs__link" href="/">Home</a>
+                        <a class="govuk-breadcrumbs__link" href="/" id="fiu-breadcrumb-link-home">Home</a>
                     </li>
                     @if (ViewBag.LandingPageSlug is null)
                     {
