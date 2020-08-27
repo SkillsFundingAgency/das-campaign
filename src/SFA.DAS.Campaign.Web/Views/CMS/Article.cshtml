@@ -2,11 +2,11 @@
 
 @{
     ViewBag.Title = Model.Title;
-    Layout=$"Redesign_Layout_{Model.HubType}Hub";
+    Layout=$"Redesign_Layout_{Model.Hub.ToString()}Hub";
     ViewBag.PageTitle = Model.PageTitle; 
     ViewBag.PageSummary="Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.";
-    ViewBag.LandingPageSlug = Model.LandingPageSlug;
-    ViewBag.LandingPageTitle = Model.LandingPageTitle;
+    ViewBag.LandingPageSlug = Model.Content.LandingPageSlug;
+    ViewBag.LandingPageTitle = Model.Content.LandingPageTitle;
     ViewBag.ArticlePageSlug = Model.Slug;
     ViewBag.ArticlePageTitle = Model.Title;
 }

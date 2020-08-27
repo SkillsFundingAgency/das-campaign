@@ -18,7 +18,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             var articlePage = await _contentService.GetPage<Article>(slug);
             
-            return View($"~/Views/Articles/Article.cshtml", articlePage);
+            return View($"~/Views/CMS/Article.cshtml", articlePage);
         }
     }
 }

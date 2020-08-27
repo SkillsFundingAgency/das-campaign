@@ -52,6 +52,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ViewComponents\Redesign\" />
     <Folder Include="wwwroot\downloads\" />
   </ItemGroup>
 </Project>
