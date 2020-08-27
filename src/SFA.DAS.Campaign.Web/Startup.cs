@@ -36,6 +36,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Extensions.Logging;
 using SFA.DAS.Campaign.Domain.Content;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
@@ -166,6 +167,8 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IContentService, ContentService>();
             services.AddTransient<IDatabase>(client =>
             {
+                var logger = client.GetService<ILogger<Startup>>();
+                logger.LogInformation($"Redis server: {connectionStrings.SharedRedis.Substring(0,connectionStrings.SharedRedis.IndexOf(','))}");
                 var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase}");
                 return redis.GetDatabase();
             });
