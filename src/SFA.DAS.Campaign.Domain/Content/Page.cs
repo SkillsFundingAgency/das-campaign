@@ -14,7 +14,7 @@ namespace SFA.DAS.Campaign.Domain.Content
     public enum HubType
     {
         Home = 0,
-        Employer = 1,
-        Apprentice = 2
+        Employers = 1,
+        Apprentices = 2
     }
 }
