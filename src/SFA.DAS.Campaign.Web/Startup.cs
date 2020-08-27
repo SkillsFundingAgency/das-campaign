@@ -166,7 +166,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IContentService, ContentService>();
             services.AddTransient<IDatabase>(client =>
             {
-                var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},DefaultDatabase=3");
+                var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase}");
                 return redis.GetDatabase();
             });
             
