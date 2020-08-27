@@ -169,6 +169,7 @@ namespace SFA.DAS.Campaign.Web
             {
                 var logger = client.GetService<ILogger<Startup>>();
                 logger.LogInformation($"Redis server: {connectionStrings.SharedRedis.Substring(0,connectionStrings.SharedRedis.IndexOf(','))}");
+                logger.LogInformation($"Redis database: {connectionStrings.ContentCacheDatabase}");
                 var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase}");
                 return redis.GetDatabase();
             });
