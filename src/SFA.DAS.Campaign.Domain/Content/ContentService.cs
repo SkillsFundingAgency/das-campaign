@@ -20,6 +20,8 @@ namespace SFA.DAS.Campaign.Domain.Content
         {
             var contentType = typeof(T).Name.ToLower();
             _logger.LogInformation($"ContentType: {contentType}");
+            _logger.LogInformation($"Getting: {contentType}_{slug}");
+            
             var contentEntry = await _redisDatabase.StringGetAsync($"{contentType}_{slug}");
             _logger.LogInformation($"ContentEntry: {contentEntry}");
             
