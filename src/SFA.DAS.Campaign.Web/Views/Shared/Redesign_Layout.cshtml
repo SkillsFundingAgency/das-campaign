@@ -95,16 +95,16 @@
                             <a class="fiu-footer__link" href="https://www.smartsurvey.co.uk/s/S2NQQ" id="link-footer-feedback" target="_blank" rel="external">Feedback<span class="fiu-vh"> (Opens in a new window)</span></a>
                         </li>
                         <li class="fiu-footer__list-item">
-                            <a class="fiu-footer__link" id="link-footer-sitemap" href="/sitemap">Sitemap</a>
+                            <a class="fiu-footer__link" id="link-footer-sitemap"  asp-controller="Home" asp-action="Sitemap">Sitemap</a>
                         </li>
                         <li class="fiu-footer__list-item">
-                            <a class="fiu-footer__link" id="link-footer-cookie-policy" href="/cookies">Cookies</a>
+                            <a class="fiu-footer__link" id="link-footer-cookie-policy" asp-controller="Home" asp-action="Cookies">Cookies preferences</a>
                         </li>
                         <li class="fiu-footer__list-item">
-                            <a class="fiu-footer__link" id="link-footer-privacy-notice" href="/privacy">Privacy notice</a>
+                            <a class="fiu-footer__link" id="link-footer-privacy-notice"  asp-controller="Home" asp-action="Privacy">Privacy notice</a>
                         </li>
                         <li class="fiu-footer__list-item">
-                            <a class="fiu-footer__link" id="link-footer-accessibility" href="/accessibility">Accessibility</a>
+                            <a class="fiu-footer__link" id="link-footer-accessibility"  asp-controller="Home" asp-action="Accessibility">Accessibility statement</a>
                         </li>
                     </ul>
                     <p class="fiu-footer__copyright">All content is available under the <a class="fiu-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="external" id="link-footer-ogl">Open Government Licence v3.0<span class="fiu-vh"> (Opens in a new window)</span></a>, except where otherwise stated.</p>
@@ -115,6 +115,8 @@
             </div>
         </div>
     </footer>
+
+    <partial name="Redesign/_CookieBanner"/>
 
 	<script src="/fiu/js/app.min.js"></script>
 

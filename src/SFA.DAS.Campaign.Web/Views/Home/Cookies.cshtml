@@ -1,6 +1,7 @@
 @{
-    ViewBag.Title = "Find an apprenticeship to suit your business or further your career";
-    ViewBag.MetaDesc = "Everything you need to know about how apprenticeships can fire up your career or organisation.";
+    ViewBag.Title = "Cookie preferences";
+    ViewBag.PageTitle = "Cookie preferences";
+    ViewBag.MetaDesc = "";
     Layout = "Redesign_Layout_Generic";
 }
 
@@ -79,7 +80,7 @@
          <li>the notifications you've seen so we do not show them to you again</li>
       </ul>
       <p class="govuk-body">They always need to be on.</p>
-      <p class="govuk-body"><a href="/details" class="fiu-link">Find out more about cookies on this service</a>.</p>
+      <p class="govuk-body"><a asp-controller="Home" asp-action="CookieDetails" class="fiu-link">Find out more about cookies on this service</a>.</p>
       <hr class="fiu-section-break fiu-section-break--l">
       <button class="fiu-button" type="submit">Save your cookie preferences</button>
    </form>

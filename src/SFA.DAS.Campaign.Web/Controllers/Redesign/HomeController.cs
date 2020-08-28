@@ -9,7 +9,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return View();
         }
-        
+
         [Route("cookies")]
         public IActionResult Cookies()
         {
@@ -20,6 +20,24 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         public IActionResult CookieDetails()
         {
             return View();
+        }
+
+        [Route("privacy")]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [Route("sitemap")]
+        public IActionResult Sitemap()
+        {
+            return View();
+        }
+
+        [Route("accessibility")]
+        public IActionResult Accessibility()
+        {
+            return View("Accessibility");
         }
     }
 }
