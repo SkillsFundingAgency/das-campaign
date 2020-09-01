@@ -1,68 +1,44 @@
 ﻿@model FindApprenticeshipSearchModel
-
-
-<section class="search-results-filter search-results-filter--apprentice">
-    <div class="grid-row">
-        <div class="grid-column-full">
-            <h2 class="heading-m">Update search</h2>
-            <form class="search-results-filter__form" asp-controller="FindApprenticeship" asp-action="UpdateSearch">
-                <div class="form-group">
-                    <label class="label" for="Route">Interest</label>
-                    <select class="input" asp-for="Route" data-val="true" data-val-required="The interest field is required."
-                            id="Route" name="Route">
-                        <option selected disabled hidden>Select interest</option>
-                        <option value="Agriculture-environmental-and-animal-care">Agriculture, environmental and animal care</option>
-                        <option value="Business-and-administration">Business and administration</option>
-                        <option value="Care-services">Care services </option>
-                        <option value="Catering-and-hospitality">Catering and hospitality</option>
-                        <option value="Construction">Construction</option>
-                        <option value="Creative-and-design">Creative and design</option>
-                        <option value="Digital">Digital</option>
-                        <option value="Education-and-childcare">Education and childcare</option>
-                        <option value="Engineering-and-manufacturing">Engineering and manufacturing</option>
-                        <option value="Hair-and-beauty">Hair and beauty</option>
-                        <option value="Health-and-science">Health and science</option>
-                        <option value="Legal-finance-and-accounting">Legal, finance and accounting</option>
-                        <option value="Protective-services">Protective services</option>
-                        <option value="Sales-marketing-and-procurement">Sales, marketing and procurement</option>
-                        <option value="Transport-and-logistics">Transport and logistics</option>
-                    </select>
-
-                    <span class="text-danger field-validation-valid" data-valmsg-for="Route"
-                          data-valmsg-replace="true"></span>
-                </div>
-
-                <div class="grid-row">
-                    <div class="grid-column-one-half">
-                        <div class="form-group">
-                            <label class="label" for="Postcode">Postcode</label>
-                            <input class="input" asp-for="Postcode">
-                            <span asp-validation-for="Postcode" class="error-message"></span>
-                        </div>
-                    </div>
-                    <div class="grid-column-one-half">
-                        <div class="form-group">
-                            <label class="label" for="Distance">Distance</label>
-                            <select class="input" asp-for="Distance" data-val="true" data-val-required="The Distance field is required."
-                                    id="Distance" name="Distance">
-                                <option value="2">2 miles</option>
-                                <option value="5">5 miles</option>
-                                <option value="10">10 miles</option>
-                                <option value="15">15 miles</option>
-                                <option value="20">20 miles</option>
-                                <option value="30">30 miles</option>
-                                <option value="40">40 miles</option>
-                            </select>
-
-                            <span class="text-danger field-validation-valid" data-valmsg-for="Distance"
-                                  data-valmsg-replace="true"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Update results" class="button" id="button-faa-update-results">
-                </div>
-            </form>
+<div class="fiu-panel fiu-panel--form">
+    <h2 class="govuk-heading-l fiu-panel__heading">Update search results</h2>
+    <form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
+        <div class="govuk-form-group">
+            <label for="header-route" class="govuk-label">Select an interest</label>
+            <select class="govuk-select" asp-for="Route" data-val="true" data-val-required="The interest field is required." id="header-route" name="Route">
+                <option selected disabled hidden>Select interest</option>
+                <option value="Agriculture-environmental-and-animal-care">Agriculture, environmental and animal care</option>
+                <option value="Business-and-administration">Business and administration</option>
+                <option value="Care-services">Care services </option>
+                <option value="Catering-and-hospitality">Catering and hospitality</option>
+                <option value="Construction">Construction</option>
+                <option value="Creative-and-design">Creative and design</option>
+                <option value="Digital">Digital</option>
+                <option value="Education-and-childcare">Education and childcare</option>
+                <option value="Engineering-and-manufacturing">Engineering and manufacturing</option>
+                <option value="Hair-and-beauty">Hair and beauty</option>
+                <option value="Health-and-science">Health and science</option>
+                <option value="Legal-finance-and-accounting">Legal, finance and accounting</option>
+                <option value="Protective-services">Protective services</option>
+                <option value="Sales-marketing-and-procurement">Sales, marketing and procurement</option>
+                <option value="Transport-and-logistics">Transport and logistics</option>
+            </select>
         </div>
-    </div>
-</section>
+        <div class="govuk-form-group">
+            <label for="header-postcode" class="govuk-label">Enter your postcode</label>
+            <input type="text" class="govuk-input govuk-input--width-10" asp-for="Postcode" id="header-postcode" name="Postcode" autocomplete="postal-code" />
+        </div>
+        <div class="govuk-form-group">
+            <label for="header-distance" class="govuk-label">Within</label>
+            <select class="govuk-select" asp-for="Distance" data-val="true" data-val-required="The Distance field is required." id="header-distance" name="Distance">
+                <option value="2">2 miles</option>
+                <option value="5" selected="selected">5 miles</option>
+                <option value="10">10 miles</option>
+                <option value="15">15 miles</option>
+                <option value="20">20 miles</option>
+                <option value="30">30 miles</option>
+                <option value="40">40 miles</option>
+            </select>
+        </div>
+        <button class="fiu-button fiu-button--citizens" type="submit" id="button-faa-update-results">Update</button>
+    </form>
+</div>
