@@ -2,26 +2,58 @@
     ViewBag.Title = "title";
     Layout = "Redesign_Layout_ApprenticesLandingPage";
     ViewBag.PageTitle = "How do they work?";
-    ViewBag.PageSummary = "Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.";
+    ViewBag.PageSummary = "Find out what to expect and the application process.";
+
+    ViewBag.LandingPageSlug = "how-do-they-work";
+    ViewBag.LandingPageTitle = "How do they work?";
 }
 
-<div style="border: dimgrey 2px solid">
-    <a href="/apprentices/how-do-they-work">How do they work?</a>
-    <h4>What is an apprenticeship?</h4>
-    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
-    <a href="/apprentices/what-is-an-apprenticeship">Learn more</a>
-</div>
 
-<div style="border: dimgrey 2px solid">
-    <a href="/apprentices/how-do-they-work">How do they work?</a>
-    <h4>Application process</h4>
-    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
-    <a href="/apprentices/application">Learn more</a>
-</div>
+<div class="fiu-grad-row">
+    <span class="fiu-grad-row__bg"></span>
+    <div class="fiu-width-container">
+        <div class="govuk-grid-row fiu-flex-row">
+            <div class="govuk-grid-column-one-quarter">
+                <div class="fiu-card">
+                    <span class="fiu-card__category">
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="HowDoTheyWork">How do they work?</a>
+                    </span>
+                    <h3 class="fiu-card__heading">What is an apprenticeship</h3>
+                    <p class="fiu-card__content">An apprenticeship is a real job where you learn, gain experience and get paid. You're an employee with a contract of employment and holiday leave.</p>
+                    <a href="/apprentices/what-is-an-apprenticeship" class="fiu-card__link fiu-card__link--citizens">Learn more</a>
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <div class="fiu-card">
+                    <span class="fiu-card__category">
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="HowDoTheyWork">How do they work?</a>
+                    </span>
+                    <h3 class="fiu-card__heading">Applying for an apprenticeship</h3>
+                    <p class="fiu-card__content">Once you find the right apprenticeship, you can start the application process. Learn about the steps in getting your apprenticeship started.</p>
+                    <a href="/apprentices/application" class="fiu-card__link fiu-card__link--citizens">Learn more</a>
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <partial name="Redesign/_FindAnApprenticeship"/>
+            </div>
+        </div>
+        <div class="govuk-grid-row fiu-flex-row">
 
-<div style="border: dimgrey 2px solid">
-    <a href="/apprentices/how-do-they-work">How do they work?</a>
-    <h4>Interview</h4>
-    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
-    <a href="/apprentices/interview">Learn more</a>
+            <div class="govuk-grid-column-one-quarter">
+                <div class="fiu-card">
+                    <span class="fiu-card__category">
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="HowDoTheyWork">How do they work?</a>
+                    </span>
+                    <h3 class="fiu-card__heading">The interview process</h3>
+                    <p class="fiu-card__content">Everyone goes through the interview process at some stage of their working life. When you apply for new jobs, you will almost always have an interview.</p>
+                    <a href="/apprentices/interview" class="fiu-card__link fiu-card__link--citizens">Learn more</a>
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <partial name="Redesign/_GetFreeHelpAndSupport"/>
+            </div>
+        </div>
+    </div>
 </div>
