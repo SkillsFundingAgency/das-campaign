@@ -2,26 +2,17 @@
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @{
     ViewBag.Title = "Find an apprenticeship";
-    ViewBag.MetaTitle = "Find an apprenticeship";
-    ViewBag.HeroImageAltText = "An apprentice in the creative industry";
-    ViewBag.PageID = "apprentice-find-an-apprenticeship";
-    ViewBag.Section = "apprentice";
-    ViewBag.MetaDesc = "";
-    ViewBag.PageUrl = "/apprentice/find-an-apprenticeship";
-    Layout = "_LayoutContentSidebar";
-    ViewBag.PageNavIndex = 3;
+    ViewBag.PageTitle = "Find an apprenticeship";
+    ViewBag.LandingPageTitle = ViewBag.Title;
+    ViewBag.LandingPageSlug = "";
+    Layout = "Redesign_Layout_ApprenticesHub";  
 }
 
-
-<ul class="pagination pagination--apprentice">
-    <li class="pagination__list-item">
-        <a class="pagination__link pagination__link--previous" asp-controller="Apprentice" asp-action="WhatIsAnApprenticeship" id="link-pagination-apprentice-1">Before you start </a>
-    </li>
-    <li class="pagination__list-item">
-        <a class="pagination__link pagination__link--next" asp-controller="Apprentice" asp-action="Application" id="link-pagination-apprentice-3">Application </a>
-    </li>
-</ul>
-
-@section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.FindApprenticeship })
-}
+<span class="fiu-header-content-spacer"></span>
+<div class="fiu-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <partial name="./Components/Form/faa-search"/>
+        </div>
+    </div>
+</div>
