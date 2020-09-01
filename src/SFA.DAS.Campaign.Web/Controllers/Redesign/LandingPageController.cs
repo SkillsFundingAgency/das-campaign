@@ -4,8 +4,8 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 {
     public class LandingPageController : Controller
     {
-        [HttpGet("/apprentices/are-apprenticeships-right-for-me")]
-        public IActionResult AreApprenticeshipsRightForMe()
+        [HttpGet("/apprentices/are-they-right-for-you")]
+        public IActionResult AreTheyRightForYou()
         {
             return View("~/Views/LandingPages/Apprentices/AreApprenticeshipsRightForMe.cshtml");
         }
@@ -22,8 +22,8 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             return View("~/Views/LandingPages/Apprentices/GettingStarted.cshtml");
         }
         
-        [HttpGet("/employers/are-apprenticeships-right-for-me")]
-        public IActionResult EmployersAreApprenticeshipsRightForMe()
+        [HttpGet("/employers/are-they-right-for-you")]
+        public IActionResult EmployersAreTheyRightForYou()
         {
             return View("~/Views/LandingPages/Employers/AreApprenticeshipsRightForMe.cshtml");
         }

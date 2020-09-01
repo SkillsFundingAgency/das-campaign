@@ -32,7 +32,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             return View();
         }
-        [Route("find-an-apprenticeship")]
+        
+        [Route("/apprentices/find-an-apprenticeship")]
         public async Task<IActionResult> FindAnApprenticeship()
         {
             var health = await _vacancyServiceApiHealthCheck.CheckHealthAsync(new HealthCheckContext(), CancellationToken.None);
@@ -43,6 +44,13 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
 
             return View();
+        }
+        
+        [Route("find-an-apprenticeship")]
+        public IActionResult FindAnApprenticeshipRedirect()
+        {
+            return RedirectToActionPermanent("FindAnApprenticeship");
+            
         }
         [Route("application-process")]
         public IActionResult Application()

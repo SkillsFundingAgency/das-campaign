@@ -4,7 +4,7 @@
     Layout = "Redesign_Layout_EmployersHub";
     
     ViewBag.PageTitle = "Hire an apprentice";
-    ViewBag.PageSummary = "Trysail Sail ho Corsair red ensign hulk smartly boom jib rum gangway. Case shot Shiver me timbers";
+    ViewBag.PageSummary = "Employing an apprentice is easier than you think and there's financial help and support available from the Government.";
 
     ViewBag.HubPage = true;
     ViewBag.SubHeading = "Employers, here's what you need to know";
@@ -18,21 +18,21 @@
             <div class="govuk-grid-column-one-quarter">
                 <div class="fiu-card">
                     <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" href="Categorylink">Category</a>
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersAreTheyRightForYou">Are they right for you?</a>
                     </span>
-                    <h3 class="fiu-card__heading">Article heading</h3>
-                    <p class="fiu-card__content">Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
-                    <a href="ArticleLink" class="fiu-card__link fiu-card__link--employers">Learn more</a>
+                    <h3 class="fiu-card__heading">Real stories</h3>
+                    <p class="fiu-card__content">Have a look at some real-life stories from other employers, and see how taking on an apprentice has benefited their organisation.</p>
+                    <a asp-controller="RealStories" asp-action="Employers" class="fiu-card__link fiu-card__link--employers">Learn more</a>
                 </div>
             </div>
             <div class="govuk-grid-column-one-quarter">
                 <div class="fiu-card">
                     <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" href="Categorylink">Category</a>
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersAreTheyRightForYou">Are they right for you?</a>
                     </span>
-                    <h3 class="fiu-card__heading">Article heading</h3>
-                    <p class="fiu-card__content">Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
-                    <a href="ArticleLink" class="fiu-card__link fiu-card__link--employers">Learn more</a>
+                    <h3 class="fiu-card__heading">Benefits to your organisation</h3>
+                    <p class="fiu-card__content">Apprenticeships have moved on from what they used to be and are an exciting option for both apprentice and employer.</p>
+                    <a href="/employers/benefits-to-your-organisation" class="fiu-card__link fiu-card__link--employers">Learn more</a>
                 </div>
             </div>
             <div class="govuk-grid-column-one-half">
@@ -43,41 +43,83 @@
             <div class="govuk-grid-column-one-quarter">
                 <div class="fiu-card">
                     <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" href="Categorylink">Category</a>
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersHowDoTheyWork">How do they work?</a>
                     </span>
-                    <h3 class="fiu-card__heading">Article heading</h3>
-                    <p class="fiu-card__content">Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
-                    <a href="ArticleLink" class="fiu-card__link fiu-card__link--employers">Learn more</a>
+                    <h3 class="fiu-card__heading">Hiring an apprentice</h3>
+                    <p class="fiu-card__content">Apprenticeships help bring valuable skills into your organisation with the Government's support. Find out more about how this helps your organisation.</p>
+                    <a href="/employers/hiring-an-apprentice" class="fiu-card__link fiu-card__link--employers">Learn more</a>
                 </div>
             </div>
             <div class="govuk-grid-column-one-quarter">
                 <div class="fiu-card">
                     <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" href="Categorylink">Category</a>
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersHowDoTheyWork">How do they work?</a>
                     </span>
-                    <h3 class="fiu-card__heading">Article heading</h3>
-                    <p class="fiu-card__content">Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
-                    <a href="ArticleLink" class="fiu-card__link fiu-card__link--employers">Learn more</a>
+                    <h3 class="fiu-card__heading">Upskilling your current staff</h3>
+                    <p class="fiu-card__content">Apprenticeships are suitable for hiring new staff, but they're also ideal for upskilling or retraining your existing workforce. Either way, find out more here.</p>
+                    <a href="/employers/upskill" class="fiu-card__link fiu-card__link--employers">Learn more</a>
                 </div>
             </div>
             <div class="govuk-grid-column-one-quarter">
                 <div class="fiu-card">
                     <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" href="Categorylink">Category</a>
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersHowDoTheyWork">How do they work?</a>
                     </span>
-                    <h3 class="fiu-card__heading">Article heading</h3>
-                    <p class="fiu-card__content">Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
-                    <a href="ArticleLink" class="fiu-card__link fiu-card__link--employers">Learn more</a>
+                    <h3 class="fiu-card__heading">Funding an apprenticeship</h3>
+                    <p class="fiu-card__content">Are you a levy or non-levy employer? Answer a simple question to discover your business type and how funding will work for your organisation.</p>
+                    <a asp-controller="FundingAnApprenticeship" asp-action="Index" class="fiu-card__link fiu-card__link--employers">Learn more</a>
                 </div>
             </div>
             <div class="govuk-grid-column-one-quarter">
                 <div class="fiu-card">
                     <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" href="Categorylink">Category</a>
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersHowDoTheyWork">How do they work?</a>
                     </span>
-                    <h3 class="fiu-card__heading">Article heading</h3>
-                    <p class="fiu-card__content">Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.</p>
-                    <a href="ArticleLink" class="fiu-card__link fiu-card__link--employers">Learn more</a>
+                    <h3 class="fiu-card__heading">Training your apprentice</h3>
+                    <p class="fiu-card__content">During the apprenticeship, your apprentice will receive two different types of training. Find out what those types of training are, and more.</p>
+                    <a href="/employers/training-your-apprentice" class="fiu-card__link fiu-card__link--employers">Learn more</a>
+                </div>
+            </div>
+        </div>
+        <div class="govuk-grid-row fiu-flex-row">
+            <div class="govuk-grid-column-one-quarter">
+                <div class="fiu-card">
+                    <span class="fiu-card__category">
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersHowDoTheyWork">How do they work?</a>
+                    </span>
+                    <h3 class="fiu-card__heading">End-point assessments</h3>
+                    <p class="fiu-card__content">Apprentices are assessed by an independent organisation to ensure they have the skills, knowledge and behaviours needed for their chosen occupation.</p>
+                    <a href="/employers/end-point-assessments" class="fiu-card__link fiu-card__link--employers">Learn more</a>
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <div class="fiu-card">
+                    <span class="fiu-card__category">
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="SettingItUp">Setting up</a>
+                    </span>
+                    <h3 class="fiu-card__heading">Choose the right apprenticeship</h3>
+                    <p class="fiu-card__content">Apprentices will spend at least 20% of their time on off-the-job training with your chosen training provider. Find out more about what this means.</p>
+                    <a href="/employers/the-right-apprenticeship" class="fiu-card__link fiu-card__link--employers">Learn more</a>
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <div class="fiu-card">
+                    <span class="fiu-card__category">
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="SettingItUp">Setting up</a>
+                    </span>
+                    <h3 class="fiu-card__heading">Choose a training provider</h3>
+                    <p class="fiu-card__content">You will need to choose a training provider to train your apprentice. Find out why this is important and how to go about choosing one.</p>
+                    <a href="/employers/choose-training-provider" class="fiu-card__link fiu-card__link--employers">Learn more</a>
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <div class="fiu-card">
+                    <span class="fiu-card__category">
+                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="SettingItUp">Setting up</a>
+                    </span>
+                    <h3 class="fiu-card__heading">Set up a service account</h3>
+                    <p class="fiu-card__content">You need to set up an apprenticeship service account on GOV.UK to access apprenticeship funding and post vacancies.</p>
+                    <a href="https://accounts.manage-apprenticeships.service.gov.uk/service/index?" class="fiu-card__link fiu-card__link--employers">Learn more</a>
                 </div>
             </div>
         </div>
