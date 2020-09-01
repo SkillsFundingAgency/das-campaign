@@ -3,16 +3,16 @@
 @{
     ViewBag.Title = "Find an apprenticeship";
     ViewBag.PageTitle = "Find an apprenticeship";
-    Layout = "Redesign_Layout_ApprenticesHub";
+    ViewBag.LandingPageTitle = ViewBag.Title;
+    ViewBag.LandingPageSlug = "";
+    Layout = "Redesign_Layout_ApprenticesHub";  
 }
 
 <span class="fiu-header-content-spacer"></span>
 <div class="fiu-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            
             <partial name="./Components/Form/faa-search"/>
-
         </div>
     </div>
 </div>
