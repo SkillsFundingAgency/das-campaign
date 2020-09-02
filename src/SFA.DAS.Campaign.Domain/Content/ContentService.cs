@@ -16,8 +16,9 @@ namespace SFA.DAS.Campaign.Domain.Content
         public async Task<Page<T>> GetPage<T>(string slug) where T : IContent
         {
             var contentType = typeof(T).Name.ToLower();
-            var contentEntry = await _redisDatabase.StringGetAsync($"{contentType}_{slug}");
-            return JsonConvert.DeserializeObject<Page<T>>(contentEntry);
+            var contentEntry = (await _redisDatabase.StringGetAsync($"{contentType}_{slug}")).ToString();
+
+            return contentEntry is null ? null : JsonConvert.DeserializeObject<Page<T>>(contentEntry);
         }
     }
 }

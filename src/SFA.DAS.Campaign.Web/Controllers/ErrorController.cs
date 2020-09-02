@@ -26,7 +26,7 @@ namespace DfE.EmployerFavourites.Web.Controllers
             
             LogException();
 
-            return View("Error", new ErrorViewModel { StatusCode = id.Value, RequestId = HttpContext.TraceIdentifier });
+            return View("Error", new ErrorViewModel { StatusCode = Response.StatusCode, RequestId = HttpContext.TraceIdentifier });
         }
 
         private void LogException()
