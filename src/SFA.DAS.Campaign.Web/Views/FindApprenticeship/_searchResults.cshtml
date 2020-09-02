@@ -15,7 +15,6 @@
             @{ await Html.RenderPartialAsync("_searchResultsMap", Model.StaticMapUrl); }
         </div>
     </div>
-
     <dl class="fiu-table-list">
 
         <dt class="fiu-table-list__th">Route</dt>
@@ -35,7 +34,6 @@
 
         <dt class="fiu-table-list__th">Possible start date:</dt>
         <dd class="fiu-table-list__td"><span class="start-date-value">@Model.ExpectedStartDate.ToString("d")</span></dd>
-
     </dl>
 
     <div class="fiu-results-favbar">
