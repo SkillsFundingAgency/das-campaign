@@ -2,29 +2,21 @@
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @using SFA.DAS.Campaign.Web.Controllers.EmployerInform
 @model SFA.DAS.Campaign.Web.Controllers.EmployerInform.LevyOptionViewModel
+
 @{
     ViewBag.Title = "Funding an apprenticeship";
-    ViewBag.MetaTitle = "Apprenticeship costs and funding rules";
-    ViewBag.HeroImageAltText = "Transport and logistics apprentice";
-    ViewBag.PageID = "employer-what-are-the-costs-to-me";
-    ViewBag.MetaDesc = "How much does it cost to hire an apprentice? Learn about apprenticeship costs for employers, including apprenticeship funding you could get from the government.";
-    ViewBag.PageUrl = "/employer/funding-an-apprenticeship";
-    ViewBag.Section = "employer";
-    Layout = "_Layout-campaign-employer-inform";
+    Layout=$"Redesign_Layout_ApprenticesArticle";
+    ViewBag.PageTitle = "Funding an apprenticeship"; 
+    ViewBag.PageSummary="Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.";
+    ViewBag.LandingPageSlug = "how-do-they-work";
+    ViewBag.LandingPageTitle = "How do they work?";
+    ViewBag.ArticlePageSlug = "funding-an-apprenticeship";
+    ViewBag.ArticlePageTitle = "Funding an apprenticeship";
 }
 
 @await Html.PartialAsync("_levyNonLevyQuestion", Model)
 
-<h2 class="heading-m">Apprenticeships in Scotland, Northern Ireland and Wales</h2>
-<p>This website is about apprenticeships in England.</p>
-<p>Find out more about apprenticeships in <a href="https://www.apprenticeships.scot/" target="_blank" rel="external">Scotland<span class="visually-hidden"> (Opens in a new window)</span></a>, <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external">Northern Ireland<span class="visually-hidden"> (Opens in a new window)</span></a> or <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external">Wales<span class="visually-hidden"> (Opens in a new window)</span></a>.</p>
+<h2 class="heading-m">Apprenticeships in Scotland, Northern Ireland and Wales</h2> 
+<p>This website is about apprenticeships in England.</p> 
+<p>Find out more about apprenticeships in <a href="https://www.apprenticeships.scot/" target="_blank" rel="external">Scotland<span class="visually-hidden"> (Opens in a new window)</span></a>, <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external">Northern Ireland<span class="visually-hidden"> (Opens in a new window)</span></a> or <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external">Wales<span class="visually-hidden"> (Opens in a new window)</span></a>.</p> 
 
-@section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel() { Type = HeroHeadingType.Employer, SubSectionTitle = "How do they work?", SubSectionUrl = Url.Action("Index", "HowDoTheyWork") })
-}
-
-@section pageFooter {
-    <div class="grid-column-full">
-        <partial name="./Components/Cta/_find-apprenticeship-training-with-search" />
-    </div>
-}
