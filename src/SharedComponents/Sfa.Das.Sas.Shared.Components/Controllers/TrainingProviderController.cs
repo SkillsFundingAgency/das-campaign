@@ -16,15 +16,19 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
             _mediator = mediator;
         }
 
+        [Route("/trainingprovider/search")]
         public IActionResult Search(TrainingProviderSearchViewModel model)
         { 
             return View("TrainingProvider/SearchResults", model);
         }
 
+        [Route("/trainingprovider/details")]
         public IActionResult Details(TrainingProviderDetailQueryViewModel model)
         {
             return View("TrainingProvider/Details", model);
         }
+        
+        [Route("/trainingprovider/validate-postcode")]
         [AcceptVerbs("Get", "Post")]
         public async Task<IActionResult> ValidatePostcode(string postcode)
         {
