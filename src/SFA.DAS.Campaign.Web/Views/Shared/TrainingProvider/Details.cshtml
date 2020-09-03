@@ -10,35 +10,58 @@
     ViewBag.Section = "employer";
     ViewBag.MetaDesc = "";
     ViewBag.PageUrl = "/TrainingProvider/Details?ukprn=" + HttpUtility.UrlEncode(Context.Request.Query["ukprn"]) + "&apprenticeshipId=" + HttpUtility.UrlEncode(Context.Request.Query["apprenticeshipId"]) + "&LocationId=" + HttpUtility.UrlEncode(Context.Request.Query["LocationId"]) + "&postCode=" + HttpUtility.UrlEncode(Context.Request.Query["postCode"]);
-    Layout = "_LayoutContentFull";
+    Layout = "Redesign_Layout_EmployersHub";
     ViewBag.PageNavIndex = 3;
 
 }
-@section HeroHeading {
-    @await Component.InvokeAsync("TrainingProviderHeading", new { detailsQueryModel = Model })
-}
 
-<div class="grid-row">
-    <div class="grid-column-one-third grid-column--pull-right">
-        <div class="sidebar-panel sidebar-panel--employer">
-            <div class="sidebar-panel__content">
-                
+<section class="fiu-width-container govuk-!-margin-top-8">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <!-- the dl -->
+            @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Summary })
+
+            <!-- the articles -->
+            @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model })
+
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+
+            <div class="fiu-panel fiu-panel--left-align fiu-panel--min-padding">
+
                 @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Contact })
+
             </div>
+
         </div>
     </div>
-    <div class="grid-column-two-thirds">
-        <div class="page">
-            <h2 class="heading-l u!-margin-Top-0">Training Information</h2>
+</section>
 
-            @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Summary })
-            @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model })
+<div class="fiu-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <hr class="fiu-section-break fiu-section-break--l">
+    </div>
+  </div>
+</div>
+
+<section class="fiu-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+
+
+
+
+
 
             @if (!string.IsNullOrEmpty(Model.PostCode))
             {
                 @await Component.InvokeAsync("ClosestLocations", new { Model.ApprenticeshipId, Model.Ukprn, Model.PostCode })
             }
-            <hr class="section-break">
+
             <form asp-controller="Basket" asp-action="AddProviderFromDetails" method="post">
                 <input type="hidden" asp-for="@Model.ApprenticeshipId" />
                 <input type="hidden" asp-for="@Model.LocationId" />
@@ -49,7 +72,11 @@
                     @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn, locationId = Model.LocationId })
                 </div>
             </form>
+
+
+
+
+
         </div>
     </div>
-</div>
-
+</section>

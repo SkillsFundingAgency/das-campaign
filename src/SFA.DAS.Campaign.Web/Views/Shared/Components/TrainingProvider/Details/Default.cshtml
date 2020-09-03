@@ -4,91 +4,98 @@
 @model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Details.TrainingProviderDetailsViewModel
 @inject ICssViewModel CssViewModel
 
-<div class="das-provider-about">
-
-    <h2 class="@CssViewModel.HeadingMedium">About the apprenticeship</h2>
+<article class="fiu-article" style="border: 1px dashed lime;">
+    <h2 class="govuk-heading-m govuk-!-margin-top-8">About the apprenticeship</h2>
 
     @Html.MarkdownToHtml(Model.AboutApprenticeshipInfo)
 
-</div>
-
-<div class="das-provider-information">
-
-    <h2 class="@CssViewModel.HeadingMedium">Provider information</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-8">Provider information</h2>
 
     @Html.MarkdownToHtml(Model.MarketingInfo)
 
-
     @if (Model.NationalProvider == true)
     {
+        <p><span class="fiu-provider-national fiu-font-weight-bold">National:</span> This training provider is willing to offer apprenticeship training across England.</p>
+    }
+</article>
+
+@if (Model.Feedback != null)
+{
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <h2 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-4">What employers are saying</h2>
+
+        <p class="govuk-body-l">Based on <b class="fiu-font-weight-bold">@Model.Feedback.TotalFeedbackCount reviews from employers</b> that work with this training provider.</p>
+
         <p>
-            <span class="das-provider-tag--national">National</span> This training provider is willing to offer apprenticeship training across England.
+            <a href="https://sfadigital.blog.gov.uk/2018/09/26/new-feedback-feature-for-the-apprenticeship-service/" class="fiu-link fiu-link--employers" target="_blank" rel="external">Find out how these reviews work <span class="fiu-vh">(Opens in a new window)</span></a>
         </p>
 
-    }
+        <h3 class="govuk-heading-m">Overall rating from October 2018 to now</h3>
+<!-- ******************************************************************** style DL here ******************************************** -->
+        <dl class="govuk-summary-list fiu-provider-details-bars">
+            <dt class="das-provider-rating-reviews__definition-list--title">Excellent</dt>
+            <dd class="das-provider-rating-reviews__definition-list--details">
+                <progress class="das-provider__progress-bar das-provider__progress-bar--excellent" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.ExcellentFeedbackCount"></progress>
+                <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.ExcellentFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
+            </dd>
+            <dt class="das-provider-rating-reviews__definition-list--title">Good</dt>
+            <dd class="das-provider-rating-reviews__definition-list--details">
+                <progress class="das-provider__progress-bar das-provider__progress-bar--good" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.GoodFeedbackCount"></progress>
+                <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.GoodFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
+            </dd>
+            <dt class="das-provider-rating-reviews__definition-list--title">Poor</dt>
+            <dd class="das-provider-rating-reviews__definition-list--details">
+                <progress class="das-provider__progress-bar das-provider__progress-bar--poor" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.PoorFeedbackCount"></progress>
+                <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.PoorFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
+            </dd>
+            <dt class="das-provider-rating-reviews__definition-list--title">Very poor</dt>
+            <dd class="das-provider-rating-reviews__definition-list--details">
+                <progress class="das-provider__progress-bar das-provider__progress-bar--very-poor" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.VeryPoorFeedbackCount"></progress>
+                <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.VeryPoorFeedbackCount review <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
+            </dd>
+        </dl>
 
+    </div>
 </div>
 
-<div class="das-provider-employers">
-    @if (Model.Feedback != null)
-    {
-
-        <h2 class="@CssViewModel.HeadingMedium">What employers are saying</h2>
-
-        <p>Based on <strong>@Model.Feedback.TotalFeedbackCount reviews from employers</strong> that work with this training provider.</p>
-
-        <p><a class="@CssViewModel.Link" href="https://sfadigital.blog.gov.uk/2018/09/26/new-feedback-feature-for-the-apprenticeship-service/" target="_blank" rel="external">Find out how these reviews work</a></p>
-
-        <h2 class="@CssViewModel.HeadingXSmall">Overall rating from October 2018 to now</h2>
-
-        <div class="das-provider-rating-reviews">
-
-            <dl class="@CssViewModel.List">
-                <dt class="das-provider-rating-reviews__definition-list--title">Excellent</dt>
-                <dd class="das-provider-rating-reviews__definition-list--details">
-                    <progress class="das-provider__progress-bar das-provider__progress-bar--excellent" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.ExcellentFeedbackCount"></progress>
-                    <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.ExcellentFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-                </dd>
-                <dt class="das-provider-rating-reviews__definition-list--title">Good</dt>
-                <dd class="das-provider-rating-reviews__definition-list--details">
-                    <progress class="das-provider__progress-bar das-provider__progress-bar--good" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.GoodFeedbackCount"></progress>
-                    <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.GoodFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-                </dd>
-                <dt class="das-provider-rating-reviews__definition-list--title">Poor</dt>
-                <dd class="das-provider-rating-reviews__definition-list--details">
-                    <progress class="das-provider__progress-bar das-provider__progress-bar--poor" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.PoorFeedbackCount"></progress>
-                    <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.PoorFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-                </dd>
-                <dt class="das-provider-rating-reviews__definition-list--title">Very poor</dt>
-                <dd class="das-provider-rating-reviews__definition-list--details">
-                    <progress class="das-provider__progress-bar das-provider__progress-bar--very-poor" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.VeryPoorFeedbackCount"></progress>
-                    <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.VeryPoorFeedbackCount review <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-                </dd>
-            </dl>
-
+<div class="govuk-grid-row fiu-flex-row">
+    <div class="govuk-grid-column-one-half">
+        <div class="fiu-panel fiu-panel--left-align">
+            <h3 class="govuk-heading-m">
+                Strengths
+            </h3>
+            <ul class="govuk-list govuk-list--bullet">
+                @foreach (var strength in Model.Feedback.Strengths)
+                {
+                    <li>@strength.Name <b class="fiu-font-weight-bold">(@strength.Count)</b></li>
+                }
+            </ul>
         </div>
-
-        <div class="grid-row">
-            <div class="grid-column-one-half">
-                <h3 class="@CssViewModel.HeadingSmall">Strengths</h3>
-                <ul class="@CssViewModel.List @CssViewModel.ListBullet">
-                    @foreach (var strength in Model.Feedback.Strengths)
-                    {
-                        <li>@strength.Name <strong>(@strength.Count)</strong></li>
-                    }
-                </ul>
-            </div>
-            <div class="grid-column-one-half">
-                <h3 class="@CssViewModel.HeadingSmall">Things to improve</h3>
-                <ul class="@CssViewModel.List @CssViewModel.ListBullet">
-                    @foreach (var weakness in Model.Feedback.Weaknesses)
-                    {
-                        <li>@weakness.Name <strong>(@weakness.Count)</strong></li>
-                    }
-                </ul>
-            </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+        <div class="fiu-panel fiu-panel--left-align">
+            <h3 class="govuk-heading-m">
+                Things to improve
+            </h3>
+            <ul class="govuk-list govuk-list--bullet">
+                @foreach (var weakness in Model.Feedback.Weaknesses)
+                {
+                    <li>@weakness.Name <b class="fiu-font-weight-bold">(@weakness.Count)</b></li>
+                }
+            </ul>
         </div>
-    }
+    </div>
+</div>
+}
+
+
+<!--*********************************************** continue here ******************************* -->
+
+<div class="das-provider-employers" style="border: 5px dotted purple;">
+
+
 
     <dl class="@CssViewModel.List das-provider__training-information-definition-list__results">
 
@@ -123,7 +130,7 @@
     </dl>
 </div>
 
-<div class="das-provider-disclaimer">
+<div class="das-provider-disclaimer" style="border: 2px solid green;">
 
     <h2 class="@CssViewModel.HeadingXSmall">Content disclaimer</h2>
 
@@ -162,4 +169,4 @@
     }
 
 
-} 
+}
