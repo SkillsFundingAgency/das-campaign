@@ -2,12 +2,10 @@
 @model Sfa.Das.Sas.Shared.Components.ViewModels.Apprenticeship.ApprenticeshipItemViewModel
 @inject ICssViewModel CssViewModel
 
-
 <div id="@Model.Id" class="fiu-results-panel">
     <h2 class="govuk-heading-m fiu-results-panel__heading">
-        <a class="fiu-link fiu-link--employers" href="/employer/find-apprenticeships/Apprenticeship?id=@Model.Id">@Model.Title</a>
+        <a class="fiu-link fiu-link--employers" href="/employers/find-apprenticeships/Apprenticeship?id=@Model.Id">@Model.Title</a>
     </h2>
-
     <dl class="fiu-table-list">
         <dt class="fiu-table-list__th">Level</dt>
         <dd class="fiu-table-list__td">@Model.Level (Equivalent to @Model.EquivalentText)</dd>

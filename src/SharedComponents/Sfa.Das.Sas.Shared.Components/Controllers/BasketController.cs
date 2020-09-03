@@ -31,7 +31,7 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
             _basketOrchestrator = basketOrchestrator;
         }
 
-        [HttpGet(Name = "BasketView")]
+        [Route("/basket/view/")]
         public IActionResult View()
         {
             var vm = new BasketViewModel<ApprenticeshipBasketItemViewModel>();
