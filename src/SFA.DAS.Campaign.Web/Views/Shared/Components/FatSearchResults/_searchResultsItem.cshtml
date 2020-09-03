@@ -6,7 +6,7 @@
 <li id="@Model.Id" class="das-search-results__list-item">
     <article class="das-search-result">
         <h2 class="@CssViewModel.HeadingMedium das-search-result__heading">
-            <a class="@CssViewModel.Link das-search-result__heading-link" href="/employer/find-apprenticeships/Apprenticeship?id=@Model.Id">@Model.Title</a>
+            <a class="@CssViewModel.Link das-search-result__heading-link" href="/employers/find-apprenticeships/Apprenticeship?id=@Model.Id">@Model.Title</a>
         </h2>
 
         @if (Model.EffectiveTo.HasValue && Model.EffectiveTo.Value > DateTime.Today)
