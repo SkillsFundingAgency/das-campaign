@@ -8,6 +8,7 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
 {
     public class FatController : Controller
     {
+        [Route("/employer/find-apprenticeships")]
         public IActionResult Search(FatSearchViewModel model)
         {
             if (TempData.ContainsKey("AddRemoveResponse"))
@@ -19,6 +20,7 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
             return View("Fat/SearchResults", model);
         }
 
+        [Route("/employer/find-apprenticeships/Apprenticeship")]
         public IActionResult Apprenticeship(string id)
         {
             var model = new ApprenticeshipDetailQueryViewModel(){Id = id};

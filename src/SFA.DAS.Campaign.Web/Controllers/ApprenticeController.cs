@@ -6,31 +6,13 @@ using System.Threading.Tasks;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
-    [Route("apprentice")]
     public class ApprenticeController : Controller
     {
-        public IVacancyServiceApiHealthCheck _vacancyServiceApiHealthCheck;
+        private readonly IVacancyServiceApiHealthCheck _vacancyServiceApiHealthCheck;
 
         public ApprenticeController(IVacancyServiceApiHealthCheck healthCheck)
         {
             _vacancyServiceApiHealthCheck = healthCheck;
-        }
-
-        [Route("what-is-apprenticeship")]
-        public IActionResult WhatIsAnApprenticeship()
-        {
-            return View();
-        }
-        [Route("what-is-an-apprenticeship")]
-        public IActionResult WhatIsAnApprenticeshipRedirect()
-        {
-            return RedirectToActionPermanent("WhatIsAnApprenticeship");
-        }
-
-        [Route("what-are-the-benefits-for-me")]
-        public IActionResult WhatAreTheBenefitsToMe()
-        {
-            return View();
         }
         
         [Route("/apprentices/find-an-apprenticeship")]
@@ -45,47 +27,5 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             return View();
         }
-        
-        [Route("find-an-apprenticeship")]
-        public IActionResult FindAnApprenticeshipRedirect()
-        {
-            return RedirectToActionPermanent("FindAnApprenticeship");
-            
-        }
-        [Route("application-process")]
-        public IActionResult Application()
-        {
-            return View();
-        }
-        [Route("application")]
-        public IActionResult ApplicationRedirect()
-        {
-            return RedirectToActionPermanent("Application");
-        }
-        [Route("interview")]
-        public IActionResult Interview()
-        {
-            return View();
-        }
-        [Route("starting-apprenticeship")]
-        public IActionResult YourApprenticeship()
-        {
-            return View();
-        }
-        [Route("your-apprenticeship")]
-        public IActionResult YourApprenticeshipRedirect()
-        {
-            return RedirectToActionPermanent("YourApprenticeship");
-        }
-        [Route("assessment-and-certification")]
-        public IActionResult AssessmentAndQualification()
-        {
-            return View();
-        }
-
-
-
-
-
     }
 }
