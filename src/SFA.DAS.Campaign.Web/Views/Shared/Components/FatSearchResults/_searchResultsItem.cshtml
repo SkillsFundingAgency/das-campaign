@@ -3,34 +3,20 @@
 @inject ICssViewModel CssViewModel
 
 
-<li id="@Model.Id" class="das-search-results__list-item">
-    <article class="das-search-result">
-        <h2 class="@CssViewModel.HeadingMedium das-search-result__heading">
-            <a class="@CssViewModel.Link das-search-result__heading-link" href="/employer/find-apprenticeships/Apprenticeship?id=@Model.Id">@Model.Title</a>
-        </h2>
+<div id="@Model.Id" class="fiu-results-panel">
+    <h2 class="govuk-heading-m fiu-results-panel__heading">
+        <a class="fiu-link fiu-link--employers" href="/employer/find-apprenticeships/Apprenticeship?id=@Model.Id">@Model.Title</a>
+    </h2>
 
-        @if (Model.EffectiveTo.HasValue && Model.EffectiveTo.Value > DateTime.Today)
-        {
-            <div class="@CssViewModel.WarningText">
-                <span class="@(CssViewModel.WarningText)__icon" aria-hidden="true"></span>
-                <strong class="@(CssViewModel.WarningText)__text">
-                    <span class="@(CssViewModel.WarningText)__assistive">Warning</span>
-                    This apprenticeship is available to new starters until @Model.EffectiveTo.Value.AddDays(1).ToLongDateString()
-                </strong>
-            </div>
-        }
-
-        <dl class="@CssViewModel.List  das-search-result__details">
-            <dt class="das-search-result__details-title">Level:</dt>
-            <dd class="das-search-result__details-definition">@Model.Level (Equivalent to @Model.EquivalentText)</dd>
-            <dt class="das-search-result__details-title">Typical length:</dt>
-            <dd class="das-search-result__details-definition">@Model.Duration months</dd>
-            <dt class="das-search-result__details-title">Apprenticeship Type:</dt>
-            <dd class="das-search-result__details-definition">@Model.ApprenticeshipType.ToString()</dd>
-        </dl>
-
+    <dl class="fiu-table-list">
+        <dt class="fiu-table-list__th">Level</dt>
+        <dd class="fiu-table-list__td">@Model.Level (Equivalent to @Model.EquivalentText)</dd>
+        <dt class="fiu-table-list__th">Typical length</dt>
+        <dd class="fiu-table-list__td">@Model.Duration months</dd>
+    </dl>
+    <div class="fiu-favourite-bar">
         @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
-    </article>
-</li>
+    </div>
+</div>
 
 

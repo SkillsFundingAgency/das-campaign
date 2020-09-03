@@ -4,7 +4,7 @@
 @inject ICssViewModel CssViewModel
 
 <form asp-controller="Fat" asp-action="Search" method="get">
-    <label asp-for="Keywords" class="govuk-label">Apprenticeship name or job role</label>
+    <label asp-for="Keywords" class="govuk-label fiu-visually-hidden">Apprenticeship name or job role</label>
     <div class="fiu-form-group-inline govuk-!-width-three-quarters">
         <input asp-for="Keywords" class="govuk-input" type="search">
         <div class="fiu-form-group-inline__button-wrap">

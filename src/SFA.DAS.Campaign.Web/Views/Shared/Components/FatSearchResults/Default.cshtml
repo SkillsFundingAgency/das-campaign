@@ -37,12 +37,20 @@
     }
     else
     {
-        <p class="das-search-results__header-results-header-text">
-            There are 
-            <strong class="bold" id="fat-search-result-count">@Model.TotalResults</strong> 
-            apprenticeships 
-            <span class="@(CssViewModel.VisuallyHidden)">matching your search for <strong class="bold" id="fat-search-result-keyword">@Model.SearchQuery.Keywords</strong></span>
-        </p>
+        var currentRecordLower = ((Model.SearchQuery.Page - 1) * Model.SearchQuery.ResultsToTake) + 1;
+        var currentRecordUpper = Model.TotalResults;
+
+        if (Model.TotalResults > Model.SearchQuery.ResultsToTake && Model.SearchQuery.Page != Model.LastPage) {
+            currentRecordUpper = Model.SearchQuery.Page * Model.SearchQuery.ResultsToTake;
+        }
+
+        <div id="resultsSummary" class="fiu-results-summary">
+            <p class="fiu-results-summary__content">
+                Showing 
+                <b>@currentRecordLower - @currentRecordUpper</b> of 
+                <b id="fat-search-result-count">@Model.TotalResults</b> apprenticeships
+            </p>
+        </div>
     }
         <partial name="Components/FatSearchResults/_searchResultsSort" for="@Model.SearchQuery" />
     </div>
@@ -57,13 +65,12 @@
             
             <input type="hidden" asp-for="@Model.SearchQuery.SelectedLevels[i]" />
         }
-        <ol class="@CssViewModel.SearchList das-search-results">
 
-            @foreach (var result in Model.SearchResults)
-            {
-                <partial name="Components/FatSearchResults/_searchResultsItem" for="@result" />
-            }
-        </ol>
+        @foreach (var result in Model.SearchResults)
+        {
+            <partial name="Components/FatSearchResults/_searchResultsItem" for="@result" />
+        }
+    
     </form>
 }
 else

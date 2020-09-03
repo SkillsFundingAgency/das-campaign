@@ -1,3 +1,6 @@
+@using Sfa.Das.Sas.Core.Configuration
+@inject IFatConfigurationSettings fatSettings;
+
 <!doctype html>
 <html lang="en" class="fiu-template">
 
@@ -24,7 +27,7 @@
 
 </head>
 
-<body class="fiu-template__body">
+<body class="fiu-template__body" data-fat-api="@(fatSettings.FatApiBaseUrl)">
 	<script>
 		document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
 	</script>
