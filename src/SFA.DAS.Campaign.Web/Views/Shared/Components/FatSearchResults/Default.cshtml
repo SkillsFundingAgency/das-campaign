@@ -3,11 +3,9 @@
 @using Sfa.Das.Sas.ApplicationServices.Commands
 @using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
 @model Sfa.Das.Sas.Shared.Components.ViewModels.Fat.SearchResults.FatSearchResultsViewModel
-@inject ICssViewModel CssViewModel
 
 @if (Model.TotalResults > 0)
-{
-    
+{  
     @if (Model.SearchQuery.AddRemoveBasketResponse != null)
     {
             @if (Model.SearchQuery.AddRemoveBasketResponse.BasketOperation == BasketOperation.Added)
@@ -33,7 +31,7 @@
     <div class="das-search-results__header">
     @if (Model.IsAllSearch)
     {
-        <p class="das-search-results__header-results-header-text">All apprenticeships</p>
+        <p class="govuk-heading-m">All apprenticeships</p>
     }
     else
     {
