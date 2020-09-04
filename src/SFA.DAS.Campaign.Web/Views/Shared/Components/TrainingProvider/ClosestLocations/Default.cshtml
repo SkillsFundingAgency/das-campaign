@@ -4,54 +4,64 @@
 @model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.ClosestLocations.ClosestLocationsViewModel
 @inject ICssViewModel CssViewModel
 
-<h2 class="heading-m"><span class="badge-round badge-round--employer">@Model.Locations.Count</span> nearest @("location".ToQuantity(Model.Locations.Count, ShowQuantityAs.None)) for @Model.ProviderName:</h2>
-<details class="details">
-    <summary class="details__summary"><span class="details__summary-text">View locations</span></summary>
-    <div class="details__text">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-l govuk-!-margin-top-4">
+            Nearest @("location".ToQuantity(Model.Locations.Count, ShowQuantityAs.None)) for @Model.ProviderName
+        </h2>
 
         <form asp-controller="Basket" asp-action="AddProviderFromDetails" method="post">
+
             <input type="hidden" asp-for="@Model.ApprenticeshipId" />
             <input type="hidden" asp-for="@Model.LocationId" />
             <input type="hidden" asp-for="@Model.Ukprn" />
             <input type="hidden" asp-for="@Model.PostCode" />
 
-            <table class="table table--simple">
-                <tr class="table__row">
-                    <th scope="col" class="table__cell--header">Address</th>
-                    <th scope="col" class="table__cell--header-numeric">Favourite</th>
-                </tr>
+            @for (int i = 0; i < Model.Locations.Count; i++)
+            {
+            var item = @Model.Locations[i];
 
-                @for (int i = 0; i < Model.Locations.Count; i++)
-                {
-                    var item = @Model.Locations[i];
-                    <tr class="table__row table__row--highlight">
-                        <td class="table__cell">
-                            @if (i == 0)
-                            {
-                                <span class="badge badge--highlight badge--employer">Nearest</span>
-                            }
-                            <dl class="das-definition-list--inline">
-                                <dt class="das-definition-list__title">Address</dt>
-                                @if (string.IsNullOrWhiteSpace(item.AddressWithoutPostCode))
-                                {
-                                    <dd class="das-definition-list__definition"><strong>@item.PostCode</strong></dd>
-                                }
-                                else
-                                {
-                                    <dd class="das-definition-list__definition">@item.AddressWithoutPostCode, <strong>@item.PostCode</strong></dd>
-                                }
-                                <dt class="das-definition-list__title">Distance</dt>
-                                <dd class="das-definition-list__definition">@Model.Locations[i].Distance miles</dd>
-                            </dl>
-                        </td>
-                        <td class="table__cell table__cell--numeric">
-                            @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn, locationId = item.LocationId })
-                        </td>
-                    </tr>
-                }
-            </table>
+            <div class="fiu-panel fiu-panel--left-align fiu-panel--min-padding">
+
+                <div class="fiu-provider-details-locations">
+                    @if (i == 0)
+                    {
+                        <div class="fiu-provider-details-locations__tag">
+                            <strong class="fiu-tag fiu-tag--employers">Nearest</strong>
+                        </div>
+                    }
+
+                    <dl class="fiu-provider-details-locations__list">
+                        <dt class="fiu-provider-details-locations__th">Distance</dt>
+                        <dd class="fiu-provider-details-locations__td">@Model.Locations[i].Distance miles away</dd>
+
+                        <dt class="fiu-provider-details-locations__th">Address</dt>
+                        @if (string.IsNullOrWhiteSpace(item.AddressWithoutPostCode))
+                        {
+                            <dd class="fiu-provider-details-locations__td">@item.PostCode</dd>
+                        }
+                        else
+                        {
+                            <dd class="fiu-provider-details-locations__td">@item.AddressWithoutPostCode, @item.PostCode</dd>
+                        }
+                    </dl>
+
+                    <div class="fiu-provider-details-locations__fav fiu-provider-details-locations__fav--employers">
+                        @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn, locationId = item.LocationId })
+                    </div>
+                </div>
+
+            </div>
+            }
+
         </form>
-    </div>
-    <p><a asp-controller="Fat" asp-action="Apprenticeship" asp-route-Id="@Model.ApprenticeshipId">Search for training providers in a different location</a></p>
-</details>
 
+        <p class="govuk-body-m govuk-!-margin-top-6">
+            <a asp-controller="Fat" asp-action="Apprenticeship" asp-route-Id="@Model.ApprenticeshipId" class="fiu-link fiu-link--employers">
+                Search for training providers in a different location
+            </a>
+        </p>
+
+    </div>
+</div>

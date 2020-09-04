@@ -4,7 +4,7 @@
 @model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Details.TrainingProviderDetailsViewModel
 @inject ICssViewModel CssViewModel
 
-<article class="fiu-article" style="border: 1px dashed lime;">
+<article class="fiu-article">
     <h2 class="govuk-heading-m govuk-!-margin-top-8">About the apprenticeship</h2>
 
     @Html.MarkdownToHtml(Model.AboutApprenticeshipInfo)
@@ -15,9 +15,15 @@
 
     @if (Model.NationalProvider == true)
     {
-        <p><span class="fiu-provider-national fiu-font-weight-bold">National:</span> This training provider is willing to offer apprenticeship training across England.</p>
+        <p>
+            <span class="fiu-tag fiu-tag--national">National<span class="fiu-vh">:</span></span> This training provider is willing to offer apprenticeship training across England.
+        </p>
     }
 </article>
+
+
+
+
 
 @if (Model.Feedback != null)
 {
@@ -33,13 +39,29 @@
         </p>
 
         <h3 class="govuk-heading-m">Overall rating from October 2018 to now</h3>
-<!-- ******************************************************************** style DL here ******************************************** -->
+
         <dl class="govuk-summary-list fiu-provider-details-bars">
-            <dt class="das-provider-rating-reviews__definition-list--title">Excellent</dt>
-            <dd class="das-provider-rating-reviews__definition-list--details">
-                <progress class="das-provider__progress-bar das-provider__progress-bar--excellent" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.ExcellentFeedbackCount"></progress>
-                <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.ExcellentFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-            </dd>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Excellent @Model.Feedback
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-excellent">
+                    <span style="width: 16%;">
+                    Visual bar showing 16 reviews
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                    16 reviews
+                </dd>
+
+                <dd style="display:none;" class="das-provider-rating-reviews__definition-list--details">
+                    <progress class="das-provider__progress-bar das-provider__progress-bar--excellent" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.ExcellentFeedbackCount"></progress>
+                    <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.ExcellentFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
+                </dd>
+
+            </div>
+
+
             <dt class="das-provider-rating-reviews__definition-list--title">Good</dt>
             <dd class="das-provider-rating-reviews__definition-list--details">
                 <progress class="das-provider__progress-bar das-provider__progress-bar--good" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.GoodFeedbackCount"></progress>
@@ -69,7 +91,7 @@
             <ul class="govuk-list govuk-list--bullet">
                 @foreach (var strength in Model.Feedback.Strengths)
                 {
-                    <li>@strength.Name <b class="fiu-font-weight-bold">(@strength.Count)</b></li>
+                <li>@strength.Name <b class="fiu-font-weight-bold">(@strength.Count)</b></li>
                 }
             </ul>
         </div>
@@ -82,7 +104,7 @@
             <ul class="govuk-list govuk-list--bullet">
                 @foreach (var weakness in Model.Feedback.Weaknesses)
                 {
-                    <li>@weakness.Name <b class="fiu-font-weight-bold">(@weakness.Count)</b></li>
+                <li>@weakness.Name <b class="fiu-font-weight-bold">(@weakness.Count)</b></li>
                 }
             </ul>
         </div>
@@ -90,57 +112,80 @@
 </div>
 }
 
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
 
-<!--*********************************************** continue here ******************************* -->
+        <p class="fiu-provider-details-source">
+          Source: <a href="https://www.gov.uk/government/collections/fe-choices" class="fiu-link--employers">Skills Funding Agency <abbr>FE</abbr> Choices <span class="fiu-vh">(Opens in a new window)</span></a>
+        </p>
 
-<div class="das-provider-employers" style="border: 5px dotted purple;">
-
-
-
-    <dl class="@CssViewModel.List das-provider__training-information-definition-list__results">
-
-        <dt>Employer satisfaction:</dt>
-        <dd>
-            <div>@Model.EmployerSatisfactionMessage</div>
+        <dl class="govuk-summary-list fiu-provider-details-bars">
             @if (@Model.EmployerSatisfaction > 0)
             {
-                <progress class="das-provider__progress-bar" max="100" value="@Model.EmployerSatisfaction"></progress>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Employer satisfaction
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-excellent">
+                    <span style="width: @Model.EmployerSatisfaction%;">
+                        Visual bar showing @Model.EmployerSatisfaction&percnt;
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                     @Model.EmployerSatisfactionMessage
+                </dd>
+            </div>
             }
-        </dd>
-
-        <dt>Learner satisfaction:</dt>
-        <dd>
-            <div>@Model.LearnerSatisfactionMessage</div>
             @if (@Model.LearnerSatisfaction > 0)
             {
-                <progress class="das-provider__progress-bar" max="100" value="@Model.LearnerSatisfaction"></progress>
-
-            }
-            <div class="satisfaction-source font-small">
-                Source: <a class="@CssViewModel.Link" rel="external" href="https://www.gov.uk/government/collections/fe-choices" target="_blank">Skills Funding Agency FE Choices</a>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">Learner satisfaction</dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-good">
+                    <span style="width: @Model.LearnerSatisfaction%;">
+                        Visual bar showing @Model.LearnerSatisfaction&percnt;
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                     @Model.LearnerSatisfactionMessage
+                </dd>
             </div>
-        </dd>
-
-        @if (!string.IsNullOrWhiteSpace(Model.LegalName))
-        {
-            <dt>Legal name:</dt>
-            <dd>@Model.LegalName</dd>
-        }
-
-    </dl>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.LegalName))
+            {
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Legal name
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--none">
+                    @Model.LegalName
+                </dd>
+            </div>
+            }
+        </dl>
+    </div>
 </div>
 
-<div class="das-provider-disclaimer" style="border: 2px solid green;">
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    <h2 class="@CssViewModel.HeadingXSmall">Content disclaimer</h2>
+        <div class="fiu-article">
+            <h4 class="govuk-heading-m">
+                Content disclaimer
+            </h4>
+            <p><i>Education and Skills Funding Agency cannot guarantee the accuracy of
+            course information on this site and makes no representations about
+            the quality of any courses which appear on the site. Education and Skills
+            Funding Agency is not liable for any losses suffered as a result of any party
+            relying on the course information provided.</i></p>
+        </div>
 
-    <p>
-        Education and Skills Funding Agency cannot guarantee the accuracy of
-        course information on this site and makes no representations about
-        the quality of any courses which appear on the site. Education and Skills
-        Funding Agency is not liable for any losses suffered as a result of any party
-        relying on the course information provided.
-    </p>
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <hr class="fiu-section-break fiu-section-break--l">
+    </div>
 </div>
 
 @if (string.IsNullOrEmpty(Model.SearchQuery.PostCode) && !string.IsNullOrWhiteSpace(Model.Location.Address.Postcode))
@@ -148,25 +193,3 @@
     @await Component.InvokeAsync("ClosestLocations", new { Model.ApprenticeshipId, Model.Ukprn, Model.Location.LocationId, Model.Location.Address.Postcode })
 }
 
-@functions
-{
-
-    string GetTrainingOptionsStatusClass(string trainingOption, IList<string> options)
-    {
-        var cssClass = "das-search-results__training-options";
-        var classSuffix = string.Empty;
-
-        if (options.Contains(trainingOption, StringComparer.OrdinalIgnoreCase))
-        {
-            classSuffix = "--tick";
-        }
-        else
-        {
-            classSuffix = "--cross";
-        }
-
-        return $"{cssClass}{classSuffix}";
-    }
-
-
-}
