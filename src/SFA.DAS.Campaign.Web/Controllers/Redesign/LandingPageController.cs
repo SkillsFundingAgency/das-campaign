@@ -27,7 +27,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             return View("~/Views/LandingPages/Apprentices/HowDoTheyWork.cshtml");
         }
         
-        [HttpGet("/apprentices/getting-started")]
+        [HttpGet("/apprentices/get-started")]
         public IActionResult GettingStarted()
         {
             return View("~/Views/LandingPages/Apprentices/GettingStarted.cshtml");
