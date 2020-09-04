@@ -1,13 +1,24 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SFA.DAS.Campaign.Domain.Content;
 
 namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 {
     public class LandingPageController : Controller
     {
+        private readonly IContentService _contentService;
+
+        public LandingPageController(IContentService contentService)
+        {
+            _contentService = contentService;
+        }
+        
         [HttpGet("/apprentices/are-they-right-for-you")]
         public IActionResult AreTheyRightForYou()
         {
-            return View("~/Views/LandingPages/Apprentices/AreApprenticeshipsRightForMe.cshtml");
+            var articleCards = _contentService.GetArticleCardsFor("are-they-right-for-you", HubType.Apprentices);
+            
+            return View("~/Views/LandingPages/Apprentices/AreApprenticeshipsRightForMe.cshtml", articleCards);
         }
         
         [HttpGet("/apprentices/how-do-they-work")]
@@ -16,7 +27,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             return View("~/Views/LandingPages/Apprentices/HowDoTheyWork.cshtml");
         }
         
-        [HttpGet("/apprentices/getting-started")]
+        [HttpGet("/apprentices/get-started")]
         public IActionResult GettingStarted()
         {
             return View("~/Views/LandingPages/Apprentices/GettingStarted.cshtml");

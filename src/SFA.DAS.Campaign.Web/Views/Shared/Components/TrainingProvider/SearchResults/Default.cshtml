@@ -14,11 +14,22 @@
 
 @if (Model.TotalResults > 0 && Model.Status == ProviderSearchResponseCodes.Success)
 {    
-     <div class="das-search-results__header">
-        <p class="das-search-results__header-results-header-text">
-            We've found <strong class="bold" id="fat-tp-search-result-count">@Model.TotalResults</strong> training providers for this apprenticeship. Results are sorted by distance from '<strong class="bold" id="fat-tp-from-postcode">@Model.SearchQuery.Postcode</strong>'.
+
+    var currentRecordLower = ((Model.SearchQuery.Page - 1) * Model.SearchQuery.ResultsToTake) + 1;
+    var currentRecordUpper = Model.TotalResults;
+
+    if (Model.TotalResults > Model.SearchQuery.ResultsToTake && Model.SearchQuery.Page != Model.LastPage) {
+        currentRecordUpper = Model.SearchQuery.Page * Model.SearchQuery.ResultsToTake;
+    }
+
+    <div id="resultsSummary" class="fiu-results-summary">
+        <p class="fiu-results-summary__content">
+            Showing 
+            <b>@currentRecordLower - @currentRecordUpper</b> of 
+            <b id="fat-search-result-count">@Model.TotalResults</b> training providers
         </p>
     </div>
+
     <form asp-controller="Basket" asp-action="AddProviderFromResults" method="post">
         <input type="hidden" asp-for="@Model.SearchQuery.ApprenticeshipId" />
         <input type="hidden" asp-for="@Model.SearchQuery.IsLevyPayer" />
@@ -26,43 +37,43 @@
         <input type="hidden" asp-for="@Model.SearchQuery.Page" />
         <input type="hidden" asp-for="@Model.SearchQuery.Postcode" />
         <input type="hidden" asp-for="@Model.SearchQuery.SortOrder" />
-        <ol class="@CssViewModel.SearchList">
+        
             @foreach (var result in Model.SearchResults)
             {
                 var itemModel = Tuple.Create(result, Model.SearchQuery);
                 <partial name="Components/TrainingProvider/SearchResults/_searchResultsItem" for="@itemModel" />
             }
-        </ol>
+        
     </form>
 }
 else
 {
-    <p>Sorry, there is currently no training providers for '<span class="@CssViewModel.UtilitiesCss.FontWeightBold">@Model.SearchQuery.Postcode</span>'.</p>
-
-    <h3 class="@CssViewModel.HeadingSmall">Try a different postcode</h3>
+    <div class="fiu-results-summary">
+        <p class="fiu-results-summary__content">Sorry, there is currently no training providers for <b id="fat-search-result-keyword">@Model.SearchQuery.Postcode</b>.</p>
+    </div>
 }
 
 @if (Model.TotalResults >= (Model.SearchQuery.ResultsToTake * Model.SearchQuery.Page))
 {
-
-    <ul class="das-pagination das-pagination--employer">
-
-        <li class="das-pagination__list-item">
+    <nav role="navigation" aria-label="Pagination">
+        <ul class="fiu-pagination">
+         
             @if (Model.SearchQuery.Page > 1)
             {
-                <a class="das-pagination__link das-pagination__link--previous" id="link-pagination-previous" href="@await GetPaginationBackLinkHref(Model.SearchQuery.Page, Model.SearchQuery, Context.Request.Query)">Previous page <span class="das-pagination__caption">@(Model.SearchQuery.Page - 1) of @Model.LastPage</span></a>
+                <li class="fiu-pagination__item fiu-pagination__item--prev">
+                    <a class="fiu-pagination__link fiu-link--employers" id="link-pagination-previous" href="@await GetPaginationBackLinkHref(Model.SearchQuery.Page, Model.SearchQuery, Context.Request.Query)">Previous</a>
+                </li>
             }
-        </li>
 
+            @if (Model.SearchQuery.Page < Model.LastPage)
+            {
+                <li class="fiu-pagination__item fiu-pagination__item--next">
+                    <a class="fiu-pagination__link fiu-link--employers" id="link-pagination-apprentice-next" href="@await GetPaginationNextLinkHref(Model.SearchQuery.Page,Model.SearchQuery, Context.Request.Query)">Next</a>
+                </li>
+            }
 
-        @if (Model.SearchQuery.Page < Model.LastPage)
-        {
-            <li class="das-pagination__list-item">
-                <a class="das-pagination__link das-pagination__link--next" id="link-pagination-apprentice-next" href="@await GetPaginationNextLinkHref(Model.SearchQuery.Page,Model.SearchQuery, Context.Request.Query)">Next page <span class="das-pagination__caption">@(Model.SearchQuery.Page + 1) of @Model.LastPage</span></a>
-            </li>
-        }
-
-    </ul>
+        </ul>
+    </nav>
 }
 
 

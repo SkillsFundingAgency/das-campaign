@@ -1,19 +1,23 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
 @model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Search.TrainingProviderSearchViewModel
-@inject ICssViewModel CssViewModel;
 
-<form action="@Model.SearchRoute">
-    <div class="@(CssViewModel.FormCss.FormGroup)">
-        <label asp-for="Postcode" class="@(CssViewModel.FormCss.Label) @(CssViewModel.FormCss.LabelLarge)">Please enter the postcode for where the apprentice will work</label>
-        <input class="@(CssViewModel.FormCss.Input) @(CssViewModel.FormCss.InputWidth10)" asp-for="Postcode" type="search" placeholder="Enter postcode" maxlength="8" autocomplete="postal-code" >
-        <span asp-validation-for="Postcode" class="error-message--light"></span>
-    </div>
-   
-    <div class="@(CssViewModel.FormCss.FormGroup)">
+<div class="fiu-panel fiu-panel--solid-employers">
+
+    <h2 class="govuk-heading-m fiu-panel__heading">Find a training provider for this apprenticeship</h2>
+
+    <form action="@Model.SearchRoute">
+
+        <div class="govuk-form-group">
+            <label asp-for="Postcode" class="govuk-label fiu-panel__label">Enter the postcode for where the apprentice will work</label>
+            <input class="govuk-input govuk-input--width-10" asp-for="Postcode" type="search" maxlength="8" autocomplete="postal-code" >
+        </div>
+
         <input type="hidden" asp-for="ApprenticeshipId" />
         <input type="hidden" asp-for="Keywords" />
         <input type="hidden" asp-for="IsLevyPayer" value="true" />
-        <button class="@(CssViewModel.Button)" type="submit" id="employer-provider-search">Search</button>
-    </div>
-</form>
+
+        <button class="fiu-button fiu-button--sparks fiu-button--employers fiu-button--outlined" type="submit" id="employer-provider-search">Search providers</button>
+
+    </form>
+</div>

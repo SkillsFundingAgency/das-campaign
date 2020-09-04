@@ -165,11 +165,9 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<ISessionService, SessionService>();
 
             services.AddTransient<IContentService, ContentService>();
-            services.AddTransient<IDatabase>(client =>
-            {
-                var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase}");
-                return redis.GetDatabase();
-            });
+            
+            services.AddTransient<ConnectionMultiplexer>(sp => ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase},allowAdmin=true"));
+            services.AddTransient<IDatabase>(client => client.GetService<ConnectionMultiplexer>().GetDatabase());
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 

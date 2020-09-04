@@ -9,54 +9,44 @@
 @{
     FatSearchResultsViewModel searchResults = await _fat.GetSearchResults(Model);
 
-    ViewBag.Title = "Search results";
-    ViewBag.MetaTitle = "Find an apprenticeship";
-    ViewBag.PageID = "employer-find-an-apprenticeship-search-results";
-    ViewBag.Section = "employer";
-    ViewBag.MetaDesc = "";
-    ViewBag.PageUrl = "/employer/find-apprenticeships?Keywords=" + HttpUtility.UrlEncode(Context.Request.Query["Keywords"]);
-    ViewBag.PageNavIndex = 3;
-    Layout = searchResults.TotalResults == 0 ? "_LayoutContentFull" : "_LayoutContentSidebar";
+    ViewBag.Title = "Search for an apprenticeship - Results";
+    ViewBag.HidePageHeader = true;
+    Layout = "Redesign_Layout_EmployersHub"; 
 }
 
-@if(searchResults.TotalResults == 0){
-    <div class="grid-row">
-        <div class="grid-column-one-half">
+<div class="fiu-page-header">
+    <div class="fiu-width-container">
+        <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
+            <a asp-controller="Employer" asp-action="FindApprenticeshipTraining" class="govuk-back-link govuk-breadcrumbs__link">Back</a>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds fiu-page-header__wrap">
+                <h1 class="govuk-heading-xl fiu-page-heading__title ">
+                    <span class="govuk-caption-xl">Search for an apprenticeship</span>
+                    Results
+                </h1>
+                @await Component.InvokeAsync("FatSearch", new { fatSearchRoute = "/employer/find-apprenticeships", inline = true })
+                <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@if(searchResults.TotalResults > 0) {
+    <div class="fiu-search-filter">
+        <div class="fiu-width-container">
+            @await Component.InvokeAsync("FatSearchFilter", new { searchQueryModel = Model })
+        </div>
+    </div>
+    <span class="fiu-header-content-spacer--grey"></span>
+} else {
+    <span class="fiu-header-content-spacer"></span>
+}
+
+<div class="fiu-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
             @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model })
         </div>
     </div>
-} else {
-    @await Component.InvokeAsync("FatSearchResults", new { searchQueryModel = Model })
-}
-
-@section HeroHeading {
-    @await Component.InvokeAsync("HeroHeading", new HeroHeadingViewModel(){ Type = HeroHeadingType.Employer })
-}
-
-@if(searchResults.TotalResults == 0){
-    @section pageFooter {
-        <div class="promotion promotion--employer">
-            <div class="promotion__content">
-                <h2 class="heading-m promotion__heading">Can't find what you're looking for</h2>
-                <p>
-                    If the standard you're looking for doesn't exist yet, you could develop it as part of a <strong>'trailblazer group'</strong>.
-                    You'll work with other employers to make sure the new standard meets your skill needs, the needs of your sector and those of the economy.
-                </p>
-                <a href="https://www.instituteforapprenticeships.org/developing-new-apprenticeships/forming-a-trailblazer-group" class="button button--inverted" target="_blank">Develop a new standard<span class="visually-hidden"> (Opens in a new window)</span></a>
-            </div>
-            <div class="promotion__hero-image-wrap">
-                <img src="/campaign/images/employer/hajra-hero-1.jpg" alt="" class="promotion__hero-image" />
-            </div>
-        </div>
-    }
-}
-
-@if(searchResults.TotalResults > 0) {
-    @section Sidebar {
-        <div class="sidebar-panel sidebar-panel--dark">
-            <div class="sidebar-panel__content">
-                @await Component.InvokeAsync("FatSearchFilter", new { searchQueryModel = Model })
-            </div>
-        </div>
-    }
-}
+</div>
