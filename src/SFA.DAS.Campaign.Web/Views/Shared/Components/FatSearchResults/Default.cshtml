@@ -1,7 +1,6 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using Microsoft.AspNetCore.Http
 @using Sfa.Das.Sas.ApplicationServices.Commands
-@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
 @model Sfa.Das.Sas.Shared.Components.ViewModels.Fat.SearchResults.FatSearchResultsViewModel
 
 @if (Model.TotalResults > 0)
@@ -28,7 +27,6 @@
             }
     }
     
-    <div class="das-search-results__header">
     @if (Model.IsAllSearch)
     {
         <p class="govuk-heading-m">All apprenticeships</p>
@@ -50,7 +48,6 @@
             </p>
         </div>
     }
-    </div>
 
     <form asp-controller="Basket" asp-action="AddApprenticeshipFromResults" method="post">
         <input type="hidden" asp-for="@Model.SearchQuery.Keywords" />
@@ -79,8 +76,6 @@ else
 
 @if (Model.TotalResults > Model.SearchQuery.ResultsToTake)
 {
-
-
     <nav role="navigation" aria-label="Pagination">
         <ul class="fiu-pagination">
          

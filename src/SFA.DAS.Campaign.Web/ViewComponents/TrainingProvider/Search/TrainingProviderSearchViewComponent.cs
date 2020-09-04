@@ -20,7 +20,15 @@ namespace Sfa.Das.Sas.Shared.Components.ViewComponents.Fat
             {
                 model.SearchRoute = searchRoute;
             }
+
+            if (!inline)
+            {
                 return View("~/Views/Shared/Components/TrainingProvider/Search/Default.cshtml",model);
+            }
+            else{
+                return View("~/Views/Shared/Components/TrainingProvider/Search/Inline.cshtml", model);
+            }
+
         }
     }
 }
