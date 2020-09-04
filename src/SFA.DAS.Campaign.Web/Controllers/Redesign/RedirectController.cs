@@ -17,7 +17,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("/apprentice/interview")]
         public IActionResult Interview()
         {
-            return RedirectPermanent("/apprentices/interview");
+            return RedirectPermanent("/apprentices/interview-process");
         }
         
         [Route("/apprentice/application")]
