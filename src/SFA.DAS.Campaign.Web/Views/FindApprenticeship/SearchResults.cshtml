@@ -21,6 +21,14 @@
 <div class="fiu-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+
+            @{
+                if (Model.TotalResults > 0)
+                {
+                    var findApprenticeshipSearchModel = new FindApprenticeshipSearchModel() { Distance = Model.Distance, Postcode = Model.Postcode };
+                    await Html.RenderPartialAsync("./Components/Form/faa-update-results", findApprenticeshipSearchModel);
+                }
+            }
             
             <span class="fiu-visually-hidden" aria-hidden="true">
                 There are
@@ -39,7 +47,7 @@
                 {
                     <div id="resultsSummary" class="fiu-results-summary">
                         <p class="fiu-results-summary__content">
-                            Showing 
+                            Here are the 
                             @if (Model.TotalResults >= 10)
                             {
                                 <b>10</b>
@@ -48,7 +56,7 @@
                             {
                                 <b>@Model.TotalResults</b>
                             }
-                            apprenticeships
+                            apprenticeships nearest to your postcode. 
                         </p>
                     </div>
 
@@ -88,10 +96,7 @@
 
         </div>
         <div class="govuk-grid-column-one-third">
-        @{
-            var findApprenticeshipSearchModel = new FindApprenticeshipSearchModel() { Distance = Model.Distance, Postcode = Model.Postcode };
-            await Html.RenderPartialAsync("./Components/Form/faa-update-results", findApprenticeshipSearchModel);
-        }
+            <partial name="Redesign/_GetFreeHelpAndSupport"/>
         </div>
     </div>
 </div>
