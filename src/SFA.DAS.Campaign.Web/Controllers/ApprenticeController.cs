@@ -20,10 +20,10 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             var health = await _vacancyServiceApiHealthCheck.CheckHealthAsync(new HealthCheckContext(), CancellationToken.None);
 
-            // if (health.Status == HealthStatus.Unhealthy)
-            // {
-            //     return View("~/Views/Apprentice/RedirectToFAA.cshtml");
-            // }
+            if (health.Status == HealthStatus.Unhealthy)
+            {
+                return View("~/Views/Apprentice/RedirectToFAA.cshtml");
+            }
 
             return View();
         }
