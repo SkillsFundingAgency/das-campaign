@@ -1,0 +1,197 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Sfa.Das.Sas.Shared.Components.Extensions
+@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Details.TrainingProviderDetailsViewModel
+@inject ICssViewModel CssViewModel
+
+
+
+<!-- starts: to move -->
+@if (Model.Feedback != null)
+{
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <h2 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-4">What employers are saying</h2>
+
+        <p class="govuk-body-l">Based on <b class="fiu-font-weight-bold">@Model.Feedback.TotalFeedbackCount reviews from employers</b> that work with this training provider.</p>
+
+        <p class="govuk-body">Overall rating from October 2018 to now.</p>
+
+        <dl class="govuk-summary-list fiu-provider-details-bars">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Excellent
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-excellent">
+                    <span style="width: @Model.Feedback.ExcellentFeedbackCount%;">
+                        Visual bar showing @Model.Feedback.ExcellentFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                    @Model.Feedback.ExcellentFeedbackCount reviews
+                </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Good
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-good">
+                    <span style="width: @Model.Feedback.GoodFeedbackCount%;">
+                    Visual bar showing @Model.Feedback.GoodFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                    @Model.Feedback.GoodFeedbackCount reviews
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Poor
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-poor">
+                    <span style="width: @Model.Feedback.PoorFeedbackCount%;">
+                    Visual bar showing @Model.Feedback.PoorFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                    @Model.Feedback.PoorFeedbackCount reviews
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Very poor
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-very-poor">
+                    <span style="width: @Model.Feedback.VeryPoorFeedbackCount%;">
+                    Visual bar showing @Model.Feedback.VeryPoorFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                    @Model.Feedback.VeryPoorFeedbackCount reviews
+                </dd>
+            </div>
+        </dl>
+
+        <p class="govuk-body-m govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+            <a href="https://sfadigital.blog.gov.uk/2018/09/26/new-feedback-feature-for-the-apprenticeship-service/" class="fiu-link fiu-link--employers" target="_blank" rel="external">
+                Find out how these reviews work <span class="fiu-vh">(Opens in a new window)</span>
+            </a>
+        </p>
+
+    </div>
+</div>
+
+<div class="govuk-grid-row fiu-flex-row govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+    <div class="govuk-grid-column-one-half">
+        <div class="fiu-panel fiu-panel--left-align">
+            <h3 class="govuk-heading-m">
+                Strengths
+            </h3>
+            <ul class="govuk-list govuk-list--bullet">
+                @foreach (var strength in Model.Feedback.Strengths)
+                {
+                <li>@strength.Name (@strength.Count)</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+        <div class="fiu-panel fiu-panel--left-align">
+            <h3 class="govuk-heading-m">
+                Things to improve
+            </h3>
+            <ul class="govuk-list govuk-list--bullet">
+                @foreach (var weakness in Model.Feedback.Weaknesses)
+                {
+                <li>@weakness.Name (@weakness.Count)</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <p class="fiu-provider-details-source">
+          Source: <a href="https://www.gov.uk/government/collections/fe-choices" class="fiu-link--employers">Skills Funding Agency <abbr>FE</abbr> Choices <span class="fiu-vh">(Opens in a new window)</span></a>
+        </p>
+
+        <dl class="govuk-summary-list fiu-provider-details-bars">
+            @if (@Model.EmployerSatisfaction > 0)
+            {
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Employer satisfaction
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-excellent">
+                    <span style="width: @Model.EmployerSatisfaction%;">
+                        Visual bar showing @Model.EmployerSatisfaction&percnt;
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                     @Model.EmployerSatisfactionMessage
+                </dd>
+            </div>
+            }
+            @if (@Model.LearnerSatisfaction > 0)
+            {
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">Learner satisfaction</dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-good">
+                    <span style="width: @Model.LearnerSatisfaction%;">
+                        Visual bar showing @Model.LearnerSatisfaction&percnt;
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                     @Model.LearnerSatisfactionMessage
+                </dd>
+            </div>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.LegalName))
+            {
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Legal name
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--none">
+                    @Model.LegalName
+                </dd>
+            </div>
+            }
+        </dl>
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="fiu-article">
+            <h4 class="govuk-heading-m">
+                Content disclaimer
+            </h4>
+            <p><i>Education and Skills Funding Agency cannot guarantee the accuracy of
+            course information on this site and makes no representations about
+            the quality of any courses which appear on the site. Education and Skills
+            Funding Agency is not liable for any losses suffered as a result of any party
+            relying on the course information provided.</i></p>
+        </div>
+
+    </div>
+</div>
+<!-- ends: to move -->
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <hr class="fiu-section-break fiu-section-break--l">
+    </div>
+</div>
+
+@if (string.IsNullOrEmpty(Model.SearchQuery.PostCode) && !string.IsNullOrWhiteSpace(Model.Location.Address.Postcode))
+{
+    @await Component.InvokeAsync("ClosestLocations", new { Model.ApprenticeshipId, Model.Ukprn, Model.Location.LocationId, Model.Location.Address.Postcode })
+}
+
