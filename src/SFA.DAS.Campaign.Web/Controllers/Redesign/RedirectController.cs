@@ -53,6 +53,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         }
         
         [Route("/employer/how-much-is-it-going-to-cost")]
+        [Route("/employer/funding-an-apprenticeship")]
         public IActionResult HowMuchIsItGoingToCost()
         {
             return RedirectToAction("Index", "FundingAnApprenticeship");
@@ -103,9 +104,10 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         }
      
         [Route("/employer/upskill")]
+        [Route("/employers/upskill")]
         public IActionResult Upskill()
         {
-            return RedirectPermanent("/employers/upskill");
+            return RedirectPermanent("/employers/upskilling-your-workforce");
         }
         
         [Route("/real-stories/apprentice")]
