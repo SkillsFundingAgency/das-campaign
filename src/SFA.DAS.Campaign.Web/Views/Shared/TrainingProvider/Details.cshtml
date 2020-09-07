@@ -10,12 +10,13 @@
     System.Text.Encodings.Web.HtmlEncoder hEncoder = System.Text.Encodings.Web.HtmlEncoder.Default;
     var pageHeading = new System.IO.StringWriter();
     Component.InvokeAsync("TrainingProviderTitle", new { providerDetailsQueryModel = Model }).Result.WriteTo(pageHeading, hEncoder);
+    var pageHeadingStr = new HtmlContentBuilder().AppendHtml(pageHeading.ToString().Trim());
 
-    ViewBag.MetaTitle = pageHeading;
-    ViewBag.PageTitle = pageHeading;
+    ViewBag.MetaTitle = "Training provider details";
+    ViewBag.PageTitle = pageHeadingStr;
     Layout = "Redesign_Layout_EmployersHub";
 }
-
+<span class="fiu-header-content-spacer"></span>
 <section class="fiu-width-container govuk-!-margin-top-8">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
