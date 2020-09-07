@@ -24,7 +24,7 @@
 
 
 
-
+<!-- starts: to move -->
 @if (Model.Feedback != null)
 {
 <div class="govuk-grid-row">
@@ -34,19 +34,14 @@
 
         <p class="govuk-body-l">Based on <b class="fiu-font-weight-bold">@Model.Feedback.TotalFeedbackCount reviews from employers</b> that work with this training provider.</p>
 
-        <p>
-            <a href="https://sfadigital.blog.gov.uk/2018/09/26/new-feedback-feature-for-the-apprenticeship-service/" class="fiu-link fiu-link--employers" target="_blank" rel="external">Find out how these reviews work <span class="fiu-vh">(Opens in a new window)</span></a>
-        </p>
-
-        <h3 class="govuk-heading-m govuk-!-margin-top-4 govuk-!-margin-bottom-4">Overall rating from October 2018 to now</h3>
+        <p class="govuk-body">Overall rating from October 2018 to now.</p>
 
         <dl class="govuk-summary-list fiu-provider-details-bars">
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
-                    Excellent @Model.Feedback
+                    Excellent
                 </dt>
                 <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-excellent">
-                    <!-- @Model.Feedback.TotalFeedbackCount -->
                     <span style="width: @Model.Feedback.ExcellentFeedbackCount%;">
                         Visual bar showing @Model.Feedback.ExcellentFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
                     </span>
@@ -97,10 +92,16 @@
             </div>
         </dl>
 
+        <p class="govuk-body-m govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+            <a href="https://sfadigital.blog.gov.uk/2018/09/26/new-feedback-feature-for-the-apprenticeship-service/" class="fiu-link fiu-link--employers" target="_blank" rel="external">
+                Find out how these reviews work <span class="fiu-vh">(Opens in a new window)</span>
+            </a>
+        </p>
+
     </div>
 </div>
 
-<div class="govuk-grid-row fiu-flex-row">
+<div class="govuk-grid-row fiu-flex-row govuk-!-margin-top-6 govuk-!-margin-bottom-6">
     <div class="govuk-grid-column-one-half">
         <div class="fiu-panel fiu-panel--left-align">
             <h3 class="govuk-heading-m">
@@ -109,7 +110,7 @@
             <ul class="govuk-list govuk-list--bullet">
                 @foreach (var strength in Model.Feedback.Strengths)
                 {
-                <li>@strength.Name <b class="fiu-font-weight-bold">(@strength.Count)</b></li>
+                <li>@strength.Name (@strength.Count)</li>
                 }
             </ul>
         </div>
@@ -122,7 +123,7 @@
             <ul class="govuk-list govuk-list--bullet">
                 @foreach (var weakness in Model.Feedback.Weaknesses)
                 {
-                <li>@weakness.Name <b class="fiu-font-weight-bold">(@weakness.Count)</b></li>
+                <li>@weakness.Name (@weakness.Count)</li>
                 }
             </ul>
         </div>
@@ -199,6 +200,7 @@
 
     </div>
 </div>
+<!-- ends: to move -->
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
