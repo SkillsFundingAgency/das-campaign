@@ -87,7 +87,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("/employer/benefits")]
         public IActionResult Benefits()
         {
-            return RedirectPermanent("/employers/benefits-to-your-organisation");
+            return RedirectPermanent("/employers/benefits-of-hiring-apprentice");
         }
         
         [Route("/employer/find-apprenticeship-training")]
