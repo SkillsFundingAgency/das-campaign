@@ -23,7 +23,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _mappingService = mappingService;
         }
 
-        [HttpGet("SearchResults/{route}/{postcode}/{distance}")]
+        [HttpGet("/apprentices/browse-apprenticeships/{route}/{postcode}/{distance}")]
         public async Task<ActionResult> SearchResults(string route, string postcode, int distance)
         {
             SearchResultsViewModel viewModel = await GetSearchResults(route, postcode, distance);
@@ -38,6 +38,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return Json(viewModel);
         }
 
+        [HttpPost("/apprentices/browse-apprenticeships")]
         public IActionResult UpdateSearch(FindApprenticeshipSearchModel viewModel)
         {
             if (ModelState.IsValid)
@@ -47,7 +48,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
 
             return View("~/Views/Apprentice/FindAnApprenticeship.cshtml");
-            //return RedirectToAction("FindAnApprenticeship", "Apprentice");
         }
 
         private async Task<SearchResultsViewModel> GetSearchResults(string route, string postcode, int distance)
