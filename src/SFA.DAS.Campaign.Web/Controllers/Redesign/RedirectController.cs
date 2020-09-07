@@ -61,7 +61,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("/employer/the-right-apprenticeship")]
         public IActionResult TheRightApprenticeship()
         {
-            return RedirectPermanent("/employers/the-right-apprenticeship");
+            return RedirectPermanent("/employers/choose-apprenticeship-training");
         }
         
         [Route("/employer/choose-training-provider")]
@@ -87,7 +87,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("/employer/benefits")]
         public IActionResult Benefits()
         {
-            return RedirectPermanent("/employers/benefits-to-your-organisation");
+            return RedirectPermanent("/employers/benefits-of-hiring-apprentice");
         }
         
         [Route("/employer/find-apprenticeship-training")]
