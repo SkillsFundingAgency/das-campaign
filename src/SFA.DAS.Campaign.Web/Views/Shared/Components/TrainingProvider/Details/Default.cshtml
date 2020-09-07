@@ -38,7 +38,7 @@
             <a href="https://sfadigital.blog.gov.uk/2018/09/26/new-feedback-feature-for-the-apprenticeship-service/" class="fiu-link fiu-link--employers" target="_blank" rel="external">Find out how these reviews work <span class="fiu-vh">(Opens in a new window)</span></a>
         </p>
 
-        <h3 class="govuk-heading-m">Overall rating from October 2018 to now</h3>
+        <h3 class="govuk-heading-m govuk-!-margin-top-4 govuk-!-margin-bottom-4">Overall rating from October 2018 to now</h3>
 
         <dl class="govuk-summary-list fiu-provider-details-bars">
             <div class="govuk-summary-list__row">
@@ -46,37 +46,55 @@
                     Excellent @Model.Feedback
                 </dt>
                 <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-excellent">
-                    <span style="width: 16%;">
-                    Visual bar showing 16 reviews
+                    <!-- @Model.Feedback.TotalFeedbackCount -->
+                    <span style="width: @Model.Feedback.ExcellentFeedbackCount%;">
+                        Visual bar showing @Model.Feedback.ExcellentFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
                     </span>
                 </dd>
                 <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
-                    16 reviews
+                    @Model.Feedback.ExcellentFeedbackCount reviews
                 </dd>
-
-                <dd style="display:none;" class="das-provider-rating-reviews__definition-list--details">
-                    <progress class="das-provider__progress-bar das-provider__progress-bar--excellent" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.ExcellentFeedbackCount"></progress>
-                    <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.ExcellentFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-                </dd>
-
             </div>
 
-
-            <dt class="das-provider-rating-reviews__definition-list--title">Good</dt>
-            <dd class="das-provider-rating-reviews__definition-list--details">
-                <progress class="das-provider__progress-bar das-provider__progress-bar--good" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.GoodFeedbackCount"></progress>
-                <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.GoodFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-            </dd>
-            <dt class="das-provider-rating-reviews__definition-list--title">Poor</dt>
-            <dd class="das-provider-rating-reviews__definition-list--details">
-                <progress class="das-provider__progress-bar das-provider__progress-bar--poor" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.PoorFeedbackCount"></progress>
-                <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.PoorFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-            </dd>
-            <dt class="das-provider-rating-reviews__definition-list--title">Very poor</dt>
-            <dd class="das-provider-rating-reviews__definition-list--details">
-                <progress class="das-provider__progress-bar das-provider__progress-bar--very-poor" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.VeryPoorFeedbackCount"></progress>
-                <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.VeryPoorFeedbackCount review <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-            </dd>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Good
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-good">
+                    <span style="width: @Model.Feedback.GoodFeedbackCount%;">
+                    Visual bar showing @Model.Feedback.GoodFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                    @Model.Feedback.GoodFeedbackCount reviews
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Poor
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-poor">
+                    <span style="width: @Model.Feedback.PoorFeedbackCount%;">
+                    Visual bar showing @Model.Feedback.PoorFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                    @Model.Feedback.PoorFeedbackCount reviews
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                    Very poor
+                </dt>
+                <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-very-poor">
+                    <span style="width: @Model.Feedback.VeryPoorFeedbackCount%;">
+                    Visual bar showing @Model.Feedback.VeryPoorFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
+                    </span>
+                </dd>
+                <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                    @Model.Feedback.VeryPoorFeedbackCount reviews
+                </dd>
+            </div>
         </dl>
 
     </div>
