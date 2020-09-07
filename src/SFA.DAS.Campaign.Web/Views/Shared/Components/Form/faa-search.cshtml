@@ -1,11 +1,7 @@
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @model SFA.DAS.Campaign.Web.Models.FindApprenticeshipSearchModel
 
-<p class="govuk-body">Use this search to browse which apprenticeships are available based on your interest and location.</p>
-
-<form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
-
-    @if (!ViewData.ModelState.IsValid)
+@if (!ViewData.ModelState.IsValid)
     {
         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
             <h2 class="govuk-error-summary__title" id="error-summary-title">
@@ -30,6 +26,10 @@
         </div>
     }
 
+<p class="govuk-body">Use this search to browse which apprenticeships are available based on your interest and location.</p>
+
+<form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
+    
     <div class="govuk-form-group">
         <label for="Route" class="govuk-label">Select an interest</label>
 
@@ -38,20 +38,16 @@
             ModelStateEntry stateEntry;
             if (ViewData.ModelState.TryGetValue("Route", out stateEntry) && stateEntry.ValidationState == ModelValidationState.Invalid)
             {
-                <ul class="govuk-list govuk-error-summary__list">
-                    @foreach (var error in stateEntry.Errors)
-                    {
-                        <li>
-                            <span id="passport-issued-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
-                            </span>
-                        </li>
-                    }
-                </ul>
+                @foreach (var error in stateEntry.Errors)
+                {
+                    <span class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                    </span>
+                }
             }
         }
 
-        <select class="govuk-select govuk-input--error" asp-for="Route" data-val="true" data-val-required="The interest field is required." id="Route" name="Route" das-validation-for="Postcode" das-validationerror-class="govuk-input--error">
+        <select class="govuk-select govuk-input--error" asp-for="Route" data-val="true" data-val-required="The interest field is required." id="Route" name="Route" das-validation-for="Postcode" das-validationerror-class="govuk-select--error">
             <option selected disabled hidden>Select interest</option>
             <option value="Agriculture-environmental-and-animal-care">Agriculture, environmental and animal care</option>
             <option value="Business-and-administration">Business and administration</option>
@@ -78,16 +74,13 @@
             ModelStateEntry stateEntry;
             if (ViewData.ModelState.TryGetValue("Postcode", out stateEntry) && stateEntry.ValidationState == ModelValidationState.Invalid)
             {
-                <ul class="govuk-list govuk-error-summary__list">
-                    @foreach (var error in stateEntry.Errors)
-                    {
-                        <li>
-                            <span id="passport-issued-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
-                            </span>
-                        </li>
-                    }
-                </ul>
+                @foreach (var error in stateEntry.Errors)
+                {
+                    <span class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                    </span>
+                }
+            
             }
         }
         
