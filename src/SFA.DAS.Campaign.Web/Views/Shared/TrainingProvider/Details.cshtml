@@ -1,18 +1,19 @@
 ﻿@using System.Web
 @using Sfa.Das.Sas.Shared.Components.ViewModels
 @using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
+@using Microsoft.AspNetCore.Html
+
 @model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProviderDetailQueryViewModel
 
 @{
-    ViewBag.Title = "TRAINING PROVIDER RESULTS";
-    ViewBag.MetaTitle = "TRAINING PROVIDER RESULTS";
-    ViewBag.PageID = "employer-find-an-apprenticeship";
-    ViewBag.Section = "employer";
-    ViewBag.MetaDesc = "";
-    ViewBag.PageUrl = "/TrainingProvider/Details?ukprn=" + HttpUtility.UrlEncode(Context.Request.Query["ukprn"]) + "&apprenticeshipId=" + HttpUtility.UrlEncode(Context.Request.Query["apprenticeshipId"]) + "&LocationId=" + HttpUtility.UrlEncode(Context.Request.Query["LocationId"]) + "&postCode=" + HttpUtility.UrlEncode(Context.Request.Query["postCode"]);
-    Layout = "Redesign_Layout_EmployersHub";
-    ViewBag.PageNavIndex = 3;
 
+    System.Text.Encodings.Web.HtmlEncoder hEncoder = System.Text.Encodings.Web.HtmlEncoder.Default;
+    var pageHeading = new System.IO.StringWriter();
+    Component.InvokeAsync("TrainingProviderTitle", new { providerDetailsQueryModel = Model }).Result.WriteTo(pageHeading, hEncoder);
+
+    ViewBag.MetaTitle = pageHeading;
+    ViewBag.PageTitle = pageHeading;
+    Layout = "Redesign_Layout_EmployersHub";
 }
 
 <section class="fiu-width-container govuk-!-margin-top-8">
