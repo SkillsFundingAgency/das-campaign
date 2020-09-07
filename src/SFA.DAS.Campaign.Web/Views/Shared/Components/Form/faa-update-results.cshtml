@@ -1,9 +1,9 @@
 ﻿@model FindApprenticeshipSearchModel
-<div class="fiu-panel fiu-panel--form">
-    <h2 class="govuk-heading-l fiu-panel__heading">Update search results</h2>
+<div class="fiu-panel">
+    <h2 class="govuk-heading-m fiu-panel__heading">Update search results</h2>
     <form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
         <div class="govuk-form-group">
-            <label for="header-route" class="govuk-label">Select an interest</label>
+            <label for="header-route" class="govuk-label fiu-panel__label">Select an interest</label>
             <select class="govuk-select" asp-for="Route" data-val="true" data-val-required="The interest field is required." id="header-route" name="Route">
                 <option selected disabled hidden>Select interest</option>
                 <option value="Agriculture-environmental-and-animal-care">Agriculture, environmental and animal care</option>
@@ -24,11 +24,11 @@
             </select>
         </div>
         <div class="govuk-form-group">
-            <label for="header-postcode" class="govuk-label">Enter your postcode</label>
+            <label for="header-postcode" class="govuk-label fiu-panel__label">Enter your postcode</label>
             <input type="text" class="govuk-input govuk-input--width-10" asp-for="Postcode" id="header-postcode" name="Postcode" autocomplete="postal-code" />
         </div>
         <div class="govuk-form-group">
-            <label for="header-distance" class="govuk-label">Within</label>
+            <label for="header-distance" class="govuk-label fiu-panel__label">Within</label>
             <select class="govuk-select" asp-for="Distance" data-val="true" data-val-required="The Distance field is required." id="header-distance" name="Distance">
                 <option value="2">2 miles</option>
                 <option value="5" selected="selected">5 miles</option>
