@@ -49,19 +49,12 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
 
+          @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Feedback })
 
-move to here >>>
-
-        @await Component.InvokeAsync("TrainingProviderDetails", new { searchQueryModel = Model, ViewType = ViewType.Feedback })
-
-
-
-
-            @if (!string.IsNullOrEmpty(Model.PostCode))
-            {
-                @await Component.InvokeAsync("ClosestLocations", new { Model.ApprenticeshipId, Model.Ukprn, Model.PostCode })
-            }
-
+          @if (!string.IsNullOrEmpty(Model.PostCode))
+          {
+              @await Component.InvokeAsync("ClosestLocations", new { Model.ApprenticeshipId, Model.Ukprn, Model.PostCode })
+          }
 
         </div>
     </div>
