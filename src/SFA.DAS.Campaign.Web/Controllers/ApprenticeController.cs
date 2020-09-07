@@ -15,7 +15,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _vacancyServiceApiHealthCheck = healthCheck;
         }
         
-        [Route("/apprentices/find-an-apprenticeship")]
+        [Route("/apprentices/browse-apprenticeships")]
         public async Task<IActionResult> FindAnApprenticeship()
         {
             var health = await _vacancyServiceApiHealthCheck.CheckHealthAsync(new HealthCheckContext(), CancellationToken.None);
