@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace SFA.DAS.Campaign.Web.Helpers
 {
-    [HtmlTargetElement("div", Attributes = ValidationForAttributeName + "," + ValidationErrorClassName)]
+    [HtmlTargetElement(Attributes = ValidationForAttributeName + "," + ValidationErrorClassName)]
     public class ValidationClassTagHelper : TagHelper
     {
         private const string ValidationForAttributeName = "das-validation-for";

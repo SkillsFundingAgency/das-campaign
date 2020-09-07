@@ -46,7 +46,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
                     new { route = viewModel.Route, postcode = viewModel.Postcode, distance = viewModel.Distance });
             }
 
-            return RedirectToAction("FindAnApprenticeship", "Apprentice");
+            return View("~/Views/Apprentice/FindAnApprenticeship.cshtml");
+            //return RedirectToAction("FindAnApprenticeship", "Apprentice");
         }
 
         private async Task<SearchResultsViewModel> GetSearchResults(string route, string postcode, int distance)

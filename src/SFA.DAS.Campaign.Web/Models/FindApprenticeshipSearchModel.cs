@@ -5,14 +5,14 @@ namespace SFA.DAS.Campaign.Web.Models
 {
     public class FindApprenticeshipSearchModel
     {
-        [Required]
+        [Required(ErrorMessage = "Enter a postcode")]
         [DisplayName("Postcode")]
-        [RegularExpression("\\b((?:(?:girGIR)|(?:[a-pr-uwyzA-PR-UWYZ])(?:(?:[0-9](?:[a-hjkpstuwA-HJKPSTUW]|[0-9])?)|(?:[a-hk-yA-HK-Y][0-9](?:[0-9]|[abehmnprv-yABEHMNPRV-Y])?)))) ?([0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2})\\b", ErrorMessage = "You must enter a full and valid postcode")]
+        [RegularExpression("\\b((?:(?:girGIR)|(?:[a-pr-uwyzA-PR-UWYZ])(?:(?:[0-9](?:[a-hjkpstuwA-HJKPSTUW]|[0-9])?)|(?:[a-hk-yA-HK-Y][0-9](?:[0-9]|[abehmnprv-yABEHMNPRV-Y])?)))) ?([0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2})\\b", ErrorMessage = "Enter a postcode, like AA1 1AA")]
         public string Postcode { get; set; }
         [Required]
         [DisplayName("Distance")]
         public int Distance { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Select an interest")]
         [DisplayName("Interest")]
         public string Route { get; set; }
 
