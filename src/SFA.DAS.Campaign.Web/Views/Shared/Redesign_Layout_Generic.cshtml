@@ -23,7 +23,7 @@
 	<span class="fiu-header-content-spacer"></span>
 	<div class="fiu-width-container">
 		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-two-thirds">
+			<div class="govuk-grid-column-@(ViewBag.FullWidthContent != null ? "full" : "two-thirds")">
 				@RenderBody()
 			</div>
 		</div>
