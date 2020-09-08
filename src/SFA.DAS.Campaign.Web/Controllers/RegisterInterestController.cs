@@ -114,7 +114,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View("EmployerDownloads", model);
         }
 
-        [Route("/employers/sign-up-thankyou")]
+        [Route("/employers/thank-you-for-signing-up")]
         public IActionResult ThankYouForRegistering()
         {
             return View("ThankYouForRegistering");
