@@ -38,22 +38,22 @@
     </div>
     <div class="form-group" das-validation-for="FirstName" das-validationerror-class="form-group-validation-error">
         <label class="label visually-hidden" asp-for="FirstName">
-            First name
+            Given name
         </label>
-        <input id="FirstName" class="input" asp-for="FirstName" type="text" placeholder="First name" autocomplete="given-name">
+        <input id="FirstName" class="input" asp-for="FirstName" type="text" placeholder="Given name" autocomplete="given-name">
     </div>
 
     <div class="form-group" das-validation-for="LastName" das-validationerror-class="form-group-validation-error">
 
         <label class="label visually-hidden" asp-for="LastName">
-            Last name
+            Family name
         </label>
-        <input class="input" asp-for="LastName" type="text" placeholder="Last name" autocomplete="family-name">
+        <input class="input" asp-for="LastName" type="text" placeholder="Family name" autocomplete="family-name">
     </div>
     <div class="form-group" das-validation-for="Email" das-validationerror-class="form-group-validation-error">
 
         <label class="label visually-hidden" asp-for="Email">
-            Email Address
+            Email address
         </label>
         <input class="input" asp-for="Email" type="text" placeholder="Email address" autocomplete="email">
     </div>
@@ -83,7 +83,7 @@
                 I’m happy to be contacted about research to help improve this website.
             </label>
         </div>
-        <p>Please read our <a asp-controller="OldHome" asp-action="Privacy">privacy notice</a> to find out how we store and use your information.</p>
+        <p>Please read our <a asp-controller="Home" asp-action="Privacy">privacy notice</a> to find out how we store and use your information.</p>
     </div>
 
     <input asp-for="ReturnUrl" type="hidden" value="@Model.ReturnUrl"/>

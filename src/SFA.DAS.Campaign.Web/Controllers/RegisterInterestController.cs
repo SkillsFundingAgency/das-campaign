@@ -24,9 +24,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpGet]
-        [HttpGet("{route}")]
-        [HttpGet("{route}/{version}")]
-        public IActionResult Index(RouteType route = RouteType.None, int version = 1)
+        [HttpGet("/employers/sign-up")]
+        public IActionResult Index(RouteType route = RouteType.Employer, int version = 1)
         {
             var url = Request.Headers["Referer"].ToString();
 
@@ -58,8 +57,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpPost]
-        [HttpPost("{route}")]
-        [HttpPost("{route}/{version}")]
+        [HttpPost("/employers/sign-up")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {
@@ -92,13 +90,15 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
                 return View(registerInterest);
             }
+            //
+            // if (registerInterest.Route == RouteType.Employer)
+            // {
+            //     return RedirectToAction("downloads", registerInterest);
+            // }
 
-            if (registerInterest.Route == RouteType.Employer)
-            {
-                return RedirectToAction("downloads", registerInterest);
-            }
+            //return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
 
-            return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
+            return RedirectToAction("ThankYouForRegistering");
         }
 
         [HttpGet("downloads")]
@@ -112,6 +112,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
 
             return View("EmployerDownloads", model);
+        }
+
+        [Route("/employers/sign-up-thankyou")]
+        public IActionResult ThankYouForRegistering()
+        {
+            return View("ThankYouForRegistering");
         }
     }
 }

@@ -22,10 +22,10 @@ namespace SFA.DAS.Campaign.Web.Models
         public Dictionary<string, string> ValidationMessages { get; internal set; }
 
         [Required]
-        [DisplayName("First name")]
+        [DisplayName("Given name")]
         public string FirstName { get; set; }
         [Required]
-        [DisplayName("Last name")]
+        [DisplayName("Family name")]
         public string LastName { get; set; }
         [EmailAddress]
         [Required]
@@ -48,8 +48,8 @@ namespace SFA.DAS.Campaign.Web.Models
         {
             return new Dictionary<string, string>
             {
-                {"FirstName", "Enter your first name"},
-                {"LastName", "Enter your last name"},
+                {"FirstName", "Enter your given name"},
+                {"LastName", "Enter your family name"},
                 {"Email", "Enter your email address"},
                 {"Route", "Select if you want to become an apprentice or employ an apprentice"},
                 {"AcceptTandCs", "Confirm you would like to receive more information" }
