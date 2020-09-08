@@ -48,6 +48,8 @@ namespace Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults
                     return View("../TrainingProvider/Details/Contact", model);
                 case ViewType.Summary:
                     return View("../TrainingProvider/Details/Summary", model);
+                case ViewType.Feedback:
+                    return View("../TrainingProvider/Details/Feedback", model);
                 case ViewType.Details:
                 default:
                     return View("../TrainingProvider/Details/Default", model);
