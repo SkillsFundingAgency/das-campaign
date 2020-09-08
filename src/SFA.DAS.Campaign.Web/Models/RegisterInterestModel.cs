@@ -48,8 +48,8 @@ namespace SFA.DAS.Campaign.Web.Models
         {
             return new Dictionary<string, string>
             {
-                {"FirstName", "Enter your given name"},
-                {"LastName", "Enter your family name"},
+                {"FirstName", "Enter your first name"},
+                {"LastName", "Enter your last name"},
                 {"Email", "Enter your email address"},
                 {"Route", "Select if you want to become an apprentice or employ an apprentice"},
                 {"AcceptTandCs", "Confirm you would like to receive more information" }

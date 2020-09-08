@@ -15,11 +15,10 @@
     var submitButtonText = (Model.Version == 2) ? "Get guides and updates" : "Register interest";
 }
 
-<form asp-controller="RegisterInterest" asp-action="index">
-    <input type="hidden" asp-for="Version"/>
-    <div class="form-validation-summary" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
-        <h3 class="heading-s form-validation-summary__heading">Sorry but there seems to be a problem with your registration</h3>
-        <ul class="form-validation-summary__list">
+<div class="govuk-error-summary" role="alert" tabindex="-1" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
+    <h2 class="govuk-error-summary__title">Sorry but there seems to be a problem with your registration</h2>
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
             @{
                 var errorStringBuilder = new StringBuilder();
                 var errorCount = ViewData.ModelState.ErrorCount;
@@ -29,63 +28,54 @@
                     if (ViewData.ModelState[error]?.ValidationState == ModelValidationState.Invalid)
                     {
                         var errorKey = error == "Route" ? "rbApprentice" : error;
-                        errorStringBuilder.Append($" <li><a href =\"#{errorKey}\" class=\"form-validation-summary__link\">{Model.ValidationMessages[error]}</a></li>");
+                        errorStringBuilder.Append($" <li><a href =\"#{errorKey}\" class=\"govuk-form-validation-summary__link\">{Model.ValidationMessages[error]}</a></li>");
                     }
                 }
             }
             @Html.Raw(errorStringBuilder.ToString())
         </ul>
     </div>
-    <div class="form-group" das-validation-for="FirstName" das-validationerror-class="form-group-validation-error">
-        <label class="label visually-hidden" asp-for="FirstName">
-            Given name
+</div>
+
+<form asp-controller="RegisterInterest" asp-action="index">
+    <input type="hidden" asp-for="Version"/>
+    <div class="govuk-form-group" das-validation-for="FirstName" das-validationerror-class="form-group-validation-error">
+        <label class="govuk-label" asp-for="FirstName">
+            First name
         </label>
-        <input id="FirstName" class="input" asp-for="FirstName" type="text" placeholder="Given name" autocomplete="given-name">
+        <input id="FirstName" class="govuk-input govuk-!-width-two-thirds" asp-for="FirstName" type="text" autocomplete="given-name">
     </div>
 
-    <div class="form-group" das-validation-for="LastName" das-validationerror-class="form-group-validation-error">
-
-        <label class="label visually-hidden" asp-for="LastName">
-            Family name
+    <div class="govuk-form-group" das-validation-for="LastName" das-validationerror-class="form-group-validation-error">
+        <label class="govuk-label" asp-for="LastName">
+            Last name
         </label>
-        <input class="input" asp-for="LastName" type="text" placeholder="Family name" autocomplete="family-name">
+        <input id="LastName" class="govuk-input govuk-!-width-two-thirds" asp-for="LastName" type="text" autocomplete="family-name">
     </div>
-    <div class="form-group" das-validation-for="Email" das-validationerror-class="form-group-validation-error">
 
-        <label class="label visually-hidden" asp-for="Email">
+    <div class="govuk-form-group" das-validation-for="Email" das-validationerror-class="form-group-validation-error">
+        <label class="govuk-label" asp-for="Email">
             Email address
         </label>
-        <input class="input" asp-for="Email" type="text" placeholder="Email address" autocomplete="email">
+        <input id="Email" class="govuk-input govuk-!-width-two-thirds" asp-for="Email" type="text" autocomplete="email">
     </div>
 
-    @if (Model.Route != RouteType.None && Model.ShowRouteQuestion == false)
-    {
-        <input class="input radios__input" asp-for="Route" value="@Model.Route" type="hidden"/>
-    }
-    else
-    {
-        <div class="form-group radios" das-validation-for="Route" das-validationerror-class="form-group-validation-error">
-            <div class="radios__item">
-                <input class="input radios__input" asp-for="Route" value="1" type="radio" id="rbApprentice"/>
-                <label class="radios__label" for="rbApprentice">I want to become an <span class="badge badge--apprentice">apprentice</span> </label>
-            </div>
-            <div class="radios__item">
-                <input class="input radios__input" asp-for="Route" value="2" type="radio" id="rbEmployer"/>
-                <label class="radios__label" for="rbEmployer">I want to <span class="badge badge--employer">employ</span> an apprentice</label>
-            </div>
-        </div>
-    }
 
-    <div class="form-group" das-validation-for="IncludeInUR" das-validationerror-class="form-group-validation-error">
-        <div class="checkboxes__item">
-            <input class="checkboxes__input" asp-for="IncludeInUR" type="checkbox" value="true">
-            <label class="checkboxes__label" asp-for="IncludeInUR">
+        <input asp-for="Route" value="Employer" type="hidden"/>
+
+
+    <div class="govuk-form-group" das-validation-for="IncludeInUR" das-validationerror-class="form-group-validation-error">
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input fiu-checkboxes__input" asp-for="IncludeInUR" type="checkbox" value="true">
+            <label class="govuk-checkboxes__label fiu-checkboxes__label" asp-for="IncludeInUR">
                 I’m happy to be contacted about research to help improve this website.
             </label>
         </div>
-        <p>Please read our <a asp-controller="Home" asp-action="Privacy">privacy notice</a> to find out how we store and use your information.</p>
     </div>
 
+    <p class="govuk-body">Please read our <a asp-controller="Home" asp-action="Privacy" class="fiu-link fiu-link--employers">privacy notice</a> to find out how we store and use your information.</p>
+
     <input asp-for="ReturnUrl" type="hidden" value="@Model.ReturnUrl"/>
-    <button formnovalidate="formnovalidate" class="button button-inverted " name="registerInterestSubmit" type="submit" id="btn-register-interest-complete">@submitButtonText</button>
+
+    <button formnovalidate="formnovalidate" class="fiu-button fiu-button--employers " name="registerInterestSubmit" type="submit" id="btn-register-interest-complete">@submitButtonText</button>
 </form>
