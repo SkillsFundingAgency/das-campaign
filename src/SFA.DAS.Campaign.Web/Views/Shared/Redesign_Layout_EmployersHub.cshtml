@@ -15,7 +15,7 @@
                 <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-1" asp-controller="LandingPage" asp-action="EmployersAreTheyRightForYou" class="fiu-navigation__link">Are they right for you?</a> </li>
                 <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-1" asp-controller="LandingPage" asp-action="EmployersHowDoTheyWork" class="fiu-navigation__link">How do they work?</a> </li>
                 <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-1" asp-controller="LandingPage" asp-action="SettingItUp"  class="fiu-navigation__link">Setting it up</a> </li>
-                <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-1" href="/employers/guides" class="fiu-navigation__link">Employer Guides</a> </li>
+                <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-1" href="/employers/guides" class="fiu-navigation__link">Employer guides</a> </li>
                 <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-1" asp-controller="Employer" asp-action="FindApprenticeshipTraining"  class="fiu-navigation__link">Find apprenticeship training</a> </li>
             </ul>
 		</nav>
@@ -61,9 +61,22 @@
                             <li class="govuk-breadcrumbs__list-item">
                                 <a href="/employers/@ViewBag.LandingPageSlug"  class="govuk-breadcrumbs__link">@ViewBag.LandingPageTitle</a>
                             </li>
-                            <li class="govuk-breadcrumbs__list-item">
-                                @ViewBag.ArticlePageTitle
-                            </li>
+                            if (ViewBag.IndustryPageTitle is null)
+                            {
+                                <li class="govuk-breadcrumbs__list-item">
+                                    @ViewBag.ArticlePageTitle
+                                </li>    
+                            }
+                            else
+                            {
+                                <li class="govuk-breadcrumbs__list-item">
+                                    <a href="/employers/@ViewBag.ArticlePageSlug" class="govuk-breadcrumbs__link">@ViewBag.ArticlePageTitle</a> 
+                                </li>
+                                <li class="govuk-breadcrumbs__list-item">
+                                    @ViewBag.IndustryPageTitle
+                                </li>    
+                            }
+                            
                         }
                     }
                 </ol>
@@ -99,7 +112,7 @@
     @RenderBody()
     <div class="fiu-phase-banner">
         <div class="fiu-width-container">
-            <p class="fiu-phase-banner__content"><strong class="fiu-tag fiu-phase-banner__tag">BETA</strong><span class="fiu-vh">:</span> This is a new service - your <a href="https://www.smartsurvey.co.uk/s/S2NQQ" class="fiu-link" id="fiu-status-link-feedback">feedback</a> will help us to improve it.</p>
+            <p class="fiu-phase-banner__content"><strong class="fiu-tag fiu-phase-banner__tag">BETA</strong><span class="fiu-vh">:</span> This is a new service - your <a href="https://www.smartsurvey.co.uk/s/S2NQQ" class="fiu-link" id="fiu-status-link-feedback" target="_blank">feedback</a> will help us to improve it.</p>
         </div>
     </div>
 </main>

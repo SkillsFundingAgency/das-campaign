@@ -1,29 +1,16 @@
 ﻿@{
-    ViewBag.Title = "Find the right apprenticeship for you by searching the different sectors. ";
-    Layout = "_Layout-campaign";
-    ViewBag.PageID = "industries";
-    ViewBag.PageUrl = "/industries";
-    ViewBag.Section = "industry";
-    ViewBag.MetaDesc = "Find the right apprenticeship for you by sector and choose from the employers who are offering apprenticeships in your chosen field. ";
-    ViewBag.MetaTitle = "Look at the different industries that are offering apprenticeships";
+    ViewBag.Title = "Browse by interests";
+    Layout=$"Redesign_Layout_ApprenticesArticle";
+    ViewBag.PageTitle = "Browse by interests";
+    ViewBag.LandingPageSlug = "how-do-they-work";
+    ViewBag.LandingPageTitle = "How do they work?";
+    ViewBag.ArticlePageSlug = "browse-by-interests";
+    ViewBag.ArticlePageTitle = "Browse by interests";
 }
-<main id="main-content">
-    <div class="hero-banner">
-        <div class="grid-row">
-            <div class="grid-column-one-half">
-                <div class="hero-heading">
-                    <h1 class="heading-xl hero-heading__heading">My interests</h1>
-                </div>
-                <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
-                    <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" /><span class="visually-hidden">(Opens in a new window)</span>
-                </a>
-            </div>
-        </div>
-        <span class="hero-banner__background hero-banner__background--industry"></span>
-    </div>
+
     <div class="grid-row-full-width card__collection card__collection--industry">
         <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="AgricultureEnvironmentAnimalCare" tabindex="-1" role="presentation">
+            <a class="card" href="/apprentices/browse-by-interests/agriculture-environment-animal-care" tabindex="-1" role="presentation">
                 <div class="card__image">
                     <span class="card__img card__img--agriculture-environment-animal-care"></span>
                 </div>
@@ -261,4 +248,3 @@
             </a>
         </div>
     </div>
-</main>
