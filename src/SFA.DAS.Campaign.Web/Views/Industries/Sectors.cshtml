@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Browse by sector";
-    Layout=$"Redesign_Layout_EmployersArticle";
+    Layout=$"Redesign_Layout_EmployersHub";
     ViewBag.PageTitle = "Browse by sector";
     ViewBag.LandingPageSlug = "how-do-they-work";
     ViewBag.LandingPageTitle = "How do they work?";
@@ -8,243 +8,129 @@
     ViewBag.ArticlePageTitle = "Browse by sector";
 }
 
-    <div class="grid-row-full-width card__collection card__collection--industry">
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" href="/employers/browse-by-sector/agriculture-environment-animal-care" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--agriculture-environment-animal-care"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Agriculture, environment and animal care</h2>
-                    <p class="card__summary">Want to work outside, work with animals or do you just feel passionate about working for the environment? Here you go.</p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Agriculture, environment and animal care industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="BusinessAdministration" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--business-administration"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Business and administration</h2>
-                    <p class="card__summary">
-                        Where could a business-centric apprenticeship take you? Manager? CEO? Check out the
-                        current opportunities and see if you could go global.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Business and administration industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="CareServices" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--care-services"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Care services</h2>
-                    <p class="card__summary">
-                        Care service apprentices are making a real difference in their local communities. Every day,
-                        they're helping vulnerable children, young people, adults and the elderly,
-                        across a range of different community care and support services.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Care services industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="CateringHospitality" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--catering-hospitality"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Catering and hospitality</h2>
-                    <p class="card__summary">
-                        Are you fascinated by cooking? Perhaps you love working with food and drink? Or
-                        maybe 'front of house' or customer service are more your thing. Let's find out.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Catering and hospitality industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-
+@section PageHeaderContent {
+    <div class="fiu-interest-cards">
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/agriculture-environment-animal-care">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/agriculture-environment-and-animal-care.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Agriculture, environment and animal care</span></h2>
+            <p class="fiu-interest-card__content">Working outside or with animals, passionate about nature and the environment? Take a look at the jobs in this sector.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/business-administration">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/business-and-administration.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Business and administration</span></h2>
+            <p class="fiu-interest-card__content">Business and administration could take you in many different career directions - a manager, personal assistant, CEO? See what types of roles are on offer.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/care-services">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/care-services.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Care services</span></h2>
+            <p class="fiu-interest-card__content">Working in the care sector makes a real difference to people's lives, helping vulnerable children, young people, adults and the elderly, across a range of community care and support services.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/catering-hospitality">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/catering-and-hospitality.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Catering and hospitality</span></h2>
+            <p class="fiu-interest-card__content">Cooking, hotels, restaurants, tourism, front of house and customer service. A varied sector where team working is key.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/construction">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/construction.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Construction</span></h2>
+            <p class="fiu-interest-card__content">A multi-billion pound industry covering a range of roles and careers from traditional and specialist skills such as bricklaying and carpentry, to civil engineering, quantity surveying and more.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/creative-design">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/creative-and-design.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Creative and design</span></h2>
+            <p class="fiu-interest-card__content">An exciting sector where your creative skills and imagination can come to the fore. Think photography, film, graphics, games design, fashion, interiors, publishing, journalism.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/digital">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/digital.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Digital</span></h2>
+            <p class="fiu-interest-card__content">An ever-growing industry that is constantly evolving. You could be working in a small start-up tech company or a huge global software business. Ready to get connected?</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/education-childcare">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/education-and-childcare.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Education and childcare</span></h2>
+            <p class="fiu-interest-card__content">Helping children and young people develop skills and fulfill their potential.Helping children and young people develop skills and fulfill their potential.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/engineering-manufacturing">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/engineering-and-manufacturing.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Engineering and manufacturing</span></h2>
+            <p class="fiu-interest-card__content">A world of nuclear reactors, software systems, automotive engineering and all kinds of manufacturing. A hands-on industry where you design and build products that shape the way we live, work, travel and play.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/hair-beauty">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/hair-and-beauty.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Hair and beauty</span></h2>
+            <p class="fiu-interest-card__content">High street hair salons and luxury spas, theatre dressing rooms and backstage film and TV sets. So many creative roles in this multi-billion pound industry.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/health-science">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/health-and-science.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Health and science</span></h2>
+            <p class="fiu-interest-card__content">Science, health and research-based careers cover a broad spectrum from the NHS to pharmaceuticals and biotechnology. Many varied roles on offer.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/legal-finance-accounting">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/legal-finance-and-accounting.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Legal, finance and accounting</span></h2>
+            <p class="fiu-interest-card__content">Looking after a company's financial affairs or giving them legal advice? Working as a solicitor, paralegal, barrister or accountant. Lots of different career opportunities.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/protective-services">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/protective-services.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Protective services</span></h2>
+            <p class="fiu-interest-card__content">Working in communities to keep people safe. This could be in the police or the armed forces, the fire service and waste management.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/sales-marketing-procurement">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/sales-marketing-and-procurement.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Sales, marketing and procurement</span></h2>
+            <p class="fiu-interest-card__content">Sales in person, on the phone and online, e-commerce, marketing products and services to customers and helping companies make important purchasing decisions. This area covers a range of industries from retail and customer service to digital marketing and PR and more.</p>
+        </a>
+        <a class="fiu-interest-card" href="/employers/browse-by-sector/transport-logistics">
+            <div class="fiu-interest-card__image-wrap">
+                <img src="/fiu/assets/images/interests/transport-and-logistics.jpg" class="fiu-interest-card__image" alt="" />
+                <span class="fiu-interest-card__image-mask"></span>
+            </div>
+            <h2 class="fiu-interest-card__heading"><span>Transport and logistics</span></h2>
+            <p class="fiu-interest-card__content">Keeping the nation's transport systems running smoothly. Getting people, products and parts from A to B just in time. Think aviation, lorries, buses, trains and ferries. </p>
+        </a>
     </div>
-    <div class="grid-row-full-width card__collection card__collection--industry">
+}
 
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="Construction" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--construction"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Construction</h2>
-                    <p class="card__summary">
-                        The multi-billion pound building industry covers a range of different apprenticeships,
-                        from traditional and specialist skills, civil engineering to joinery and more.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Construction industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="CreativeDesign" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--creative-design"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Creative and design</h2>
-                    <p class="card__summary">
-                        Excited by the idea of designing your own video game or crafting your own fashion label?
-                        Keen photographer or passionate composer-in-the making? If you have a flair for the artistic, the creative or the outrageous, look no further.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Creative and design industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="Digital" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--digital"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Digital</h2>
-                    <p class="card__summary">
-                        Apprenticeships in digital span a huge range of careers,
-                        as new technology transforms businesses large and small, traditional
-                        and start-ups, across the country. Ready to get connected?
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Digital industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="EducationChildcare" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--education-childcare"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Education and childcare</h2>
-                    <p class="card__summary">
-                        If you can see yourself helping children and
-                        young people develop the skills they need to succeed, this is the apprenticeship sector for you.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Education and childcare industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-
-    </div>
-    <div class="grid-row-full-width card__collection card__collection--industry">
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="EngineeringManufacturing" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--engineering-manufacturing"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Engineering and manufacturing</h2>
-                    <p class="card__summary">
-                        From nuclear reactors and software systems to product design and automotive,
-                        engineering and manufacturing apprenticeships take many forms. Ready to switch on?
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Engineering and manufacturing industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="HairBeauty" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--hair-beauty"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Hair and beauty</h2>
-                    <p class="card__summary">
-                        From high street salons and spas to theatre dressing rooms and film
-                        and TV sets. Who knows where a hair and beauty apprenticeship could take you…
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Hair and beauty industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="HealthScience" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--health-science"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Health and science</h2>
-                    <p class="card__summary">
-                        These apprenticeships give you the training to embark on a range of different science and
-                        research-based careers, including NHS and community health roles, chemical and pharmaceutical
-                        businesses, biotechnology and nuclear manufacturing.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Health and science industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="LegalFinanceAccounting" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--legal-finance-accounting"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Legal, finance and accounting</h2>
-                    <p class="card__summary">
-                        Companies large and small need teams of people
-                        to look after their finances, legal affairs and accounts. Which means
-                        you could start an apprenticeship in any one of hundreds of different businesses.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Legal, finance and accounting industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-
-    </div>
-    <div class="grid-row-full-width card__collection card__collection--industry">
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="ProtectiveServices" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--protective-services"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Protective services</h2>
-                    <p class="card__summary">
-                        Discover apprenticeships that are all about keeping people safe,
-                        including fire services, waste management, and HM Armed Forces.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Protective services industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="SalesMarketingProcurement" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--sales-marketing-procurement"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Sales, marketing and procurement</h2>
-                    <p class="card__summary">
-                        Explore a host of apprenticeships across a wide range of different sales, promotion
-                        and procurement industries. From retail and customer services to digital marketing. National
-                        and local employers are always on the lookout for new apprentices.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Sales, marketing and procurement industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-        <div class="grid-column-full-width-one-quarter">
-            <a class="card" asp-controller="Industries" asp-action="TransportLogistics" tabindex="-1" role="presentation">
-                <div class="card__image">
-                    <span class="card__img card__img--transport-logistics"></span>
-                </div>
-                <div class="card__content">
-                    <h2 class="card__headline heading-s">Transport and logistics</h2>
-                    <p class="card__summary">
-                        How about helping to keep the nation's transport systems running smoothly?
-                        Across everything from aviation to coach travel. Or try a career in logistics,
-                        making sure products show up at the right place, at the right time.
-                    </p>
-                    <p class="card__link" role="link" tabindex="0" aria-label="Find out more about the Transport and logistics industry">Find out more</p>
-                </div>
-            </a>
-        </div>
-    </div>
+<span class="fiu-header-content-spacer"></span>
