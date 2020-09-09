@@ -37,6 +37,7 @@ namespace DfE.EmployerFavourites.Web.Controllers
         [Route("/page-not-found")]
         public IActionResult PageNotFound()
         {
+            Response.StatusCode = (int)HttpStatusCode.NotFound;
             return View("PageNotFound");
         }
 
