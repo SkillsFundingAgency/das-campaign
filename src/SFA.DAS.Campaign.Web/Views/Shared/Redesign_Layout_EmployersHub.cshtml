@@ -100,12 +100,7 @@
                     <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
                 </div>
             </div>
-            @if (ViewBag.SubHeading != null)
-            {
-                <h2 class="govuk-heading-l fiu-page-header__sub-heading">
-                    @ViewBag.SubHeading
-                </h2>
-            }
+            @RenderSection("PageHeaderContent", required: false)
         </div>
 	</div>
     }
