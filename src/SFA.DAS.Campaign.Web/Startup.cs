@@ -218,10 +218,11 @@ namespace SFA.DAS.Campaign.Web
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
-
+            app.UseExceptionHandler("/Error/Error");
+            
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+            //    app.UseDeveloperExceptionPage();
                 app.UseMiniProfiler();
             }
             else
