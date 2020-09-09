@@ -12,14 +12,13 @@
 }
 
 <span class="fiu-header-content-spacer"></span>
-<div class="fiu-grad-row">
-    <div class="fiu-width-container">
-        <div class="govuk-grid-row fiu-flex-row">
-            <div class="govuk-grid-column-full">
-                <h2 class="heading-m">Keep me up to date with the latest information</h2>
-                @await Component.InvokeAsync("Form", new {type = FormType.RegisterInterest, formViewModel = Model})                
-            </div>
+
+<div class="fiu-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            @await Component.InvokeAsync("Form", new {type = FormType.RegisterInterest, formViewModel = Model})                
         </div>
     </div>
 </div>
+
 
