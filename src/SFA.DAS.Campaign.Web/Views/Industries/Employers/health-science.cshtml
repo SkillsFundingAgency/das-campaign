@@ -1,13 +1,16 @@
 ﻿@{
-    ViewBag.Title = "Health and science";
-    ViewBag.MetaTitle = "Look at the apprenticeships offered in the health and science industry";
-    ViewBag.MetaDesc = "Finding an apprenticeship in health and science can lead to research-based careers including chemical and pharma businesses, biotechnology and manufacturing.";
-    ViewBag.PageSlug = "health-science";
-    ViewBag.HeroImageAltText = "Looking down the lens of a microscope";
-    Layout = "_LayoutIndustry";
-    ViewBag.Route = "Health-and-science";
-
+    var title = "Health and science";
+    
+    ViewBag.Title = title;
+    Layout=$"Redesign_Layout_EmployersArticle";
+    ViewBag.PageTitle = title;
+    ViewBag.LandingPageSlug = "how-do-they-work";
+    ViewBag.LandingPageTitle = "How do they work?";
+    ViewBag.ArticlePageSlug = "browse-by-sector";
+    ViewBag.ArticlePageTitle = "Browse by sector";
+    ViewBag.IndustryPageTitle = title;
 }
+
 <p class="lead-paragraph">
     Health is something we often take for granted, but couldn't cope without.
 </p>

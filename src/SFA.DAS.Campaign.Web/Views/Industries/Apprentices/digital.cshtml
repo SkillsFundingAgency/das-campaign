@@ -1,0 +1,75 @@
+﻿@{
+    var title = "Digital";
+    
+    ViewBag.Title = title;
+    Layout=$"Redesign_Layout_ApprenticesArticle";
+    ViewBag.PageTitle = title;
+    ViewBag.LandingPageSlug = "how-do-they-work";
+    ViewBag.LandingPageTitle = "How do they work?";
+    ViewBag.ArticlePageSlug = "browse-by-interests";
+    ViewBag.ArticlePageTitle = "Browse by interests";
+    ViewBag.IndustryPageTitle = title;
+}
+
+<p class="lead-paragraph">
+    The digital sector covers the many different occupations that keep modern business, large and small, running efficiently and profitably.
+</p>
+
+<p>
+    A digital and technology solutions apprentice will help provide technology-enabled solutions to customers and staff.
+</p>
+<p>
+    Successful apprentices are already working in a wide variety of digital-centric roles, including software, business and systems analysis,
+    cybersecurity, data analysis and network infrastructures.
+</p>
+
+<dl class="inline-list">
+    <dt class="inline-list__title">@ViewBag.Title includes:</dt>
+    <dd>IS Business Analyst</dd>
+    <dd>Software Development Technician</dd>
+    <dd>Cybersecurity technologist</dd>
+</dl>
+
+    <section class="section section--slant section--apprentice-pale real-stories-quotes">
+        <div class="grid-row">
+            <div class="grid-column-two-thirds">
+                <div class="quote-feature">
+                    <h2 class="heading-xs quote-feature__caption">
+                        <span class="quote-feature__caption-text">Real stories</span>
+                        <span class="quote-feature__caption-icon"></span>
+                    </h2>
+                    <h3 class="heading-l">Tv, digital and media at bt</h3>
+
+                    <h4 class="heading-s">A diverse range of opportunities</h4>
+                    <p>
+                        Although I wanted to continue learning, I didn't feel that university was the right option for me. I began researching apprenticeships, and it was amazing to see the varied range on offer. There's an apprenticeship out there for anyone, whether you're just beginning to learn or wanting to develop!
+                        </p>
+                    <h4 class="heading-s">Real-life experience, alongside a degree </h4>
+                    <p>
+                        I wanted to get more hands-on experience outside of the classroom, but I also wanted to develop my learning, so I liked the idea of a degree apprenticeship. My favourite subject at sixth form was ICT, so I knew I wanted to work within technology, and began to look into the TV and Digital Media Apprenticeship.
+                        </p>
+                    <h4 class="heading-s">Develop transferrable skills</h4>
+                    <p>
+                        Not only will I qualify with a full bachelor's degree, along with other courses and qualifications – I also get the opportunity to develop on a day-to-day basis, rotating around the different departments every 6 months, while earning a salary. The apprenticeship has also helped with softer skills, such as building my confidence.
+                        </p>
+                    <p>
+                        <a asp-controller="RealStories" asp-action="Apprentices" class="quote-feature__link">View more success stories</a>
+                    </p>
+                </div>
+            </div>
+            <div class="grid-column-one-third">
+                <figure class="quote-box quote-box--apprentice">
+                    <blockquote class="quote-box__quote">
+                        Not only will I qualify with a full bachelor's degree – I also get the opportunity to develop on a day-to-day basis.
+                    </blockquote>
+                    <figcaption class="quote-box__cite">
+                        <span class="quote-box__cite-person">Kate Self, 20</span>
+                        <span class="quote-box__cite-role">TV, Digital and Media Apprentices</span>
+                        <span class="quote-box__cite-source">
+                            BT
+                        </span>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>

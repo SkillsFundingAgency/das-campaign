@@ -1,13 +1,16 @@
 ﻿@{
-    ViewBag.Title = "Sales, marketing and procurement";
-    ViewBag.MetaTitle = "Marketing and sales offer many apprenticeships";
-    ViewBag.MetaDesc = "Apprenticeships in marketing and procurement helps lead to careers in marketing, social and digital media.  ";
-    ViewBag.PageSlug = "sales-marketing-procurement";
-    ViewBag.HeroImageAltText = "People look over photography contact sheets";
-    Layout = "_LayoutIndustry";
-    ViewBag.Route = "Sales-marketing-and-procurement";
-
+    var title = "Sales, marketing and procurement";
+    
+    ViewBag.Title = title;
+    Layout=$"Redesign_Layout_EmployersArticle";
+    ViewBag.PageTitle = title;
+    ViewBag.LandingPageSlug = "how-do-they-work";
+    ViewBag.LandingPageTitle = "How do they work?";
+    ViewBag.ArticlePageSlug = "browse-by-sector";
+    ViewBag.ArticlePageTitle = "Browse by sector";
+    ViewBag.IndustryPageTitle = title;
 }
+
 <p class="lead-paragraph">
     All businesses need to find new customers and persuade them to buy things. Otherwise, companies would go out of business.
 </p>
