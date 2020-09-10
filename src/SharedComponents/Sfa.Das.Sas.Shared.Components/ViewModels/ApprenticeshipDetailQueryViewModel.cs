@@ -8,5 +8,6 @@ namespace Sfa.Das.Sas.Shared.Components.ViewModels
         public string Id { get; set; }
         public ApprenticeshipType Type { get; set; }
         public AddOrRemoveFavouriteInBasketResponse AddRemoveBasketResponse { get; set; }
+        public string BackUrl { get; set; }
     }
 }

@@ -24,6 +24,10 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
         public IActionResult Apprenticeship(string id)
         {
             var model = new ApprenticeshipDetailQueryViewModel(){Id = id};
+
+
+            var referer = Request.Headers["Referer"].ToString();
+            model.BackUrl = referer == "" ? "/employers/find-apprenticeships" : referer;
             
             if (TempData.ContainsKey("AddRemoveResponse"))
             {

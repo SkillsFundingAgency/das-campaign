@@ -22,6 +22,8 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
 
             var model = new ApprenticeshipHeadingViewModel();
 
+            model.BackUrl = queryModel.BackUrl;
+            
             switch (apprenticeshipType)
             {
                 case ApprenticeshipType.Framework:
