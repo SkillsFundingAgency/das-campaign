@@ -41,13 +41,13 @@
                 </li>
             </ul>
 
-            <details class="govuk-details fiu-provider-details-details" data-module="govuk-details">
+            <details class="govuk-details fiu-details" data-module="govuk-details">
                 <summary class="govuk-details__summary fiu-link--employers">
-                    <span class="govuk-details__summary-text fiu-provider-details-details__summary-text">
+                    <span class="govuk-details__summary-text fiu-details__summary-text">
                         Explain training options
                     </span>
                 </summary>
-                <div class="govuk-details__text fiu-provider-details-details__text">
+                <div class="govuk-details__text fiu-details__text">
                     <p>Day release: for example one day a week at the training provider's location.</p>
                     <p>Block release: for example 3-4 weeks at the training provider's location.</p>
                     <p>At your location: the training provider comes to your workplace.</p>
@@ -56,7 +56,7 @@
         </dd>
     </div>
     <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key fiu-provider-details-summary__key">
+        <dt class="govuk-summary-list__key fiu-details-summary__key">
             Achievement rates
         </dt>
         <dd class="govuk-summary-list__value fiu-provider-details-summary__value">
@@ -86,13 +86,13 @@
                 </div>
             </dl>
 
-            <details class="govuk-details fiu-provider-details-details" data-module="govuk-details">
+            <details class="govuk-details fiu-details" data-module="govuk-details">
                 <summary class="govuk-details__summary fiu-link--employers">
-                    <span class="govuk-details__summary-text fiu-provider-details-details__summary-text">
+                    <span class="govuk-details__summary-text fiu-details__summary-text">
                         Explain achievement rates
                     </span>
                 </summary>
-                <div class="govuk-details__text fiu-provider-details-details__text">
+                <div class="govuk-details__text fiu-details__text">
                     <p>Percentage of apprentices who successfully achieved a similar apprenticeship with this training provider.</p>
                     <p><small>Based on the latest data for 50 apprentices.</small></p>
                     <p><small>Source: <a href="https://www.gov.uk/government/collections/sfa-national-success-rates-tables" class="fiu-link fiu-link--employers" target="_blank" rel="external">Skills Funding Agency apprenticeship achievement rates <span class="fiu-vh">(Opens in a new window)</span></a></small></p>
@@ -109,7 +109,7 @@
 
     string GetTrainingOptionsStatusClass(string trainingOption, IList<string> options)
     {
-        var cssClass = "fiu-provider-details-summary__status";
+        var cssClass = "fiu-details-summary__status";
         var classSuffix = string.Empty;
 
         if (options.Contains(trainingOption, StringComparer.OrdinalIgnoreCase))

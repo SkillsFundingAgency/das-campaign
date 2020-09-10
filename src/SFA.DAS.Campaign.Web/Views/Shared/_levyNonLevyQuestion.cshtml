@@ -1,47 +1,66 @@
 @model SFA.DAS.Campaign.Web.Controllers.EmployerInform.LevyOptionViewModel
-<div id="non-levy-levy-journey">
-    <div id="how-they-work-levy-question">
-        <form method="post">
-            <p>
-                <strong>As an employer, is your pay bill more than £3 million per year?</strong><br>
-                If you’re receiving a transfer of apprenticeship funds from another employer, please choose ‘Yes’.
-            </p>
-            <p>Depending on your answer, we’ll show you relevant information about government funding.</p>
 
-            <div class="form-validation-summary" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
-                Please select an option before continuing
-            </div>
-
-            <div class="form-group">
-                <fieldset class="fieldset">
-                    <legend class="vh">Your pay bill</legend>
-
-                    <div class="radios">
-                        <div class="radios__item">
-                            <input id="levyPayerYes" asp-for="LevyStatus" value="Levy" type="radio" class="radios__input" />
-                            <label class="label radios__label" for="levyPayerYes">Yes</label>
-                        </div>
-                        <div class="radios__item">
-                            <input id="levyPayerNo" asp-for="LevyStatus" value="NonLevy" type="radio" class="radios__input"/>
-                            <label class="label radios__label" for="levyPayerNo">No</label>
-                        </div>
-                        <div class="radios__item">
-                            <input id="levyPayerDontKnow" asp-for="LevyStatus" value="DontKnow" type="radio" class="radios__input"/>
-                            <label class="label radios__label" for="levyPayerDontKnow">I'm not sure</label>
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="button button--employer button--sparks">Continue</button>
-            </div>
-        </form>
+<div class="govuk-error-summary" aria-labelledby="error-choose" style="@(ViewData.ModelState.IsValid ? "display: none;" : "")" role="alert" tabindex="-1" data-module="govuk-error-summary">
+    <h2 class="govuk-error-summary__title" id="error-choose">There is a problem</h2>
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li><a href="#levyPayerYes">Please select an option before continuing</a></li>
+        </ul>
     </div>
 </div>
 
+<form id="how-they-work-levy-question" method="post">
+    <div class="govuk-form-group govuk-!-margin-bottom-0 @(ViewData.ModelState.IsValid ? "" : "govuk-form-group--error")">
+        <fieldset class="govuk-fieldset" aria-describedby="transfer-hint @(ViewData.ModelState.IsValid ? "" : "error-choose-2")">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-fieldset__heading">
+                    As an employer, is your pay bill more than &pound;3 million per year?
+                </h2>
+            </legend>
+
+            <span id="error-choose-2" class="govuk-error-message" style="@(ViewData.ModelState.IsValid ? "display: none;" : "")">
+                <span class="fiu-vh">Error:</span> Please select an option before continuing
+            </span>
+
+            <div class="govuk-radios govuk-!-margin-top-3">
+                <div class="govuk-radios__item">
+                    <input id="levyPayerYes" asp-for="LevyStatus" value="Levy" type="radio" class="govuk-radios__input" />
+                    <label class="govuk-label govuk-radios__label" for="levyPayerYes">Yes</label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input id="levyPayerNo" asp-for="LevyStatus" value="NonLevy" type="radio" class="govuk-radios__input"/>
+                    <label class="govuk-label govuk-radios__label" for="levyPayerNo">No</label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input id="levyPayerDontKnow" asp-for="LevyStatus" value="DontKnow" type="radio" class="govuk-radios__input"/>
+                    <label class="govuk-label govuk-radios__label" for="levyPayerDontKnow">I'm not sure</label>
+                </div>
+            </div>
+
+            <details class="govuk-details fiu-details govuk-!-margin-top-7 govuk-!-margin-bottom-1" data-module="govuk-details">
+                <summary class="govuk-details__summary fiu-link--employers">
+                    <span class="fiu-details__summary-text fiu-link--employers">
+                        Apprenticeship transfers
+                    </span>
+                </summary>
+                <div id="transfer-hint" class="govuk-details__text fiu-details__text">
+                    If you're receiving a transfer of apprenticeship funds from another employer, please choose 'Yes'.
+                </div>
+            </details>
+
+        </fieldset>
+    </div>
+
+    <div class="form-group govuk-!-margin-top-4">
+        <button type="submit" class="fiu-button fiu-button--employers">Continue</button>
+    </div>
+
+    <p class="govuk-body">Depending on your answer, we'll show you relevant information about government funding.</p>
+</form>
+
 <script>
     window.onload = function() {//disable js form val
-        jQuery('#how-they-work-levy-question').find('form').validate({
+        jQuery('#how-they-work-levy-question').validate({
             onsubmit : false
         });
     };

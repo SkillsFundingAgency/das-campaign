@@ -1,8 +1,7 @@
 ﻿@model SFA.DAS.Campaign.Web.Controllers.EmployerInform.LevyOptionViewModel
-
 @{
     ViewBag.Title = "Funding an apprenticeship";
-    Layout = $"Redesign_Layout_EmployersArticle";
+    Layout = $"Redesign_Layout_EmployersForm";
     ViewBag.PageTitle = "Funding an apprenticeship";
     ViewBag.PageSummary = "";
     ViewBag.LandingPageSlug = "how-do-they-work";
@@ -11,12 +10,13 @@
     ViewBag.ArticlePageTitle = "Funding an apprenticeship";
 }
 
-<div class="fiu-grad-row">
-    <div class="fiu-width-container">
-        @await Html.PartialAsync("_levyNonLevyQuestion", Model)
+@await Html.PartialAsync("_levyNonLevyQuestion", Model)
 
-        <h2 class="heading-m">Apprenticeships in Scotland, Northern Ireland and Wales</h2>
-        <p>This website is about apprenticeships in England.</p>
-        <p>Find out more about apprenticeships in <a href="https://www.apprenticeships.scot/" target="_blank" rel="external">Scotland<span class="visually-hidden"> (Opens in a new window)</span></a>, <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external">Northern Ireland<span class="visually-hidden"> (Opens in a new window)</span></a> or <a href="https://beta.gov.wales/apprenticeships-skills-and-training" target="_blank" rel="external">Wales<span class="visually-hidden"> (Opens in a new window)</span></a>.</p>
-    </div>
-</div>
+<h3 class="govuk-heading-m govuk-!-margin-top-8">
+    Apprenticeships in Scotland, Northern Ireland and Wales
+</h3>
+
+<p class="govuk-body">This website is about apprenticeships in England. Find out more about apprenticeships in <a href="https://www.apprenticeships.scot/" class="fiu-link fiu-link--employers" target="_blank" rel="external">Scotland<span class="fiu-vh"> (Opens in a new window)</span></a>, <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" class="fiu-link fiu-link--employers" target="_blank" rel="external">Northern Ireland<span class="fiu-vh"> (Opens in a new window)</span></a> or <a href="https://beta.gov.wales/apprenticeships-skills-and-training" class="fiu-link fiu-link--employers" target="_blank" rel="external">Wales<span class="fiu-vh"> (Opens in a new window)</span></a>.
+</p>
+
+<hr class="fiu-section-break fiu-section-break--l">
