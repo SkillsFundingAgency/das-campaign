@@ -9,20 +9,18 @@
     {
             @if (Model.SearchQuery.AddRemoveBasketResponse.BasketOperation == BasketOperation.Added)
             {
-                <div class="toast">
-                    <span class="toast__icon toast__icon--success"></span>
-                    <div class="toast__content">
+                <div class="fiu-notification fiu-notification--success">
+                    <p class="fiu-notification__body">
                         You've added <strong>@Model.SearchQuery.AddRemoveBasketResponse.ApprenticeshipName</strong> to your shortlist
-                    </div>
+                    </p>
                 </div>
             }
             else
             {
-                <div class="toast">
-                    <span class="toast__icon toast__icon--error"></span>
-                    <div class="toast__content">
+                <div class="fiu-notification fiu-notification--error">
+                    <p class="fiu-notification__body">
                         You've removed <strong>@Model.SearchQuery.AddRemoveBasketResponse.ApprenticeshipName</strong> from your shortlist
-                    </div>
+                    </p>
                 </div>
             }
     }

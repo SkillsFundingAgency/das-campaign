@@ -17,6 +17,9 @@
                 <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-1" asp-controller="LandingPage" asp-action="SettingItUp"  class="fiu-navigation__link">Setting it up</a> </li>
                 <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-1" href="/employers/guides" class="fiu-navigation__link">Employer guides</a> </li>
                 <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-1" asp-controller="Employer" asp-action="FindApprenticeshipTraining"  class="fiu-navigation__link">Find apprenticeship training</a> </li>
+                <li class="fiu-navigation__list-item">
+                    @await Component.InvokeAsync("BasketIcon")
+                </li>
             </ul>
 		</nav>
 	</div>

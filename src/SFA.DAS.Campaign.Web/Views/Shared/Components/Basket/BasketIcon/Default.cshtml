@@ -5,18 +5,14 @@
 
 @if (Model.ItemCount > 0)
 {
-    <li class="nav__list-item nav__list-item--favourites">
-        <a  asp-controller="Basket" asp-action="View" class="nav__link--top-level favourites-link">
-            <span class="favourites-link__count">@Model.ItemCount</span>
-            <span class="favourites-link__text">Favourites</span>
-        </a>
-    </li>
+    <a  asp-controller="Basket" asp-action="View" class="nav__link--top-level favourites-link">
+        <span class="favourites-link__count">@Model.ItemCount</span>
+        <span class="favourites-link__text">Favourites</span>
+    </a>
 }
 else
 {
-    <li class="nav__list-item nav__list-item--favourites">
-        <a  asp-controller="Basket" asp-action="View" class="nav__link--top-level favourites-link">
-            <span class="favourites-link__text">Favourites</span>
-        </a>
-    </li>
+    <a  asp-controller="Basket" asp-action="View" class="nav__link--top-level favourites-link">
+        <span class="favourites-link__text">Favourites</span>
+    </a>
 }
