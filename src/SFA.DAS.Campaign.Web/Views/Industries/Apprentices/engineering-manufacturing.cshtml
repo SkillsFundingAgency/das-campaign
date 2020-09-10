@@ -1,12 +1,14 @@
 ﻿@{
-    ViewBag.Title = "Engineering and manufacturing";
-    ViewBag.MetaTitle = "Engineering and manufacturing offer a number of different apprenticeships";
-    ViewBag.MetaDesc = "Apprenticeships in manufacturing deals with producing things on an industrial scale.  Engineering is all about making things work such as RAF aircraft to servicing escalators.";
-    ViewBag.PageSlug = "engineering-manufacturing";
-    ViewBag.HeroImageAltText = "Circuit board with tools around";
-    Layout = "_LayoutIndustry";
-    ViewBag.Route = "Engineering-and-manufacturing";
-
+    var title = "Engineering and manufacturing";
+    
+    ViewBag.Title = title;
+    Layout=$"Redesign_Layout_ApprenticesArticle";
+    ViewBag.PageTitle = title;
+    ViewBag.LandingPageSlug = "how-do-they-work";
+    ViewBag.LandingPageTitle = "How do they work?";
+    ViewBag.ArticlePageSlug = "browse-by-interests";
+    ViewBag.ArticlePageTitle = "Browse by interests";
+    ViewBag.IndustryPageTitle = title;
 }
 
 <p class="lead-paragraph">
