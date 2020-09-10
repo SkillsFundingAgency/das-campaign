@@ -31,7 +31,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("/apprentice/what-is-an-apprenticeship")]
         public IActionResult WhatIsAnApprenticeshipRedirect()
         {
-            return RedirectPermanent("/apprentices/what-is-apprenticeship");
+            return RedirectPermanent("/apprentices/becoming-apprentice");
         }
         
         [Route("/apprentice/what-are-the-benefits-for-me")]
