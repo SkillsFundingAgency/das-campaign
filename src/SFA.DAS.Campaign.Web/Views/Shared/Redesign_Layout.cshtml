@@ -113,8 +113,10 @@
         </div>
     </footer>
 
+    @if(ViewBag.HideCookieBanner == null ) {
     <partial name="./Redesign/Banners/_CookieBanner" />
-
+    }
+    
 	<script src="/fiu/js/app.min.js"></script>
 
 </body>
