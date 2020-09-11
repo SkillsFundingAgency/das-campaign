@@ -68,18 +68,18 @@
                             {
                                 <li class="govuk-breadcrumbs__list-item">
                                     @ViewBag.ArticlePageTitle
-                                </li>    
+                                </li>
                             }
                             else
                             {
                                 <li class="govuk-breadcrumbs__list-item">
-                                    <a href="/employers/@ViewBag.ArticlePageSlug" class="govuk-breadcrumbs__link">@ViewBag.ArticlePageTitle</a> 
+                                    <a href="/employers/@ViewBag.ArticlePageSlug" class="govuk-breadcrumbs__link">@ViewBag.ArticlePageTitle</a>
                                 </li>
                                 <li class="govuk-breadcrumbs__list-item">
                                     @ViewBag.IndustryPageTitle
-                                </li>    
+                                </li>
                             }
-                            
+
                         }
                     }
                 </ol>
@@ -118,4 +118,5 @@
             <p class="fiu-phase-banner__content"><strong class="fiu-tag fiu-phase-banner__tag">BETA</strong><span class="fiu-vh">:</span> This is a new service - your <a href="https://www.smartsurvey.co.uk/s/S2NQQ" class="fiu-link" id="fiu-status-link-feedback" target="_blank">feedback</a> will help us to improve it.</p>
         </div>
     </div>
+    <partial name="Redesign/_ReadyToGetStartedEmployers"/>
 </main>
