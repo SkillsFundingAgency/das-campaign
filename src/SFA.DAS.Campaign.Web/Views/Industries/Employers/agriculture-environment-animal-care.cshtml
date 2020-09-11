@@ -10,10 +10,10 @@
     ViewBag.ArticlePageTitle = "Browse by sector";
     ViewBag.IndustryPageTitle = title;
 }
-<p class="lead-paragraph">
-    This fertile sector for apprenticeships can be separated into three major categories:
+<p class="govuk-body-l">
+    This fertile sector for apprenticeships can be separated into 3 categories:
 </p>
-<ol class="list  list--number">
+<ol class="govuk-list govuk-list--number">
     <li>Land management and production</li>
     <li>Animal health and welfare</li>
     <li>Environmental industries</li>
@@ -21,54 +21,35 @@
 <p>
     There are apprenticeships working on farms, in veterinary centres and animal hospitals. Plus all manner of forestry and environmental roles.
 </p>
-<dl class="inline-list">
-    <dt class="inline-list__title">Apprenticeships include:</dt>
-    <dd>Sports turf operative</dd>
-    <dd>Veterinary nurse</dd>
-    <dd>Horticulture and Landscape Operative</dd>
-</dl>
+<p>Apprenticeships include:</p>
+<ul class="govuk-list govuk-list--bullet">
+    <li>Sports turf operative</li>
+    <li>Veterinary nurse</li>
+    <li>Horticulture and landscape operative</li>
+</ul>
 
-<section class="section section--slant section--apprentice-pale real-stories-quotes">
-    <div class="grid-row">
-        <div class="grid-column-two-thirds">
-            <div class="quote-feature">
-                <h2 class="heading-xs quote-feature__caption">
-                    <span class="quote-feature__caption-text">Real stories</span>
-                    <span class="quote-feature__caption-icon"></span>
-                </h2>
-                <h3 class="heading-l">RSPCA</h3>
-                <p>
-                    Over the past 2 years, we've conducted a great deal of research, using the <a href="/employers/find-apprenticeship-training">find apprenticeship training</a> service and the <a href="https://www.instituteforapprenticeships.org/">Institute for Apprenticeships & Technical Education website</a>.
-                </p>
-                <p>
-                    To get started, we engage with training providers and meet with potential apprentices and line managers to ensure a shared understanding, making sure the training is right for the individual and our organisation.
-                </p>
-                <h4 class="heading-s">Increase your talent pool</h4>
-                <p>
-                    There are loads of benefits to hiring apprentices. Apprenticeships help us to develop knowledge and skills within the organisation, improve employee motivation, provide development opportunities, feed into succession planning – and of course, increase our talent pool!
-                </p>
-                <h4 class="heading-s">Finding the right apprentice</h4>
-                <p>
-                    To find an apprentice, we recruit internally, put out communications, engage with line managers for recommendations and refer to external sources. We advertise with the training provider and use the recruit service to advertise on <a href="https://www.gov.uk/apply-apprenticeship">find an apprenticeship</a>.
-                </p>
-                <p>
-                    <a asp-controller="RealStories" asp-action="Apprentices" class="quote-feature__link">View more success stories</a>
-                </p>
-            </div>
-        </div>
-        <div class="grid-column-one-third">
-            <figure class="quote-box quote-box--apprentice">
-                <blockquote class="quote-box__quote">
-                    Apprenticeships help us to develop knowledge and skills within the organisation – and of course, increase our talent pool!
-                </blockquote>
-                <figcaption class="quote-box__cite">
-                    <span class="quote-box__cite-person">Laura Swan</span>
-                    <span class="quote-box__cite-role">Apprenticeships Development Manager</span>
-                    <span class="quote-box__cite-source">
-                        RSPCA
-                    </span>
-                </figcaption>
-            </figure>
-        </div>
-    </div>
-</section>
+<hr class="fiu-section-break fiu-section-break--l" />
+
+<h2 class="govuk-heading-l">
+    <span class="govuk-caption-l">Real stories</span>
+    RSPCA
+</h2>
+
+<figure class="fiu-quote">
+  <blockquote class="fiu-quote__blockquote">
+    "Apprenticeships help us to develop knowledge and skills within the organisation – and of course, increase our talent pool!"
+  </blockquote>
+  <figcaption class="fiu-quote__caption">
+    Laura Swan
+    <span class="fiu-quote__caption-description">Apprenticeships Development Manager, RSPCA</span>
+  </figcaption>
+</figure>
+
+<p class="govuk-body">Over the past 2 years, we've conducted a great deal of research, using the <a  asp-controller="Employer" asp-action="FindApprenticeshipTraining" class="fiu-link">find apprenticeship training</a> service and the <a href="https://www.instituteforapprenticeships.org/" target="_blank" class="fiu-link" rel="external">Institute for Apprenticeships & Technical Education website</a>.</p>
+<p class="govuk-body">To get started, we engage with training providers and meet with potential apprentices and line managers to ensure a shared understanding, making sure the training is right for the individual and our organisation.</p>
+
+<h3 class="govuk-heading-m">Increase your talent pool</h3>
+<p class="govuk-body">There are loads of benefits to hiring apprentices. Apprenticeships help us to develop knowledge and skills within the organisation, improve employee motivation, provide development opportunities, feed into succession planning – and of course, increase our talent pool!</p>
+
+<h3 class="govuk-heading-m">Finding the right apprentice</h3>
+<p class="govuk-body">To find an apprentice, we recruit internally, put out communications, engage with line managers for recommendations and refer to external sources. We advertise with the training provider and use the recruit service to advertise on <a href="https://www.gov.uk/apply-apprenticeship" target="_blank" class="fiu-link" rel="external">find an apprenticeship</a>.</p>
