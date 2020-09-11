@@ -1,4 +1,4 @@
-<div class="fiu-panel fiu-panel--fat">
+<div class="fiu-panel fiu-panel--fat @(ViewBag.PanelsInNarrowColumn != null ? "fiu-panel--narrow-col" : "")">
         <h2 class="govuk-heading-l fiu-panel__heading">Find apprenticeship training</h2>
         <p class="fiu-panel__content">See what apprenticeship Standards might be suitable for your business</p>
         <a asp-controller="Employer" asp-action="FindApprenticeshipTraining" id="fiu-panel-link-fat" class="fiu-button fiu-button--employers fiu-button--sparks fiu-panel__button">Find apprenticeship training</a>
