@@ -6,17 +6,18 @@
 @{
     var buttonStatusClassSuffix = Model.IsInBasket ? "checked" : "unchecked";
     var buttonText = Model.IsInBasket ? "Remove from favourites" : "Add to favourites";
+    var buttonState = Model.IsInBasket ? " fiu-favourite-bar__link--active" : "";
 }
 
 @if (Model.LocationId.HasValue)
 {
-    <button type="submit" class="das-basket__item-delete" name="itemId" value="@Model.ItemId,@Model.LocationId">
+    <button type="submit" class="das-basket__item-delete @buttonState" name="itemId" value="@Model.ItemId,@Model.LocationId">
         @buttonText
     </button>
 }
 else
 {
-    <button type="submit" class="das-basket__item-delete" name="itemId" value="@Model.ItemId">
+    <button type="submit" class="das-basket__item-delete @buttonState" name="itemId" value="@Model.ItemId">
         @buttonText
     </button>
 }
