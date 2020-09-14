@@ -76,5 +76,11 @@
     <_ContentIncludedByDefault Remove="Views\Articles\Employers\the-right-apprenticeship.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Articles\Employers\training-your-apprentice.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Articles\Employers\upskill.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\OldHome\Accessibility.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\OldHome\CookieDetails.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\OldHome\Cookies.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\OldHome\Countries.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\OldHome\Privacy.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\OldHome\Sitemap.cshtml" />
   </ItemGroup>
 </Project>
