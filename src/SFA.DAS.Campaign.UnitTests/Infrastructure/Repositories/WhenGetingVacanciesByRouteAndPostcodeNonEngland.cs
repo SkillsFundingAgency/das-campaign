@@ -33,7 +33,6 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         private IVacanciesRepository sut;
 
         private string postcode = "CF10 3AT";
-        private int _searchResultCount = 200;
         private CoordinatesResponse coordinatesResponse = new CoordinatesResponse()
         {
             Coordinates = new Coordinates() { Lat = 50, Lon = 50 },
@@ -57,6 +56,8 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _geocodeService.Setup(s => s.GetFromPostCode(It.IsAny<string>())).ReturnsAsync(coordinatesResponse);
 
             sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object, _countryMapper);
+
+            _standardIds = null;
 
         }
 
@@ -86,8 +87,6 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         [Test]
         public async Task Then_Location_Is_Returned()
         {
-            _searchResultCount = 200;
-
             var results = await sut.GetByRoute("1", postcode, 20);
 
             Assert.AreEqual(results.searchLocation.Longitude, coordinatesResponse.Coordinates.Lon);

@@ -44,7 +44,7 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
             return View("Basket/View", vm);
         }
 
-        [HttpGet]
+        [HttpGet("/basket/removeconfirmation")]
         public async Task<IActionResult> RemoveConfirmation(string apprenticeshipId, string returnPath)
         {
             var cookie = _cookieManager.Get(CookieNames.BasketCookie);
@@ -56,7 +56,7 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
             return View("Basket/RemoveConfirmation", new RemoveConfirmationViewModel(apprenticeshipItem, returnPath));
         }
 
-        [HttpPost]
+        [ HttpPost("/basket/removeconfirmation")]
         public async Task<IActionResult> RemoveConfirmation(RemoveConfirmationViewModel vm)
         {
             var response = await _basketOrchestrator.UpdateBasket(vm.ApprenticeshipId);

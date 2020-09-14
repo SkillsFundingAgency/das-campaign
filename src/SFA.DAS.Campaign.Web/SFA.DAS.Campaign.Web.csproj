@@ -81,5 +81,9 @@
     <_ContentIncludedByDefault Remove="Views\OldHome\Countries.cshtml" />
     <_ContentIncludedByDefault Remove="Views\OldHome\Privacy.cshtml" />
     <_ContentIncludedByDefault Remove="Views\OldHome\Sitemap.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Sidebar\_apprentice.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Sidebar\_employer-without-navigation.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Sidebar\_employer.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Sidebar\_parent.cshtml" />
   </ItemGroup>
 </Project>
