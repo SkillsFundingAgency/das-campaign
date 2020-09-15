@@ -5,6 +5,14 @@
 @inject ICssViewModel CssViewModel
 
 
+@functions {
+    private float graphPercentage(float feedback, float totalFeedback)
+    {
+        float feedbackPercentage = (feedback / totalFeedback) * 100;
+        return feedbackPercentage;
+    }
+}
+
 @if (Model.Feedback != null)
 {
 <div class="govuk-grid-row">
@@ -22,7 +30,7 @@
                     Excellent
                 </dt>
                 <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-excellent">
-                    <span style="width: @Model.Feedback.ExcellentFeedbackCount%;">
+                    <span style="width: @graphPercentage(Model.Feedback.ExcellentFeedbackCount, Model.Feedback.TotalFeedbackCount)%">
                         Visual bar showing @Model.Feedback.ExcellentFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
                     </span>
                 </dd>
@@ -36,7 +44,7 @@
                     Good
                 </dt>
                 <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-good">
-                    <span style="width: @Model.Feedback.GoodFeedbackCount%;">
+                    <span style="width: @graphPercentage(Model.Feedback.GoodFeedbackCount, Model.Feedback.TotalFeedbackCount)%;">
                     Visual bar showing @Model.Feedback.GoodFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
                     </span>
                 </dd>
@@ -49,7 +57,7 @@
                     Poor
                 </dt>
                 <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-poor">
-                    <span style="width: @Model.Feedback.PoorFeedbackCount%;">
+                    <span style="width: @graphPercentage(Model.Feedback.PoorFeedbackCount, Model.Feedback.TotalFeedbackCount)%;">
                     Visual bar showing @Model.Feedback.PoorFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
                     </span>
                 </dd>
@@ -62,7 +70,7 @@
                     Very poor
                 </dt>
                 <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-very-poor">
-                    <span style="width: @Model.Feedback.VeryPoorFeedbackCount%;">
+                    <span style="width: @graphPercentage(Model.Feedback.VeryPoorFeedbackCount, Model.Feedback.TotalFeedbackCount)%;">
                     Visual bar showing @Model.Feedback.VeryPoorFeedbackCount reviews out of @Model.Feedback.TotalFeedbackCount
                     </span>
                 </dd>
