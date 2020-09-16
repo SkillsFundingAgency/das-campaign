@@ -13,13 +13,13 @@
 {
     <button type="submit" class="fiu-favourite-bar__link @buttonState" name="itemId" value="@Model.ItemId,@Model.LocationId">
         <span class="fiu-favbar__img-wrap"></span>
-        @buttonText <span class="fiu-vhxxxx">: (name of provider)</span>
+        @buttonText <span class="fiu-vhxxxx">: (@Model.ItemTitle)</span>
     </button>
 }
 else
 {
     <button type="submit" class="fiu-favourite-bar__link @buttonState" name="itemId" value="@Model.ItemId">
         <span class="fiu-favbar__img-wrap"></span>
-        @buttonText <span class="fiu-vhxxxx">: (name of provider)</span>
+        @buttonText <span class="fiu-vhxxxx">: (@Model.ItemTitle)</span>
     </button>
 }

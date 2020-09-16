@@ -31,7 +31,7 @@
     <div class="fiu-favourite-bar fiu-favourite-bar--employers">
         <form asp-controller="Basket" asp-action="RemoveFromBasket" method="post">
             <input type="hidden" id="apprenticeshipId" name="ApprenticeshipId" value="@Model.Id" />
-            @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
+            @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id, title = Model.Title })
         </form>
     </div>
 
@@ -51,7 +51,7 @@
                 <form asp-controller="Basket" asp-action="RemoveFromBasket" method="post">
                     <input type="hidden" id="apprenticeshipId" name="ApprenticeshipId" value="@Model.Id" />
                     <input type="hidden" id="ukprn" name="Ukprn" value="@trainingProviderSearchResultsItem.Ukprn" />
-                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id, ukprn = trainingProviderSearchResultsItem.Ukprn })
+                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id, ukprn = trainingProviderSearchResultsItem.Ukprn, title = trainingProviderSearchResultsItem.Name })
                 </form>
             </div>
         }
