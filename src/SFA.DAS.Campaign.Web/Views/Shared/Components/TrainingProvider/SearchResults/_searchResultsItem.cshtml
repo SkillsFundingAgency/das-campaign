@@ -10,9 +10,9 @@
 
 <div id="@Model.Item1.Ukprn" class="fiu-results-panel">
     <h2 class="govuk-heading-m fiu-results-panel__heading">
-        <a class="fiu-link fiu-link--employers"" href="/TrainingProvider/Details?ukprn=@Model.Item1.Ukprn&apprenticeshipId=@Model.Item2.ApprenticeshipId&LocationId=@Model.Item1.LocationId&postCode=@Model.Item2.Postcode">
+        <a class="fiu-link fiu-link--employers" href="/TrainingProvider/Details?ukprn=@Model.Item1.Ukprn&apprenticeshipId=@Model.Item2.ApprenticeshipId&LocationId=@Model.Item1.LocationId&postCode=@Model.Item2.Postcode">
             @Model.Item1.Name
-        </a> 
+        </a>
         @if (Model.Item1.NationalProvider)
         {
             <span class="fiu-tag fiu-tag--national">National</span>
@@ -35,8 +35,8 @@
         <dt class="fiu-table-list__th">Achievement rate</dt>
         <dd class="fiu-table-list__td">@FormatPercentageValues(Model.Item1.OverallAchievementRate)</dd>
     </dl>
-    <div class="fiu-favourite-bar">
-        @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Item2.ApprenticeshipId, ukprn = Model.Item1.Ukprn, locationId = Model.Item1.LocationId })  
+    <div class="fiu-favourite-bar fiu-favourite-bar--employers">
+        @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Item2.ApprenticeshipId, ukprn = Model.Item1.Ukprn, locationId = Model.Item1.LocationId })
     </div>
 </div>
 

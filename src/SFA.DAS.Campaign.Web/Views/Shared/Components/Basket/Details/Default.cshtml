@@ -1,62 +1,87 @@
+@using Sfa.Das.Sas.Shared.Components.Extensions
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
 @using Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.SearchResults
 @model Sfa.Das.Sas.Shared.Components.ViewModels.Basket.BasketViewModel<Sfa.Das.Sas.Shared.Components.ViewModels.Apprenticeship.ApprenticeshipBasketItemViewModel>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @inject ICssViewModel CssViewModel
 @{
-
     var inactiveProviders = Model.HasItems ? Model.Items.Where(w => w.Active).SelectMany(w => w.TrainingProvider).Where(s => s.Active == false).ToList() : new List<TrainingProviderSearchResultsItem>();
-
+}
+@{
+    var apprenticeshipCount = Model.Items?.Count() ?? 0;
+    var providerCount = Model.Items?.SelectMany(w => w.TrainingProvider).Count() ?? 0;
 }
 
-@if (Model.HasItems)
-{
+<section class="govuk-grid-column-two-thirds">
 
-    @if (Model.Items.Any(s => s.Active == false) || inactiveProviders.Any())
-     {
-         <div class="@CssViewModel.GridCss.Row">
-             <div class="@CssViewModel.GridCss.ColumnFull">
-                 <div class="@CssViewModel.ErrorCss.Summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
-                     <h2 class="@CssViewModel.ErrorCss.SummaryTitle" id="error-summary-title">
-                         Unavailable apprenticeship or training provider
-                     </h2>
-                     <div class="@CssViewModel.ErrorCss.SummaryBody">
-                         <ul class="@CssViewModel.List @CssViewModel.ErrorCss.SummaryList">
-                             @foreach (var inactiveApprenticeship in Model.Items.Where(w => w.Active == false))
-                             {
-                                 <li>
-                                     <a href="#apprenticeship-@inactiveApprenticeship.Id">The @inactiveApprenticeship.Title apprenticeship is no longer available. You can remove it from your shortlist below.</a>
-                                 </li>
-                             }
-                             @foreach (var inactiveProvider in inactiveProviders)
-                             {
-                                 <li>
-                                     <a href="#provider-@inactiveProvider.Ukprn">The @inactiveProvider.Name Training provider is no longer available. You can remove it from your shortlist below.</a>
-                                 </li>
-                             }
-                         </ul>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     }
+    @if (apprenticeshipCount > 0)
+    {
+        <p class="fiu-body-m-l">
+            These are your saved apprenticeships and training providers. Once you're ready to hire an apprentice <a href="/employers/create-apprenticeship-service-account" class="fiu-line fiu-link--employers">get started</a> by setting up an <span class="fiu-font-weight-bold">apprenticeship service account</span>.
+        </p>
+    }else{
+        <h2 class="govuk-heading-m">You haven't added any favourites yet</h2>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+                You have @apprenticeshipCount saved @("Apprenticeship".Pluralize(apprenticeshipCount)) in your basket
+            </li>
+            <li>
+                You have @providerCount saved Training @("provider".Pluralize(providerCount)) in your basket
+            </li>
+        </ul>
+        <p class="govuk-body">Create an <a href="/employers/create-apprenticeship-service-account" class="fiu-link fiu-link--employers">Apprenticeship Service account</a> to save your choices and start hiring.</p>
+    }
 
+    @if (Model.HasItems)
+    {
 
-    <ol class="@CssViewModel.List das-search-results__list das-search-results__list--employer das-basket">
+        @if (Model.Items.Any(s => s.Active == false) || inactiveProviders.Any())
+        {
+            <div class="@CssViewModel.GridCss.Row">
+                <div class="@CssViewModel.GridCss.ColumnFull">
+                    <div class="@CssViewModel.ErrorCss.Summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+                        <h2 class="@CssViewModel.ErrorCss.SummaryTitle" id="error-summary-title">
+                            Unavailable apprenticeship or training provider
+                        </h2>
+                        <div class="@CssViewModel.ErrorCss.SummaryBody">
+                            <ul class="@CssViewModel.List @CssViewModel.ErrorCss.SummaryList">
+                                @foreach (var inactiveApprenticeship in Model.Items.Where(w => w.Active == false))
+                                {
+                                    <li>
+                                        <a href="#apprenticeship-@inactiveApprenticeship.Id">The @inactiveApprenticeship.Title apprenticeship is no longer available. You can remove it from your shortlist below.</a>
+                                    </li>
+                                }
+                                @foreach (var inactiveProvider in inactiveProviders)
+                                {
+                                    <li>
+                                        <a href="#provider-@inactiveProvider.Ukprn">The @inactiveProvider.Name Training provider is no longer available. You can remove it from your shortlist below.</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
 
         @foreach (var apprenticeship in Model.Items)
         {
-            <li id="apprenticeship-@apprenticeship.Id">
+            <div class="fiu-results-panel" id="apprenticeship-@apprenticeship.Id">
                 <partial name="Components/Basket/Details/_apprenticeshipItem" for="@apprenticeship" />
-            </li>
+            </div>
         }
-    </ol>
-}
-else
-{
-    <div class="das-basket__empty">
-        <h2 class="heading-m">You haven't added any favourites yet</h2>
-        <p>Why not browse the available apprenticeships and start adding your favourites?</p>
-        <a asp-controller="Employer" asp-action="find-apprenticeship-training" class="button button--inverted">View apprenticeships</a>
-    </div>
-}
+
+    }
+    else
+    {
+        <p class="govuk-body">Why not <a asp-controller="Employer" asp-action="find-apprenticeship-training" class="fiu-link fiu-link--employers">browse the available apprenticeships</a> and start adding your favourites?</p>
+    }
+</section>
+<aside class="govuk-grid-column-one-third">
+    <partial name="Redesign/_ReadyToGetStarted"/>
+
+    <partial name="Redesign/_RegisterInterestEmployer"/>
+
+    <partial name="Redesign/_GetFreeHelpAndSupport"/>
+</aside>
