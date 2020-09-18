@@ -1,6 +1,5 @@
 @using Sfa.Das.Sas.Core.Configuration
 @inject IFatConfigurationSettings fatSettings;
-
 <!doctype html>
 <html lang="en" class="fiu-template">
 
@@ -8,7 +7,9 @@
 
 	<meta charset="utf-8">
 	<title>@(ViewData["MetaTitle"] != null ? ViewData["MetaTitle"] : ViewData["Title"])</title>
-	<meta name="description" content="@(ViewData["MetaDesc"])" />
+    @if (ViewData["MetaDesc"] != null){
+    <meta name="description" content="@(ViewData["MetaDesc"])" />
+    }
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="theme-color" content="#0b0c0c" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -37,7 +38,7 @@
     <header class="fiu-header">
         <div class="fiu-width-container fiu-clearfix">
             <a href="/" class="fiu-header__apprenticeship-logo-link" id="fiu-header-link-logo">
-                <img src="/fiu/assets/images/apprenticeships-logo-black.svg" alt="Apprenticeships logo" class="fiu-header__apprenticeship-logo" />
+                <span class="fiu-vh">Home</span><img src="/fiu/assets/images/apprenticeships-logo-black.svg" alt="Apprenticeships logo" class="fiu-header__apprenticeship-logo" />
             </a>
             <nav class="fiu-header__nav">
                 <ul id="fiu-nav" class="fiu-header__navigation">
@@ -101,7 +102,7 @@
                             <a class="fiu-footer__link" id="link-footer-accessibility"  asp-controller="Home" asp-action="Accessibility">Accessibility statement</a>
                         </li>
                         <li class="fiu-footer__list-item">
-                            Built by <a class="fiu-footer__link" id="link-footer-accessibility"  href="https://www.gov.uk/government/organisations/education-and-skills-funding-agency" rel="external" target="_blank">Education and Skills Funding Agency</a>
+                            Built by <a class="fiu-footer__link" id="link-footer-built-by"  href="https://www.gov.uk/government/organisations/education-and-skills-funding-agency" rel="external" target="_blank">Education and Skills Funding Agency</a>
                         </li>
                     </ul>
                 </div>
@@ -120,7 +121,7 @@
     @if(ViewBag.HideCookieBanner == null ) {
     <partial name="./Redesign/Banners/_CookieBanner" />
     }
-    
+
 	<script src="/fiu/js/app.min.js"></script>
 
 </body>
