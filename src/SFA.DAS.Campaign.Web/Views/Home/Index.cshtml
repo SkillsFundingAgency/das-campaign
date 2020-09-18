@@ -1,6 +1,6 @@
 
 @{
-    ViewBag.Title = "Find an apprenticeship to suit your business or further your career";
+    ViewBag.Title = "Apprenticeships";
     ViewBag.MetaDesc = "Everything you need to know about how apprenticeships can fire up your career or organisation.";
     Layout = "Redesign_Layout";
 }
@@ -104,14 +104,7 @@
                     </div>
 				</div>
 				<div class="govuk-grid-column-one-quarter">
-                    <div class="fiu-card">
-                        <span class="fiu-card__category">
-                            <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="AreTheyRightForYou">Are they right for you?</a>
-                        </span>
-                        <h3 class="fiu-card__heading">What are the benefits of an apprenticeship?</h3>
-                        <p class="fiu-card__content">Once you've successfully finished, you have plenty of choices. Find out more.</p>
-                        <a href="/apprentices/benefits-apprenticeship" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-2">Learn more</a>
-                    </div>
+                    <partial name="Redesign/Cards/Apprentices/WhatAreTheBenefits"/>
 			    </div>
 			    <div class="govuk-grid-column-one-quarter">
                     <div class="fiu-card">

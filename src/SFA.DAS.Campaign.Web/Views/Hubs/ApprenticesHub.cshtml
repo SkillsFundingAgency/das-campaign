@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "Apprentices";
+    ViewBag.Title = "Become an apprentice";
     Layout = "Redesign_Layout_ApprenticesHub";
 
     ViewBag.PageTitle = "Become an apprentice";
@@ -10,7 +10,7 @@
 }
 
 @section PageHeaderContent {
-    <h2 class="govuk-heading-l fiu-page-header__sub-heading">Apprentices, here's what you need to know</h2>
+    <h2 class="govuk-heading-l fiu-page-header__sub-heading">What you need to know</h2>
 }
 
 <div class="fiu-grad-row">
@@ -18,24 +18,10 @@
     <div class="fiu-width-container">
         <div class="govuk-grid-row fiu-flex-row">
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="AreTheyRightForYou">Are they right for you?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Real stories</h3>
-                    <p class="fiu-card__content">Watch some real-life accounts from existing apprentices and learn more about their experiences during their time on an apprenticeship.</p>
-                    <a href="/apprentices/real-stories" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-1">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/RealStories"/>
             </div>
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="AreTheyRightForYou">Are they right for you?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">What are the benefits of an apprenticeship?</h3>
-                    <p class="fiu-card__content">Once you've successfully finished, you have plenty of choices. Find out more.</p>
-                    <a href="/apprentices/benefits-apprenticeship" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-2">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/WhatAreTheBenefits"/>
             </div>
             <div class="govuk-grid-column-one-half">
                 <partial name="Redesign/_FindAnApprenticeship"/>
@@ -43,86 +29,30 @@
         </div>
         <div class="govuk-grid-row fiu-flex-row">
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="AreTheyRightForYou">Are they right for you?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Advice for parents</h3>
-                    <p class="fiu-card__content">Setting off on a career path can be overwhelming for young people. As their parent, guardian or carer, you'll play a key role in guiding them.</p>
-                    <a href="/apprentices/help-shape-their-career" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-3">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/AdviceForParents"/>
             </div>
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="AreTheyRightForYou">Are they right for you?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Browse by interest</h3>
-                    <p class="fiu-card__content">Find out what type of apprenticeships you can expect in your chosen interest. </p>
-                    <a href="/apprentices/browse-by-interests" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-4">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/BrowseByInterest"/>
             </div>
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="HowDoTheyWork">How do they work?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Becoming an apprentice</h3>
-                    <p class="fiu-card__content">An apprenticeship is a real job where you learn, gain experience and get paid. You're an employee with a contract of employment and holiday leave.</p>
-                    <a href="/apprentices/becoming-apprentice" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-5">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/BecomingAnApprentice"/>
             </div>
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="HowDoTheyWork">How do they work?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Applying for an apprenticeship</h3>
-                    <p class="fiu-card__content">Once you find the right apprenticeship, you can start the application process. Learn about the steps in getting your apprenticeship started.</p>
-                    <a href="/apprentices/applying-apprenticeship" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-6">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/ApplyingForAnApprenticeship"/>
             </div>
         </div>
         <div class="govuk-grid-row fiu-flex-row">
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="HowDoTheyWork">How do they work?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">The interview process</h3>
-                    <p class="fiu-card__content">Everyone goes through the interview process at some stage of their working life. When you apply for new jobs, you will almost always have an interview.</p>
-                    <a href="/apprentices/interview-process" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-7">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/TheInterviewProcess"/>
             </div>
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="GettingStarted">Get started</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Starting your apprenticeship</h3>
-                    <p class="fiu-card__content">Before you start your apprenticeship, your employer will usually contact you and ask a series of questions. Find out what they might be.</p>
-                    <a href="/apprentices/starting-apprenticeship" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-8">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/StartingYourApprenticeship"/>
             </div>
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="GettingStarted">Get started</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Assessment and certification</h3>
-                    <p class="fiu-card__content">You will be assessed at some stage during your apprenticeship, to make sure you have achieved the knowledge, skills and behaviours required.</p>
-                    <a href="/apprentices/assessment-and-certification" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-9">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/AssessmentAndCertification"/>
             </div>
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="GettingStarted">Get started</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Set up a service account</h3>
-                    <p class="fiu-card__content">Get started by setting up an account on Find an Apprenticeship where you can search, save, apply and set up alerts for new vacancies.</p>
-                    <a href="https://www.findapprenticeship.service.gov.uk/apprenticeshipsearch" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-10">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/SetUpAccount"/>
             </div>
         </div>
         <hr class="fiu-section-break fiu-section-break--l"/>
