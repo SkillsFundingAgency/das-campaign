@@ -94,37 +94,16 @@
 		<div class="fiu-width-container">
 			<div class="govuk-grid-row fiu-flex-row">
 				<div class="govuk-grid-column-one-quarter">
-                    <div class="fiu-card">
-                        <span class="fiu-card__category">
-                            <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="HowDoTheyWork">How do they work?</a>
-                        </span>
-                        <h3 class="fiu-card__heading">Becoming an apprentice</h3>
-                        <p class="fiu-card__content">An apprenticeship is a real job where you learn, gain experience and get paid. You're an employee with a contract of employment and holiday leave.</p>
-                        <a href="/apprentices/becoming-apprentice" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-5">Learn more</a>
-                    </div>
+                    <partial name="Redesign/Cards/Apprentices/BecomingAnApprentice"/>
 				</div>
 				<div class="govuk-grid-column-one-quarter">
                     <partial name="Redesign/Cards/Apprentices/WhatAreTheBenefits"/>
 			    </div>
 			    <div class="govuk-grid-column-one-quarter">
-                    <div class="fiu-card">
-                        <span class="fiu-card__category">
-                            <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="SettingItUp">Setting up</a>
-                        </span>
-                        <h3 class="fiu-card__heading">Choose the right apprenticeship</h3>
-                        <p class="fiu-card__content">Apprentices will spend at least 20% of their time on off-the-job training with your chosen training provider. Find out more about what this means.</p>
-                        <a href="/employers/choose-apprenticeship-training" class="fiu-card__link fiu-card__link--employers" id="fiu-emp-hub-card-8">Learn more</a>
-                    </div>
+					<partial name="Redesign/Cards/Employers/ChooseTheRightApprenticeship"/>
 			    </div>
 			    <div class="govuk-grid-column-one-quarter">
-                    <div class="fiu-card">
-                        <span class="fiu-card__category">
-                            <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersHowDoTheyWork">How do they work?</a>
-                        </span>
-                        <h3 class="fiu-card__heading">Training your apprentice</h3>
-                        <p class="fiu-card__content">During the apprenticeship, your apprentice will receive two different types of training. Find out what those types of training are, and more.</p>
-                        <a href="/employers/training-your-apprentice" class="fiu-card__link fiu-card__link--employers" id="fiu-emp-hub-card-6">Learn more</a>
-                    </div>
+                    <partial name="Redesign/Cards/Employers/Training"/>
 			    </div>
 			</div>
 		</div>

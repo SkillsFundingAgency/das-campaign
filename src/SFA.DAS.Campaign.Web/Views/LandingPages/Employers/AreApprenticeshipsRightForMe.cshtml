@@ -13,24 +13,10 @@
     <div class="fiu-width-container">
         <div class="govuk-grid-row fiu-flex-row">
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersAreTheyRightForYou">Are they right for you?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Real stories</h3>
-                    <p class="fiu-card__content">Have a look at some real-life stories from other employers, and see how taking on an apprentice has benefited their organisation.</p>
-                    <a asp-controller="RealStories" asp-action="Employers" class="fiu-card__link fiu-card__link--employers" id="fiu-emp-lp1-card-1">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Employers/RealStories"/>
             </div>
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersAreTheyRightForYou">Are they right for you?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Benefits to your organisation</h3>
-                    <p class="fiu-card__content">Apprenticeships have moved on from what they used to be and are an exciting option for both apprentice and employer.</p>
-                    <a href="/employers/benefits-of-hiring-apprentice" class="fiu-card__link fiu-card__link--employers" id="fiu-emp-lp1-card-2">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Employers/Benefits"/>
             </div>
             <div class="govuk-grid-column-one-half">
                 <partial name="Redesign/_FindTheRightApprenticeship"/>
@@ -38,14 +24,7 @@
         </div>
         <div class="govuk-grid-row fiu-flex-row">
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersAreTheyRightForYou">Are they right for you?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Browse by sector</h3>
-                    <p class="fiu-card__content">Find out what type of apprenticeships you can expect in your sector.</p>
-                    <a href="/employers/browse-by-sector" class="fiu-card__link fiu-card__link--employers" id="fiu-app-hub-card-4">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Employers/BrowseBySector"/>
             </div>
             <div class="govuk-grid-column-one-quarter"></div>
             <div class="govuk-grid-column-one-half">
