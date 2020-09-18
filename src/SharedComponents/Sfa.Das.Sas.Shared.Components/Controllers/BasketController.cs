@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Sfa.Das.Sas.ApplicationServices.Commands;
 using Sfa.Das.Sas.Core.Configuration;
@@ -199,6 +199,8 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
 
             return false;
         }
+        
+        [Route("/basket/save")]
 
         public async Task<IActionResult> Save()
         {
