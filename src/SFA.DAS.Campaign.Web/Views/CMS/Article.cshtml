@@ -12,6 +12,9 @@
 
 @foreach (var articleSection in Model.Content.Sections)
 {
-    <h2>@articleSection.Title</h2>
+    @if (articleSection.Title != null) {
+        <h2>@articleSection.Title</h2>
+    }
+
     @Html.Raw(articleSection.Body)
 }
