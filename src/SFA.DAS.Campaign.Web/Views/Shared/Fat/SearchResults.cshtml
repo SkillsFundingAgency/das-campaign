@@ -9,7 +9,7 @@
 @{
     FatSearchResultsViewModel searchResults = await _fat.GetSearchResults(Model);
 
-    ViewBag.Title = "Search for an apprenticeship - Results";
+    ViewBag.Title = "Find apprenticeship training - Results";
     ViewBag.HidePageHeader = true;
     Layout = "Redesign_Layout_EmployersHub"; 
 }
@@ -22,7 +22,7 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds fiu-page-header__wrap">
                 <h1 class="govuk-heading-xl fiu-page-heading__title ">
-                    <span class="govuk-caption-xl">Search for an apprenticeship</span>
+                    <span class="govuk-caption-xl">Find apprenticeship training</span>
                     Results
                 </h1>
                 @await Component.InvokeAsync("FatSearch", new { fatSearchRoute = "/employer/find-apprenticeships", inline = true })

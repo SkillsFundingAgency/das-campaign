@@ -111,23 +111,9 @@
 
 <div class="govuk-grid-row fiu-flex-row">
     <div class="govuk-grid-column-one-half">
-        <div class="fiu-card">
-            <span class="fiu-card__category">
-                <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersAreTheyRightForYou">Are they right for you?</a>
-            </span>
-            <h3 class="fiu-card__heading">Benefits to your organisation</h3>
-            <p class="fiu-card__content">Apprenticeships have moved on from what they used to be and are an exciting option for both apprentice and employer.</p>
-            <a href="/employers/benefits-of-hiring-apprentice" class="fiu-card__link fiu-card__link--employers" id="fiu-emp-hub-card-2">Learn more</a>
-        </div>
+        <partial name="Redesign/Cards/Employers/Benefits"/>
     </div>
     <div class="govuk-grid-column-one-half">
-        <div class="fiu-card">
-            <span class="fiu-card__category">
-                <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="EmployersHowDoTheyWork">How do they work?</a>
-            </span>
-            <h3 class="fiu-card__heading">Hiring an apprentice</h3>
-            <p class="fiu-card__content">Apprenticeships help bring valuable skills into your organisation with the Government's support. Find out more about how this helps your organisation.</p>
-            <a href="/employers/hiring-an-apprentice" class="fiu-card__link fiu-card__link--employers" id="fiu-emp-hub-card-3">Learn more</a>
-        </div>
+        <partial name="Redesign/Cards/Employers/HiringAnApprentice"/>
     </div>
 </div>
