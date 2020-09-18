@@ -26,24 +26,10 @@
         </div>
         <div class="govuk-grid-row fiu-flex-row">
             <div class="govuk-grid-column-one-quarter">
-                <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="AreTheyRightForYou">Are they right for you?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Advice for parents</h3>
-                    <p class="fiu-card__content">Setting off on a career path can be overwhelming for young people. As their parent, guardian or carer, you'll play a key role in guiding them.</p>
-                    <a href="/apprentices/help-shape-their-career" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-lp1-card-3">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/AdviceForParents"/>
             </div>
             <div class="govuk-grid-column-one-quarter">
-               <div class="fiu-card">
-                    <span class="fiu-card__category">
-                        <a class="fiu-card__category-link" asp-controller="LandingPage" asp-action="AreTheyRightForYou">Are they right for you?</a>
-                    </span>
-                    <h3 class="fiu-card__heading">Browse by interest</h3>
-                    <p class="fiu-card__content">Find out what type of apprenticeships you can expect in your chosen interest. </p>
-                    <a href="/apprentices/browse-by-interests" class="fiu-card__link fiu-card__link--citizens" id="fiu-app-hub-card-4">Learn more</a>
-                </div>
+                <partial name="Redesign/Cards/Apprentices/BrowseByInterest"/>
             </div>
             <div class="govuk-grid-column-one-half">
                 <partial name="Redesign/_GetFreeHelpAndSupport"/>
