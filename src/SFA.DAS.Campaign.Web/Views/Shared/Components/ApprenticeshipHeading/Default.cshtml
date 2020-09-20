@@ -32,9 +32,6 @@
                     @Model.Title
                 </h1>
                 <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
-                <form asp-controller="Basket" asp-action="AddApprenticeshipFromDetails" method="post">
-                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
-                </form>
             </div>
         </div>
     </div>
