@@ -1,39 +1,51 @@
 ﻿@model SFA.DAS.Campaign.Web.ViewComponents.ApprenticeshipHeadingViewModel
 @using Sfa.Das.Sas.ApplicationServices.Commands
 
-@if (Model.AddRemoveBasketResponse != null)
-{
-    @if (Model.AddRemoveBasketResponse.BasketOperation == BasketOperation.Added)
-    {
-        <div class="fiu-notification fiu-notification--success">
-            <p class="fiu-notification__body">
-                You've added <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> to your shortlist
-            </p>
-        </div>
-    }
-    else
-    {
-        <div class="fiu-notification fiu-notification--error">
-            <p class="fiu-notification__body">
-                You've removed <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> from your shortlist
-            </p>
-        </div>
-    }
-}
+
 <div class="fiu-page-header">
     <div class="fiu-width-container">
         <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
             <a href="@Model.BackUrl" class="govuk-back-link govuk-breadcrumbs__link">Back</a>
         </div>
+        @if (Model.AddRemoveBasketResponse != null)
+        {
+            @if (Model.AddRemoveBasketResponse.BasketOperation == BasketOperation.Added)
+            {
+                <div class="fiu-notification fiu-notification--success">
+                    <p class="fiu-notification__body">
+                        You've added <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> to your shortlist
+                    </p>
+                </div>
+            }
+            else
+            {
+                <div class="fiu-notification fiu-notification--error">
+                    <p class="fiu-notification__body">
+                        You've removed <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> from your shortlist
+                    </p>
+                </div>
+            }
+        }
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds fiu-page-header__wrap">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
                 <h1 class="govuk-heading-xl fiu-page-heading__title ">
                     <span class="govuk-caption-xl">Find apprenticeship training</span>
                     @Model.Title
-                </h1>
-                <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
+                </h1>                
             </div>
         </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+                <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <form asp-controller="Basket" asp-action="AddApprenticeshipFromDetails" method="post" class="fiu-page-header__favourites-form">
+                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
+
 
