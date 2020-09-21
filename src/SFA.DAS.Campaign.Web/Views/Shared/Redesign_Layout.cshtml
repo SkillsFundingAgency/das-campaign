@@ -4,6 +4,8 @@
 <html lang="en" class="fiu-template">
 
 <head>
+    
+    <partial name="./Components/_GtmHead" />
 
 	<meta charset="utf-8">
 	<title>@(ViewData["MetaTitle"] != null ? ViewData["MetaTitle"] : ViewData["Title"])</title>
@@ -29,6 +31,9 @@
 </head>
 
 <body class="fiu-template__body" data-fat-api="@(fatSettings.FatApiBaseUrl)">
+
+    <partial name="./Components/_GtmBody" />
+
 	<script>
 		document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
 	</script>
