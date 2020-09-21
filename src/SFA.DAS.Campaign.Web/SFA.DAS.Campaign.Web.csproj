@@ -85,5 +85,9 @@
     <_ContentIncludedByDefault Remove="Views\Shared\Sidebar\_employer-without-navigation.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Sidebar\_employer.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Sidebar\_parent.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Basket\Confirm.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\DefaultNew.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\FormSidebar.cshtml" />
   </ItemGroup>
 </Project>
