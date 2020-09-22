@@ -16,15 +16,14 @@
 	<meta name="theme-color" content="#0b0c0c" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-	<meta property="og:title" content="" />
-	<meta property="og:type" content="" />
-	<meta property="og:url" content="" />
-	<meta property="og:image" content="" />
-
 	<link rel="apple-touch-icon" href="/fiu/assets/images/apple-touch-icon.png" />
 
 	<link rel="stylesheet" href="https://use.typekit.net/xwy5uap.css" />
 	<link rel="stylesheet" href="/fiu/css/all.css" />
+
+    @if(ViewBag.Canonical != null ) {
+        <link rel="canonical" href="https://www.apprenticeships.gov.uk@ViewBag.Canonical" />
+    }
 
 	<meta property="og:image" content="/fiu/assets/images/opengraph.png" cdn-prop />
 
