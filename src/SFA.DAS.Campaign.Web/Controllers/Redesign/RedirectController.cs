@@ -96,6 +96,12 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return RedirectToActionPermanent("FindApprenticeshipTraining", "Employer");
         }
+
+        [Route("/employer/find-apprenticeships")]
+        public IActionResult FindApprenticeshipsRedirect()
+        {
+            return RedirectToActionPermanent("Search", "Fat");
+        }
         
         [Route("/employer/training-your-apprentice")]
         public IActionResult TrainingYourApprentice()
