@@ -5,64 +5,60 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @inject ICssViewModel CssViewModel
 
-<div class="das-basket__item-header das-basket__item--@(Model.Active ? "active" : "inactive")">
-    <h2 class="basket__item-heading">
-        <a class="@CssViewModel.Link" asp-controller="Fat" asp-action="Apprenticeship" asp-route-Id="@Model.Id">@Model.Title</a>
-    </h2>
-    <form asp-controller="Basket" asp-action="RemoveFromBasket" method="post">
-        <input type="hidden" id="apprenticeshipId" name="ApprenticeshipId" value="@Model.Id" />
-        @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
-    </form>
-</div>
+<h2 class="govuk-heading-m fiu-results-panel__heading">
+    <a asp-controller="Fat" asp-action="Apprenticeship" asp-route-Id="@Model.Id" class="fiu-link fiu-link--employers">@Model.Title</a>
+</h2>
 
 @if (Model.Active)
 {
-    <div class="@CssViewModel.GridCss.Row">
-        <div class="@CssViewModel.GridCss.ColumnOneHalf">
-            @if (Model.EffectiveTo.HasValue && Model.EffectiveTo.Value > DateTime.Today)
-            {
-                <div class="@CssViewModel.WarningText">
-                    <span class="@(CssViewModel.WarningText)__icon" aria-hidden="true"></span>
-                    <strong class="@(CssViewModel.WarningText)__text">
-                        <span class="@(CssViewModel.WarningText)__assistive">Warning</span>
-                        This apprenticeship is available to new starters until @Model.EffectiveTo.Value.AddDays(1).ToLongDateString()
-                    </strong>
-                </div>
-            }
-            <dl class="@CssViewModel.List das-search-result__details">
-                <dt class="das-search-result__details-title">Level:</dt>
-                <dd class="das-search-result__details-definition">@Model.Level (Equivalent to @Model.EquivalentText)</dd>
-                <dt class="das-search-result__details-title">Typical length:</dt>
-                <dd class="das-search-result__details-definition">@Model.Duration months</dd>
-                <dt class="das-search-result__details-title">Apprenticeship Type:</dt>
-                <dd class="das-search-result__details-definition">@Model.ApprenticeshipType.ToString()</dd>
-            </dl>
+
+    @if (Model.EffectiveTo.HasValue && Model.EffectiveTo.Value > DateTime.Today)
+    {
+        <div class="fiu-results-panel__strip fiu-results-panel__strip--employers">
+            This apprenticeship is available to new starters until <b>@Model.EffectiveTo.Value.AddDays(1).ToLongDateString()</b>
         </div>
-        <div class="@CssViewModel.GridCss.ColumnOneHalf">
-            @if (Model.TrainingProvider.Count > 0)
-            {
+    }
 
+    <dl class="fiu-table-list">
+        <dt class="fiu-table-list__th fiu-table-list__th--favs">Level</dt>
+        <dd class="fiu-table-list__td fiu-table-list__td--favs">@Model.Level (Equivalent to @Model.EquivalentText)</dd>
+        <dt class="fiu-table-list__th fiu-table-list__th--favs">Typical length</dt>
+        <dd class="fiu-table-list__td fiu-table-list__td--favs">@Model.Duration months</dd>
+        <dt class="fiu-table-list__th fiu-table-list__th--favs">Apprenticeship type</dt>
+        <dd class="fiu-table-list__td fiu-table-list__td--favs">@Model.ApprenticeshipType.ToString()</dd>
+    </dl>
 
-                <h3 class="@CssViewModel.HeadingSmall das-basket__provider-heading"><span class="favourites-icon"></span> @Model.TrainingProvider.Count training @("provider".Pluralize(Model.TrainingProvider.Count))</h3>
-                <ul class="das-basket__provider-list">
-                    @foreach (var trainingProviderSearchResultsItem in Model.TrainingProvider)
-                    {
-                        <li id="provider-@trainingProviderSearchResultsItem.Ukprn" class="das-basket__provider--@(trainingProviderSearchResultsItem.Active ? "active" : "inactive")">
-                            <a class="@CssViewModel.Link" asp-controller="TrainingProvider" asp-action="Details" asp-route-ukprn="@trainingProviderSearchResultsItem.Ukprn" asp-route-apprenticeshipId="@Model.Id" asp-route-LocationId="@trainingProviderSearchResultsItem.LocationId"> @trainingProviderSearchResultsItem.Name</a>
-                            <form asp-controller="Basket" asp-action="RemoveFromBasket" method="post">
-                                <input type="hidden" id="apprenticeshipId" name="ApprenticeshipId" value="@Model.Id" />
-                                <input type="hidden" id="ukprn" name="Ukprn" value="@trainingProviderSearchResultsItem.Ukprn" />
-                                @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id, ukprn = trainingProviderSearchResultsItem.Ukprn })
-                            </form>
-                        </li>
-                    }
-                </ul>
-
-            }
-            <hr class="section-break--dashed">
-            <a class="das-basket__provider-add" asp-controller="Fat" asp-action="Apprenticeship" asp-route-id="@Model.Id" asp-fragment="#FindProvider">
-                Add a training provider to the<span class="@CssViewModel.VisuallyHidden">@Model.Title</span> apprenticeship
-            </a>
-        </div>
+    <div class="fiu-favourite-bar fiu-favourite-bar--employers">
+        <form asp-controller="Basket" asp-action="RemoveFromBasket" method="post">
+            <input type="hidden" id="apprenticeshipId" name="ApprenticeshipId" value="@Model.Id" />
+            @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id, title = Model.Title })
+        </form>
     </div>
+
+    @if (Model.TrainingProvider.Count > 0)
+    {
+        <p class="fiu-body-m-l">
+            Training @("provider".Pluralize(Model.TrainingProvider.Count)) saved for this apprenticeship
+        </p>
+
+        @foreach (var trainingProviderSearchResultsItem in Model.TrainingProvider)
+        {
+            <h2 class="govuk-heading-s fiu-results-panel__heading">
+                <a class="fiu-link fiu-link--employers" asp-controller="TrainingProvider" asp-action="Details" asp-route-ukprn="@trainingProviderSearchResultsItem.Ukprn" asp-route-apprenticeshipId="@Model.Id" asp-route-LocationId="@trainingProviderSearchResultsItem.LocationId">@trainingProviderSearchResultsItem.Name</a>
+            </h2>
+
+            <div class="fiu-favourite-bar fiu-favourite-bar--employers">
+                <form asp-controller="Basket" asp-action="RemoveFromBasket" method="post">
+                    <input type="hidden" id="apprenticeshipId" name="ApprenticeshipId" value="@Model.Id" />
+                    <input type="hidden" id="ukprn" name="Ukprn" value="@trainingProviderSearchResultsItem.Ukprn" />
+                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id, ukprn = trainingProviderSearchResultsItem.Ukprn, title = trainingProviderSearchResultsItem.Name })
+                </form>
+            </div>
+        }
+    }
+
+    <a asp-controller="Fat" asp-action="Apprenticeship" asp-route-id="@Model.Id" asp-fragment="#FindProvider" class="fiu-button fiu-button--employers-light fiu-button--outlined fiu-panel__button govuk-!-margin-top-4">
+        Search for more <span class="fiu-vh">@Model.Title</span> providers
+    </a>
+
 }

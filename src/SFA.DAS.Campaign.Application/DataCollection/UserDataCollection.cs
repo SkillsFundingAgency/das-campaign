@@ -35,20 +35,5 @@ namespace SFA.DAS.Campaign.Application.DataCollection
 
             await _queueService.AddMessageToQueue(userData, _options.Value.StoreUserDataQueueName);
         }
-
-        public async Task RemoveUserData(string email, bool receiveEmails)
-        {
-            if (string.IsNullOrWhiteSpace(email))
-            {
-                throw new ArgumentException("Email must be supplied", nameof(email));
-            }
-
-            if (!_validator.ValidateEmail(email))
-            {
-                throw new ArgumentException("Email is not valid", nameof(email));
-            }
-
-            await _queueService.AddMessageToQueue(new UserData{Email = email, Consent = receiveEmails}, _options.Value.RemoveUserDataQueueName);
-        }
     }
 }

@@ -10,5 +10,6 @@ namespace SFA.DAS.Campaign.Web.ViewComponents
         public string Overview { get; set; }
         public int Level { get; set; }
         public AddOrRemoveFavouriteInBasketResponse AddRemoveBasketResponse { get; set; }
+        public string BackUrl { get; set; }
     }
 }   

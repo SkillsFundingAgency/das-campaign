@@ -404,7 +404,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         }
         
         [Test]
-        public async Task When_Referring_From_An_FAA_Vacancy_Search_The_Full_Url_Is_Returned()
+        public void When_Referring_From_An_FAA_Vacancy_Search_The_Full_Url_Is_Returned()
         {
             //Arrange
             var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);

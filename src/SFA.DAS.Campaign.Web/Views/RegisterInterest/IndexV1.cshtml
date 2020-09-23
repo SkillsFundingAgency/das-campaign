@@ -2,15 +2,23 @@
 @model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
 
 @{
-    ViewBag.Title = "Register Interest";
-    Layout = "_LayoutContentFull";
-    ViewBag.PageUrl = "/register-interest";
-    ViewBag.MetaTitle = "Get the latest information about apprenticeships";
-    ViewBag.MetaDesc = "If you're an employer or an apprentice, you can register your interest so that you get the right information delivered to you at the right time.";
-
-
-
+    ViewBag.Title = "Sign up to stay connected";
+    ViewBag.PageTitle = "Sign up to stay connected";
+    ViewBag.MetaDesc = "";
+    Layout = "Redesign_Layout_EmployersHub";
+    
+    ViewBag.LandingPageSlug = "sign-up";
+    ViewBag.LandingPageTitle = "Sign up to stay connected";
 }
 
-    <h2 class="heading-m">Keep me up to date with the latest information</h2>
-@await Component.InvokeAsync("Form", new{type = FormType.RegisterInterest, formViewModel = Model})
+<span class="fiu-header-content-spacer"></span>
+
+<div class="fiu-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            @await Component.InvokeAsync("Form", new {type = FormType.RegisterInterest, formViewModel = Model})                
+        </div>
+    </div>
+</div>
+
+

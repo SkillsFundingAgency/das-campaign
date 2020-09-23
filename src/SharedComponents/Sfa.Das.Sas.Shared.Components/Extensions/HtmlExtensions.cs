@@ -10,7 +10,7 @@ namespace Sfa.Das.Sas.Shared.Components.Extensions
         {
             if (!string.IsNullOrEmpty(markdownText))
             {
-                return new HtmlString("<div class=\"markdown\">" + htmlHelper.Raw(CommonMark.CommonMarkConverter.Convert(markdownText.Replace("\\r", "\r").Replace("\\n", "\n"))) + "</div>");
+                return new HtmlString("" + htmlHelper.Raw(CommonMark.CommonMarkConverter.Convert(markdownText.Replace("\\r", "\r").Replace("\\n", "\n"))) + "");
             }
 
             return new HtmlString(string.Empty);

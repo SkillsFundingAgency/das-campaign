@@ -2,32 +2,34 @@
 @using Sfa.Das.Sas.Shared.Components.ViewComponents.Fat.SearchResults;
 @model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Search.TrainingProviderSearchViewModel
 @{
-    ViewBag.Title = "Training provider results";
-    ViewBag.MetaTitle = "Training provider results";
-    ViewBag.PageID = "employer-find-an-apprenticeship";
-    ViewBag.Section = "employer";
-    ViewBag.MetaDesc = "";
-    ViewBag.PageUrl = "/TrainingProvider/Search?Postcode=" +  HttpUtility.UrlEncode(Context.Request.Query["Postcode"]) + "&IsLevyPayer=" + HttpUtility.UrlEncode(Context.Request.Query["IsLevyPayer"]) + "&ApprenticeshipId=" + HttpUtility.UrlEncode(Context.Request.Query["ApprenticeshipId"]);
-    Layout = "_LayoutContentSidebar";
-    ViewBag.PageNavIndex = 3;
-
+    ViewBag.Title = "Find a training provider - Results";
+    ViewBag.HidePageHeader = true;
+    Layout = "Redesign_Layout_EmployersHub"; 
 }
 
-@section HeroHeading {
-    @await Component.InvokeAsync("TrainingProviderHeading", new { queryModel = Model, title = ViewBag.Title })
-}
-
-
-@await Component.InvokeAsync("TrainingProviderSearchResults", new { searchQueryModel = Model })
-
-
-@section Sidebar{
-    <div class="sidebar-panel sidebar-panel--dark">
-        <div class="sidebar-panel__content">
-            <h2 class="heading-m u-!-margin-top-0">Find a training provider for this apprenticeship</h2>
-            @await Component.InvokeAsync("TrainingProviderSearch", new { apprenticeshipId = Model.ApprenticeshipId })
-            @await Component.InvokeAsync("TrainingProviderSearchFilter", new { searchQueryModel = Model })
+<div class="fiu-page-header">
+    <div class="fiu-width-container">
+        <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
+            <a asp-controller="Employer" asp-action="FindApprenticeshipTraining" class="govuk-back-link govuk-breadcrumbs__link">Back</a>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds fiu-page-header__wrap">
+                <h1 class="govuk-heading-xl fiu-page-heading__title ">
+                    <span class="govuk-caption-xl">Find a training provider</span>
+                    Results
+                </h1>
+                @await Component.InvokeAsync("TrainingProviderSearch", new { apprenticeshipId = Model.ApprenticeshipId, inline = true })
+                <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
+            </div>
         </div>
     </div>
+</div>
+@await Component.InvokeAsync("TrainingProviderSearchFilter", new { searchQueryModel = Model })
 
-}
+<div class="fiu-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            @await Component.InvokeAsync("TrainingProviderSearchResults", new { searchQueryModel = Model })
+        </div>
+    </div>
+</div>

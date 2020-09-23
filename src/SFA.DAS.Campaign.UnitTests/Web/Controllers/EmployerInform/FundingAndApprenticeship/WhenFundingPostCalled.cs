@@ -22,18 +22,6 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
             sessionService.Verify(ss => ss.Set(sessionService.Object.LevyOptionViewModelKey, levyOptionViewModel), Times.Once());
         }
 
-        [Test]
-        public void ThenRedirectToActionIsReturned()
-        {
-            var sessionService = new Mock<ISessionService>();
-            var controller = new FundingAnApprenticeshipController(sessionService.Object);
-
-            var levyOptionViewModel = new LevyOptionViewModel() {LevyStatus = LevyStatus.Levy};
-            var result = controller.Index(levyOptionViewModel);
-            
-            result.Should().BeOfType<RedirectToActionResult>();
-            result.As<RedirectToActionResult>().ControllerName.Should().Be("FundingAnApprenticeshipLevy");
-            result.As<RedirectToActionResult>().ActionName.Should().Be("Index");
-        }
+        
     }
 }

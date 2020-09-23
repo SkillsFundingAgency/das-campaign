@@ -6,19 +6,20 @@
 @{
     var buttonStatusClassSuffix = Model.IsInBasket ? "checked" : "unchecked";
     var buttonText = Model.IsInBasket ? "Remove from favourites" : "Add to favourites";
+    var buttonState = Model.IsInBasket ? " fiu-favourite-bar__link--active" : "";
 }
 
 @if (Model.LocationId.HasValue)
 {
-    <button type="submit" class="das-search-result__favourite-button--@buttonStatusClassSuffix" name="itemId" value="@Model.ItemId,@Model.LocationId">
+    <button type="submit" class="fiu-favourite-bar__link @buttonState" name="itemId" value="@Model.ItemId,@Model.LocationId">
+        <span class="fiu-favbar__img-wrap"></span>
         @buttonText
     </button>
 }
 else
 {
-    <button type="submit" class="das-search-result__favourite-button--@buttonStatusClassSuffix" name="itemId" value="@Model.ItemId">
+    <button type="submit" class="fiu-favourite-bar__link @buttonState" name="itemId" value="@Model.ItemId">
+        <span class="fiu-favbar__img-wrap"></span>
         @buttonText
     </button>
 }
-
-

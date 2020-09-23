@@ -22,10 +22,10 @@ namespace SFA.DAS.Campaign.Web.Models
         public Dictionary<string, string> ValidationMessages { get; internal set; }
 
         [Required]
-        [DisplayName("First name")]
+        [DisplayName("Given name")]
         public string FirstName { get; set; }
         [Required]
-        [DisplayName("Last name")]
+        [DisplayName("Family name")]
         public string LastName { get; set; }
         [EmailAddress]
         [Required]

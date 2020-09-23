@@ -1,40 +1,43 @@
 ﻿@using SFA.DAS.Campaign.Web.Helpers;
 @model SFA.DAS.Campaign.Domain.Vacancies.VacancySearchResultItem
 
-<li class="search-result" data-id="@Model.VacancyReference" data-lat="@Model.Location.Latitude" data-lon="@Model.Location.Longitude">
-    <h2 class="heading-m">
-        <a href="@Model.VacancyUrl" target="_blank" class="link-faa-more-details-title">@Model.Title<span class="visually-hidden"> (Opens in a new window)</span></a>
+<div class="fiu-results-panel" data-id="@Model.VacancyReference" data-lat="@Model.Location.Latitude" data-lon="@Model.Location.Longitude">
+    <h2 class="govuk-heading-m fiu-results-panel__heading">
+        <a href="@Model.VacancyUrl" class="fiu-link fiu-link--citizens">@Model.Title<span class="fiu-visually-hidden"> (Opens in a new window)</span></a>
     </h2>
-    <ul class="list search-results__list-secondary">
-        <li>@Model.TrainingTitle</li>
-        <li>
-            (Added @Model.PostedDate.ToFriendlyDaysAgo())
-        </li>
-    </ul>
-    <p>
-        @Model.ShortDescription
-    </p>
-    <div class="grid-row">
-        <div class="grid-column-one-half">
-
-            <dl class="list u-!-margin-top-0 u-!-margin-bottom-0">
-                <dt class="das-search-result__details-title">Employer</dt>
-                <dd class="das-search-result__details-definition">@Model.EmployerName</dd>
-
-                <dt class="das-search-result__details-title">Distance:</dt>
-                <dd class="das-search-result__details-definition"><span class="distance-value">@Model.DistanceInMiles.ToString("N")</span> miles </dd>
-
-                <dt class="das-search-result__details-title">Closing date:</dt>
-                <dd class="das-search-result__details-definition"><span class="closing-date-value" data-date="@Model.ApplicationClosingDate.ToString("d")">@Model.ApplicationClosingDate.ToString("d")</span> </dd>
-
-                <dt class="das-search-result__details-title">Possible start date:</dt>
-                <dd class="das-search-result__details-definition"><span class="start-date-value">@Model.ExpectedStartDate.ToString("d")</span></dd>
-            </dl>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <p class="fiu-results-desc">
+                @Model.ShortDescription
+            </p>
         </div>
-        <div id="map-@Model.VacancyReference" class="grid-column-one-half">
+        <div class="govuk-grid-column-one-third">
             @{ await Html.RenderPartialAsync("_searchResultsMap", Model.StaticMapUrl); }
         </div>
+    </div>
+    <dl class="fiu-table-list">
 
+        <dt class="fiu-table-list__th">Route</dt>
+        <dd class="fiu-table-list__td">@Model.TrainingTitle</dd>
+
+        <dt class="fiu-table-list__th">Added</dt>
+        <dd class="fiu-table-list__td">@Model.PostedDate.ToFriendlyDaysAgo()</dd>
+        
+        <dt class="fiu-table-list__th">Employer</dt>
+        <dd class="fiu-table-list__td">@Model.EmployerName</dd>
+
+        <dt class="fiu-table-list__th">Distance:</dt>
+        <dd class="fiu-table-list__td"><span class="distance-value">@Model.DistanceInMiles.ToString("N")</span> miles </dd>
+
+        <dt class="fiu-table-list__th">Closing date:</dt>
+        <dd class="fiu-table-list__td"><span class="closing-date-value" data-date="@Model.ApplicationClosingDate.ToString("d")">@Model.ApplicationClosingDate.ToString("d")</span> </dd>
+
+        <dt class="fiu-table-list__th">Possible start date:</dt>
+        <dd class="fiu-table-list__td"><span class="start-date-value">@Model.ExpectedStartDate.ToString("d")</span></dd>
+    </dl>
+
+    <div class="fiu-results-favbar">
+        <a href="@Model.VacancyUrl" class="fiu-link fiu-link--citizens">View this apprenticeship<span class="fiu-visually-hidden"> - @Model.Title (Opens in a new window)</span></a>
     </div>
 
-</li>
+</div>

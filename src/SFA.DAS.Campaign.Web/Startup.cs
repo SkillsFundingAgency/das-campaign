@@ -35,6 +35,9 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Extensions.Logging;
+using SFA.DAS.Campaign.Domain.Content;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
 using VacanciesApi;
@@ -56,7 +59,7 @@ namespace SFA.DAS.Campaign.Web
                     )
                 .AddUserSecrets<Startup>()
                 .Build();
-            
+
             Configuration = config;
         }
 
@@ -160,6 +163,11 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<ICacheStorageService, CacheStorageService>();
             services.AddTransient<IVacancyServiceApiHealthCheck, VacancyServiceApiHealthCheck>();
             services.AddTransient<ISessionService, SessionService>();
+
+            services.AddTransient<IContentService, ContentService>();
+            
+            services.AddTransient<ConnectionMultiplexer>(sp => ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase},allowAdmin=true"));
+            services.AddTransient<IDatabase>(client => client.GetService<ConnectionMultiplexer>().GetDatabase());
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
@@ -210,7 +218,7 @@ namespace SFA.DAS.Campaign.Web
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

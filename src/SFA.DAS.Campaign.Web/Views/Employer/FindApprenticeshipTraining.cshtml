@@ -4,38 +4,18 @@
 @using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
 @{
     ViewBag.Title = "Find apprenticeship training";
-    ViewBag.MetaTitle = "Find apprenticeship training";
-    ViewBag.PageID = "employer-find-an-apprenticeship";
-    ViewBag.Section = "employer";
-    ViewBag.MetaDesc = "";
-    ViewBag.PageUrl = "/employer/find-apprenticeship-training";
-    Layout = "_Layout-Campaign-employer";
+    ViewBag.PageTitle = "Find apprenticeship training";
+    ViewBag.LandingPageTitle = ViewBag.Title;
+    ViewBag.LandingPageSlug = "";
+    Layout = "Redesign_Layout_EmployersHub"; 
 }
-
-<main id="main-content">
-    <div class="hero--no-clip" data-module="smoothScroll">
-        <div class="grid-row">
-            <div class="grid-column-two-thirds">
-                <div class="hero-heading">
-                    <span class="caption-m hero-heading__caption hero-heading__caption--employer">
-                        <a asp-controller="RealStories" asp-action="Employer" class="hero-heading__caption-link hero-heading__caption--employer">Employer</a>
-                        <span class="hero-heading__caption-separator">&gt;</span>
-                        <span class="hero-heading__caption--current"> @ViewBag.Title </span>
-                    </span>
-                    <h1 class="heading-xl hero-heading__heading">@ViewBag.Title</h1>
-                </div>
-                <div class="hero-heading__content">
-                    <p class="lead-paragraph">Search for apprenticeship training that’s suitable for your business.</p>
-                    <p>You can save any apprenticeships or training providers that you're interested in.</p>
-                </div>
-                
-                @await Component.InvokeAsync("FatSearch", new { FatSearchRoute = "employer/find-apprenticeship-training/Search", inline = true })
-
-                <a href="https://www.gov.uk/" id="header-link-govuk" target="_blank" class="hero-heading__hm-government-link">
-                    <img alt="HM Government" class="hero-heading__hm-government-logo" src="/campaign/images/hm-government-logo.png" srcset="/campaign/images/hm-government-logo.png 1x, /campaign/images/hm-government-logo@2x.png 2x" /><span class="visually-hidden">(Opens in a new window)</span>
-                </a>
-            </div>
+<span class="fiu-header-content-spacer"></span>
+<div class="fiu-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <p class="govuk-body-l">Search for apprenticeship training that's suitable for your business.</p>
+            <p class="govuk-body">You can save any apprenticeships or training providers that you're interested in by adding them to favourites.</p>
+            @await Component.InvokeAsync("FatSearch", new { FatSearchRoute = "employer/find-apprenticeship-training/Search", inline = true })
         </div>
     </div>
-
-</main>
+</div>

@@ -1,60 +1,51 @@
 ﻿@model SFA.DAS.Campaign.Web.ViewComponents.ApprenticeshipHeadingViewModel
 @using Sfa.Das.Sas.ApplicationServices.Commands
 
-@if (Model.AddRemoveBasketResponse != null)
-{
-    @if (Model.AddRemoveBasketResponse.BasketOperation == BasketOperation.Added)
-    {
-        <div class="toast">
-            <span class="toast__icon toast__icon--success"></span>
-            <div class="toast__content">
-                You've added <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> to your shortlist
-            </div>
+
+<div class="fiu-page-header">
+    <div class="fiu-width-container">
+        <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
+            <a href="@Model.BackUrl" class="govuk-back-link govuk-breadcrumbs__link">Back</a>
         </div>
-    }
-    else
-    {
-        <div class="toast">
-            <span class="toast__icon toast__icon--error"></span>
-            <div class="toast__content">
-                You've removed <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> from your shortlist
-            </div>
-        </div>
-    }
-}
-
-<div class="hero" data-module="smoothScroll">
-    <div class="grid-row">
-        <div class="grid-column-one-half">
-
-            @{
-
-                var titleModifierClass = "";
-
-                if (Model.Title.Length > 20)
-                {
-                    titleModifierClass = "hero-heading__heading-l";
-                }
-                if (Model.Title.Length > 40)
-                {
-                    titleModifierClass = "hero-heading__heading-m";
-                }
-            }
-
-            <div class="hero-heading">
-                <span class="caption-m hero-heading__caption hero-heading__caption--employer">Search apprenticeships  <span class="hero-heading__caption-separator">&gt;</span>  @Model.Title</span>
-                <h1 class="heading-xl hero-heading__heading @titleModifierClass">@Model.Title</h1>
-            </div>
-
-            <p>@Model.Overview</p>
-
-
-            <form asp-controller="Basket" asp-action="AddApprenticeshipFromDetails" method="post">
-                <div class="form-group">
-                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
+        @if (Model.AddRemoveBasketResponse != null)
+        {
+            @if (Model.AddRemoveBasketResponse.BasketOperation == BasketOperation.Added)
+            {
+                <div class="fiu-notification fiu-notification--success">
+                    <p class="fiu-notification__body">
+                        You've added <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> to your shortlist
+                    </p>
                 </div>
-            </form>
-
+            }
+            else
+            {
+                <div class="fiu-notification fiu-notification--error">
+                    <p class="fiu-notification__body">
+                        You've removed <strong>@Model.AddRemoveBasketResponse.ApprenticeshipName</strong> from your shortlist
+                    </p>
+                </div>
+            }
+        }
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4">
+                <h1 class="govuk-heading-xl fiu-page-heading__title ">
+                    <span class="govuk-caption-xl">Find apprenticeship training</span>
+                    @Model.Title
+                </h1>                
+            </div>
         </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+                <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <form asp-controller="Basket" asp-action="AddApprenticeshipFromDetails" method="post" class="fiu-page-header__favourites-form">
+                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
+
+

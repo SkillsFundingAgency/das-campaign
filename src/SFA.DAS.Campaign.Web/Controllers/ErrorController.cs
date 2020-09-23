@@ -26,7 +26,19 @@ namespace DfE.EmployerFavourites.Web.Controllers
             
             LogException();
 
-            return View("Error", new ErrorViewModel { StatusCode = id.Value, RequestId = HttpContext.TraceIdentifier });
+            if (Response.StatusCode == 404)
+            {
+                return RedirectToAction("PageNotFound");
+            }
+            
+            return View("Error", new ErrorViewModel { StatusCode = Response.StatusCode, RequestId = HttpContext.TraceIdentifier });
+        }
+
+        [Route("/page-not-found")]
+        public IActionResult PageNotFound()
+        {
+            Response.StatusCode = (int)HttpStatusCode.NotFound;
+            return View("PageNotFound");
         }
 
         private void LogException()

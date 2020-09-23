@@ -1,0 +1,20 @@
+@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.Article>
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout=$"Redesign_Layout_{Model.HubType.ToString()}Article";
+    ViewBag.PageTitle = Model.PageTitle;
+    ViewBag.LandingPageSlug = Model.Content.LandingPageSlug;
+    ViewBag.LandingPageTitle = Model.Content.LandingPageTitle;
+    ViewBag.ArticlePageSlug = Model.Slug;
+    ViewBag.ArticlePageTitle = Model.Title;
+}
+
+@foreach (var articleSection in Model.Content.Sections)
+{
+    @if (articleSection.Title != null) {
+        <h2>@articleSection.Title</h2>
+    }
+
+    @Html.Raw(articleSection.Body)
+}

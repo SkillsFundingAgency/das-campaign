@@ -1,4 +1,4 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Sfa.Das.Sas.ApplicationServices.Commands;
 using Sfa.Das.Sas.Core.Configuration;
@@ -31,7 +31,7 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
             _basketOrchestrator = basketOrchestrator;
         }
 
-        [HttpGet(Name = "BasketView")]
+        [Route("/basket/view/")]
         public IActionResult View()
         {
             var vm = new BasketViewModel<ApprenticeshipBasketItemViewModel>();
@@ -44,7 +44,7 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
             return View("Basket/View", vm);
         }
 
-        [HttpGet]
+        [HttpGet("/basket/removeconfirmation")]
         public async Task<IActionResult> RemoveConfirmation(string apprenticeshipId, string returnPath)
         {
             var cookie = _cookieManager.Get(CookieNames.BasketCookie);
@@ -56,7 +56,7 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
             return View("Basket/RemoveConfirmation", new RemoveConfirmationViewModel(apprenticeshipItem, returnPath));
         }
 
-        [HttpPost]
+        [ HttpPost("/basket/removeconfirmation")]
         public async Task<IActionResult> RemoveConfirmation(RemoveConfirmationViewModel vm)
         {
             var response = await _basketOrchestrator.UpdateBasket(vm.ApprenticeshipId);
@@ -199,6 +199,8 @@ namespace Sfa.Das.Sas.Shared.Components.Controllers
 
             return false;
         }
+        
+        [Route("/basket/save")]
 
         public async Task<IActionResult> Save()
         {

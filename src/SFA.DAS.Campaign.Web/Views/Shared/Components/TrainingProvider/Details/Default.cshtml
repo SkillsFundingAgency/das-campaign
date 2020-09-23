@@ -4,162 +4,19 @@
 @model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Details.TrainingProviderDetailsViewModel
 @inject ICssViewModel CssViewModel
 
-<div class="das-provider-about">
-
-    <h2 class="@CssViewModel.HeadingMedium">About the apprenticeship</h2>
+<article class="fiu-article">
+    <h2 class="govuk-heading-m govuk-!-margin-top-8">About the apprenticeship</h2>
 
     @Html.MarkdownToHtml(Model.AboutApprenticeshipInfo)
 
-</div>
-
-<div class="das-provider-information">
-
-    <h2 class="@CssViewModel.HeadingMedium">Provider information</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-8">Provider information</h2>
 
     @Html.MarkdownToHtml(Model.MarketingInfo)
-
 
     @if (Model.NationalProvider == true)
     {
         <p>
-            <span class="das-provider-tag--national">National</span> This training provider is willing to offer apprenticeship training across England.
+            <span class="fiu-tag fiu-tag--national">National<span class="fiu-vh">:</span></span> This training provider is willing to offer apprenticeship training across England.
         </p>
-
     }
-
-</div>
-
-<div class="das-provider-employers">
-    @if (Model.Feedback != null)
-    {
-
-        <h2 class="@CssViewModel.HeadingMedium">What employers are saying</h2>
-
-        <p>Based on <strong>@Model.Feedback.TotalFeedbackCount reviews from employers</strong> that work with this training provider.</p>
-
-        <p><a class="@CssViewModel.Link" href="https://sfadigital.blog.gov.uk/2018/09/26/new-feedback-feature-for-the-apprenticeship-service/" target="_blank" rel="external">Find out how these reviews work</a></p>
-
-        <h2 class="@CssViewModel.HeadingXSmall">Overall rating from October 2018 to now</h2>
-
-        <div class="das-provider-rating-reviews">
-
-            <dl class="@CssViewModel.List">
-                <dt class="das-provider-rating-reviews__definition-list--title">Excellent</dt>
-                <dd class="das-provider-rating-reviews__definition-list--details">
-                    <progress class="das-provider__progress-bar das-provider__progress-bar--excellent" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.ExcellentFeedbackCount"></progress>
-                    <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.ExcellentFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-                </dd>
-                <dt class="das-provider-rating-reviews__definition-list--title">Good</dt>
-                <dd class="das-provider-rating-reviews__definition-list--details">
-                    <progress class="das-provider__progress-bar das-provider__progress-bar--good" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.GoodFeedbackCount"></progress>
-                    <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.GoodFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-                </dd>
-                <dt class="das-provider-rating-reviews__definition-list--title">Poor</dt>
-                <dd class="das-provider-rating-reviews__definition-list--details">
-                    <progress class="das-provider__progress-bar das-provider__progress-bar--poor" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.PoorFeedbackCount"></progress>
-                    <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.PoorFeedbackCount reviews <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-                </dd>
-                <dt class="das-provider-rating-reviews__definition-list--title">Very poor</dt>
-                <dd class="das-provider-rating-reviews__definition-list--details">
-                    <progress class="das-provider__progress-bar das-provider__progress-bar--very-poor" max="@Model.Feedback.TotalFeedbackCount" value="@Model.Feedback.VeryPoorFeedbackCount"></progress>
-                    <span class="das-provider-rating-reviews__reviews-no">@Model.Feedback.VeryPoorFeedbackCount review <span class="visually-hidden">out of @Model.Feedback.TotalFeedbackCount</span></span>
-                </dd>
-            </dl>
-
-        </div>
-
-        <div class="grid-row">
-            <div class="grid-column-one-half">
-                <h3 class="@CssViewModel.HeadingSmall">Strengths</h3>
-                <ul class="@CssViewModel.List @CssViewModel.ListBullet">
-                    @foreach (var strength in Model.Feedback.Strengths)
-                    {
-                        <li>@strength.Name <strong>(@strength.Count)</strong></li>
-                    }
-                </ul>
-            </div>
-            <div class="grid-column-one-half">
-                <h3 class="@CssViewModel.HeadingSmall">Things to improve</h3>
-                <ul class="@CssViewModel.List @CssViewModel.ListBullet">
-                    @foreach (var weakness in Model.Feedback.Weaknesses)
-                    {
-                        <li>@weakness.Name <strong>(@weakness.Count)</strong></li>
-                    }
-                </ul>
-            </div>
-        </div>
-    }
-
-    <dl class="@CssViewModel.List das-provider__training-information-definition-list__results">
-
-        <dt>Employer satisfaction:</dt>
-        <dd>
-            <div>@Model.EmployerSatisfactionMessage</div>
-            @if (@Model.EmployerSatisfaction > 0)
-            {
-                <progress class="das-provider__progress-bar" max="100" value="@Model.EmployerSatisfaction"></progress>
-            }
-        </dd>
-
-        <dt>Learner satisfaction:</dt>
-        <dd>
-            <div>@Model.LearnerSatisfactionMessage</div>
-            @if (@Model.LearnerSatisfaction > 0)
-            {
-                <progress class="das-provider__progress-bar" max="100" value="@Model.LearnerSatisfaction"></progress>
-
-            }
-            <div class="satisfaction-source font-small">
-                Source: <a class="@CssViewModel.Link" rel="external" href="https://www.gov.uk/government/collections/fe-choices" target="_blank">Skills Funding Agency FE Choices</a>
-            </div>
-        </dd>
-
-        @if (!string.IsNullOrWhiteSpace(Model.LegalName))
-        {
-            <dt>Legal name:</dt>
-            <dd>@Model.LegalName</dd>
-        }
-
-    </dl>
-</div>
-
-<div class="das-provider-disclaimer">
-
-    <h2 class="@CssViewModel.HeadingXSmall">Content disclaimer</h2>
-
-    <p>
-        Education and Skills Funding Agency cannot guarantee the accuracy of
-        course information on this site and makes no representations about
-        the quality of any courses which appear on the site. Education and Skills
-        Funding Agency is not liable for any losses suffered as a result of any party
-        relying on the course information provided.
-    </p>
-</div>
-
-@if (string.IsNullOrEmpty(Model.SearchQuery.PostCode) && !string.IsNullOrWhiteSpace(Model.Location.Address.Postcode))
-{
-    @await Component.InvokeAsync("ClosestLocations", new { Model.ApprenticeshipId, Model.Ukprn, Model.Location.LocationId, Model.Location.Address.Postcode })
-}
-
-@functions
-{
-
-    string GetTrainingOptionsStatusClass(string trainingOption, IList<string> options)
-    {
-        var cssClass = "das-search-results__training-options";
-        var classSuffix = string.Empty;
-
-        if (options.Contains(trainingOption, StringComparer.OrdinalIgnoreCase))
-        {
-            classSuffix = "--tick";
-        }
-        else
-        {
-            classSuffix = "--cross";
-        }
-
-        return $"{cssClass}{classSuffix}";
-    }
-
-
-} 
+</article>

@@ -3,79 +3,61 @@
 @model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Details.TrainingProviderDetailsViewModel
 @inject ICssViewModel CssViewModel
 
+    <h3 class="govuk-heading-m govuk-!-margin-top-4">Contact details</h3>
 
-<section class="das-provider__contact-details">
-    <h2 class="@CssViewModel.HeadingLarge">Contact details</h2>
-
-    <dl class="@CssViewModel.List das-provider__contact-details-definition-list">
+    <dl class="govuk-summary-list fiu-summary-list-contact">
         @if (!string.IsNullOrWhiteSpace(Model.ContactInformation.Website))
         {
-            <dt>Website:</dt>
-            <dd>
-                <a href="@Model.ContactInformation.Website" rel="external" target="_blank" class="@CssViewModel.Link external">
-                    @Model.Name website
-                </a>
-            </dd>
+            <div class="govuk-summary-list__row fiu-summary-list-contact__row">
+                <dt class="govuk-summary-list__key fiu-summary-list-contact__key">Website</dt>
+                <dd class="govuk-summary-list__value fiu-summary-list-contact__value">
+                    <a href="@Model.ContactInformation.Website" class="fiu-link fiu-link--employers" target="_blank" rel="external">
+                        @Model.Name website <span class="fiu-vh">(Opens in a new window)</span>
+                    </a>
+                </dd>
+            </div>
         }
         @if (!string.IsNullOrWhiteSpace(Model.ContactInformation.Phone))
         {
-            <dt class="phone-title">Phone number:</dt>
-            <dd>@Model.ContactInformation.Phone</dd>
+            <div class="govuk-summary-list__row fiu-summary-list-contact__row">
+                <dt class="govuk-summary-list__key fiu-summary-list-contact__key">Phone number</dt>
+                <dd class="govuk-summary-list__value fiu-summary-list-contact__value">@Model.ContactInformation.Phone</dd>
+            </div>
         }
         @if (!string.IsNullOrWhiteSpace(Model.ContactInformation.Email))
         {
-            <dt>Email:</dt>
-            <dd>
-                <a class="@CssViewModel.Link" href="mailto:@Model.ContactInformation.Email">@Model.ContactInformation.Email</a>
-            </dd>
+            <div class="govuk-summary-list__row fiu-summary-list-contact__row">
+                <dt class="govuk-summary-list__key fiu-summary-list-contact__key">Email</dt>
+                <dd class="govuk-summary-list__value fiu-summary-list-contact__value">
+                    <a href="mailto:@Model.ContactInformation.Email" class="fiu-link fiu-link--employers">@Model.ContactInformation.Email</a>
+                </dd>
+            </div>
         }
         @if (!string.IsNullOrWhiteSpace(Model.ContactInformation.ContactUsUrl))
         {
-            <dt>Contact page:</dt>
-            <dd>
-                <a href="@Model.ContactInformation.ContactUsUrl" rel="external" target="_blank" class="@CssViewModel.Link external">
-                    contact this training provider
-                </a>
-            </dd>
+            <div class="govuk-summary-list__row fiu-summary-list-contact__row">
+                <dt class="govuk-summary-list__key fiu-summary-list-contact__key">Contact page</dt>
+                <dd class="govuk-summary-list__value fiu-summary-list-contact__value">
+                    <a href="@Model.ContactInformation.ContactUsUrl" class="fiu-link fiu-link--employers" target="_blank" rel="external">
+                        Contact this provider <span class="fiu-vh">(Opens in a new window)</span>
+                    </a>
+                </dd>
+            </div>
         }
         @if (!string.IsNullOrWhiteSpace(Model.LocationAddressLine))
         {
-            <dt>Address:</dt>
-            <dd>
-                @if (Model.DeliveryModes.Count == 1 && Model.DeliveryModes.Contains("100PercentEmployer"))
-                {
-                    @:Training takes place at your location
-                }
-                else
-                {
-                    @Model.LocationAddressLine
-                }
-            </dd>
+            <div class="govuk-summary-list__row fiu-summary-list-contact__row">
+                <dt class="govuk-summary-list__key fiu-summary-list-contact__key">Address</dt>
+                <dd class="govuk-summary-list__value fiu-summary-list-contact__value">
+                    @if (Model.DeliveryModes.Count == 1 && Model.DeliveryModes.Contains("100PercentEmployer"))
+                    {
+                        @:Training takes place at your location
+                    }
+                    else
+                    {
+                        @Model.LocationAddressLine
+                    }
+                </dd>
+            </div>
         }
     </dl>
-</section>
-
-
-
-@functions
-{
-
-    string GetTrainingOptionsStatusClass(string trainingOption, IList<string> options)
-    {
-        var cssClass = "das-search-results__training-options";
-        var classSuffix = string.Empty;
-
-        if (options.Contains(trainingOption, StringComparer.OrdinalIgnoreCase))
-        {
-            classSuffix = "--tick";
-        }
-        else
-        {
-            classSuffix = "--cross";
-        }
-
-        return $"{cssClass}{classSuffix}";
-    }
-
-
-} 

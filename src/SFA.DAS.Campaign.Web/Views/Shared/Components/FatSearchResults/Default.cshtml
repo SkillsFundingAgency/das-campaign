@@ -1,51 +1,51 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using Microsoft.AspNetCore.Http
 @using Sfa.Das.Sas.ApplicationServices.Commands
-@using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces
 @model Sfa.Das.Sas.Shared.Components.ViewModels.Fat.SearchResults.FatSearchResultsViewModel
-@inject ICssViewModel CssViewModel
 
 @if (Model.TotalResults > 0)
-{
-    
+{  
     @if (Model.SearchQuery.AddRemoveBasketResponse != null)
     {
             @if (Model.SearchQuery.AddRemoveBasketResponse.BasketOperation == BasketOperation.Added)
             {
-                <div class="toast">
-                    <span class="toast__icon toast__icon--success"></span>
-                    <div class="toast__content">
+                <div class="fiu-notification fiu-notification--success">
+                    <p class="fiu-notification__body">
                         You've added <strong>@Model.SearchQuery.AddRemoveBasketResponse.ApprenticeshipName</strong> to your shortlist
-                    </div>
+                    </p>
                 </div>
             }
             else
             {
-                <div class="toast">
-                    <span class="toast__icon toast__icon--error"></span>
-                    <div class="toast__content">
+                <div class="fiu-notification fiu-notification--error">
+                    <p class="fiu-notification__body">
                         You've removed <strong>@Model.SearchQuery.AddRemoveBasketResponse.ApprenticeshipName</strong> from your shortlist
-                    </div>
+                    </p>
                 </div>
             }
     }
     
-    <div class="das-search-results__header">
     @if (Model.IsAllSearch)
     {
-        <p class="das-search-results__header-results-header-text">All apprenticeships</p>
+        <p class="govuk-heading-m">All apprenticeships</p>
     }
     else
     {
-        <p class="das-search-results__header-results-header-text">
-            There are 
-            <strong class="bold" id="fat-search-result-count">@Model.TotalResults</strong> 
-            apprenticeships 
-            <span class="@(CssViewModel.VisuallyHidden)">matching your search for <strong class="bold" id="fat-search-result-keyword">@Model.SearchQuery.Keywords</strong></span>
-        </p>
+        var currentRecordLower = ((Model.SearchQuery.Page - 1) * Model.SearchQuery.ResultsToTake) + 1;
+        var currentRecordUpper = Model.TotalResults;
+
+        if (Model.TotalResults > Model.SearchQuery.ResultsToTake && Model.SearchQuery.Page != Model.LastPage) {
+            currentRecordUpper = Model.SearchQuery.Page * Model.SearchQuery.ResultsToTake;
+        }
+
+        <div id="resultsSummary" class="fiu-results-summary">
+            <p class="fiu-results-summary__content">
+                Showing 
+                <b>@currentRecordLower - @currentRecordUpper</b> of 
+                <b id="fat-search-result-count">@Model.TotalResults</b> apprenticeships
+            </p>
+        </div>
     }
-        <partial name="Components/FatSearchResults/_searchResultsSort" for="@Model.SearchQuery" />
-    </div>
 
     <form asp-controller="Basket" asp-action="AddApprenticeshipFromResults" method="post">
         <input type="hidden" asp-for="@Model.SearchQuery.Keywords" />
@@ -57,44 +57,44 @@
             
             <input type="hidden" asp-for="@Model.SearchQuery.SelectedLevels[i]" />
         }
-        <ol class="@CssViewModel.SearchList das-search-results">
 
-            @foreach (var result in Model.SearchResults)
-            {
-                <partial name="Components/FatSearchResults/_searchResultsItem" for="@result" />
-            }
-        </ol>
+        @foreach (var result in Model.SearchResults)
+        {
+            <partial name="Components/FatSearchResults/_searchResultsItem" for="@result" />
+        }
+    
     </form>
 }
 else
 {
-    <p class="das-search-results__summary">Sorry, there is currently no apprenticeship training for <span class="das-search-results__summary-keyword" id="fat-search-result-keyword">@Model.SearchQuery.Keywords</span>.</p>
-
-    <h3 class="@CssViewModel.HeadingSmall">Try a new search</h3>
-    @await Component.InvokeAsync("FatSearch", new { fatSearchRoute = "/employer/find-apprenticeships" })
+    <h2 class="govuk-heading-l">No results</h2>
+    <div class="fiu-results-summary">
+        <p class="fiu-results-summary__content">You can try a different job role or keyword.</p>
+        <p class="govuk-body">If that doesn’t work, use <a href="https://findapprenticeshiptraining.apprenticeships.education.gov.uk/" target="_blank" rel="external" class="fiu-link fiu-link--employers">find apprenticeship training</a> to refine your search further. </p>
+    </div>
 }
 
 @if (Model.TotalResults > Model.SearchQuery.ResultsToTake)
 {
-
-    <ul class="das-pagination das-pagination--employer">
-
-        <li class="das-pagination__list-item">
+    <nav role="navigation" aria-label="Pagination">
+        <ul class="fiu-pagination">
+         
             @if (Model.SearchQuery.Page > 1)
             {
-                <a class="das-pagination__link das-pagination__link--previous" id="link-pagination-previous" href="@await GetPaginationBackLinkHref(Model.SearchQuery.Page, Model.SearchQuery.Keywords,Context.Request.Query)">Previous page <span class="das-pagination__caption">@(Model.SearchQuery.Page - 1) of @Model.LastPage</span></a>
+                <li class="fiu-pagination__item fiu-pagination__item--prev">
+                    <a class="fiu-pagination__link fiu-link--employers" id="link-pagination-previous" href="@await GetPaginationBackLinkHref(Model.SearchQuery.Page, Model.SearchQuery.Keywords,Context.Request.Query)">Previous</a>
+                </li>
             }
-        </li>
 
+            @if (Model.SearchQuery.Page < Model.LastPage)
+            {
+                <li class="fiu-pagination__item fiu-pagination__item--next">
+                    <a class="fiu-pagination__link fiu-link--employers" id="link-pagination-apprentice-next" href="@await GetPaginationNextLinkHref(Model.SearchQuery.Page,Model.SearchQuery.Keywords,Context.Request.Query)">Next</a>
+                </li>
+            }
 
-        @if (Model.SearchQuery.Page < Model.LastPage)
-        {
-            <li class="das-pagination__list-item">
-                <a class="das-pagination__link das-pagination__link--next" id="link-pagination-apprentice-next" href="@await GetPaginationNextLinkHref(Model.SearchQuery.Page,Model.SearchQuery.Keywords,Context.Request.Query)">Next page <span class="das-pagination__caption">@(Model.SearchQuery.Page + 1) of @Model.LastPage</span></a>
-            </li>
-        }
-
-    </ul>
+        </ul>
+    </nav>
 }
 
 

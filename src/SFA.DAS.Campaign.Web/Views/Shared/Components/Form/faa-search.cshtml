@@ -1,63 +1,102 @@
+@using Microsoft.AspNetCore.Mvc.ModelBinding
 @model SFA.DAS.Campaign.Web.Models.FindApprenticeshipSearchModel
-<section class="grid-row">
-    <div class="grid-column-two-thirds">
-        <form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
-            <div class="grid-row">
-                <div class="grid-column-full">
-                    <div class="form-group">
-                        <label for="header-route" class="vh">Select an interest</label>
-                        <select class="input" asp-for="Route" data-val="true" data-val-required="The interest field is required."
-                                id="header-route" name="Route">
-                            <option selected disabled hidden>Select interest</option>
-                            <option value="Agriculture-environmental-and-animal-care">Agriculture, environmental and animal care</option>
-                            <option value="Business-and-administration">Business and administration</option>
-                            <option value="Care-services">Care services </option>
-                            <option value="Catering-and-hospitality">Catering and hospitality</option>
-                            <option value="Construction">Construction</option>
-                            <option value="Creative-and-design">Creative and design</option>
-                            <option value="Digital">Digital</option>
-                            <option value="Education-and-childcare">Education and childcare</option>
-                            <option value="Engineering-and-manufacturing">Engineering and manufacturing</option>
-                            <option value="Hair-and-beauty">Hair and beauty</option>
-                            <option value="Health-and-science">Health and science</option>
-                            <option value="Legal-finance-and-accounting">Legal, finance and accounting</option>
-                            <option value="Protective-services">Protective services</option>
-                            <option value="Sales-marketing-and-procurement">Sales, marketing and procurement</option>
-                            <option value="Transport-and-logistics">Transport and logistics</option>
-                        </select>
-                        <span asp-validation-for="Route" class="error-message--light"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="grid-row">
-                <div class="grid-column-one-half">
-                    <div class="form-group">
-                        <label for="header-postcode" class="vh">Enter a postcode</label>
-                        <input type="text" class="input input__postcode" asp-for="Postcode" placeholder="Enter a postcode" id="header-postcode" name="Postcode" />
-                        <span asp-validation-for="Postcode" class="error-message--light"></span>
-                    </div>
-                </div>
-                <div class="grid-column-one-half">
-                    <div class="form-group">
-                        <label for="header-distance" class="vh">Select a distance</label>
-                        <select class="input" asp-for="Distance" data-val="true" data-val-required="The Distance field is required."
-                                id="header-distance" name="Distance">
-                            <option value="2">2 miles</option>
-                            <option value="5" selected="selected">5 miles</option>
-                            <option value="10">10 miles</option>
-                            <option value="15">15 miles</option>
-                            <option value="20">20 miles</option>
-                            <option value="30">30 miles</option>
-                            <option value="40">40 miles</option>
-                        </select>
-                        <span asp-validation-for="Distance" class="error-message--light"></span>
-                    </div>
-                </div>
-                <div class="grid-column-full">
-                    <button class="button button-apprentice" type="submit" id="search-apprenticeship">Search</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
 
+@if (!ViewData.ModelState.IsValid)
+    {
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+                There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                    @foreach (var state in ViewData.ModelState)
+                    {
+                        if (state.Value.Errors.Any())
+                        {
+                            foreach (var error in state.Value.Errors)
+                            {
+                                <li>
+                                    <a href="#@state.Key">@error.ErrorMessage</a>
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+
+<p class="govuk-body-l">Use this search to browse which apprenticeships are available based on your interest and location.</p>
+
+<form asp-controller="FindApprenticeship" asp-action="UpdateSearch">
+    
+    <div class="govuk-form-group">
+        <label for="Route" class="govuk-label">Select an interest</label>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            ModelStateEntry stateEntry;
+            if (ViewData.ModelState.TryGetValue("Route", out stateEntry) && stateEntry.ValidationState == ModelValidationState.Invalid)
+            {
+                @foreach (var error in stateEntry.Errors)
+                {
+                    <span class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                    </span>
+                }
+            }
+        }
+
+        <select class="govuk-select govuk-input--error" asp-for="Route" data-val="true" data-val-required="The interest field is required." id="Route" name="Route" das-validation-for="Postcode" das-validationerror-class="govuk-select--error">
+            <option selected disabled hidden>Select interest</option>
+            <option value="Agriculture-environmental-and-animal-care">Agriculture, environmental and animal care</option>
+            <option value="Business-and-administration">Business and administration</option>
+            <option value="Care-services">Care services </option>
+            <option value="Catering-and-hospitality">Catering and hospitality</option>
+            <option value="Construction">Construction</option>
+            <option value="Creative-and-design">Creative and design</option>
+            <option value="Digital">Digital</option>
+            <option value="Education-and-childcare">Education and childcare</option>
+            <option value="Engineering-and-manufacturing">Engineering and manufacturing</option>
+            <option value="Hair-and-beauty">Hair and beauty</option>
+            <option value="Health-and-science">Health and science</option>
+            <option value="Legal-finance-and-accounting">Legal, finance and accounting</option>
+            <option value="Protective-services">Protective services</option>
+            <option value="Sales-marketing-and-procurement">Sales, marketing and procurement</option>
+            <option value="Transport-and-logistics">Transport and logistics</option>
+        </select>
+    </div>
+    <div class="govuk-form-group">
+        <label for="Postcode" class="govuk-label">Enter your postcode</label>
+        
+        @if (!ViewData.ModelState.IsValid)
+        {
+            ModelStateEntry stateEntry;
+            if (ViewData.ModelState.TryGetValue("Postcode", out stateEntry) && stateEntry.ValidationState == ModelValidationState.Invalid)
+            {
+                @foreach (var error in stateEntry.Errors)
+                {
+                    <span class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> @error.ErrorMessage
+                    </span>
+                }
+            
+            }
+        }
+        
+        <input type="text" class="govuk-input govuk-input--width-10 " asp-for="Postcode" id="Postcode" name="Postcode" autocomplete="postal-code" das-validation-for="Postcode" das-validationerror-class="govuk-input--error"/>
+    </div>
+    <div class="govuk-form-group fiu-visually-hidden">
+        <label for="header-distance" class="govuk-label">Within</label>
+        <select class="govuk-select" asp-for="Distance" data-val="true" data-val-required="The Distance field is required." id="header-distance" name="Distance">
+            <option value="2">2 miles</option>
+            <option value="5">5 miles</option>
+            <option value="10">10 miles</option>
+            <option value="15">15 miles</option>
+            <option value="20">20 miles</option>
+            <option value="30">30 miles</option>
+            <option value="40" selected="selected">40 miles</option>
+        </select>
+    </div>
+    <button class="fiu-button fiu-button--citizens" type="submit" id="search-apprenticeship">Search</button>
+</form>

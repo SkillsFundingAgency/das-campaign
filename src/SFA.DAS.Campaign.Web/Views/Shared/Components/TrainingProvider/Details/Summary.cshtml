@@ -4,60 +4,103 @@
 @inject ICssViewModel CssViewModel
 
 
-<dl class="@CssViewModel.List das-provider__training-information-definition-list__results">
-    @if (Model.CurrentlyNotStartingNewApprentices == true)
-    {  
-        <div class="@CssViewModel.WarningText">
-            <span class="@(CssViewModel.WarningText)__icon" aria-hidden="true"></span>
-            <strong class="@(CssViewModel.WarningText)__text">
-                <span class="@(CssViewModel.WarningText)__assistive">Warning</span>
-                This provider is not currently accepting new starters
-            </strong>
-        </div>
-    }
-    <dt>Apprenticeship:</dt>
-    <dd>@Model.Apprenticeship.Title</dd>
-    <dt>Level:</dt>
-    <dd>@Model.Apprenticeship.Level (equivalent to @Model.Apprenticeship.EquivalentText)</dd>
+@if (Model.CurrentlyNotStartingNewApprentices == true)
+{
+    <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            This provider is not currently accepting new starters
+        </strong>
+    </div>
+}
 
-    <dt>Training options:</dt>
-    <dd>
-        <ul class="@CssViewModel.List @CssViewModel.ListBullet">
-            <li><span class="@GetTrainingOptionsStatusClass("dayrelease",Model.DeliveryModes)">day release</span></li>
-            <li><span class="@GetTrainingOptionsStatusClass("blockrelease",Model.DeliveryModes)">block release</span></li>
-            <li><span class="@GetTrainingOptionsStatusClass("100percentemployer",Model.DeliveryModes)">at your location</span></li>
-        </ul>
-        <details class="@CssViewModel.Details">
-            <summary class="@CssViewModel.DetailsSummary">
-                <span class="@CssViewModel.DetailsSummaryText @CssViewModel.Link">Explain training options</span>
-            </summary>
-            <div class="@CssViewModel.DetailsText">
-                <p><span class="das-provider__copy--black">Day release:</span> for example one day a week at the training provider's location.</p>
-                <p><span class="das-provider__copy--black">Block release:</span> for example 3-4 weeks at the training provider's location.</p>
-                <p><span class="das-provider__copy--black">At your location:</span> the training provider comes to your workplace.</p>
-            </div>
-        </details>
-    </dd>
+<dl class="govuk-summary-list fiu-provider-details-summary">
 
-    <dt>Achievement rates:</dt>
-    <dd>
-        <div>Acheivement average: <span class="das-provider__copy--black">@Model.AchievementRate%</span></div>
-        <progress class="das-provider__progress-bar" max="100" value="@Model.AchievementRate"></progress>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key fiu-provider-details-summary__key">Apprenticeship</dt>
+        <dd class="govuk-summary-list__value fiu-provider-details-summary__value">@Model.Apprenticeship.Title</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key fiu-provider-details-summary__key">Level</dt>
+        <dd class="govuk-summary-list__value fiu-provider-details-summary__value">@Model.Apprenticeship.Level (equivalent to @Model.Apprenticeship.EquivalentText)</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key fiu-provider-details-summary__key">Training options</dt>
+        <dd class="govuk-summary-list__value fiu-provider-details-summary__value">
 
-        <div>National average: <span class="das-provider__copy--black">@Model.NationalAchievementRate%</span></div>
-        <progress class="das-provider__progress-bar" max="100" value="@Model.NationalAchievementRate"></progress>
+            <ul class="govuk-list">
+                <li class="@GetTrainingOptionsStatusClass("dayrelease",Model.DeliveryModes)">
+                    <span class="fiu-vh">@GetTrainingOptionsStatusTxt("dayrelease",Model.DeliveryModes): </span>day release
+                </li>
+                <li class="@GetTrainingOptionsStatusClass("blockrelease",Model.DeliveryModes)">
+                    <span class="fiu-vh">@GetTrainingOptionsStatusTxt("blockrelease",Model.DeliveryModes): </span>block release
+                </li>
+                <li class="@GetTrainingOptionsStatusClass("100percentemployer",Model.DeliveryModes)">
+                    <span class="fiu-vh">@GetTrainingOptionsStatusTxt("100percentemployer",Model.DeliveryModes): </span>at your location
+                </li>
+            </ul>
 
-        <details class="@CssViewModel.Details">
-            <summary class="@CssViewModel.DetailsSummary">
-                <span class="@CssViewModel.DetailsSummaryText @CssViewModel.Link">Explain achievement rates</span>
-            </summary>
-            <div class="@CssViewModel.DetailsText">
-                <p>Percentage of apprentices who successfully achieved a similar apprenticeship with this training provider.</p>
-                <p>Based on the latest data for 50 apprentices.</p>
-                <p>Source: <a href="https://www.gov.uk/government/collections/sfa-national-success-rates-tables" target="_blank" rel="external">Skills Funding Agency apprenticeship achievement rates</a></p>
-            </div>
-        </details>
-    </dd>
+            <details class="govuk-details fiu-details" data-module="govuk-details">
+                <summary class="govuk-details__summary fiu-link--employers">
+                    <span class="govuk-details__summary-text fiu-details__summary-text">
+                        Explain training options
+                    </span>
+                </summary>
+                <div class="govuk-details__text fiu-details__text">
+                    <p>Day release: for example one day a week at the training provider's location.</p>
+                    <p>Block release: for example 3-4 weeks at the training provider's location.</p>
+                    <p>At your location: the training provider comes to your workplace.</p>
+                </div>
+            </details>
+        </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key fiu-details-summary__key">
+            Achievement rates
+        </dt>
+        <dd class="govuk-summary-list__value fiu-provider-details-summary__value">
+
+            <dl class="govuk-summary-list fiu-provider-details-bars fiu-provider-details-bars--comparison">
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                        Achievement average
+                    </dt>
+                    <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--employers-default">
+                        <span style="width: @Model.AchievementRate%;">Visual bar showing @Model.AchievementRate&percnt; score</span>
+                    </dd>
+                    <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                        @Model.AchievementRate&percnt;
+                    </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key fiu-provider-details-bars__key">
+                        National average
+                    </dt>
+                    <dd class="govuk-summary-list__value fiu-provider-details-bars__value fiu-provider-details-bars__value--default">
+                        <span style="width: @Model.NationalAchievementRate%;">Visual bar showing @Model.NationalAchievementRate&percnt; score</span>
+                    </dd>
+                    <dd class="govuk-summary-list__actions fiu-provider-details-bars__actions">
+                        @Model.NationalAchievementRate&percnt;
+                    </dd>
+                </div>
+            </dl>
+
+            <details class="govuk-details fiu-details" data-module="govuk-details">
+                <summary class="govuk-details__summary fiu-link--employers">
+                    <span class="govuk-details__summary-text fiu-details__summary-text">
+                        Explain achievement rates
+                    </span>
+                </summary>
+                <div class="govuk-details__text fiu-details__text">
+                    <p>Percentage of apprentices who successfully achieved a similar apprenticeship with this training provider.</p>
+                    <p><small>Based on the latest data for 50 apprentices.</small></p>
+                    <p><small>Source: <a href="https://www.gov.uk/government/collections/sfa-national-success-rates-tables" class="fiu-link fiu-link--employers" target="_blank" rel="external">Skills Funding Agency apprenticeship achievement rates <span class="fiu-vh">(Opens in a new window)</span></a></small></p>
+                </div>
+            </details>
+
+        </dd>
+    </div>
 </dl>
 
 
@@ -66,20 +109,33 @@
 
     string GetTrainingOptionsStatusClass(string trainingOption, IList<string> options)
     {
-        var cssClass = "das-search-results__training-options";
+        var cssClass = "fiu-provider-details-summary__status";
         var classSuffix = string.Empty;
 
         if (options.Contains(trainingOption, StringComparer.OrdinalIgnoreCase))
         {
-            classSuffix = "--tick";
+            classSuffix  = "-yes";
         }
         else
         {
-            classSuffix = "--cross";
+            classSuffix  = "-no";
         }
 
         return $"{cssClass}{classSuffix}";
     }
 
+    string GetTrainingOptionsStatusTxt(string trainingOption, IList<string> options)
+    {
+        var statusTxt = string.Empty;
 
+        if (options.Contains(trainingOption, StringComparer.OrdinalIgnoreCase))
+        {
+            statusTxt = "Yes";
+        }
+        else
+        {
+            statusTxt = "No";
+        }
+        return $"{statusTxt}";
+    }
 }
