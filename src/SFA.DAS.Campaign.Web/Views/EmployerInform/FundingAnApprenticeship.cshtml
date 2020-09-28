@@ -10,10 +10,14 @@
     ViewBag.ArticlePageTitle = "Funding an apprenticeship";
 }
 
+<p>You can get help from the government to pay for apprenticeship training.</p>
+<p>The amount you get depends on whether you pay the apprenticeship levy or not. You pay the levy if you’re an employer with a pay bill over £3 million each year.</p>
+<p>Depending on your answer to the question below, we’ll show you relevant information about government funding.</p>
+
 @await Html.PartialAsync("_levyNonLevyQuestion", Model)
 
 <h3 class="govuk-heading-m govuk-!-margin-top-8">
-    Apprenticeships in Scotland, Northern Ireland and Wales
+    Apprenticeships in rest of UK
 </h3>
 
 <p class="govuk-body">This website is about apprenticeships in England. Find out more about apprenticeships in <a href="https://www.apprenticeships.scot/" class="fiu-link fiu-link--employers" target="_blank" rel="external">Scotland<span class="fiu-vh"> (Opens in a new window)</span></a>, <a href="https://www.nidirect.gov.uk/campaigns/apprenticeships" class="fiu-link fiu-link--employers" target="_blank" rel="external">Northern Ireland<span class="fiu-vh"> (Opens in a new window)</span></a> or <a href="https://beta.gov.wales/apprenticeships-skills-and-training" class="fiu-link fiu-link--employers" target="_blank" rel="external">Wales<span class="fiu-vh"> (Opens in a new window)</span></a>.
