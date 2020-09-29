@@ -16,6 +16,7 @@
                 <h2 class="govuk-fieldset__heading">
                     As an employer, is your pay bill more than &pound;3 million per year?
                 </h2>
+                <p class="govuk-body">If you're receiving a transfer of apprenticeship funds from another employer, select 'Yes'.</p>
             </legend>
 
             <span id="error-choose-2" class="govuk-error-message" style="@(ViewData.ModelState.IsValid ? "display: none;" : "")">
@@ -33,25 +34,12 @@
                 </div>
                 <div class="govuk-radios__item">
                     <input id="levyPayerDontKnow" asp-for="LevyStatus" value="DontKnow" type="radio" class="govuk-radios__input"/>
-                    <label class="govuk-label govuk-radios__label" for="levyPayerDontKnow">I'm not sure</label>
+                    <label class="govuk-label govuk-radios__label" for="levyPayerDontKnow">Not sure</label>
                 </div>
             </div>
         </fieldset>
-
-
-        
     </div>
 
-        <details class="govuk-details fiu-details govuk-!-margin-top-7 govuk-!-margin-bottom-1" data-module="govuk-details">
-            <summary class="govuk-details__summary fiu-link--employers">
-                <span class="fiu-details__summary-text fiu-link--employers">
-                    Apprenticeship transfers
-                </span>
-            </summary>
-            <div id="transfer-hint" class="govuk-details__text fiu-details__text">
-                <p class="govuk-body">If you're receiving a transfer of apprenticeship funds from another employer, please choose 'Yes'.</p>
-            </div>
-        </details>
 
     <div class="form-group govuk-!-margin-top-4">
         <button type="submit" class="fiu-button fiu-button--employers">Continue</button>
