@@ -24,11 +24,8 @@
         <div class="govuk-grid-column-two-thirds">
 
             @{
-                if (Model.TotalResults > 0)
-                {
-                    var findApprenticeshipSearchModel = new FindApprenticeshipSearchModel() { Distance = Model.Distance, Postcode = Model.Postcode };
-                    await Html.RenderPartialAsync("./Components/Form/faa-update-results", findApprenticeshipSearchModel);
-                }
+                var findApprenticeshipSearchModel = new FindApprenticeshipSearchModel() { Distance = Model.Distance, Postcode = Model.Postcode };
+                await Html.RenderPartialAsync("./Components/Form/faa-update-results", findApprenticeshipSearchModel);
             }
             
             <span class="fiu-visually-hidden" aria-hidden="true">
@@ -65,19 +62,21 @@
                     {
                         await Html.RenderPartialAsync("_searchResults", vacancySearchResultItem);
                     }
-
                 }
                 else
                 {
-                    <h2 class="govuk-heading-l">
-                        No results
-                    </h2>
+                    <div id="resultsSummary" class="fiu-results-summary">
+                        <p class="fiu-results-summary__content">
+                            <h2 class="govuk-heading-l">
+                                No results
+                            </h2>
 
-                    <p class="govuk-body">You can select a different interest or try a different postcode. </p>
+                            <p class="govuk-body">You can select a different interest or try a different postcode. </p>
 
-                    <p class="govuk-body">If that doesn’t work, use <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="fiu-link" rel="external" target="_blank">find an apprenticeship<span class="fiu-visually-hidden"> (Opens in a new window)</span></a> to refine your search further.</p>
+                            <p class="govuk-body">If that doesn’t work, use <a href="https://www.findapprenticeship.service.gov.uk/apprenticeships?ApprenticeshipLevel=All&Hash=0&Location=@Model.Postcode&LocationType=NonNational&PageNumber=1&ResultsPerPage=5&SearchAction=Search&SearchField=All&SearchMode=Keyword&SortType=Relevancy&WithinDistance=@Model.Distance&DisabilityConfidentOnly=False" class="fiu-link" rel="external" target="_blank">find an apprenticeship<span class="fiu-visually-hidden"> (Opens in a new window)</span></a> to refine your search further.</p>
+                        </p>
+                    </div>
                 }
-
             }
             else
             {
