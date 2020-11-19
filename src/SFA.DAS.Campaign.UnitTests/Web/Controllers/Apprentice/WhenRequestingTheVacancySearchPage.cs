@@ -16,38 +16,20 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Apprentice
     {
         public ApprenticeController sut;
 
-        private Mock<IVacancyServiceApiHealthCheck> _vacancyServiceHealthCheck;
-
         [SetUp]
         public void Arrange()
         {
-            _vacancyServiceHealthCheck = new Mock<IVacancyServiceApiHealthCheck>();
-
-            sut = new ApprenticeController(_vacancyServiceHealthCheck.Object);
+            sut = new ApprenticeController();
         }
 
         [Test]
-        public async Task AndTheHealthCheckReturnsHealthy_ThenTheVacancySearchPageIsReturned()
+        public void ThenTheVacancySearchPageIsReturned()
         {
-            _vacancyServiceHealthCheck.Setup(v => v.CheckHealthAsync(It.IsAny<HealthCheckContext>(), CancellationToken.None)).ReturnsAsync(new HealthCheckResult(HealthStatus.Healthy));
-            
-            var result = await sut.FindAnApprenticeship();
+            var result = sut.FindAnApprenticeship();
 
             var viewResult = result as ViewResult;
 
             Assert.AreEqual(null, viewResult.ViewName);
-        }
-
-        [Test]
-        public async Task AndTheHealthCheckReturnsUnhealthy_ThenTheRedirectToFaaPageIsReturned()
-        {
-            _vacancyServiceHealthCheck.Setup(v => v.CheckHealthAsync(It.IsAny<HealthCheckContext>(), CancellationToken.None)).ReturnsAsync(new HealthCheckResult(HealthStatus.Unhealthy));
-
-            var result = await sut.FindAnApprenticeship();
-
-            var viewResult = result as ViewResult;
-
-            Assert.AreEqual("~/Views/Apprentice/RedirectToFAA.cshtml", viewResult.ViewName);
         }
     }
 }

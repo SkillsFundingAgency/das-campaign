@@ -30,15 +30,15 @@
                     await Html.RenderPartialAsync("./Components/Form/faa-update-results", findApprenticeshipSearchModel);
                 }
             }
-            
+
             <span class="fiu-visually-hidden" aria-hidden="true">
                 There are
-                    <span id="tag-search-count">@Model.TotalResults</span>
-                    <span id="tag-search-keyword">@Model.Route</span>
+                <span id="tag-search-count">@Model.TotalResults</span>
+                <span id="tag-search-keyword">@Model.Route</span>
                 apprenticeships within
-                    <span id="tag-search-distance">@Model.Distance</span>
+                <span id="tag-search-distance">@Model.Distance</span>
                 miles of
-                    <span id="tag-search-postcode">@Model.Postcode</span>.
+                <span id="tag-search-postcode">@Model.Postcode</span>.
             </span>
 
 
@@ -48,7 +48,7 @@
                 {
                     <div id="resultsSummary" class="fiu-results-summary">
                         <p class="fiu-results-summary__content">
-                            Here are the 
+                            Here are the
                             @if (Model.TotalResults >= 10)
                             {
                                 <b>10</b>
@@ -57,7 +57,7 @@
                             {
                                 <b>@Model.TotalResults</b>
                             }
-                            apprenticeships nearest to your postcode. 
+                            apprenticeships nearest to your postcode.
                         </p>
                     </div>
 
@@ -95,7 +95,7 @@
 
         </div>
         <div class="govuk-grid-column-one-third">
-            <partial name="Redesign/_GetFreeHelpAndSupport"/>
+            <partial name="Redesign/_GetFreeHelpAndSupport" />
         </div>
     </div>
 </div>
