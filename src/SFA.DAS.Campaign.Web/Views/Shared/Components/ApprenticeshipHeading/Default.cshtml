@@ -40,7 +40,7 @@
             </div>
             <div class="govuk-grid-column-one-half">
                 <form asp-controller="Basket" asp-action="AddApprenticeshipFromDetails" method="post" class="fiu-page-header__favourites-form">
-                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
+                    @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id, title = Model.Title })
                 </form>
             </div>
         </div>
