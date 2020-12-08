@@ -48,7 +48,7 @@
                     </dl>
 
                     <div class="fiu-favourite-bar fiu-favourite-bar--employers">
-                        @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.ApprenticeshipId, ukprn = Model.Ukprn, locationId = item.LocationId })
+                        @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.ApprenticeshipId, title = Model.ProviderName, ukprn = Model.Ukprn, locationId = item.LocationId, type = "training-provider" })
                     </div>
                 </div>
 

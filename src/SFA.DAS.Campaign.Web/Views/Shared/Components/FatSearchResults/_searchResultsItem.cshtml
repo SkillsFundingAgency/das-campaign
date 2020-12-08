@@ -11,7 +11,7 @@
         <dd class="fiu-table-list__td">@Model.Duration months</dd>
     </dl>
     <div class="fiu-favourite-bar fiu-favourite-bar--employers">
-        @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id })
+        @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Id, title = Model.Title, type = "apprenticeship"  })
     </div>
 </div>
 

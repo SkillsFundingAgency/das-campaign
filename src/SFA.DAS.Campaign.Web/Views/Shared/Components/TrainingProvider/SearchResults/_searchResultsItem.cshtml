@@ -36,7 +36,7 @@
         <dd class="fiu-table-list__td">@FormatPercentageValues(Model.Item1.OverallAchievementRate)</dd>
     </dl>
     <div class="fiu-favourite-bar fiu-favourite-bar--employers">
-        @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Item2.ApprenticeshipId, ukprn = Model.Item1.Ukprn, locationId = Model.Item1.LocationId })
+        @await Component.InvokeAsync("AddOrRemoveFromBasket", new { apprenticeshipId = Model.Item2.ApprenticeshipId, title = Model.Item1.Name, ukprn = Model.Item1.Ukprn, locationId = Model.Item1.LocationId, type = "training-provider" })
     </div>
 </div>
 
