@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "resourceEnvironmentName": {
@@ -41,19 +41,38 @@
     "appServicePlanResourceGroupName": {
       "type": "string"
     },
+    "sharedFrontEndSubnetResourceId": {
+      "type": "string"
+    },
     "loggingRedisConnectionString": {
       "type": "securestring"
+    },
+    "resourceGroupLocation": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "object"
     }
   },
   "variables": {
     "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/master/templates/",
     "appServicePrefix": "[concat('das-',toLower(parameters('resourceEnvironmentName')),'-cpg')]",
     "appServiceName": "[concat(variables('appServicePrefix'),'-as')]",
-    "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]"
+    "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
+    "resourceGroupName": "[concat(variables('appServicePrefix'), '-rg')]"
   },
   "resources": [
     {
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2020-06-01",
+      "name": "[variables('resourceGroupName')]",
+      "type": "Microsoft.Resources/resourceGroups",
+      "location": "[parameters('resourceGroupLocation')]",
+      "tags": "[parameters('tags')]",
+      "properties": {
+      }
+    },
+    {
+      "apiVersion": "2020-06-01",
       "name": "campaignSSLCert",
       "resourceGroup": "[parameters('appServicePlanResourceGroupName')]",
       "type": "Microsoft.Resources/deployments",
@@ -77,8 +96,9 @@
       }
     },
     {
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2020-06-01",
       "name": "campaignAppInsights",
+      "resourceGroup": "[variables('resourceGroupName')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -97,8 +117,9 @@
       }
     },
     {
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2020-06-01",
       "name": "campaignAppService",
+      "resourceGroup": "[variables('resourceGroupName')]",
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
         "campaignAppInsights",
@@ -119,6 +140,9 @@
           },
           "appServicePlanResourceGroup": {
             "value": "[parameters('appServicePlanResourceGroupName')]"
+          },
+          "subnetResourceId": {
+            "value": "[parameters('sharedFrontEndSubnetResourceId')]"
           },
           "deployStagingSlot": {
             "value": true
@@ -181,6 +205,10 @@
     "AppInsightInstrumentationKey": {
       "type": "string",
       "value": "[reference('campaignAppInsights').outputs.InstrumentationKey.value]"
+    },
+    "ResourceGroupName": {
+      "type": "string",
+      "value": "[variables('resourceGroupName')]"
     }
   }
 }
