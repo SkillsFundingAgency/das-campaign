@@ -30,7 +30,6 @@ using SFA.DAS.Campaign.Infrastructure.Repositories;
 using SFA.DAS.Campaign.Infrastructure.Services;
 using SFA.DAS.Campaign.Models.Configuration;
 using SFA.DAS.Campaign.Web.HealthChecks;
-using SFA.DAS.Campaign.Web.Models.Fat;
 using System;
 using System.Globalization;
 using System.IO;
@@ -96,7 +95,6 @@ namespace SFA.DAS.Campaign.Web
 
             var healthChecks = services.AddHealthChecks()
                 .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
-                .AddCheck<FatApiHealthCheck>("fat-api-check")
                 .AddCheck<IfaApiHealthCheck>("ifa-api-check")
                 .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check")
                 .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
@@ -178,8 +176,6 @@ namespace SFA.DAS.Campaign.Web
             services.AddSingleton<IFatConfigurationSettings>(fs => fatConfig);
 
             services.AddFatSharedComponents(fatConfig);
-
-            services.AddTransient<ICssViewModel, CampaignCssClasses>();
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
