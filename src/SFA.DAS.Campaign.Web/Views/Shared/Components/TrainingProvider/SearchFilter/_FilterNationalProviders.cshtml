@@ -1,8 +1,0 @@
-﻿@model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.SearchFilter.TrainingProviderSearchFilterViewModel
-
-<div class="govuk-checkboxes govuk-checkboxes--small fiu-search-filter__checkboxes">
-    <div class="govuk-checkboxes__item fiu-search-filter__checkbox-item">
-        <input class="govuk-checkboxes__input fiu-search-filter__checkbox" value="true" name="NationalProvidersOnly" id="NationalProvidersOnly" type="checkbox" @Html.Raw(Model.NationalProvidersOnly == true ? "checked" : "") @Html.Raw(Model.HasNationalProviders == false ? "disabled" : "") />
-        <label for="NationalProvidersOnly" class="govuk-label govuk-checkboxes__label fiu-search-filter__label"><b>National providers only</b></label>
-    </div>
-</div>
