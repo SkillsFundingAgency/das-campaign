@@ -8,11 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using Refit;
-using Sfa.Das.Sas.ApplicationServices.Services;
-using Sfa.Das.Sas.Core.Configuration;
-using Sfa.Das.Sas.Shared.Components.Configuration;
-using Sfa.Das.Sas.Shared.Components.DependencyResolution;
-using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces;
 using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.Configuration;
 using SFA.DAS.Campaign.Application.Core;
@@ -158,7 +153,6 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
             services.AddTransient<IIfaStandardsCacheService, IfaStandardsCacheService>();
-            services.AddTransient<ICacheStorageService, CacheStorageService>();
             services.AddTransient<IVacancyServiceApiHealthCheck, VacancyServiceApiHealthCheck>();
             services.AddTransient<ISessionService, SessionService>();
 
@@ -171,12 +165,7 @@ namespace SFA.DAS.Campaign.Web
 
             services.AddMemoryCache();
 
-            var fatConfig = new FatSharedComponentsConfiguration();
-            Configuration.Bind("fatSharedComponents", fatConfig);
-            services.AddSingleton<IFatConfigurationSettings>(fs => fatConfig);
-
-            services.AddFatSharedComponents(fatConfig);
-
+            
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
             services.AddSession(options =>

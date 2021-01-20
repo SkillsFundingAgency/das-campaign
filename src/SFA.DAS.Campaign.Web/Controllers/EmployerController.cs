@@ -7,7 +7,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("/employers/find-apprenticeship-training")]
         public IActionResult FindApprenticeshipTraining()
         {
-            return View();
+            return RedirectPermanent("");
         }
     }
 }
