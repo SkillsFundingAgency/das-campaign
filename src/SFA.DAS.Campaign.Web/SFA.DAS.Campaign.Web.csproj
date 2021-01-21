@@ -45,6 +45,7 @@
     <ProjectReference Include="..\SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj" />
+    <ProjectReference Include="..\SharedComponents\Sfa.Das.Sas.Shared.Components\Sfa.Das.Sas.Shared.Components.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="nlog.config">
@@ -89,6 +90,5 @@
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\Default.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\DefaultNew.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\FormSidebar.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Employer\FindApprenticeshipTraining.cshtml" />
   </ItemGroup>
 </Project>

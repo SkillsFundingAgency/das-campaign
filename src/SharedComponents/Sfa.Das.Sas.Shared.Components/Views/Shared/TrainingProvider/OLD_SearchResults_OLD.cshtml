@@ -1,0 +1,12 @@
+﻿@model Sfa.Das.Sas.Shared.Components.ViewModels.TrainingProvider.Search.TrainingProviderSearchViewModel
+
+
+@await Component.InvokeAsync("TrainingProviderTitle", new { searchQueryModel = Model, title = Model.Postcode })
+@await Component.InvokeAsync("TrainingProviderSearchSummary", new { searchQueryModel = Model })
+
+<div>
+    
+    @await Component.InvokeAsync("TrainingProviderSearchFilter", new {searchQueryModel = Model})
+</div>
+
+@await Component.InvokeAsync("TrainingProviderSearchResults", new { searchQueryModel = Model })
