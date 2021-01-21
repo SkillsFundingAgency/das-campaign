@@ -1,3 +1,5 @@
+@using Sfa.Das.Sas.Core.Configuration
+@inject IFatConfigurationSettings fatSettings;
 <!doctype html>
 <html lang="en" class="fiu-template">
 
@@ -27,7 +29,7 @@
 
 </head>
 
-<body class="fiu-template__body" id="@ViewBag.PageID">
+<body class="fiu-template__body" data-fat-api="@(fatSettings.FatApiBaseUrl)" id="@ViewBag.PageID">
 
     <partial name="./Components/_GtmBody" />
 

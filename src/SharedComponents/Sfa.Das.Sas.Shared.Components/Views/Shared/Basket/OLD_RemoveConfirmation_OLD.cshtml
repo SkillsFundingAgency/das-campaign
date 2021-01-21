@@ -1,0 +1,28 @@
+﻿@model Sfa.Das.Sas.Shared.Components.ViewModels.Basket.RemoveConfirmationViewModel
+       @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+       
+       @{
+           ViewBag.PageID = "search-provider-home";
+       }
+       
+       <a href="@Model.ReturnPath">&lt; Back</a>
+       
+       <p>If you remove @Model.ApprenticeshipItem.Title from your shortlist, you'll also remove these saved training providers:</p>
+       
+       <ul>
+           @foreach (var tp in Model.ApprenticeshipItem.Providers)
+           {
+               <li>
+                   @tp.Name
+               </li>
+           }
+       </ul>
+       
+       <p>Do you want to remove this apprenticeship?</p>
+       
+       <form method="post">
+           <button id="continueButton" class="govuk-button" data-module="govuk-button" type="submit">
+               OK
+           </button>
+           <a href="@Model.ReturnPath">Cancel</a>
+       </form>
