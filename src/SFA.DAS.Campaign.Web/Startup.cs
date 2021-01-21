@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -29,8 +29,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Domain.Content;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
@@ -69,7 +68,9 @@ namespace SFA.DAS.Campaign.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddOptions();
             services.Configure<CampaignConfiguration>(Configuration);
+            services.AddSingleton(cfg => cfg.GetService<IOptions<CampaignConfiguration>>().Value);
 
             services.Configure<UserDataCryptography>(Configuration.GetSection("UserDataCryptography"));
             services.Configure<UserDataQueueNames>(Configuration.GetSection("UserDataQueueNames"));

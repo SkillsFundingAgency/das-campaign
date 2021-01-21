@@ -1,28 +1,49 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using SFA.DAS.Campaign.Models.Configuration;
 
 namespace SFA.DAS.Campaign.Web.Controllers.Fat
 {
     public class TrainingProviderController : Controller
     {
+        private readonly CampaignConfiguration _configuration;
 
+        public TrainingProviderController (IOptions<CampaignConfiguration> configuration)
+        {
+            _configuration = configuration.Value;
+        }
+        
         [Route("/trainingprovider/search")]
         public IActionResult Search(TrainingProviderSearchViewModel model)
-        { 
-            return RedirectPermanent("");
+        {
+            var url = _configuration.FatBaseUrl;
+            
+            if (!string.IsNullOrEmpty(model.ApprenticeshipId))
+            {
+                url += $"courses/{model.ApprenticeshipId}/providers?location={model.Postcode}";
+            }
+            return RedirectPermanent(url);
         }
 
         [Route("/trainingprovider/details")]
         public IActionResult Details(TrainingProviderDetailQueryViewModel model)
         {
-            return RedirectPermanent("");
+            var url = _configuration.FatBaseUrl;
+            
+            if (!string.IsNullOrEmpty(model.ApprenticeshipId) && model.Ukprn != 0)
+            {
+                url += $"courses/{model.ApprenticeshipId}/providers/{model.Ukprn}?location={model.PostCode}";
+            }
+            
+            return RedirectPermanent(url);
         }
         
         [Route("/trainingprovider/validate-postcode")]
-        [AcceptVerbs("Get", "Post")]
+        [HttpGet]
         public IActionResult ValidatePostcode(string postcode)
         {
-            return RedirectPermanent("");
+            return RedirectPermanent(_configuration.FatBaseUrl);
         }
     }
 
@@ -30,6 +51,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Fat
     {
         public int Ukprn { get; set; }
         public string PostCode { get; set; }
+        public string ApprenticeshipId { get; set; }
     }
     
     public class SearchQueryViewModel
