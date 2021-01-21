@@ -39,11 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewComponents" />
-    <Folder Include="Views\Shared\Components\Basket" />
-  </ItemGroup>
-
-  <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Basket\Header\Default.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Basket\BasketIcon\Default.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Basket\Details\Default.cshtml" />
