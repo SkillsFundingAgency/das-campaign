@@ -1,3 +1,5 @@
+using System.Web;
+
 namespace SFA.DAS.Campaign.Infrastructure.Api.Requests
 {
     public class GetStandardsBySectorRequest : IGetApiRequest
@@ -6,7 +8,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Requests
 
         public GetStandardsBySectorRequest(string sector)
         {
-            _sector = sector;
+            _sector = HttpUtility.UrlEncode(sector);
         }
 
         public string GetUrl => $"trainingcourses?sector={_sector}";

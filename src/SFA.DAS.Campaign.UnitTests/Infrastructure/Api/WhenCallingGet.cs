@@ -25,15 +25,16 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api
         {
             //Arrange
             var configMock = new Mock<IOptions<CampaignConfiguration>>();
+            config.BaseUrl = "https://test.local/";
             configMock.Setup(x => x.Value.OuterApi).Returns(config);
-            var getTestRequest = new GetTestRequest("https://test.local");
+            var getTestRequest = new GetTestRequest();
             
             var response = new HttpResponseMessage
             {
                 Content = new StringContent(JsonConvert.SerializeObject(testObject)),
                 StatusCode = HttpStatusCode.Accepted
             };
-            var httpMessageHandler = MessageHandler.SetupMessageHandlerMock(response, getTestRequest.GetUrl, config.Key);
+            var httpMessageHandler = MessageHandler.SetupMessageHandlerMock(response, config.BaseUrl + getTestRequest.GetUrl, config.Key);
             var client = new HttpClient(httpMessageHandler.Object);
             var apiClient = new ApiClient(client, configMock.Object);
 
@@ -50,15 +51,16 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api
         {
             //Arrange
             var configMock = new Mock<IOptions<CampaignConfiguration>>();
+            config.BaseUrl = "https://test.local/";
             configMock.Setup(x => x.Value.OuterApi).Returns(config);
-            var getTestRequest = new GetTestRequest("https://test.local");
+            var getTestRequest = new GetTestRequest();
             var response = new HttpResponseMessage
             {
                 Content = new StringContent(""),
                 StatusCode = HttpStatusCode.BadRequest
             };
             
-            var httpMessageHandler = MessageHandler.SetupMessageHandlerMock(response, getTestRequest.GetUrl, config.Key);
+            var httpMessageHandler = MessageHandler.SetupMessageHandlerMock(response, config.BaseUrl + getTestRequest.GetUrl, config.Key);
             var client = new HttpClient(httpMessageHandler.Object);
             var apiClient = new ApiClient(client, configMock.Object);
             
@@ -73,15 +75,16 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api
         {
             //Arrange
             var configMock = new Mock<IOptions<CampaignConfiguration>>();
+            config.BaseUrl = "https://test.local/";
             configMock.Setup(x => x.Value.OuterApi).Returns(config);
-            var getTestRequest = new GetTestRequest("https://test.local");
+            var getTestRequest = new GetTestRequest();
             var response = new HttpResponseMessage
             {
                 Content = new StringContent(""),
                 StatusCode = HttpStatusCode.NotFound
             };
             
-            var httpMessageHandler = MessageHandler.SetupMessageHandlerMock(response, getTestRequest.GetUrl, config.Key);
+            var httpMessageHandler = MessageHandler.SetupMessageHandlerMock(response, config.BaseUrl + getTestRequest.GetUrl, config.Key);
             var client = new HttpClient(httpMessageHandler.Object);
             var apiClient = new ApiClient(client, configMock.Object);
             
@@ -94,12 +97,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api
 
         private class GetTestRequest : IGetApiRequest
         {
-            public GetTestRequest (string baseUrl)
-            {
-                BaseUrl = baseUrl;
-            }
-            public string BaseUrl { get; }
-            public string GetUrl => $"{BaseUrl}/test-url/get";
+            public string GetUrl => $"test-url/get";
         }
     }
     public static class MessageHandler
