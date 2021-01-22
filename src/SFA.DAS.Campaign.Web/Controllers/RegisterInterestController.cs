@@ -90,19 +90,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return RedirectToAction("ThankYouForRegistering");
         }
 
-        [HttpGet("downloads")]
-        public IActionResult Downloads(RegisterInterestModel registerInterest)
-        {
-            RegisterInterestModel model = new RegisterInterestModel();
-
-            if (registerInterest.FirstName != null)
-            {
-                model = registerInterest;
-            }
-
-            return View("EmployerDownloads", model);
-        }
-
         [Route("/employers/thank-you-for-signing-up")]
         public IActionResult ThankYouForRegistering()
         {
