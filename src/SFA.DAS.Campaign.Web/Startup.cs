@@ -147,7 +147,6 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IUserDataCollection, UserDataCollection>();
             services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
-            services.AddTransient<IVacancyServiceApiHealthCheck, VacancyServiceApiHealthCheck>();
             services.AddTransient<ISessionService, SessionService>();
 
             services.AddTransient<IContentService, ContentService>();

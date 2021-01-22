@@ -1,16 +1,11 @@
-﻿using System;
-using System.Linq;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
+﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Rest;
-using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Experiments.Application.Helpers;
 using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Infrastructure.HealthChecks
 {
-    public class VacancyServiceApiHealthCheck : IVacancyServiceApiHealthCheck
+    public class VacancyServiceApiHealthCheck : IHealthCheck
     {
         private readonly ILivevacanciesAPI _vacancyApiClient;
 
@@ -39,5 +34,6 @@ namespace SFA.DAS.Campaign.Infrastructure.HealthChecks
             return new HealthCheckResult(healthcheckStatus, reason);
        ;
         }
+
     }
 }

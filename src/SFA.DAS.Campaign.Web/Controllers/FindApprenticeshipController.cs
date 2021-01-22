@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Vacancies;
-using SFA.DAS.Campaign.Web.Constants;
 using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.Web.Controllers
