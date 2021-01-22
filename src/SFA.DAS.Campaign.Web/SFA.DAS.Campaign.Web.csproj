@@ -52,7 +52,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Constants" />
     <Folder Include="wwwroot\downloads\" />
   </ItemGroup>
   <ItemGroup>
