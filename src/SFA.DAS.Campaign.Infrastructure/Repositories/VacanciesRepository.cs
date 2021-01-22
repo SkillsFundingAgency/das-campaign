@@ -44,14 +44,15 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
 
             if (coordinates.ResponseCode == "OK")
             {
-                var searchResults = new VacancySearchResult();
-                searchResults.searchLocation = new Location()
+                var searchResults = new VacancySearchResult
                 {
-                    Latitude = coordinates.Coordinates.Lat,
-                    Longitude = coordinates.Coordinates.Lon
+                    searchLocation = new Location()
+                    {
+                        Latitude = coordinates.Coordinates.Lat, Longitude = coordinates.Coordinates.Lon
+                    }
                 };
-                
-                int pageNumber = 1;
+
+                var pageNumber = 1;
                 var vacancyApiList = GetVacancyList(distance, coordinates, pageNumber);
 
                 while (vacancyApiList.Count == _apiMaxPageSize && vacancyApiList.Max(s => s.DistanceInMiles < distance))
@@ -87,20 +88,21 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
 
             if (coordinates.ResponseCode == "OK")
             {
-                var searchResults = new VacancySearchResult();
-                searchResults.searchLocation = new Location()
+                var searchResults = new VacancySearchResult
                 {
-                    Latitude = coordinates.Coordinates.Lat,
-                    Longitude = coordinates.Coordinates.Lon
+                    searchLocation = new Location
+                        {
+                            Latitude = coordinates.Coordinates.Lat, Longitude = coordinates.Coordinates.Lon
+                        },
+                    Country = _countryMapper.MapToCountry(coordinates.Country),
+                    Results = new List<VacancySearchResultItem>()
                 };
 
-                searchResults.Country = _countryMapper.MapToCountry(coordinates.Country);
-                searchResults.Results = new List<VacancySearchResultItem>();
 
                 if (searchResults.Country == Domain.Enums.Country.England)
                 {
 
-                    int pageNumber = 1;
+                    var pageNumber = 1;
                     var vacancyApiList = await GetVacancyListByRoute(routeId, distance, coordinates, pageNumber);
 
                     while (vacancyApiList.Count == _apiMaxPageSize && vacancyApiList.Max(s => s.DistanceInMiles < distance))
@@ -157,6 +159,5 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             var vacancyList = ((VacancySearchResults)(result).Body).Results.ToList();
             return vacancyList;
         }
-
     }
 }

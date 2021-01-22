@@ -52,8 +52,6 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             
             //Assert
             actual.Should().BeEquivalentTo(_standardsResponse.Standards.Select(c=>c.Id).ToList());
-            
         }
-        
     }
 }

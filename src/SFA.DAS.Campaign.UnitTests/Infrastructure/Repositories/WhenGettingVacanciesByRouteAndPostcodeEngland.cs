@@ -19,7 +19,7 @@ using Microsoft.Extensions.Logging;
 namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 {
     [TestFixture]
-    public class WhenGetingVacanciesByRouteAndPostcodeEngland
+    public class WhenGettingVacanciesByRouteAndPostcodeEngland
     {
         private Mock<IGeocodeService> _geocodeService;
         private Mock<IMappingService> _mappingService;
@@ -64,7 +64,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 
 
             _vacanciesApi.Setup(s => s.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
-                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>())).ReturnsAsync(mockSearchResults());
+                It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>())).ReturnsAsync(GetSearchResults.MockSearchResults(coordinatesResponse));
 
             _standardsService.Setup(s => s.GetByRoute(routeId)).ReturnsAsync(_standards);
 
@@ -73,21 +73,21 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
         }
 
         [Test]
-        public void Then_Coordinates_Are_Retrieved_For_Postcode_By_GeocodeService()
+        public async Task Then_Coordinates_Are_Retrieved_For_Postcode_By_GeocodeService()
         {
 
-            var results = sut.GetByRoute("1", postcode, 10);
+            await sut.GetByRoute("1", postcode, 10);
 
             _geocodeService.Verify(s => s.GetFromPostCode(postcode), Times.Once);
 
         }
 
         [Test]
-        public void And_Less_Than_250_Results_Then_Vacancies_Api_Is_Called_Filtered_On_Postcode_And_Distance()
+        public async Task And_Less_Than_250_Results_Then_Vacancies_Api_Is_Called_Filtered_On_Postcode_And_Distance()
         {
             _searchResultCount = 200;
 
-            var results = sut.GetByRoute("1", postcode, 10);
+            await sut.GetByRoute("1", postcode, 10);
 
             _vacanciesApi.Verify(v => v.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
                 It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>()), Times.Once());
@@ -125,53 +125,5 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _vacanciesApi.Verify(v => v.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
                 It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.Is<string>(s => s.Equals(_standardIds))), Times.Once());
         }
-
-
-        private HttpOperationResponse<object> mockSearchResults()
-        {
-            var _result = new HttpOperationResponse<object>();
-
-            _result.Request = new HttpRequestMessage();
-            _result.Response = new HttpResponseMessage(HttpStatusCode.OK);
-
-            var vacancyResults = new VacancySearchResults();
-
-            var results = new List<Result>();
-
-
-            while (results.Count != _searchResultCount)
-            {
-                var random = new Random();
-                var id = results.Count + 1;
-                results.Add(new Result()
-                {
-                    Location = new Vacancies.Api.Models.Location() { Latitude = coordinatesResponse.Coordinates.Lat, Longitude = coordinatesResponse.Coordinates.Lon },
-                    Title = $"Vacancy {id}",
-                    ShortDescription = "short description of vacancy",
-                    DistanceInMiles = random.NextDouble() * 100,
-                    VacancyReference = id,
-                    TrainingType = (id % 2 == 0) ? TrainingType.Framework : TrainingType.Standard
-                });
-            }
-
-            vacancyResults.Results = results.ToArray();
-            _result.Body = vacancyResults;
-
-            return _result;
-        }
-
     }
-    //[Test]
-    //public async Task Then_Static_Map_Urls_Are_Generated_For_Results()
-    //{
-    //    _searchResultCount = 200;
-
-    //    var results = await sut.GetByPostcode(postcode, 20);
-
-    //    var mapsWithoutStatic = results.Where(w => string.IsNullOrWhiteSpace(w.StaticMapUrl)).ToList();
-
-    //    Assert.AreEqual(mapsWithoutStatic.Count, 0);
-
-
-    //}
 }

@@ -1,5 +1,4 @@
-﻿using SFA.DAS.Campaign.Domain.Enums;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace SFA.DAS.Campaign.Domain.Vacancies
 {

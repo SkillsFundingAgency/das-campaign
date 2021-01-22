@@ -20,12 +20,11 @@ using Microsoft.Extensions.Logging;
 namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 {
     
-    public class WhenGetingVacanciesByRouteAndPostcodeNonEngland
+    public class WhenGettingVacanciesByRouteAndPostcodeNonEngland
     {
         private Mock<IGeocodeService> _geocodeService;
         private Mock<IMappingService> _mappingService;
         private Mock<ILivevacanciesAPI> _vacanciesApi;
-        private Mock<IStandardsRepository> _standardsService;
         private Mock<ILogger<VacanciesRepository>> _logger;
         private VacanciesMapper _vacanciesMapper;
         private CountryMapper _countryMapper;
@@ -48,7 +47,6 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _geocodeService = new Mock<IGeocodeService>();
             _mappingService = new Mock<IMappingService>();
             _vacanciesApi = new Mock<ILivevacanciesAPI>();
-            _standardsService = new Mock<IStandardsRepository>();
             _vacanciesMapper = new VacanciesMapper();
             _logger = new Mock<ILogger<VacanciesRepository>>();
             _countryMapper = new CountryMapper();
@@ -58,30 +56,25 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _logger.Object, _countryMapper, Mock.Of<IStandardsRepository>());
 
             _standardIds = null;
-
         }
 
         [TestCase("CF10 3AT")]
         [TestCase("BT7 1NN")]
         [TestCase("EH8 9LE")]
-        public void GetVacancyListByRoute_Function_Not_Ran(string postcode)
+        public async Task GetVacancyListByRoute_Function_Not_Ran(string postcode)
         {
-
-            var results =  sut.GetByRoute("1", postcode, 10);
+            await sut.GetByRoute("1", postcode, 10);
 
             _vacanciesApi.Verify(v => v.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
                 It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.Is<string>(s => s.Equals(_standardIds))), Times.Never());
-
         }
 
         [Test]
-        public void Then_Coordinates_Are_Retrieved_For_Postcode_By_GeocodeService()
+        public async Task Then_Coordinates_Are_Retrieved_For_Postcode_By_GeocodeService()
         {
-
-            var results = sut.GetByRoute("1", postcode, 10);
+            await sut.GetByRoute("1", postcode, 10);
 
             _geocodeService.Verify(s => s.GetFromPostCode(postcode), Times.Once);
-
         }
         
         [Test]
@@ -103,7 +96,5 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 
             Assert.AreEqual(countryEnum, testCountryEnum);
         }
-
     }
-    
 }
