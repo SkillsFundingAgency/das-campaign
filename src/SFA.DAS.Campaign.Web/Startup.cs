@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
-using Refit;
-using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.Configuration;
 using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Application.DataCollection;

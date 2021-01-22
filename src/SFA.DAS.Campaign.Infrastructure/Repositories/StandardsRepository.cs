@@ -1,9 +1,4 @@
-﻿using SFA.DAS.Apprenticeships.Api.Client;
-using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Campaign.Infrastructure.Mappers;
-using SFA.DAS.Campaign.Infrastructure.Models;
-using SFA.DAS.Campaign.Infrastructure.Services;
-using System;
+﻿using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
