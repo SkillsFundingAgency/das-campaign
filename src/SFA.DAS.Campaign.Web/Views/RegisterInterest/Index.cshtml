@@ -1,0 +1,92 @@
+﻿@using System.Text
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+@using SFA.DAS.Campaign.Web.Models.Components.Form
+@model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
+
+@{
+    ViewBag.Title = "Sign up to stay connected";
+    ViewBag.PageTitle = "Sign up to stay connected";
+    ViewBag.MetaDesc = "";
+    Layout = "Redesign_Layout_EmployersHub";
+    
+    ViewBag.LandingPageSlug = "sign-up";
+    ViewBag.LandingPageTitle = "Sign up to stay connected";
+
+    var errorOrder = new List<string>()
+    {
+        "FirstName",
+        "LastName",
+        "Email",
+        "Route",
+        "AcceptTandCs"
+    };
+}
+
+<span class="fiu-header-content-spacer"></span>
+
+<div class="fiu-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            
+
+            <div class="govuk-error-summary" role="alert" tabindex="-1" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
+                <h2 class="govuk-error-summary__title">Sorry but there seems to be a problem with your registration</h2>
+                <div class="govuk-error-summary__body">
+                    <ul class="govuk-list govuk-error-summary__list">
+                        @{
+                            var errorStringBuilder = new StringBuilder();
+                            var errorCount = ViewData.ModelState.ErrorCount;
+
+                            foreach (var error in errorOrder)
+                            {
+                                if (ViewData.ModelState[error]?.ValidationState == ModelValidationState.Invalid)
+                                {
+                                    var errorKey = error == "Route" ? "rbApprentice" : error;
+                                    errorStringBuilder.Append($" <li><a href =\"#{errorKey}\" class=\"govuk-form-validation-summary__link\">{Model.ValidationMessages[error]}</a></li>");
+                                }
+                            }
+                        }
+                        @Html.Raw(errorStringBuilder.ToString())
+                    </ul>
+                </div>
+            </div>
+            <p class="govuk-body-l">Keep me up to date with the latest information</p>
+            <form asp-controller="RegisterInterest" asp-action="index">
+                <input type="hidden" asp-for="Version"/>
+                <div class="govuk-form-group" das-validation-for="FirstName" das-validationerror-class="form-group-validation-error">
+                    <label class="govuk-label" asp-for="FirstName">
+                        First name
+                    </label>
+                    <input id="FirstName" class="govuk-input govuk-!-width-two-thirds" asp-for="FirstName" type="text" autocomplete="given-name">
+                </div>
+
+                <div class="govuk-form-group" das-validation-for="LastName" das-validationerror-class="form-group-validation-error">
+                    <label class="govuk-label" asp-for="LastName">
+                        Last name
+                    </label>
+                    <input id="LastName" class="govuk-input govuk-!-width-two-thirds" asp-for="LastName" type="text" autocomplete="family-name">
+                </div>
+
+                <div class="govuk-form-group" das-validation-for="Email" das-validationerror-class="form-group-validation-error">
+                    <label class="govuk-label" asp-for="Email">
+                        Email address
+                    </label>
+                    <input id="Email" class="govuk-input govuk-!-width-two-thirds" asp-for="Email" type="text" autocomplete="email">
+                </div>
+                <input asp-for="Route" value="Employer" type="hidden"/>
+                <div class="govuk-form-group" das-validation-for="IncludeInUR" das-validationerror-class="form-group-validation-error">
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input fiu-checkboxes__input" asp-for="IncludeInUR" type="checkbox" value="true">
+                        <label class="govuk-checkboxes__label fiu-checkboxes__label" asp-for="IncludeInUR">
+                            I’m happy to be contacted about research to help improve this website.
+                        </label>
+                    </div>
+                </div>
+                <input asp-for="ReturnUrl" type="hidden" value="@Model.ReturnUrl"/>
+                <button formnovalidate="formnovalidate" class="fiu-button fiu-button--employers " name="registerInterestSubmit" type="submit" id="btn-register-interest-complete">Sign up</button>
+            </form>            
+        </div>
+    </div>
+</div>
+
+

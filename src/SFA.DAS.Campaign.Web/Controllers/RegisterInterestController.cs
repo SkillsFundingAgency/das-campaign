@@ -49,7 +49,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             }
 
-            return View($"IndexV{version}", new RegisterInterestModel(url, version, route));
+            return View("Index", new RegisterInterestModel(url, version, route));
         }
 
         [HttpPost]
@@ -61,7 +61,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             { 
                 registerInterest.ShowRouteQuestion = this.RouteData.Values.ContainsKey("route") == false;
 
-                return View($"IndexV{registerInterest.Version}", registerInterest);
+                return View("Index", registerInterest);
             }
 
             try
@@ -88,19 +88,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
 
             return RedirectToAction("ThankYouForRegistering");
-        }
-
-        [HttpGet("downloads")]
-        public IActionResult Downloads(RegisterInterestModel registerInterest)
-        {
-            RegisterInterestModel model = new RegisterInterestModel();
-
-            if (registerInterest.FirstName != null)
-            {
-                model = registerInterest;
-            }
-
-            return View("EmployerDownloads", model);
         }
 
         [Route("/employers/thank-you-for-signing-up")]
