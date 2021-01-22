@@ -22,18 +22,16 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         private readonly IVacanciesMapper _vacanciesMapper;
         private readonly IGeocodeService _geocodeService;
         private readonly IMappingService _mappingService;
-        private readonly IStandardsRepository _standardsService;
         private readonly ILogger<VacanciesRepository> _logger;
         private readonly ICountryMapper _countryMapper;
         public VacanciesRepository(ILivevacanciesAPI vacanciesApi, IVacanciesMapper vacanciesMapper,
-            IGeocodeService geocodeService, IMappingService mappingService, IStandardsRepository standardsService, ILogger<VacanciesRepository> logger, ICountryMapper countryMapper)
+            IGeocodeService geocodeService, IMappingService mappingService, ILogger<VacanciesRepository> logger, ICountryMapper countryMapper)
 
         {
             _vacanciesApi = vacanciesApi;
             _vacanciesMapper = vacanciesMapper;
             _geocodeService = geocodeService;
             _mappingService = mappingService;
-            _standardsService = standardsService;
             _logger = logger;
             _countryMapper = countryMapper;
         }
@@ -144,12 +142,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         private async Task<List<Result>> GetVacancyListByRoute(string routeId, int distance,
             CoordinatesResponse coordinates, int pageNumber = 1)
         {
-            var standards = await _standardsService.GetByRoute(routeId);
-
-            var standardIds = string.Join(',', standards.Select(s => s.Id.ToString()));
-
+            //TODO add new api call
+  
             var result = (HttpOperationResponse<object>)_vacanciesApi.SearchApprenticeshipVacancies(
-                coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber, 250, distance, standardIds);
+                coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber, 250, distance, "1,2");
 
             if (!result.Response.IsSuccessStatusCode)
             {

@@ -60,7 +60,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _mappingService.Setup(s => s.GetStaticMapsUrl(It.IsAny<SFA.DAS.Campaign.Domain.Vacancies.Location >())).Returns("url");
 
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object, _countryMapper);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _logger.Object, _countryMapper);
 
         }
 
@@ -97,7 +97,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _vacanciesApi.Setup(s => s.SearchApprenticeshipVacanciesByLocationAsync(It.IsAny<double>(), It.IsAny<double>(),
                 It.Is<int>(a => a == 2), It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(mockSearchResults(_searchResultCount - 250));
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object,_logger. Object, _countryMapper);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _logger. Object, _countryMapper);
 
             var results = sut.GetByPostcode(postcode, 20);
 

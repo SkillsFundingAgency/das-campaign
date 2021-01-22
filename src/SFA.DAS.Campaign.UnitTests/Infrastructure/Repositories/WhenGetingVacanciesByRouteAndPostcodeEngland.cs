@@ -79,7 +79,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 
             _standardsService.Setup(s => s.GetByRoute(routeId)).ReturnsAsync(_standards);
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _standardsService.Object, _logger.Object, _countryMapper);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object,  _logger.Object, _countryMapper);
 
         }
 

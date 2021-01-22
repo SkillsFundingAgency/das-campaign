@@ -12,21 +12,19 @@ namespace SFA.DAS.Campaign.Web.Controllers
     [Route("FindApprenticeship")]
     public class FindApprenticeshipController : Controller
     {
-        private IVacanciesRepository _vacanciesService;
-        private IGeocodeService _geocodeService;
+        private readonly IVacanciesRepository _vacanciesService;
         private readonly IMappingService _mappingService;
 
-        public FindApprenticeshipController(IVacanciesRepository vacanciesService, IGeocodeService geocodeService, IMappingService mappingService)
+        public FindApprenticeshipController(IVacanciesRepository vacanciesService, IMappingService mappingService)
         {
             _vacanciesService = vacanciesService;
-            _geocodeService = geocodeService;
             _mappingService = mappingService;
         }
 
         [HttpGet("/apprentices/browse-apprenticeships/{route}/{postcode}/{distance}")]
         public async Task<ActionResult> SearchResults(string route, string postcode, int distance)
         {
-            SearchResultsViewModel viewModel = await GetSearchResults(route, postcode, distance);
+            SearchResultsViewModel viewModel = await GetSearchResults(route, postcode, distance);    
             return View(viewModel);
         }
 
@@ -64,7 +62,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             if (searchResults != null)
             {
                 viewModel.TotalResults = searchResults.Results.Count;
-                viewModel.Results = searchResults.Results.Where(w => w.DistanceInMiles <= distance).Take(10).ToList();
+                viewModel.Results = searchResults.Results.Where(w => w.DistanceInMiles <= distance).Take(100).ToList();
 
                 viewModel.Location = searchResults.searchLocation;
                 viewModel.StaticMapUrl = _mappingService.GetStaticMapsUrl(searchResults.Results.Select(p => p.Location), "680", "530");
