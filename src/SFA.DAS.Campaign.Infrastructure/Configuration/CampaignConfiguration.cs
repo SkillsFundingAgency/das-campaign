@@ -9,5 +9,12 @@ namespace SFA.DAS.Campaign.Models.Configuration
         public virtual UserDataQueueNames UserDataQueueNames { get; set; }
         public virtual UserDataCryptography UserDataCryptography { get; set; }
         public virtual string FatBaseUrl { get ; set ; }
+        public virtual OuterApiConfiguration OuterApi { get; set; }
+    }
+
+    public class OuterApiConfiguration
+    {
+        public string BaseUrl { get; set; }
+        public string Key { get; set; }
     }
 }

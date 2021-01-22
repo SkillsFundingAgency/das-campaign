@@ -31,6 +31,7 @@ using System.IO;
 using System.Net.Http;
 using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Infrastructure.Api;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
 using VacanciesApi;
@@ -156,6 +157,8 @@ namespace SFA.DAS.Campaign.Web
             
             services.AddTransient<ConnectionMultiplexer>(sp => ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase},allowAdmin=true"));
             services.AddTransient<IDatabase>(client => client.GetService<ConnectionMultiplexer>().GetDatabase());
+            
+            services.AddHttpClient<IApiClient, ApiClient>();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
