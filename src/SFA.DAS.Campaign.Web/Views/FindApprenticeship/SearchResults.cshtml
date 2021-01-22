@@ -21,7 +21,7 @@
             @{
                 if (Model.TotalResults > 0)
                 {
-                    var findApprenticeshipSearchModel = new FindApprenticeshipSearchModel() { Distance = Model.Distance, Postcode = Model.Postcode };
+                    var findApprenticeshipSearchModel = new FindApprenticeshipSearchModel() { Distance = Model.Distance, Postcode = Model.Postcode, Routes = Model.Routes };
                     await Html.RenderPartialAsync("./Components/Form/faa-update-results", findApprenticeshipSearchModel);
                 }
             }
