@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
         {
             _httpClient = httpClient;
             _config = config.Value.OuterApi;
+            _httpClient.BaseAddress = new Uri(_config.BaseUrl);
         }
         
         public async Task<TResponse> Get<TResponse>(IGetApiRequest request) 
