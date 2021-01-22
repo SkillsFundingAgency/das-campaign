@@ -7,28 +7,32 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SFA.DAS.Campaign.Infrastructure.Api;
+using SFA.DAS.Campaign.Infrastructure.Api.Requests;
+using SFA.DAS.Campaign.Infrastructure.Api.Responses;
 
 namespace SFA.DAS.Campaign.Infrastructure.Repositories
 {
     public class StandardsRepository : IStandardsRepository
     {
-        
-        public StandardsRepository()
+        private readonly IApiClient _apiClient;
+
+        public StandardsRepository(IApiClient apiClient)
         {
-            
+            _apiClient = apiClient;
         }
 
         public async Task<List<string>> GetRoutes()
         {
-            return new List<string>();
+            var result = await _apiClient.Get<GetSectorsResponse>(new GetSectorsRequest()); 
+
+            return result.Sectors.Select(c=>c.Route).ToList();
         }
 
-        public async Task<List<StandardResultItem>> GetByRoute(string routeId)
+        public async Task<List<int>> GetByRoute(string routeId)
         {
-            //var standardIds = await GetAll();
-
-            //var standardRoutes = standardIds.Where(w => w.Route.ToLower() == routeId.ToLower()).ToList();
-            return new List<StandardResultItem>();
+            var result = await _apiClient.Get<GetStandardsResponse>(new GetStandardsBySectorRequest(routeId));
+            return result.Standards.Select(x=>x.Id).ToList();
         }
 
     }

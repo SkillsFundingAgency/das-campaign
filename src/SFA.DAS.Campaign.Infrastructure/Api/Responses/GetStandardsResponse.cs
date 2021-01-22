@@ -12,7 +12,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Responses
     public class Standard
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
     }
 
     
