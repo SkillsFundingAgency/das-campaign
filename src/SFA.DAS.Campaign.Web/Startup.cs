@@ -90,7 +90,6 @@ namespace SFA.DAS.Campaign.Web
 
             var healthChecks = services.AddHealthChecks()
                 .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
-                .AddCheck<IfaApiHealthCheck>("ifa-api-check")
                 .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check")
                 .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
 
