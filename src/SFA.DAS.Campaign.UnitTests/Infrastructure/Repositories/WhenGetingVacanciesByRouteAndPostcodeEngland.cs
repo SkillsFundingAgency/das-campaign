@@ -41,7 +41,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             ResponseCode = "OK"
         };
 
-        private List<StandardResultItem> _standards;
+        private List<int> _standards;
         private string _standardIds;
 
         [SetUp]
@@ -55,21 +55,10 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             _logger = new Mock<ILogger<VacanciesRepository>>();
             _countryMapper = new CountryMapper();
 
-            _standards = new List<StandardResultItem>()
-            {
-                new StandardResultItem()
-                {
-                    Id = 1,
-                    Title = "Standard 1"
-                },
-                new StandardResultItem(){
-                    Id = 2,
-                    Title = "Standard 2"
-                }
+            _standards = new List<int>() {1, 2};
+                
 
-            };
-
-            _standardIds = string.Join(',', _standards.Select(s => s.Id));
+            _standardIds = string.Join(',', _standards);
 
             _geocodeService.Setup(s => s.GetFromPostCode(It.IsAny<string>())).ReturnsAsync(coordinatesResponse);
 
@@ -79,7 +68,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 
             _standardsService.Setup(s => s.GetByRoute(routeId)).ReturnsAsync(_standards);
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object,  _logger.Object, _countryMapper);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object,  _logger.Object, _countryMapper, _standardsService.Object);
 
         }
 

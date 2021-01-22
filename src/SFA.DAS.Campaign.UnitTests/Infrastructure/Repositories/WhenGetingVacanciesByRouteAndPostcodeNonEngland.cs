@@ -55,7 +55,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 
             _geocodeService.Setup(s => s.GetFromPostCode(It.IsAny<string>())).ReturnsAsync(coordinatesResponse);
 
-            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _logger.Object, _countryMapper);
+            sut = new VacanciesRepository(_vacanciesApi.Object, _vacanciesMapper, _geocodeService.Object, _mappingService.Object, _logger.Object, _countryMapper, Mock.Of<IStandardsRepository>());
 
             _standardIds = null;
 

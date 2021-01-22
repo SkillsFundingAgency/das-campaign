@@ -24,8 +24,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         private readonly IMappingService _mappingService;
         private readonly ILogger<VacanciesRepository> _logger;
         private readonly ICountryMapper _countryMapper;
+        private readonly IStandardsRepository _standardsRepository;
+
         public VacanciesRepository(ILivevacanciesAPI vacanciesApi, IVacanciesMapper vacanciesMapper,
-            IGeocodeService geocodeService, IMappingService mappingService, ILogger<VacanciesRepository> logger, ICountryMapper countryMapper)
+            IGeocodeService geocodeService, IMappingService mappingService, ILogger<VacanciesRepository> logger, ICountryMapper countryMapper, IStandardsRepository standardsRepository)
 
         {
             _vacanciesApi = vacanciesApi;
@@ -34,6 +36,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             _mappingService = mappingService;
             _logger = logger;
             _countryMapper = countryMapper;
+            _standardsRepository = standardsRepository;
         }
 
         public async Task<VacancySearchResult> GetByPostcode(string postcode, int distance)
@@ -142,10 +145,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
         private async Task<List<Result>> GetVacancyListByRoute(string routeId, int distance,
             CoordinatesResponse coordinates, int pageNumber = 1)
         {
-            //TODO add new api call
+            var standards = await _standardsRepository.GetByRoute(routeId);
   
             var result = (HttpOperationResponse<object>)_vacanciesApi.SearchApprenticeshipVacancies(
-                coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber, 250, distance, "1,2");
+                coordinates.Coordinates.Lat, coordinates.Coordinates.Lon, pageNumber, 250, distance, string.Join(",",standards));
 
             if (!result.Response.IsSuccessStatusCode)
             {
