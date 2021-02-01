@@ -16,7 +16,13 @@ namespace SFA.DAS.Campaign.Web.Controllers.Fat
         [Route("/employers/find-apprenticeships")]
         public IActionResult Search(SearchQueryViewModel model)
         {
-            var url = $"{_configuration.FatBaseUrl}/courses?keyword={model.Keywords}&levels={string.Join("&levels=",model.SelectedLevels)}";
+            var selectedLevels = "&levels=";
+            if (model.SelectedLevels.Count < 7)
+            {
+                selectedLevels += string.Join("&levels=", model.SelectedLevels);
+            }
+            
+            var url = $"{_configuration.FatBaseUrl}/courses?keyword={model.Keywords}{selectedLevels}";
             
             return RedirectPermanent(url);
         }
