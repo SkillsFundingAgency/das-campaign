@@ -4,7 +4,6 @@ using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SFA.DAS.Apprenticeships.Api.Types.Exceptions;
 using SFA.DAS.Campaign.Web.Models;
 
 namespace DfE.EmployerFavourites.Web.Controllers
@@ -58,7 +57,7 @@ namespace DfE.EmployerFavourites.Web.Controllers
 
                         exception = flattenedExceptions.InnerExceptions.FirstOrDefault();
                         break;
-                    case EntityNotFoundException ex:
+                    case Exception ex:
                         Response.StatusCode = (int)HttpStatusCode.NotFound;
                         _logger.LogDebug(ex, "Entity not found");
                         return;

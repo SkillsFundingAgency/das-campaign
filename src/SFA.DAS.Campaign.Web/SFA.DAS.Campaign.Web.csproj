@@ -17,6 +17,7 @@
     <TypeScriptNoEmitOnError>False</TypeScriptNoEmitOnError>
     <TypeScriptSourceMap>True</TypeScriptSourceMap>
     <TypeScriptMapRoot />
+    <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
   </PropertyGroup>
   <ItemGroup>
@@ -44,7 +45,6 @@
     <ProjectReference Include="..\SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj" />
-    <ProjectReference Include="..\SharedComponents\Sfa.Das.Sas.Shared.Components\Sfa.Das.Sas.Shared.Components.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="nlog.config">

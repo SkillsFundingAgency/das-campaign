@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SFA.DAS.Campaign.Web.Models
@@ -16,5 +17,6 @@ namespace SFA.DAS.Campaign.Web.Models
         [DisplayName("Interest")]
         public string Route { get; set; }
 
+        public List<string> Routes { get ; set ; }
     }
 }

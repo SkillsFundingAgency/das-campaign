@@ -10,14 +10,9 @@ namespace SFA.DAS.Campaign.Web.ViewComponents.Form
         public IViewComponentResult Invoke(FormType type, object formViewModel, FindApprenticeshipSearchModel findApprenticeshipSearchModel)
         {
             var returnUrl = ViewContext?.HttpContext?.Request?.Path.ToString() ?? "/";
-            var version = (type == FormType.RegisterInterest) ? 1 : 2;
             
             switch (type)
             {
-                case FormType.RegisterInterest:
-                    return View("RegisterInterest", formViewModel ?? new RegisterInterestModel(){ReturnUrl = returnUrl, Version = version});
-                case FormType.CookieSettings:
-                    return View("cookieSettings");
                 case FormType.faaUpdateSearch:
                     return View("faa-update-results",findApprenticeshipSearchModel);
                 default:

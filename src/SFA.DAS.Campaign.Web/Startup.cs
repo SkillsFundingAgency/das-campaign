@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -7,13 +7,6 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
-using Refit;
-using Sfa.Das.Sas.ApplicationServices.Services;
-using Sfa.Das.Sas.Core.Configuration;
-using Sfa.Das.Sas.Shared.Components.Configuration;
-using Sfa.Das.Sas.Shared.Components.DependencyResolution;
-using Sfa.Das.Sas.Shared.Components.ViewModels.Css.Interfaces;
-using SFA.DAS.Apprenticeships.Api.Client;
 using SFA.DAS.Campaign.Application.Configuration;
 using SFA.DAS.Campaign.Application.Core;
 using SFA.DAS.Campaign.Application.DataCollection;
@@ -30,14 +23,13 @@ using SFA.DAS.Campaign.Infrastructure.Repositories;
 using SFA.DAS.Campaign.Infrastructure.Services;
 using SFA.DAS.Campaign.Models.Configuration;
 using SFA.DAS.Campaign.Web.HealthChecks;
-using SFA.DAS.Campaign.Web.Models.Fat;
 using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Infrastructure.Api;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
 using VacanciesApi;
@@ -75,7 +67,9 @@ namespace SFA.DAS.Campaign.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddOptions();
             services.Configure<CampaignConfiguration>(Configuration);
+            services.AddSingleton(cfg => cfg.GetService<IOptions<CampaignConfiguration>>().Value);
 
             services.Configure<UserDataCryptography>(Configuration.GetSection("UserDataCryptography"));
             services.Configure<UserDataQueueNames>(Configuration.GetSection("UserDataQueueNames"));
@@ -96,8 +90,6 @@ namespace SFA.DAS.Campaign.Web
 
             var healthChecks = services.AddHealthChecks()
                 .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
-                .AddCheck<FatApiHealthCheck>("fat-api-check")
-                .AddCheck<IfaApiHealthCheck>("ifa-api-check")
                 .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check")
                 .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
 
@@ -137,15 +129,11 @@ namespace SFA.DAS.Campaign.Web
             });
             services.AddSingleton<IPostcodeApiConfiguration>(postcodeConfig);
             services.AddSingleton<IMappingConfiguration>(mappingConfig);
-            services.AddTransient<IApprenticeshipProgrammeApiClient>(client => new ApprenticeshipProgrammeApiClient(Configuration["FatSharedComponents:FatApiBaseUrl"]));
-            services.AddTransient<IStandardsMapper, StandardsMapper>();
+            
             services.AddTransient<IStandardsRepository, StandardsRepository>();
             services.AddTransient<IVacanciesMapper, VacanciesMapper>();
             services.AddTransient<IVacanciesRepository, VacanciesRepository>();
             services.AddTransient<ICountryMapper, CountryMapper>();
-
-            services.AddRefitClient<IApprenticeshipStandardsApi>()
-                .ConfigureHttpClient(c => c.BaseAddress = Configuration.GetValue<Uri>("IfaStandardsApiUrl"));
 
             var vacanciesBaseUrl = Configuration.GetValue<string>("VacanciesApi:BaseUrl");
             var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(vacanciesBaseUrl) };
@@ -159,9 +147,6 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IUserDataCollection, UserDataCollection>();
             services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
-            services.AddTransient<IIfaStandardsCacheService, IfaStandardsCacheService>();
-            services.AddTransient<ICacheStorageService, CacheStorageService>();
-            services.AddTransient<IVacancyServiceApiHealthCheck, VacancyServiceApiHealthCheck>();
             services.AddTransient<ISessionService, SessionService>();
 
             services.AddTransient<IContentService, ContentService>();
@@ -169,18 +154,13 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<ConnectionMultiplexer>(sp => ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase},allowAdmin=true"));
             services.AddTransient<IDatabase>(client => client.GetService<ConnectionMultiplexer>().GetDatabase());
             
+            services.AddHttpClient<IApiClient, ApiClient>();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.AddMemoryCache();
 
-            var fatConfig = new FatSharedComponentsConfiguration();
-            Configuration.Bind("fatSharedComponents", fatConfig);
-            services.AddSingleton<IFatConfigurationSettings>(fs => fatConfig);
-
-            services.AddFatSharedComponents(fatConfig);
-
-            services.AddTransient<ICssViewModel, CampaignCssClasses>();
-
+           
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
             services.AddSession(options =>

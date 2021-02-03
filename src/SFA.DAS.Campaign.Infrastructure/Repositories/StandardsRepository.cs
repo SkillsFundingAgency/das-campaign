@@ -1,83 +1,34 @@
-﻿using SFA.DAS.Apprenticeships.Api.Client;
-using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Campaign.Infrastructure.Mappers;
-using SFA.DAS.Campaign.Infrastructure.Models;
-using SFA.DAS.Campaign.Infrastructure.Services;
-using System;
+﻿using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SFA.DAS.Campaign.Infrastructure.Api;
+using SFA.DAS.Campaign.Infrastructure.Api.Requests;
+using SFA.DAS.Campaign.Infrastructure.Api.Responses;
 
 namespace SFA.DAS.Campaign.Infrastructure.Repositories
 {
     public class StandardsRepository : IStandardsRepository
     {
-        private readonly IApprenticeshipProgrammeApiClient _apprenticeshipProgrammeApiClient;
-        private readonly IStandardApiClient _apprenticeshipStandardApiClient;
-        private readonly IStandardsMapper _standardsMapper;
-        private readonly IApprenticeshipStandardsApi _ifaApprenticeshipStandardsApi;
-        private readonly IIfaStandardsCacheService _standardsCacheService;
+        private readonly IApiClient _apiClient;
 
-        public StandardsRepository(IApprenticeshipProgrammeApiClient apprenticeshipProgrammeApiClient, IStandardsMapper standardsMapper, IApprenticeshipStandardsApi fullStandardsApi, IIfaStandardsCacheService standardsCacheService, IStandardApiClient apprenticeshipStandardApiClient)
+        public StandardsRepository(IApiClient apiClient)
         {
-            _apprenticeshipProgrammeApiClient = apprenticeshipProgrammeApiClient;
-            _standardsMapper = standardsMapper;
-            _ifaApprenticeshipStandardsApi = fullStandardsApi;
-            _standardsCacheService = standardsCacheService;
-            _apprenticeshipStandardApiClient = apprenticeshipStandardApiClient;
+            _apiClient = apiClient;
         }
 
-        public async Task<List<StandardResultItem>> GetBySearchTerm(string searchTerm)
+        public async Task<List<string>> GetRoutes()
         {
-            var result = (await _apprenticeshipProgrammeApiClient.SearchAsync(searchTerm))
-                .Where(c => !string.IsNullOrEmpty(c.StandardId) && c.Published)
-                .Select(_standardsMapper.Map)
-                .ToList();
+            var result = await _apiClient.Get<GetSectorsResponse>(new GetSectorsRequest()); 
 
-            return result;
+            return result.Sectors.Select(c=>c.Route).ToList();
         }
 
-        public async Task<List<StandardResultItem>> GetByRoute(string routeId)
+        public async Task<List<int>> GetByRoute(string routeId)
         {
-            var standardIds = await GetAll();
-
-            var standardRoutes = standardIds.Where(w => w.Route.ToLower() == routeId.ToLower()).ToList();
-            return standardRoutes;
+            var result = await _apiClient.Get<GetStandardsResponse>(new GetStandardsBySectorRequest(routeId));
+            return result.Standards.Select(x=>x.Id).ToList();
         }
 
-        public async Task<List<StandardResultItem>> GetAll()
-        {
-            string routeId;
-            var cacheKey = "FullStandardsAPI";
-
-            var cacheEntry = await _standardsCacheService.RetrieveFromCache<List<ApiApprenticeshipStandard>>(cacheKey);
-
-            if (cacheEntry == null)
-            {
-                // Key not in cache, so get data.
-                cacheEntry = (await _ifaApprenticeshipStandardsApi.GetAllStandardsAsync());
-
-                var fatStandardIds = (await GetAllIds()).ToList();
-                //Remove any null objects returned by the API and any which dont exist in FAT
-                cacheEntry = cacheEntry.Where(w => w != null && fatStandardIds.Contains(w.LarsCode.ToString())).ToList();
-
-                // Save data in cache.
-                await _standardsCacheService.SaveToCache(cacheKey, cacheEntry, new TimeSpan(30, 0, 0, 0),
-                    new TimeSpan(1, 0, 0, 0));
-            }
-
-            cacheEntry = cacheEntry.Where(c =>
-                    c.Status.ToLower() == "approved for delivery" & c.LarsCode != 0)
-                .ToList();
-            return cacheEntry.Select(_standardsMapper.Map).ToList();
-        }
-
-        private async Task<IEnumerable<string>> GetAllIds()
-        {
-            var result = (await _apprenticeshipStandardApiClient.GetAllAsync())
-                .Select(s => s.Id);
-
-            return result;
-        }
     }
 }

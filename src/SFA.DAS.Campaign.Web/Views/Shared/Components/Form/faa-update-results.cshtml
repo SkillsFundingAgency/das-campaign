@@ -5,21 +5,10 @@
         <label for="header-route" class="govuk-label fiu-visually-hidden">Select an interest</label>
         <select class="govuk-select " asp-for="Route" data-val="true" data-val-required="The interest field is required." id="header-route" name="Route">
             <option selected disabled hidden>Select interest</option>
-            <option value="Agriculture-environmental-and-animal-care">Agriculture, environmental and animal care</option>
-            <option value="Business-and-administration">Business and administration</option>
-            <option value="Care-services">Care services </option>
-            <option value="Catering-and-hospitality">Catering and hospitality</option>
-            <option value="Construction">Construction</option>
-            <option value="Creative-and-design">Creative and design</option>
-            <option value="Digital">Digital</option>
-            <option value="Education-and-childcare">Education and childcare</option>
-            <option value="Engineering-and-manufacturing">Engineering and manufacturing</option>
-            <option value="Hair-and-beauty">Hair and beauty</option>
-            <option value="Health-and-science">Health and science</option>
-            <option value="Legal-finance-and-accounting">Legal, finance and accounting</option>
-            <option value="Protective-services">Protective services</option>
-            <option value="Sales-marketing-and-procurement">Sales, marketing and procurement</option>
-            <option value="Transport-and-logistics">Transport and logistics</option>
+            @foreach (var route in Model.Routes)
+            {
+                <option value="@route.Replace(" ","-")">@route</option>    
+            }
         </select>
     </div>
     <div class="govuk-form-group fiu-inline-form-group">

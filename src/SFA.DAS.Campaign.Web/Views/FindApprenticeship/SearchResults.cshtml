@@ -1,9 +1,4 @@
-﻿@using SFA.DAS.Campaign.Web.Models.Components.Form
-@using SFA.DAS.Campaign.Web.ViewComponents.GoogleMaps
-@using SFA.DAS.Campaign.Web.ViewComponents.Sidebar
-@using SFA.DAS.Campaign.Web.ViewComponents.HeroHeading
-@using SFA.DAS.Campaign.Domain.Enums
-@using SFA.DAS.Campaign.Web.ViewComponents
+﻿@using SFA.DAS.Campaign.Domain.Enums
 @model SearchResultsViewModel
 
 @{
@@ -26,7 +21,7 @@
             @{
                 if (Model.TotalResults > 0)
                 {
-                    var findApprenticeshipSearchModel = new FindApprenticeshipSearchModel() { Distance = Model.Distance, Postcode = Model.Postcode };
+                    var findApprenticeshipSearchModel = new FindApprenticeshipSearchModel() { Distance = Model.Distance, Postcode = Model.Postcode, Routes = Model.Routes };
                     await Html.RenderPartialAsync("./Components/Form/faa-update-results", findApprenticeshipSearchModel);
                 }
             }

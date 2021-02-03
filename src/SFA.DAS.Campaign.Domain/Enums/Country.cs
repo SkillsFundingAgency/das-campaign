@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SFA.DAS.Campaign.Domain.Enums
+﻿namespace SFA.DAS.Campaign.Domain.Enums
 {
     public enum Country
     {

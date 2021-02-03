@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using SFA.DAS.Campaign.Application.DataCollection;
-using SFA.DAS.Campaign.Web.Constants;
 using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.Web.Controllers
@@ -53,7 +49,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             }
 
-            return View($"IndexV{version}", new RegisterInterestModel(url, version, route));
+            return View("Index", new RegisterInterestModel(url, version, route));
         }
 
         [HttpPost]
@@ -65,7 +61,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             { 
                 registerInterest.ShowRouteQuestion = this.RouteData.Values.ContainsKey("route") == false;
 
-                return View($"IndexV{registerInterest.Version}", registerInterest);
+                return View("Index", registerInterest);
             }
 
             try
@@ -90,28 +86,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
                 return View(registerInterest);
             }
-            //
-            // if (registerInterest.Route == RouteType.Employer)
-            // {
-            //     return RedirectToAction("downloads", registerInterest);
-            // }
-
-            //return Redirect($"{registerInterest.ReturnUrl}#{ModalIdConsts.RegisterThanksId}");
 
             return RedirectToAction("ThankYouForRegistering");
-        }
-
-        [HttpGet("downloads")]
-        public IActionResult Downloads(RegisterInterestModel registerInterest)
-        {
-            RegisterInterestModel model = new RegisterInterestModel();
-
-            if (registerInterest.FirstName != null)
-            {
-                model = registerInterest;
-            }
-
-            return View("EmployerDownloads", model);
         }
 
         [Route("/employers/thank-you-for-signing-up")]

@@ -21,5 +21,6 @@ namespace SFA.DAS.Campaign.Web.Models
         public string StaticMapUrl { get; set; }
         public VacancySearchViewModel filterModel => new VacancySearchViewModel();
         public Country Country { get; set; }
+        public List<string> Routes { get ; set ; }
     }
 }
