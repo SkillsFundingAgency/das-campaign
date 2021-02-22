@@ -10,20 +10,21 @@
 </div>
 
 <form id="how-they-work-levy-question" method="post">
-    <div class="govuk-form-group govuk-!-margin-bottom-0 @(ViewData.ModelState.IsValid ? "" : "govuk-form-group--error")">
+    <div class="govuk-form-group @(ViewData.ModelState.IsValid ? "" : "govuk-form-group--error")">
         <fieldset class="govuk-fieldset" aria-describedby="transfer-hint @(ViewData.ModelState.IsValid ? "" : "error-choose-2")">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h2 class="govuk-fieldset__heading">
                     As an employer, is your pay bill more than &pound;3 million per year?
                 </h2>
-                <p class="govuk-body">If you're receiving a transfer of apprenticeship funds from another employer, select 'Yes'.</p>
             </legend>
+
+            <p class="govuk-body">If you're receiving a transfer of apprenticeship funds from another employer, select 'Yes'.</p>
 
             <span id="error-choose-2" class="govuk-error-message" style="@(ViewData.ModelState.IsValid ? "display: none;" : "")">
                 <span class="fiu-vh">Error:</span> Please select an option before continuing
             </span>
 
-            <div class="govuk-radios govuk-!-margin-top-3">
+            <div class="govuk-radios">
                 <div class="govuk-radios__item">
                     <input id="levyPayerYes" asp-for="LevyStatus" value="Levy" type="radio" class="govuk-radios__input" />
                     <label class="govuk-label govuk-radios__label" for="levyPayerYes">Yes</label>
@@ -47,11 +48,3 @@
 
     <p class="govuk-body">Depending on your answer, we'll show you relevant information about government funding.</p>
 </form>
-
-<script>
-    window.onload = function() {//disable js form val
-        jQuery('#how-they-work-levy-question').validate({
-            onsubmit : false
-        });
-    };
-</script>
