@@ -50,5 +50,11 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return View("~/Views/LandingPages/Employers/SettingItUp.cshtml");
         }
+
+        [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
+        public IActionResult TheRoadToAQualityApprenticeship()
+        {
+            return View("~/Views/LandingPages/Employers/TheRoadToAQualityApprenticeship.cshtml");
+        }
     }
 }
