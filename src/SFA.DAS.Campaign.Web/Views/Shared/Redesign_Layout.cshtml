@@ -1,3 +1,7 @@
+@{
+    var frontendVersion = "0.2.47";
+}
+
 <!doctype html>
 <html lang="en" class="fiu-template">
 
@@ -14,16 +18,16 @@
 	<meta name="theme-color" content="#0b0c0c" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-	<link rel="apple-touch-icon" href="/fiu/assets/images/apple-touch-icon.png" />
+	<link rel="apple-touch-icon" href="/fiu/assets/images/apple-touch-icon.png?@frontendVersion" />
 
 	<link rel="stylesheet" href="https://use.typekit.net/xwy5uap.css" />
-	<link rel="stylesheet" href="/fiu/css/all.css" />
+	<link rel="stylesheet" href="/fiu/css/all.css?@frontendVersion" />
 
     @if(ViewBag.Canonical != null ) {
         <link rel="canonical" href="https://www.apprenticeships.gov.uk@ViewBag.Canonical" />
     }
 
-	<meta property="og:image" content="/fiu/assets/images/opengraph.png" cdn-prop />
+	<meta property="og:image" content="/fiu/assets/images/opengraph.png?@frontendVersion" cdn-prop />
 
 </head>
 
@@ -124,7 +128,7 @@
     <partial name="./Redesign/Banners/_CookieBanner" />
     }
 
-	<script src="/fiu/js/app.min.js"></script>
+	<script src="/fiu/js/app.min.js?@frontendVersion"></script>
     <script src="/js/dataLayerPushes.js" no-cdn></script>
 
 </body>
