@@ -15,5 +15,11 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return View("~/Views/Hubs/EmployersHub.cshtml");
         }
+
+        [HttpGet("/parents-educators")]
+        public IActionResult ParentsEducators()
+        {
+            return View("~/Views/Hubs/ParentsEducatorsHub.cshtml");
+        }
     }
 }

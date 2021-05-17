@@ -1,0 +1,85 @@
+@{
+    ViewBag.Title = "Inspire and support a prospective apprentice";
+    Layout = "Redesign_Layout_ParentsEducatorsHub";
+
+    ViewBag.PageTitle = "Inspire and support a prospective apprentice";
+    ViewBag.PageSummary = "Find out how you can support young people on their journey to becoming an apprentice as an educator, parent, carer or guardian.";
+
+    ViewBag.HubPage = true;
+    ViewBag.HeadingImage = "apprentice-ella.jpg";
+}
+
+@section PageHeaderContent {
+    <h2 class="govuk-heading-l fiu-page-header__sub-heading">What you need to know</h2>
+}
+
+<div class="fiu-grad-row">
+    <span class="fiu-grad-row__bg"></span>
+    <div class="fiu-width-container">
+        <div class="govuk-grid-row fiu-flex-row">
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/TheRoadToAQualityApprenticeship"/>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/RealStories"/>
+            </div>
+            
+            <div class="govuk-grid-column-one-half">
+                <partial name="Redesign/_FindTheRightApprenticeship"/>
+            </div>
+        </div>
+        <div class="govuk-grid-row fiu-flex-row">
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/Benefits"/>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/HiringAnApprentice"/>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/Upskilling"/>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/Funding"/>
+            </div>
+            
+        </div>
+        <div class="govuk-grid-row fiu-flex-row">
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/Training"/>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/EndPointAssessments"/>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/ChooseTheRightApprenticeship"/>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/ChooseATrainingProvider"/>
+            </div>
+            
+        </div>
+
+        <div class="govuk-grid-row fiu-flex-row">
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/SettingUp"/>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/BrowseBySector"/>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <partial name="Redesign/Cards/Employers/FinancialIncentives"/>
+            </div>
+        </div>
+        
+        <hr class="fiu-section-break fiu-section-break--l"/>
+        <div class="govuk-grid-row fiu-flex-row">
+            <div class="govuk-grid-column-one-half">
+                <partial name="Redesign/_GetSupportEmployer"/>
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <partial name="Redesign/_RegisterInterestEmployer"/>
+            </div>
+        </div>
+        <hr class="fiu-section-break fiu-section-break--l"/>
+    </div>
+</div>

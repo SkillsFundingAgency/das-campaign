@@ -1,0 +1,120 @@
+@{
+    Layout = "Redesign_Layout";
+    ViewBag.Section = "parents-educators";
+}
+
+<nav class="fiu-navigation fiu-navigation--parents-educators" data-fiu-navigation="true">
+	<div class="govuk-width-container">
+		<a href="#navigation" class="fiu-navigation__toggle" data-fiu-nav-toggle="true">
+            <span class="fiu-navigation__toggle-label" id="nav-label">Menu</span>
+            <span class="fiu-navigation__toggle-icon"></span>
+        </a>
+        <nav class="fiu-navigation__nav" data-fiu-nav-menu="true" id="navigation">
+            <h3 class="govuk-heading-s fiu-navigation__heading" id="fiu-nav-title-parents-educators">Parents &amp; Educators</h3>
+            <ul class="fiu-navigation__list" aria-labelledby="fiu-nav-title-parents-educators">
+                <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-1" asp-controller="LandingPage" asp-action="EmployersAreTheyRightForYou" class="fiu-navigation__link">Are they right for you?</a> </li>
+                <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-2" asp-controller="LandingPage" asp-action="EmployersHowDoTheyWork" class="fiu-navigation__link">How do they work?</a> </li>
+                <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-3" asp-controller="LandingPage" asp-action="SettingItUp"  class="fiu-navigation__link">Setting it up</a> </li>
+                <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-4" asp-controller="Guides" asp-action="Index" class="fiu-navigation__link">Employer guides</a> </li>
+            </ul>
+		</nav>
+	</div>
+</nav>
+<partial name="./Redesign/_Alert" />
+<main id="main" class="fiu-main-wrapper">
+    @if (ViewBag.HidePageHeader is null)
+    {
+	<div class="fiu-page-header">
+        <div class="fiu-width-container">
+            @if (ViewBag.HeadingImage != null)
+            {
+            <div class="fiu-page-header__image-wrap">
+                <span class="fiu-page-header__image-mask"></span>
+                <img src="/fiu/assets/images/page-headers/@ViewBag.HeadingImage" alt="" class="fiu-page-header__image fiu-fade-in" />
+            </div>
+            }
+            <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
+                <ol class="govuk-breadcrumbs__list">
+                    <li class="govuk-breadcrumbs__list-item">
+                        <a class="govuk-breadcrumbs__link" href="/" id="fiu-breadcrumb-link-home">Home</a>
+                    </li>
+                    @if (ViewBag.LandingPageSlug is null)
+                    {
+                        <li class="govuk-breadcrumbs__list-item">
+                            Parents &amp; Educators
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="govuk-breadcrumbs__list-item">
+                            <a asp-controller="Hub" asp-action="ParentsEducators" class="govuk-breadcrumbs__link">Parents &amp; Educators</a>
+                        </li>
+                        @if (ViewBag.ArticlePageSlug is null)
+                        {
+                            <li class="govuk-breadcrumbs__list-item">
+                                @ViewBag.LandingPageTitle
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="govuk-breadcrumbs__list-item">
+                                <a href="/parents-educators/@ViewBag.LandingPageSlug"  class="govuk-breadcrumbs__link">@ViewBag.LandingPageTitle</a>
+                            </li>
+                            if (ViewBag.IndustryPageTitle is null)
+                            {
+                                <li class="govuk-breadcrumbs__list-item">
+                                    @ViewBag.ArticlePageTitle
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="govuk-breadcrumbs__list-item">
+                                    <a href="/parents-educators/@ViewBag.ArticlePageSlug" class="govuk-breadcrumbs__link">@ViewBag.ArticlePageTitle</a>
+                                </li>
+                                <li class="govuk-breadcrumbs__list-item">
+                                    @ViewBag.IndustryPageTitle
+                                </li>
+                            }
+
+                        }
+                    }
+                </ol>
+            </div>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds fiu-page-header__wrap">
+                    @if (ViewBag.HubPage == true)
+                    {
+                        <div class="fiu-feature-text">
+                            <strong class="fiu-tag fiu-tag--parents-educators fiu-page-header__tag">Parents &amp; Educators</strong>
+                            <h1 class="govuk-heading-xl fiu-page-heading__title-hub">@ViewBag.PageTitle</h1>
+                        </div>
+                        @if (ViewBag.PageSummary != null) { <p class="fiu-page-header__content-l govuk-!-width-two-thirds">@ViewBag.PageSummary</p> }
+                    }
+                    else
+                    {
+                        <strong class="fiu-tag fiu-tag--parents-educators fiu-page-header__tag fiu-feature-text">Parents &amp; Educators</strong>
+                        <h1 class="govuk-heading-xl fiu-page-heading__title ">
+                            @if (ViewBag.PageCaption != null) {
+                                <span class="govuk-caption-xl">@ViewBag.PageCaption</span>
+                            }
+                            @ViewBag.PageTitle
+                        </h1>
+                        @if (ViewBag.PageSummary != null) { <p class="fiu-page-header__content govuk-!-width-two-thirds">@ViewBag.PageSummary</p> }
+                    }
+                    <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
+                </div>
+            </div>
+            @RenderSection("PageHeaderContent", required: false)
+        </div>
+	</div>
+    }
+    @RenderBody()
+    @if (ViewBag.HidePhaseBanner is null)
+    {
+    <div class="fiu-phase-banner">
+        <div class="fiu-width-container">
+            <p class="fiu-phase-banner__content"><strong class="fiu-tag fiu-phase-banner__tag">BETA</strong><span class="fiu-vh">:</span> This is a new service - your <a href="https://www.smartsurvey.co.uk/s/S2NQQ" class="fiu-link" id="fiu-status-link-feedback" target="_blank">feedback</a> will help us to improve it.</p>
+        </div>
+    </div>
+    }
+</main>

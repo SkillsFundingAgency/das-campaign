@@ -58,6 +58,11 @@
                             Employers
                         </a>
                     </li>
+                    <li class="fiu-header__navigation-item @(ViewBag.Section == "parents-educators" ? "fiu-header__navigation-item--parents-educators-active" : "")">
+                        <a class="fiu-header__link" asp-controller="Hub" asp-action="ParentsEducators" id="fiu-header-link-parents-educators">
+                            Parents &amp; Educators
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
