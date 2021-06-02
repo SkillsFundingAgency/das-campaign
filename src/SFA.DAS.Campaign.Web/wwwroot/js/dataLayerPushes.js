@@ -1,9 +1,9 @@
 
 window.onload = function(event) {
-    var pageTitle = document.querySelector('h1.govuk-heading-xl').innerText;
     // Form validation - dataLayer pushes
     var errorSummary = document.querySelector('.govuk-error-summary');
     if (errorSummary !== null) {
+        var pageTitle = document.querySelector('h1.govuk-heading-xl').innerText;
         var validationErrors = errorSummary.querySelectorAll('ul.govuk-error-summary__list li');
         var numberOfErrors = validationErrors.length;
         var validationMessage = 'Form validation';
@@ -21,6 +21,7 @@ window.onload = function(event) {
     // Radio button selection - dataLayer pushes
     var radioWrapper = document.querySelector('.govuk-radios');
     if (radioWrapper !== null) {
+        var pageTitle = document.querySelector('h1.govuk-heading-xl').innerText;
         var radios = radioWrapper.querySelectorAll('input[type=radio]');
         var labelText;
         var dataLayerObj;
