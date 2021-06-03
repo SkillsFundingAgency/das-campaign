@@ -109,13 +109,5 @@
 	</div>
     }
     @RenderBody()
-    @if (ViewBag.HidePhaseBanner is null)
-    {
-    <div class="fiu-phase-banner">
-        <div class="fiu-width-container">
-            <p class="fiu-phase-banner__content"><strong class="fiu-tag fiu-phase-banner__tag">BETA</strong><span class="fiu-vh">:</span> This is a new service - your <a href="https://www.smartsurvey.co.uk/s/S2NQQ" class="fiu-link" id="fiu-status-link-feedback" target="_blank">feedback</a> will help us to improve it.</p>
-        </div>
-    </div>
-    }
     <partial name="Redesign/Banners/_ReadyToGetStartedEmployers"/>
 </main>
