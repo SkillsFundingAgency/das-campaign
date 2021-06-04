@@ -16,10 +16,10 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             return View("~/Views/Hubs/EmployersHub.cshtml");
         }
 
-        [HttpGet("/parents-educators")]
-        public IActionResult ParentsEducators()
+        [HttpGet("/influencers")]
+        public IActionResult Influencers()
         {
-            return View("~/Views/Hubs/ParentsEducatorsHub.cshtml");
+            return View("~/Views/Hubs/InfluencersHub.cshtml");
         }
     }
 }
