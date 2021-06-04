@@ -56,5 +56,38 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return View("~/Views/LandingPages/Employers/TheRoadToAQualityApprenticeship.cshtml");
         }
+
+
+        [HttpGet("/influencers/become-an-ambassador")]
+        public IActionResult BecomeAnAmbassador()
+        {
+            return View("~/Views/LandingPages/Influencers/BecomeAnAmbassador.cshtml");
+        }
+
+        [HttpGet("/influencers/browse-apprenticeships")]
+        public IActionResult BrowseApprenticeships()
+        {
+            return View("~/Views/LandingPages/Influencers/BrowseApprenticeships.cshtml");
+        }
+
+        [HttpGet("/influencers/how-they-work")]
+        public IActionResult HowTheyWork()
+        {
+            return View("~/Views/LandingPages/Influencers/HowTheyWork.cshtml");
+        }
+
+        [HttpGet("/influencers/inspirational-resources")]
+        public IActionResult InspirationalResources()
+        {
+            return View("~/Views/LandingPages/Influencers/InspirationalResources.cshtml");
+        }
+
+
+        [HttpGet("/influencers/request-support")]
+        public IActionResult RequestSupport()
+        {
+            return View("~/Views/LandingPages/Influencers/RequestSupport.cshtml");
+        }
+
     }
 }
