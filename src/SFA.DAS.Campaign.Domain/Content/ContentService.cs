@@ -18,7 +18,7 @@ namespace SFA.DAS.Campaign.Domain.Content
             _redisConnection = redisConnection;
         }
         
-        public async Task<Page<T>> GetPage<T>(string slug) where T : IContent
+        public async Task<Page<T>> GetPage<T>(string slug) where T : IContentType
         {
             var contentType = typeof(T).Name.ToLower();
             var contentEntry = (await _redisDatabase.StringGetAsync($"{contentType}_{slug}")).ToString();
