@@ -83,7 +83,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         }
 
 
-        [HttpGet("/influencers/request-support")]
+        [HttpGet("/influencers/request-ask-support")]
         public IActionResult RequestSupport()
         {
             return View("~/Views/LandingPages/Influencers/RequestSupport.cshtml");
