@@ -32,6 +32,12 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return View("~/Views/LandingPages/Apprentices/GettingStarted.cshtml");
         }
+
+        [HttpGet("/apprentices/employer-profiles")]
+        public IActionResult EmployerProfiles()
+        {
+            return View("~/Views/LandingPages/Apprentices/EmployerProfiles.cshtml");
+        }
         
         [HttpGet("/employers/are-they-right-for-you")]
         public IActionResult EmployersAreTheyRightForYou()
@@ -56,7 +62,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return View("~/Views/LandingPages/Employers/TheRoadToAQualityApprenticeship.cshtml");
         }
-
 
         [HttpGet("/influencers/become-an-ambassador")]
         public IActionResult BecomeAnAmbassador()
