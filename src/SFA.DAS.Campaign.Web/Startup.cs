@@ -27,6 +27,8 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
+using Contentful.Core;
+using Contentful.Core.Configuration;
 using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api;
@@ -84,6 +86,9 @@ namespace SFA.DAS.Campaign.Web
             var mappingConfig = new MappingConfiguration();
             Configuration.Bind("Mapping", mappingConfig);
 
+            var contentfulOptionsConfig = new ContentfulOptions();
+            Configuration.Bind("ContentfulOptions", contentfulOptionsConfig);
+
             services.Configure<MappingConfiguration>(Configuration.GetSection("Mapping"));
 
             var queueStorageConnectionString = Configuration.Get<CampaignConfiguration>().QueueConnectionString;
@@ -129,7 +134,13 @@ namespace SFA.DAS.Campaign.Web
             });
             services.AddSingleton<IPostcodeApiConfiguration>(postcodeConfig);
             services.AddSingleton<IMappingConfiguration>(mappingConfig);
-            
+
+            services.AddSingleton<IContentfulClient>(x =>
+            {
+                contentfulOptionsConfig.UsePreviewApi = true;
+                return new ContentfulClient(new HttpClient(), contentfulOptionsConfig);
+            });
+
             services.AddTransient<IStandardsRepository, StandardsRepository>();
             services.AddTransient<IVacanciesMapper, VacanciesMapper>();
             services.AddTransient<IVacanciesRepository, VacanciesRepository>();
