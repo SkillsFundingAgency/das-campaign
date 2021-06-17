@@ -1,28 +1,36 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 
 namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 {
     public class ArticleController : Controller
     {
-        private readonly IContentService _contentService;
+        private readonly IMediator _mediator;
 
-        public ArticleController(IContentService contentService)
+        public ArticleController(IMediator mediator)
         {
-            _contentService = contentService;
+            _mediator = mediator;
         }
-        
+
         [HttpGet("/{hub}/{slug}")]
-        public async Task<IActionResult> Index(string hub, string slug)
+        public async Task<IActionResult> GetArticleAsync(string hub, string slug, CancellationToken cancellationToken = default)
         {
-            var articlePage = await _contentService.GetPage<Article>(slug);
-            if (articlePage is null)
+            var result = await _mediator.Send(new GetArticleQuery
             {
-                throw new Exception($"Article not found: {slug}", null);
+                Hub = hub, Slug = slug
+            }, cancellationToken).ConfigureAwait(false);
+
+            if (result.Page == null)
+            {
+                return View("~/Views/Error/PageNotFound.cshtml");
             }
-            return View($"~/Views/CMS/Article.cshtml", articlePage);
+         
+            return View($"~/Views/CMS/Article.cshtml", result);
         }
     }
 }

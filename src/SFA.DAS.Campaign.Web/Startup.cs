@@ -149,8 +149,6 @@ namespace SFA.DAS.Campaign.Web
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
             services.AddTransient<ISessionService, SessionService>();
 
-            services.AddTransient<IContentService, ContentService>();
-            
             services.AddTransient<ConnectionMultiplexer>(sp => ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase},allowAdmin=true"));
             services.AddTransient<IDatabase>(client => client.GetService<ConnectionMultiplexer>().GetDatabase());
             
