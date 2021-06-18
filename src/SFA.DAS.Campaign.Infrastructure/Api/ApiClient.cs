@@ -4,6 +4,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using SFA.DAS.Campaign.Infrastructure.Api.Converters;
+using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Models.Configuration;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api
@@ -35,7 +37,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonConvert.DeserializeObject<TResponse>(json);    
+                return JsonConvert.DeserializeObject<TResponse>(json, new ArticleJsonConverter());    
             }
             
             response.EnsureSuccessStatusCode();

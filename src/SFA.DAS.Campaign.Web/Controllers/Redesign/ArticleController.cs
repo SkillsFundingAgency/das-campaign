@@ -25,7 +25,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
                 Hub = hub, Slug = slug
             }, cancellationToken).ConfigureAwait(false);
 
-            if (result.Page == null)
+            if (result.Page.Content == null)
             {
                 return View("~/Views/Error/PageNotFound.cshtml");
             }

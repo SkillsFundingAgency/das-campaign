@@ -1,6 +1,6 @@
 ﻿using SFA.DAS.Campaign.Application.Configuration;
 
-namespace SFA.DAS.Campaign.Models.Configuration
+namespace SFA.DAS.Campaign.Infrastructure.Configuration
 {
     public class CampaignConfiguration
     {
@@ -16,5 +16,6 @@ namespace SFA.DAS.Campaign.Models.Configuration
     {
         public string BaseUrl { get; set; }
         public string Key { get; set; }
+        public bool Local { get;set; }
     }
 }

@@ -12,6 +12,7 @@ using Moq.Protected;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Infrastructure.Api;
+using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Models.Configuration;
 
 namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api

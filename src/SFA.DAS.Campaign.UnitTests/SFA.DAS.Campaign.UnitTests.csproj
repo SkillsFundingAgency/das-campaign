@@ -19,8 +19,5 @@
     <ProjectReference Include="..\SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Web\SFA.DAS.Campaign.Web.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\Api\Queries\" />
-  </ItemGroup>
 
 </Project>
