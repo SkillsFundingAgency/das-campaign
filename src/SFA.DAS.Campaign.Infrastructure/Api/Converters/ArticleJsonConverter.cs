@@ -36,8 +36,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             }
 
             var jObject = JObject.Load(reader);
+            var cmsContent = new Root();
+            serializer.Populate(jObject.CreateReader(), cmsContent);
 
-            return PopulatePageModel(jObject.CreateReader());
+            return PopulatePageModel(cmsContent);
         }
 
         public override bool CanConvert(Type objectType)
@@ -45,11 +47,63 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             return typeof(Page<Article>).IsAssignableFrom(objectType);
         }
 
-        private Page<Article> PopulatePageModel(JsonReader reader)
+        private Page<Article> PopulatePageModel(Root cmsContent)
         {
             var pageModel = new Page<Article>();
 
-            pageModel.
+            foreach (var content in cmsContent.MainContent.Items)
+            {
+                if (content.Type == "paragraph")
+                {
+                    Console.Write("");
+                }
+            }
+
+            return pageModel;
         }
     }
+}
+
+public class PageAttributes
+{
+    public int PageType { get; set; }
+    public string Title { get; set; }
+    public string MetaDescription { get; set; }
+    public string Slug { get; set; }
+    public string HubType { get; set; }
+    public string Summary { get; set; }
+}
+
+public class Item
+{
+    public Item()
+    {
+        Values = new List<string>();
+        TableValue = new List<List<string>>();
+    }
+    public List<string> Values { get; set; }
+    public string Type { get; set; }
+    public List<List<string>> TableValue { get; set; }
+}
+
+public class MainContent
+{
+    public List<Item> Items { get; set; }
+}
+
+public class RelatedArticle
+{
+    public int PageType { get; set; }
+    public string Title { get; set; }
+    public string MetaDescription { get; set; }
+    public string Slug { get; set; }
+    public string HubType { get; set; }
+    public string Summary { get; set; }
+}
+
+public class Root
+{
+    public PageAttributes PageAttributes { get; set; }
+    public MainContent MainContent { get; set; }
+    public List<RelatedArticle> RelatedArticles { get; set; }
 }

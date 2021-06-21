@@ -17,6 +17,23 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             _mediator = mediator;
         }
 
+        [HttpGet("/{hub}/{slug}")]
+        public async Task<IActionResult> GetArticleAsync(string hub, string slug, CancellationToken cancellationToken = default)
+        {
+            var result = await _mediator.Send(new GetArticleQuery
+            {
+                Hub = hub,
+                Slug = slug
+            }, cancellationToken).ConfigureAwait(false);
+
+            if (result.Page == null)
+            {
+                return View("~/Views/Error/PageNotFound.cshtml");
+            }
+
+            return View($"~/Views/CMS/Article.cshtml", result);
+        }
+
         [HttpGet("/apprentices/benefits-apprenticeship")]
         public IActionResult BenefitsApprenticeship()
         {
@@ -124,15 +141,5 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return View("~/Views/Articles/Employers/FundingNonLevy.cshtml");
         }
-     
-	 public async Task<IActionResult> Index(string hub, string slug)
-        {
-            var articlePage = await _contentService.GetPage<Article>(slug);
-            if (articlePage is null)
-            {
-                throw new Exception($"Article not found: {slug}", null);
-            }
-            return View($"~/Views/CMS/Article.cshtml", articlePage);
-        }   
     }
 }
