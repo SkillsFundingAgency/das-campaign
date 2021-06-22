@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
+using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Models.Configuration;
 
@@ -13,11 +14,13 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
     public class ApiClient : IApiClient
     {
         private readonly HttpClient _httpClient;
+        private readonly IHtmlControlAbstractFactory _htmlControlAbstractFactory;
         private readonly OuterApiConfiguration _config;
 
-        public ApiClient (HttpClient httpClient, IOptions<CampaignConfiguration> config)
+        public ApiClient (HttpClient httpClient, IOptions<CampaignConfiguration> config, IHtmlControlAbstractFactory htmlControlAbstractFactory)
         {
             _httpClient = httpClient;
+            _htmlControlAbstractFactory = htmlControlAbstractFactory;
             _config = config.Value.OuterApi;
             _httpClient.BaseAddress = new Uri(_config.BaseUrl);
         }
@@ -38,9 +41,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
             {
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-
-                return JsonConvert.DeserializeObject<TResponse>(json);
-                //return JsonConvert.DeserializeObject<TResponse>(json, new ArticleJsonConverter());
+                return JsonConvert.DeserializeObject<TResponse>(json, new ArticleJsonConverter(_htmlControlAbstractFactory));
             }
             
             response.EnsureSuccessStatusCode();

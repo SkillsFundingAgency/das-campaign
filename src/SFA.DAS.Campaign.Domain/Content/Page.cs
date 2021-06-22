@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace SFA.DAS.Campaign.Domain.Content
 {
     public class Page<T>
@@ -7,5 +9,6 @@ namespace SFA.DAS.Campaign.Domain.Content
         public MetaContent MetaContent { get; set; }
         public HubType HubType { get; set; }
         public T Content { get; set; } 
+        public IEnumerable<RelatedPage> RelatedPages { get; set; }
     }
 }
