@@ -37,7 +37,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonConvert.DeserializeObject<TResponse>(json, new ArticleJsonConverter());    
+
+
+                return JsonConvert.DeserializeObject<TResponse>(json);
+                //return JsonConvert.DeserializeObject<TResponse>(json, new ArticleJsonConverter());
             }
             
             response.EnsureSuccessStatusCode();

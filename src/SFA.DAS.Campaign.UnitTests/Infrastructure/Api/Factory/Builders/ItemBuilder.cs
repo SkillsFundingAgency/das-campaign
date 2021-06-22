@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 
 namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory.Builders
 {

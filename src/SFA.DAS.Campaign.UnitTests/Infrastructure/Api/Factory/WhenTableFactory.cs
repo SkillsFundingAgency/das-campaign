@@ -4,6 +4,7 @@ using System.Text;
 using FluentAssertions;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
+using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory.Builders;
 using SFA.DAS.Testing.AutoFixture;

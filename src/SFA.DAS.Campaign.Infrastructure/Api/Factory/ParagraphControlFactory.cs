@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
+using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Factory
 {

@@ -46,11 +46,11 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             return View("~/Views/Articles/Apprentices/HelpShapeTheirCareer.cshtml");
         }
 
-        [HttpGet("/apprentices/becoming-apprentice")]
-        public IActionResult BecomingAnApprentice()
-        {
-            return View("~/Views/Articles/Apprentices/BecomingAnApprentice.cshtml");
-        }
+        //[HttpGet("/apprentices/becoming-apprentice")]
+        //public IActionResult BecomingAnApprentice()
+        //{
+        //    return View("~/Views/Articles/Apprentices/BecomingAnApprentice.cshtml");
+        //}
 
         [HttpGet("/apprentices/applying-apprenticeship")]
         public IActionResult ApplyingForAnApprenticeship()

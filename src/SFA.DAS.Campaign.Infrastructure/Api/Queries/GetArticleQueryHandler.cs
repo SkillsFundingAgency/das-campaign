@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -31,6 +29,16 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
             {
                 Page = article
             };
+        }
+
+        private static Page<Article> CheckArticleForValidity(Page<Article> article)
+        {
+            if (string.IsNullOrWhiteSpace(article.Content.Summary) && (article.Content.PageControls == null || article.Content.PageControls.Any()))
+            {
+                return null;
+            }
+
+            return article;
         }
     }
 }
