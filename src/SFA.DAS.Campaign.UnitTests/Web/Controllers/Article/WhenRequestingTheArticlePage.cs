@@ -32,7 +32,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
             var controllerResult = await InstantiateController<ViewResult>(controller);
 
             controllerResult.AssertThatTheObjectResultIsValid();
-            controllerResult.AssertThatTheObjectValueIsValid<GetArticleQueryResult<Domain.Content.Article>>();
+            controllerResult.AssertThatTheObjectValueIsValid<Page<Domain.Content.Article>>();
             controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/CMS/Article.cshtml");
         }
 
