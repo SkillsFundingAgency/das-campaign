@@ -15,6 +15,7 @@ using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Vacancies;
+using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Geocode;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
@@ -120,6 +121,14 @@ namespace SFA.DAS.Campaign.Web.Helpers
         {
             services.AddTransient<IUserDataCollection, UserDataCollection>();
             services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
+        }
+
+        public static void ConfigureFactorys(this IServiceCollection services)
+        {
+            services.AddTransient<IHtmlControlAbstractFactory, HtmlControlAbstractFactory>();
+            services.AddTransient<IHtmlControlFactory, ParagraphControlFactory>();
+            services.AddTransient<IHtmlControlFactory, TableControlFactory>();
+            services.AddTransient<IHtmlControlFactory, UnorderedListControlFactory>();
         }
     }
 }

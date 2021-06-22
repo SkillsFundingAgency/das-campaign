@@ -80,6 +80,7 @@ namespace SFA.DAS.Campaign.Web
             services.ConfigureSfaRepositories();
             services.ConfigureSfaMappers();
             services.ConfigureSfaDataCollection();
+            services.ConfigureFactorys();
 
             services.AddMediatR(typeof(GetArticleQuery).Assembly);
 

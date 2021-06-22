@@ -31,7 +31,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
                 return View("~/Views/Error/PageNotFound.cshtml");
             }
 
-            return View($"~/Views/CMS/Article.cshtml", result);
+            return View($"~/Views/CMS/Article.cshtml", result.Page);
         }
 
         [HttpGet("/apprentices/benefits-apprenticeship")]
