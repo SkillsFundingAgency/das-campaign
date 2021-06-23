@@ -17,6 +17,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Requests
             _local = local;
         }
 
-        public string GetUrl => $"{(_local ? "" : "article")}/{_hub}/{_slug}";
+        public string GetUrl => $"article/{_hub}/{_slug}";
     }
 }
