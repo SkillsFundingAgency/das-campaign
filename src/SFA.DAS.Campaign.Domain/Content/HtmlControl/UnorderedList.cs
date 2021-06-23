@@ -6,6 +6,11 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
 {
     public class UnorderedList : IHtmlControl
     {
-        public IEnumerable<string> Items { get; set; }
+        public UnorderedList()
+        {
+            Items = new List<string>();
+        }
+
+        public List<string> Items { get; set; }
     }
 }

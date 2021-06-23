@@ -14,7 +14,8 @@ namespace SFA.DAS.Campaign.Web.Renderers
         {
             _controlRenderers = new List<IControlRenderer>()
             {
-                new ParagraphControlRenderer()
+                new ParagraphControlRenderer(),
+                new UnorderedListControlRenderer()
             };
         }
 

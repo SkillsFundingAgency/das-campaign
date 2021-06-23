@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
@@ -10,25 +9,25 @@ using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 
 namespace SFA.DAS.Campaign.Web.Renderers
 {
-    public class ParagraphControlRenderer : IControlRenderer
+    public class UnorderedListControlRenderer : IControlRenderer
     {
         public bool SupportsContent(IHtmlControl content)
         {
-            return  content is Paragraph;
+            return content is UnorderedList;
         }
 
         public HtmlString Render(IHtmlControl content)
         {
-            var control = content as Paragraph;
+            var control = content as UnorderedList;
 
-            var para = new TagBuilder("p");
+            var ul = new TagBuilder("ul");
 
-            foreach (var value in control.Content)
+            foreach (var value in control.Items)
             {
-                para.InnerHtml.AppendHtml(value.CheckForAndConstructHyperlinks());
+                ul.InnerHtml.AppendHtml($"<li>{value.CheckForAndConstructHyperlinks()}</li>");
             }
 
-            string result = para.WriteString();
+            string result = ul.WriteString();
 
             return new HtmlString(result);
         }
