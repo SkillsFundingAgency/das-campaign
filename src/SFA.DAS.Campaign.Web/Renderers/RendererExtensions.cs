@@ -26,7 +26,18 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 return controlValue;
             }
 
-            return $"<a href=\"{url.Groups[1].Value}\">{linkText.Groups[1].Value}</a>";
+            var sb = new StringBuilder();
+            sb.Append($"<a href=\"{url.Groups[1].Value}\"");
+
+            if (url.Groups[1].Value.StartsWith("http", StringComparison.OrdinalIgnoreCase))
+            {
+                sb.Append(" title=\"\" rel=\"external\" target=\"_blank\"");
+            }
+
+            sb.Append(">");
+            sb.Append($"{linkText.Groups[1].Value}</a>");
+
+            return sb.ToString();
         }
 
         public static string WriteString(this TagBuilder builder)

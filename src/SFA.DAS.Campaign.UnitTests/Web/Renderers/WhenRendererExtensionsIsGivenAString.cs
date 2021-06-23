@@ -12,10 +12,10 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         [Test]
         public void ThenIfItContainsMarkupAFormedHyperLinkIsReturned()
         {
-            var value = "[Scotland](https://www.apprenticeships.scot/)";
+            var value = "[Scotland](/scotland/)";
 
             var actual = value.CheckForAndConstructHyperlinks();
-            actual.Should().Be("<a href=\"https://www.apprenticeships.scot/\">Scotland</a>");
+            actual.Should().Be("<a href=\"/scotland/\">Scotland</a>");
         }
 
         [Test]
@@ -25,6 +25,15 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
 
             var actual = value.CheckForAndConstructHyperlinks();
             actual.Should().Be("no markup");
+        }
+
+        [Test]
+        public void ThenIfItContainsMarkupAFormedHyperLinkAndItIsAnExternalUriIsReturnedWithTargetSet()
+        {
+            var value = "[Scotland](https://www.apprenticeships.scot/)";
+
+            var actual = value.CheckForAndConstructHyperlinks();
+            actual.Should().Be("<a href=\"https://www.apprenticeships.scot/\" title=\"\" rel=\"external\" target=\"_blank\">Scotland</a>");
         }
     }
 }

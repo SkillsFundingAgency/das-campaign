@@ -37,5 +37,15 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             actual.Value.Should().NotBeNullOrWhiteSpace();
             actual.Value.Should().Be("<ul><li>item 1</li></ul>");
         }
+
+        [Test, MoqAutoData]
+        public void IsPassedAnObjectOfUnorderedListWithMultipleItemsThenRenderReturnsTheHtml(UnorderedListControlRenderer renderer)
+        {
+            var list = UnorderedListBuilder.New().AddItem("item 1").AddItem("item 2").Build();
+            var actual = renderer.Render(list);
+
+            actual.Value.Should().NotBeNullOrWhiteSpace();
+            actual.Value.Should().Be("<ul><li>item 1</li><li>item 2</li></ul>");
+        }
     }
 }
