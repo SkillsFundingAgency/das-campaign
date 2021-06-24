@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoFixture.NUnit3;
 using FluentAssertions;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
@@ -12,7 +13,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
 {
     public class WhenParagraphControlRenderer
     {
-        [Test, MoqAutoData]
+        [Test, AutoData]
         public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Of_Paragraph_Then_Supports_Content_Returns_True(Paragraph paragraph, ParagraphControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(paragraph);
@@ -20,7 +21,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             actual.Should().BeTrue();
         }
 
-        [Test, MoqAutoData]
+        [Test, AutoData]
         public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Not_Of_Paragraph_Then_Supports_Content_Returns_False(Table table, ParagraphControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(table);
@@ -28,7 +29,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             actual.Should().BeFalse();
         }
 
-        [Test, MoqAutoData]
+        [Test, AutoData]
         public void Is_Passed_An_Object_Of_Paragraph_Then_Render_Returns_The_Html(ParagraphControlRenderer renderer)
         {
             var paragraph = ParagraphBuilder.New().AddText("a line").Build();
@@ -38,7 +39,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             actual.Value.Should().Be("<p>a line</p>");
         }
 
-        [Test, MoqAutoData]
+        [Test, AutoData]
         public void Is_Passed_An_Object_Of_Paragraph_With_Multiple_Items_Then_Render_Returns_The_Html(ParagraphControlRenderer renderer)
         {
             var paragraph = ParagraphBuilder.New().AddText("a word ").AddText("another word").Build();

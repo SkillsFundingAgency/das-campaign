@@ -38,7 +38,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
 
         [Test, RecursiveMoqAutoData]
         public async Task And_Given_An_Invalid_Hub_And_Slug_Then_The_Not_Found_Page_Is_Returned(
-            GetArticleQueryResult<Domain.Content.Article> mediatorResult, [Frozen] Mock<IMediator> mockMediator,
+            [Frozen] Mock<IMediator> mockMediator,
             [Greedy] ArticleController controller)
         {
             SetupMediator(new GetArticleQueryResult<Domain.Content.Article>(), mockMediator);
@@ -57,7 +57,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
 
         private static void SetupMediator(GetArticleQueryResult<Domain.Content.Article> mediatorResult, Mock<IMediator> mockMediator)
         {
-            mockMediator.Setup(o => o.Send(It.IsAny<GetArticleQuery>(), It.IsAny<CancellationToken>()))
+            mockMediator.Setup(o => o.Send(It.Is<GetArticleQuery>(r => r.Hub == HubName && r.Slug == SlugName), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(mediatorResult);
         }
     }
