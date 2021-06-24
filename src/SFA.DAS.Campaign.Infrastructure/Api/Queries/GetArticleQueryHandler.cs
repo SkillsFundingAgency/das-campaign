@@ -12,33 +12,21 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
     public class GetArticleQueryHandler : IRequestHandler<GetArticleQuery, GetArticleQueryResult<Article>>
     {
         private readonly IApiClient _apiClient;
-        private readonly IOptions<CampaignConfiguration> _config;
 
-        public GetArticleQueryHandler(IApiClient apiClient, IOptions<CampaignConfiguration> config)
+        public GetArticleQueryHandler(IApiClient apiClient)
         {
             _apiClient = apiClient;
-            _config = config;
         }
 
         public async Task<GetArticleQueryResult<Article>> Handle(GetArticleQuery request, CancellationToken cancellationToken)
         {
-            var article = await _apiClient.Get<Page<Article>>(new GetArticlesRequest(request.Hub, request.Slug, _config.Value.OuterApi.Local))
+            var article = await _apiClient.Get<Page<Article>>(new GetArticlesRequest(request.Hub, request.Slug))
                 .ConfigureAwait(false);
 
             return new GetArticleQueryResult<Article>
             {
                 Page = article
             };
-        }
-
-        private static Page<Article> CheckArticleForValidity(Page<Article> article)
-        {
-            if (string.IsNullOrWhiteSpace(article.Content.Summary) && (article.Content.PageControls == null || article.Content.PageControls.Any()))
-            {
-                return null;
-            }
-
-            return article;
         }
     }
 }
