@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.Design;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -41,7 +42,14 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
             {
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                return JsonConvert.DeserializeObject<TResponse>(json, new ArticleJsonConverter(_htmlControlAbstractFactory));
+                var articleJsonConverter = new ArticleJsonConverter(_htmlControlAbstractFactory);
+
+                if (articleJsonConverter.CanConvert(typeof(TResponse)))
+                {
+                    return JsonConvert.DeserializeObject<TResponse>(json, articleJsonConverter);
+                }
+
+                return JsonConvert.DeserializeObject<TResponse>(json);
             }
             
             response.EnsureSuccessStatusCode();
