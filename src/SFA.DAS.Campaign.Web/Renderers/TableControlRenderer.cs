@@ -37,7 +37,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
             foreach (var value in control.Headings)
             {
-                para.InnerHtml.AppendHtml($"<th>{value.CheckForAndConstructHyperlinks()}</th>");
+                para.InnerHtml.AppendHtml($"<th>{value.CheckForFontEffects().CheckForAndConstructHyperlinks()}</th>");
             }
 
             para.InnerHtml.AppendHtml("</tr></thead>");
@@ -56,7 +56,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
                     para.InnerHtml.AppendHtml($"<tr>");
                 }
 
-                para.InnerHtml.AppendHtml($"<td>{value.CheckForAndConstructHyperlinks()}</td>");
+                para.InnerHtml.AppendHtml($"<td>{value.CheckForFontEffects().CheckForAndConstructHyperlinks()}</td>");
                 column += 1;
 
                 if (column >= control.ColumnCount)

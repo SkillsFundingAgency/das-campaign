@@ -40,6 +40,21 @@ namespace SFA.DAS.Campaign.Web.Renderers
             return sb.ToString();
         }
 
+        public static string CheckForFontEffects(this string controlValue)
+        {
+            var fontEffectRegEx = new Regex(@"\[(bold|italic)\]", RegexOptions.Compiled);
+            var effect = fontEffectRegEx.Matches(controlValue).FirstOrDefault();
+
+            if (string.IsNullOrWhiteSpace(effect?.Groups[1].Value))
+            {
+                return controlValue;
+            }
+
+            var tag = GetHtml5TagNameFromMarkup(effect?.Groups[1].Value);
+
+            return $"<{tag}>{controlValue.Replace(effect?.Groups[0].Value, "")}</{tag}>";
+        }
+
         public static string WriteString(this TagBuilder builder)
         {
             string result;
@@ -52,6 +67,16 @@ namespace SFA.DAS.Campaign.Web.Renderers
             }
 
             return result;
+        }
+
+        private static string GetHtml5TagNameFromMarkup(string fontEffect)
+        {
+            if (string.Compare(fontEffect, "bold", StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                return "strong";
+            }
+
+            return "i";
         }
     }
 }

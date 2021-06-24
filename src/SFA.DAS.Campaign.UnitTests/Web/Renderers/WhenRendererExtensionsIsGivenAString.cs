@@ -35,5 +35,25 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = value.CheckForAndConstructHyperlinks();
             actual.Should().Be("<a href=\"https://www.apprenticeships.scot/\" title=\"\" rel=\"external\" target=\"_blank\">Scotland</a>");
         }
+
+        [Test]
+        public void Then_If_It_Contains_Markup_For_Bold_Then_The_String_Is_Correctly_Returned()
+        {
+            var value = "[bold]To support someone with apprenticeships you can: ";
+
+            var actual = value.CheckForFontEffects();
+
+            actual.Should().Be("<strong>To support someone with apprenticeships you can: </strong>");
+        }
+
+        [Test]
+        public void Then_If_It_Contains_Markup_For_Italics_Then_The_String_Is_Correctly_Returned()
+        {
+            var value = "[italic]To support someone with apprenticeships you can: ";
+
+            var actual = value.CheckForFontEffects();
+
+            actual.Should().Be("<i>To support someone with apprenticeships you can: </i>");
+        }
     }
 }
