@@ -23,7 +23,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
         private const string SlugName = "slug";
 
         [Test, RecursiveMoqAutoData]
-        public async Task AndGivenValidHubAndSlugThenThePageIsReturned(
+        public async Task And_Given_Valid_Hub_And_Slug_Then_The_Page_Is_Returned(
             GetArticleQueryResult<Domain.Content.Article> mediatorResult, [Frozen] Mock<IMediator> mockMediator,
             [Greedy] ArticleController controller)
         {
@@ -37,7 +37,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
         }
 
         [Test, RecursiveMoqAutoData]
-        public async Task AndGivenAnInvalidHubAndSlugThenTheNotFoundPageIsReturned(
+        public async Task And_Given_An_Invalid_Hub_And_Slug_Then_The_Not_Found_Page_Is_Returned(
             GetArticleQueryResult<Domain.Content.Article> mediatorResult, [Frozen] Mock<IMediator> mockMediator,
             [Greedy] ArticleController controller)
         {

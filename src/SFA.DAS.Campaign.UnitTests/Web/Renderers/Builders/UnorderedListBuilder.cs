@@ -7,7 +7,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers.Builders
 {
     public class UnorderedListBuilder
     {
-        private UnorderedList _list;
+        private readonly UnorderedList _list;
 
         public UnorderedListBuilder()
         {

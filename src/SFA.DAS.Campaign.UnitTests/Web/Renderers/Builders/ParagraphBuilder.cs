@@ -7,7 +7,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers.Builders
 {
     public class ParagraphBuilder
     {
-        private Paragraph _paragraph;
+        private readonly Paragraph _paragraph;
 
         public ParagraphBuilder()
         {

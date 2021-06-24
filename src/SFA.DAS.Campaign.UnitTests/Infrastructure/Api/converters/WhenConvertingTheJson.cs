@@ -16,20 +16,18 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.converters
 
 
         [Test, MoqAutoData]
-        public void ThePageModelIsReturned(ArticleJsonConverter converter)
+        public void The_Page_Model_Is_Returned(ArticleJsonConverter converter)
         {
-            var actual = converter.ReadJson(new JsonTextReader(new StringReader(json)), typeof(Page<Article>), "",
-                new Mock<JsonSerializer>().Object) as Page<Article>;
+            var actual = InvokeReadJsonMethodOnConverter(converter);
 
             actual.Should().NotBeNull();
         }
 
 
         [Test, MoqAutoData]
-        public void ThePageModelIsPopulatedWithPageInformation(ArticleJsonConverter converter)
+        public void The_Page_Model_Is_Populated_With_Page_Information(ArticleJsonConverter converter)
         {
-            var actual = converter.ReadJson(new JsonTextReader(new StringReader(json)), typeof(Page<Article>), "",
-                new Mock<JsonSerializer>().Object) as Page<Article>;
+            var actual = InvokeReadJsonMethodOnConverter(converter);
 
             actual.Slug.Should().NotBeNullOrWhiteSpace();
             actual.Title.Should().NotBeNullOrWhiteSpace();
@@ -38,21 +36,26 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.converters
         }
 
         [Test, MoqAutoData]
-        public void ThePageModelIsPopulatedWithRelatedPageInformation(ArticleJsonConverter converter)
+        public void The_Page_Model_Is_Populated_With_Related_Page_Information(ArticleJsonConverter converter)
         {
-            var actual = converter.ReadJson(new JsonTextReader(new StringReader(json)), typeof(Page<Article>), "",
-                new Mock<JsonSerializer>().Object) as Page<Article>;
+            var actual = InvokeReadJsonMethodOnConverter(converter);
 
             actual.RelatedPages.Should().NotBeNullOrEmpty();
         }
 
         [Test, MoqAutoData]
-        public void ThePageModelIsPopulatedWithThePageControls(ArticleJsonConverter converter)
+        public void The_Page_Model_Is_Populated_With_The_Page_Controls(ArticleJsonConverter converter)
+        {
+            var actual = InvokeReadJsonMethodOnConverter(converter);
+
+            actual.Content.PageControls.Should().NotBeNullOrEmpty();
+        }
+
+        private static Page<Article> InvokeReadJsonMethodOnConverter(ArticleJsonConverter converter)
         {
             var actual = converter.ReadJson(new JsonTextReader(new StringReader(json)), typeof(Page<Article>), "",
                 new Mock<JsonSerializer>().Object) as Page<Article>;
-
-            actual.Content.PageControls.Should().NotBeNullOrEmpty();
+            return actual;
         }
     }
 }

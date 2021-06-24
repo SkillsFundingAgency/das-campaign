@@ -13,7 +13,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
     public class WhenParagraphControlRenderer
     {
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfIHtmlControlThatIsOfParagraphThenSupportsContentReturnsTrue(Paragraph paragraph, ParagraphControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Of_Paragraph_Then_Supports_Content_Returns_True(Paragraph paragraph, ParagraphControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(paragraph);
 
@@ -21,7 +21,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfIHtmlControlThatIsNotOfParagraphThenSupportsContentReturnsFalse(Table table, ParagraphControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Not_Of_Paragraph_Then_Supports_Content_Returns_False(Table table, ParagraphControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(table);
 
@@ -29,7 +29,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfParagraphThenRenderReturnsTheHtml(ParagraphControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_Paragraph_Then_Render_Returns_The_Html(ParagraphControlRenderer renderer)
         {
             var paragraph = ParagraphBuilder.New().AddText("a line").Build();
             var actual = renderer.Render(paragraph);
@@ -39,7 +39,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfParagraphWithMultipleItemsThenRenderReturnsTheHtml(ParagraphControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_Paragraph_With_Multiple_Items_Then_Render_Returns_The_Html(ParagraphControlRenderer renderer)
         {
             var paragraph = ParagraphBuilder.New().AddText("a word ").AddText("another word").Build();
             var actual = renderer.Render(paragraph);

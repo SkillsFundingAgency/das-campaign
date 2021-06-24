@@ -7,7 +7,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers.Builders
 {
     public class TableBuilder
     {
-        private Table _table;
+        private readonly Table _table;
 
         public TableBuilder()
         {

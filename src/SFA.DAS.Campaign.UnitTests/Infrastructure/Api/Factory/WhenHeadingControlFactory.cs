@@ -8,15 +8,15 @@ using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory.Builders;
+using SFA.DAS.Testing.AutoFixture;
 
 namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory
 {
     public class WhenHeadingControlFactory
     {
-        [Test]
-        public void IsGivenAnItemOfTypeHeadingThenIsValidReturnsTrue()
+        [Test, MoqAutoData]
+        public void Is_Given_An_Item_Of_Type_Heading_Then_Is_Valid_Returns_True(HeadingControlFactory factory)
         {
-            var factory = new HeadingControlFactory();
             var control = BuildControl();
 
             var actual = factory.IsValid(control);
@@ -24,10 +24,9 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory
             actual.Should().BeTrue();
         }
 
-        [Test]
-        public void IsGivenAnItemOfTypeHeadingThenCreateReturnsHeading()
+        [Test, MoqAutoData]
+        public void Is_Given_An_Item_Of_Type_Heading_Then_Create_Returns_Heading(HeadingControlFactory factory)
         {
-            var factory = new HeadingControlFactory();
             var control = BuildControl();
 
             var actual = factory.Create(control) as Heading;

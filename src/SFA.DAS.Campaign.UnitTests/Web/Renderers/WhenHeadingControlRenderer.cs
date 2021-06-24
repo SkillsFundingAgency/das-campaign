@@ -13,7 +13,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
     public class WhenHeadingControlRenderer
     {
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfIHtmlControlThatIsOfParagraphThenSupportsContentReturnsTrue(Heading heading, HeadingControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Of_Paragraph_Then_Supports_Content_Returns_True(Heading heading, HeadingControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(heading);
 
@@ -21,7 +21,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfIHtmlControlThatIsNotOfParagraphThenSupportsContentReturnsFalse(Table table, HeadingControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Not_Of_Paragraph_Then_Supports_Content_Returns_False(Table table, HeadingControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(table);
 
@@ -29,7 +29,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfHeadingThenRenderReturnsTheHtml(HeadingControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_Heading_Then_Render_Returns_The_Html(HeadingControlRenderer renderer)
         {
             var heading = new Heading
             {

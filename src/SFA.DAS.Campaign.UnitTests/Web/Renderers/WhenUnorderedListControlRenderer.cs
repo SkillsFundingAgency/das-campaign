@@ -13,7 +13,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
     public  class WhenUnorderedListControlRenderer
     {
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfIHtmlControlThatIsOfUnorderedListThenSupportsContentReturnsTrue(UnorderedList unorderedList, UnorderedListControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Of_Unordered_List_Then_Supports_Content_Returns_True(UnorderedList unorderedList, UnorderedListControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(unorderedList);
 
@@ -21,7 +21,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfIHtmlControlThatIsNotOfUnorderedListThenSupportsContentReturnsFalse(Paragraph paragraph, UnorderedListControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Not_Of_Unordered_List_Then_Supports_Content_Returns_False(Paragraph paragraph, UnorderedListControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(paragraph);
 
@@ -29,7 +29,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfUnorderedListThenRenderReturnsTheHtml(UnorderedListControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_Unordered_List_Then_Render_Returns_The_Html(UnorderedListControlRenderer renderer)
         {
             var list = UnorderedListBuilder.New().AddItem("item 1").Build();
             var actual = renderer.Render(list);
@@ -39,7 +39,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, MoqAutoData]
-        public void IsPassedAnObjectOfUnorderedListWithMultipleItemsThenRenderReturnsTheHtml(UnorderedListControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_Unordered_List_With_Multiple_Items_Then_Render_Returns_The_Html(UnorderedListControlRenderer renderer)
         {
             var list = UnorderedListBuilder.New().AddItem("item 1").AddItem("item 2").Build();
             var actual = renderer.Render(list);

@@ -8,20 +8,31 @@ using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory.Builders;
+using SFA.DAS.Testing.AutoFixture;
 
 namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory
 {
     public class WhenUnorderedListControlFactory
     {
-        [Test]
-        public void IsGivenAnItemOfTypeUnorderedListThenIsValidReturnsTrue()
+        [Test, MoqAutoData]
+        public void Is_Given_An_Item_Of_Type_Unordered_List_Then_Is_Valid_Returns_True(UnorderedListControlFactory factory)
         {
-            var factory = new UnorderedListControlFactory();
             var control = BuildUnorderedListItemControl();
 
             var actual = factory.IsValid(control);
 
             actual.Should().BeTrue();
+        }
+
+        [Test, MoqAutoData]
+        public void Is_Given_The_Control_Then_Create_Returns_Un_Ordered_List(UnorderedListControlFactory factory)
+        {
+            var control = BuildUnorderedListItemControl();
+
+            var actual = factory.Create(control) as UnorderedList;
+
+            actual.Should().NotBeNull();
+            actual.Items.Any().Should().BeTrue();
         }
 
         private static Item BuildUnorderedListItemControl()
@@ -33,18 +44,6 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory
                 "live in England"
             }).Build();
             return control;
-        }
-
-        [Test]
-        public void IsGivenTheControlThenCreateReturnsUnOrderedList()
-        {
-            var factory = new UnorderedListControlFactory();
-            var control = BuildUnorderedListItemControl();
-
-            var actual = factory.Create(control) as UnorderedList;
-
-            actual.Should().NotBeNull();
-            actual.Items.Any().Should().BeTrue();
         }
     }
 }

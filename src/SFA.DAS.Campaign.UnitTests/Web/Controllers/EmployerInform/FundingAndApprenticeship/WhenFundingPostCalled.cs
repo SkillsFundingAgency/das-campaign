@@ -11,7 +11,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
     public class WhenFundingPostCalled
     {
         [Test]
-        public void ThenVmIsStoredInSession()
+        public void Then_Vm_Is_Stored_In_Session()
         {
             var sessionService = new Mock<ISessionService>();
             var controller = new FundingAnApprenticeshipController(sessionService.Object);

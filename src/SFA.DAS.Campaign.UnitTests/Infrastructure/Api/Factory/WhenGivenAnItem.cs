@@ -19,7 +19,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory
         }
 
         [Test]
-        public void AndTheItemIsOfTypeParagraphThenAParagraphIsReturned()
+        public void And_The_Item_Is_Of_Type_Paragraph_Then_A_Paragraph_Is_Returned()
         {
             var actual = _factory.CreateControlFactoryFor(new ItemBuilder().SetType("paragraph").SetValues(
                 new List<string>
