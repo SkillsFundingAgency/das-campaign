@@ -33,10 +33,10 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             return View("~/Views/LandingPages/Apprentices/GettingStarted.cshtml");
         }
 
-        [HttpGet("/apprentices/employer-profiles")]
-        public IActionResult EmployerProfiles()
+        [HttpGet("/apprentices/useful-resources")]
+        public IActionResult UsefulResources()
         {
-            return View("~/Views/LandingPages/Apprentices/EmployerProfiles.cshtml");
+            return View("~/Views/LandingPages/Apprentices/UsefulResources.cshtml");
         }
         
         [HttpGet("/employers/are-they-right-for-you")]
