@@ -19,9 +19,9 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
     {
         [Test, RecursiveMoqAutoData]
         public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_And_The_Article_Is_Returned(
-            GetArticleQuery query, Page<Article> response, [Frozen]Mock<IApiClient> client, [Greedy] GetArticleQueryHandler handler)
+            GetArticleQuery query, Page<Article> response, [Frozen]Mock<IApiClient> client, GetArticleQueryHandler handler)
         {
-            client.Setup(o => o.Get<Page<Article>>(It.IsAny<GetArticlesRequest>())).ReturnsAsync(response);
+            client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
 
             var actual = await handler.Handle(query, CancellationToken.None);
 
@@ -31,7 +31,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
 
         [Test, RecursiveMoqAutoData]
         public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_Then_No_Article_Is_Returned(
-            GetArticleQuery query, [Frozen] Mock<IApiClient> client, [Greedy] GetArticleQueryHandler handler)
+            GetArticleQuery query, [Frozen] Mock<IApiClient> client, GetArticleQueryHandler handler)
         {
             client.Setup(o => o.Get<Page<Article>>(It.IsAny<GetArticlesRequest>())).ReturnsAsync((Page<Article>) null);
 

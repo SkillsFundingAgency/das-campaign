@@ -32,7 +32,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory
             var actual = factory.Create(control) as Heading;
 
             actual.Should().NotBeNull();
-            actual.Content.Any().Should().BeTrue();
+            actual.Content.First().Should().Be("What is an apprenticeship?");
             actual.HeadingSize.Should().Be(2);
         }
 
