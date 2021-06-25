@@ -5,7 +5,7 @@
     ViewBag.Title = Model.Title;
     Layout = $"Redesign_Layout_{Model.HubType.ToString()}Article";
     ViewBag.PageTitle = Model.Title;
-    
+
     //need to know the parent so the breadcrumbs work, at present the parent doesn't come via the CMS
     ViewBag.LandingPageSlug = "how-do-they-work";
     ViewBag.LandingPageTitle = "How do the work?";
@@ -15,5 +15,10 @@
 
 <article class="fiu-article">
     @Model.Content.PageControls.ToHtml()
+    @{
+        if (Model.Attachments != null && Model.Attachments.Any())
+        {
+            @Model.Attachments.ToHtml()
+        }
+    }
 </article>
-

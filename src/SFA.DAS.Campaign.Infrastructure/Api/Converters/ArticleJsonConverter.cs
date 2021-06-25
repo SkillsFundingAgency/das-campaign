@@ -5,6 +5,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
@@ -71,8 +72,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             };
 
             AddRelatedArticles(cmsContent, pageModel);
-
             AddPageContent(cmsContent, pageModel);
+            AddAttachments(cmsContent, pageModel);
 
             return pageModel;
         }
@@ -108,6 +109,25 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
             var relatedPages = cmsContent.Article.RelatedArticles.Select(relatedArticle => new RelatedPage {Summary = relatedArticle.Summary, HubType = relatedArticle.HubType, Slug = relatedArticle.Slug}).ToList();
             model.RelatedPages = relatedPages;
+        }
+
+        private static void AddAttachments(PageRoot cmsContent, Page<Article> model)
+        {
+            if (cmsContent.Article.Attachments == null || !cmsContent.Article.Attachments.Any())
+            {
+                return;
+            }
+
+            var attachments = cmsContent.Article.Attachments.Select(attach => new DocumentAttachment
+            {
+                Description = attach.Description,
+                FileSize = attach.Size,
+                Url = attach.Url,
+                Title = attach.Title,
+                FileType = attach.ContentType
+            }).ToList();
+
+            model.Attachments = attachments;
         }
     }
 }
