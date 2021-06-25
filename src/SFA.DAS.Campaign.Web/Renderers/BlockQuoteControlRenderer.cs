@@ -9,25 +9,25 @@ using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 
 namespace SFA.DAS.Campaign.Web.Renderers
 {
-    public class HeadingControlRenderer : IControlRenderer
+    public class BlockQuoteControlRenderer : IControlRenderer
     {
         public bool SupportsContent(IHtmlControl content)
         {
-            return content is Heading;
+            return content is BlockQuote;
         }
 
         public HtmlString Render(IHtmlControl content)
         {
-            var control = content as Heading;
+            var control = content as BlockQuote;
 
-            var heading = new TagBuilder($"h{control.HeadingSize}");
+            var quote = new TagBuilder($"blockquote");
 
             foreach (var value in control.Content)
             {
-                heading.InnerHtml.AppendHtml(value.CheckForFontEffects().CheckForAndConstructHyperlinks());
+                quote.InnerHtml.AppendHtml(value.CheckForFontEffects().CheckForAndConstructHyperlinks());
             }
 
-            string result = heading.WriteString();
+            string result = quote.WriteString();
 
             return new HtmlString(result);
         }

@@ -130,6 +130,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.AddTransient<IHtmlControlFactory, HeadingControlFactory>();
             services.AddTransient<IHtmlControlFactory, ImageControlFactory>();
             services.AddTransient<IHtmlControlFactory, YouTubeControlFactory>();
+            services.AddTransient<IHtmlControlFactory, BlockQuoteControlFactory>();
         }
     }
 }
