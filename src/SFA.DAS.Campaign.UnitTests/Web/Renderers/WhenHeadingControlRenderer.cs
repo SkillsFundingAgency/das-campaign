@@ -14,7 +14,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
     public class WhenHeadingControlRenderer
     {
         [Test, AutoData]
-        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Of_Paragraph_Then_Supports_Content_Returns_True(Heading heading, HeadingControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Of_Heading_Then_Supports_Content_Returns_True(Heading heading, HeadingControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(heading);
 
@@ -22,7 +22,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, AutoData]
-        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Not_Of_Paragraph_Then_Supports_Content_Returns_False(Table table, HeadingControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Not_Of_Heading_Then_Supports_Content_Returns_False(Table table, HeadingControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(table);
 

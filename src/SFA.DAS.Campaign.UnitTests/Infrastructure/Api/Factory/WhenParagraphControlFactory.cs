@@ -64,6 +64,18 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory
             actual.Content.Any().Should().BeTrue();
         }
 
+        [Test, MoqAutoData]
+        public void Is_Given_An_Item_Of_Type_Paragraph_And_Value_Contains_A_YouTube_Url_Then_Is_Valid_Returns_False(ParagraphControlFactory factory)
+        {
+            var control = new ItemBuilder().SetType("paragraph")
+                .SetValue("https://www.youtube.com/embed/vSLcbljkhwU?modestbranding=1").Build();
+
+            var actual = factory.IsValid(control);
+
+            actual.Should().BeFalse();
+        }
+
+
         private static Item BuildControl()
         {
             var control = new ItemBuilder().SetType("paragraph")
