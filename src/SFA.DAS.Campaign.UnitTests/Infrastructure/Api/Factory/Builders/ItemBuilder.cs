@@ -57,6 +57,21 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory.Builders
             return this;
         }
 
+        public ItemBuilder AddEmptyValuesArray()
+        {
+            _item.Values = new List<string>();
+
+            return this;
+        }
+
+        public ItemBuilder AddEmptyTableValuesArray()
+        {
+            _item.TableValue = new List<List<string>>();
+
+            return this;
+        }
+
+
         public Item Build()
         {
             return _item;

@@ -22,7 +22,8 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 new ImageControlRenderer(),
                 new YouTubeControlRenderer(),
                 new BlockQuoteControlRenderer(),
-                new AttachmentControlRenderer()
+                new AttachmentControlRenderer(),
+                new HorizontalRuleControlRenderer()
             };
         }
 
