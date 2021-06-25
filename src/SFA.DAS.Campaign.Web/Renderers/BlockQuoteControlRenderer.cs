@@ -22,9 +22,17 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
             var quote = new TagBuilder($"blockquote");
 
+            int itemsIterated = 0;
+
             foreach (var value in control.Content)
             {
+                if (itemsIterated > 0)
+                {
+                    quote.InnerHtml.AppendHtml("<br />");
+                }
+
                 quote.InnerHtml.AppendHtml(value.CheckForFontEffects().CheckForAndConstructHyperlinks());
+                itemsIterated++;
             }
 
             string result = quote.WriteString();
