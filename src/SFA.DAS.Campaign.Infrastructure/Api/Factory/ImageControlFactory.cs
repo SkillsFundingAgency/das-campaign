@@ -1,29 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Polly.Caching;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Factory
 {
-    public class HeadingControlFactory : IHtmlControlFactory
+    public class ImageControlFactory : IHtmlControlFactory
     {
         public IHtmlControl Create(Item control)
         {
-            var size = control.Type.Substring(control.Type.IndexOf("-", StringComparison.OrdinalIgnoreCase) + 1);
-            var heading = new Heading
+            var image = new Image
             {
-                Content = control.Values,
-                HeadingSize = int.Parse(size)
+                Title = control.EmbeddedResource.Title,
+                Url = control.EmbeddedResource.Url,
+                Description = control.EmbeddedResource.Description
             };
 
-            return heading;
+            return image;
         }
 
         public bool IsValid(Item control)
         {
-            if (control.Type.StartsWith("heading-", StringComparison.OrdinalIgnoreCase))
+            if (control.Type.StartsWith("embedded-asset-block", StringComparison.OrdinalIgnoreCase))
             {
                 return true;
             }

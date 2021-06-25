@@ -13,7 +13,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory.Builders
         {
             _item = new Item
             {
-                TableValue = new List<List<string>>()
+                TableValue = new List<List<string>>(),
             };
         }
 
@@ -46,6 +46,13 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory.Builders
         public ItemBuilder SetTableValue(List<string> tableValues)
         {
             _item.TableValue.Add(tableValues);
+
+            return this;
+        }
+
+        public ItemBuilder AddEmbeddedResource(EmbeddedResource resource)
+        {
+            _item.EmbeddedResource = resource;
 
             return this;
         }

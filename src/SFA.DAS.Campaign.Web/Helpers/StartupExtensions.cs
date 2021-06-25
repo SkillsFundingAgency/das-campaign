@@ -128,6 +128,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.AddTransient<IHtmlControlFactory, TableControlFactory>();
             services.AddTransient<IHtmlControlFactory, UnorderedListControlFactory>();
             services.AddTransient<IHtmlControlFactory, HeadingControlFactory>();
+            services.AddTransient<IHtmlControlFactory, ImageControlFactory>();
         }
     }
 }

@@ -12,5 +12,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public List<string> Values { get; set; }
         public string Type { get; set; }
         public List<List<string>> TableValue { get; set; }
+        public EmbeddedResource EmbeddedResource { get; set; }
     }
 }
