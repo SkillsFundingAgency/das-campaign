@@ -24,7 +24,8 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 new BlockQuoteControlRenderer(),
                 new AttachmentControlRenderer(),
                 new HorizontalRuleControlRenderer(),
-                new OrderedListControlRenderer()
+                new OrderedListControlRenderer(),
+                new ArticleRelatedControlRenderer()
             };
         }
 
@@ -52,6 +53,25 @@ namespace SFA.DAS.Campaign.Web.Renderers
             var sb = new StringBuilder();
 
             foreach (var control in attachmentsToRender)
+            {
+                var renderer = _controlRenderers.FirstOrDefault(o => o.SupportsContent(control));
+
+                if (renderer == null)
+                {
+                    continue;
+                }
+
+                sb.Append(renderer.Render(control));
+            }
+
+            return new HtmlString(sb.ToString());
+        }
+
+        public HtmlString ToHtml(IEnumerable<ArticleRelated> articlesToRender)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var control in articlesToRender)
             {
                 var renderer = _controlRenderers.FirstOrDefault(o => o.SupportsContent(control));
 

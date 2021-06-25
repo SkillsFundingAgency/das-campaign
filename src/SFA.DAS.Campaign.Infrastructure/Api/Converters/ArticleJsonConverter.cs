@@ -107,7 +107,15 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
                 return;
             }
 
-            var relatedPages = cmsContent.Article.RelatedArticles.Select(relatedArticle => new RelatedPage {Summary = relatedArticle.Summary, HubType = relatedArticle.HubType, Slug = relatedArticle.Slug}).ToList();
+            var relatedPages = cmsContent.Article.RelatedArticles.Select(relatedArticle => new ArticleRelated()
+            {
+                Summary = relatedArticle.Summary, 
+                HubType = relatedArticle.HubType, 
+                Slug = relatedArticle.Slug,
+                Description = relatedArticle.MetaDescription,
+                Title = relatedArticle.Title
+            }).ToList();
+
             model.RelatedPages = relatedPages;
         }
 

@@ -15,10 +15,15 @@
 
 <article class="fiu-article">
     @Model.Content.PageControls.ToHtml()
-    @{
-        if (Model.Attachments != null && Model.Attachments.Any())
-        {
-            @Model.Attachments.ToHtml()
-        }
+    @if (Model.Attachments != null && Model.Attachments.Any())
+    {
+        @Model.Attachments.ToHtml()
+    }
+    
+    @if (Model.RelatedPages != null && Model.RelatedPages.Any())
+    {
+        <div class="govuk-grid-row fiu-flex-row">
+            @Model.RelatedPages.ToHtml()
+        </div>
     }
 </article>
