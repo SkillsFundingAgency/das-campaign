@@ -74,6 +74,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             AddRelatedArticles(cmsContent, pageModel);
             AddPageContent(cmsContent, pageModel);
             AddAttachments(cmsContent, pageModel);
+            AddBreadCumbs(cmsContent, pageModel);
 
             return pageModel;
         }
@@ -117,6 +118,21 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             }).ToList();
 
             model.RelatedPages = relatedPages;
+        }
+
+        private void AddBreadCumbs(PageRoot cmsContent, Page<Article> model)
+        {
+            if (cmsContent.Article.ParentPage == null)
+            {
+                return;
+            }
+
+            model.Breadcrumbs = new Breadcrumbs
+            {
+                LandingPageSlug = cmsContent.Article.ParentPage.Slug,
+                HubPage = cmsContent.Article.ParentPage.HubType,
+                LandingPage = cmsContent.Article.ParentPage.Title
+            };
         }
 
         private static void AddAttachments(PageRoot cmsContent, Page<Article> model)

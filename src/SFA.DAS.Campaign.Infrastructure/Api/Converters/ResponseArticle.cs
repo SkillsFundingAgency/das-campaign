@@ -13,5 +13,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public MainContent MainContent { get; set; }
         public List<RelatedArticle> RelatedArticles { get; set; }
         public List<Attachment> Attachments { get; set; }
+        public PageAttributes ParentPage { get; set; }
     }
 }

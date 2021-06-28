@@ -12,7 +12,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.converters
     public class WhenConvertingTheJson
     {
         private const string json =
-            "{\"article\":{\"pageAttributes\":{\"pageType\":2,\"title\":\"Becoming an apprentice\",\"metaDescription\":\"An apprenticeship gives you hands-on experience, a salary and the opportunity to train while you work as an apprentice.\",\"slug\":\"becoming-apprentice\",\"hubType\":\"Apprentices\",\"summary\":\"An apprenticeship is a real job where you learn, gain experience and get paid. You're an employee with a contract of employment and holiday leave.\"},\"mainContent\":{\"items\":[{\"values\":[\"To become an apprentice, you must:\"],\"type\":\"paragraph\",\"tableValue\":[]}]},\"relatedArticles\":[{\"pageType\":0,\"title\":\"Applying for an apprenticeship\",\"metaDescription\":\"From finding the right apprenticeship and employer and how to write a good CV, covering letter and what to expect from the employer.\",\"slug\":\"applying-apprenticeship\",\"hubType\":\"Apprentices\",\"summary\":\"There are hundreds of different apprenticeships to choose from. To apply for one, you’ll need to create an account on the find an apprenticeship service. You can also save any apprenticeships you like and then apply for them later.\"}]}}";
+            "{\"article\":{\"pageAttributes\":{\"pageType\":2,\"title\":\"Becoming an apprentice\",\"metaDescription\":\"An apprenticeship gives you hands-on experience, a salary and the opportunity to train while you work as an apprentice.\",\"slug\":\"becoming-apprentice\",\"hubType\":\"Apprentices\",\"summary\":\"An apprenticeship is a real job where you learn, gain experience and get paid. You're an employee with a contract of employment and holiday leave.\"},\"mainContent\":{\"items\":[{\"values\":[\"To become an apprentice, you must:\"],\"type\":\"paragraph\",\"tableValue\":[]}]},\"relatedArticles\":[{\"pageType\":0,\"title\":\"Applying for an apprenticeship\",\"metaDescription\":\"From finding the right apprenticeship and employer and how to write a good CV, covering letter and what to expect from the employer.\",\"slug\":\"applying-apprenticeship\",\"hubType\":\"Apprentices\",\"summary\":\"There are hundreds of different apprenticeships to choose from. To apply for one, you’ll need to create an account on the find an apprenticeship service. You can also save any apprenticeships you like and then apply for them later.\"}],\"parentPage\":{\"pageType\": 0,\"title\": \"How do they work?\",\"metaDescription\": null,\"slug\": \"how-do-they-work\",\"hubType\": \"Apprentices\",\"summary\": \"Find out what to expect and the application process.\"}}}";
 
 
         [Test, MoqAutoData]
@@ -49,6 +49,17 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.converters
             var actual = InvokeReadJsonMethodOnConverter(converter);
 
             actual.Content.PageControls.Should().NotBeNullOrEmpty();
+        }
+
+        [Test, MoqAutoData]
+        public void The_Page_Model_Is_Populated_With_The_Bread_Crumb_Details(ArticleJsonConverter converter)
+        {
+            var actual = InvokeReadJsonMethodOnConverter(converter);
+
+            actual.Breadcrumbs.Should().NotBeNull();
+            actual.Breadcrumbs.LandingPageSlug.Should().NotBeNullOrWhiteSpace();
+            actual.Breadcrumbs.HubPage.Should().NotBeNullOrWhiteSpace();
+            actual.Breadcrumbs.LandingPage.Should().NotBeNullOrWhiteSpace();
         }
 
         private static Page<Article> InvokeReadJsonMethodOnConverter(ArticleJsonConverter converter)

@@ -7,8 +7,8 @@
     ViewBag.PageTitle = Model.Title;
 
     //need to know the parent so the breadcrumbs work, at present the parent doesn't come via the CMS
-    ViewBag.LandingPageSlug = "how-do-they-work";
-    ViewBag.LandingPageTitle = "How do the work?";
+    ViewBag.LandingPageSlug = Model.Breadcrumbs.LandingPageSlug;
+    ViewBag.LandingPageTitle = Model.Breadcrumbs.LandingPage; 
     ViewBag.ArticlePageSlug = Model.Slug;
     ViewBag.ArticlePageTitle = Model.Title;
 }
