@@ -24,7 +24,14 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
             foreach (var value in control.Items)
             {
-                ul.InnerHtml.AppendHtml($"<li>{value.CheckForFontEffects().CheckForAndConstructHyperlinks()}</li>");
+                ul.InnerHtml.AppendHtml("<li>");
+
+                foreach (var childValue in value)
+                {
+                    ul.InnerHtml.AppendHtml($"{childValue.CheckForFontEffects().CheckForAndConstructHyperlinks()}");
+                }
+
+                ul.InnerHtml.AppendHtml("</li>");
             }
 
             string result = ul.WriteString();

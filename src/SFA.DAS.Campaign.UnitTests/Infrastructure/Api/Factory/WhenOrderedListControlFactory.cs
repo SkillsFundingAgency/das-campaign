@@ -37,7 +37,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory
 
         private static Item BuildUnorderedListItemControl()
         {
-            var control = new ItemBuilder().SetType("ordered-list").SetValues(new List<string>
+            var control = new ItemBuilder().SetType("ordered-list").SetTableValue(new List<string>
             {
                 "be 16 or over",
                 "not already be in full-time education",

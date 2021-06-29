@@ -8,9 +8,9 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
     {
         public UnorderedList()
         {
-            Items = new List<string>();
+            Items = new List<List<string>>();
         }
 
-        public List<string> Items { get; set; }
+        public List<List<string>> Items { get; set; }
     }
 }
