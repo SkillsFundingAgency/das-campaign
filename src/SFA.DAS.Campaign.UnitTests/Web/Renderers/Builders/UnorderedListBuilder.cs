@@ -21,7 +21,10 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers.Builders
 
         public UnorderedListBuilder AddItem(string text)
         {
-            _list.Items.Add(text);
+            _list.Items.Add(new List<string>
+            {
+                text
+            });
 
             return this;
         }

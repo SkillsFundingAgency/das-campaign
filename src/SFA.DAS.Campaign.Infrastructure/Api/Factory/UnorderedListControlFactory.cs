@@ -12,8 +12,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Factory
     {
         public IHtmlControl Create(Item control)
         {
-            var ul = new UnorderedList {Items = control.Values};
-
+            var ul = new UnorderedList {Items = control.TableValue};
 
             return ul;
         }
