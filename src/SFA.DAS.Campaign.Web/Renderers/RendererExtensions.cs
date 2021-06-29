@@ -26,7 +26,15 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 return controlValue;
             }
 
+            return ConstructHyperlink(controlValue, linkText, url);
+        }
+
+        private static string ConstructHyperlink(string controlValue, Match linkText, Match url)
+        {
+            var stringOutputs = RetriveHyperlinkFromControlValue(controlValue, linkText?.Groups[0].Value, url?.Groups[0].Value);
+
             var sb = new StringBuilder();
+            sb.Append(stringOutputs.Prepend);
             sb.Append($"<a href=\"{url.Groups[1].Value}\"");
 
             if (url.Groups[1].Value.StartsWith("http", StringComparison.OrdinalIgnoreCase))
@@ -36,8 +44,32 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
             sb.Append(">");
             sb.Append($"{linkText.Groups[1].Value}</a>");
+            sb.Append(stringOutputs.Append);
 
             return sb.ToString();
+        }
+
+        private static StringOutputs RetriveHyperlinkFromControlValue(string controlValue, string linkText, string url)
+        {
+            string textToPrepend = string.Empty;
+            string textToAppend = string.Empty;
+
+            if (controlValue.StartsWith("[", StringComparison.OrdinalIgnoreCase))
+            {
+                textToAppend = controlValue.Replace(linkText, "");
+                textToAppend = textToAppend.Replace(url, "");
+            }
+            else
+            {
+                textToPrepend = controlValue.Replace(linkText, "");
+                textToPrepend = textToPrepend.Replace(url, "");
+            }
+
+            return new StringOutputs
+            {
+                Append = textToAppend,
+                Prepend = textToPrepend
+            };
         }
 
         public static string CheckForFontEffects(this string controlValue)
@@ -77,6 +109,12 @@ namespace SFA.DAS.Campaign.Web.Renderers
             }
 
             return "i";
+        }
+
+        internal class StringOutputs
+        {
+            internal string Prepend { get; set; }
+            internal string Append { get; set; }
         }
     }
 }

@@ -47,5 +47,15 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             actual.Value.Should().NotBeNullOrWhiteSpace();
             actual.Value.Should().Be("<ul><li>item 1</li><li>item 2</li></ul>");
         }
+
+        [Test, MoqAutoData]
+        public void Is_Passed_An_Object_Of_Unordered_List_With_A_HyperLink_Then_Render_Returns_The_Html(UnorderedListControlRenderer renderer)
+        {
+            var list = UnorderedListBuilder.New().AddItem("item 1 [find apprenticeship training](https://www.apprenticeships.gov.uk/employer/find-apprenticeship-training)").Build();
+            var actual = renderer.Render(list);
+
+            actual.Value.Should().NotBeNullOrWhiteSpace();
+            actual.Value.Should().Be("<ul><li>item 1 <a href=\"https://www.apprenticeships.gov.uk/employer/find-apprenticeship-training\" title=\"\" rel=\"external\" target=\"_blank\">find apprenticeship training</a></li></ul>");
+        }
     }
 }
