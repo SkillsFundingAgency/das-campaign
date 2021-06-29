@@ -49,9 +49,29 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
             controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/Error/PageNotFound.cshtml");
         }
 
-        private static async Task<T> InstantiateController<T>(ArticleController controller)
+        [Test, RecursiveMoqAutoData]
+        public async Task And_Is_Preview_Then_Given_Valid_Hub_And_Slug_Then_The_Page_Is_Returned(
+            GetArticlePreviewQueryResult<Domain.Content.Article> mediatorResult, [Frozen] Mock<IMediator> mockMediator,
+            [Greedy] ArticleController controller)
         {
-            var controllerResult = (T)await controller.GetArticleAsync(HubName, SlugName, CancellationToken.None);
+            SetupMediator(mediatorResult, mockMediator);
+
+            var controllerResult = await InstantiateController<ViewResult>(controller, true);
+
+            controllerResult.AssertThatTheObjectResultIsValid();
+            controllerResult.AssertThatTheObjectValueIsValid<Page<Domain.Content.Article>>();
+            controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/CMS/Article.cshtml");
+        }
+
+        private static void SetupMediator(GetArticlePreviewQueryResult<Domain.Content.Article> mediatorResult, Mock<IMediator> mockMediator)
+        {
+            mockMediator.Setup(o => o.Send(It.Is<GetArticlePreviewQuery>(r => r.Hub == HubName && r.Slug == SlugName), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(mediatorResult);
+        }
+
+        private static async Task<T> InstantiateController<T>(ArticleController controller, bool preview = false)
+        {
+            var controllerResult = (T)await controller.GetArticleAsync(HubName, SlugName, preview, CancellationToken.None);
             return controllerResult;
         }
 

@@ -16,6 +16,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Configuration
     {
         public string BaseUrl { get; set; }
         public string Key { get; set; }
-        public bool Local { get;set; }
+        public bool AllowPreview { get;set; }
     }
 }
