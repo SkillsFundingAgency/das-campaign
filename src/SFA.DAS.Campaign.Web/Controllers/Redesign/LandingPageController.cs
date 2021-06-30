@@ -6,19 +6,15 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 {
     public class LandingPageController : Controller
     {
-        private readonly IContentService _contentService;
+   
 
-        public LandingPageController(IContentService contentService)
-        {
-            _contentService = contentService;
-        }
-        
+       
         [HttpGet("/apprentices/are-they-right-for-you")]
         public IActionResult AreTheyRightForYou()
         {
-            var articleCards = _contentService.GetArticleCardsFor("are-they-right-for-you", HubType.Apprentices);
+           // var articleCards = _contentService.GetArticleCardsFor("are-they-right-for-you", HubType.Apprentices);
             
-            return View("~/Views/LandingPages/Apprentices/AreApprenticeshipsRightForMe.cshtml", articleCards);
+            return View("~/Views/LandingPages/Apprentices/AreApprenticeshipsRightForMe.cshtml");
         }
         
         [HttpGet("/apprentices/how-do-they-work")]

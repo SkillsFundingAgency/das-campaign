@@ -34,7 +34,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Apprentice
         }
 
         [Test]
-        public async Task ThenTheVacancySearchPageIsReturned_WithSectors()
+        public async Task Then_The_Vacancy_Search_Page_Is_Returned_With_Sectors()
         {
             var result = await sut.FindAnApprenticeship();
 

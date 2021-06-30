@@ -6,6 +6,5 @@ namespace SFA.DAS.Campaign.Domain.Content
     {
         public string Title { get; set; }
         public HtmlString Body { get; set; }
-        public string Slug { get; set; }
     }
 }

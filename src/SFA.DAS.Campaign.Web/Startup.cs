@@ -27,9 +27,11 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
+using MediatR;
 using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api;
+using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
 using VacanciesApi;
@@ -68,32 +70,19 @@ namespace SFA.DAS.Campaign.Web
             });
 
             services.AddOptions();
-            services.Configure<CampaignConfiguration>(Configuration);
-            services.AddSingleton(cfg => cfg.GetService<IOptions<CampaignConfiguration>>().Value);
-
-            services.Configure<UserDataCryptography>(Configuration.GetSection("UserDataCryptography"));
-            services.Configure<UserDataQueueNames>(Configuration.GetSection("UserDataQueueNames"));
-
-            var connectionStrings = new ConnectionStrings();
-
-            Configuration.Bind("ConnectionStrings", connectionStrings);
-
-            var postcodeConfig = new PostcodeApiConfiguration();
-            Configuration.Bind("Postcode", postcodeConfig);
-
-            var mappingConfig = new MappingConfiguration();
-            Configuration.Bind("Mapping", mappingConfig);
-
-            services.Configure<MappingConfiguration>(Configuration.GetSection("Mapping"));
-
-            var queueStorageConnectionString = Configuration.Get<CampaignConfiguration>().QueueConnectionString;
-
-            var healthChecks = services.AddHealthChecks()
-                .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
-                .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check")
-                .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
+            services.AddHttpClient<IApiClient, ApiClient>();
 
 
+            services.ConfigureSfaConfigurations(Configuration);
+            services.ConfigureSfaConnectionStrings(Configuration);
+            services.ConfigureSfaVacancies(Configuration);
+            services.ConfigureSfaServices();
+            services.ConfigureSfaRepositories();
+            services.ConfigureSfaMappers();
+            services.ConfigureSfaDataCollection();
+            services.ConfigureFactorys();
+
+            services.AddMediatR(typeof(GetArticleQuery).Assembly);
 
             services.AddMiniProfiler(options =>
             {
@@ -127,34 +116,6 @@ namespace SFA.DAS.Campaign.Web
                 // Optionally disable "Connection Open()", "Connection Close()" (and async variants).
                 //options.TrackConnectionOpenClose = false;);
             });
-            services.AddSingleton<IPostcodeApiConfiguration>(postcodeConfig);
-            services.AddSingleton<IMappingConfiguration>(mappingConfig);
-            
-            services.AddTransient<IStandardsRepository, StandardsRepository>();
-            services.AddTransient<IVacanciesMapper, VacanciesMapper>();
-            services.AddTransient<IVacanciesRepository, VacanciesRepository>();
-            services.AddTransient<ICountryMapper, CountryMapper>();
-
-            var vacanciesBaseUrl = Configuration.GetValue<string>("VacanciesApi:BaseUrl");
-            var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(vacanciesBaseUrl) };
-            vacanciesHttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Configuration.GetValue<string>("VacanciesApi:ApiKey"));
-
-            services.AddTransient<ILivevacanciesAPI>(client => new LivevacanciesAPI(vacanciesHttpClient, false){BaseUri = new Uri(vacanciesBaseUrl)  });
-            services.AddTransient<IGeocodeService, GeocodeService>();
-            services.AddTransient<IRetryWebRequests, WebRequestRetryService>();
-            services.AddTransient<IMappingService, GoogleMappingService>();
-            services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
-            services.AddTransient<IUserDataCollection, UserDataCollection>();
-            services.AddTransient<IUserDataCollectionValidator, UserDataCollectionValidator>();
-            services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
-            services.AddTransient<ISessionService, SessionService>();
-
-            services.AddTransient<IContentService, ContentService>();
-            
-            services.AddTransient<ConnectionMultiplexer>(sp => ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase},allowAdmin=true"));
-            services.AddTransient<IDatabase>(client => client.GetService<ConnectionMultiplexer>().GetDatabase());
-            
-            services.AddHttpClient<IApiClient, ApiClient>();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
@@ -172,20 +133,6 @@ namespace SFA.DAS.Campaign.Web
             if (Configuration["Environment"] == "LOCAL")
             {
                 services.AddDistributedMemoryCache();
-            }
-            else
-            {
-                services.AddStackExchangeRedisCache(options =>
-                {
-                    options.Configuration = connectionStrings.SharedRedis;
-                });
-
-                healthChecks.AddRedis(connectionStrings.SharedRedis, "redis-app-cache-check");
-                
-                var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},DefaultDatabase=3");
-                services.AddDataProtection()
-                    .SetApplicationName("das-campaign-web")
-                    .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys");
             }
         }
 
