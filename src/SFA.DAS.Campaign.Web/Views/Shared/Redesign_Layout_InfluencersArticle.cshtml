@@ -1,5 +1,6 @@
 @{
     Layout = "Redesign_Layout_InfluencersHub";
+    ViewBag.PanelsInNarrowColumn = true;
 }
 
 <span class="fiu-header-content-spacer"></span>
@@ -9,7 +10,8 @@
             @RenderBody()
         </div>
         <div class="govuk-grid-column-one-third">
-
+            @Html.Partial("./Panels/_BrowseApprenticeships", "fiu-button--outlined")
         </div>
     </div>
+    <hr class="fiu-section-break fiu-section-break--l">
 </div>

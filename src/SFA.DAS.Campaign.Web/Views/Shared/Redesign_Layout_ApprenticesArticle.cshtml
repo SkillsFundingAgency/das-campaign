@@ -10,8 +10,8 @@
             @RenderBody()
         </div>
         <div class="govuk-grid-column-one-third">
-            <partial name="./Panels/_BrowseApprenticeships"/>
-            <partial name="./Panels/_GetFreeHelpAndSupport"/>
+            @Html.Partial("./Panels/_BrowseApprenticeships", "fiu-button--outlined")
         </div>
     </div>
+    <hr class="fiu-section-break fiu-section-break--l">
 </div>

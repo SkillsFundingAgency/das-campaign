@@ -1,7 +1,7 @@
-
+@model string
 <div class="fiu-panel @(ViewBag.PanelsInNarrowColumn != null ? "fiu-panel--narrow-col" : "")">
     <strong class="fiu-tag fiu-tag--citizens fiu-feature-text fiu-panel__tag">Apprentices</strong>
     <h2 class="govuk-heading-l fiu-panel__heading">Browse apprenticeships</h2>
     <p class="fiu-panel__content">Search to browse apprenticeships based on interest and location.</p>
-    <a href="/apprentices/browse-apprenticeships" id="fiu-panel-link-faa" class="fiu-button fiu-button--citizens fiu-panel__button">Browse apprenticeships</a>
+    <a href="/apprentices/browse-apprenticeships" id="fiu-panel-link-faa" class="fiu-button fiu-button--citizens @Model fiu-panel__button">Browse apprenticeships</a>
 </div>
