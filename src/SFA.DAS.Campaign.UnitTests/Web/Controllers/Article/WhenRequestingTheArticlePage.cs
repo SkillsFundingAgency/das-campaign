@@ -27,7 +27,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
             GetArticleQueryResult<Domain.Content.Article> mediatorResult, [Frozen] Mock<IMediator> mockMediator,
             [Greedy] ArticleController controller)
         {
-            SetupMediator(mediatorResult, mockMediator);
+            SetupMediator(mediatorResult, mockMediator, false);
 
             var controllerResult = await InstantiateController<ViewResult>(controller);
 
@@ -41,7 +41,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
             [Frozen] Mock<IMediator> mockMediator,
             [Greedy] ArticleController controller)
         {
-            SetupMediator(new GetArticleQueryResult<Domain.Content.Article>(), mockMediator);
+            SetupMediator(new GetArticleQueryResult<Domain.Content.Article>(), mockMediator, false);
 
             var controllerResult = await InstantiateController<ViewResult>(controller);
 
@@ -51,10 +51,10 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
 
         [Test, RecursiveMoqAutoData]
         public async Task And_Is_Preview_Then_Given_Valid_Hub_And_Slug_Then_The_Page_Is_Returned(
-            GetArticlePreviewQueryResult<Domain.Content.Article> mediatorResult, [Frozen] Mock<IMediator> mockMediator,
+            GetArticleQueryResult<Domain.Content.Article> mediatorResult, [Frozen] Mock<IMediator> mockMediator,
             [Greedy] ArticleController controller)
         {
-            SetupMediator(mediatorResult, mockMediator);
+            SetupMediator(mediatorResult, mockMediator, true);
 
             var controllerResult = await InstantiateController<ViewResult>(controller, true);
 
@@ -63,9 +63,12 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
             controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/CMS/Article.cshtml");
         }
 
-        private static void SetupMediator(GetArticlePreviewQueryResult<Domain.Content.Article> mediatorResult, Mock<IMediator> mockMediator)
+        private static void SetupMediator(GetArticleQueryResult<Domain.Content.Article> mediatorResult, Mock<IMediator> mockMediator, bool preview)
         {
-            mockMediator.Setup(o => o.Send(It.Is<GetArticlePreviewQuery>(r => r.Hub == HubName && r.Slug == SlugName), It.IsAny<CancellationToken>()))
+            mockMediator.Setup(o => o.Send(It.Is<GetArticleQuery>(r => 
+                    r.Hub == HubName 
+                    && r.Slug == SlugName
+                    && r.Preview == preview), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(mediatorResult);
         }
 
@@ -73,12 +76,6 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
         {
             var controllerResult = (T)await controller.GetArticleAsync(HubName, SlugName, preview, CancellationToken.None);
             return controllerResult;
-        }
-
-        private static void SetupMediator(GetArticleQueryResult<Domain.Content.Article> mediatorResult, Mock<IMediator> mockMediator)
-        {
-            mockMediator.Setup(o => o.Send(It.Is<GetArticleQuery>(r => r.Hub == HubName && r.Slug == SlugName), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(mediatorResult);
         }
     }
 }
