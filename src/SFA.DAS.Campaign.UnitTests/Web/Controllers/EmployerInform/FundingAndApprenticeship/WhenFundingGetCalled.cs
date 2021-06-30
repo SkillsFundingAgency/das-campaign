@@ -11,7 +11,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
     public class WhenFundingGetCalled
     {
         [Test]
-        public void AndLevyStatusIsSavedAsLevy_ThenViewModelLevyStatusIsLevy()
+        public void And_Levy_Status_Is_Saved_As_Levy_Then_View_Model_Levy_Status_Is_Levy()
         {
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(new LevyOptionViewModel
@@ -27,7 +27,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
         }
 
         [Test]
-        public void AndLevyStatusIsSavedAsNonLevy_ThenViewModelLevyStatusIsNonLevy()
+        public void And_Levy_Status_Is_Saved_As_Non_Levy_Then_View_Model_Levy_Status_Is_Non_Levy()
         {
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(new LevyOptionViewModel
@@ -43,7 +43,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
         }
 
         [Test]
-        public void AndNoVmStoredInSession_ThenDefaultVmReturnedInView()
+        public void And_No_Vm_Stored_In_Session_Then_Default_Vm_Returned_In_View()
         {
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(default(LevyOptionViewModel));
@@ -56,7 +56,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
         }
 
         [Test]
-        public void AndNoVmStoredInSession_ThenLevyStatusShouldBeNonLevy()
+        public void And_No_Vm_Stored_In_Session_Then_Levy_Status_Should_Be_Non_Levy()
         {
             var sessionService = new Mock<ISessionService>();
             sessionService.Setup(ss => ss.Get<LevyOptionViewModel>(sessionService.Object.LevyOptionViewModelKey)).Returns(default(LevyOptionViewModel));
