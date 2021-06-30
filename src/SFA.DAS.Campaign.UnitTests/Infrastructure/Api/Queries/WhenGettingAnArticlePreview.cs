@@ -68,10 +68,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
         {
             var campaignConfiguration = new CampaignConfiguration
             {
-                OuterApi = new OuterApiConfiguration
-                {
-                    AllowPreview = allowPreview
-                }
+                AllowPreview = allowPreview,
             };
 
             config.Setup(o => o.Value).Returns(campaignConfiguration);

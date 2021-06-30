@@ -22,7 +22,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
 
         public async Task<GetArticlePreviewQueryResult<Article>> Handle(GetArticlePreviewQuery request, CancellationToken cancellationToken)
         {
-            var canPreview = _config.Value.OuterApi.AllowPreview;
+            var canPreview = _config.Value.AllowPreview;
             Page<Article> article = null;
 
             if (canPreview)
