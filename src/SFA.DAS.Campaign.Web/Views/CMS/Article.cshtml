@@ -19,11 +19,12 @@
     {
         @Model.Attachments.ToHtml()
     }
-    
+</article>
+
     @if (Model.RelatedPages != null && Model.RelatedPages.Any())
     {
         <div class="govuk-grid-row fiu-flex-row">
             @Model.RelatedPages.ToHtml()
         </div>
     }
-</article>
+
