@@ -5,8 +5,6 @@
     ViewBag.Title = Model.Title;
     Layout = $"Redesign_Layout_{Model.HubType.ToString()}Article";
     ViewBag.PageTitle = Model.Title;
-
-    //need to know the parent so the breadcrumbs work, at present the parent doesn't come via the CMS
     ViewBag.LandingPageSlug = Model.Breadcrumbs.LandingPageSlug;
     ViewBag.LandingPageTitle = Model.Breadcrumbs.LandingPage; 
     ViewBag.ArticlePageSlug = Model.Slug;
@@ -15,16 +13,21 @@
 
 <article class="fiu-article">
     @Model.Content.PageControls.ToHtml()
-    @if (Model.Attachments != null && Model.Attachments.Any())
-    {
-        @Model.Attachments.ToHtml()
-    }
 </article>
 
-    @if (Model.RelatedPages != null && Model.RelatedPages.Any())
-    {
-        <div class="govuk-grid-row fiu-flex-row">
-            @Model.RelatedPages.ToHtml()
-        </div>
-    }
+@if (Model.Attachments != null && Model.Attachments.Any())
+{
+    <div class="fiu-attachment__wrap">
+        @Model.Attachments.ToHtml()
+    </div>
+}
 
+@if (Model.RelatedPages != null && Model.RelatedPages.Any())
+{
+    <hr class="fiu-section-break fiu-section-break--l" />
+    
+    <h2 class="govuk-heading-m">More on apprenticeships</h2>
+    <div class="govuk-grid-row fiu-flex-row">
+        @Model.RelatedPages.ToHtml()
+    </div>
+}
