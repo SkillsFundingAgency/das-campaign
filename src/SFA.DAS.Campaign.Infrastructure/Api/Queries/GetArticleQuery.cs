@@ -10,5 +10,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
     {
         public string Hub { get; set; }
         public string Slug { get; set; }
+        public bool Preview { get ; set ; }
     }
 }
