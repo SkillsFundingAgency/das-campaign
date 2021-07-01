@@ -18,20 +18,18 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         }
 
         [HttpGet("/{hub}/{slug}")]
-        public async Task<IActionResult> GetArticleAsync(string hub, string slug, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> GetArticleAsync(string hub, string slug, [FromQuery]bool preview, CancellationToken cancellationToken = default)
         {
             var result = await _mediator.Send(new GetArticleQuery
             {
                 Hub = hub,
-                Slug = slug
+                Slug = slug,
+                Preview = preview
             }, cancellationToken).ConfigureAwait(false);
 
-            if (result.Page == null)
-            {
-                return View("~/Views/Error/PageNotFound.cshtml");
-            }
-
-            return View($"~/Views/CMS/Article.cshtml", result.Page);
+            var page = result.Page;
+            
+            return page == null ? View("~/Views/Error/PageNotFound.cshtml") : View("~/Views/CMS/Article.cshtml", page);
         }
     }
 }
