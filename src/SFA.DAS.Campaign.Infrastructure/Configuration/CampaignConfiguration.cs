@@ -10,12 +10,12 @@ namespace SFA.DAS.Campaign.Infrastructure.Configuration
         public virtual string FatBaseUrl { get ; set ; }
         public virtual OuterApiConfiguration OuterApi { get; set; }
         public virtual string EmployerAccountBaseUrl { get; set; }
+        public bool AllowPreview { get;set; }
     }
 
     public class OuterApiConfiguration
     {
         public string BaseUrl { get; set; }
         public string Key { get; set; }
-        public bool AllowPreview { get;set; }
     }
 }
