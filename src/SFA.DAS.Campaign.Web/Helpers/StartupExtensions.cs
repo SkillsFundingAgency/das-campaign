@@ -13,6 +13,7 @@ using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Vacancies;
+using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Geocode;
@@ -133,6 +134,12 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.AddTransient<IHtmlControlFactory, YouTubeControlFactory>();
             services.AddTransient<IHtmlControlFactory, BlockQuoteControlFactory>();
             services.AddTransient<IHtmlControlFactory, HorizontalRuleControlFactory>();
+        }
+
+        public static void ConfigureJsonConverters(this IServiceCollection services)
+        {
+            services.AddSingleton<ICmsPageConverter, ArticleJsonConverter>();
+            services.AddSingleton<ICmsPageConverter, HubJsonConverter>();
         }
     }
 }

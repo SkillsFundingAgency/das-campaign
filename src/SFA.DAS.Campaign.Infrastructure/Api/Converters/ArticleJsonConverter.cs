@@ -10,7 +10,7 @@ using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 {
-    public class ArticleJsonConverter : JsonConverter
+    public class ArticleJsonConverter : JsonConverter, ICmsPageConverter
     {
         private readonly IHtmlControlAbstractFactory _controlAbstractFactory;
 
