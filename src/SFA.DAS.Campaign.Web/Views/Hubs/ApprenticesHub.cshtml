@@ -1,12 +1,15 @@
+@using SFA.DAS.Campaign.Web.Helpers
+@using SFA.DAS.Campaign.Web.Renderers
+@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.Hub>
 @{
-    ViewBag.Title = "Become an apprentice";
-    Layout = "Redesign_Layout_ApprenticesHub";
+    ViewBag.Title = Model.Title;
+    Layout = $@"Redesign_Layout_{Model.HubType.ToString()}Hub";
 
-    ViewBag.PageTitle = "Become an apprentice";
-    ViewBag.PageSummary = "Find out how to become an apprentice, what apprenticeships are available and which employers offer them.";
+    ViewBag.PageTitle = Model.Title;
+    ViewBag.PageSummary = Model.Content.Summary;
 
     ViewBag.HubPage = true;
-    ViewBag.HeadingImage = "apprentice-sparks.jpg";
+    ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
 }
 
 @section PageHeaderContent {
@@ -17,50 +20,48 @@
     <span class="fiu-grad-row__bg"></span>
     <div class="fiu-width-container">
         <div class="govuk-grid-row fiu-flex-row">
-            <div class="govuk-grid-column-one-quarter">
-                <partial name="Redesign/Cards/Apprentices/RealStories"/>
-            </div>
-            <div class="govuk-grid-column-one-quarter">
-                <partial name="Redesign/Cards/Apprentices/WhatAreTheBenefits"/>
-            </div>
+
+            @{
+                var firstTwo = Model.Content.Cards.Take(2);
+                for (var i = 0; i < firstTwo.Count(); i++)
+                {
+                    @Model.Content.Cards[i].CardToHtml();
+                }
+            }
+
             <div class="govuk-grid-column-one-half">
-                <partial name="Redesign/_FindAnApprenticeship"/>
+                <partial name="Redesign/_FindAnApprenticeship" />
             </div>
         </div>
-        <div class="govuk-grid-row fiu-flex-row">
-            <div class="govuk-grid-column-one-quarter">
-                <partial name="Redesign/Cards/Apprentices/AdviceForParents"/>
-            </div>
-            <div class="govuk-grid-column-one-quarter">
-                <partial name="Redesign/Cards/Apprentices/BrowseByInterest"/>
-            </div>
-            <div class="govuk-grid-column-one-quarter">
-                <partial name="Redesign/Cards/Apprentices/BecomingAnApprentice"/>
-            </div>
-            <div class="govuk-grid-column-one-quarter">
-                <partial name="Redesign/Cards/Apprentices/ApplyingForAnApprenticeship"/>
-            </div>
-        </div>
-        <div class="govuk-grid-row fiu-flex-row">
-            <div class="govuk-grid-column-one-quarter">
-                <partial name="Redesign/Cards/Apprentices/TheInterviewProcess"/>
-            </div>
-            <div class="govuk-grid-column-one-quarter">
-                <partial name="Redesign/Cards/Apprentices/StartingYourApprenticeship"/>
-            </div>
-            <div class="govuk-grid-column-one-quarter">
-                <partial name="Redesign/Cards/Apprentices/AssessmentAndCertification"/>
-            </div>
-            <div class="govuk-grid-column-one-quarter">
-                <partial name="Redesign/Cards/Apprentices/SetUpAccount"/>
-            </div>
-        </div>
-        <hr class="fiu-section-break fiu-section-break--l"/>
+
+        @{
+            var items = Model.Content.Cards.Skip(2).Take(Model.Content.Cards.Count - 2);
+            int columncount = 1;
+
+            for (var i = 0; i < items.Count(); i++)
+            {
+                if (columncount == 1)
+                {
+                    @:<div class="govuk-grid-row fiu-flex-row">
+                }
+                    @items.ElementAt(i).CardToHtml();
+                if (columncount == 4 || i == items.Count() - 1)
+                {
+                    @:</div>
+                    columncount = 1;
+                }
+                else
+                {
+                    columncount++;
+                }                
+            }
+        }
+        <hr class="fiu-section-break fiu-section-break--l" />
         <div class="govuk-grid-row fiu-flex-row">
             <div class="govuk-grid-column-full">
-                <partial name="Redesign/_GetFreeHelpAndSupport"/>
+                <partial name="Redesign/_GetFreeHelpAndSupport" />
             </div>
         </div>
-        <hr class="fiu-section-break fiu-section-break--l"/>
+        <hr class="fiu-section-break fiu-section-break--l" />
     </div>
 </div>

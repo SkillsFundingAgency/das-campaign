@@ -26,7 +26,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
             var page = result.Page;
 
-            return page == null ? View("~/Views/Error/PageNotFound.cshtml") : View("~/Views/Hubs/Hub.cshtml", page);
+            return page == null ? View("~/Views/Error/PageNotFound.cshtml") : View("~/Views/Hubs/" + hub + "Hub.cshtml", page);
         }
     }
 }
