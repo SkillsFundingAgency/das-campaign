@@ -14,7 +14,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Hub
 {
     public class WhenRequestingTheHubPage
     {
-        private const string HubName = "hub";
+        private const string HubName = "Apprentice";
 
         [Test, RecursiveMoqAutoData]
         public async Task And_Given_Valid_Hub_Then_The_Page_Is_Returned(
@@ -27,7 +27,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Hub
 
             controllerResult.AssertThatTheObjectResultIsValid();
             controllerResult.AssertThatTheObjectValueIsValid<Page<Domain.Content.Hub>>();
-            controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/Hubs/Hub.cshtml");
+            controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/Hubs/" + HubName + "Hub.cshtml");
         }
 
         [Test, RecursiveMoqAutoData]
@@ -54,7 +54,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Hub
 
             controllerResult.AssertThatTheObjectResultIsValid();
             controllerResult.AssertThatTheObjectValueIsValid<Page<Domain.Content.Hub>>();
-            controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/Hubs/Hub.cshtml");
+            controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/Hubs/" + HubName + "Hub.cshtml");
         }
 
         private static void SetupMediator(GetHubQueryResult<Domain.Content.Hub> mediatorResult, Mock<IMediator> mockMediator, bool preview)
