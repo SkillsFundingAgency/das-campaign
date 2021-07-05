@@ -97,16 +97,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
                 return;
             }
 
-            var relatedPages = cmsContent.Hub.MainContent.Cards.Select(relatedArticle => new ArticleRelated()
-            {
-                Summary = relatedArticle.Summary,
-                HubType = relatedArticle.HubType,
-                Slug = relatedArticle.Slug,
-                Description = relatedArticle.MetaDescription,
-                Title = relatedArticle.Title
-            }).ToList();
-
-            model.Content.Cards = relatedPages;
+            model.Content.Cards = cmsContent.Hub.MainContent.Cards;
         }
     }
 }

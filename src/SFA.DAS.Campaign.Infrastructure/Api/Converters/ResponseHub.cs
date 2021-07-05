@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
+using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 {
@@ -21,6 +22,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public Item HeaderImage { get; set; }
 
         [JsonProperty("cards")]
-        public List<RelatedArticle> Cards { get; set; }
+        public List<Card> Cards { get; set; }
     }
 }

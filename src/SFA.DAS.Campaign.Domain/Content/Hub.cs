@@ -9,10 +9,10 @@ namespace SFA.DAS.Campaign.Domain.Content
     {
         public Hub()
         {
-            Cards = new List<ArticleRelated>();
+            Cards = new List<Card>();
         }
         public string Summary { get; set; }
         public Image HeaderImage { get; set; }
-        public List<ArticleRelated> Cards { get; set; }
+        public List<Card> Cards { get; set; }
     }
 }
