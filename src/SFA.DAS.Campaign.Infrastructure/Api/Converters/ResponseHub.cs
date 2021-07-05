@@ -18,7 +18,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
     public class HubContent
     {
         [JsonProperty("headerImage")]
-        public EmbeddedResource HeaderImage { get; set; }
+        public Item HeaderImage { get; set; }
 
         [JsonProperty("cards")]
         public List<RelatedArticle> Cards { get; set; }

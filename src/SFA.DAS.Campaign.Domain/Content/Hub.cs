@@ -11,6 +11,7 @@ namespace SFA.DAS.Campaign.Domain.Content
         {
             Cards = new List<ArticleRelated>();
         }
+        public string Summary { get; set; }
         public Image HeaderImage { get; set; }
         public List<ArticleRelated> Cards { get; set; }
     }

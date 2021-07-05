@@ -69,7 +69,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
                     MetaDescription = cmsContent.Hub.PageAttributes.MetaDescription,
                     PageTitle = cmsContent.Hub.PageAttributes.Title
                 },
-                Content = new Hub()
+                Content = new Hub
+                {
+                    Summary = cmsContent.Hub.PageAttributes.Summary
+                }
             };
 
             AddHeaderImage(cmsContent, pageModel);
@@ -82,9 +85,9 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         {
             model.Content.HeaderImage = new Image
             {
-                Description = cmsContent.Hub.MainContent.HeaderImage.Description,
-                Title = cmsContent.Hub.MainContent.HeaderImage.Title,
-                Url = cmsContent.Hub.MainContent.HeaderImage.Url
+                Description = cmsContent.Hub.MainContent.HeaderImage.EmbeddedResource.Description,
+                Title = cmsContent.Hub.MainContent.HeaderImage.EmbeddedResource.Title,
+                Url = cmsContent.Hub.MainContent.HeaderImage.EmbeddedResource.Url
             };
         }
         private static void AddCards(PageRoot cmsContent, Page<Hub> model)

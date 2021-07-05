@@ -28,17 +28,5 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
             return page == null ? View("~/Views/Error/PageNotFound.cshtml") : View("~/Views/Hubs/Hub.cshtml", page);
         }
-
-        //[HttpGet("/apprentices")]
-        //public IActionResult Apprentices()
-        //{
-        //    return View("~/Views/Hubs/ApprenticesHub.cshtml");
-        //}
-        
-        [HttpGet("/employers")]
-        public IActionResult Employers()
-        {
-            return View("~/Views/Hubs/EmployersHub.cshtml");
-        }
     }
 }

@@ -20,5 +20,11 @@ namespace SFA.DAS.Campaign.Web.Helpers
             var html = renderer.ToHtml(controls);
             return html;
         }
+
+        public static HtmlString CardToHtml(this IHtmlControl control)
+        {
+            var renderer = new CardControlRenderer();
+            return renderer.Render(control);
+        }
     }
 }
