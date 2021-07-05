@@ -120,14 +120,15 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("/apprentice/real-stories")]
         public IActionResult ApprenticeRedirect()
         {
-            return RedirectToActionPermanent("Apprentices", "RealStories");
+            return RedirectToActionPermanent("/apprentices/real-stories");
         }
         
         [Route("/real-stories/employer")]
         [Route("/employer/real-stories")]
+        [Route("/employers/real-stories")]
         public IActionResult EmployerRedirect()
         {
-            return RedirectToActionPermanent("Employers", "RealStories");
+            return RedirectToActionPermanent("/employers/real-stories-employers");
         }
         
         [Route("/parents/their-career")]
