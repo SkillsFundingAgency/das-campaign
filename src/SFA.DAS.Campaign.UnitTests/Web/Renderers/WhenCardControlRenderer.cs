@@ -4,6 +4,7 @@ using System.Text;
 using AutoFixture.NUnit3;
 using FluentAssertions;
 using NUnit.Framework;
+using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Web.Renderers;
@@ -38,7 +39,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
                 HubType = "hub",
                 Slug = "slug",
                 Summary = "summary",
-                LandingPage = new LandingPage
+                LandingPage = new CardLandingPage
                 {
                     Hub = "lhub",
                     Slug = "lslug",

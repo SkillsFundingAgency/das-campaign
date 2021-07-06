@@ -7,5 +7,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
     {
         public ResponseArticle Article { get; set; }
         public ResponseHub Hub { get; set; }
+        public ResponseHub LandingPage { get; set; }
     }
 }

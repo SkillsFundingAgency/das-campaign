@@ -1,0 +1,72 @@
+@using SFA.DAS.Campaign.Web.Helpers
+@using SFA.DAS.Campaign.Web.Renderers
+@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.LandingPage>
+@{
+    ViewBag.Title = Model.Title;
+    Layout = $"Redesign_Layout_{Model.HubType.ToString()}LandingPage";
+    ViewBag.PageTitle = Model.Title;
+    ViewBag.PageSummary = Model.Content.Summary;
+    ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
+    ViewBag.LandingPageSlug = Model.Slug;
+    ViewBag.LandingPageTitle = Model.Title;
+}
+
+<div class="fiu-grad-row">
+
+    <span class="fiu-grad-row__bg"></span>
+
+    <div class="fiu-width-container">
+
+        <div class="govuk-grid-row fiu-flex-row">
+
+            @{
+                var firstTwo = Model.Content.Cards.Take(2);
+                for (var i = 0; i < firstTwo.Count(); i++)
+                {
+                    @Model.Content.Cards[i].CardToHtml();
+                }
+            }
+
+            <div class="govuk-grid-column-one-half">
+                <partial name="Redesign/_FindAnApprenticeship" />
+            </div>
+        </div>
+
+        <div class="govuk-grid-row fiu-flex-row">
+
+            @{
+                var secondTwo = Model.Content.Cards.Skip(2).Take(2);
+                for (var i = 0; i < secondTwo.Count(); i++)
+                {
+                    @Model.Content.Cards[i].CardToHtml();
+                }
+            }
+
+            <div class="govuk-grid-column-one-half">
+                <partial name="Redesign/_GetFreeHelpAndSupport" />
+            </div>
+        </div>
+
+        @{
+            var items = Model.Content.Cards.Skip(4).Take(Model.Content.Cards.Count - 4);
+            int columncount = 1;
+
+            for (var i = 0; i < items.Count(); i++)
+            {
+                if (columncount == 1)
+                {
+                    @:<div class="govuk-grid-row fiu-flex-row">
+                    }
+                    @items.ElementAt(i).CardToHtml();
+                    if (columncount == 4 || i == items.Count() - 1)
+                    {
+                    @:</div>
+                    columncount = 1;
+                }
+                else
+                {
+                    columncount++;
+                }
+            }
+        }
+    </div>
