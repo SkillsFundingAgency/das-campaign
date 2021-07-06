@@ -13,7 +13,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
     public class WhenCardControlRenderer
     {
         [Test, AutoData]
-        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Of_RelatedArticle_Then_Supports_Content_Returns_True(ArticleRelated card, CardControlRenderer renderer)
+        public void Is_Passed_An_Object_Of_IHtmlControl_That_Is_Of_RelatedArticle_Then_Supports_Content_Returns_True(Card card, CardControlRenderer renderer)
         {
             var actual = renderer.SupportsContent(card);
 
@@ -31,19 +31,25 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         [Test, AutoData]
         public void Is_Passed_An_Object_Of_Attachment_Then_Render_Returns_The_Html(CardControlRenderer renderer)
         {
-            var attachment = new ArticleRelated()
+            var attachment = new Card()
             {
                 Description = "description",
                 Title = "title",
                 HubType = "hub",
                 Slug = "slug",
-                Summary = "summary"
+                Summary = "summary",
+                LandingPage = new LandingPage
+                {
+                    Hub = "lhub",
+                    Slug = "lslug",
+                    Title = "ltitle"
+                }
             };
           
             var actual = renderer.Render(attachment);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<div class=\"govuk-grid-column-one-quarter\"><div class=\"fiu-card\"><span class=\"fiu-card__category\"><a class=\"fiu-card__category-link\" href=\"/hub/slug\">title</a></span><h3 class=\"fiu-card__heading\">title</h3><p class=\"fiu-card__content\">summary</p><a href=\"/hub/slug\" class=\"fiu-card__link\">Learn more <span class=\"fiu-vh\"> about title</span></a></div></div>");
+            actual.Value.Should().Be("<div class=\"govuk-grid-column-one-quarter\"><div class=\"fiu-card\"><span class=\"fiu-card__category\"><a class=\"fiu-card__category-link\" href=\"/lhub/lslug\">ltitle</a></span><h3 class=\"fiu-card__heading\">title</h3><p class=\"fiu-card__content\">summary</p><a href=\"/hub/slug\" class=\"fiu-card__link\">Learn more <span class=\"fiu-vh\"> about title</span></a></div></div>");
         }
     }
 }
