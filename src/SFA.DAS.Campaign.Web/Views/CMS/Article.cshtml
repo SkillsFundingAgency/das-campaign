@@ -5,8 +5,8 @@
     ViewBag.Title = Model.Title;
     Layout = $"Redesign_Layout_{Model.HubType.ToString()}Article";
     ViewBag.PageTitle = Model.Title;
-    ViewBag.LandingPageSlug = Model.Breadcrumbs.LandingPageSlug;
-    ViewBag.LandingPageTitle = Model.Breadcrumbs.LandingPage; 
+    ViewBag.LandingPageSlug = Model.Breadcrumbs != null ? Model.Breadcrumbs.LandingPageSlug : null;
+    ViewBag.LandingPageTitle = Model.Breadcrumbs != null ? Model.Breadcrumbs.LandingPage : null;
     ViewBag.ArticlePageSlug = Model.Slug;
     ViewBag.ArticlePageTitle = Model.Title;
 }
