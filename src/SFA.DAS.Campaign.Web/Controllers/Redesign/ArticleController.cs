@@ -28,8 +28,22 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             }, cancellationToken).ConfigureAwait(false);
 
             var page = result.Page;
-            
-            return page == null ? View("~/Views/Error/PageNotFound.cshtml") : View("~/Views/CMS/Article.cshtml", page);
+
+            if (page != null)
+            {
+                return View("~/Views/CMS/Article.cshtml", page);
+            }
+
+            var landingPageResult = await _mediator.Send(new GetLandingPageQuery
+            {
+                Hub = hub,
+                Slug = slug,
+                Preview = preview
+            }, cancellationToken).ConfigureAwait(false);
+
+            var landingPage = landingPageResult.Page;
+
+            return landingPage == null ? View("~/Views/Error/PageNotFound.cshtml") : View("~/Views/LandingPages//LandingPage.cshtml", landingPage);
         }
     }
 }

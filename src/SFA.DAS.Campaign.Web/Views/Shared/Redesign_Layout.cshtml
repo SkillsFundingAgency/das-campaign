@@ -49,12 +49,12 @@
             <nav class="fiu-header__nav">
                 <ul id="fiu-nav" class="fiu-header__navigation">
                     <li class="fiu-header__navigation-item @(ViewBag.Section == "apprentices" ? "fiu-header__navigation-item--citizens-active" : "")">
-                        <a class="fiu-header__link" asp-controller="Hub" asp-action="Apprentices" id="fiu-header-link-apprentices">
+                        <a class="fiu-header__link" href="/apprentices" id="fiu-header-link-apprentices">
                             Apprentices
                         </a>
                     </li>
                     <li class="fiu-header__navigation-item @(ViewBag.Section == "employers" ? "fiu-header__navigation-item--employers-active" : "")">
-                        <a class="fiu-header__link" asp-controller="Hub" asp-action="Employers" id="fiu-header-link-employers">
+                        <a class="fiu-header__link" href="/employers" id="fiu-header-link-employers">
                             Employers
                         </a>
                     </li>

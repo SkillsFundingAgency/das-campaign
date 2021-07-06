@@ -65,6 +65,23 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             actual.Page.Should().BeNull();
         }
 
+        [Test, RecursiveMoqAutoData]
+        public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_For_Article_Page_Then_Landing_Page_Is_Returned(
+            GetLandingPageQuery query, Page<LandingPage> pageResponse, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetLandingPageQueryHandler landingPageHandler)
+        {
+            SetupMockConfig(config);
+            client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
+            client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
+
+            client.Setup(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPagePreviewRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}"))).ReturnsAsync(pageResponse);
+
+            var actual = await landingPageHandler.Handle(query, CancellationToken.None);
+
+            client.Verify(o => o.Get<Page<Article>>(It.IsAny<GetArticlesPreviewRequest>()), Times.Never);
+            actual.Should().NotBeNull();
+            actual.Page.Should().NotBeNull();
+        }
+
         private static void SetupMockConfig(Mock<IOptions<CampaignConfiguration>> config, bool allowPreview = true)
         {
             config.Object.Value.AllowPreview = allowPreview;

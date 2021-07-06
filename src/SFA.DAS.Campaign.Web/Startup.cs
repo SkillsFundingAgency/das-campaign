@@ -81,7 +81,7 @@ namespace SFA.DAS.Campaign.Web
             services.ConfigureSfaMappers();
             services.ConfigureSfaDataCollection();
             services.ConfigureFactorys();
-
+            services.ConfigureJsonConverters();
             services.AddMediatR(typeof(GetArticleQuery).Assembly);
 
             services.AddMiniProfiler(options =>

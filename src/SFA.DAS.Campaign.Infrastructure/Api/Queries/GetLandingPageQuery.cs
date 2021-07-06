@@ -6,10 +6,10 @@ using SFA.DAS.Campaign.Domain.Content;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
 {
-    public class GetArticleQuery : IRequest<GetArticleQueryResult<Article>>
+    public class GetLandingPageQuery : IRequest<GetLandingPageQueryResult<LandingPage>>
     {
         public string Hub { get; set; }
         public string Slug { get; set; }
-        public bool Preview { get ; set ; }
+        public bool Preview { get; set; }
     }
 }

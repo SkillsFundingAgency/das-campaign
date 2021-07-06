@@ -5,15 +5,14 @@ using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 
 namespace SFA.DAS.Campaign.Domain.Content
 {
-    public class LandingPage : IContentType
+    public class Hub : IContentType
     {
-        public LandingPage()
+        public Hub()
         {
             Cards = new List<Card>();
         }
         public string Summary { get; set; }
         public Image HeaderImage { get; set; }
         public List<Card> Cards { get; set; }
-
     }
 }
