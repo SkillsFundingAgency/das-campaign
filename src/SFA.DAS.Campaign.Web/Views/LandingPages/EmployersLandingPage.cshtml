@@ -19,7 +19,12 @@
                 var firstTwo = Model.Content.Cards.Take(2);
                 for (var i = 0; i < firstTwo.Count(); i++)
                 {
-                    @firstTwo.ElementAt(i).CardToHtml();
+                    @firstTwo.ElementAt(i).CardToHtml()
+
+                    if (firstTwo.Count() == 1)
+                    {
+                        <div class="govuk-grid-column-one-quarter">&nbsp;</div>
+                    }
                 }
             }
             <div class="govuk-grid-column-one-half">
@@ -31,11 +36,17 @@
                 var secondTwo = Model.Content.Cards.Skip(2).Take(2);
                 for (var i = 0; i < secondTwo.Count(); i++)
                 {
-                    @secondTwo.ElementAt(i).CardToHtml();
+                    @secondTwo.ElementAt(i).CardToHtml()
+
+
+                    if (secondTwo.Count() == 1)
+                    {
+                        <div class="govuk-grid-column-one-quarter">&nbsp;</div>
+                    }
                 }
             }
             <div class="govuk-grid-column-one-half">
-                <partial name="Redesign/_RegisterInterestEmployer"/>
+                <partial name="Redesign/_RegisterInterestEmployer" />
             </div>
         </div>
         @{
@@ -48,7 +59,7 @@
                 {
                     @:<div class="govuk-grid-row fiu-flex-row">
                     }
-                    @items.ElementAt(i).CardToHtml();
+                    @items.ElementAt(i).CardToHtml()
                     if (columncount == 4 || i == items.Count() - 1)
                     {
                     @:</div>
