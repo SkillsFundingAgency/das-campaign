@@ -6,7 +6,7 @@
     Layout = "Redesign_Layout_ApprenticesLandingPage";
     ViewBag.PageTitle = Model.Title;
     ViewBag.PageSummary = Model.Content.Summary;
-    ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
+    ViewBag.HeadingImage = Model.Content?.HeaderImage?.Url;
     ViewBag.LandingPageSlug = Model.Slug;
     ViewBag.LandingPageTitle = Model.Title;
 }

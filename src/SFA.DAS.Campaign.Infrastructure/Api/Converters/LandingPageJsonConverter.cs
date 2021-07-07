@@ -79,9 +79,9 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         {
             model.Content.HeaderImage = new Image
             {
-                Description = cmsContent.LandingPage.MainContent.HeaderImage.EmbeddedResource.Description,
-                Title = cmsContent.LandingPage.MainContent.HeaderImage.EmbeddedResource.Title,
-                Url = cmsContent.LandingPage.MainContent.HeaderImage.EmbeddedResource.Url
+                Description = cmsContent.LandingPage.MainContent?.HeaderImage?.EmbeddedResource.Description,
+                Title = cmsContent.LandingPage.MainContent?.HeaderImage?.EmbeddedResource.Title,
+                Url = cmsContent.LandingPage.MainContent?.HeaderImage?.EmbeddedResource.Url
             };
         }
         private static void AddCards(PageRoot cmsContent, Page<LandingPage> model)
