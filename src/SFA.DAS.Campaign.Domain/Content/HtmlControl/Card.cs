@@ -11,7 +11,7 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
         public string HubType { get; set; }
         public string Summary { get; set; }
         public string Description { get; set; }
-        public string Url => $"/{HubType}/{Slug}";
+        public string Url => $"/{HubType.ToString().ToLower()}/{Slug}";
         public CardLandingPage LandingPage { get; set; }
     }
 
@@ -20,6 +20,6 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
         public string Slug { get; set; }
         public string Title { get; set; }
         public string Hub { get; set; }
-        public string Url => $"/{Hub}/{Slug}";
+        public string Url => $"/{Hub.ToString().ToLower()}/{Slug}";
     }
 }
