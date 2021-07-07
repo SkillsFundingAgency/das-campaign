@@ -1,41 +1,45 @@
 @using SFA.DAS.Campaign.Web.Helpers
 @using SFA.DAS.Campaign.Web.Renderers
-@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.Hub>
+@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.LandingPage>
 @{
     ViewBag.Title = Model.Title;
-    Layout = $@"Redesign_Layout_{Model.HubType.ToString()}Hub";
-
+    Layout = "Redesign_Layout_EmployersLandingPage";
     ViewBag.PageTitle = Model.Title;
     ViewBag.PageSummary = Model.Content.Summary;
-
-    ViewBag.HubPage = true;
     ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
-}
-
-@section PageHeaderContent {
-    <h2 class="govuk-heading-l fiu-page-header__sub-heading">What you need to know</h2>
+    ViewBag.LandingPageSlug = Model.Slug;
+    ViewBag.LandingPageTitle = Model.Title;
 }
 
 <div class="fiu-grad-row">
     <span class="fiu-grad-row__bg"></span>
     <div class="fiu-width-container">
         <div class="govuk-grid-row fiu-flex-row">
-
             @{
                 var firstTwo = Model.Content.Cards.Take(2);
                 for (var i = 0; i < firstTwo.Count(); i++)
                 {
-                    @Model.Content.Cards[i].CardToHtml();
+                    @firstTwo.ElementAt(i).CardToHtml();
                 }
             }
-
             <div class="govuk-grid-column-one-half">
-                <partial name="Redesign/_FindAnApprenticeship" />
+                <partial name="Redesign/_FindTheRightApprenticeship"/>
             </div>
         </div>
-
+        <div class="govuk-grid-row fiu-flex-row">
+            @{
+                var secondTwo = Model.Content.Cards.Skip(2).Take(2);
+                for (var i = 0; i < secondTwo.Count(); i++)
+                {
+                    @secondTwo.ElementAt(i).CardToHtml();
+                }
+            }
+            <div class="govuk-grid-column-one-half">
+                <partial name="Redesign/_RegisterInterestEmployer"/>
+            </div>
+        </div>
         @{
-            var items = Model.Content.Cards.Skip(2).Take(Model.Content.Cards.Count - 2);
+            var items = Model.Content.Cards.Skip(4).Take(Model.Content.Cards.Count - 4);
             int columncount = 1;
 
             for (var i = 0; i < items.Count(); i++)
@@ -43,25 +47,18 @@
                 if (columncount == 1)
                 {
                     @:<div class="govuk-grid-row fiu-flex-row">
-                }
+                    }
                     @items.ElementAt(i).CardToHtml();
-                if (columncount == 4 || i == items.Count() - 1)
-                {
+                    if (columncount == 4 || i == items.Count() - 1)
+                    {
                     @:</div>
                     columncount = 1;
                 }
                 else
                 {
                     columncount++;
-                }                
+                }
             }
         }
-        <hr class="fiu-section-break fiu-section-break--l" />
-        <div class="govuk-grid-row fiu-flex-row">
-            <div class="govuk-grid-column-full">
-                <partial name="Redesign/_GetFreeHelpAndSupport" />
-            </div>
-        </div>
-        <hr class="fiu-section-break fiu-section-break--l" />
     </div>
 </div>

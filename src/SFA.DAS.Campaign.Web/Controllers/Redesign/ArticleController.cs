@@ -17,6 +17,12 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             _mediator = mediator;
         }
 
+        [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
+        public IActionResult TheRoadToAQualityApprenticeship()
+        {
+            return View("~/Views/Articles/Employers/TheRoadToAQualityApprenticeship.cshtml");
+        }
+
         [HttpGet("/{hub}/{slug}")]
         public async Task<IActionResult> GetArticleAsync(string hub, string slug, [FromQuery]bool preview, CancellationToken cancellationToken = default)
         {
@@ -43,7 +49,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
             var landingPage = landingPageResult.Page;
 
-            return landingPage == null ? View("~/Views/Error/PageNotFound.cshtml") : View("~/Views/LandingPages//LandingPage.cshtml", landingPage);
+            return landingPage == null ? View("~/Views/Error/PageNotFound.cshtml") : View($"~/Views/LandingPages/{hub}LandingPage.cshtml", landingPage);
         }
     }
 }
