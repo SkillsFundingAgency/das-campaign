@@ -17,6 +17,12 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             _mediator = mediator;
         }
 
+        [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
+        public IActionResult TheRoadToAQualityApprenticeship()
+        {
+            return View("~/Views/Articles/Employers/TheRoadToAQualityApprenticeship.cshtml");
+        }
+
         [HttpGet("/{hub}/{slug}")]
         public async Task<IActionResult> GetArticleAsync(string hub, string slug, [FromQuery]bool preview, CancellationToken cancellationToken = default)
         {
