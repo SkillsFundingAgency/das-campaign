@@ -28,11 +28,5 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
             return page == null ? View("~/Views/Error/PageNotFound.cshtml") : View($"~/Views/Hubs/{hub}Hub.cshtml", page);
         }
-
-        [HttpGet("/influencers")]
-        public IActionResult Influencers()
-        {
-            return View("~/Views/Hubs/InfluencersHub.cshtml");
-        }
     }
 }

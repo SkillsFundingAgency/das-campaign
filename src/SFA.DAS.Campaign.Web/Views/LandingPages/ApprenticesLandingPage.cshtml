@@ -23,23 +23,11 @@
                 }
             }
             <div class="govuk-grid-column-one-half">
-                <partial name="Redesign/_FindAnApprenticeship" />
-            </div>
-        </div>
-        <div class="govuk-grid-row fiu-flex-row">
-            @{
-                var secondTwo = Model.Content.Cards.Skip(2).Take(2);
-                for (var i = 0; i < secondTwo.Count(); i++)
-                {
-                    @secondTwo.ElementAt(i).CardToHtml();
-                }
-            }
-            <div class="govuk-grid-column-one-half">
-                <partial name="Redesign/_GetFreeHelpAndSupport" />
+                @Html.Partial("./Panels/_BrowseApprenticeships", "")
             </div>
         </div>
         @{
-            var items = Model.Content.Cards.Skip(4).Take(Model.Content.Cards.Count - 4);
+            var items = Model.Content.Cards.Skip(2).Take(Model.Content.Cards.Count - 2);
             int columncount = 1;
 
             for (var i = 0; i < items.Count(); i++)
