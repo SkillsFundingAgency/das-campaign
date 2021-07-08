@@ -89,22 +89,18 @@ namespace SFA.DAS.Campaign.Web
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddMemoryCache();
-
             services.AddLogging();
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
+            
+            
             services.AddSession(options =>
             {
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
 
-            if (Configuration["Environment"] == "LOCAL")
-            {
-                services.AddDistributedMemoryCache();
-            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -125,6 +121,11 @@ namespace SFA.DAS.Campaign.Web
                 app.UseExceptionHandler("/Error/Error");
                 app.UseHsts();
             }
+
+            app.UseHealthChecks("/health", new HealthCheckOptions
+            {
+                ResponseWriter = HealthCheckResponseWriter.WriteJsonResponse
+            });
 
             app.UseStaticFiles();
             app.UseCookiePolicy(new CookiePolicyOptions
