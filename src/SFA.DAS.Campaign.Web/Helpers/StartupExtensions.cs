@@ -57,7 +57,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
 
             var queueStorageConnectionString = configuration.Get<CampaignConfiguration>().QueueConnectionString;
 
-            var healthChecks = services.AddHealthChecks()
+            services.AddHealthChecks()
                 .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
                 .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check")
                 .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
@@ -66,6 +66,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
 
             if (configuration["Environment"] == "LOCAL")
             {
+                services.AddDistributedMemoryCache();
                 return;
             }
 
@@ -74,7 +75,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
                 options.Configuration = connectionStrings.SharedRedis;
             });
 
-            healthChecks.AddRedis(connectionStrings.SharedRedis, "redis-app-cache-check");
+            services.AddHealthChecks().AddRedis(connectionStrings.SharedRedis, "redis-app-cache-check");
 
             var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},DefaultDatabase=3");
             services.AddDataProtection()

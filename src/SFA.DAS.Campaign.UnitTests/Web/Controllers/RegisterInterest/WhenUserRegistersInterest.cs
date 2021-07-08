@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -42,11 +41,10 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             _userDataCollection = new Mock<IUserDataCollection>();
-
-            var cookies = new RequestCookieCollection(new Dictionary<string, string>{{ "_ga", ExpectedCookieId } } );
+            
             var headers = new HeaderDictionary(new Dictionary<string, StringValues>{{ "Referer", ExpectedReferrerUrl } } );
             _httpContext = new Mock<HttpContext>();
-            _httpContext.Setup(x => x.Request.Cookies).Returns(cookies);
+            _httpContext.Setup(x => x.Request.Cookies["_ga"]).Returns(ExpectedCookieId);
             _httpContext.Setup(x => x.Request.Headers).Returns(headers);
             _httpContext.Setup(x => x.Request.Path).Returns("/");
 
@@ -296,8 +294,8 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         {
             //Arrange
             _httpContext = new Mock<HttpContext>();
-            _httpContext.Setup(x => x.Request.Cookies)
-                .Returns(new RequestCookieCollection(new Dictionary<string, string> {  }));
+
+            _httpContext.Setup(x => x.Request.Cookies["_ga"]).Returns(string.Empty);
             _httpContext.Setup(x => x.Request.Path).Returns("/");
 
             _controller = new RegisterInterestController(_userDataCollection.Object)
