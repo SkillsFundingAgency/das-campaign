@@ -66,7 +66,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
                 Title = cmsContent.Hub.PageAttributes.Title,
                 MetaContent = new MetaContent
                 {
-                    MetaDescription = cmsContent.Hub.PageAttributes.MetaDescription,
+                    MetaDescription = cmsContent.Hub.PageAttributes?.MetaDescription,
                     PageTitle = cmsContent.Hub.PageAttributes.Title
                 },
                 Content = new Hub

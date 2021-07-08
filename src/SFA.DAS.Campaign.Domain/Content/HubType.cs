@@ -4,6 +4,7 @@ namespace SFA.DAS.Campaign.Domain.Content
     {
         Home,
         Employers,
-        Apprentices
+        Apprentices,
+        Influencers
     }
 }
