@@ -3,10 +3,10 @@
 @model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.LandingPage>
 @{
     ViewBag.Title = Model.Title;
-    Layout = "Redesign_Layout_ApprenticesLandingPage";
+    Layout = "Redesign_Layout_InfluencersHub";
     ViewBag.PageTitle = Model.Title;
     ViewBag.PageSummary = Model.Content.Summary;
-    ViewBag.HeadingImage = Model.Content?.HeaderImage?.Url;
+    ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
     ViewBag.LandingPageSlug = Model.Slug;
     ViewBag.LandingPageTitle = Model.Title;
 }
@@ -23,7 +23,7 @@
                 }
             }
             <div class="govuk-grid-column-one-half">
-                @Html.Partial("./Panels/_BrowseApprenticeships", "")
+                @Html.Partial("./Panels/_BrowseApprenticeships", "fiu-button--outlined")
             </div>
         </div>
         @{

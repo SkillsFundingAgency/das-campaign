@@ -1,7 +1,7 @@
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-half">
+    <div class="govuk-grid-column-one-third">
             <div class="fiu-feature-text">
-                <h2 class="fiu-tag fiu-tag--citizens fiu-panel__tag">Apprentices</h2>
+                <a class="fiu-tag fiu-tag--citizens fiu-panel__tag" asp-controller="Hub" asp-action="Apprentices">Apprentices</a>
             </div>
     
             <ul class="govuk-list fiu-sitemap-list">
@@ -91,10 +91,10 @@
             </p>
     
         </div>
-    <div class="govuk-grid-column-one-half">
+    <div class="govuk-grid-column-one-third">
 
         <div class="fiu-feature-text">
-            <h2 class="fiu-tag fiu-tag--employers fiu-panel__tag">Employers</h2>
+            <a class="fiu-tag fiu-tag--employers fiu-panel__tag" asp-controller="Hub" asp-action="Employers">Employers</a>
         </div>
 
         <ul class="govuk-list fiu-sitemap-list">
@@ -211,11 +211,21 @@
             </li>
         </ul>
 
-        <p class="govuk-body">
-            <a asp-controller="Employer" asp-action="FindApprenticeshipTraining" class="fiu-link fiu-link--employers fiu-font-weight-bold">
-                Find apprenticeship training
-            </a>
-        </p>
+        
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+        <div class="fiu-feature-text">
+            <a class="fiu-tag fiu-tag--influencers fiu-panel__tag" asp-controller="Hub" asp-action="Influencers">Influencers</a>
+        </div>
+
+        <ul class="govuk-list fiu-sitemap-list">
+            <li><a href="/influencers/how-they-work" class="fiu-link fiu-sitemap-list__link">How they work</a> </li>
+            <li><a href="/influencers/request-ask-support" class="fiu-link fiu-sitemap-list__link">Request support</a> </li>
+            <li><a href="/influencers/browse-resources" class="fiu-link fiu-sitemap-list__link">Browse resources</a> </li>
+            <li><a href="/influencers/become-an-ambassador" class="fiu-link fiu-sitemap-list__link">Become an ambassador</a> </li>
+        </ul>
+
     </div>
 </div>
 

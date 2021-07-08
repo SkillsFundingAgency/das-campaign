@@ -1,5 +1,5 @@
 @{
-    Layout = "Redesign_Layout_EmployersHub";
+    Layout = "Redesign_Layout_InfluencersHub";
     ViewBag.PanelsInNarrowColumn = true;
 }
 
@@ -10,9 +10,7 @@
             @RenderBody()
         </div>
         <div class="govuk-grid-column-one-third">
-            <partial name="./Panels/_FindTheRightApprenticeship"/>
-            <partial name="./Panels/_RegisterInterestEmployer"/>
-            <partial name="./Panels/_GetSupportEmployer"/>
+            @Html.Partial("./Panels/_BrowseApprenticeships", "fiu-button--outlined")
         </div>
     </div>
     <hr class="fiu-section-break fiu-section-break--l">

@@ -28,6 +28,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using MediatR;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api;
@@ -40,11 +41,14 @@ namespace SFA.DAS.Campaign.Web
 {
     public class Startup
     {
+        private IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")	                
+                .AddJsonFile("appsettings.Development.json",true)	                
                 .AddEnvironmentVariables()
                 .AddAzureTableStorageConfiguration(
                     configuration["ConfigurationStorageConnectionString"],
@@ -56,8 +60,6 @@ namespace SFA.DAS.Campaign.Web
 
             Configuration = config;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -83,63 +85,27 @@ namespace SFA.DAS.Campaign.Web
             services.ConfigureFactorys();
             services.ConfigureJsonConverters();
             services.AddMediatR(typeof(GetArticleQuery).Assembly);
-
-            services.AddMiniProfiler(options =>
-            {
-                // ALL of this is optional. You can simply call .AddMiniProfiler() for all defaults
-                // Defaults: In-Memory for 30 minutes, everything profiled, every user can see
-
-                // Path to use for profiler URLs, default is /mini-profiler-resources
-                options.RouteBasePath = "/profiler";
-
-                // Control storage - the default is 30 minutes
-                //(options.Storage as MemoryCacheStorage).CacheDuration = TimeSpan.FromMinutes(60);
-                //options.Storage = new SqlServerStorage("Data Source=.;Initial Catalog=MiniProfiler;Integrated Security=True;");
-
-                // Control which SQL formatter to use, InlineFormatter is the default
-                options.SqlFormatter = new StackExchange.Profiling.SqlFormatters.SqlServerFormatter();
-
-                // To control authorization, you can use the Func<HttpRequest, bool> options:
-                //options.ResultsAuthorize = request => !Program.DisableProfilingResults;
-                //options.ResultsListAuthorize = request => MyGetUserFunction(request).CanSeeMiniProfiler;
-
-                // To control which requests are profiled, use the Func<HttpRequest, bool> option:
-                //options.ShouldProfile = request => MyShouldThisBeProfiledFunction(request);
-
-                // Profiles are stored under a user ID, function to get it:
-                //options.UserIdProvider =  request => MyGetUserIdFunction(request);
-
-                // Optionally swap out the entire profiler provider, if you want
-                // The default handles async and works fine for almost all applications
-                //options.ProfilerProvider = new MyProfilerProvider();
-
-                // Optionally disable "Connection Open()", "Connection Close()" (and async variants).
-                //options.TrackConnectionOpenClose = false;);
-            });
             
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddMemoryCache();
+            services.AddLogging();
 
-           
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
+            
+            
             services.AddSession(options =>
             {
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
 
-            if (Configuration["Environment"] == "LOCAL")
-            {
-                services.AddDistributedMemoryCache();
-            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // By defualt app services have en-US locale set no matter what Region is being used.
             var cultureInfo = new CultureInfo("en-GB");
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
@@ -149,7 +115,6 @@ namespace SFA.DAS.Campaign.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseMiniProfiler();
             }
             else
             {
@@ -180,17 +145,20 @@ namespace SFA.DAS.Campaign.Web
                 await next();
             });
 
+            app.UseRouting();
+            
             app.UseSession();
             
-            app.UseMvc(routes =>
+            app.UseEndpoints(builder =>
             {
-                routes.MapRoute(
+                builder.MapControllerRoute(
                     "Fat",
                     "employer/find-apprenticeships/{action=Search}",
                     new { controller = "Fat" });
-                routes.MapRoute(
+                builder.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                
             });
         }
     }

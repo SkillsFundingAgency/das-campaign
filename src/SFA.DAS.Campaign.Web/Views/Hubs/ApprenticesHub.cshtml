@@ -3,7 +3,7 @@
 @model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.Hub>
 @{
     ViewBag.Title = Model.Title;
-    Layout = $@"Redesign_Layout_{Model.HubType.ToString()}Hub";
+    Layout = "Redesign_Layout_ApprenticesHub";
 
     ViewBag.PageTitle = Model.Title;
     ViewBag.PageSummary = Model.Content.Summary;
@@ -30,7 +30,7 @@
             }
 
             <div class="govuk-grid-column-one-half">
-                <partial name="Redesign/_FindAnApprenticeship" />
+                @Html.Partial("./Panels/_BrowseApprenticeships", "")
             </div>
         </div>
 
@@ -59,7 +59,7 @@
         <hr class="fiu-section-break fiu-section-break--l" />
         <div class="govuk-grid-row fiu-flex-row">
             <div class="govuk-grid-column-full">
-                <partial name="Redesign/_GetFreeHelpAndSupport" />
+                <partial name="Panels/_GetFreeHelpAndSupport" />
             </div>
         </div>
         <hr class="fiu-section-break fiu-section-break--l" />

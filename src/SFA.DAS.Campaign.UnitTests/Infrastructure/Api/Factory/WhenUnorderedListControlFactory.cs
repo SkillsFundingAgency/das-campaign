@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
-using Microsoft.EntityFrameworkCore.Internal;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;

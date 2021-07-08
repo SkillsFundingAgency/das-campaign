@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="2.2.5" />
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.options" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.16" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="3.1.16" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="3.1.16" />
+    <PackageReference Include="Microsoft.Extensions.options" Version="3.1.16" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.16" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.16" />
     <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="10.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="2.2.0" />
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.1" />
