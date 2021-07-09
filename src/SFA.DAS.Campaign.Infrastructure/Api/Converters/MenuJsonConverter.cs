@@ -10,9 +10,9 @@ using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 {
-    public class SiteMapJsonConverter : JsonConverter, ICmsPageConverter
+    public class MenuJsonConverter : JsonConverter, ICmsPageConverter
     {
-        public SiteMapJsonConverter()
+        public MenuJsonConverter()
         {
         }
 
@@ -51,25 +51,31 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         public override bool CanConvert(Type objectType)
         {
-            return typeof(Page<SiteMap>).IsAssignableFrom(objectType);
+            return typeof(Page<Menu>).IsAssignableFrom(objectType);
         }
 
-        private Page<SiteMap> PopulatePageModel(PageRoot cmsContent)
+        private Page<Menu> PopulatePageModel(PageRoot cmsContent)
         {
-            var pageModel = new Page<SiteMap>
+            var pageModel = new Page<Menu>
             {
-                Content = new SiteMap
+                Content = new Menu()
                 {
-                    Urls = AddSiteMapUrls(cmsContent)
+                    Apprentices = cmsContent.Menu.MainContent.Apprentices.AddSiteMapUrls(),
+                    Employers = cmsContent.Menu.MainContent.Employers.AddSiteMapUrls(),
+                    Influencers = cmsContent.Menu.MainContent.Influencers.AddSiteMapUrls(),
+                    TopLevel = cmsContent.Menu.MainContent.TopLevel.AddSiteMapUrls()
                 }
             };
 
             return pageModel;
         }
+    }
 
-        private List<Url> AddSiteMapUrls(PageRoot cmsContent)
+    internal static class Extensions
+    {
+        internal static List<Url> AddSiteMapUrls(this List<SiteMapPage> page)
         {
-            return cmsContent.Map.MainContent.Pages.Select(page => new Url {Title = page.Title, Hub = page.Hub, PageType = page.PageType, Slug = page.Slug}).ToList();
+            return page.Select(page => new Url { Title = page.Title, Hub = page.Hub, PageType = page.PageType, Slug = page.Slug }).ToList();
         }
     }
 }

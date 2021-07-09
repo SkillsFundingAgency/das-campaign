@@ -13,5 +13,6 @@ namespace SFA.DAS.Campaign.Domain.Content
         public IEnumerable<ArticleRelated> RelatedPages { get; set; }
         public IEnumerable<DocumentAttachment> Attachments { get; set; }
         public Breadcrumbs Breadcrumbs { get; set; }
+        public Menu Menu { get; set; }
     }
 }

@@ -51,6 +51,27 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             actual.Page.Should().NotBeNull();
         }
 
+        [Test]
+        [RecursiveMoqInlineAutoData(true)]
+        [RecursiveMoqInlineAutoData(false)]
+        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_Then_The_Article_Is_Returned_From_The_Api_With_The_Menu(
+            bool preview, GetArticleQuery query, Page<Article> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetArticleQueryHandler handler)
+        {
+            query.Preview = preview;
+            SetupMockConfig(config, false);
+
+            client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            client.Verify(
+                o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}")), Times.Once);
+            client.Verify(o => o.Get<Page<Menu>>(It.IsAny<GetMenuRequest>()), Times.Once);
+            client.Verify(o => o.Get<Page<Article>>(It.IsAny<GetArticlesPreviewRequest>()), Times.Never);
+            actual.Should().NotBeNull();
+            actual.Page.Should().NotBeNull();
+        }
+
         [Test, RecursiveMoqAutoData]
         public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_Then_No_Article_Is_Returned(
             GetArticleQuery query, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetArticleQueryHandler handler)
@@ -58,6 +79,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             SetupMockConfig(config);
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
+            client.Setup(o => o.Get<Page<Menu>>(It.Is<GetMenuRequest>(r => r.GetUrl == $"menu"))).ReturnsAsync((Page<Menu>)null);
 
             var actual = await handler.Handle(query, CancellationToken.None);
 

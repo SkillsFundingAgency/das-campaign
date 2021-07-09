@@ -143,6 +143,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.AddSingleton<ICmsPageConverter, HubJsonConverter>();
             services.AddSingleton<ICmsPageConverter, LandingPageJsonConverter>();
             services.AddSingleton<ICmsPageConverter, SiteMapJsonConverter>();
+            services.AddSingleton<ICmsPageConverter, MenuJsonConverter>();
         }
     }
 }

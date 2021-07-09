@@ -51,6 +51,27 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             actual.Page.Should().NotBeNull();
         }
 
+        [Test]
+        [RecursiveMoqInlineAutoData(true)]
+        [RecursiveMoqInlineAutoData(false)]
+        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_Then_The_Hub_Is_Returned_From_The_Api_With_The_Menu(
+            bool preview, GetHubQuery query, Page<Hub> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetHubQueryHandler handler)
+        {
+            query.Preview = preview;
+            SetupMockConfig(config, false);
+
+            client.Setup(o => o.Get<Page<Hub>>(It.Is<GetHubRequest>(r => r.GetUrl == $"hub/{query.Hub}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            client.Verify(
+                o => o.Get<Page<Hub>>(It.Is<GetHubRequest>(r => r.GetUrl == $"hub/{query.Hub}")), Times.Once);
+            client.Verify(o => o.Get<Page<Hub>>(It.IsAny<GetHubPreviewRequest>()), Times.Never);
+            client.Verify(o => o.Get<Page<Menu>>(It.IsAny<GetMenuRequest>()), Times.Once);
+            actual.Should().NotBeNull();
+            actual.Page.Should().NotBeNull();
+        }
+
         [Test, RecursiveMoqAutoData]
         public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_Then_No_Hub_Is_Returned(
             GetHubQuery query, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetHubQueryHandler handler)
