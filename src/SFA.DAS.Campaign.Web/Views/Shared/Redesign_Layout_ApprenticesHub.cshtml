@@ -11,11 +11,11 @@
         <nav class="fiu-navigation__nav" data-fiu-nav-menu="true" id="navigation">
             <h3 class="govuk-heading-s fiu-navigation__heading" id="fiu-nav-title-citizens">Apprentices</h3>
             <ul class="fiu-navigation__list" aria-labelledby="fiu-nav-title-citizens">
-                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-1" href="/apprentices/are-they-right-for-you" class="fiu-navigation__link">Are they right for you?</a> </li>
-                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-2" href="/apprentices/how-do-they-work" class="fiu-navigation__link">How do they work?</a> </li>
-                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-3" href="/apprentices/get-started" class="fiu-navigation__link">Get started</a> </li>
-                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-4" href="/apprentices/browse-apprenticeships" class="fiu-navigation__link">Browse apprenticeships</a> </li>
-                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-5" href="/apprentices/useful-resources" class="fiu-navigation__link">Useful resources</a> </li>
+                @{int menuItemCount = 1;}
+                @foreach (var menuItem in Model.Menu.Apprentices) {
+                    <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-@menuItemCount" href="/@menuItem.Hub.ToString().ToLower()/@menuItem.Slug" class="fiu-navigation__link">@menuItem.Title</a> </li>
+                    menuItemCount++;
+                }
             </ul>
 		</nav>
 	</div>
