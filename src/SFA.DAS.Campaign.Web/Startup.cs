@@ -100,6 +100,10 @@ namespace SFA.DAS.Campaign.Web
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            
+            #if DEBUG
+                services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            #endif
 
         }
 
