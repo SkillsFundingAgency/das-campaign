@@ -22,9 +22,11 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         }
 
         [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
-        public IActionResult TheRoadToAQualityApprenticeship()
+        public async Task<IActionResult> TheRoadToAQualityApprenticeship()
         {
-            return View("~/Views/Articles/Employers/TheRoadToAQualityApprenticeship.cshtml");
+            var menu = await HomeController.GetMenuForStaticContent(_mediator);
+
+            return View("~/Views/Articles/Employers/TheRoadToAQualityApprenticeship.cshtml", menu);
         }
 
         [Route("sitemap/xml")]
@@ -38,7 +40,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
             var content = output.ToString();
 
-      
             return new ContentResult
             {
                 Content = content,
