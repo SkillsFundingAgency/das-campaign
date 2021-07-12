@@ -1,0 +1,404 @@
+{
+  "map": {
+    "mainContent": {
+      "pages": [
+        {
+          "slug": "browse-apprenticeships",
+          "title": "Browse apprenticeships",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "useful-resources-for-apprentices",
+          "title": "Useful resources",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "how-they-work",
+          "title": "How they work",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "request-support-ask",
+          "title": "Request support (ASK)",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "become-an-ambassador",
+          "title": "Become an ambassador",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "setting-it-up",
+          "title": "Setting it up",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "resource-hub",
+          "title": "Resource hub",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "are-they-right-for-you",
+          "title": "Are they right for you?",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "how-do-they-work-for-employers",
+          "title": "How do they work?",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "are-they-right-for-you-employers",
+          "title": "Are they right for you?",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "get-started",
+          "title": "Get started",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "useful-resources",
+          "title": "Useful resources",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "how-do-they-work",
+          "title": "How do they work?",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "apply-to-become-an-ambassador",
+          "title": "Apply to become an ambassador",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "help-shape-their-career",
+          "title": "Help shape their career",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "alternatives-apprenticeships",
+          "title": "Alternatives to apprenticeships",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "set-up-a-service-account",
+          "title": "Set up a service account",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "browse-by-sector",
+          "title": "Browse by sector",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "submit-an-ask-request",
+          "title": "Submit an 'ASK' request",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "faa-select-your-region",
+          "title": "FAA: Select your region",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "yaan-regional-networks",
+          "title": "YAAN regional networks",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "traineeships-resource-guides",
+          "title": "Traineeships ",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "subject-snapshot-guides",
+          "title": "Subject snapshots",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "interview-process",
+          "title": "The interview process ",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "benefits-apprenticeship",
+          "title": "What are the benefits of an apprenticeship? ",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "applying-for-an-apprenticeship",
+          "title": "Applying for an apprenticeship",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "apprenticeship-guides",
+          "title": "Apprenticeship guides",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "finding-the-right-apprenticeship",
+          "title": "Finding the right apprenticeship",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "support-for-parents-and-guardians",
+          "title": "Support for parents and guardians",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "alternatives-to-apprenticeships",
+          "title": "Alternatives to apprenticeships",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "what-support-can-i-access",
+          "title": "What support can I access?",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "student-activity-packs",
+          "title": "Student activity packs",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "application-support",
+          "title": "Application support",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "resources-for-schools-and-colleges",
+          "title": "Resources for schools and colleges",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "subject-snapshots",
+          "title": "Subject snapshots",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "resources-for-parents",
+          "title": "Resources for parents and guardians",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "traineeship-resources",
+          "title": "Traineeship resources",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "ask-programme-resources",
+          "title": "The ASK programme",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "yaan-resources",
+          "title": "YAAN resources ",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "what-is-the-yaan",
+          "title": "What is the YAAN?",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "becoming-an-apprentice",
+          "title": "Becoming an apprentice ",
+          "hub": "Influencers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "application-support-guides",
+          "title": "Application support",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "activity-packs-for-students",
+          "title": "Activity packs for students",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "starting-apprenticeship",
+          "title": "Starting your apprenticeship",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "applying-apprenticeship",
+          "title": "Applying for an apprenticeship",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "becoming-apprentice",
+          "title": "Becoming an apprentice",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "create-account",
+          "title": "Set up a service account",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "funding-an-apprenticeship",
+          "title": "Funding an apprenticeship",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "real-stories-employers",
+          "title": "Real stories",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "the-road-to-a-quality-apprenticeship",
+          "title": "The road to a quality apprenticeship",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "browse-by-interests",
+          "title": "Browse by interest",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "real-stories",
+          "title": "Real stories",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "choose-training-provider",
+          "title": "Choose a training provider",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "funding-an-apprenticeship-non-levy",
+          "title": "Funding an apprenticeship for non levy employers",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "funding-an-apprenticeship-levy-payers",
+          "title": "Funding an apprenticeship for levy payers",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "end-point-assessments",
+          "title": "End-point assessments",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "financial-incentives",
+          "title": "Financial incentives for employers",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "training-your-apprentice",
+          "title": "Training your apprentice",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "choose-apprenticeship-training",
+          "title": "How to choose the right apprenticeship training",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "benefits-of-hiring-apprentice",
+          "title": "What are the benefits of hiring an apprentice?",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "upskilling-your-workforce",
+          "title": "Upskilling your workforce",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "hiring-an-apprentice",
+          "title": "Hiring an apprentice",
+          "hub": "Employers",
+          "pageType": "Article"
+        },
+        {
+          "slug": "assessment-and-certification",
+          "title": "Assessment and certification",
+          "hub": "Apprentices",
+          "pageType": "Article"
+        },
+        {
+          "slug": "influencers",
+          "title": "Influencers hub",
+          "hub": "Influencers",
+          "pageType": "Hub"
+        },
+        {
+          "slug": "employers",
+          "title": "Hire an apprentice ",
+          "hub": "Employers",
+          "pageType": "Hub"
+        },
+        {
+          "slug": "apprentices",
+          "title": "Become an apprentice",
+          "hub": "Apprentices",
+          "pageType": "Hub"
+        }
+      ]
+    }
+  }
+}

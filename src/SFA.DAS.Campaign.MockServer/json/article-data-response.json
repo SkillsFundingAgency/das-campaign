@@ -1,0 +1,250 @@
+{
+  "article": {
+    "pageAttributes": {
+      "id": null,
+      "pageType": 2,
+      "title": "Becoming an apprentice",
+      "metaDescription": "An apprenticeship gives you hands-on experience, a salary and the opportunity to train while you work as an apprentice.",
+      "slug": "becoming-apprentice",
+      "hubType": "Apprentices",
+      "summary": "An apprenticeship is a real job where you learn, gain experience and get paid. You're an employee with a contract of employment and holiday leave."
+    },
+    "mainContent": {
+      "items": [
+        {
+          "values": [
+            "To become an apprentice, you must:"
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": null,
+          "type": "unordered-list",
+          "tableValue": [
+            [
+              "be 16 or over"
+            ],
+            [
+              "not already be in full-time education"
+            ],
+            [
+              "live in England"
+            ]
+          ],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "You can start an apprenticeship whether you’re starting your career, want a change or you're upskilling in your current job. You can have a previous qualification like a degree and still start an apprenticeship."
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "If you don’t live in England, check out apprenticeship options in ",
+            "[Scotland](https://www.apprenticeships.scot/)",
+            ", ",
+            "[Wales](https://gov.wales/apprenticeships-genius-decision)",
+            ", or ",
+            "[Northern Ireland](https://www.nidirect.gov.uk/campaigns/apprenticeships)",
+            "."
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "As an apprentice you’ll:"
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": null,
+          "type": "unordered-list",
+          "tableValue": [
+            [
+              "learn and train for a specific job"
+            ],
+            [
+              "get paid and receive holiday leave "
+            ],
+            [
+              "get hands-on experience in a real job"
+            ],
+            [
+              "study for at least 20% of your working hours - usually at a college, university or with a training provider "
+            ],
+            [
+              "complete assessments during and at the end of your apprenticeship"
+            ],
+            [
+              "be on a career path with lots of future potential"
+            ]
+          ],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "What is an apprenticeship?"
+          ],
+          "type": "heading-2",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "An apprenticeship is a real job where you learn, gain experience and get paid. You’re an employee with a contract of employment and holiday leave. By the end of an apprenticeship, you'll have the right skills and knowledge needed for your chosen career."
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "It can take between one and 6 years to complete an apprenticeship depending on which one you choose, what level it is and your previous experience. It’s funded from contributions made by the government and your employer."
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "Levels of an apprenticeship"
+          ],
+          "type": "heading-2",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "Each apprenticeship has a level and an equivalent education level. You can start an apprenticeship at any level. "
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "Depending on the level, some apprenticeships may:"
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": null,
+          "type": "unordered-list",
+          "tableValue": [
+            [
+              "require previous qualifications such as an English or maths GCSE"
+            ],
+            [
+              "give extra training in the English or maths skills needed so you’re at the right level"
+            ]
+          ],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "At the end of your apprenticeship, you’ll achieve the equivalent education level. For example, if you complete a level 3 apprenticeship, you’ll achieve the equivalent of an A level."
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "",
+            ""
+          ],
+          "type": "paragraph",
+          "tableValue": [
+            [
+              "",
+              "Level",
+              "Equivalent education level"
+            ],
+            [
+              "Intermediate ",
+              "2",
+              "GCSE"
+            ],
+            [
+              "Advanced ",
+              "3",
+              "A level "
+            ],
+            [
+              "Higher ",
+              "4,5,6 and 7",
+              " Foundation degree and above "
+            ],
+            [
+              "Degree ",
+              " 6 and 7",
+              " Bachelor’s or master’s degree"
+            ]
+          ],
+          "embeddedResource": null
+        },
+        {
+          "values": [
+            "If you think you need more skills and work experience before starting an apprenticeship, you can ",
+            "[find a traineeship](https://www.gov.uk/find-traineeship)",
+            " instead."
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        }
+      ]
+    },
+    "relatedArticles": [
+      {
+        "id": null,
+        "pageType": 0,
+        "title": "Browse by interest",
+        "metaDescription": null,
+        "slug": "browse-by-interests",
+        "hubType": "Apprentices",
+        "summary": "Find out what type of apprenticeships you can expect in your chosen interest."
+      },
+      {
+        "id": null,
+        "pageType": 0,
+        "title": "Applying for an apprenticeship",
+        "metaDescription": "From finding the right apprenticeship and employer and how to write a good CV, covering letter and what to expect from the employer.",
+        "slug": "applying-apprenticeship",
+        "hubType": "Apprentices",
+        "summary": "There are hundreds of different apprenticeships to choose from. To apply for one, you’ll need to create an account on the find an apprenticeship service. You can also save any apprenticeships you like and then apply for them later."
+      }
+    ],
+    "attachments": [
+      {
+        "title": "A guide to apprenticeships ",
+        "id": "4L5ph3qMMa0Sl4VpgfnpYW",
+        "fileName": "PDF-a-guide-to-apprenticeships.pdf",
+        "contentType": "application/pdf",
+        "url": "https://assets.ctfassets.net/8kbr1n52z8s2/4L5ph3qMMa0Sl4VpgfnpYW/58dde6fe9f447b56a0b4f0f4401c885e/PDF-a-guide-to-apprenticeships.pdf",
+        "size": 183486,
+        "description": "Further information about apprenticeships, what they are and how to find the right opportunity."
+      }
+    ],
+    "parentPage": {
+      "id": null,
+      "pageType": 0,
+      "title": "How do they work?",
+      "metaDescription": null,
+      "slug": "how-do-they-work",
+      "hubType": "Apprentices",
+      "summary": "Find out what to expect and the application process."
+    }
+  }
+}
