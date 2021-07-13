@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -14,7 +15,7 @@ using SFA.DAS.Campaign.Web.Controllers;
 using SFA.DAS.Campaign.Web.Models;
 using ValidationResult = System.ComponentModel.DataAnnotations.ValidationResult;
 
-namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
+namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
 {
     public class WhenUserRegistersInterest
     {
@@ -22,6 +23,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         private RegisterInterestController _controller;
         private Mock<HttpContext> _httpContext;
         private RegisterInterestModel _registerInterestModel;
+        private Mock<IMediator> _mediator;
 
         private const string ExpectedCookieId = "123FDSF.123";
         private const string ExpectedReferrerUrl = "http://test/cpg/test";
@@ -40,6 +42,9 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 ShowRouteQuestion = false
             };
 
+            _mediator = new Mock<IMediator>();
+            _mediator.SetupMockMediator();
+
             _userDataCollection = new Mock<IUserDataCollection>();
             
             var headers = new HeaderDictionary(new Dictionary<string, StringValues>{{ "Referer", ExpectedReferrerUrl } } );
@@ -52,7 +57,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             mockUrlHelper
                 .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
                 .Returns(ExpectedDefaultUrl).Verifiable();
-            _controller = new RegisterInterestController(_userDataCollection.Object)
+            _controller = new RegisterInterestController(_userDataCollection.Object, _mediator.Object)
             {
                 Url = mockUrlHelper.Object,
                 ControllerContext = {
@@ -68,10 +73,10 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         }
 
         [Test]
-        public void Then_When_Viewing_The_Form_The_Referring_Url_Is_Taken()
+        public async Task Then_When_Viewing_The_Form_The_Referring_Url_Is_Taken()
         {
             //Act
-            var actual = _controller.Index(RouteType.Apprentice);
+            var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -83,7 +88,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         }
 
         [Test]
-        public void Then_If_The_Referrer_Is_Itself_Then_It_Is_Redirected_To_The_Homepage()
+        public async Task Then_If_The_Referrer_Is_Itself_Then_It_Is_Redirected_To_The_Homepage()
         {
             //Arrange
             var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
@@ -95,7 +100,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 {
                     { "Referer", "https://test/Register-interest" }
                 }));
-            _controller = new RegisterInterestController(_userDataCollection.Object)
+            _controller = new RegisterInterestController(_userDataCollection.Object, _mediator.Object)
             {
                 Url = mockUrlHelper.Object,
                 ControllerContext = {
@@ -109,7 +114,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(RouteType.Apprentice);
+            var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -121,7 +126,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         }
 
         [Test]
-        public void Then_When_Viewing_The_RegisterInterest_Form_If_There_Is_No_Referrer_They_Are_Redirected_To_The_HomePage()
+        public async Task Then_When_Viewing_The_RegisterInterest_Form_If_There_Is_No_Referrer_They_Are_Redirected_To_The_HomePage()
         {
             //Arrange
             var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
@@ -129,7 +134,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
                 .Returns(ExpectedDefaultUrl).Verifiable();
             _httpContext.Setup(x => x.Request.Headers).Returns(new HeaderDictionary(new Dictionary<string, StringValues>()));
-            _controller = new RegisterInterestController(_userDataCollection.Object)
+            _controller = new RegisterInterestController(_userDataCollection.Object, _mediator.Object)
             {
                 Url = mockUrlHelper.Object,
                 ControllerContext = { 
@@ -139,7 +144,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(RouteType.Apprentice);
+            var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -152,7 +157,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         }
 
         [Test]
-        public void Then_When_Viewing_The_RegisterInterest_Form_The_Controller_And_Action_Segments_Are_Used()
+        public async Task Then_When_Viewing_The_RegisterInterest_Form_The_Controller_And_Action_Segments_Are_Used()
         {
             //Arrange
             var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
@@ -164,7 +169,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 {
                     { "Referer", "https://test2/some-controller/some/" }
                 }));
-            _controller = new RegisterInterestController(_userDataCollection.Object)
+            _controller = new RegisterInterestController(_userDataCollection.Object, _mediator.Object)
             {
                 Url = mockUrlHelper.Object,
                 ControllerContext = {
@@ -178,7 +183,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(RouteType.Apprentice);
+            var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -191,7 +196,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         }
 
         [Test]
-        public void Then_When_Viewing_The_RegisterInterest_Form_Then_If_There_Are_No_Controller_Action_Segments_Default_Values_AreUsed()
+        public async Task Then_When_Viewing_The_RegisterInterest_Form_Then_If_There_Are_No_Controller_Action_Segments_Default_Values_AreUsed()
         {
             //Arrange
             var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
@@ -203,7 +208,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 {
                     { "Referer", "https://test2/" }
                 }));
-            _controller = new RegisterInterestController(_userDataCollection.Object)
+            _controller = new RegisterInterestController(_userDataCollection.Object, _mediator.Object)
             {
                 Url = mockUrlHelper.Object,
                 ControllerContext = {
@@ -217,7 +222,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(RouteType.Apprentice);
+            var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -231,7 +236,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         }
 
         [Test]
-        public void When_clicking_register_interest_from_a_search_result_page_then_query_string_is_appended()
+        public async Task When_clicking_register_interest_from_a_search_result_page_then_query_string_is_appended()
         {
             //Arrange
             var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
@@ -247,7 +252,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                     { "Referer", ExpectedRefererUrlWithQuerystring }
                 }));
 
-            _controller = new RegisterInterestController(_userDataCollection.Object)
+            _controller = new RegisterInterestController(_userDataCollection.Object, _mediator.Object)
             {
                 Url = mockUrlHelper.Object,
                 ControllerContext = {
@@ -261,7 +266,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(RouteType.Apprentice);
+            var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
@@ -298,7 +303,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             _httpContext.Setup(x => x.Request.Cookies["_ga"]).Returns(string.Empty);
             _httpContext.Setup(x => x.Request.Path).Returns("/");
 
-            _controller = new RegisterInterestController(_userDataCollection.Object)
+            _controller = new RegisterInterestController(_userDataCollection.Object, _mediator.Object)
             {
                 ControllerContext = { 
                     HttpContext = _httpContext.Object,
@@ -355,7 +360,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 .Setup(m => m.Action(It.IsAny<UrlActionContext>()))
                 .Returns(ExpectedDefaultUrl).Verifiable();
 
-            _controller = new RegisterInterestController(_userDataCollection.Object)
+            _controller = new RegisterInterestController(_userDataCollection.Object, _mediator.Object)
             {
                 Url = mockUrlHelper.Object,
                 ControllerContext = {
@@ -402,7 +407,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
         }
         
         [Test]
-        public void When_Referring_From_An_FAA_Vacancy_Search_The_Full_Url_Is_Returned()
+        public async Task When_Referring_From_An_FAA_Vacancy_Search_The_Full_Url_Is_Returned()
         {
             //Arrange
             var mockUrlHelper = new Mock<IUrlHelper>(MockBehavior.Strict);
@@ -414,7 +419,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
                 {
                     { "Referer", ExpectedVacancySearchReferrerURl }
                 }));
-            _controller = new RegisterInterestController(_userDataCollection.Object)
+            _controller = new RegisterInterestController(_userDataCollection.Object, _mediator.Object)
             {
                 Url = mockUrlHelper.Object,
                 ControllerContext = {
@@ -428,7 +433,7 @@ namespace SFA.DAS.Campaign.Web.UnitTests.Controllers.RegisterInterest
             };
 
             //Act
-            var actual = _controller.Index(RouteType.Apprentice);
+            var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
             Assert.IsNotNull(actual);
