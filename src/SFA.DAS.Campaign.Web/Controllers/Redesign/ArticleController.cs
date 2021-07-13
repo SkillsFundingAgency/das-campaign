@@ -9,6 +9,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
+using SFA.DAS.Campaign.Web.Helpers;
 
 namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 {
@@ -24,7 +25,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
         public async Task<IActionResult> TheRoadToAQualityApprenticeship()
         {
-            var menu = await HomeController.GetMenuForStaticContent(_mediator);
+            var menu = await _mediator.GetMenuForStaticContent();
 
             return View("~/Views/Articles/Employers/TheRoadToAQualityApprenticeship.cshtml", menu);
         }

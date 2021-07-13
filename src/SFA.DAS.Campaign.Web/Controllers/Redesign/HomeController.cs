@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
-
+using SFA.DAS.Campaign.Web.Helpers;
 using Menu = SFA.DAS.Campaign.Domain.Content.Menu;
 
 namespace SFA.DAS.Campaign.Web.Controllers.Redesign
@@ -21,7 +21,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [HttpGet("/")]
         public async Task<IActionResult> Index()
         {
-            var menu = await GetMenuForStaticContent(_mediator);
+            var menu = await _mediator.GetMenuForStaticContent();
 
             return View(menu);
         }
@@ -35,7 +35,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("cookies")]
         public async Task<IActionResult> Cookies()
         {
-            var menu = await GetMenuForStaticContent(_mediator);
+            var menu = await _mediator.GetMenuForStaticContent();
 
             return View(menu);
         }
@@ -43,7 +43,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("cookie-details")]
         public async Task<IActionResult> CookieDetails()
         {
-            var menu = await GetMenuForStaticContent(_mediator);
+            var menu = await _mediator.GetMenuForStaticContent();
 
             return View(menu);
         }
@@ -51,7 +51,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("privacy")]
         public async Task<IActionResult> Privacy()
         {
-            var menu = await GetMenuForStaticContent(_mediator);
+            var menu = await _mediator.GetMenuForStaticContent();
 
             return View(menu);
         }
@@ -60,16 +60,9 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("accessibility")]
         public async Task<IActionResult> Accessibility()
         {
-            var menu = await GetMenuForStaticContent(_mediator);
+            var menu = await _mediator.GetMenuForStaticContent();
 
             return View("Accessibility", menu);
-        }
-
-        public static async Task<Page<Menu>> GetMenuForStaticContent(IMediator mediator)
-        {
-            var menu = await mediator.Send(new GetMenuQuery());
-
-            return menu.Page;
         }
     }
 }
