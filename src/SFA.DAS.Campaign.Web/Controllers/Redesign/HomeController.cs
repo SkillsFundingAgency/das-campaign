@@ -1,43 +1,69 @@
+using System.Net;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Infrastructure.Api.Queries;
+
+using Menu = SFA.DAS.Campaign.Domain.Content.Menu;
 
 namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 {
     public class HomeController : Controller
     {
-        [HttpGet("/")]
-        public IActionResult Index()
+        private readonly IMediator _mediator;
+
+        public HomeController(IMediator mediator)
         {
-            return View();
+            _mediator = mediator;
+        }
+
+        [HttpGet("/")]
+        public async Task<IActionResult> Index()
+        {
+            var menu = await GetMenuForStaticContent(_mediator);
+
+            return View(menu);
         }
 
         [Route("cookies")]
-        public IActionResult Cookies()
+        public async Task<IActionResult> Cookies()
         {
-            return View();
+            var menu = await GetMenuForStaticContent(_mediator);
+
+            return View(menu);
         }
 
         [Route("cookie-details")]
-        public IActionResult CookieDetails()
+        public async Task<IActionResult> CookieDetails()
         {
-            return View();
+            var menu = await GetMenuForStaticContent(_mediator);
+
+            return View(menu);
         }
 
         [Route("privacy")]
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
-            return View();
+            var menu = await GetMenuForStaticContent(_mediator);
+
+            return View(menu);
         }
 
-        [Route("sitemap")]
-        public IActionResult Sitemap()
-        {
-            return View();
-        }
 
         [Route("accessibility")]
-        public IActionResult Accessibility()
+        public async Task<IActionResult> Accessibility()
         {
-            return View("Accessibility");
+            var menu = await GetMenuForStaticContent(_mediator);
+
+            return View("Accessibility", menu);
+        }
+
+        public static async Task<Page<Menu>> GetMenuForStaticContent(IMediator mediator)
+        {
+            var menu = await mediator.Send(new GetMenuQuery());
+
+            return menu.Page;
         }
     }
 }

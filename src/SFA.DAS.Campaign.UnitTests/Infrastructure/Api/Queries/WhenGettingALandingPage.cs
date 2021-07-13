@@ -51,6 +51,27 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             actual.Page.Should().NotBeNull();
         }
 
+        [Test]
+        [RecursiveMoqInlineAutoData(true)]
+        [RecursiveMoqInlineAutoData(false)]
+        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_Then_The_Landing_Page_Is_Returned_From_The_Api_With_The_Menu(
+            bool preview, GetLandingPageQuery query, Page<LandingPage> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetLandingPageQueryHandler handler)
+        {
+            query.Preview = preview;
+            SetupMockConfig(config, false);
+
+            client.Setup(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            client.Verify(
+                o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}")), Times.Once);
+            client.Verify(o => o.Get<Page<LandingPage>>(It.IsAny<GetLandingPagePreviewRequest>()), Times.Never);
+            client.Verify(o => o.Get<Page<Menu>>(It.IsAny<GetMenuRequest>()), Times.Once);
+            actual.Should().NotBeNull();
+            actual.Page.Should().NotBeNull();
+        }
+
         [Test, RecursiveMoqAutoData]
         public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_Then_No_Landing_Page_Is_Returned(
             GetLandingPageQuery query, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetLandingPageQueryHandler handler)

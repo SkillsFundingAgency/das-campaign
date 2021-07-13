@@ -34,7 +34,9 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
             {
                 hub = await _apiClient.Get<Page<Hub>>(new GetHubRequest(request.Hub)).ConfigureAwait(false);
             }
-            
+
+            await hub.FetchMenu(_apiClient);
+
             return new GetHubQueryResult<Hub>
             {
                 Page = hub
