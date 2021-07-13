@@ -3,8 +3,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Application.DataCollection;
+using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.Web.Controllers
@@ -13,15 +15,17 @@ namespace SFA.DAS.Campaign.Web.Controllers
     public class RegisterInterestController : Controller
     {
         private readonly IUserDataCollection _userDataCollection;
+        private readonly IMediator _mediator;
 
-        public RegisterInterestController(IUserDataCollection userDataCollection)
+        public RegisterInterestController(IUserDataCollection userDataCollection, IMediator mediator)
         {
             _userDataCollection = userDataCollection;
+            _mediator = mediator;
         }
 
         [HttpGet]
         [HttpGet("/employers/sign-up")]
-        public IActionResult Index(RouteType route = RouteType.Employer, int version = 1)
+        public async Task<IActionResult> Index(RouteType route = RouteType.Employer, int version = 1)
         {
             var url = Request.Headers["Referer"].ToString();
 
@@ -49,7 +53,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             }
 
-            return View("Index", new RegisterInterestModel(url, version, route));
+            var menu = await _mediator.GetMenuForStaticContent();
+
+            return View("Index", new RegisterInterestModel(url, version, route, menu.Menu));
         }
 
         [HttpPost]
@@ -91,9 +97,11 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [Route("/employers/thank-you-for-signing-up")]
-        public IActionResult ThankYouForRegistering()
+        public async Task<IActionResult> ThankYouForRegistering()
         {
-            return View("ThankYouForRegistering");
+            var menu = await _mediator.GetMenuForStaticContent();
+
+            return View("ThankYouForRegistering", menu);
         }
     }
 }

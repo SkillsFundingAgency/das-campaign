@@ -1,32 +1,49 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SFA.DAS.Campaign.Web.Controllers.Redesign;
+using SFA.DAS.Campaign.Web.Helpers;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
     public class IndustriesController : Controller
     {
-        
-        [Route("/employers/browse-by-sector/")]
-        public IActionResult EmployersSectors()
+        private readonly IMediator _mediator;
+
+        public IndustriesController(IMediator mediator)
         {
-            return View("Sectors");
+            _mediator = mediator;
+        }
+
+        [Route("/employers/browse-by-sector/")]
+        public async Task<IActionResult> EmployersSectors()
+        {
+            var menu = await _mediator.GetMenuForStaticContent();
+            return View("Sectors", menu);
         }
 
         [Route("/apprentices/browse-by-interests/")]
-        public IActionResult ApprenticesInterests()
+        public async Task<IActionResult> ApprenticesInterests()
         {
-            return View("Interests");
+            var menu = await _mediator.GetMenuForStaticContent();
+
+            return View("Interests", menu);
         }
 
         [Route("/employers/browse-by-sector/{slug}")]
-        public IActionResult Sector(string slug)
+        public async Task<IActionResult> Sector(string slug)
         {
-            return View($"~/Views/Industries/Employers/{slug}.cshtml");
+            var menu = await _mediator.GetMenuForStaticContent();
+
+            return View($"~/Views/Industries/Employers/{slug}.cshtml", menu);
         }
         
         [Route("/apprentices/browse-by-interests/{slug}")]
-        public IActionResult Interest(string slug)
+        public async Task<IActionResult> Interest(string slug)
         {
-            return View($"~/Views/Industries/Apprentices/{slug}.cshtml");
+            var menu = await _mediator.GetMenuForStaticContent();
+
+            return View($"~/Views/Industries/Apprentices/{slug}.cshtml", menu);
         }
     }
 }
