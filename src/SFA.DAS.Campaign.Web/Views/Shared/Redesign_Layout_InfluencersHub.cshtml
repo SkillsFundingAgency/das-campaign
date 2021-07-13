@@ -25,7 +25,7 @@
 <main id="main" class="fiu-main-wrapper">
     @if (ViewBag.HidePageHeader is null)
     {
-	<div class="fiu-page-header">
+	<div class="fiu-page-header @(ViewBag.HeadingImage != null ? "fiu-page-header--has-image" : "")">
         <div class="fiu-width-container">
             @if (ViewBag.HeadingImage != null)
             {
