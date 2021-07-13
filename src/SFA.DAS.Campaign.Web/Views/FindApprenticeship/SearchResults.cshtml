@@ -76,16 +76,19 @@
             }
             else
             {
-                <h1 class="heading-l"> Looking for apprenticeships in @GetCountryText(Model.Country)? </h1>
-                <p> Visit your local apprenticeships website to search for vacancies in your area. </p>
-                <p><a href="@GetCountryUrl(Model.Country)" class="link" rel="external" target="_blank">Explore apprenticeships in @GetCountryText(Model.Country)<span class="visually-hidden"> (Opens in a new window)</span></a></p>
+                <h2 class="govuk-heading-l"> Looking for apprenticeships in @GetCountryText(Model.Country)? </h2>
+                <p class="govuk-body"> Visit your local apprenticeships website to search for vacancies in your area. </p>
+                <p class="govuk-body"><a href="@GetCountryUrl(Model.Country)" class="govuk-link" rel="external" target="_blank">Explore apprenticeships in @GetCountryText(Model.Country)<span class="govuk-visually-hidden"> (Opens in a new window)</span></a></p>
             }
 
             @if (Model.Location.Latitude == 0)
             {
-                <span class="error-message heading-s">
+                <h2 class="govuk-heading-l">
+                    Invalid postcode
+                </h2>
+                <p class="govuk-body">
                     The postcode you have entered is invalid, please enter a valid postcode and update results.
-                </span>
+                </p>
             }
 
         </div>
