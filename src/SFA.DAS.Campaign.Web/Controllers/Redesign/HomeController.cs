@@ -26,6 +26,12 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             return View(menu);
         }
 
+        [Route("sitemap")]
+        public IActionResult Sitemap()
+        {
+            return View();
+        }
+
         [Route("cookies")]
         public async Task<IActionResult> Cookies()
         {

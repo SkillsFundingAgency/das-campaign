@@ -30,7 +30,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             return View("~/Views/Articles/Employers/TheRoadToAQualityApprenticeship.cshtml", menu);
         }
 
-        [Route("sitemap/xml")]
+        [Route("sitemap.xml")]
         public async Task<IActionResult> SiteMap()
         {
             var result = await _mediator.Send(new GetSiteMapQuery());

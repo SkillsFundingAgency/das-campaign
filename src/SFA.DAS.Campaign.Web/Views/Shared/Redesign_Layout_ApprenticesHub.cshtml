@@ -22,7 +22,7 @@
 </nav>
 <partial name="./Banners/_Alert" />
 <main id="main" class="fiu-main-wrapper">
-	<div class="fiu-page-header">
+	<div class="fiu-page-header @(ViewBag.HeadingImage != null ? "fiu-page-header--has-image" : "")">
         <div class="fiu-width-container">
             @if (ViewBag.HeadingImage != null)
             {
