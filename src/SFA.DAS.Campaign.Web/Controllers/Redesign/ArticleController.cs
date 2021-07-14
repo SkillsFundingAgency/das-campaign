@@ -22,12 +22,28 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             _mediator = mediator;
         }
 
+        [HttpGet("/apprentices/alternatives-to-apprenticeships")]
+        public async Task<IActionResult> AlternativesToApprenticeships()
+        {
+            var menu = await _mediator.GetMenuForStaticContent();
+
+            return View("~/Views/Articles/Apprenticeships/AlternativesToApprenticeships.cshtml", menu);
+        }
+
         [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
         public async Task<IActionResult> TheRoadToAQualityApprenticeship()
         {
             var menu = await _mediator.GetMenuForStaticContent();
 
             return View("~/Views/Articles/Employers/TheRoadToAQualityApprenticeship.cshtml", menu);
+        }
+
+        [HttpGet("/influencers/alternatives-to-apprenticeships")]
+        public async Task<IActionResult> AlternativesToApprenticeshipsInf()
+        {
+            var menu = await _mediator.GetMenuForStaticContent();
+
+            return View("~/Views/Articles/Influencers/AlternativesToApprenticeships.cshtml", menu);
         }
 
         [Route("sitemap.xml")]
