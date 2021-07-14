@@ -30,6 +30,14 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             return View("~/Views/Articles/Employers/TheRoadToAQualityApprenticeship.cshtml", menu);
         }
 
+        [HttpGet("/influencers/alternatives-to-apprenticeships")]
+        public async Task<IActionResult> AlternativesToApprenticeships()
+        {
+            var menu = await _mediator.GetMenuForStaticContent();
+
+            return View("~/Views/Articles/Influencers/AlternativesToApprenticeships.cshtml", menu);
+        }
+
         [Route("sitemap.xml")]
         public async Task<IActionResult> SiteMap()
         {
