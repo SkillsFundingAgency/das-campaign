@@ -21,7 +21,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
         [Test, RecursiveMoqAutoData]
         public async Task The_Site_Map_Is_Returned(
             GetSiteMapQueryResult<SiteMap> mediatorResult, [Frozen] Mock<IMediator> mockMediator,
-            [Greedy] ArticleController controller)
+            [Greedy] HomeController controller)
         {
             mockMediator.Setup(o => o.Send(It.IsAny<GetSiteMapQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(mediatorResult);

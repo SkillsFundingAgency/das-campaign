@@ -46,25 +46,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             return View("~/Views/Articles/Influencers/AlternativesToApprenticeships.cshtml", menu);
         }
 
-        [Route("sitemap.xml")]
-        public async Task<IActionResult> SiteMap()
-        {
-            var result = await _mediator.Send(new GetSiteMapQuery());
-
-            var output = new StringBuilder();
-           
-            await GenerateXml(output, result);
-
-            var content = output.ToString();
-
-            return new ContentResult
-            {
-                Content = content,
-                ContentType = "application/xml",
-                StatusCode = (int)HttpStatusCode.OK
-            };
-        }
-
         [HttpGet("/{hub}/{slug}")]
         public async Task<IActionResult> GetArticleAsync(string hub, string slug, [FromQuery]bool preview, CancellationToken cancellationToken = default)
         {
@@ -92,28 +73,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             var landingPage = landingPageResult.Page;
 
             return landingPage == null ? View("~/Views/Error/PageNotFound.cshtml") : View($"~/Views/LandingPages/{hub}LandingPage.cshtml", landingPage);
-        }
-
-        private static async Task GenerateXml(StringBuilder output, GetSiteMapQueryResult<SiteMap> result)
-        {
-            using var xml = XmlWriter.Create(output, new XmlWriterSettings {Indent = true, Async = true});
-            await xml.WriteStartDocumentAsync();
-            xml.WriteStartElement("urlset", "http://www.sitemaps.org/schemas/sitemap/0.9");
-
-            foreach (var url in result.Page.Content.Urls)
-            {
-                xml.WriteStartElement("url");
-
-                xml.WriteElementString("loc",
-                    string.Compare(url.PageType, "hub", StringComparison.OrdinalIgnoreCase) == 0
-                        ? url.Slug
-                        : $"{url.Hub}/{url.Slug}");
-
-                await xml.WriteEndElementAsync();
-            }
-
-            await xml.WriteEndElementAsync();
-            await xml.FlushAsync();
         }
     }
 }

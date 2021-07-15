@@ -22,15 +22,19 @@
 </nav>
 <partial name="./Banners/_Alert" />
 <main id="main" class="fiu-main-wrapper">
+    @if (ViewBag.HeadingImage != null)
+    {
+        <div class="fiu-page-header__background">
+            <div class="fiu-page-header__background-inner-wrap">
+                <span class="fiu-page-header__background-image-mask"></span>
+                <img src="@ViewBag.HeadingImage" alt="" class="fiu-page-header__background-image fiu-fade-in" />
+            </div>
+            <span class="fiu-page-header__background-grad-edge"></span>
+        </div>
+
+    }
 	<div class="fiu-page-header @(ViewBag.HeadingImage != null ? "fiu-page-header--has-image" : "")">
         <div class="fiu-width-container">
-            @if (ViewBag.HeadingImage != null)
-            {
-            <div class="fiu-page-header__image-wrap">
-                <span class="fiu-page-header__image-mask"></span>
-                <img src="@ViewBag.HeadingImage" alt="" class="fiu-page-header__image fiu-fade-in" />
-            </div>
-            }
             <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
                 <ol class="govuk-breadcrumbs__list">
                     <li class="govuk-breadcrumbs__list-item">
@@ -105,7 +109,9 @@
             </div>
             @RenderSection("PageHeaderContent", required: false)
         </div>
+        
 	</div>
     @RenderBody()
+    
     <partial name="./Banners/_BecomeAnApprentice"/>
 </main>

@@ -66,10 +66,16 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
 
             client.Verify(
                 o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}")), Times.Once);
-            client.Verify(o => o.Get<Page<Menu>>(It.IsAny<GetMenuRequest>()), Times.Once);
+
             client.Verify(o => o.Get<Page<Article>>(It.IsAny<GetArticlesPreviewRequest>()), Times.Never);
             actual.Should().NotBeNull();
             actual.Page.Should().NotBeNull();
+            actual.Page.Content.Should().NotBeNull();
+            actual.Page.Menu.Should().NotBeNull();
+            actual.Page.Menu.Apprentices.Should().NotBeNullOrEmpty();
+            actual.Page.Menu.Influencers.Should().NotBeNullOrEmpty();
+            actual.Page.Menu.TopLevel.Should().NotBeNullOrEmpty();
+            actual.Page.Menu.Employers.Should().NotBeNullOrEmpty();
         }
 
         [Test, RecursiveMoqAutoData]

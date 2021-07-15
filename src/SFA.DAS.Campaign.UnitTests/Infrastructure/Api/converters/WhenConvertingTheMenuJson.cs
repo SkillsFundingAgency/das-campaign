@@ -16,7 +16,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.converters
 
 
         [Test, MoqAutoData]
-        public void The_Site_Map_Is_Returned(MenuJsonConverter converter)
+        public void The_Menu_Is_Returned(MenuJsonConverter converter)
         {
             var actual = InvokeReadJsonMethodOnConverter(converter);
 
@@ -28,16 +28,17 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.converters
         {
             var actual = InvokeReadJsonMethodOnConverter(converter);
 
-            actual.Content.Apprentices.Should().NotBeNullOrEmpty();
-            actual.Content.Employers.Should().NotBeNullOrEmpty();
-            actual.Content.Influencers.Should().NotBeNullOrEmpty();
-            actual.Content.TopLevel.Should().NotBeNullOrEmpty();
+            actual.Menu.Apprentices.Should().NotBeNullOrEmpty();
+            actual.Menu.Employers.Should().NotBeNullOrEmpty();
+            actual.Menu.Influencers.Should().NotBeNullOrEmpty();
+            actual.Menu.TopLevel.Should().NotBeNullOrEmpty();
         }
         
         private static Page<Menu> InvokeReadJsonMethodOnConverter(MenuJsonConverter converter)
         {
             var actual = converter.ReadJson(new JsonTextReader(new StringReader(json)), typeof(Page<Menu>), "",
                 new Mock<JsonSerializer>().Object) as Page<Menu>;
+
             return actual;
         }
     }

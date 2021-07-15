@@ -13,6 +13,9 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         [JsonProperty("mainContent")]
         public HubContent MainContent { get; set; }
+
+        [JsonProperty("menuContent")]
+        public MenuContent MenuContent { get; set; }
     }
     
 

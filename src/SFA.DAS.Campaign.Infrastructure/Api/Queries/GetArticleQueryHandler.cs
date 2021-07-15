@@ -33,8 +33,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
             article ??= await _apiClient.Get<Page<Article>>(new GetArticlesRequest(request.Hub, request.Slug))
                 .ConfigureAwait(false);
 
-            await article.FetchMenu(_apiClient);
-
             return new GetArticleQueryResult<Article>
             {
                 Page = article,
