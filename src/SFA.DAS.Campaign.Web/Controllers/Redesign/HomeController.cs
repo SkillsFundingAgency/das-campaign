@@ -1,5 +1,8 @@
+using System;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Domain.Content;
@@ -31,7 +34,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return View();
         }
-
         [Route("cookies")]
         public async Task<IActionResult> Cookies()
         {
@@ -63,6 +65,47 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             var menu = await _mediator.GetMenuForStaticContent();
 
             return View("Accessibility", menu);
+        }
+
+        [Route("sitemap.xml")]
+        public async Task<IActionResult> SiteMap()
+        {
+            var result = await _mediator.Send(new GetSiteMapQuery());
+
+            var output = new StringBuilder();
+
+            await GenerateXml(output, result);
+
+            var content = output.ToString();
+
+            return new ContentResult
+            {
+                Content = content,
+                ContentType = "application/xml",
+                StatusCode = (int)HttpStatusCode.OK
+            };
+        }
+
+        private static async Task GenerateXml(StringBuilder output, GetSiteMapQueryResult<SiteMap> result)
+        {
+            using var xml = XmlWriter.Create(output, new XmlWriterSettings { Indent = true, Async = true });
+            await xml.WriteStartDocumentAsync();
+            xml.WriteStartElement("urlset", "http://www.sitemaps.org/schemas/sitemap/0.9");
+
+            foreach (var url in result.Page.Content.Urls)
+            {
+                xml.WriteStartElement("url");
+
+                xml.WriteElementString("loc",
+                    string.Compare(url.PageType, "hub", StringComparison.OrdinalIgnoreCase) == 0
+                        ? url.Slug
+                        : $"{url.Hub}/{url.Slug}");
+
+                await xml.WriteEndElementAsync();
+            }
+
+            await xml.WriteEndElementAsync();
+            await xml.FlushAsync();
         }
     }
 }
