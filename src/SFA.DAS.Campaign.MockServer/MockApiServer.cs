@@ -36,7 +36,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddLandingPageResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/apprentices/are-they-right-for-you", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => string.Compare(o, "/landingpage/apprentices/are-they-right-for-you", StringComparison.OrdinalIgnoreCase) == 0)
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
@@ -44,7 +44,7 @@ namespace SFA.DAS.Campaign.MockServer
                     .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/landing-page-data-response.json"));
 
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/apprentices/are-they-right-for-yo", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => string.Compare(o, "/landingpage/apprentices/are-they-right-for-yo", StringComparison.OrdinalIgnoreCase) == 0)
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(404)
@@ -55,7 +55,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddArticlePageResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/apprentices/becoming-apprentice", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => string.Compare(o, "/article/apprentices/becoming-apprentice", StringComparison.OrdinalIgnoreCase) == 0)
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
@@ -63,7 +63,7 @@ namespace SFA.DAS.Campaign.MockServer
                     .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/article-data-response.json"));
 
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/apprentices/becoming-apprentic", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => string.Compare(o, "/article/apprentices/becoming-apprentic", StringComparison.OrdinalIgnoreCase) == 0)
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(404)
@@ -74,7 +74,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddHubPageResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/apprentices", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => string.Compare(o, "/hub/apprentices", StringComparison.OrdinalIgnoreCase) == 0)
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
@@ -82,7 +82,7 @@ namespace SFA.DAS.Campaign.MockServer
                     .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/hub-data-response.json"));
 
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/apprentice", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => string.Compare(o, "/hub/apprentice", StringComparison.OrdinalIgnoreCase) == 0)
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(404)

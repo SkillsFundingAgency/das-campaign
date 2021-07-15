@@ -28,7 +28,7 @@
         {
           "landingPage": {
             "slug": "are-they-right-for-you",
-            "title": "Are they right for you?",
+            "title": "Are they right for you? ",
             "hub": "Apprentices",
             "pageType": null
           },
@@ -43,7 +43,7 @@
         {
           "landingPage": {
             "slug": "are-they-right-for-you",
-            "title": "Are they right for you?",
+            "title": "Are they right for you? ",
             "hub": "Apprentices",
             "pageType": null
           },
@@ -58,22 +58,7 @@
         {
           "landingPage": {
             "slug": "are-they-right-for-you",
-            "title": "Are they right for you?",
-            "hub": "Apprentices",
-            "pageType": null
-          },
-          "id": "2m6mQjwupx3IBNbSDjwJT3",
-          "pageType": 0,
-          "title": "Help shape their career",
-          "metaDescription": "Apprenticeships offer the chance to learn, earn and get a degree. As a parent, guardian or carer, you can support your child as they explore their options.",
-          "slug": "help-shape-their-career",
-          "hubType": "Apprentices",
-          "summary": "If you're a parent, guardian, carer or teacher of someone, you can help them find a career path that’s right for them."
-        },
-        {
-          "landingPage": {
-            "slug": "are-they-right-for-you",
-            "title": "Are they right for you?",
+            "title": "Are they right for you? ",
             "hub": "Apprentices",
             "pageType": null
           },
@@ -133,7 +118,7 @@
         {
           "landingPage": {
             "slug": "get-started",
-            "title": "Get started",
+            "title": "Get started ",
             "hub": "Apprentices",
             "pageType": null
           },
@@ -148,7 +133,7 @@
         {
           "landingPage": {
             "slug": "get-started",
-            "title": "Get started",
+            "title": "Get started ",
             "hub": "Apprentices",
             "pageType": null
           },
@@ -163,7 +148,7 @@
         {
           "landingPage": {
             "slug": "get-started",
-            "title": "Get started",
+            "title": "Get started ",
             "hub": "Apprentices",
             "pageType": null
           },
@@ -174,6 +159,127 @@
           "slug": "create-account",
           "hubType": "Apprentices",
           "summary": "Create an account on find an apprenticeship so you can search, save and apply for apprenticeships."
+        },
+        {
+          "landingPage": {
+            "slug": "how-they-work",
+            "title": "How they work",
+            "hub": "Influencers",
+            "pageType": null
+          },
+          "id": "1NCP8dXX88SQGcMpw1Vmiq",
+          "pageType": 0,
+          "title": "Alternatives to apprenticeships ",
+          "metaDescription": "An introduction to other career alternatives to apprenticeships such as t levels and traineeships. ",
+          "slug": "alternatives-to-apprenticeships",
+          "hubType": "Influencers",
+          "summary": "There are other career alternatives to apprenticeships which may be more suitable, such as T levels and traineeships. "
+        }
+      ]
+    },
+    "menuContent": {
+      "topLevel": [
+        {
+          "slug": "apprentices",
+          "title": "Become an apprentice",
+          "hub": "Apprentices",
+          "pageType": "Hub"
+        },
+        {
+          "slug": "employers",
+          "title": "Hire an apprentice ",
+          "hub": "Employers",
+          "pageType": "Hub"
+        },
+        {
+          "slug": "influencers",
+          "title": "Inspire and Influence",
+          "hub": "Influencers",
+          "pageType": "Hub"
+        }
+      ],
+      "apprentices": [
+        {
+          "slug": "are-they-right-for-you",
+          "title": "Are they right for you? ",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "how-do-they-work",
+          "title": "How do they work?",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "get-started",
+          "title": "Get started ",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "browse-apprenticeships",
+          "title": "Browse apprenticeships",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "useful-resources-for-apprentices",
+          "title": "Useful resources",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        }
+      ],
+      "employers": [
+        {
+          "slug": "are-they-right-for-you-employers",
+          "title": "Are they right for you?",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "how-do-they-work-for-employers",
+          "title": "How do they work?",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "setting-it-up",
+          "title": "Setting it up",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "employer-guides",
+          "title": "Employer guides",
+          "hub": "Employers",
+          "pageType": "Article"
+        }
+      ],
+      "influencers": [
+        {
+          "slug": "how-they-work",
+          "title": "How they work",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "request-support-ask",
+          "title": "Request support",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "resource-hub",
+          "title": "Resource hub",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "become-an-ambassador",
+          "title": "Become an ambassador",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
         }
       ]
     }
