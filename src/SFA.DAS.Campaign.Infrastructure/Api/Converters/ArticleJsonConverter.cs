@@ -75,7 +75,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             AddPageContent(cmsContent, pageModel);
             AddAttachments(cmsContent, pageModel);
             AddBreadCumbs(cmsContent, pageModel);
-
+            pageModel.PopulateMenuModel(cmsContent.Article.MenuContent);
             return pageModel;
         }
 

@@ -14,7 +14,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
             if (article != null)
             {
                 var menu = await apiClient.Get<Page<Menu>>(new GetMenuRequest()).ConfigureAwait(false);
-                article.Menu = menu.Content;
+                article.Menu = menu.Menu;
             }
         }
     }

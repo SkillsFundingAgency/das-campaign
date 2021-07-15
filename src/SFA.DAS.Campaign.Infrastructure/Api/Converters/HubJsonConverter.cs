@@ -12,13 +12,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 {
     public class HubJsonConverter : JsonConverter, ICmsPageConverter
     {
-        private readonly IHtmlControlAbstractFactory _controlAbstractFactory;
-
-        public HubJsonConverter(IHtmlControlAbstractFactory controlAbstractFactory)
-        {
-            _controlAbstractFactory = controlAbstractFactory;
-        }
-
         public override bool CanRead => true;
 
         public override bool CanWrite => false;
@@ -74,6 +67,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
                     Summary = cmsContent.Hub.PageAttributes.Summary
                 }
             };
+
+            pageModel.PopulateMenuModel(cmsContent.Hub.MenuContent);
 
             AddHeaderImage(cmsContent, pageModel);
             AddCards(cmsContent, pageModel);

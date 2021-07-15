@@ -38,8 +38,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
                     .ConfigureAwait(false);
             }
 
-            await landingPage.FetchMenu(_apiClient);
-
             return new GetLandingPageQueryResult<LandingPage>
             {
                 Page = landingPage
