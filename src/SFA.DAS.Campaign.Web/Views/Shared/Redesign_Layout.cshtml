@@ -49,13 +49,18 @@
             <nav class="fiu-header__nav">
                 <ul id="fiu-nav" class="fiu-header__navigation">
                     <li class="fiu-header__navigation-item @(ViewBag.Section == "apprentices" ? "fiu-header__navigation-item--citizens-active" : "")">
-                        <a class="fiu-header__link" asp-controller="Hub" asp-action="Apprentices" id="fiu-header-link-apprentices">
+                        <a class="fiu-header__link" href="/apprentices" id="fiu-header-link-apprentices">
                             Apprentices
                         </a>
                     </li>
                     <li class="fiu-header__navigation-item @(ViewBag.Section == "employers" ? "fiu-header__navigation-item--employers-active" : "")">
-                        <a class="fiu-header__link" asp-controller="Hub" asp-action="Employers" id="fiu-header-link-employers">
+                        <a class="fiu-header__link" href="/employers" id="fiu-header-link-employers">
                             Employers
+                        </a>
+                    </li>
+                    <li class="fiu-header__navigation-item @(ViewBag.Section == "influencers" ? "fiu-header__navigation-item--influencers-active" : "")">
+                        <a class="fiu-header__link" href="/influencers" id="fiu-header-link-influencers">
+                            Influencers
                         </a>
                     </li>
                 </ul>
@@ -70,6 +75,20 @@
             <div class="fiu-footer__apprenticeship-logo-wrap">
                 <img src="/fiu/assets/images/apprenticeships-logo.svg" alt="Apprenticeships logo" class="fiu-footer__apprenticeship-logo" />
             </div>
+            <div class="govuk-grid-row fiu-footer__row">
+                <div class="govuk-grid-column-one-half">
+                    <h2 class="fiu-footer__contact-heading">Get free help and support</h2>
+                </div>
+                <div class="govuk-grid-column-one-half">
+                    <dl class="fiu-footer__contact-list">
+                        <dt class="fiu-footer__contact-list-title">Call</dt>
+                        <dd class="fiu-footer__contact-list-item">08000 150 400</dd>
+                        <dt class="fiu-footer__contact-list-title">Email</dt>
+                        <dd class="fiu-footer__contact-list-item"><a href="mailto:nationalhelpdesk@apprenticeships.gov.uk" class="fiu-footer__contact-list-link">nationalhelpdesk@apprenticeships.gov.uk</a> </dd>
+                    </dl>
+                </div>
+            </div>
+            <hr class="fiu-section-break fiu-footer__section-break" />
             <div class="govuk-grid-row fiu-footer__row">
                 <div class="govuk-grid-column-one-quarter">
                     <h3 class="fiu-footer__heading">Based outside England?</h3>
@@ -125,7 +144,7 @@
     </footer>
 
     @if(ViewBag.HideCookieBanner == null ) {
-    <partial name="./Redesign/Banners/_CookieBanner" />
+    <partial name="./Banners/_CookieBanner" />
     }
 
 	<script src="/fiu/js/app.min.js?@frontendVersion"></script>

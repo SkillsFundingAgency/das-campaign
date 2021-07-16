@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using SFA.DAS.Campaign.Domain.Content;
 
 namespace SFA.DAS.Campaign.Web.Models
 {
@@ -18,5 +19,7 @@ namespace SFA.DAS.Campaign.Web.Models
         public string Route { get; set; }
 
         public List<string> Routes { get ; set ; }
+
+        public Menu Menu { get; set; }
     }
 }

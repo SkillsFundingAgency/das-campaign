@@ -30,15 +30,12 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
                 article = await _apiClient.Get<Page<Article>>(new GetArticlesPreviewRequest(request.Hub, request.Slug)).ConfigureAwait(false);
             }
             
-            if (article == null)
-            {
-                article = await _apiClient.Get<Page<Article>>(new GetArticlesRequest(request.Hub, request.Slug))
-                    .ConfigureAwait(false);
-            }
-            
+            article ??= await _apiClient.Get<Page<Article>>(new GetArticlesRequest(request.Hub, request.Slug))
+                .ConfigureAwait(false);
+
             return new GetArticleQueryResult<Article>
             {
-                Page = article
+                Page = article,
             };
         }
     }

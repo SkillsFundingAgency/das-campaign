@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Vacancies;
+using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.Web.Controllers
@@ -15,12 +17,14 @@ namespace SFA.DAS.Campaign.Web.Controllers
         private readonly IVacanciesRepository _vacanciesService;
         private readonly IMappingService _mappingService;
         private readonly IStandardsRepository _repository;
+        private readonly IMediator _mediator;
 
-        public FindApprenticeshipController(IVacanciesRepository vacanciesService, IMappingService mappingService, IStandardsRepository repository)
+        public FindApprenticeshipController(IVacanciesRepository vacanciesService, IMappingService mappingService, IStandardsRepository repository, IMediator mediator)
         {
             _vacanciesService = vacanciesService;
             _mappingService = mappingService;
             _repository = repository;
+            _mediator = mediator;
         }
 
         [HttpGet("/apprentices/browse-apprenticeships/{route}/{postcode}/{distance}")]
@@ -53,18 +57,18 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
         private async Task<SearchResultsViewModel> GetSearchResults(string route, string postcode, int distance)
         {
-            var viewModel = new SearchResultsViewModel();
-
-            viewModel.Route = route;
-            viewModel.Distance = distance;
-            viewModel.Postcode = postcode;
-
+            var viewModel = new SearchResultsViewModel
+            {
+                Route = route, Distance = distance, Postcode = postcode
+            };
+            
             var routeId = route.Replace("-"," ");
 
             var routes = _repository.GetRoutes();
             var searchTask = _vacanciesService.GetByRoute(routeId, postcode, Convert.ToInt32(distance));
+            var menu = _mediator.GetMenuForStaticContent();
 
-            await Task.WhenAll(routes, searchTask);
+            await Task.WhenAll(routes, searchTask, menu);
             var searchResults = searchTask.Result;
             if (searchResults != null)
             {
@@ -76,6 +80,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
                 viewModel.Country = searchResults.Country;
                 viewModel.Routes = routes.Result;
+
+                viewModel.Menu = menu.Result.Menu;
             }
 
 

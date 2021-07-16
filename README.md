@@ -71,3 +71,17 @@ Data:
 ```
 
 You are able to get APIM keys for the Outer API and Vacancies if you work within the agency. A key for contenful api and google maps is also required for full running of the site.
+
+## Mock Server
+
+When enqabled the following urls are servable
+
+- /apprentices
+- /apprentices/becoming-apprentice
+- /apprentices/are-they-right-for-you
+- /menu
+- /apprentices/browse-apprenticeships 
+  
+  The browse apprenticeships search form can be tested using the sector business and administration and a postcode of le28rd
+  
+  To enable set the configuration for the vacancies api and the outerapi base url configurations to http://localhost:5003/ 

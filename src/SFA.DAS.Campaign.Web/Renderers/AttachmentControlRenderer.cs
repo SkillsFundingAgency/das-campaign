@@ -30,7 +30,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
             quote.InnerHtml.AppendHtml("<dt class=\"fiu-attachment__meta-title\">File size</dt>");
             quote.InnerHtml.AppendHtml($"<dd class=\"fiu-attachment__meta-description\">{control.FileSize / 1000}KB</dd>");
             quote.InnerHtml.AppendHtml($"</dl><p class=\"govuk-body fiu-attachment__description\">{control.Description}</p>");
-            quote.InnerHtml.AppendHtml($"<p class=\"govuk-body fiu-attachment__link-wrap\"><a href=\"{control.Url}\" class=\"govuk-link fiu-attachment__link\" target=\"_blank\">Download</a></p>");
+            quote.InnerHtml.AppendHtml($"<p class=\"govuk-body fiu-attachment__link-wrap\"><a href=\"{control.Url}\" class=\"govuk-link fiu-attachment__link\" target=\"_blank\">Download <span class=\"fiu-vh\">{control.Title}</span></a></p>");
             quote.InnerHtml.AppendHtml($"<span class=\"fiu-attachment__icon\"><span class=\"fiu-attachment__icon-label\">{GetFileTypeFromContentTypeValue(control)}</span></span>");
             string result = quote.WriteString();
 
@@ -39,6 +39,11 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
         private static string GetFileTypeFromContentTypeValue(DocumentAttachment control)
         {
+            if (control.FileType.Equals("application/vnd.openxmlformats-officedocument.presentationml.presentation"))
+            {
+                return "ppx";
+            }
+
             return control.FileType.Substring(control.FileType.IndexOf("/") + 1);
         }
     }

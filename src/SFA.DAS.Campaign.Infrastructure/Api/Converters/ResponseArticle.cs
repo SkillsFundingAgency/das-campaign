@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 {
@@ -14,5 +15,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public List<RelatedArticle> RelatedArticles { get; set; }
         public List<Attachment> Attachments { get; set; }
         public PageAttributes ParentPage { get; set; }
+        public MenuContent MenuContent { get; set; }
     }
 }

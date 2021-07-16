@@ -4,10 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Renderers;
 
 namespace SFA.DAS.Campaign.Web.Helpers
@@ -19,6 +21,19 @@ namespace SFA.DAS.Campaign.Web.Helpers
             var renderer = new ControlsHtmlRenderer();
             var html = renderer.ToHtml(controls);
             return html;
+        }
+
+        public static HtmlString CardToHtml(this IHtmlControl control)
+        {
+            var renderer = new CardControlRenderer();
+            return renderer.Render(control);
+        }
+
+        public static async Task<Page<Menu>> GetMenuForStaticContent(this IMediator mediator)
+        {
+            var menu = await mediator.Send(new GetMenuQuery());
+
+            return menu.Page;
         }
     }
 }

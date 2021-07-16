@@ -37,7 +37,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
             foreach (var value in control.Headings)
             {
-                para.InnerHtml.AppendHtml($"<th>{value.CheckForFontEffects().CheckForAndConstructHyperlinks()}</th>");
+                para.InnerHtml.AppendHtml($"<th scope=\"col\">{value.CheckForFontEffects().CheckForAndConstructHyperlinks()}</th>");
             }
 
             para.InnerHtml.AppendHtml("</tr></thead>");

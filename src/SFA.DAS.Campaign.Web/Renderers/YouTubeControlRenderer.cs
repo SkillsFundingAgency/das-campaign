@@ -24,7 +24,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
             
             parentDiv.Attributes.Add("class", "fiu-video-player");
             parentDiv.InnerHtml.AppendHtml(
-                $"<div class=\"fiu-video-player__inner-wrap\"><iframe class=\"fiu-video-player__size-100\" src=\"{control.Url}\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>");
+                $"<div class=\"fiu-video-player__inner-wrap\"><iframe class=\"fiu-video-player__size-100\" src=\"{control.Url.Replace("watch?v=", "embed/")}\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>");
             string result = parentDiv.WriteString();
 
             return new HtmlString(result);

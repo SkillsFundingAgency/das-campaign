@@ -51,6 +51,33 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             actual.Page.Should().NotBeNull();
         }
 
+        [Test]
+        [RecursiveMoqInlineAutoData(true)]
+        [RecursiveMoqInlineAutoData(false)]
+        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_Then_The_Article_Is_Returned_From_The_Api_With_The_Menu(
+            bool preview, GetArticleQuery query, Page<Article> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetArticleQueryHandler handler)
+        {
+            query.Preview = preview;
+            SetupMockConfig(config, false);
+
+            client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            client.Verify(
+                o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}")), Times.Once);
+
+            client.Verify(o => o.Get<Page<Article>>(It.IsAny<GetArticlesPreviewRequest>()), Times.Never);
+            actual.Should().NotBeNull();
+            actual.Page.Should().NotBeNull();
+            actual.Page.Content.Should().NotBeNull();
+            actual.Page.Menu.Should().NotBeNull();
+            actual.Page.Menu.Apprentices.Should().NotBeNullOrEmpty();
+            actual.Page.Menu.Influencers.Should().NotBeNullOrEmpty();
+            actual.Page.Menu.TopLevel.Should().NotBeNullOrEmpty();
+            actual.Page.Menu.Employers.Should().NotBeNullOrEmpty();
+        }
+
         [Test, RecursiveMoqAutoData]
         public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_Then_No_Article_Is_Returned(
             GetArticleQuery query, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetArticleQueryHandler handler)
@@ -58,11 +85,29 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             SetupMockConfig(config);
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
+            client.Setup(o => o.Get<Page<Menu>>(It.Is<GetMenuRequest>(r => r.GetUrl == $"menu"))).ReturnsAsync((Page<Menu>)null);
 
             var actual = await handler.Handle(query, CancellationToken.None);
 
             actual.Should().NotBeNull();
             actual.Page.Should().BeNull();
+        }
+
+        [Test, RecursiveMoqAutoData]
+        public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_For_Article_Page_Then_Landing_Page_Is_Returned(
+            GetLandingPageQuery query, Page<LandingPage> pageResponse, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetLandingPageQueryHandler landingPageHandler)
+        {
+            SetupMockConfig(config);
+            client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
+            client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
+
+            client.Setup(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPagePreviewRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}"))).ReturnsAsync(pageResponse);
+
+            var actual = await landingPageHandler.Handle(query, CancellationToken.None);
+
+            client.Verify(o => o.Get<Page<Article>>(It.IsAny<GetArticlesPreviewRequest>()), Times.Never);
+            actual.Should().NotBeNull();
+            actual.Page.Should().NotBeNull();
         }
 
         private static void SetupMockConfig(Mock<IOptions<CampaignConfiguration>> config, bool allowPreview = true)

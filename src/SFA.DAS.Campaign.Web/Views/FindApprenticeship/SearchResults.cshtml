@@ -76,21 +76,24 @@
             }
             else
             {
-                <h1 class="heading-l"> Looking for apprenticeships in @GetCountryText(Model.Country)? </h1>
-                <p> Visit your local apprenticeships website to search for vacancies in your area. </p>
-                <p><a href="@GetCountryUrl(Model.Country)" class="link" rel="external" target="_blank">Explore apprenticeships in @GetCountryText(Model.Country)<span class="visually-hidden"> (Opens in a new window)</span></a></p>
+                <h2 class="govuk-heading-l"> Looking for apprenticeships in @GetCountryText(Model.Country)? </h2>
+                <p class="govuk-body"> Visit your local apprenticeships website to search for vacancies in your area. </p>
+                <p class="govuk-body"><a href="@GetCountryUrl(Model.Country)" class="govuk-link" rel="external" target="_blank">Explore apprenticeships in @GetCountryText(Model.Country)<span class="govuk-visually-hidden"> (Opens in a new window)</span></a></p>
             }
 
             @if (Model.Location.Latitude == 0)
             {
-                <span class="error-message heading-s">
+                <h2 class="govuk-heading-l">
+                    Invalid postcode
+                </h2>
+                <p class="govuk-body">
                     The postcode you have entered is invalid, please enter a valid postcode and update results.
-                </span>
+                </p>
             }
 
         </div>
         <div class="govuk-grid-column-one-third">
-            <partial name="Redesign/_GetFreeHelpAndSupport" />
+            <partial name="Panels/_GetFreeHelpAndSupport" />
         </div>
     </div>
 </div>
@@ -118,7 +121,7 @@
         switch (country)
         {
             case Country.Wales:
-                return "https://ams.careerswales.com/Public/Default.aspx?mode=vacancy";
+                return "https://careerswales.gov.wales/apprenticeship-search";
             case Country.Scotland:
                 return "https://www.apprenticeships.scot/find-a-vacancy/";
             case Country.NorthernIreland:

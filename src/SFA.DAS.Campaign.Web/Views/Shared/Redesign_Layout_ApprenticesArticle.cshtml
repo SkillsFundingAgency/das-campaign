@@ -7,13 +7,11 @@
 <div class="fiu-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <article class="fiu-article">
-                @RenderBody()
-            </article>
+            @RenderBody()
         </div>
         <div class="govuk-grid-column-one-third">
-            <partial name="Redesign/_FindAnApprenticeship"/>
-            <partial name="Redesign/_GetFreeHelpAndSupport"/>
+            @Html.Partial("./Panels/_BrowseApprenticeships", "fiu-button--outlined")
         </div>
     </div>
+    <hr class="fiu-section-break fiu-section-break--l">
 </div>

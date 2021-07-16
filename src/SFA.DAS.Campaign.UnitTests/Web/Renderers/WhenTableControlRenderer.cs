@@ -35,7 +35,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(list);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<table class=\"fiu-table\"><thead><tr><th>heading 1</th></tr></thead><tbody><tr><td>value 1</td></tr></tbody></table>");
+            actual.Value.Should().Be("<table class=\"fiu-table\"><thead><tr><th scope=\"col\">heading 1</th></tr></thead><tbody><tr><td>value 1</td></tr></tbody></table>");
         }
 
         [Test, MoqAutoData]
@@ -45,7 +45,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(list);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<table class=\"fiu-table\"><thead><tr><th>heading 1</th></tr></thead><tbody><tr><td>value 1</td></tr><tr><td>value 2</td></tr></tbody></table>");
+            actual.Value.Should().Be("<table class=\"fiu-table\"><thead><tr><th scope=\"col\">heading 1</th></tr></thead><tbody><tr><td>value 1</td></tr><tr><td>value 2</td></tr></tbody></table>");
         }
 
         [Test, MoqAutoData]
@@ -55,7 +55,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(list);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<table class=\"fiu-table\"><thead><tr><th>heading 1</th><th>heading 2</th></tr></thead><tbody><tr><td>value 1</td><td>value 2</td></tr><tr><td>value 3</td><td>value 4</td></tr></tbody></table>");
+            actual.Value.Should().Be("<table class=\"fiu-table\"><thead><tr><th scope=\"col\">heading 1</th><th scope=\"col\">heading 2</th></tr></thead><tbody><tr><td>value 1</td><td>value 2</td></tr><tr><td>value 3</td><td>value 4</td></tr></tbody></table>");
         }
     }
 }

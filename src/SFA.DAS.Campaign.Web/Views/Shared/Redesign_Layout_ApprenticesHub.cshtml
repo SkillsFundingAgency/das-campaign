@@ -11,25 +11,30 @@
         <nav class="fiu-navigation__nav" data-fiu-nav-menu="true" id="navigation">
             <h3 class="govuk-heading-s fiu-navigation__heading" id="fiu-nav-title-citizens">Apprentices</h3>
             <ul class="fiu-navigation__list" aria-labelledby="fiu-nav-title-citizens">
-                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-1" href="/apprentices/are-they-right-for-you" class="fiu-navigation__link">Are they right for you?</a> </li>
-                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-2" href="/apprentices/how-do-they-work" class="fiu-navigation__link">How do they work?</a> </li>
-                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-3" href="/apprentices/get-started" class="fiu-navigation__link">Get started</a> </li>
-                <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-4" href="/apprentices/browse-apprenticeships" class="fiu-navigation__link">Browse apprenticeships</a> </li>
+                @{int menuItemCount = 1;}
+                @foreach (var menuItem in Model.Menu.Apprentices) {
+                    <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-@menuItemCount" href="/@menuItem.Hub.ToString().ToLower()/@menuItem.Slug" class="fiu-navigation__link">@menuItem.Title</a> </li>
+                    menuItemCount++;
+                }
             </ul>
 		</nav>
 	</div>
 </nav>
-<partial name="./Redesign/_Alert" />
+<partial name="./Banners/_Alert" />
 <main id="main" class="fiu-main-wrapper">
-	<div class="fiu-page-header">
-        <div class="fiu-width-container">
-            @if (ViewBag.HeadingImage != null)
-            {
-            <div class="fiu-page-header__image-wrap">
-                <span class="fiu-page-header__image-mask"></span>
-                <img src="/fiu/assets/images/page-headers/@ViewBag.HeadingImage" alt="" class="fiu-page-header__image fiu-fade-in" />
+    @if (ViewBag.HeadingImage != null)
+    {
+        <div class="fiu-page-header__background">
+            <div class="fiu-page-header__background-inner-wrap">
+                <span class="fiu-page-header__background-image-mask"></span>
+                <img src="@ViewBag.HeadingImage" alt="" class="fiu-page-header__background-image fiu-fade-in" />
             </div>
-            }
+            <span class="fiu-page-header__background-grad-edge"></span>
+        </div>
+
+    }
+	<div class="fiu-page-header @(ViewBag.HeadingImage != null ? "fiu-page-header--has-image" : "")">
+        <div class="fiu-width-container">
             <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
                 <ol class="govuk-breadcrumbs__list">
                     <li class="govuk-breadcrumbs__list-item">
@@ -104,15 +109,9 @@
             </div>
             @RenderSection("PageHeaderContent", required: false)
         </div>
+        
 	</div>
     @RenderBody()
-    @if (ViewBag.HidePhaseBanner is null)
-    {
-    <div class="fiu-phase-banner">
-        <div class="fiu-width-container">
-            <p class="fiu-phase-banner__content"><strong class="fiu-tag fiu-phase-banner__tag">BETA</strong><span class="fiu-vh">:</span> This is a new service - your <a href="https://www.smartsurvey.co.uk/s/S2NQQ" class="fiu-link" id="fiu-status-link-feedback" target="_blank">feedback</a> will help us to improve it.</p>
-        </div>
-    </div>
-    }
-    <partial name="Redesign/Banners/_ReadyToBecomeAnApprentice"/>
+    
+    <partial name="./Banners/_BecomeAnApprentice"/>
 </main>
