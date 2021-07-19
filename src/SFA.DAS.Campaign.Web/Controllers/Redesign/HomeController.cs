@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using System.Xml;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
+using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Web.Helpers;
 using Menu = SFA.DAS.Campaign.Domain.Content.Menu;
 
@@ -15,10 +17,12 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
     public class HomeController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly IOptions<CampaignConfiguration> _configuration;
 
-        public HomeController(IMediator mediator)
+        public HomeController(IMediator mediator, IOptions<CampaignConfiguration> configuration)
         {
             _mediator = mediator;
+            _configuration = configuration;
         }
 
         [HttpGet("/")]
@@ -30,9 +34,11 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         }
 
         [Route("sitemap")]
-        public IActionResult Sitemap()
+        public async Task<IActionResult> Sitemap()
         {
-            return View();
+            var result = await _mediator.Send(new GetSiteMapQuery());
+
+            return View(result.Page);
         }
         [Route("cookies")]
         public async Task<IActionResult> Cookies()
@@ -74,7 +80,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
             var output = new StringBuilder();
 
-            await GenerateXml(output, result);
+            await GenerateXml(output, result, _configuration);
 
             var content = output.ToString();
 
@@ -86,11 +92,13 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             };
         }
 
-        private static async Task GenerateXml(StringBuilder output, GetSiteMapQueryResult<SiteMap> result)
+        private static async Task GenerateXml(StringBuilder output, GetSiteMapQueryResult<SiteMap> result, IOptions<CampaignConfiguration> configuration)
         {
             using var xml = XmlWriter.Create(output, new XmlWriterSettings { Indent = true, Async = true });
             await xml.WriteStartDocumentAsync();
             xml.WriteStartElement("urlset", "http://www.sitemaps.org/schemas/sitemap/0.9");
+
+            var baseUrl = configuration.Value.OuterApi.BaseUrl;
 
             foreach (var url in result.Page.Content.Urls)
             {
@@ -98,8 +106,8 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
                 xml.WriteElementString("loc",
                     string.Compare(url.PageType, "hub", StringComparison.OrdinalIgnoreCase) == 0
-                        ? url.Slug
-                        : $"{url.Hub}/{url.Slug}");
+                        ? $"{baseUrl}{url.Slug}"
+                        : $"{baseUrl}{url.Hub}/{url.Slug}");
 
                 await xml.WriteEndElementAsync();
             }

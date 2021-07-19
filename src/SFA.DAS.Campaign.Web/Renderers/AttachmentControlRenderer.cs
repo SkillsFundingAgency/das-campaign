@@ -39,6 +39,11 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
         private static string GetFileTypeFromContentTypeValue(DocumentAttachment control)
         {
+            if (control.FileType.Equals("application/vnd.openxmlformats-officedocument.presentationml.presentation"))
+            {
+                return "ppx";
+            }
+
             return control.FileType.Substring(control.FileType.IndexOf("/") + 1);
         }
     }
