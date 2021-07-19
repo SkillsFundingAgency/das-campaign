@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{34C6
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.UnitTests", "SFA.DAS.Campaign.UnitTests\SFA.DAS.Campaign.UnitTests.csproj", "{03B6C152-7554-44FB-9DB5-673F14C69E00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Campaign.IntegrationTests", "SFA.DAS.Campaign.IntegrationTests\SFA.DAS.Campaign.IntegrationTests.csproj", "{62F0E1AA-FBC7-4F93-94ED-E2E0E572B356}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Campaign.MockServer", "SFA.DAS.Campaign.MockServer\SFA.DAS.Campaign.MockServer.csproj", "{0CF199BA-090D-4622-8549-354977E163B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,14 @@ Global
 		{03B6C152-7554-44FB-9DB5-673F14C69E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03B6C152-7554-44FB-9DB5-673F14C69E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03B6C152-7554-44FB-9DB5-673F14C69E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62F0E1AA-FBC7-4F93-94ED-E2E0E572B356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62F0E1AA-FBC7-4F93-94ED-E2E0E572B356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62F0E1AA-FBC7-4F93-94ED-E2E0E572B356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62F0E1AA-FBC7-4F93-94ED-E2E0E572B356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CF199BA-090D-4622-8549-354977E163B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CF199BA-090D-4622-8549-354977E163B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CF199BA-090D-4622-8549-354977E163B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CF199BA-090D-4622-8549-354977E163B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
