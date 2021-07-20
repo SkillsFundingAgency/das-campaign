@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoFixture.NUnit3;
+﻿using AutoFixture.NUnit3;
 using FluentAssertions;
 using NUnit.Framework;
-using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Web.Renderers;
 
@@ -29,12 +25,42 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, AutoData]
-        public void Is_Passed_An_Object_Of_SiteMapUrls_Then_Render_Returns_The_Html(SiteMapUrls urls, SiteMapUrlRenderer renderer)
+        public void Is_Passed_An_Object_Of_SiteMapUrls_Then_Render_Returns_The_Html(SiteMapUrlRenderer renderer)
         {
+            var urls = new SiteMapUrls();
+
+            urls.Urls.Add(new Url
+            {
+                PageType = "hub",
+                Title = "hub",
+                Hub = "hub",
+                ParentSlug = "",
+                Slug = "hub"
+            });
+
+            urls.Urls.Add(new Url
+            {
+                PageType = "LandingPage",
+                Title = "LandingPage",
+                Hub = "hub",
+                ParentSlug = "",
+                Slug = "LandingPage"
+            });
+
+            urls.Urls.Add(new Url
+            {
+                PageType = "article",
+                Title = "article",
+                Hub = "hub",
+                ParentSlug = "LandingPage",
+                Slug = "article"
+            });
+
+
             var actual = renderer.Render(urls);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<div class=\"fiu-attachment\"><h2 class=\"govuk-heading-m fiu-attachment__heading\">title</h2><dl class=\"fiu-attachment__meta\"><dt class=\"fiu-attachment__meta-title\">File type</dt><dd class=\"fiu-attachment__meta-description\">pdf</dd><dt class=\"fiu-attachment__meta-title\">File size</dt><dd class=\"fiu-attachment__meta-description\">1KB</dd></dl><p class=\"govuk-body fiu-attachment__description\">description</p><p class=\"govuk-body fiu-attachment__link-wrap\"><a href=\"http://image.url\" class=\"govuk-link fiu-attachment__link\" target=\"_blank\">Download <span class=\"fiu-vh\">title</span></a></p><span class=\"fiu-attachment__icon\"><span class=\"fiu-attachment__icon-label\">pdf</span></span></div>");
+            actual.Value.Should().Be("<div class=\"govuk-grid-row\"><div class=\"govuk-grid-column-one-third\"><div class=\"fiu-feature-text\"><a class=\"fiu-tag fiu-tag--hub fiu-panel__tag\" asp-controller=\"Hub\" asp-action=\"hub\">hub</a></div><ul class=\"govuk-list fiu-sitemap-list\"><li><a href=\"/hub/LandingPage\" class=\"fiu-link fiu-link--hub fiu-sitemap-list__link\">LandingPage</a><ul class=\"govuk-list fiu-sitemap-list__child-list\"><li><a href=\"hub/article\" class=\"fiu-link fiu-link--hub\">article</a></li></ul></li></ul></div></div>");
         }
     }
 }
