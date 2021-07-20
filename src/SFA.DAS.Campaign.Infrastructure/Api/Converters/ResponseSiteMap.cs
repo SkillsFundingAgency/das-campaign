@@ -18,6 +18,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public string Title { get; set; }
         public string Hub { get; set; }
         public string PageType { get; set; }
+        public string ParentSlug { get; set; }
     }
 
     public class SiteMapContent

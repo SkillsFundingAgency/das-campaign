@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Renderers;
 
@@ -34,6 +35,17 @@ namespace SFA.DAS.Campaign.Web.Helpers
             var menu = await mediator.Send(new GetMenuQuery());
 
             return menu.Page;
+        }
+
+        public static HtmlString SiteMapLinksToHtml(this IEnumerable<Url> control)
+        {
+            var renderer = new SiteMapUrlRenderer();
+            var siteMapUrls = new SiteMapUrls
+            {
+                Urls = control.ToList()
+            };
+
+            return renderer.Render(siteMapUrls);
         }
     }
 }

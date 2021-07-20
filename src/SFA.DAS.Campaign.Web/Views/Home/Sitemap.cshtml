@@ -1,3 +1,4 @@
+@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.SiteMap>
 @{
     ViewBag.Title = "Sitemap";
     ViewBag.PageTitle = "Sitemap";
@@ -6,4 +7,4 @@
     Layout = "Redesign_Layout_Generic";
 }
 
-<partial name="./_Sitemap" />
+<partial name="./_Sitemap" model="Model" />

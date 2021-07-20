@@ -69,7 +69,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         private List<Url> AddSiteMapUrls(PageRoot cmsContent)
         {
-            return cmsContent.Map.MainContent.Pages.Select(page => new Url {Title = page.Title, Hub = page.Hub, PageType = page.PageType, Slug = page.Slug}).ToList();
+            return cmsContent.Map.MainContent.Pages.Select(page => new Url {Title = page.Title, Hub = page.Hub, PageType = page.PageType, Slug = page.Slug, ParentSlug = page.ParentSlug}).ToList();
         }
     }
 }
