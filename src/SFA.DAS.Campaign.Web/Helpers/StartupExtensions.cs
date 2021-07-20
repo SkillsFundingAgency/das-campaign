@@ -32,22 +32,24 @@ namespace SFA.DAS.Campaign.Web.Helpers
     {
         public static void ConfigureSfaConfigurations(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<CampaignConfiguration>(configuration);
-            services.AddSingleton(cfg => cfg.GetService<IOptions<CampaignConfiguration>>().Value);
+            var campaignConfiguration = new CampaignConfiguration();
+            configuration.Bind("CampaignConfiguration:Campaign", campaignConfiguration);
 
-            services.Configure<UserDataCryptography>(configuration.GetSection("UserDataCryptography"));
-            services.Configure<UserDataQueueNames>(configuration.GetSection("UserDataQueueNames"));
+            services.Configure<CampaignConfiguration>(configuration.GetSection("CampaignConfiguration:Campaign"));
+            
+            services.Configure<UserDataCryptography>(configuration.GetSection("CampaignConfiguration:Campaign:UserDataCryptography"));
+            services.Configure<UserDataQueueNames>(configuration.GetSection("CampaignConfiguration:Campaign:UserDataQueueNames"));
 
             var postcodeConfig = new PostcodeApiConfiguration();
-            configuration.Bind("Postcode", postcodeConfig);
+            configuration.Bind("CampaignConfiguration:Campaign:Postcode", postcodeConfig);
 
             var mappingConfig = new MappingConfiguration();
-            configuration.Bind("Mapping", mappingConfig);
+            configuration.Bind("CampaignConfiguration:Campaign:Mapping", mappingConfig);
 
             services.AddSingleton<IPostcodeApiConfiguration>(postcodeConfig);
             services.AddSingleton<IMappingConfiguration>(mappingConfig);
 
-            services.Configure<MappingConfiguration>(configuration.GetSection("Mapping"));
+            services.Configure<MappingConfiguration>(configuration.GetSection("CampaignConfiguration:Campaign:Mapping"));
         }
 
         public static void ConfigureSfaConnectionStrings(this IServiceCollection services, IConfiguration configuration)
@@ -87,9 +89,9 @@ namespace SFA.DAS.Campaign.Web.Helpers
 
         public static void ConfigureSfaVacancies(this IServiceCollection services, IConfiguration configuration)
         {
-            var vacanciesBaseUrl = configuration.GetValue<string>("VacanciesApi:BaseUrl");
+            var vacanciesBaseUrl = configuration.GetValue<string>("CampaignConfiguration:Campaign:VacanciesApi:BaseUrl");
             var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(vacanciesBaseUrl) };
-            vacanciesHttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", configuration.GetValue<string>("VacanciesApi:ApiKey"));
+            vacanciesHttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", configuration.GetValue<string>("CampaignConfiguration:Campaign:VacanciesApi:ApiKey"));
 
             services.AddTransient<ILivevacanciesAPI>(client => new LivevacanciesAPI(vacanciesHttpClient, false) { BaseUri = new Uri(vacanciesBaseUrl) });
         }

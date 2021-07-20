@@ -3,39 +3,18 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Serialization;
-using SFA.DAS.Campaign.Application.Configuration;
-using SFA.DAS.Campaign.Application.Core;
-using SFA.DAS.Campaign.Application.DataCollection;
-using SFA.DAS.Campaign.Application.Geocode;
-using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Campaign.Domain.Vacancies;
-using SFA.DAS.Campaign.Infrastructure.Configuration;
-using SFA.DAS.Campaign.Infrastructure.Geocode;
-using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
-using SFA.DAS.Campaign.Infrastructure.HealthChecks;
-using SFA.DAS.Campaign.Infrastructure.Mappers;
-using SFA.DAS.Campaign.Infrastructure.Queue;
-using SFA.DAS.Campaign.Infrastructure.Repositories;
-using SFA.DAS.Campaign.Infrastructure.Services;
-using SFA.DAS.Campaign.Models.Configuration;
 using SFA.DAS.Campaign.Web.HealthChecks;
 using System;
 using System.Globalization;
 using System.IO;
-using System.Net.Http;
 using MediatR;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
-using StackExchange.Redis;
 using SFA.DAS.Campaign.Web.Helpers;
-using VacanciesApi;
+using SFA.DAS.Configuration.AzureTableStorage;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -47,18 +26,29 @@ namespace SFA.DAS.Campaign.Web
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")	                
-                .AddJsonFile("appsettings.Development.json",true)	                
                 .AddEnvironmentVariables()
-                .AddAzureTableStorageConfiguration(
-                    configuration["ConfigurationStorageConnectionString"],
-                    configuration["Environment"],
-                    configuration["Version"]
-                    )
-                .AddUserSecrets<Startup>()
-                .Build();
+                .AddUserSecrets<Startup>();
 
-            Configuration = config;
+            if (!configuration["Environment"].Equals("DEV", StringComparison.CurrentCultureIgnoreCase))
+            {
+
+#if DEBUG
+                config
+                    .AddJsonFile("appsettings.json", true)
+                    .AddJsonFile("appsettings.Development.json", true);
+#endif
+
+                config.AddAzureTableStorage(options =>
+                    {
+                        options.ConfigurationKeys = configuration["ConfigNames"].Split(",");
+                        options.StorageConnectionString = configuration["ConfigurationStorageConnectionString"];
+                        options.EnvironmentName = configuration["Environment"];
+                        options.PreFixConfigurationKeys = false;
+                    }
+                );
+            }
+
+            Configuration = config.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
