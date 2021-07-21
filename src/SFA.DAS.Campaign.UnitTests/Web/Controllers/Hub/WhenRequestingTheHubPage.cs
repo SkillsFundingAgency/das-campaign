@@ -41,6 +41,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Hub
 
             controllerResult.AssertThatTheObjectResultIsValid();
             controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/Error/PageNotFound.cshtml");
+            mockMediator.Verify(o => o.Send(It.IsAny<GetSiteMapQuery>(), It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [Test, RecursiveMoqAutoData]
@@ -55,6 +56,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Hub
             controllerResult.AssertThatTheObjectResultIsValid();
             controllerResult.AssertThatTheObjectValueIsValid<Page<Domain.Content.Hub>>();
             controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/Hubs/" + HubName + "Hub.cshtml");
+            mockMediator.Verify(o => o.Send(It.IsAny<GetSiteMapQuery>(), It.IsAny<CancellationToken>()), Times.Never);
         }
 
         private static void SetupMediator(GetHubQueryResult<Domain.Content.Hub> mediatorResult, Mock<IMediator> mockMediator, bool preview)

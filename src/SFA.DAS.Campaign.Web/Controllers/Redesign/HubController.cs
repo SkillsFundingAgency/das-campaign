@@ -25,8 +25,15 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             }, cancellationToken).ConfigureAwait(false);
 
             var page = result.Page;
+            
+            if (page == null)
+            {
+                var sitemap = await _mediator.Send(new GetSiteMapQuery(), cancellationToken);
 
-            return page == null ? View("~/Views/Error/PageNotFound.cshtml") : View($"~/Views/Hubs/{hub}Hub.cshtml", page);
+                return View("~/Views/Error/PageNotFound.cshtml", sitemap.Page);
+            }
+            
+            return View($"~/Views/Hubs/{hub}Hub.cshtml", page);
         }
     }
 }

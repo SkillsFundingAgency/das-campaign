@@ -130,11 +130,5 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         {
             return RedirectPermanent("/employers/real-stories-employers");
         }
-        
-        [Route("/parents/their-career")]
-        public IActionResult TheirCareer(string email)
-        {
-            return RedirectPermanent("/employers/help-shape-their-career");
-        }
     }
 }

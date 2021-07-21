@@ -34,6 +34,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
             controllerResult.AssertThatTheObjectResultIsValid();
             controllerResult.AssertThatTheObjectValueIsValid<Page<Domain.Content.Article>>();
             controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/CMS/Article.cshtml");
+            mockMediator.Verify(o => o.Send(It.IsAny<GetSiteMapQuery>(), It.IsAny<CancellationToken>()), Times.Never);
         }
 
         [Test, RecursiveMoqAutoData]
@@ -47,6 +48,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article
 
             controllerResult.AssertThatTheObjectResultIsValid();
             controllerResult.AssertThatTheReturnedViewIsCorrect("~/Views/Error/PageNotFound.cshtml");
+            mockMediator.Verify(o => o.Send(It.IsAny<GetSiteMapQuery>(), It.IsAny<CancellationToken>()), Times.Once);
         }
 
         [Test, RecursiveMoqAutoData]
