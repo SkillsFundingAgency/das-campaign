@@ -9,7 +9,6 @@ using Newtonsoft.Json;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
-using SFA.DAS.Campaign.Models.Configuration;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api
 {
