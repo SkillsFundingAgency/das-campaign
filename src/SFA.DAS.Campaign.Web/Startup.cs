@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Web.HealthChecks;
-using System;
 using System.Globalization;
 using System.IO;
 using MediatR;
@@ -14,7 +14,6 @@ using Microsoft.Extensions.Hosting;
 using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Helpers;
-using SFA.DAS.Configuration.AzureTableStorage;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -26,29 +25,18 @@ namespace SFA.DAS.Campaign.Web
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")	                
+                .AddJsonFile("appsettings.Development.json",true)	                
                 .AddEnvironmentVariables()
-                .AddUserSecrets<Startup>();
+                .AddAzureTableStorageConfiguration(
+                    configuration["ConfigurationStorageConnectionString"],
+                    configuration["Environment"],
+                    configuration["Version"]
+                    )
+                .AddUserSecrets<Startup>()
+                .Build();
 
-            if (!configuration["Environment"].Equals("DEV", StringComparison.CurrentCultureIgnoreCase))
-            {
-
-#if DEBUG
-                config
-                    .AddJsonFile("appsettings.json", true)
-                    .AddJsonFile("appsettings.Development.json", true);
-#endif
-
-                config.AddAzureTableStorage(options =>
-                    {
-                        options.ConfigurationKeys = configuration["ConfigNames"].Split(",");
-                        options.StorageConnectionString = configuration["ConfigurationStorageConnectionString"];
-                        options.EnvironmentName = configuration["Environment"];
-                        options.PreFixConfigurationKeys = false;
-                    }
-                );
-            }
-
-            Configuration = config.Build();
+            Configuration = config;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.

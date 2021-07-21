@@ -72,7 +72,14 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
             var landingPage = landingPageResult.Page;
 
-            return landingPage == null ? View("~/Views/Error/PageNotFound.cshtml") : View($"~/Views/LandingPages/{hub}LandingPage.cshtml", landingPage);
+            if (landingPage == null)
+            {
+                var sitemap = await _mediator.Send(new GetSiteMapQuery(), cancellationToken);
+
+                return View("~/Views/Error/PageNotFound.cshtml", sitemap.Page);
+            }
+
+            return View($"~/Views/LandingPages/{hub}LandingPage.cshtml", landingPage);
         }
     }
 }
