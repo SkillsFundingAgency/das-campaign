@@ -21,9 +21,12 @@ namespace SFA.DAS.Campaign.Web.Renderers
             var control = content as Image;
 
             var img = new TagBuilder($"img");
+            img.AddCssClass("fiu-article-image");
             img.TagRenderMode = TagRenderMode.SelfClosing;
             img.Attributes.Add("title", control.Title);
             img.Attributes.Add("src", control.Url);
+            img.Attributes.Add("alt", "");
+            img.Attributes.Add("role", "presentation");
             
             string result = img.WriteString();
 

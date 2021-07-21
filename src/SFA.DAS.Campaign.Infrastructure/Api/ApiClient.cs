@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Net;
 using System.Net.Http;
@@ -16,19 +17,20 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
     {
         private readonly HttpClient _httpClient;
         private readonly IHtmlControlAbstractFactory _htmlControlAbstractFactory;
+        private readonly IEnumerable<ICmsPageConverter> _jsonConverters;
         private readonly OuterApiConfiguration _config;
 
-        public ApiClient (HttpClient httpClient, IOptions<CampaignConfiguration> config, IHtmlControlAbstractFactory htmlControlAbstractFactory)
+        public ApiClient (HttpClient httpClient, IOptions<CampaignConfiguration> config, IHtmlControlAbstractFactory htmlControlAbstractFactory, IEnumerable<ICmsPageConverter> jsonConverters)
         {
             _httpClient = httpClient;
             _htmlControlAbstractFactory = htmlControlAbstractFactory;
+            _jsonConverters = jsonConverters;
             _config = config.Value.OuterApi;
             _httpClient.BaseAddress = new Uri(_config.BaseUrl);
         }
         
         public async Task<TResponse> Get<TResponse>(IGetApiRequest request) 
         {
-            
             AddHeaders();
 
             var response = await _httpClient.GetAsync(request.GetUrl).ConfigureAwait(false);
@@ -42,13 +44,15 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
             {
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                var articleJsonConverter = new ArticleJsonConverter(_htmlControlAbstractFactory);
-
-                if (articleJsonConverter.CanConvert(typeof(TResponse)))
+                foreach (var cmsPageConverter in _jsonConverters)
                 {
-                    return JsonConvert.DeserializeObject<TResponse>(json, articleJsonConverter);
+                    var converter = (JsonConverter) cmsPageConverter;
+                    if (converter.CanConvert(typeof(TResponse)))
+                    {
+                        return JsonConvert.DeserializeObject<TResponse>(json, converter);
+                    }
                 }
-
+               
                 return JsonConvert.DeserializeObject<TResponse>(json);
             }
             

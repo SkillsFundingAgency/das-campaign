@@ -49,7 +49,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("/apprentice/find-an-apprenticeship")]
         public IActionResult FindAnApprenticeshipRedirect()
         {
-            return RedirectToActionPermanent("FindAnApprenticeship", "Apprentice");
+            return RedirectToAction("FindAnApprenticeship", "Apprentice");
         }
         
         [Route("/employer/how-much-is-it-going-to-cost")]
@@ -120,20 +120,15 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [Route("/apprentice/real-stories")]
         public IActionResult ApprenticeRedirect()
         {
-            return RedirectToActionPermanent("Apprentices", "RealStories");
+            return RedirectPermanent("/apprentices/real-stories");
         }
         
         [Route("/real-stories/employer")]
         [Route("/employer/real-stories")]
+        [Route("/employers/real-stories")]
         public IActionResult EmployerRedirect()
         {
-            return RedirectToActionPermanent("Employers", "RealStories");
-        }
-        
-        [Route("/parents/their-career")]
-        public IActionResult TheirCareer(string email)
-        {
-            return RedirectPermanent("/employers/help-shape-their-career");
+            return RedirectPermanent("/employers/real-stories-employers");
         }
     }
 }

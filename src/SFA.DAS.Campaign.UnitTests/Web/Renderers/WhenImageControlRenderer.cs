@@ -39,7 +39,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
 
             var actual = renderer.Render(image);
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<img src=\"http://image.com\" title=\"an image\" />");
+            actual.Value.Should().Be("<img alt=\"\" class=\"fiu-article-image\" role=\"presentation\" src=\"http://image.com\" title=\"an image\" />");
             //var paragraph = ParagraphBuilder.New().AddText("a line").Build();
             //var actual = renderer.Render(paragraph);
 

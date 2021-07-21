@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Web.Helpers;
 
@@ -8,18 +10,24 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
     public class FundingAnApprenticeshipController : Controller
     {
         private readonly ISessionService _sessionService;
+        private readonly IMediator _mediator;
 
-        public FundingAnApprenticeshipController(ISessionService sessionService)
+        public FundingAnApprenticeshipController(ISessionService sessionService, IMediator mediator)
         {
             _sessionService = sessionService;
+            _mediator = mediator;
         }
         
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var vm = 
                 _sessionService.Get<LevyOptionViewModel>(_sessionService.LevyOptionViewModelKey) 
                 ?? new LevyOptionViewModel();
+
+            var menu = await _mediator.GetMenuForStaticContent();
+
+            vm.Menu = menu.Menu;
 
             return View("~/Views/EmployerInform/FundingAnApprenticeship.cshtml", vm);
         }

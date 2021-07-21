@@ -13,6 +13,7 @@ using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Vacancies;
+using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Geocode;
@@ -56,7 +57,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
 
             var queueStorageConnectionString = configuration.Get<CampaignConfiguration>().QueueConnectionString;
 
-            var healthChecks = services.AddHealthChecks()
+            services.AddHealthChecks()
                 .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
                 .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check")
                 .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
@@ -65,6 +66,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
 
             if (configuration["Environment"] == "LOCAL")
             {
+                services.AddDistributedMemoryCache();
                 return;
             }
 
@@ -73,7 +75,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
                 options.Configuration = connectionStrings.SharedRedis;
             });
 
-            healthChecks.AddRedis(connectionStrings.SharedRedis, "redis-app-cache-check");
+            services.AddHealthChecks().AddRedis(connectionStrings.SharedRedis, "redis-app-cache-check");
 
             var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},DefaultDatabase=3");
             services.AddDataProtection()
@@ -133,6 +135,15 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.AddTransient<IHtmlControlFactory, YouTubeControlFactory>();
             services.AddTransient<IHtmlControlFactory, BlockQuoteControlFactory>();
             services.AddTransient<IHtmlControlFactory, HorizontalRuleControlFactory>();
+        }
+
+        public static void ConfigureJsonConverters(this IServiceCollection services)
+        {
+            services.AddSingleton<ICmsPageConverter, ArticleJsonConverter>();
+            services.AddSingleton<ICmsPageConverter, HubJsonConverter>();
+            services.AddSingleton<ICmsPageConverter, LandingPageJsonConverter>();
+            services.AddSingleton<ICmsPageConverter, SiteMapJsonConverter>();
+            services.AddSingleton<ICmsPageConverter, MenuJsonConverter>();
         }
     }
 }

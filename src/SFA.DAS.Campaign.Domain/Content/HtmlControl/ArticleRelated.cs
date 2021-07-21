@@ -11,6 +11,6 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
         public string HubType { get; set; }
         public string Summary { get; set; }
         public string Description { get; set; }
-        public string Url => $"/{HubType}/{Slug}";
+        public string Url => $"/{HubType.ToString().ToLower()}/{Slug}";
     }
 }

@@ -1,0 +1,287 @@
+{
+  "hub": {
+    "pageAttributes": {
+      "id": null,
+      "pageType": 3,
+      "title": "Become an apprentice",
+      "metaDescription": null,
+      "slug": "apprentices",
+      "hubType": "Apprentices",
+      "summary": "Find out how to become an apprentice, what apprenticeships are available and which employers offer them."
+    },
+    "mainContent": {
+      "headerImage": {
+        "values": null,
+        "type": "Asset",
+        "tableValue": null,
+        "embeddedResource": {
+          "title": "apprentice-sparks",
+          "id": "7FMiFuKxmMQDmVxbhPQy4K",
+          "fileName": "apprentice-sparks.jpg",
+          "contentType": "image/jpeg",
+          "url": "https://images.ctfassets.net/8kbr1n52z8s2/7FMiFuKxmMQDmVxbhPQy4K/2d693fc0e6955f6a58bc12e663282a80/apprentice-sparks.jpg",
+          "size": 57643,
+          "description": null
+        }
+      },
+      "cards": [
+        {
+          "landingPage": {
+            "slug": "are-they-right-for-you",
+            "title": "Are they right for you? ",
+            "hub": "Apprentices",
+            "pageType": null
+          },
+          "id": "2K5MZPYdhDNyPEsDk4EgZh",
+          "pageType": 0,
+          "title": "Real stories",
+          "metaDescription": "Have a look at apprentices who've joined their chosen organisations and watch what they're doing and how becoming an apprentice has changed their career paths. ",
+          "slug": "real-stories",
+          "hubType": "Apprentices",
+          "summary": "Find out how becoming an apprentice changes lives."
+        },
+        {
+          "landingPage": {
+            "slug": "are-they-right-for-you",
+            "title": "Are they right for you? ",
+            "hub": "Apprentices",
+            "pageType": null
+          },
+          "id": "75ccwXto2HXEC3wbVgwvw1",
+          "pageType": 0,
+          "title": "What are the benefits of an apprenticeship? ",
+          "metaDescription": "What are the benefits of an apprenticeship? ",
+          "slug": "benefits-apprenticeship",
+          "hubType": "Apprentices",
+          "summary": "Apprenticeships are an exciting option - you get hands-on training and also the chance to put your skills into practice."
+        },
+        {
+          "landingPage": {
+            "slug": "are-they-right-for-you",
+            "title": "Are they right for you? ",
+            "hub": "Apprentices",
+            "pageType": null
+          },
+          "id": "13qA1FX6gO2IoUDweLNinm",
+          "pageType": 0,
+          "title": "Browse by interest",
+          "metaDescription": null,
+          "slug": "browse-by-interests",
+          "hubType": "Apprentices",
+          "summary": "Find out what type of apprenticeships you can expect in your chosen interest."
+        },
+        {
+          "landingPage": {
+            "slug": "how-do-they-work",
+            "title": "How do they work?",
+            "hub": "Apprentices",
+            "pageType": null
+          },
+          "id": "76YH23UZsD6k196MZb6AAI",
+          "pageType": 0,
+          "title": "Becoming an apprentice",
+          "metaDescription": "An apprenticeship gives you hands-on experience, a salary and the opportunity to train while you work as an apprentice.",
+          "slug": "becoming-apprentice",
+          "hubType": "Apprentices",
+          "summary": "An apprenticeship is a real job where you learn, gain experience and get paid. You're an employee with a contract of employment and holiday leave."
+        },
+        {
+          "landingPage": {
+            "slug": "how-do-they-work",
+            "title": "How do they work?",
+            "hub": "Apprentices",
+            "pageType": null
+          },
+          "id": "6ZZgvPXWJApudf5ReNqTQq",
+          "pageType": 0,
+          "title": "Applying for an apprenticeship",
+          "metaDescription": "From finding the right apprenticeship and employer and how to write a good CV, covering letter and what to expect from the employer.",
+          "slug": "applying-apprenticeship",
+          "hubType": "Apprentices",
+          "summary": "There are hundreds of different apprenticeships to choose from. To apply for one, you’ll need to create an account on the find an apprenticeship service. You can also save any apprenticeships you like and then apply for them later."
+        },
+        {
+          "landingPage": {
+            "slug": "how-do-they-work",
+            "title": "How do they work?",
+            "hub": "Apprentices",
+            "pageType": null
+          },
+          "id": "5aYO8U5AoWDCFieKFs3FQl",
+          "pageType": 0,
+          "title": "The interview process ",
+          "metaDescription": "From finding the right apprenticeship and employer to nailing the interview.",
+          "slug": "interview-process",
+          "hubType": "Apprentices",
+          "summary": "If your application is successful, the employer will invite you for an interview. If you’re upskilling with your current employer, you may not have one."
+        },
+        {
+          "landingPage": {
+            "slug": "get-started",
+            "title": "Get started ",
+            "hub": "Apprentices",
+            "pageType": null
+          },
+          "id": "1WWi9NVAwfKomVhpHkYC7q",
+          "pageType": 0,
+          "title": "Starting your apprenticeship",
+          "metaDescription": "Find out what's expected of you now you've secured your apprenticeship and what you should expect when you start.",
+          "slug": "starting-apprenticeship",
+          "hubType": "Apprentices",
+          "summary": "Before you start your apprenticeship, your employer will usually contact you and ask a series of questions. Find out what they might be."
+        },
+        {
+          "landingPage": {
+            "slug": "get-started",
+            "title": "Get started ",
+            "hub": "Apprentices",
+            "pageType": null
+          },
+          "id": "3m4ZeA3OjT89Z82IXb4Ce9",
+          "pageType": 0,
+          "title": "Assessment and certification",
+          "metaDescription": "What to expect at the end of your apprenticeship and where you go next",
+          "slug": "assessment-and-certification",
+          "hubType": "Apprentices",
+          "summary": "During your apprenticeship, you’ll be assessed to make sure you’re achieving the knowledge, skills and behaviours needed for your chosen apprenticeship."
+        },
+        {
+          "landingPage": {
+            "slug": "get-started",
+            "title": "Get started ",
+            "hub": "Apprentices",
+            "pageType": null
+          },
+          "id": "18yylhE5S4TbkZFSA7r4MM",
+          "pageType": 0,
+          "title": "Set up a service account",
+          "metaDescription": null,
+          "slug": "create-account",
+          "hubType": "Apprentices",
+          "summary": "Create an account on find an apprenticeship so you can search, save and apply for apprenticeships."
+        },
+        {
+          "landingPage": {
+            "slug": "how-they-work",
+            "title": "How they work",
+            "hub": "Influencers",
+            "pageType": null
+          },
+          "id": "1NCP8dXX88SQGcMpw1Vmiq",
+          "pageType": 0,
+          "title": "Alternatives to apprenticeships ",
+          "metaDescription": "An introduction to other career alternatives to apprenticeships such as t levels and traineeships. ",
+          "slug": "alternatives-to-apprenticeships",
+          "hubType": "Influencers",
+          "summary": "There are other career alternatives to apprenticeships which may be more suitable, such as T levels and traineeships. "
+        }
+      ]
+    },
+    "menuContent": {
+      "topLevel": [
+        {
+          "slug": "apprentices",
+          "title": "Become an apprentice",
+          "hub": "Apprentices",
+          "pageType": "Hub"
+        },
+        {
+          "slug": "employers",
+          "title": "Hire an apprentice ",
+          "hub": "Employers",
+          "pageType": "Hub"
+        },
+        {
+          "slug": "influencers",
+          "title": "Inspire and Influence",
+          "hub": "Influencers",
+          "pageType": "Hub"
+        }
+      ],
+      "apprentices": [
+        {
+          "slug": "are-they-right-for-you",
+          "title": "Are they right for you? ",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "how-do-they-work",
+          "title": "How do they work?",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "get-started",
+          "title": "Get started ",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "browse-apprenticeships",
+          "title": "Browse apprenticeships",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "useful-resources-for-apprentices",
+          "title": "Useful resources",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        }
+      ],
+      "employers": [
+        {
+          "slug": "are-they-right-for-you-employers",
+          "title": "Are they right for you?",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "how-do-they-work-for-employers",
+          "title": "How do they work?",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "setting-it-up",
+          "title": "Setting it up",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "employer-guides",
+          "title": "Employer guides",
+          "hub": "Employers",
+          "pageType": "Article"
+        }
+      ],
+      "influencers": [
+        {
+          "slug": "how-they-work",
+          "title": "How they work",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "request-support-ask",
+          "title": "Request support",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "resource-hub",
+          "title": "Resource hub",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "become-an-ambassador",
+          "title": "Become an ambassador",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        }
+      ]
+    }
+  }
+}

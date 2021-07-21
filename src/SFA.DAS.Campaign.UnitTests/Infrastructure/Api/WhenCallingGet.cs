@@ -12,6 +12,7 @@ using Moq.Protected;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Infrastructure.Api;
+using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Models.Configuration;
@@ -24,7 +25,8 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api
         public async Task Then_The_Endpoint_Is_Called_With_Authentication_Header_And_Data_Returned(
             List<string> testObject, 
             OuterApiConfiguration config,
-            Mock<IHtmlControlAbstractFactory> controlFactory)
+            Mock<IHtmlControlAbstractFactory> controlFactory,
+            Mock<IEnumerable<ICmsPageConverter>> converters)
         {
             //Arrange
             var configMock = new Mock<IOptions<CampaignConfiguration>>();
@@ -39,7 +41,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api
             };
             var httpMessageHandler = MessageHandler.SetupMessageHandlerMock(response, config.BaseUrl + getTestRequest.GetUrl, config.Key);
             var client = new HttpClient(httpMessageHandler.Object);
-            var apiClient = new ApiClient(client, configMock.Object, controlFactory.Object);
+            var apiClient = new ApiClient(client, configMock.Object, controlFactory.Object, converters.Object);
 
             //Act
             var actual = await apiClient.Get<List<string>>(getTestRequest);
@@ -50,7 +52,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api
         
         [Test, AutoData]
         public void Then_If_It_Is_Not_Successful_An_Exception_Is_Thrown(
-            OuterApiConfiguration config, Mock<IHtmlControlAbstractFactory> controlFactory)
+            OuterApiConfiguration config, Mock<IHtmlControlAbstractFactory> controlFactory, Mock<IEnumerable<ICmsPageConverter>> converters)
         {
             //Arrange
             var configMock = new Mock<IOptions<CampaignConfiguration>>();
@@ -65,7 +67,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api
             
             var httpMessageHandler = MessageHandler.SetupMessageHandlerMock(response, config.BaseUrl + getTestRequest.GetUrl, config.Key);
             var client = new HttpClient(httpMessageHandler.Object);
-            var apiClient = new ApiClient(client, configMock.Object, controlFactory.Object);
+            var apiClient = new ApiClient(client, configMock.Object, controlFactory.Object, converters.Object);
             
             //Act Assert
             Assert.ThrowsAsync<HttpRequestException>(() => apiClient.Get<List<string>>(getTestRequest));
@@ -74,7 +76,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api
         
         [Test, AutoData]
         public async Task Then_If_It_Is_Not_Found_Default_Is_Returned(
-            OuterApiConfiguration config, Mock<IHtmlControlAbstractFactory> controlFactory)
+            OuterApiConfiguration config, Mock<IHtmlControlAbstractFactory> controlFactory, Mock<IEnumerable<ICmsPageConverter>> converters)
         {
             //Arrange
             var configMock = new Mock<IOptions<CampaignConfiguration>>();
@@ -89,7 +91,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api
             
             var httpMessageHandler = MessageHandler.SetupMessageHandlerMock(response, config.BaseUrl + getTestRequest.GetUrl, config.Key);
             var client = new HttpClient(httpMessageHandler.Object);
-            var apiClient = new ApiClient(client, configMock.Object, controlFactory.Object);
+            var apiClient = new ApiClient(client, configMock.Object, controlFactory.Object, converters.Object);
             
             //Act Assert
             var actual = await apiClient.Get<List<string>>(getTestRequest);

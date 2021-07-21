@@ -25,7 +25,9 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 new AttachmentControlRenderer(),
                 new HorizontalRuleControlRenderer(),
                 new OrderedListControlRenderer(),
-                new ArticleRelatedControlRenderer()
+                new ArticleRelatedControlRenderer(),
+                new CardControlRenderer(),
+                new SiteMapUrlRenderer()
             };
         }
 
@@ -85,5 +87,6 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
             return new HtmlString(sb.ToString());
         }
+
     }
 }

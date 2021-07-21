@@ -1,13 +1,15 @@
+@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.SiteMap>
+
 @{
     ViewBag.Title = "Page not found";
     ViewBag.PageTitle = "Page not found";
     ViewBag.MetaTitle = "Page not found";
     ViewBag.FullWidthContent = true;
-    Layout = "Redesign_Layout_Generic";   
+    Layout = "Redesign_Layout_Generic";
 }
 
 <p class="govuk-body-l">
     Try another page
-</p> 
+</p>
 
-<partial name="./Redesign/_Sitemap" />
+<partial name="./_Sitemap", model="Model" />

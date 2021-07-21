@@ -1,0 +1,104 @@
+{
+  "menu": {
+    "mainContent": {
+      "topLevel": [
+        {
+          "slug": "apprentices",
+          "title": "Become an apprentice",
+          "hub": "Apprentices",
+          "pageType": "Hub"
+        },
+        {
+          "slug": "employers",
+          "title": "Hire an apprentice ",
+          "hub": "Employers",
+          "pageType": "Hub"
+        },
+        {
+          "slug": "influencers",
+          "title": "Influencers hub",
+          "hub": "Influencers",
+          "pageType": "Hub"
+        }
+      ],
+      "apprentices": [
+        {
+          "slug": "are-they-right-for-you",
+          "title": "Are they right for you?",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "how-do-they-work",
+          "title": "How do they work?",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "get-started",
+          "title": "Get started",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "browse-apprenticeships",
+          "title": "Browse apprenticeships",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "useful-resources",
+          "title": "Useful resources",
+          "hub": "Apprentices",
+          "pageType": "LandingPage"
+        }
+      ],
+      "employers": [
+        {
+          "slug": "are-they-right-for-you-employers",
+          "title": "Are they right for you?",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "how-do-they-work-for-employers",
+          "title": "How do they work?",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "setting-it-up",
+          "title": "Setting it up",
+          "hub": "Employers",
+          "pageType": "LandingPage"
+        }
+      ],
+      "influencers": [
+        {
+          "slug": "how-they-work",
+          "title": "How they work",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "request-support-ask",
+          "title": "Request support (ASK)",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "resource-hub",
+          "title": "Resource hub",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        },
+        {
+          "slug": "become-an-ambassador",
+          "title": "Become an ambassador",
+          "hub": "Influencers",
+          "pageType": "LandingPage"
+        }
+      ]
+    }
+  }
+}
