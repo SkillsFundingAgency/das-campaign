@@ -16,7 +16,7 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
         private readonly string _replacement;
         private readonly List<string> _originQueryParams;
 
-        public PathWithQueryRule(string requestRegexPattern, string replacement, List<string> originQueryParams)
+        public PathWithQueryRule(string requestRegexPattern, string replacement, List<string> originQueryParams = default)
         {
             _requestRegexPattern = requestRegexPattern;
             _replacement = replacement;
