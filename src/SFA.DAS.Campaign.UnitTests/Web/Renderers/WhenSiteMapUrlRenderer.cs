@@ -1,6 +1,7 @@
 ﻿using AutoFixture.NUnit3;
 using FluentAssertions;
 using NUnit.Framework;
+using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Web.Renderers;
 
