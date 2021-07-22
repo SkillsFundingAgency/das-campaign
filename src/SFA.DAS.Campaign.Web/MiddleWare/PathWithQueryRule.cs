@@ -39,7 +39,7 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
 
             var location = _replacement;
 
-            for (var i = 0; i < _originQueryParams.Count; i++)
+            for (var i = 0; i < _originQueryParams?.Count; i++)
             {
                 var queryStringValues = request.Query[_originQueryParams[i]];
 

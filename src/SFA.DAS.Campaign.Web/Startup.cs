@@ -12,9 +12,11 @@ using System.Globalization;
 using System.IO;
 using MediatR;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Helpers;
+using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
 
 namespace SFA.DAS.Campaign.Web
@@ -86,8 +88,6 @@ namespace SFA.DAS.Campaign.Web
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
-            
-            
             services.AddSession(options =>
             {
                 options.Cookie.HttpOnly = true;
@@ -98,6 +98,8 @@ namespace SFA.DAS.Campaign.Web
                 services.AddControllersWithViews().AddRazorRuntimeCompilation();
             #endif
 
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -142,6 +144,8 @@ namespace SFA.DAS.Campaign.Web
                 await next();
             });
 
+            app.AddRedirectRules();
+            
             app.UseRouting();
             
             app.UseSession();
