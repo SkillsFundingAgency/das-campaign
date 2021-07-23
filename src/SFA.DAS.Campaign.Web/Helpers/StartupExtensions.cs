@@ -51,13 +51,13 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.AddSingleton<IPostcodeApiConfiguration>(postcodeConfig);
             services.AddSingleton<IMappingConfiguration>(mappingConfig);
 
-            services.Configure<MappingConfiguration>(configuration.GetSection("CampaignConfiguration:Campaign:Mapping"));
+            services.Configure<MappingConfiguration>(configuration.GetSection("CampaignConfiguration:Mapping"));
         }
 
         public static void ConfigureSfaConnectionStrings(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionStrings = new ConnectionStrings();
-            configuration.Bind("ConnectionStrings", connectionStrings);
+            configuration.Bind("CampaignConfiguration:ConnectionStrings", connectionStrings);
 
             var queueStorageConnectionString = configuration.Get<CampaignConfiguration>().QueueConnectionString;
 
