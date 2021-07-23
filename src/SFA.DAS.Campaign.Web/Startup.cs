@@ -34,7 +34,7 @@ namespace SFA.DAS.Campaign.Web
                 .AddEnvironmentVariables()
                 .AddUserSecrets<Startup>();
 
-            if (!configuration["Environment"].Equals("DEV", StringComparison.CurrentCultureIgnoreCase))
+            if (!configuration["EnvironmentName"].Equals("DEV", StringComparison.CurrentCultureIgnoreCase))
             {
 
 #if DEBUG
@@ -47,7 +47,7 @@ namespace SFA.DAS.Campaign.Web
                     {
                         options.ConfigurationKeys = configuration["ConfigNames"].Split(",");
                         options.StorageConnectionString = configuration["ConfigurationStorageConnectionString"];
-                        options.EnvironmentName = configuration["Environment"];
+                        options.EnvironmentName = configuration["EnvironmentName"];
                         options.PreFixConfigurationKeys = false;
                     }
                 );
