@@ -68,7 +68,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
 
             services.AddTransient<ConnectionMultiplexer>(sp => ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase},allowAdmin=true"));
 
-            if (configuration["EnvironmentName"] == "LOCAL")
+            if (configuration["Environment"] == "LOCAL")
             {
                 services.AddDistributedMemoryCache();
                 return;
