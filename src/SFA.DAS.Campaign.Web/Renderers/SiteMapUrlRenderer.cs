@@ -67,7 +67,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
             foreach (var url in articleUrls)
             {
                 ul.InnerHtml.AppendHtml(
-                    $"<li><a href=\"/{url.Hub.ToString().ToLower()}/{url.Slug}\" class=\"fiu-link fiu-link--{GetCssClassNameForHub(url.Hub)}\">{url.Title}</a></li>");
+                    $"<li><a href=\"/{url.Hub.ToLowerInvariant()}/{url.Slug}\" class=\"fiu-link fiu-link--{GetCssClassNameForHub(url.Hub)}\">{url.Title}</a></li>");
             }
 
             parentDiv.InnerHtml.AppendHtml(ul.WriteString());
@@ -84,7 +84,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 if (string.Compare(currentLandingPage, landingPageUrl.Slug, StringComparison.OrdinalIgnoreCase) != 0)
                 {
                     ul.InnerHtml.AppendHtml(
-                        $"<li><a href=\"/{landingPageUrl.Hub.ToString().ToLower()}/{landingPageUrl.Slug}\" class=\"fiu-link fiu-link--{ GetCssClassNameForHub(landingPageUrl.Hub)} fiu-sitemap-list__link\">{landingPageUrl.Title}</a>");
+                        $"<li><a href=\"/{landingPageUrl.Hub.ToLowerInvariant()}/{landingPageUrl.Slug}\" class=\"fiu-link fiu-link--{ GetCssClassNameForHub(landingPageUrl.Hub)} fiu-sitemap-list__link\">{landingPageUrl.Title}</a>");
 
                     currentLandingPage = landingPageUrl.Slug;
 
@@ -104,7 +104,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
         private void AddHubUrl(TagBuilder columnDiv, Url control)
         {
             columnDiv.InnerHtml.AppendHtml(
-                $"<div class=\"fiu-feature-text\"><a class=\"fiu-tag fiu-tag--{ GetCssClassNameForHub(control.Hub)} fiu-panel__tag\" href=\"/{control.Hub.ToString().ToLower()}\">{control.Hub}</a></div>");
+                $"<div class=\"fiu-feature-text\"><a class=\"fiu-tag fiu-tag--{ GetCssClassNameForHub(control.Hub)} fiu-panel__tag\" href=\"/{control.Hub.ToLowerInvariant()}\">{control.Hub}</a></div>");
         }
 
         private string GetCssClassNameForHub(string hub)
