@@ -55,7 +55,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
         public static void ConfigureSfaConnectionStrings(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionStrings = new ConnectionStrings();
-            configuration.Bind("ConnectionStrings", connectionStrings);
+            configuration.Bind("CampaignConfiguration:ConnectionStrings", connectionStrings);
 
             var queueStorageConnectionString = configuration.Get<CampaignConfiguration>().QueueConnectionString;
 
