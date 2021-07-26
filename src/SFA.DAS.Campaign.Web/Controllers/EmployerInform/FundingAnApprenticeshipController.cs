@@ -33,10 +33,12 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
         }
         
         [HttpPost]
-        public IActionResult Index(LevyOptionViewModel vm)
+        public async Task<IActionResult> Index(LevyOptionViewModel vm)
         {
             if (!ModelState.IsValid)
             {
+                var menu = await _mediator.GetMenuForStaticContent();
+                vm.Menu = menu.Menu;
                 return View("~/Views/EmployerInform/FundingAnApprenticeship.cshtml", vm);
             }
             _sessionService.Set(_sessionService.LevyOptionViewModelKey, vm);
