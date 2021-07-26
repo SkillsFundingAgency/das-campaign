@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -336,16 +337,20 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
         }
         
         [Test]
-        public async Task Then_If_The_Model_Is_Not_Valid_Then_The_Menu_Is_Added()
+        public async Task Then_If_The_Model_Is_Not_Valid_Then_The_Menu_Is_Added_To_The_ViewModel()
         {
             //Arrange
             _controller.ModelState.AddModelError("FirstName","First name");
             
             //Act
-            await _controller.Index(_registerInterestModel);
+            var actual = await _controller.Index(_registerInterestModel) as ViewResult;
 
             //Assert
             _mediator.Verify(x=>x.Send(It.IsAny<GetMenuQuery>(), CancellationToken.None), Times.Once);
+            Assert.IsNotNull(actual);
+            var actualModel = actual.Model as RegisterInterestModel;
+            Assert.IsNotNull(actualModel);
+            actualModel.Menu.Should().NotBeNull();
         }
 
         [Test]

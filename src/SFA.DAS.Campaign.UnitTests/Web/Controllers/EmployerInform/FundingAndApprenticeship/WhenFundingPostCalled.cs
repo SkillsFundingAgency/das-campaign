@@ -33,7 +33,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
         }
 
         [Test, RecursiveMoqAutoData]
-        public async Task Then_If_There_Is_An_Error_The_Menu_Is_Build(
+        public async Task Then_If_There_Is_An_Error_The_Menu_Is_Built(
             LevyOptionViewModel model,
             GetMenuQueryResult<Menu> mediatorResult,
             [Frozen] Mock<IMediator> mediator,
@@ -45,10 +45,14 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
             controller.ModelState.AddModelError("TestError","Error");
            
             //Act
-            await controller.Index(model);
+            var actual = await controller.Index(model) as ViewResult;
             
             //Assert
             mediator.Verify(x=>x.Send(It.IsAny<GetMenuQuery>(), CancellationToken.None), Times.Once);
+            Assert.IsNotNull(actual);
+            var actualModel = actual.Model as LevyOptionViewModel;
+            Assert.IsNotNull(actualModel);
+            actualModel.Menu.Should().BeEquivalentTo(mediatorResult.Page.Menu);
         }
     }
 }
