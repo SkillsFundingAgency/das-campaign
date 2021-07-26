@@ -16,9 +16,9 @@ namespace SFA.DAS.Campaign.Infrastructure.Geocode
 {
     public class GeocodeService : IGeocodeService
     {
-        private ILogger<IGeocodeService> _logger;
-        private IRetryWebRequests _retryWebRequests;
-        private IPostcodeApiConfiguration _postcodeConfiguration;
+        private readonly ILogger<IGeocodeService> _logger;
+        private readonly IRetryWebRequests _retryWebRequests;
+        private readonly IPostcodeApiConfiguration _postcodeConfiguration;
 
         public GeocodeService(ILogger<IGeocodeService> logger, IRetryWebRequests retryWebRequests, IPostcodeApiConfiguration postcodeConfiguration)
         {
