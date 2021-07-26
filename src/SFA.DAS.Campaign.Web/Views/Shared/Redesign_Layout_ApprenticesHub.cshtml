@@ -12,10 +12,14 @@
             <h3 class="govuk-heading-s fiu-navigation__heading" id="fiu-nav-title-citizens">Apprentices</h3>
             <ul class="fiu-navigation__list" aria-labelledby="fiu-nav-title-citizens">
                 @{int menuItemCount = 1;}
-                @foreach (var menuItem in Model.Menu.Apprentices) {
-                    <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-@menuItemCount" href="/@menuItem.Hub.ToString().ToLower()/@menuItem.Slug" class="fiu-navigation__link">@menuItem.Title</a> </li>
-                    menuItemCount++;
+                @if (Model.Menu?.Apprentices != null)
+                {
+                    foreach (var menuItem in Model.Menu.Apprentices) {
+                        <li class="fiu-navigation__list-item"><a id="fiu-app-menu-link-@menuItemCount" href="/@menuItem.Hub.ToString().ToLower()/@menuItem.Slug" class="fiu-navigation__link">@menuItem.Title</a> </li>
+                        menuItemCount++;
+                    }    
                 }
+                
             </ul>
 		</nav>
 	</div>
