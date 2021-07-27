@@ -47,5 +47,16 @@ namespace SFA.DAS.Campaign.Web.Helpers
 
             return renderer.Render(siteMapUrls);
         }
+
+        public static HtmlString TabbedContentToHtml(this IEnumerable<TabbedContent> control)
+        {
+            var renderer = new TabbedContentRenderer();
+            var tabs = new Tabs()
+            {
+                TabbedContents = control
+            };
+
+            return renderer.Render(tabs);
+        }
     }
 }

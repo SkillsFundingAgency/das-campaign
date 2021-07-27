@@ -101,6 +101,11 @@ namespace SFA.DAS.Campaign.Web.Renderers
             return result;
         }
 
+        public static string EnsureHrefUsableTitle(this string tabTitle)
+        {
+            return tabTitle.Replace(" ", "");
+        }
+
         private static string GetHtml5TagNameFromMarkup(string fontEffect)
         {
             if (string.Compare(fontEffect, "bold", StringComparison.OrdinalIgnoreCase) == 0)
