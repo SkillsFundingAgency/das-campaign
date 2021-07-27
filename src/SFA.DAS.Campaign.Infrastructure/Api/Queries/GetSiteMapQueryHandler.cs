@@ -12,12 +12,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
     public class GetSiteMapQueryHandler : IRequestHandler<GetSiteMapQuery, GetSiteMapQueryResult<SiteMap>>
     {
         private readonly IApiClient _apiClient;
-        private readonly IOptions<CampaignConfiguration> _config;
-
-        public GetSiteMapQueryHandler(IApiClient apiClient, IOptions<CampaignConfiguration> config)
+        
+        public GetSiteMapQueryHandler(IApiClient apiClient)
         {
             _apiClient = apiClient;
-            _config = config;
         }
 
         public async Task<GetSiteMapQueryResult<SiteMap>> Handle(GetSiteMapQuery request, CancellationToken cancellationToken)
