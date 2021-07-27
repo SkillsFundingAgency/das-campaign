@@ -13,5 +13,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public string TabName { get; set; }
         [JsonProperty("tabTitle")]
         public string TabTitle { get; set; }
+        [JsonProperty("findTraineeship")]
+        public bool FindTraineeship { get; set; }
     }
 }

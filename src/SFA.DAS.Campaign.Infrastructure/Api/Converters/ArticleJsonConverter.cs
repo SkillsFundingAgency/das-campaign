@@ -90,7 +90,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
                 var content = new TabbedContent
                 {
                     TabName = responseTabbedContent.TabName,
-                    TabTitle = responseTabbedContent.TabTitle
+                    TabTitle = responseTabbedContent.TabTitle,
+                    FindTraineeShip = responseTabbedContent.FindTraineeship
                 };
 
                 var pageContent = new List<IHtmlControl>();

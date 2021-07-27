@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Web.Helpers;
@@ -16,6 +18,9 @@ namespace SFA.DAS.Campaign.Web.Renderers
         {
             return content is Tabs;
         }
+
+        public HttpContext HttpContext { get; set; }
+        public ITempDataDictionary TempDataDictionary { get; set; }
 
         public HtmlString Render(IHtmlControl content)
         {
@@ -58,8 +63,16 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 var articleEl = new TagBuilder("article");
                 articleEl.AddCssClass("fiu-article");
                 articleEl.InnerHtml.AppendHtml(tabContent.Content.ToHtml());
-                div.InnerHtml.AppendHtml(articleEl.WriteString());
+                if (tabContent.FindTraineeShip)
+                {
+                    var viewText =
+                        tabContent.RenderViewAsync("~/Views/Shared/Content/_FindTraineeShip.cshtml", HttpContext, TempDataDictionary).Result;
 
+                    articleEl.InnerHtml.AppendHtml(viewText);
+                }
+
+                div.InnerHtml.AppendHtml(articleEl.WriteString());
+                
                 parentDiv.InnerHtml.AppendHtml(div.WriteString());
             }
         }

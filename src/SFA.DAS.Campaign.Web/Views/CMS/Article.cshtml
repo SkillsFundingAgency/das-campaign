@@ -15,7 +15,7 @@
     @Model.Content.PageControls.ToHtml()
 </article>
 
-@Model.Content?.TabbedContents?.TabbedContentToHtml()
+@Model.Content?.TabbedContents?.TabbedContentToHtml(Context, TempData)
 
 @if (Model.Attachments != null && Model.Attachments.Any())
 {

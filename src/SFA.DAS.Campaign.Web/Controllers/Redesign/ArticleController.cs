@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Helpers;
@@ -16,11 +19,15 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
     public class ArticleController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ArticleController(IMediator mediator)
+        public ArticleController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
         {
             _mediator = mediator;
+            _httpContextAccessor = httpContextAccessor;
         }
+
+        protected IHttpContextAccessor ContextAccessor { get; set; }
 
         [HttpGet("/apprentices/apprenticeships-alternatives")]
         public async Task<IActionResult> AlternativesToApprenticeships()
@@ -73,5 +80,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
             return View($"~/Views/LandingPages/{hub}LandingPage.cshtml", landingPage);
         }
+        
     }
 }
