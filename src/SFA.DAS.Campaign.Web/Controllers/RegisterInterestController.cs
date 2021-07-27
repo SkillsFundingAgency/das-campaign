@@ -63,6 +63,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {
+            var menu = await _mediator.GetMenuForStaticContent();
+            registerInterest.Menu = menu.Menu;
             if (!ModelState.IsValid)
             { 
                 registerInterest.ShowRouteQuestion = this.RouteData.Values.ContainsKey("route") == false;

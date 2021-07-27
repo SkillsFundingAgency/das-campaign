@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
@@ -78,9 +79,11 @@ namespace SFA.DAS.Campaign.Web
             services.ConfigureFactorys();
             services.ConfigureJsonConverters();
             services.AddMediatR(typeof(GetArticleQuery).Assembly);
-            
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+            services.Configure<RouteOptions>(options =>
+            {
+                options.LowercaseUrls = true;
+            }).AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddLogging();
 

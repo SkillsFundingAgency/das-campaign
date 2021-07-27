@@ -22,7 +22,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
             _mediator = mediator;
         }
 
-        [HttpGet("/apprentices/alternatives-to-apprenticeships")]
+        [HttpGet("/apprentices/apprenticeships-alternatives")]
         public async Task<IActionResult> AlternativesToApprenticeships()
         {
             var menu = await _mediator.GetMenuForStaticContent();
