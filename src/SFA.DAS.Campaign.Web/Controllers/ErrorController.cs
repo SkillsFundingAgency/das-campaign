@@ -1,40 +1,58 @@
 using System;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SFA.DAS.Campaign.Web.Models;
+using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 
-namespace DfE.EmployerFavourites.Web.Controllers
+namespace SFA.DAS.Campaign.Web.Controllers
 {
     public class ErrorController : Controller
     {
         private readonly ILogger<ErrorController> _logger;
+        private readonly IMediator _mediator;
 
-        public ErrorController(ILogger<ErrorController> logger)
+        public ErrorController(ILogger<ErrorController> logger, IMediator mediator)
         {
             _logger = logger;
+            _mediator = mediator;
         }
         
         [Route("error/{id?}")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error(int? id = 500)
+        public async Task<IActionResult> Error(int? id = 500)
         {
             Response.StatusCode = id.Value;
-            
             LogException();
 
             if (Response.StatusCode == 404)
             {
                 return RedirectToAction("PageNotFound");
             }
-            
-            return View("Error", new ErrorViewModel { StatusCode = Response.StatusCode, RequestId = HttpContext.TraceIdentifier });
+
+            ViewBag.Title = $"Error {Response.StatusCode}";
+            ViewBag.PageTitle = $"Error {Response.StatusCode}";
+            ViewBag.MetaTitle = $"Error {Response.StatusCode}";
+
+            var result = await _mediator.Send(new GetSiteMapQuery());
+
+            return View("Error", result.Page);
         }
 
         [Route("/page-not-found")]
-        public IActionResult PageNotFound()
+        public async Task<IActionResult> PageNotFound()
+        {
+            Response.StatusCode = (int)HttpStatusCode.NotFound;
+            var result = await _mediator.Send(new GetSiteMapQuery());
+            return View("PageNotFound", result.Page);
+        }
+
+        [Route("/error-page")]
+        public IActionResult ErrorPage()
         {
             Response.StatusCode = (int)HttpStatusCode.NotFound;
             return View("PageNotFound");

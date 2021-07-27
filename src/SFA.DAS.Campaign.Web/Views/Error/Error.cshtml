@@ -1,17 +1,14 @@
-@model ErrorViewModel
+@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.SiteMap>
 
 @{
-    ViewBag.Title = "Error " + Model.StatusCode;
-    ViewBag.PageTitle = "Error " + Model.StatusCode;
-    ViewBag.MetaTitle = "Error " + Model.StatusCode;
     ViewBag.FullWidthContent = true;
-    Layout = "Redesign_Layout_Generic";   
+    Layout = "Redesign_Layout_Generic";
 }
 
 
 <p class="govuk-body-l">
     Looks like something went a bit wrong on our end.
     Please head back to the homepage or alternatively head to any of the links below that may be able to help you...
-</p> 
+</p>
 
 <partial name="./_Sitemap" />
