@@ -36,6 +36,8 @@ namespace SFA.DAS.Campaign.Web.Helpers
             configuration.Bind("CampaignConfiguration", campaignConfiguration);
 
             services.Configure<CampaignConfiguration>(configuration.GetSection("CampaignConfiguration"));
+
+            services.AddSingleton<CampaignConfiguration>(campaignConfiguration);
             
             services.Configure<UserDataCryptography>(configuration.GetSection("CampaignConfiguration:UserDataCryptography"));
             services.Configure<UserDataQueueNames>(configuration.GetSection("CampaignConfiguration:UserDataQueueNames"));

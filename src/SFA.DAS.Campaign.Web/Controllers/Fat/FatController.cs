@@ -14,6 +14,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Fat
         }
         
         [Route("/employers/find-apprenticeships")]
+        [Route("/employer/find-apprenticeships")]
         public IActionResult Search(SearchQueryViewModel model)
         {
             var selectedLevels = "&levels=";

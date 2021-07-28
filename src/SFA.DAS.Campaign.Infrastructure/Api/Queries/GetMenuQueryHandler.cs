@@ -12,12 +12,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
     public class GetMenuQueryHandler : IRequestHandler<GetMenuQuery, GetMenuQueryResult<Menu>>
     {
         private readonly IApiClient _apiClient;
-        private readonly IOptions<CampaignConfiguration> _config;
 
-        public GetMenuQueryHandler(IApiClient apiClient, IOptions<CampaignConfiguration> config)
+        public GetMenuQueryHandler(IApiClient apiClient)
         {
             _apiClient = apiClient;
-            _config = config;
         }
 
         public async Task<GetMenuQueryResult<Menu>> Handle(GetMenuQuery request, CancellationToken cancellationToken)
