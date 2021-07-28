@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -12,9 +13,12 @@ using System.Globalization;
 using System.IO;
 using MediatR;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Helpers;
+using SFA.DAS.Campaign.Web.MiddleWare;
+using SFA.DAS.Configuration.AzureTableStorage;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -26,18 +30,31 @@ namespace SFA.DAS.Campaign.Web
         {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")	                
-                .AddJsonFile("appsettings.Development.json",true)	                
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.Development.json", true)
                 .AddEnvironmentVariables()
-                .AddAzureTableStorageConfiguration(
-                    configuration["ConfigurationStorageConnectionString"],
-                    configuration["Environment"],
-                    configuration["Version"]
-                    )
-                .AddUserSecrets<Startup>()
-                .Build();
+                .AddUserSecrets<Startup>();
 
-            Configuration = config;
+            if (!configuration["Environment"].Equals("DEV", StringComparison.CurrentCultureIgnoreCase))
+            {
+
+#if DEBUG
+                config
+                    .AddJsonFile("appsettings.json", true)
+                    .AddJsonFile("appsettings.Development.json", true);
+#endif
+
+                config.AddAzureTableStorage(options =>
+                    {
+                        options.ConfigurationKeys = configuration["ConfigNames"].Split(",");
+                        options.StorageConnectionString = configuration["ConfigurationStorageConnectionString"];
+                        options.EnvironmentName = configuration["Environment"];
+                        options.PreFixConfigurationKeys = false;
+                    }
+                );
+            }
+
+            Configuration = config.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -74,8 +91,6 @@ namespace SFA.DAS.Campaign.Web
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
-            
-            
             services.AddSession(options =>
             {
                 options.Cookie.HttpOnly = true;
@@ -86,6 +101,8 @@ namespace SFA.DAS.Campaign.Web
                 services.AddControllersWithViews().AddRazorRuntimeCompilation();
             #endif
 
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -130,6 +147,8 @@ namespace SFA.DAS.Campaign.Web
                 await next();
             });
 
+            app.AddRedirectRules();
+            
             app.UseRouting();
             
             app.UseSession();
