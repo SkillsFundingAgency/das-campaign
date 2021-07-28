@@ -50,8 +50,13 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 return RedirectToAction("SearchResults",
                     new { route = viewModel.Route, postcode = viewModel.Postcode, distance = viewModel.Distance });
             }
-
-            viewModel.Routes = await _repository.GetRoutes();
+            
+            var menu =  _mediator.GetMenuForStaticContent();
+            var routes = _repository.GetRoutes();
+            await Task.WhenAll(menu, routes);
+            
+            viewModel.Routes = routes.Result;
+            viewModel.Menu = menu.Result.Menu;
             return View("~/Views/Apprentice/FindAnApprenticeship.cshtml", viewModel);
         }
 

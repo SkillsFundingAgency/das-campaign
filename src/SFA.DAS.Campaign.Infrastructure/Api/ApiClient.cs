@@ -15,14 +15,12 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
     public class ApiClient : IApiClient
     {
         private readonly HttpClient _httpClient;
-        private readonly IHtmlControlAbstractFactory _htmlControlAbstractFactory;
         private readonly IEnumerable<ICmsPageConverter> _jsonConverters;
         private readonly OuterApiConfiguration _config;
 
-        public ApiClient (HttpClient httpClient, IOptions<CampaignConfiguration> config, IHtmlControlAbstractFactory htmlControlAbstractFactory, IEnumerable<ICmsPageConverter> jsonConverters)
+        public ApiClient (HttpClient httpClient, IOptions<CampaignConfiguration> config, IEnumerable<ICmsPageConverter> jsonConverters)
         {
             _httpClient = httpClient;
-            _htmlControlAbstractFactory = htmlControlAbstractFactory;
             _jsonConverters = jsonConverters;
             _config = config.Value.OuterApi;
             _httpClient.BaseAddress = new Uri(_config.BaseUrl);

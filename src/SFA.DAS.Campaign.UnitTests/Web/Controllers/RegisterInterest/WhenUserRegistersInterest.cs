@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Threading;
 using System.Threading.Tasks;
+using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.Primitives;
 using Moq;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.DataCollection;
+using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Controllers;
 using SFA.DAS.Campaign.Web.Models;
 using ValidationResult = System.ComponentModel.DataAnnotations.ValidationResult;
@@ -332,6 +335,23 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             //Assert
             _userDataCollection.Verify(x => x.StoreUserData(It.IsAny<UserData>()), Times.Never);
         }
+        
+        [Test]
+        public async Task Then_If_The_Model_Is_Not_Valid_Then_The_Menu_Is_Added_To_The_ViewModel()
+        {
+            //Arrange
+            _controller.ModelState.AddModelError("FirstName","First name");
+            
+            //Act
+            var actual = await _controller.Index(_registerInterestModel) as ViewResult;
+
+            //Assert
+            _mediator.Verify(x=>x.Send(It.IsAny<GetMenuQuery>(), CancellationToken.None), Times.Once);
+            Assert.IsNotNull(actual);
+            var actualModel = actual.Model as RegisterInterestModel;
+            Assert.IsNotNull(actualModel);
+            actualModel.Menu.Should().NotBeNull();
+        }
 
         [Test]
         public async Task Then_If_The_Model_Is_Not_Valid_And_Route_Is_Not_Known_Then_Show_Route_Question()
@@ -404,6 +424,9 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             Assert.IsNotNull(actualViewResult);
             Assert.IsFalse(actualViewResult.ViewData.ModelState.IsValid);
             Assert.IsTrue(actualViewResult.ViewData.ModelState.ContainsKey("Email"));
+            var model = actualViewResult.Model as RegisterInterestModel;
+            Assert.IsNotNull(model);
+            Assert.IsNotNull(model.Menu);
         }
         
         [Test]
