@@ -83,6 +83,11 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         private void AddTabbedContent(PageRoot cmsContent, Page<Article> model)
         {
+            if (cmsContent.Article?.TabbedContents == null)
+            {
+                return;
+            }
+
             var tabbedContents = new List<TabbedContent>();
 
             foreach (var responseTabbedContent in cmsContent.Article.TabbedContents)
