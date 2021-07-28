@@ -23,8 +23,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         public ArticleController(IMediator mediator)
         {
             _mediator = mediator;
-        }
-
         [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
         public async Task<IActionResult> TheRoadToAQualityApprenticeship()
         {
