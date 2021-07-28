@@ -63,19 +63,19 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
             options.AddRedirect(@"(?i)employer\b\/(upskill)", "/employers/upskilling-your-workforce", (int)HttpStatusCode.PermanentRedirect);
 
             options.Add(new PathWithQueryRule(@"(?i)real\-stories\b\/(apprentice)", "/apprentices/real-stories"));
-            options.AddRedirect(@"(?i)real\-stories\b\/(apprentice)", "/apprentices/real-stories", (int)HttpStatusCode.PermanentRedirect);
+            options.AddRedirect(@"(?i)real\-stories\b\/(apprentice)$", "/apprentices/real-stories", (int)HttpStatusCode.PermanentRedirect);
 
-            options.Add(new PathWithQueryRule(@"(?i)apprentice\b\/(real\-stories)", "/apprentices/real-stories"));
-            options.AddRedirect(@"(?i)apprentice\b\/(real\-stories)", "/apprentices/real-stories", (int)HttpStatusCode.PermanentRedirect);
+            options.Add(new PathWithQueryRule(@"(?i)apprentice\b\/(real\-stories)$", "/apprentices/real-stories"));
+            options.AddRedirect(@"(?i)apprentice\b\/(real\-stories)$", "/apprentices/real-stories", (int)HttpStatusCode.PermanentRedirect);
 
-            options.Add(new PathWithQueryRule(@"(?i)real\-stories\b\/(employer)", "/employers/real-stories-employers"));
-            options.AddRedirect(@"(?i)real\-stories\b\/(employer)", "/employers/real-stories-employers", (int)HttpStatusCode.PermanentRedirect);
+            options.Add(new PathWithQueryRule(@"(?i)real\-stories\b\/(employer)$", "/employers/real-stories-employers"));
+            options.AddRedirect(@"(?i)real\-stories\b\/(employer)$", "/employers/real-stories-employers", (int)HttpStatusCode.PermanentRedirect);
 
-            options.Add(new PathWithQueryRule(@"(?i)employer\b\/(real\-stories)", "/employers/real-stories-employers"));
-            options.AddRedirect(@"(?i)employer\b\/(real\-stories)", "/employers/real-stories-employers", (int)HttpStatusCode.PermanentRedirect);
+            options.Add(new PathWithQueryRule(@"(?i)employer\b\/(real\-stories)$", "/employers/real-stories-employers"));
+            options.AddRedirect(@"(?i)employer\b\/(real\-stories)$", "/employers/real-stories-employers", (int)HttpStatusCode.PermanentRedirect);
 
-            options.Add(new PathWithQueryRule(@"(?i)employers\b\/(real\-stories)", "/employers/real-stories-employers"));
-            options.AddRedirect(@"(?i)employers\b\/(real\-stories)", "/employers/real-stories-employers", (int)HttpStatusCode.PermanentRedirect);
+            options.Add(new PathWithQueryRule(@"(?i)employers\b\/(real\-stories)$", "/employers/real-stories-employers"));
+            options.AddRedirect(@"(?i)employers\b\/(real\-stories)$", "/employers/real-stories-employers", (int)HttpStatusCode.PermanentRedirect);
 
             app.UseRewriter(options);
         }
