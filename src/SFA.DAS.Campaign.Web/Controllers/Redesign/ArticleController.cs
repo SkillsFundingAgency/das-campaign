@@ -19,22 +19,10 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
     public class ArticleController : Controller
     {
         private readonly IMediator _mediator;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ArticleController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
+        public ArticleController(IMediator mediator)
         {
             _mediator = mediator;
-            _httpContextAccessor = httpContextAccessor;
-        }
-
-        protected IHttpContextAccessor ContextAccessor { get; set; }
-
-        [HttpGet("/apprentices/apprenticeships-alternatives")]
-        public async Task<IActionResult> AlternativesToApprenticeships()
-        {
-            var menu = await _mediator.GetMenuForStaticContent();
-
-            return View("~/Views/Articles/Apprenticeships/AlternativesToApprenticeships.cshtml", menu);
         }
 
         [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
