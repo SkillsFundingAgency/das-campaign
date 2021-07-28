@@ -66,7 +66,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 if (tabContent.FindTraineeShip)
                 {
                     var viewText =
-                        tabContent.RenderViewAsync("~/Views/Shared/Content/_FindTraineeShip.cshtml", HttpContext, TempDataDictionary).Result;
+                        tabContent.RenderViewAsync("~/Views/Shared/Panels/_FindTraineeship.cshtml", HttpContext, TempDataDictionary).Result;
 
                     articleEl.InnerHtml.AppendHtml(viewText);
                 }
