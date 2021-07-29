@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
-using SFA.DAS.Campaign.Models.Configuration;
 
 namespace SFA.DAS.Campaign.Web.Controllers.Fat
 {
@@ -15,6 +14,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Fat
         }
         
         [Route("/employers/find-apprenticeships")]
+        [Route("/employer/find-apprenticeships")]
         public IActionResult Search(SearchQueryViewModel model)
         {
             var selectedLevels = "&levels=";
