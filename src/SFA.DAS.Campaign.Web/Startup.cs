@@ -11,9 +11,11 @@ using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Web.HealthChecks;
 using System.Globalization;
 using System.IO;
+using System.Net.Http;
 using MediatR;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
+using Polly;
+using Polly.Extensions.Http;
 using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Helpers;
@@ -68,7 +70,7 @@ namespace SFA.DAS.Campaign.Web
             });
 
             services.AddOptions();
-            services.AddHttpClient<IApiClient, ApiClient>();
+            services.AddHttpClient<IApiClient, ApiClient>().AddPolicyHandler(HttpClientRetryPolicy());
 
 
             services.ConfigureSfaConfigurations(Configuration);
@@ -168,6 +170,15 @@ namespace SFA.DAS.Campaign.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                
             });
+        }
+
+        private static IAsyncPolicy<HttpResponseMessage> HttpClientRetryPolicy()
+        {
+            return HttpPolicyExtensions
+                .HandleTransientHttpError()
+                .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2,
+                    retryAttempt)));
         }
     }
 }
