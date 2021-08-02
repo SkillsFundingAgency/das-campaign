@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Helpers;
@@ -20,30 +23,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         public ArticleController(IMediator mediator)
         {
             _mediator = mediator;
-        }
-
-        [HttpGet("/apprentices/apprenticeships-alternatives")]
-        public async Task<IActionResult> AlternativesToApprenticeships()
-        {
-            var menu = await _mediator.GetMenuForStaticContent();
-
-            return View("~/Views/Articles/Apprenticeships/AlternativesToApprenticeships.cshtml", menu);
-        }
-
-        [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
-        public async Task<IActionResult> TheRoadToAQualityApprenticeship()
-        {
-            var menu = await _mediator.GetMenuForStaticContent();
-
-            return View("~/Views/Articles/Employers/TheRoadToAQualityApprenticeship.cshtml", menu);
-        }
-
-        [HttpGet("/influencers/alternatives-to-apprenticeships")]
-        public async Task<IActionResult> AlternativesToApprenticeshipsInf()
-        {
-            var menu = await _mediator.GetMenuForStaticContent();
-
-            return View("~/Views/Articles/Influencers/AlternativesToApprenticeships.cshtml", menu);
         }
 
         [HttpGet("/{hub}/{slug}")]
@@ -81,5 +60,6 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
             return View($"~/Views/LandingPages/{hub}LandingPage.cshtml", landingPage);
         }
+        
     }
 }

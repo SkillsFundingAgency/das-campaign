@@ -6,5 +6,7 @@ namespace SFA.DAS.Campaign.Domain.Content
     {
         public string Summary { get; set; }
         public IEnumerable<IHtmlControl> PageControls { get; set; }
+
+        public IEnumerable<TabbedContent> TabbedContents { get; set; }
     }
 }
