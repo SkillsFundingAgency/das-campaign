@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net.Http;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
@@ -63,27 +63,13 @@ namespace SFA.DAS.Campaign.Web.Helpers
                 .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check")
                 .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
 
-            services.AddTransient<ConnectionMultiplexer>(sp => ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},{connectionStrings.ContentCacheDatabase},allowAdmin=true"));
-
-            if (configuration["Environment"] == "LOCAL")
+            if (configuration["Environment"] != "LOCAL")
             {
-                services.AddDistributedMemoryCache();
-                return;
+                var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},DefaultDatabase=3");
+                services.AddDataProtection()
+                    .SetApplicationName("das-campaign-web")
+                    .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys");    
             }
-
-            services.AddStackExchangeRedisCache(options =>
-            {
-                options.Configuration = connectionStrings.SharedRedis;
-            });
-
-            services.AddHealthChecks().AddRedis(connectionStrings.SharedRedis, "redis-app-cache-check");
-
-            var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},DefaultDatabase=3");
-            services.AddDataProtection()
-                .SetApplicationName("das-campaign-web")
-                .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys");
-
-            services.AddTransient<IDatabase>(client => client.GetService<ConnectionMultiplexer>().GetDatabase());
         }
 
         public static void ConfigureSfaVacancies(this IServiceCollection services, IConfiguration configuration)
