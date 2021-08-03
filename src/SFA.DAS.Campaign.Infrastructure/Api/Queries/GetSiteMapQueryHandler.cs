@@ -21,7 +21,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
         public async Task<GetSiteMapQueryResult<SiteMap>> Handle(GetSiteMapQuery request, CancellationToken cancellationToken)
         {
             var sitemap = await _apiClient.Get<Page<SiteMap>>(new GetSiteMapRequest()).ConfigureAwait(false);
-
+            
             return new GetSiteMapQueryResult<SiteMap>
             {
                 Page = sitemap

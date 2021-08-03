@@ -14,6 +14,6 @@ namespace SFA.DAS.Campaign.Domain.Content
         public IEnumerable<DocumentAttachment> Attachments { get; set; }
         public Breadcrumbs Breadcrumbs { get; set; }
         public Menu Menu { get; set; }
-        public IEnumerable<Banner> Banners { get; set; }
+        public IEnumerable<Banner> BannerModels { get; set; }
     }
 }

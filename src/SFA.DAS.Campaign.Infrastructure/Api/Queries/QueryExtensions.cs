@@ -23,7 +23,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
             if (article != null)
             {
                 var menu = await apiClient.Get<Page<BannerContentType>>(new GetBannerRequest()).ConfigureAwait(false);
-                article.Banners = menu.Banners;
+                article.BannerModels = menu.BannerModels;
             }
         }
     }

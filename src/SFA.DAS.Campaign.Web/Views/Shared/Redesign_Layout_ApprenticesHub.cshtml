@@ -27,9 +27,9 @@
     </div>
 </nav>
 <partial name="./Banners/_Alert" />
-@if (Model.Banners != null && Model.Banners.Count > 0)
+@if (Model.BannerModels != null && Model.BannerModels.Count > 0)
 {
-    foreach (var banner in Model.Banners)
+    foreach (var banner in Model.BannerModels)
     {
         <partial name="./Banners/_Banner_UserNoHide" model="banner" />
         <partial name="./Banners/_Banner_UserCanHide" model="banner" />

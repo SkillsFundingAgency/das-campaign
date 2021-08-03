@@ -122,5 +122,20 @@ namespace SFA.DAS.Campaign.Web.Helpers
                 return new HtmlString(writer.GetStringBuilder().ToString());
             }
         }
+
+        public static async Task<Page<StaticContent>> GetModelForStaticContent(this IMediator mediator)
+        {
+            var menu = mediator.GetMenuForStaticContent();
+            var banners = mediator.GetBannersForStaticContent();
+
+            await Task.WhenAll(menu, banners);
+
+            var page = new Page<StaticContent>
+            {
+                Menu = menu.Result.Menu,
+                BannerModels = banners.Result.BannerModels
+            };
+            return page;
+        }
     }
 }

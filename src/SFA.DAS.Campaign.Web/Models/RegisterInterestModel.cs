@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 
 namespace SFA.DAS.Campaign.Web.Models
 {
@@ -12,17 +13,18 @@ namespace SFA.DAS.Campaign.Web.Models
             ValidationMessages = GetValidationMessages();
         }
 
-        public RegisterInterestModel(string returnUrl, int version, RouteType route, Menu menu)
+        public RegisterInterestModel(string returnUrl, int version, RouteType route, Menu menu, IEnumerable<Banner> bannerModels)
         {
             ReturnUrl = returnUrl;
             Version = version;
             Route = route;
             ValidationMessages = GetValidationMessages();
             Menu = menu;
+            BannerModels = bannerModels;
         }
 
         public Menu Menu { get; set; }
-
+        public IEnumerable<Banner> BannerModels { get; set; }
         public Dictionary<string, string> ValidationMessages { get; internal set; }
 
         [Required]

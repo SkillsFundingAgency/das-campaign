@@ -28,50 +28,55 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         [HttpGet("/")]
         public async Task<IActionResult> Index()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
-            var banners = await _mediator.GetBannersForStaticContent();
+            var page = await _mediator.GetModelForStaticContent();
 
-            return View(menu);
+            return View(page);
         }
 
         [Route("sitemap")]
         public async Task<IActionResult> Sitemap()
         {
-            var result = await _mediator.Send(new GetSiteMapQuery());
+            var sitemap = _mediator.Send(new GetSiteMapQuery());
+            var staticContent = _mediator.GetModelForStaticContent();
 
-            return View(result.Page);
+            await Task.WhenAll(sitemap, staticContent);
+
+            sitemap.Result.Page.BannerModels = staticContent.Result.BannerModels;
+            sitemap.Result.Page.Menu = staticContent.Result.Menu;
+
+            return View(sitemap.Result.Page);
         }
         [Route("cookies")]
         public async Task<IActionResult> Cookies()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
+            var page = await _mediator.GetModelForStaticContent();
 
-            return View(menu);
+            return View(page);
         }
 
         [Route("cookie-details")]
         public async Task<IActionResult> CookieDetails()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
+            var page = await _mediator.GetModelForStaticContent();
 
-            return View(menu);
+            return View(page);
         }
 
         [Route("privacy")]
         public async Task<IActionResult> Privacy()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
+            var page = await _mediator.GetModelForStaticContent();
 
-            return View(menu);
+            return View(page);
         }
 
 
         [Route("accessibility")]
         public async Task<IActionResult> Accessibility()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
+            var page = await _mediator.GetModelForStaticContent();
 
-            return View("Accessibility", menu);
+            return View("Accessibility", page);
         }
 
         [Route("sitemap.xml")]

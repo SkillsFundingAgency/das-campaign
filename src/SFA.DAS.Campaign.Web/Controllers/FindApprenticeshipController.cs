@@ -50,13 +50,15 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 return RedirectToAction("SearchResults",
                     new { route = viewModel.Route, postcode = viewModel.Postcode, distance = viewModel.Distance });
             }
-            
-            var menu =  _mediator.GetMenuForStaticContent();
+
+            var staticContent = _mediator.GetModelForStaticContent();
             var routes = _repository.GetRoutes();
-            await Task.WhenAll(menu, routes);
+            await Task.WhenAll(staticContent, routes);
             
             viewModel.Routes = routes.Result;
-            viewModel.Menu = menu.Result.Menu;
+            viewModel.Menu = staticContent.Result.Menu;
+            viewModel.BannerModels = staticContent.Result.BannerModels;
+
             return View("~/Views/Apprentice/FindAnApprenticeship.cshtml", viewModel);
         }
 
@@ -71,9 +73,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             var routes = _repository.GetRoutes();
             var searchTask = _vacanciesService.GetByRoute(routeId, postcode, Convert.ToInt32(distance));
-            var menu = _mediator.GetMenuForStaticContent();
+            var staticContent =  _mediator.GetModelForStaticContent();
 
-            await Task.WhenAll(routes, searchTask, menu);
+            await Task.WhenAll(routes, searchTask, staticContent);
             var searchResults = searchTask.Result;
             if (searchResults != null)
             {
@@ -86,7 +88,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 viewModel.Country = searchResults.Country;
                 viewModel.Routes = routes.Result;
 
-                viewModel.Menu = menu.Result.Menu;
+                viewModel.Menu = staticContent.Result.Menu;
+                viewModel.BannerModels = staticContent.Result.BannerModels;
             }
 
 

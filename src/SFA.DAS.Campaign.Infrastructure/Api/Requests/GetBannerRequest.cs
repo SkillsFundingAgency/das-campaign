@@ -6,6 +6,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Requests
 {
     public class GetBannerRequest : IGetApiRequest
     {
-        public string GetUrl => $"banner";
+        public string GetUrl => $"Banner";
     }
 }

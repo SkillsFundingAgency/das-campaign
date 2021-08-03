@@ -22,13 +22,16 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("/apprentices/browse-apprenticeships")]
         public async Task<IActionResult> FindAnApprenticeship()
         {
-            var routes = await _repository.GetRoutes();
-            var menu = await _mediator.GetMenuForStaticContent();
+            var routes = _repository.GetRoutes();
+            var staticContent = _mediator.GetModelForStaticContent();
+
+            await Task.WhenAll(routes, staticContent);
             
             return View(new FindApprenticeshipSearchModel
             {
-                Routes = routes,
-                Menu = menu.Menu
+                Routes = routes.Result,
+                Menu = staticContent.Result.Menu,
+                BannerModels = staticContent.Result.BannerModels
             });
         }
     }

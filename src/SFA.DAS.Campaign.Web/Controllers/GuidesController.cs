@@ -17,8 +17,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("/employers/employer-guides")]
         public async Task<IActionResult> Index()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
-            return View(menu);
+            var staticContent = await _mediator.GetModelForStaticContent();
+            return View(staticContent);
         }
     }
 }

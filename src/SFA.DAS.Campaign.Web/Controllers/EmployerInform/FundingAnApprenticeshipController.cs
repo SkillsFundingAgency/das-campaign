@@ -25,9 +25,10 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
                 _sessionService.Get<LevyOptionViewModel>(_sessionService.LevyOptionViewModelKey) 
                 ?? new LevyOptionViewModel();
 
-            var menu = await _mediator.GetMenuForStaticContent();
+            var page = await _mediator.GetModelForStaticContent();
 
-            vm.Menu = menu.Menu;
+            vm.Menu = page.Menu;
+            vm.BannerModels = page.BannerModels;
 
             return View("~/Views/EmployerInform/FundingAnApprenticeship.cshtml", vm);
         }

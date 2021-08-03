@@ -2,41 +2,52 @@
 @{
     ViewBag.Title = "Apprenticeships";
     ViewBag.MetaDesc = "Everything you need to know about how apprenticeships can fire up your career or organisation.";
-	ViewBag.PageID = "homepage";
+    ViewBag.PageID = "homepage";
     Layout = "Redesign_Layout";
 }
 
 <nav class="fiu-navigation" data-fiu-navigation="true">
-	<div class="govuk-width-container">
-		<a href="#navigation" class="fiu-navigation__toggle" data-fiu-nav-toggle="true">
+    <div class="govuk-width-container">
+        <a href="#navigation" class="fiu-navigation__toggle" data-fiu-nav-toggle="true">
             <span class="fiu-navigation__toggle-label" id="nav-label">Menu</span>
             <span class="fiu-navigation__toggle-icon"></span>
         </a>
         <nav class="fiu-navigation__nav fiu-navigation__nav--homepage" data-fiu-nav-menu="true">
             <h3 class="govuk-heading-s fiu-navigation__heading" id="fiu-nav-title-citizens">Apprentices</h3>
             <ul class="fiu-navigation__list" aria-labelledby="fiu-nav-title-citizens">
-				@foreach (var menuItem in Model.Menu.Apprentices) {
+                @foreach (var menuItem in Model.Menu.Apprentices)
+                {
                     <li class="fiu-navigation__list-item"><a href="/@menuItem.Hub.ToString().ToLower()/@menuItem.Slug" class="fiu-navigation__link">@menuItem.Title</a> </li>
                 }
             </ul>
             <h3 class="govuk-heading-s fiu-navigation__heading" id="fiu-nav-title-employers">Employers</h3>
             <ul class="fiu-navigation__list" aria-labelledby="fiu-nav-title-employers">
-                @foreach (var menuItem in Model.Menu.Employers) {
+                @foreach (var menuItem in Model.Menu.Employers)
+                {
                     <li class="fiu-navigation__list-item"><a href="/@menuItem.Hub.ToString().ToLower()/@menuItem.Slug" class="fiu-navigation__link">@menuItem.Title</a> </li>
                 }
             </ul>
-			<h3 class="govuk-heading-s fiu-navigation__heading" id="fiu-nav-title-influencers">Influencers</h3>
+            <h3 class="govuk-heading-s fiu-navigation__heading" id="fiu-nav-title-influencers">Influencers</h3>
             <ul class="fiu-navigation__list" aria-labelledby="fiu-nav-title-influencers">
-                @foreach (var menuItem in Model.Menu.Influencers) {
+                @foreach (var menuItem in Model.Menu.Influencers)
+                {
                     <li class="fiu-navigation__list-item"><a href="/@menuItem.Hub.ToString().ToLower()/@menuItem.Slug" class="fiu-navigation__link">@menuItem.Title</a> </li>
                 }
             </ul>
-		</nav>
-	</div>
+        </nav>
+    </div>
 </nav>
 <partial name="./Banners/_Alert" />
+@if (Model.BannerModels != null && Model.BannerModels.Count > 0)
+{
+    foreach (var banner in Model.BannerModels)
+    {
+        <partial name="./Banners/_Banner_UserNoHide" model="banner" />
+        <partial name="./Banners/_Banner_UserCanHide" model="banner" />
+    }
+}
 <main id="main" class="fiu-main-wrapper fiu-main-wrapper--homepage">
-	<div class="fiu-page-header fiu-page-header--homepage">
+    <div class="fiu-page-header fiu-page-header--homepage">
         <div class="fiu-width-container">
             <div class="fiu-page-header__image-wrap">
                 <span class="fiu-page-header__image-mask"></span>
@@ -44,86 +55,86 @@
             </div>
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds fiu-page-header__wrap">
-					<h1 class="govuk-heading-xl fiu-page-heading__title ">
-						Connecting people with ambition to businesses with vision
-					</h1>
-						<img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
+                    <h1 class="govuk-heading-xl fiu-page-heading__title ">
+                        Connecting people with ambition to businesses with vision
+                    </h1>
+                    <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
                 </div>
             </div>
         </div>
-	</div>
-	<div class="fiu-grad-row fiu-homepage-card-container">
-		<span class="fiu-grad-row__bg"></span>
-		<div class="fiu-width-container">
-			<div class="govuk-grid-row fiu-flex-row">
-				<div class="govuk-grid-column-one-third">
+    </div>
+    <div class="fiu-grad-row fiu-homepage-card-container">
+        <span class="fiu-grad-row__bg"></span>
+        <div class="fiu-width-container">
+            <div class="govuk-grid-row fiu-flex-row">
+                <div class="govuk-grid-column-one-third">
                     <div class="fiu-panel-homepage">
-						<div class="fiu-feature-text">
-							<strong class="fiu-tag fiu-tag--citizens fiu-panel__tag">Apprentices</strong>
-							<h2 class="govuk-heading-l fiu-panel-homepage__heading">Become an apprentice</h2>
-						</div>
-						<p class="fiu-panel-homepage__content">Everything you need to know about becoming an apprentice</p>
-						<a href="/apprentices" id="fiu-homepage-link-app-hub" class="fiu-button fiu-button--citizens fiu-panel-homepage__button">Learn more <span class="fiu-vh">becoming an apprentice</span></a>
-					</div>
-				</div>
-				<div class="govuk-grid-column-one-third">
+                        <div class="fiu-feature-text">
+                            <strong class="fiu-tag fiu-tag--citizens fiu-panel__tag">Apprentices</strong>
+                            <h2 class="govuk-heading-l fiu-panel-homepage__heading">Become an apprentice</h2>
+                        </div>
+                        <p class="fiu-panel-homepage__content">Everything you need to know about becoming an apprentice</p>
+                        <a href="/apprentices" id="fiu-homepage-link-app-hub" class="fiu-button fiu-button--citizens fiu-panel-homepage__button">Learn more <span class="fiu-vh">becoming an apprentice</span></a>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-third">
                     <div class="fiu-panel-homepage">
-			            <div class="fiu-feature-text">
-			                <strong class="fiu-tag fiu-tag--employers fiu-panel__tag">Employers</strong>
-			                <h2 class="govuk-heading-l fiu-panel-homepage__heading">Hire an apprentice</h2>
-			            </div>
-			            <p class="fiu-panel-homepage__content">Find out how to hire an apprentice and what you need to do</p>
-			            <a href="/employers" id="fiu-homepage-link-emp-hub" class="fiu-button fiu-button--employers fiu-panel-homepage__button">Learn more <span class="fiu-vh">about hiring an apprentice</span></a>
-			        </div>
-			    </div>
-			    <div class="govuk-grid-column-one-third">
-					<div class="fiu-panel-homepage">
-			            <div class="fiu-feature-text">
-			                <strong class="fiu-tag fiu-tag--parents fiu-panel__tag">Influencers</strong>
-			                <h2 class="govuk-heading-l fiu-panel-homepage__heading">Inspire and influence</h2>
-			            </div>
-			            <p class="fiu-panel-homepage__content">Guidance and information to help you support the apprentices of tomorrow</p>
-			            <a href="/influencers" id="fiu-homepage-link-inf-hub" class="fiu-button fiu-button--influencers fiu-panel-homepage__button">Learn more <span class="fiu-vh">about inspiring future apprentices</span></a>
-			        </div>
-			    </div>
-			</div>
-		</div>
-	</div>
+                        <div class="fiu-feature-text">
+                            <strong class="fiu-tag fiu-tag--employers fiu-panel__tag">Employers</strong>
+                            <h2 class="govuk-heading-l fiu-panel-homepage__heading">Hire an apprentice</h2>
+                        </div>
+                        <p class="fiu-panel-homepage__content">Find out how to hire an apprentice and what you need to do</p>
+                        <a href="/employers" id="fiu-homepage-link-emp-hub" class="fiu-button fiu-button--employers fiu-panel-homepage__button">Learn more <span class="fiu-vh">about hiring an apprentice</span></a>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    <div class="fiu-panel-homepage">
+                        <div class="fiu-feature-text">
+                            <strong class="fiu-tag fiu-tag--parents fiu-panel__tag">Influencers</strong>
+                            <h2 class="govuk-heading-l fiu-panel-homepage__heading">Inspire and influence</h2>
+                        </div>
+                        <p class="fiu-panel-homepage__content">Guidance and information to help you support the apprentices of tomorrow</p>
+                        <a href="/influencers" id="fiu-homepage-link-inf-hub" class="fiu-button fiu-button--influencers fiu-panel-homepage__button">Learn more <span class="fiu-vh">about inspiring future apprentices</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="fiu-homepage-row-highlight">
-		<div class="fiu-width-container">
-			<div class="govuk-grid-row fiu-flex-row">
-				<div class="govuk-grid-column-one-third">
-					<div class="fiu-card fiu-card--with-image">
-						<span class="fiu-card__image fiu-card__image--influencers fiu-card__image--resources"></span>
-						<div class="fiu-card__content-wrap">
-							<h3 class="fiu-card__heading">Browse the resource hub </h3>
-							<p class="fiu-card__content">Explore a range of resources designed to help inspire and support the apprentices of tomorrow. </p>
-							<a href="/influencers/resource-hub" class="fiu-card__link" id="fiu-homepage-link-inf-resources">Learn more <span class="fiu-vh">about the resource hub</span></a>
-						</div>
-					</div>
-				</div>
-				<div class="govuk-grid-column-one-third">
-					<div class="fiu-card fiu-card--with-image">
-						<span class="fiu-card__image fiu-card__image--influencers fiu-card__image--aan"></span>
-						<div class="fiu-card__content-wrap">
-							<h3 class="fiu-card__heading">Become an apprentice ambassador</h3>
-							<p class="fiu-card__content">Help inspire the apprentices of tomorrow by joining the Young Apprentice Ambassador Network (YAAN). </p>
-							<a href="/influencers/become-an-ambassador" class="fiu-card__link" id="fiu-homepage-link-inf-ambassadors">Learn more <span class="fiu-vh">about becoming an apprentice ambassador</span></a>
-						</div>
-					</div>
-				</div>
-				<div class="govuk-grid-column-one-third">
-					<div class="fiu-card fiu-card--with-image">
-						<span class="fiu-card__image fiu-card__image--influencers fiu-card__image--browse"></span>
-						<div class="fiu-card__content-wrap">
-							<h3 class="fiu-card__heading">Browse apprenticeships </h3>
-							<p class="fiu-card__content">Search for apprenticeship opportunities and filter by employer, location or interest.</p>
-							<a href="/apprentices/browse-apprenticeships" class="fiu-card__link" id="fiu-homepage-link-inf-resources">Learn more <span class="fiu-vh">about apprenticeships</span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="fiu-homepage-row-highlight">
+        <div class="fiu-width-container">
+            <div class="govuk-grid-row fiu-flex-row">
+                <div class="govuk-grid-column-one-third">
+                    <div class="fiu-card fiu-card--with-image">
+                        <span class="fiu-card__image fiu-card__image--influencers fiu-card__image--resources"></span>
+                        <div class="fiu-card__content-wrap">
+                            <h3 class="fiu-card__heading">Browse the resource hub </h3>
+                            <p class="fiu-card__content">Explore a range of resources designed to help inspire and support the apprentices of tomorrow. </p>
+                            <a href="/influencers/resource-hub" class="fiu-card__link" id="fiu-homepage-link-inf-resources">Learn more <span class="fiu-vh">about the resource hub</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    <div class="fiu-card fiu-card--with-image">
+                        <span class="fiu-card__image fiu-card__image--influencers fiu-card__image--aan"></span>
+                        <div class="fiu-card__content-wrap">
+                            <h3 class="fiu-card__heading">Become an apprentice ambassador</h3>
+                            <p class="fiu-card__content">Help inspire the apprentices of tomorrow by joining the Young Apprentice Ambassador Network (YAAN). </p>
+                            <a href="/influencers/become-an-ambassador" class="fiu-card__link" id="fiu-homepage-link-inf-ambassadors">Learn more <span class="fiu-vh">about becoming an apprentice ambassador</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    <div class="fiu-card fiu-card--with-image">
+                        <span class="fiu-card__image fiu-card__image--influencers fiu-card__image--browse"></span>
+                        <div class="fiu-card__content-wrap">
+                            <h3 class="fiu-card__heading">Browse apprenticeships </h3>
+                            <p class="fiu-card__content">Search for apprenticeship opportunities and filter by employer, location or interest.</p>
+                            <a href="/apprentices/browse-apprenticeships" class="fiu-card__link" id="fiu-homepage-link-inf-resources">Learn more <span class="fiu-vh">about apprenticeships</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>

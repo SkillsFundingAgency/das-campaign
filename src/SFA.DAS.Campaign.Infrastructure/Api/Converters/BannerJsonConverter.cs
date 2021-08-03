@@ -1,15 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Domain.Content.HtmlControl;
+using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 {
-    public class MenuJsonConverter : JsonConverter, ICmsPageConverter
+    public class BannerJsonConverter : JsonConverter, ICmsPageConverter
     {
-        public override bool CanRead => true;
+        private readonly IHtmlControlAbstractFactory _controlAbstractFactory;
 
+        public BannerJsonConverter(IHtmlControlAbstractFactory controlAbstractFactory)
+        {
+            _controlAbstractFactory = controlAbstractFactory;
+        }
+
+        public override bool CanRead => true;
         public override bool CanWrite => false;
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -43,14 +52,16 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         public override bool CanConvert(Type objectType)
         {
-            return typeof(Page<Menu>).IsAssignableFrom(objectType);
+
+            return typeof(Page<BannerContentType>).IsAssignableFrom(objectType);
         }
 
-        private Page<Menu> PopulatePageModel(PageRoot cmsContent)
+        private Page<BannerContentType> PopulatePageModel(PageRoot cmsContent)
         {
-            var pageModel = new Page<Menu>();
-            pageModel.PopulateMenuModel(cmsContent);
-            
+            var pageModel = new Page<BannerContentType>();
+
+            pageModel.AddBannerContent(_controlAbstractFactory, cmsContent.Banner);
+
             return pageModel;
         }
     }

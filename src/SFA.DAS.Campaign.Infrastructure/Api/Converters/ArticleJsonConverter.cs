@@ -76,7 +76,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             AddPageContent(cmsContent, pageModel);
             AddAttachments(cmsContent, pageModel);
             AddBreadCumbs(cmsContent, pageModel);
-            pageModel.AddBannerContent(cmsContent, _controlAbstractFactory, cmsContent.Article.BannerModels);
+            pageModel.AddBannerContent(_controlAbstractFactory, cmsContent.Article.BannerModels);
             AddTabbedContent(cmsContent, pageModel);
             pageModel.PopulateMenuModel(cmsContent.Article.MenuContent);
 

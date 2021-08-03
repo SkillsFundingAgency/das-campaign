@@ -18,32 +18,31 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("/employers/browse-by-sector/")]
         public async Task<IActionResult> EmployersSectors()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
-            return View("Sectors", menu);
+            var staticContent = await _mediator.GetModelForStaticContent();
+            return View("Sectors", staticContent);
         }
 
         [Route("/apprentices/browse-by-interests/")]
         public async Task<IActionResult> ApprenticesInterests()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
-
-            return View("Interests", menu);
+            var staticContent = await _mediator.GetModelForStaticContent();
+            return View("Interests", staticContent);
         }
 
         [Route("/employers/browse-by-sector/{slug}")]
         public async Task<IActionResult> Sector(string slug)
         {
-            var menu = await _mediator.GetMenuForStaticContent();
+            var staticContent = await _mediator.GetModelForStaticContent();
 
-            return View($"~/Views/Industries/Employers/{slug}.cshtml", menu);
+            return View($"~/Views/Industries/Employers/{slug}.cshtml", staticContent);
         }
         
         [Route("/apprentices/browse-by-interests/{slug}")]
         public async Task<IActionResult> Interest(string slug)
         {
-            var menu = await _mediator.GetMenuForStaticContent();
+            var staticContent = await _mediator.GetModelForStaticContent();
 
-            return View($"~/Views/Industries/Apprentices/{slug}.cshtml", menu);
+            return View($"~/Views/Industries/Apprentices/{slug}.cshtml", staticContent);
         }
     }
 }

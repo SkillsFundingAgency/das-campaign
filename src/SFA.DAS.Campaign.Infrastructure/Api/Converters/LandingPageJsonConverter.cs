@@ -78,7 +78,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             AddHeaderImage(cmsContent, pageModel);
             AddCards(cmsContent, pageModel);
             pageModel.PopulateMenuModel(cmsContent.LandingPage.MenuContent);
-            pageModel.AddBannerContent(cmsContent, _controlAbstractFactory, cmsContent.LandingPage.BannerModels);
+            pageModel.AddBannerContent(_controlAbstractFactory, cmsContent.LandingPage.BannerModels);
             return pageModel;
         }
 
