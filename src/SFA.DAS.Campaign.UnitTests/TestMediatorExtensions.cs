@@ -5,6 +5,7 @@ using System.Threading;
 using MediatR;
 using Moq;
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 
 namespace SFA.DAS.Campaign.UnitTests
@@ -18,6 +19,14 @@ namespace SFA.DAS.Campaign.UnitTests
                 Page = new Page<Menu>()
                 {
                     Menu = new Menu()
+                }
+            });
+
+            mediator.Setup(o => o.Send(It.IsAny<GetBannerQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(new GetBannerQueryResult<BannerContentType>()
+            {
+                Page = new Page<BannerContentType>()
+                {
+                    BannerModels = new List<Banner>()
                 }
             });
         }
