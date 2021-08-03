@@ -16,5 +16,6 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
         public bool AllowUserToHideTheBanner { get; set; }
         public bool ShowOnTheHomepageOnly { get; set; }
         public string Title { get; set; }
+        public string Id { get; set; }
     }
 }

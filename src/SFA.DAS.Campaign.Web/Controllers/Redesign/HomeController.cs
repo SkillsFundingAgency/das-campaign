@@ -29,6 +29,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         public async Task<IActionResult> Index()
         {
             var menu = await _mediator.GetMenuForStaticContent();
+            var banners = await _mediator.GetBannersForStaticContent();
 
             return View(menu);
         }

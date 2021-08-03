@@ -16,6 +16,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         [JsonProperty("menuContent")]
         public MenuContent MenuContent { get; set; }
+
+        public ResponseBanner BannerModels { get; set; }
     }
     
 

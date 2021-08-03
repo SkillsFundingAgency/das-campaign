@@ -42,7 +42,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         public async Task<IActionResult> AlternativesToApprenticeshipsInf()
         {
             var menu = await _mediator.GetMenuForStaticContent();
-
+            
             return View("~/Views/Articles/Influencers/AlternativesToApprenticeships.cshtml", menu);
         }
 

@@ -37,6 +37,13 @@ namespace SFA.DAS.Campaign.Web.Helpers
             return menu.Page;
         }
 
+        public static async Task<Page<BannerContentType>> GetBannersForStaticContent(this IMediator mediator)
+        {
+            var banners = await mediator.Send(new GetBannerQuery());
+
+            return banners.Page;
+        }
+
         public static HtmlString SiteMapLinksToHtml(this IEnumerable<Url> control)
         {
             var renderer = new SiteMapUrlRenderer();
@@ -46,6 +53,19 @@ namespace SFA.DAS.Campaign.Web.Helpers
             };
 
             return renderer.Render(siteMapUrls);
+        }
+
+        public static HtmlString BannerToHtml(this IEnumerable<Banner> banners)
+        {
+            var renderer = new BannerControlRenderer();
+            var html = new StringBuilder();
+
+            foreach (var banner in banners)
+            {
+                html.Append(renderer.Render(banner));
+            }
+
+            return new HtmlString(html.ToString());
         }
     }
 }

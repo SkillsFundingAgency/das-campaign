@@ -2,8 +2,16 @@
     Layout = "Redesign_Layout";
 }
 <partial name="./Banners/_Alert" />
+@if (Model.Banners != null && Model.Banners.Count > 0)
+{
+    foreach (var banner in Model.Banners)
+    {
+        <partial name="./Banners/_Banner_UserNoHide" model="banner" />
+        <partial name="./Banners/_Banner_UserCanHide" model="banner" />
+    }
+}
 <main id="main" class="fiu-main-wrapper">
-	<div class="fiu-page-header">
+    <div class="fiu-page-header">
         <div class="fiu-width-container">
             <div data-fiu-back-link="true"></div>
             <div class="govuk-grid-row">
@@ -14,12 +22,12 @@
             </div>
         </div>
     </div>
-	<span class="fiu-header-content-spacer"></span>
-	<div class="fiu-width-container">
-		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-@(ViewBag.FullWidthContent != null ? "full" : "two-thirds")">
-				@RenderBody()
-			</div>
-		</div>
-	</div>
+    <span class="fiu-header-content-spacer"></span>
+    <div class="fiu-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-@(ViewBag.FullWidthContent != null ? "full" : "two-thirds")">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
 </main>

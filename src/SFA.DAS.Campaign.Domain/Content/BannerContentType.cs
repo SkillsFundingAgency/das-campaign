@@ -1,17 +1,15 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
+namespace SFA.DAS.Campaign.Domain.Content
 {
-    public class ResponseBanner
+    public class BannerContentType : IContentType
     {
-        public List<ResponseBannerContent> MainContent { get; set; }
-    }
+        public BannerContentType()
+        {
+            Content = new List<IHtmlControl>();
+        }
 
-    public class ResponseBannerContent
-    {
-        public List<Item> Items { get; set; }
+        public List<IHtmlControl> Content { get; set; }
         public string BackgroundColour { get; set; }
         public bool AllowUserToHideTheBanner { get; set; }
         public bool ShowOnTheHomepageOnly { get; set; }

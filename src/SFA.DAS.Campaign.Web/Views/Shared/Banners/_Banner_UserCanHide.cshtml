@@ -1,0 +1,20 @@
+@using SFA.DAS.Campaign.Web.Helpers
+@model SFA.DAS.Campaign.Domain.Content.HtmlControl.Banner
+
+@if (Model.AllowUserToHideTheBanner) { 
+<div class="fiu-alert" data-fiu-banner="true" data-fiu-alert-cookie-name="fiu-banner-@Model.Id" style="background-color: @Model.BackgroundColour">
+    <div class="fiu-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-three-quarters">
+                <h2 class="fiu-alert__heading">@Model.Title</h2>
+                <div class="fiu-alert__body">
+                    @Model.Content.ToHtml()
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-quarter">
+                <a href="#" data-fiu-alert-hide-link="true" class="fiu-alert__hide-link">Hide message</a>
+            </div>
+        </div>
+    </div>
+</div>
+}

@@ -9,7 +9,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         {
             RelatedArticles = new List<RelatedArticle>();
             Attachments = new List<Attachment>();
-            BannerModels = new List<ResponseBanner>();
         }
         public PageAttributes PageAttributes { get; set; }
         public MainContent MainContent { get; set; }
@@ -17,6 +16,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public List<Attachment> Attachments { get; set; }
         public PageAttributes ParentPage { get; set; }
         public MenuContent MenuContent { get; set; }
-        public List<ResponseBanner> BannerModels { get; set; }
+        public ResponseBanner BannerModels { get; set; }
     }
 }

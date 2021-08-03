@@ -12,6 +12,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 {
     public class HubJsonConverter : JsonConverter, ICmsPageConverter
     {
+        private readonly IHtmlControlAbstractFactory _controlAbstractFactory;
         public override bool CanRead => true;
 
         public override bool CanWrite => false;
@@ -20,6 +21,12 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         {
             throw new NotImplementedException();
         }
+
+        public HubJsonConverter(IHtmlControlAbstractFactory controlAbstractFactory)
+        {
+            _controlAbstractFactory = controlAbstractFactory;
+        }
+
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
@@ -69,7 +76,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             };
 
             pageModel.PopulateMenuModel(cmsContent.Hub.MenuContent);
-
+            pageModel.AddBannerContent(cmsContent, _controlAbstractFactory, cmsContent.Hub.BannerModels);
             AddHeaderImage(cmsContent, pageModel);
             AddCards(cmsContent, pageModel);
             

@@ -13,6 +13,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 {
     public class LandingPageJsonConverter : JsonConverter, ICmsPageConverter
     {
+        private readonly IHtmlControlAbstractFactory _controlAbstractFactory;
         public override bool CanRead => true;
 
         public override bool CanWrite => false;
@@ -20,6 +21,11 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
+        }
+
+        public LandingPageJsonConverter(IHtmlControlAbstractFactory controlAbstractFactory)
+        {
+            _controlAbstractFactory = controlAbstractFactory;
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -72,6 +78,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             AddHeaderImage(cmsContent, pageModel);
             AddCards(cmsContent, pageModel);
             pageModel.PopulateMenuModel(cmsContent.LandingPage.MenuContent);
+            pageModel.AddBannerContent(cmsContent, _controlAbstractFactory, cmsContent.LandingPage.BannerModels);
             return pageModel;
         }
 

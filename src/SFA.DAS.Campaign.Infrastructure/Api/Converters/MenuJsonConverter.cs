@@ -87,5 +87,47 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
                 TopLevel = cmsContent.TopLevel.AddSiteMapUrls()
             };
         }
+
+        internal static void AddBannerContent<T>(this Page<T> model, PageRoot cmsContent, IHtmlControlAbstractFactory controlAbstractFactory, ResponseBanner cmsContentBanner) where T : IContentType
+        {
+            if (cmsContentBanner == null)
+            {
+                model.Banners = new List<Banner>();
+                return;
+            }
+
+            var banners = new List<Banner>();
+            foreach (var banner in cmsContentBanner.MainContent)
+            {
+                var bannerModel = new Banner
+                {
+                    AllowUserToHideTheBanner = banner.AllowUserToHideTheBanner,
+                    BackgroundColour = banner.BackgroundColour,
+                    ShowOnTheHomepageOnly = banner.ShowOnTheHomepageOnly,
+                    Title = banner.Title,
+                    Id = banner.Id
+                };
+
+
+                var pageContent = new List<IHtmlControl>();
+
+                foreach (var content in banner.Items)
+                {
+                    var factory = controlAbstractFactory.CreateControlFactoryFor(content);
+
+                    if (factory == null)
+                    {
+                        continue;
+                    }
+
+                    pageContent.Add(factory.Create(content));
+                }
+
+                bannerModel.Content = pageContent;
+                banners.Add(bannerModel);
+            }
+
+            model.Banners = banners;
+        }
     }
 }
