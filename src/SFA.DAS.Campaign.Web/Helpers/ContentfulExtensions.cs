@@ -5,9 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Rest;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
@@ -66,6 +74,53 @@ namespace SFA.DAS.Campaign.Web.Helpers
             }
 
             return new HtmlString(html.ToString());
+        }
+        public static HtmlString TabbedContentToHtml(this IEnumerable<TabbedContent> control, HttpContext context, ITempDataDictionary tempDataDictionary)
+        {
+            var renderer = new TabbedContentRenderer
+            {
+                HttpContext = context,
+                TempDataDictionary = tempDataDictionary
+            };
+            
+            var tabs = new Tabs()
+            {
+                TabbedContents = control
+            };
+
+            return renderer.Render(tabs);
+        }
+
+        public static async Task<HtmlString> RenderViewAsync(this TabbedContent tab, string viewName, HttpContext context, ITempDataDictionary tempDataDictionary)
+        {
+            using (var writer = new StringWriter())
+            {
+                IViewEngine viewEngine = context.RequestServices.GetService(typeof(ICompositeViewEngine)) as ICompositeViewEngine;
+                var actionContext = new ActionContext(context, new Microsoft.AspNetCore.Routing.RouteData(), new ActionDescriptor());
+                ViewEngineResult viewResult = viewEngine.GetView(viewName, viewName, false);
+
+                if (viewResult.Success == false)
+                {
+                    return new HtmlString("");
+                    //return $"A view with the name {viewName} could not be found";
+                }
+
+                var viewDictionary =
+                    new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary());
+
+                ViewContext viewContext = new ViewContext(
+                    actionContext,
+                    viewResult.View,
+                    viewDictionary,
+                    tempDataDictionary,
+                    writer,
+                    new HtmlHelperOptions()
+                );
+
+                await viewResult.View.RenderAsync(viewContext);
+
+                return new HtmlString(writer.GetStringBuilder().ToString());
+            }
         }
     }
 }

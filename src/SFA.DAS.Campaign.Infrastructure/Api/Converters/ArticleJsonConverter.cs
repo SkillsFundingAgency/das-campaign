@@ -77,9 +77,49 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             AddAttachments(cmsContent, pageModel);
             AddBreadCumbs(cmsContent, pageModel);
             pageModel.AddBannerContent(cmsContent, _controlAbstractFactory, cmsContent.Article.BannerModels);
+            AddTabbedContent(cmsContent, pageModel);
             pageModel.PopulateMenuModel(cmsContent.Article.MenuContent);
 
             return pageModel;
+        }
+
+        private void AddTabbedContent(PageRoot cmsContent, Page<Article> model)
+        {
+            if (cmsContent.Article?.TabbedContents == null)
+            {
+                return;
+            }
+
+            var tabbedContents = new List<TabbedContent>();
+
+            foreach (var responseTabbedContent in cmsContent.Article.TabbedContents)
+            {
+                var content = new TabbedContent
+                {
+                    TabName = responseTabbedContent.TabName,
+                    TabTitle = responseTabbedContent.TabTitle,
+                    FindTraineeShip = responseTabbedContent.FindTraineeship
+                };
+
+                var pageContent = new List<IHtmlControl>();
+
+                foreach (var tabContent in responseTabbedContent.Content.Items)
+                {
+                    var factory = _controlAbstractFactory.CreateControlFactoryFor(tabContent);
+
+                    if (factory == null)
+                    {
+                        continue;
+                    }
+
+                    pageContent.Add(factory.Create(tabContent));
+                }
+
+                content.Content = pageContent;
+                tabbedContents.Add(content);
+            }
+
+            model.Content.TabbedContents = tabbedContents;
         }
 
         private void AddPageContent(PageRoot cmsContent, Page<Article> model)
