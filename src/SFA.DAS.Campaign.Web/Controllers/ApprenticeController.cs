@@ -19,6 +19,14 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _mediator = mediator;
         }
 
+        [Route("/apprentices/employer-profiles")]
+        public async Task<IActionResult> EmployerProfiles()
+        {
+            var menu = await _mediator.GetMenuForStaticContent();
+
+            return View($"~/Views/Apprentice/EmployerProfiles.cshtml", menu);
+        }
+
         [Route("/apprentices/browse-apprenticeships")]
         public async Task<IActionResult> FindAnApprenticeship()
         {
