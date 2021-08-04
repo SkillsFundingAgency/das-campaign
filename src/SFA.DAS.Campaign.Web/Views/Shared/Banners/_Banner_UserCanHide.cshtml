@@ -2,7 +2,7 @@
 @model SFA.DAS.Campaign.Domain.Content.HtmlControl.Banner
 
 @if (Model.AllowUserToHideTheBanner) { 
-<div class="fiu-alert" data-fiu-banner="true" data-fiu-alert-cookie-name="fiu-banner-@Model.Id" style="background-color: @Model.BackgroundColour">
+<div class="fiu-banner @Model.GetAnnouncementCssClass()" data-fiu-banner="true" data-fiu-alert-cookie-name="fiu-banner-@Model.Id" >
     <div class="fiu-width-container">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-three-quarters">

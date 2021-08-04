@@ -32,7 +32,7 @@ namespace SFA.DAS.Campaign.MockServer
             AddSectorsResponses(server);
             AddTrainingCoursesResponses(server);
             AddVacanciesResponses(server);
-
+            AddBannerResponses(server);
             return server;
         }
 
@@ -78,6 +78,17 @@ namespace SFA.DAS.Campaign.MockServer
                     .WithStatusCode(200)
                     .WithHeader("Content-Type", "application/json")
                     .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/menu-data-response.json"));
+        }
+
+        private static void AddBannerResponses(WireMockServer server)
+        {
+            server.Given(Request.Create()
+                    .WithPath(o => string.Compare(o, "/banner", StringComparison.OrdinalIgnoreCase) == 0)
+                    .UsingGet())
+                .RespondWith(Response.Create()
+                    .WithStatusCode(200)
+                    .WithHeader("Content-Type", "application/json")
+                    .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/banner-data-response.json"));
         }
 
         private static void AddSiteMapResponses(WireMockServer server)

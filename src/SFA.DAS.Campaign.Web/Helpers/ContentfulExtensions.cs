@@ -137,5 +137,11 @@ namespace SFA.DAS.Campaign.Web.Helpers
             };
             return page;
         }
+
+        public static HtmlString GetAnnouncementCssClass(this Banner banner)
+        {
+            return new HtmlString(banner.BackgroundColour == "Blue" ? "fiu-banner--highlight" :
+                banner.BackgroundColour == "Yellow" ? "fiu-banner--warning" : "");
+        }
     }
 }
