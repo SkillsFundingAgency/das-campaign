@@ -18,7 +18,7 @@ namespace SFA.DAS.Campaign.MockServer
         {
             var settings = new WireMockServerSettings
             {
-                Port = 5003,
+                Port = 5016,
                 Logger = new WireMockConsoleLogger()
             };
 
@@ -39,7 +39,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddLandingPageResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/landingpage/apprentices/are-they-right-for-you", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => Regex.IsMatch(o, "/landingpage/\\S+/\\S+"))
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
@@ -50,7 +50,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddArticlePageResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/article/apprentices/becoming-apprentice", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => Regex.IsMatch(o, "/article/\\S+/\\S+"))
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
@@ -61,7 +61,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddHubPageResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/hub/apprentices", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => Regex.IsMatch(o, "/hub/\\S+"))
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
@@ -106,7 +106,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddTrainingCoursesResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithUrl(o => o.Contains("/trainingcourses?sector=Business+and+administration",
+                    .WithUrl(o => o.Contains("/trainingcourses?sector=",
                         StringComparison.OrdinalIgnoreCase))
                     .UsingGet())
                 .RespondWith(Response.Create()
