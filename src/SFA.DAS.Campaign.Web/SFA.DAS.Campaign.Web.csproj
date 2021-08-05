@@ -54,9 +54,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="wwwroot\downloads\" />
-  </ItemGroup>
-  <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\OLD_LandingPages\ExpressionOfInterest.cshtml" />
     <_ContentIncludedByDefault Remove="Views\OLD_LandingPages\ExpressionOfInterestSurvey.cshtml" />
     <_ContentIncludedByDefault Remove="Views\OLD_LandingPages\ExpressionOfInterestThanks.cshtml" />
