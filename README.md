@@ -6,7 +6,7 @@
 
 # Requirements
 
-DotNet Core 2.2 and any supported IDE for DEV running.
+DotNet Core 3.1 and any supported IDE for DEV running.
 
 Azure Storage Emulator
 
@@ -74,7 +74,7 @@ You are able to get APIM keys for the Outer API and Vacancies if you work within
 
 ## Mock Server
 
-When enqabled the following urls are servable
+When enqabled the following urls are servable, but all landing pages, hubs and articles will return the same content
 
 - /apprentices
 - /apprentices/becoming-apprentice
@@ -84,4 +84,4 @@ When enqabled the following urls are servable
   
   The browse apprenticeships search form can be tested using the sector business and administration and a postcode of le28rd
   
-  To enable set the configuration for the vacancies api and the outerapi base url configurations to http://localhost:5003/ 
+  To enable set the configuration for the vacancies api and the outerapi base url configurations to http://localhost:5016/ 
