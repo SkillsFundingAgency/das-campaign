@@ -26,6 +26,14 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
         }
 
+        [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
+        public async Task<IActionResult> TheRoadToAQualityApprenticeship()
+        {
+            var staticContent = await _mediator.GetModelForStaticContent();
+
+            return View("~/Views/Articles/Employers/TheRoadToAQualityApprenticeship.cshtml", staticContent);
+        }
+
         [HttpGet("/{hub}/{slug}")]
         public async Task<IActionResult> GetArticleAsync(string hub, string slug, [FromQuery]bool preview, CancellationToken cancellationToken = default)
         {
