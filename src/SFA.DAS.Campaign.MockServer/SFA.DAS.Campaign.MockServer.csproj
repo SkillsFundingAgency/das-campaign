@@ -28,6 +28,9 @@
     <None Update="json\article-not-found-data-response.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="json\banner-data-response.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="json\hub-data-response.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

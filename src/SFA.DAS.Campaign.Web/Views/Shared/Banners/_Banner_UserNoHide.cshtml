@@ -1,0 +1,17 @@
+@using SFA.DAS.Campaign.Web.Helpers
+@model SFA.DAS.Campaign.Domain.Content.HtmlControl.Banner
+
+@if (!Model.AllowUserToHideTheBanner)
+{
+    if (ViewBag.HomePage != null && ViewBag.HomePage && Model.ShowOnTheHomepageOnly || !Model.ShowOnTheHomepageOnly)
+    {
+        <div class="fiu-banner @Model.GetAnnouncementCssClass()">
+            <div class="fiu-width-container">
+                <h2 class="fiu-banner__heading">@Model.Title</h2>
+                <div class="fiu-banner__body fiu-article">
+                    @Model.Content.ToHtml()
+                </div>
+            </div>
+        </div>
+    }
+}

@@ -45,6 +45,13 @@ namespace SFA.DAS.Campaign.Web.Helpers
             return menu.Page;
         }
 
+        public static async Task<Page<BannerContentType>> GetBannersForStaticContent(this IMediator mediator)
+        {
+            var banners = await mediator.Send(new GetBannerQuery());
+
+            return banners.Page;
+        }
+
         public static HtmlString SiteMapLinksToHtml(this IEnumerable<Url> control)
         {
             var renderer = new SiteMapUrlRenderer();
@@ -56,6 +63,18 @@ namespace SFA.DAS.Campaign.Web.Helpers
             return renderer.Render(siteMapUrls);
         }
 
+        public static HtmlString BannerToHtml(this IEnumerable<Banner> banners)
+        {
+            var renderer = new BannerControlRenderer();
+            var html = new StringBuilder();
+
+            foreach (var banner in banners)
+            {
+                html.Append(renderer.Render(banner));
+            }
+
+            return new HtmlString(html.ToString());
+        }
         public static HtmlString TabbedContentToHtml(this IEnumerable<TabbedContent> control, HttpContext context, ITempDataDictionary tempDataDictionary)
         {
             var renderer = new TabbedContentRenderer
@@ -102,6 +121,27 @@ namespace SFA.DAS.Campaign.Web.Helpers
 
                 return new HtmlString(writer.GetStringBuilder().ToString());
             }
+        }
+
+        public static async Task<Page<StaticContent>> GetModelForStaticContent(this IMediator mediator)
+        {
+            var menu = mediator.GetMenuForStaticContent();
+            var banners = mediator.GetBannersForStaticContent();
+
+            await Task.WhenAll(menu, banners);
+
+            var page = new Page<StaticContent>
+            {
+                Menu = menu.Result.Menu,
+                BannerModels = banners.Result.BannerModels
+            };
+            return page;
+        }
+
+        public static HtmlString GetAnnouncementCssClass(this Banner banner)
+        {
+            return new HtmlString(banner.BackgroundColour == "Blue" ? "fiu-banner--highlight" :
+                banner.BackgroundColour == "Yellow" ? "fiu-banner--warning" : "");
         }
     }
 }

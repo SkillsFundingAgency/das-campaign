@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -75,6 +76,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             AddPageContent(cmsContent, pageModel);
             AddAttachments(cmsContent, pageModel);
             AddBreadCumbs(cmsContent, pageModel);
+            pageModel.AddBannerContent(_controlAbstractFactory, cmsContent.Article.BannerModels);
             AddTabbedContent(cmsContent, pageModel);
             pageModel.PopulateMenuModel(cmsContent.Article.MenuContent);
 

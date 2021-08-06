@@ -23,6 +23,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
         public ArticleController(IMediator mediator)
         {
             _mediator = mediator;
+
         }
 
         [HttpGet("/{hub}/{slug}")]

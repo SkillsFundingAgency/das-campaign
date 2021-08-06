@@ -18,5 +18,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public PageAttributes ParentPage { get; set; }
         public MenuContent MenuContent { get; set; }
         public List<ResponseTabbedContent> TabbedContents { get; set; }
+        public ResponseBanner BannerModels { get; set; }
     }
 }

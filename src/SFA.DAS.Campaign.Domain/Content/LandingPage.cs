@@ -14,6 +14,5 @@ namespace SFA.DAS.Campaign.Domain.Content
         public string Summary { get; set; }
         public Image HeaderImage { get; set; }
         public List<Card> Cards { get; set; }
-
     }
 }

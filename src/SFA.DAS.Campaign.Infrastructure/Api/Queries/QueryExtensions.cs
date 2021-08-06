@@ -17,5 +17,14 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
                 article.Menu = menu.Menu;
             }
         }
+
+        public static async Task FetchBanners<T>(this Page<T> article, IApiClient apiClient) where T : IContentType
+        {
+            if (article != null)
+            {
+                var menu = await apiClient.Get<Page<BannerContentType>>(new GetBannerRequest()).ConfigureAwait(false);
+                article.BannerModels = menu.BannerModels;
+            }
+        }
     }
 }

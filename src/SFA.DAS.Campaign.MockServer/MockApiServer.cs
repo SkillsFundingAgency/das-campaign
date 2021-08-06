@@ -18,7 +18,7 @@ namespace SFA.DAS.Campaign.MockServer
         {
             var settings = new WireMockServerSettings
             {
-                Port = 5003,
+                Port = 5016,
                 Logger = new WireMockConsoleLogger()
             };
 
@@ -32,14 +32,14 @@ namespace SFA.DAS.Campaign.MockServer
             AddSectorsResponses(server);
             AddTrainingCoursesResponses(server);
             AddVacanciesResponses(server);
-
+            AddBannerResponses(server);
             return server;
         }
 
         private static void AddLandingPageResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/landingpage/apprentices/are-they-right-for-you", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => Regex.IsMatch(o, "/landingpage/\\S+/\\S+"))
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
@@ -50,7 +50,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddArticlePageResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/article/apprentices/becoming-apprentice", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => Regex.IsMatch(o, "/article/\\S+/\\S+"))
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
@@ -61,7 +61,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddHubPageResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithPath(o => string.Compare(o, "/hub/apprentices", StringComparison.OrdinalIgnoreCase) == 0)
+                    .WithPath(o => Regex.IsMatch(o, "/hub/\\S+"))
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
@@ -78,6 +78,17 @@ namespace SFA.DAS.Campaign.MockServer
                     .WithStatusCode(200)
                     .WithHeader("Content-Type", "application/json")
                     .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/menu-data-response.json"));
+        }
+
+        private static void AddBannerResponses(WireMockServer server)
+        {
+            server.Given(Request.Create()
+                    .WithPath(o => string.Compare(o, "/banner", StringComparison.OrdinalIgnoreCase) == 0)
+                    .UsingGet())
+                .RespondWith(Response.Create()
+                    .WithStatusCode(200)
+                    .WithHeader("Content-Type", "application/json")
+                    .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/banner-data-response.json"));
         }
 
         private static void AddSiteMapResponses(WireMockServer server)
@@ -106,7 +117,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddTrainingCoursesResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithUrl(o => o.Contains("/trainingcourses?sector=Business+and+administration",
+                    .WithUrl(o => o.Contains("/trainingcourses?sector=",
                         StringComparison.OrdinalIgnoreCase))
                     .UsingGet())
                 .RespondWith(Response.Create()

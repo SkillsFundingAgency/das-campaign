@@ -53,9 +53,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             }
 
-            var menu = await _mediator.GetMenuForStaticContent();
-
-            return View("Index", new RegisterInterestModel(url, version, route, menu.Menu));
+            var staticContent = await _mediator.GetModelForStaticContent();
+            return View("Index", new RegisterInterestModel(url, version, route, staticContent.Menu, staticContent.BannerModels));
         }
 
         [HttpPost]
@@ -63,8 +62,10 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {
-            var menu = await _mediator.GetMenuForStaticContent();
-            registerInterest.Menu = menu.Menu;
+            var staticContent = await _mediator.GetModelForStaticContent();
+            registerInterest.Menu = staticContent.Menu;
+            registerInterest.BannerModels = staticContent.BannerModels;
+            
             if (!ModelState.IsValid)
             { 
                 registerInterest.ShowRouteQuestion = this.RouteData.Values.ContainsKey("route") == false;
@@ -101,9 +102,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("/employers/thank-you-for-signing-up")]
         public async Task<IActionResult> ThankYouForRegistering()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
+            var staticContent = await _mediator.GetModelForStaticContent();
 
-            return View("ThankYouForRegistering", menu);
+            return View("ThankYouForRegistering", staticContent);
         }
     }
 }

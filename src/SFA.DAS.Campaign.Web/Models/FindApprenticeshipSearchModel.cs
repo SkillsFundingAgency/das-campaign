@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 
 namespace SFA.DAS.Campaign.Web.Models
 {
@@ -21,5 +22,6 @@ namespace SFA.DAS.Campaign.Web.Models
         public List<string> Routes { get ; set ; }
 
         public Menu Menu { get; set; }
+        public IEnumerable<Banner> BannerModels { get; set; }
     }
 }

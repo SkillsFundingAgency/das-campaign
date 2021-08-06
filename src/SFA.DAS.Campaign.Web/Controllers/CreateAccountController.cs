@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.Models;
@@ -22,20 +23,27 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [Route("/apprentices/create-account")]
         public async Task<IActionResult> Apprentices()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
+            var staticContent = await _mediator.GetModelForStaticContent();
 
-            return View(menu);
+            var page = new Page<Article>
+            {
+                Menu = staticContent.Menu, 
+                BannerModels = staticContent.BannerModels
+            };
+
+            return View(page);
         }
         
         [Route("/employers/create-apprenticeship-service-account")]
         public async Task<IActionResult> Employers()
         {
-            var menu = await _mediator.GetMenuForStaticContent();
+            var staticContent = await _mediator.GetModelForStaticContent();
 
             var viewModel = new CreateAccountModel
             {
                 BaseEmployerAccountUrl = _configuration.EmployerAccountBaseUrl,
-                Menu = menu.Menu
+                Menu = staticContent.Menu,
+                BannerModels = staticContent.BannerModels
             };
 
             return View(viewModel);

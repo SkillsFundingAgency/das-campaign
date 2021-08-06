@@ -4,8 +4,8 @@
 }
 
 <nav class="fiu-navigation fiu-navigation--employers" data-fiu-navigation="true">
-	<div class="govuk-width-container">
-		<a href="#navigation" class="fiu-navigation__toggle" data-fiu-nav-toggle="true">
+    <div class="govuk-width-container">
+        <a href="#navigation" class="fiu-navigation__toggle" data-fiu-nav-toggle="true">
             <span class="fiu-navigation__toggle-label" id="nav-label">Menu</span>
             <span class="fiu-navigation__toggle-icon"></span>
         </a>
@@ -15,17 +15,25 @@
                 @{int menuItemCount = 1;}
                 @if (Model.Menu?.Employers != null)
                 {
-                    foreach (var menuItem in Model.Menu.Employers) {
+                    foreach (var menuItem in Model.Menu.Employers)
+                    {
                         <li class="fiu-navigation__list-item"><a id="fiu-emp-menu-link-@menuItemCount" href="/@menuItem.Hub.ToString().ToLower()/@menuItem.Slug" class="fiu-navigation__link">@menuItem.Title</a> </li>
                         menuItemCount++;
-                    }    
+                    }
                 }
-                
+
             </ul>
-		</nav>
-	</div>
+        </nav>
+    </div>
 </nav>
-<partial name="./Banners/_Alert" />
+@if (Model.BannerModels != null && Model.BannerModels.Count > 0)
+{
+    foreach (var banner in Model.BannerModels)
+    {
+        <partial name="./Banners/_Banner_UserNoHide" model="banner" />
+        <partial name="./Banners/_Banner_UserCanHide" model="banner" />
+    }
+}
 <main id="main" class="fiu-main-wrapper">
     @if (ViewBag.HidePageHeader is null)
     {
@@ -40,83 +48,86 @@
             </div>
 
         }
-	<div class="fiu-page-header @(ViewBag.HeadingImage != null ? "fiu-page-header--has-image" : "")">
-        <div class="fiu-width-container">
-            <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
-                <ol class="govuk-breadcrumbs__list">
-                    <li class="govuk-breadcrumbs__list-item">
-                        <a class="govuk-breadcrumbs__link" href="/" id="fiu-breadcrumb-link-home">Home</a>
-                    </li>
-                    @if (ViewBag.LandingPageSlug is null)
-                    {
+        <div class="fiu-page-header @(ViewBag.HeadingImage != null ? "fiu-page-header--has-image" : "")">
+            <div class="fiu-width-container">
+                <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
+                    <ol class="govuk-breadcrumbs__list">
                         <li class="govuk-breadcrumbs__list-item">
-                            Employers
+                            <a class="govuk-breadcrumbs__link" href="/" id="fiu-breadcrumb-link-home">Home</a>
                         </li>
-                    }
-                    else
-                    {
-                        <li class="govuk-breadcrumbs__list-item">
-                            <a href="/employers/"  class="govuk-breadcrumbs__link">Employers</a>
-                        </li>
-                        @if (ViewBag.ArticlePageSlug is null)
+                        @if (ViewBag.LandingPageSlug is null)
                         {
                             <li class="govuk-breadcrumbs__list-item">
-                                @ViewBag.LandingPageTitle
+                                Employers
                             </li>
                         }
                         else
                         {
                             <li class="govuk-breadcrumbs__list-item">
-                                <a href="/employers/@ViewBag.LandingPageSlug"  class="govuk-breadcrumbs__link">@ViewBag.LandingPageTitle</a>
+                                <a href="/employers/" class="govuk-breadcrumbs__link">Employers</a>
                             </li>
-                            if (ViewBag.IndustryPageTitle is null)
+                            @if (ViewBag.ArticlePageSlug is null)
                             {
                                 <li class="govuk-breadcrumbs__list-item">
-                                    @ViewBag.ArticlePageTitle
+                                    @ViewBag.LandingPageTitle
                                 </li>
                             }
                             else
                             {
                                 <li class="govuk-breadcrumbs__list-item">
-                                    <a href="/employers/@ViewBag.ArticlePageSlug" class="govuk-breadcrumbs__link">@ViewBag.ArticlePageTitle</a>
+                                    <a href="/employers/@ViewBag.LandingPageSlug" class="govuk-breadcrumbs__link">@ViewBag.LandingPageTitle</a>
                                 </li>
-                                <li class="govuk-breadcrumbs__list-item">
-                                    @ViewBag.IndustryPageTitle
-                                </li>
-                            }
+                                if (ViewBag.IndustryPageTitle is null)
+                                {
+                                    <li class="govuk-breadcrumbs__list-item">
+                                        @ViewBag.ArticlePageTitle
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="govuk-breadcrumbs__list-item">
+                                        <a href="/employers/@ViewBag.ArticlePageSlug" class="govuk-breadcrumbs__link">@ViewBag.ArticlePageTitle</a>
+                                    </li>
+                                    <li class="govuk-breadcrumbs__list-item">
+                                        @ViewBag.IndustryPageTitle
+                                    </li>
+                                }
 
-                        }
-                    }
-                </ol>
-            </div>
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds fiu-page-header__wrap">
-                    @if (ViewBag.HubPage == true)
-                    {
-                        <div class="fiu-feature-text">
-                            <strong class="fiu-tag fiu-tag--employers fiu-page-header__tag">Employers</strong>
-                            <h1 class="govuk-heading-xl fiu-page-heading__title-hub">@ViewBag.PageTitle</h1>
-                        </div>
-                        @if (ViewBag.PageSummary != null) { <p class="fiu-page-header__content-l govuk-!-width-two-thirds">@ViewBag.PageSummary</p> }
-                    }
-                    else
-                    {
-                        <strong class="fiu-tag fiu-tag--employers fiu-page-header__tag fiu-feature-text">Employers</strong>
-                        <h1 class="govuk-heading-xl fiu-page-heading__title ">
-                            @if (ViewBag.PageCaption != null) {
-                                <span class="govuk-caption-xl">@ViewBag.PageCaption</span>
                             }
-                            @ViewBag.PageTitle
-                        </h1>
-                        @if (ViewBag.PageSummary != null) { <p class="fiu-page-header__content govuk-!-width-two-thirds">@ViewBag.PageSummary</p> }
-                    }
-                    <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
+                        }
+                    </ol>
                 </div>
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds fiu-page-header__wrap">
+                        @if (ViewBag.HubPage == true)
+                        {
+                            <div class="fiu-feature-text">
+                                <strong class="fiu-tag fiu-tag--employers fiu-page-header__tag">Employers</strong>
+                                <h1 class="govuk-heading-xl fiu-page-heading__title-hub">@ViewBag.PageTitle</h1>
+                            </div>
+                            @if (ViewBag.PageSummary != null)
+                            {<p class="fiu-page-header__content-l govuk-!-width-two-thirds">@ViewBag.PageSummary</p>}
+                        }
+                        else
+                        {
+                            <strong class="fiu-tag fiu-tag--employers fiu-page-header__tag fiu-feature-text">Employers</strong>
+                            <h1 class="govuk-heading-xl fiu-page-heading__title ">
+                                @if (ViewBag.PageCaption != null)
+                                {
+                                    <span class="govuk-caption-xl">@ViewBag.PageCaption</span>
+                                }
+                                @ViewBag.PageTitle
+                            </h1>
+                            @if (ViewBag.PageSummary != null)
+                            {<p class="fiu-page-header__content govuk-!-width-two-thirds">@ViewBag.PageSummary</p>}
+                        }
+                        <img class="fiu-page-header__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
+                    </div>
+                </div>
+                @RenderSection("PageHeaderContent", required: false)
             </div>
-            @RenderSection("PageHeaderContent", required: false)
         </div>
-	</div>
     }
     @RenderBody()
-    <partial name="Banners/_ReadyToGetStartedEmployers"/>
+    <partial name="Banners/_ReadyToGetStartedEmployers" />
 </main>

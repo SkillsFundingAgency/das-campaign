@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using SFA.DAS.Campaign.Domain.Content;
+using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 
 namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
 {
@@ -10,6 +12,7 @@ namespace SFA.DAS.Campaign.Web.Controllers.EmployerInform
         public LevyStatus? LevyStatus { get; set; }
 
         public Menu Menu { get; set; }
+        public IEnumerable<Banner> BannerModels { get; set; }
     }
     
     public enum LevyStatus
