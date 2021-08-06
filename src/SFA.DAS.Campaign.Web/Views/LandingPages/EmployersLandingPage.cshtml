@@ -26,7 +26,7 @@
                 }
             }
             <div class="govuk-grid-column-one-half">
-                <partial name="Panels/_FindTheRightApprenticeship"/>
+                <partial name="Panels/_FindTheRightApprenticeship" />
             </div>
         </div>
         <div class="govuk-grid-row fiu-flex-row">
@@ -36,9 +36,19 @@
                 {
                     @secondTwo.ElementAt(i).CardToHtml();
                 }
+
+                if (!secondTwo.Any())
+                {
+                    <div class="govuk-grid-column-one-half">&nbsp;</div>
+                }
+
+                if (secondTwo.Count() == 1)
+                {
+                    <div class="govuk-grid-column-one-quarter"></div>
+                }
             }
             <div class="govuk-grid-column-one-half">
-                <partial name="Panels/_RegisterInterestEmployer"/>
+                <partial name="Panels/_RegisterInterestEmployer" />
             </div>
         </div>
         @{
