@@ -103,7 +103,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
         public static string EnsureHrefUsableTitle(this string tabTitle)
         {
-            return tabTitle.Replace(" ", "");
+            return tabTitle.Replace(" ", "").Replace("&", "");
         }
 
         private static string GetHtml5TagNameFromMarkup(string fontEffect)
