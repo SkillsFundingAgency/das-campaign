@@ -26,6 +26,14 @@ namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 
         }
 
+        [HttpGet("/apprentices/employer-profiles")]
+        public async Task<IActionResult> EmployerProfiles()
+        {
+            var staticContent = await _mediator.GetModelForStaticContent();
+
+            return View("~/Views/Articles/Apprentices/EmployerProfiles.cshtml", staticContent);
+        }
+
         [HttpGet("/employers/the-road-to-a-quality-apprenticeship")]
         public async Task<IActionResult> TheRoadToAQualityApprenticeship()
         {
