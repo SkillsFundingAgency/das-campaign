@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace SFA.DAS.Campaign.Infrastructure.Api
+namespace SFA.DAS.Campaign.Domain.Api.Interfaces
 {
     public interface IApiClient
     {

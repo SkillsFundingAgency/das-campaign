@@ -16,6 +16,7 @@ using MediatR;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using Polly.Extensions.Http;
+using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Helpers;

@@ -11,6 +11,7 @@ using Moq;
 using Moq.Protected;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;

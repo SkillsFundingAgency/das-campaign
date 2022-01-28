@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.Extensions.Options;
+using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api.Requests;
 using SFA.DAS.Campaign.Infrastructure.Configuration;

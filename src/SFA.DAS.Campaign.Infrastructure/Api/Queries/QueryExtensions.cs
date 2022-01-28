@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api.Requests;
 

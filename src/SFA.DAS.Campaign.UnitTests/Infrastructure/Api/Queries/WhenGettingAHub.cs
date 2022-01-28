@@ -5,6 +5,7 @@ using FluentAssertions;
 using Microsoft.Extensions.Options;
 using Moq;
 using NUnit.Framework;
+using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Queries;

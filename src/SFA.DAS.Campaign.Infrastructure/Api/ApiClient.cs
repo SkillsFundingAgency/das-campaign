@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;

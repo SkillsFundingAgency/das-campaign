@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoFixture;
 using FluentAssertions;
+using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
 using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Requests;
