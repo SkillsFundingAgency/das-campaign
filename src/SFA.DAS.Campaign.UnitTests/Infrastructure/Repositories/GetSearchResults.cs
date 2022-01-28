@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using Microsoft.Rest;
 using SFA.DAS.Campaign.Application.Geocode;
+using SFA.DAS.Campaign.Domain.Models.Geocode;
 using SFA.DAS.Vacancies.Api.Models;
 
 namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories

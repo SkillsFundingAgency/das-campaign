@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.Campaign.Application.Configuration
+﻿namespace SFA.DAS.Campaign.Infrastructure.Configuration
 {
     public class UserDataQueueNames
     {

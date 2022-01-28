@@ -3,7 +3,7 @@ using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Queue;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using SFA.DAS.Campaign.Application.Core;
+using SFA.DAS.Campaign.Domain.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 
 namespace SFA.DAS.Campaign.Infrastructure.Queue

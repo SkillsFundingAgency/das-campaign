@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
-using SFA.DAS.Campaign.Application.Geocode;
-using SFA.DAS.Campaign.Models.Geocode;
 using System.Threading;
 using System.Threading.Tasks;
+using SFA.DAS.Campaign.Domain.Interfaces;
+using SFA.DAS.Campaign.Domain.Models.Geocode;
 
 namespace SFA.DAS.Campaign.Infrastructure.HealthChecks
 {

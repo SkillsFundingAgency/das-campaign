@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
+using SFA.DAS.Campaign.Domain.Interfaces;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.Models;

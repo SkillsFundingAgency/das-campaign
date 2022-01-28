@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SFA.DAS.Campaign.Application.Core
+namespace SFA.DAS.Campaign.Domain.Interfaces
 {
     public interface IQueueService<in T>
     {

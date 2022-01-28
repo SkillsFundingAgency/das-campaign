@@ -59,7 +59,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Responses
         [JsonProperty("lat")]
         public double Lat { get; set; }
     }
-}
 
     public class Route
     {

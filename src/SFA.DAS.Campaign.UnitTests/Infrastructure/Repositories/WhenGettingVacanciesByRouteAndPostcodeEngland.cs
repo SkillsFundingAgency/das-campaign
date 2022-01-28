@@ -15,6 +15,8 @@ using VacanciesApi;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
 using Microsoft.Extensions.Logging;
+using SFA.DAS.Campaign.Domain.Interfaces;
+using SFA.DAS.Campaign.Domain.Models.Geocode;
 
 namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
 {

@@ -6,11 +6,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Application.Geocode.Models;
+using SFA.DAS.Campaign.Domain.Interfaces;
+using SFA.DAS.Campaign.Domain.Models.Geocode;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Services;
-using SFA.DAS.Campaign.Models.Geocode;
 
 namespace SFA.DAS.Campaign.Infrastructure.Geocode
 {

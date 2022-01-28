@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SFA.DAS.Campaign.Domain.Vacancies;
 
-namespace SFA.DAS.Campaign.Application.Geocode
+namespace SFA.DAS.Campaign.Domain.Interfaces
 {
     public interface IMappingService
     {

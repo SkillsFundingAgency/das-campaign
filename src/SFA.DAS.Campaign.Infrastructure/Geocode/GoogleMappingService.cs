@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using SFA.DAS.Campaign.Domain.Interfaces;
 using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
 

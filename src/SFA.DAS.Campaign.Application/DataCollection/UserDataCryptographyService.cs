@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using HashidsNet;
 using Microsoft.Extensions.Options;
-using SFA.DAS.Campaign.Application.Configuration;
+using SFA.DAS.Campaign.Infrastructure.Configuration;
 
 namespace SFA.DAS.Campaign.Application.DataCollection
 {

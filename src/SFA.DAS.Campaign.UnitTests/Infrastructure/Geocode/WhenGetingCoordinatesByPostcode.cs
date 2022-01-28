@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using SFA.DAS.Campaign.Domain.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Geocode;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Services;

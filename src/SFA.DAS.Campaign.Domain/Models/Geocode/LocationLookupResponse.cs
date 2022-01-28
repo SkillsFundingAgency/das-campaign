@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.Campaign.Models.Geocode
+﻿namespace SFA.DAS.Campaign.Domain.Models.Geocode
 {
     public static class LocationLookupResponse
     {

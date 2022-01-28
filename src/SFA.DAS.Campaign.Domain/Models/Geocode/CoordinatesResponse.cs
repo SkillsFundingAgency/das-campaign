@@ -1,4 +1,4 @@
-﻿namespace SFA.DAS.Campaign.Application.Geocode
+﻿namespace SFA.DAS.Campaign.Domain.Models.Geocode
 {
     public sealed class CoordinatesResponse
     {

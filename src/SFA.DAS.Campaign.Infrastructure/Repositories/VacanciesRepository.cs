@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using VacanciesApi;
 using Location = SFA.DAS.Campaign.Domain.Vacancies.Location;
 using Microsoft.Extensions.Logging;
+using SFA.DAS.Campaign.Domain.Interfaces;
+using SFA.DAS.Campaign.Domain.Models.Geocode;
 
 namespace SFA.DAS.Campaign.Infrastructure.Repositories
 {
