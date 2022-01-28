@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SFA.DAS.Campaign.Infrastructure.Api.Queries;
+using SFA.DAS.Campaign.Application.Content.Queries;
 
 namespace SFA.DAS.Campaign.Web.Controllers.Redesign
 {

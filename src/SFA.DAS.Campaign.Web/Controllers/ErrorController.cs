@@ -6,8 +6,8 @@ using MediatR;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SFA.DAS.Campaign.Application.Content.Queries;
 using SFA.DAS.Campaign.Domain.Content;
-using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {

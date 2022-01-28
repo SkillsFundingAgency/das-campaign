@@ -16,10 +16,5 @@
     <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Core" />
-    <Folder Include="Geocode" />
-  </ItemGroup>
   
 </Project>

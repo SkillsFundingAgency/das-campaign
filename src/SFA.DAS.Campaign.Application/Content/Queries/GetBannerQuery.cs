@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MediatR;
+﻿using MediatR;
 using SFA.DAS.Campaign.Domain.Content;
 
-namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
+namespace SFA.DAS.Campaign.Application.Content.Queries
 {
     public class GetBannerQuery : IRequest<GetBannerQueryResult<BannerContentType>>
     {

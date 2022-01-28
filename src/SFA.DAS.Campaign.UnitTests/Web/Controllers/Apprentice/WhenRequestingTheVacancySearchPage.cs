@@ -15,7 +15,6 @@ using FluentAssertions;
 using MediatR;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Content;
-using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Apprentice

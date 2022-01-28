@@ -16,9 +16,9 @@ using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Rest;
+using SFA.DAS.Campaign.Application.Content.Queries;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
-using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Renderers;
 
 namespace SFA.DAS.Campaign.Web.Helpers

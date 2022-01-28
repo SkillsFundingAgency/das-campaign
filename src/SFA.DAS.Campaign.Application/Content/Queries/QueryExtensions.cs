@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api.Requests;
 
-namespace SFA.DAS.Campaign.Infrastructure.Api.Queries
+namespace SFA.DAS.Campaign.Application.Content.Queries
 {
     public static class QueryHelpers
     {
