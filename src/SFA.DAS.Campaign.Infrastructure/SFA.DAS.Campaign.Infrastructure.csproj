@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="Mappers" />
   </ItemGroup>
 
 </Project>

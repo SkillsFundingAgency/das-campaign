@@ -29,13 +29,13 @@ namespace SFA.DAS.Campaign.Web.Models
             return new SearchResultsViewModel
             {
                 TotalResults = source.TotalFound,
-                Location = new Location
+                Location = source.Location != null ? new Location
                 {
                     Latitude = source.Location.GeoPoint.FirstOrDefault(),
                     Longitude = source.Location.GeoPoint.LastOrDefault()
-                },
-                CountryName = source.Location.Country,
-                Country = MapToCountry(source.Location.Country),
+                } : null,
+                CountryName = source.Location?.Country ?? "",
+                Country = source.Location != null ? MapToCountry(source.Location.Country) : Country.England,
                 Routes = source.Routes.Select(c=>c.Name).ToList(),
                 Results = source.Vacancies.Select(c=>(SearchResultItem)c).ToList()
             };

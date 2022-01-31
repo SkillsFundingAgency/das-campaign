@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoFixture.NUnit3;
 using FluentAssertions;
 using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Vacancies.Queries.GetVacancies;
 using SFA.DAS.Campaign.Domain.Enums;
+using SFA.DAS.Campaign.Infrastructure.Api.Responses;
 using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.UnitTests.Web.Models
@@ -75,6 +77,29 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Models
             
             //Assert
             actual.Results.ToList().TrueForAll(c => c.Location == null).Should().BeTrue();
+        }
+
+        [Test, AutoData]
+        public void Then_If_No_Results_No_Data_Mapped(List<Route> routes)
+        {
+            //Arrange
+            var source = new GetVacanciesQueryResult
+            {
+                Location = null,
+                Vacancies = new List<Vacancy>(),
+                Routes = routes,
+                TotalFound = 0
+            };
+            
+            //Act
+            var actual = (SearchResultsViewModel)source;
+            
+            //Assert
+            actual.TotalResults.Should().Be(0);
+            actual.Location.Should().BeNull();
+            actual.Results.Should().BeEmpty();
+            actual.Routes.Should().BeEquivalentTo(source.Routes.Select(c=>c.Name).ToList());
+            actual.Country.Should().Be(Country.England);
         }
 
         private static void SetVacancyUrl(GetVacanciesQueryResult source, bool setEmptyLocation = false)
