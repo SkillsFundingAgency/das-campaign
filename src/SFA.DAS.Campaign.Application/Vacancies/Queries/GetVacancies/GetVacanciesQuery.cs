@@ -6,6 +6,6 @@ namespace SFA.DAS.Campaign.Application.Vacancies.Queries.GetVacancies
     {
         public string Postcode { get ; set ; }
         public string Route { get ; set ; }
-        public uint Distance { get ; set ; }
+        public int Distance { get ; set ; }
     }
 }
