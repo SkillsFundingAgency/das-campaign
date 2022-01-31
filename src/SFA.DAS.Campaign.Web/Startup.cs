@@ -78,7 +78,6 @@ namespace SFA.DAS.Campaign.Web
             services.ConfigureSfaConnectionStrings(Configuration);
             services.ConfigureSfaServices();
             services.ConfigureSfaRepositories();
-            services.ConfigureSfaMappers();
             services.ConfigureSfaDataCollection();
             services.ConfigureFactorys();
             services.ConfigureJsonConverters();

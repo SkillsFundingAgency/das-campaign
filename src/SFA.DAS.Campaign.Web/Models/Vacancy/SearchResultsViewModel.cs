@@ -26,7 +26,6 @@ namespace SFA.DAS.Campaign.Web.Models
         public IEnumerable<Banner> BannerModels { get; set; }
         public static implicit operator SearchResultsViewModel(GetVacanciesQueryResult source)
         {
-            var countryParseResult = Enum.TryParse<Country>(source.Location.Country, out var country);
             return new SearchResultsViewModel
             {
                 TotalResults = source.TotalFound,
@@ -35,10 +34,46 @@ namespace SFA.DAS.Campaign.Web.Models
                     Latitude = source.Location.GeoPoint.FirstOrDefault(),
                     Longitude = source.Location.GeoPoint.LastOrDefault()
                 },
-                Country = countryParseResult ? country : Country.England,
+                CountryName = source.Location.Country,
+                Country = MapToCountry(source.Location.Country),
                 Routes = source.Routes.Select(c=>c.Name).ToList(),
                 Results = source.Vacancies.Select(c=>(SearchResultItem)c).ToList()
             };
+        }
+
+        public string CountryUrl => GetCountryUrl(Country);
+        public string CountryName { get; set; }
+        
+        private string GetCountryUrl(Country country)
+        {
+            switch (country)
+            {
+                case Country.Wales:
+                    return "https://careerswales.gov.wales/apprenticeship-search";
+                case Country.Scotland:
+                    return "https://www.apprenticeships.scot/find-a-vacancy/";
+                case Country.NorthernIreland:
+                    return "https://www.nidirect.gov.uk/services/search-apprenticeship-opportunities";
+                default:
+                    return "Other";
+            }
+        }
+        
+        private static Country MapToCountry(string country)
+        {
+            switch (country)
+            {
+                case "England":
+                    return Country.England;
+                case "Wales":
+                    return Country.Wales;
+                case "Scotland":
+                    return Country.Scotland;
+                case "Northern Ireland":
+                    return Country.NorthernIreland;
+                default:
+                    return Country.Other;
+            }
         }
     }
     

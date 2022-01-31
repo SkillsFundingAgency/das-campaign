@@ -1,5 +1,3 @@
-using System;
-using System.Net.Http;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +9,6 @@ using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
-using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
 using SFA.DAS.Campaign.Infrastructure.Services;
@@ -73,11 +70,6 @@ namespace SFA.DAS.Campaign.Web.Helpers
         {
             services.AddTransient<IStandardsRepository, StandardsRepository>();
 
-        }
-
-        public static void ConfigureSfaMappers(this IServiceCollection services)
-        {
-            services.AddTransient<ICountryMapper, CountryMapper>();
         }
 
         public static void ConfigureSfaDataCollection(this IServiceCollection services)

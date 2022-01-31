@@ -76,9 +76,9 @@
             }
             else
             {
-                <h2 class="govuk-heading-l"> Looking for apprenticeships in @GetCountryText(Model.Country)? </h2>
+                <h2 class="govuk-heading-l"> Looking for apprenticeships in @Model.CountryName? </h2>
                 <p class="govuk-body"> Visit your local apprenticeships website to search for vacancies in your area. </p>
-                <p class="govuk-body"><a href="@GetCountryUrl(Model.Country)" class="govuk-link" rel="external" target="_blank">Explore apprenticeships in @GetCountryText(Model.Country)<span class="govuk-visually-hidden"> (Opens in a new window)</span></a></p>
+                <p class="govuk-body"><a href="@Model.CountryUrl" class="govuk-link" rel="external" target="_blank">Explore apprenticeships in @Model.CountryName<span class="govuk-visually-hidden"> (Opens in a new window)</span></a></p>
             }
 
             @if (Model.Location.Latitude == 0)
@@ -97,37 +97,3 @@
         </div>
     </div>
 </div>
-
-
-@functions
-{
-    private string GetCountryText(Country country)
-    {
-        switch (country)
-        {
-            case Country.Wales:
-                return "Wales";
-            case Country.Scotland:
-                return "Scotland";
-            case Country.NorthernIreland:
-                return "Northern Ireland";
-            default:
-                return "Other";
-        }
-    }
-
-    private string GetCountryUrl(Country country)
-    {
-        switch (country)
-        {
-            case Country.Wales:
-                return "https://careerswales.gov.wales/apprenticeship-search";
-            case Country.Scotland:
-                return "https://www.apprenticeships.scot/find-a-vacancy/";
-            case Country.NorthernIreland:
-                return "https://www.nidirect.gov.uk/services/search-apprenticeship-opportunities";
-            default:
-                return "Other";
-        }
-    }
-}
