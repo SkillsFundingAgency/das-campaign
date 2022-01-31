@@ -11,7 +11,6 @@ using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
-using SFA.DAS.Campaign.Infrastructure.Services;
 using StackExchange.Redis;
 
 namespace SFA.DAS.Campaign.Web.Helpers
@@ -61,7 +60,6 @@ namespace SFA.DAS.Campaign.Web.Helpers
         {
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
             services.AddTransient<ISessionService, SessionService>();
-            services.AddTransient<IRetryWebRequests, WebRequestRetryService>();
             services.AddTransient<IMappingService, GoogleMappingService>();
             services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
         }
