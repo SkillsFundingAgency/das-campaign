@@ -33,13 +33,9 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.Configure<UserDataCryptography>(configuration.GetSection("CampaignConfiguration:UserDataCryptography"));
             services.Configure<UserDataQueueNames>(configuration.GetSection("CampaignConfiguration:UserDataQueueNames"));
 
-            var postcodeConfig = new PostcodeApiConfiguration();
-            configuration.Bind("CampaignConfiguration:Postcode", postcodeConfig);
-
             var mappingConfig = new MappingConfiguration();
             configuration.Bind("CampaignConfiguration:Mapping", mappingConfig);
 
-            services.AddSingleton<IPostcodeApiConfiguration>(postcodeConfig);
             services.AddSingleton<IMappingConfiguration>(mappingConfig);
 
             services.Configure<MappingConfiguration>(configuration.GetSection("CampaignConfiguration:Mapping"));
@@ -62,13 +58,6 @@ namespace SFA.DAS.Campaign.Web.Helpers
                     .SetApplicationName("das-campaign-web")
                     .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys");    
             }
-        }
-
-        public static void ConfigureSfaVacancies(this IServiceCollection services, IConfiguration configuration)
-        {
-            var vacanciesBaseUrl = configuration.GetValue<string>("CampaignConfiguration:VacanciesApi:BaseUrl");
-            var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(vacanciesBaseUrl) };
-            vacanciesHttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", configuration.GetValue<string>("CampaignConfiguration:VacanciesApi:ApiKey"));
         }
 
         public static void ConfigureSfaServices(this IServiceCollection services)

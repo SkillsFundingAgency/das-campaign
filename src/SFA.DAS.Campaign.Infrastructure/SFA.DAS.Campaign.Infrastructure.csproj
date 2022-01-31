@@ -24,8 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Api\Queries" />
-    <Folder Include="HealthChecks" />
     <Folder Include="Helpers\" />
   </ItemGroup>
 
