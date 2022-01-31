@@ -9,7 +9,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Requests
     public class WhenBuildingGetAdvertsRequest
     {
         [Test, AutoData]
-        public void Then_The_Url_Is_Correctly_Constructed_And_Encoded(string postcode, string route, uint distance)
+        public void Then_The_Url_Is_Correctly_Constructed_And_Encoded(string postcode, string route, int distance)
         {
             //Arrange
             postcode = $"{postcode} !£$@'''``@%{postcode}";

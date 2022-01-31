@@ -5,15 +5,11 @@ namespace SFA.DAS.Campaign.Web.Models.Vacancy
 {
     public class VacancySearchViewModel
     {
-        public string Route { get; set; }
         public string Postcode { get; set; }
         public int Distance { get; set; }
-        public string IndustrySectors { get; set; }
         public SelectList DistanceOptions => getDistanceSelectList(true);
 
-        public SelectList IndustrySectorsOptions => getIndustrySectorsList();
-
-
+        
         private SelectList getDistanceSelectList(bool includeEngland)
         {
             var distanceOptions = new List<object>
@@ -26,31 +22,6 @@ namespace SFA.DAS.Campaign.Web.Models.Vacancy
                 new {WithinDistance = 30, Name = "30 miles"},
                 new {WithinDistance = 40, Name = "40 miles"}
             };
-
-            //if (includeEngland)
-            //{
-            //    distanceOptions.Add(new { WithinDistance = 0, Name = "England" });
-            //}
-
-            var distances = new SelectList(
-                distanceOptions.ToArray(),
-                "WithinDistance",
-                "Name"
-            );
-
-            return distances;
-        }
-
-        private SelectList getIndustrySectorsList()
-        {
-            var distanceOptions = new List<object>
-            {
-                new {WithinDistance = 2, Name = "Construction"},
-                new {WithinDistance = 5, Name = "Hospitality"},
-                new {WithinDistance = 10, Name = "Public Sector"},
-            };
-
-           
 
             var distances = new SelectList(
                 distanceOptions.ToArray(),

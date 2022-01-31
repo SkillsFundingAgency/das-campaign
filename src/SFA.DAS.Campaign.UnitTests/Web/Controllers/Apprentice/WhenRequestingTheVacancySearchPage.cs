@@ -1,20 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Moq;
 using NUnit.Framework;
-using SFA.DAS.Campaign.Infrastructure.HealthChecks;
 using SFA.DAS.Campaign.Web.Controllers;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using AutoFixture;
 using FluentAssertions;
 using MediatR;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Web.Models;
 
 namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Apprentice

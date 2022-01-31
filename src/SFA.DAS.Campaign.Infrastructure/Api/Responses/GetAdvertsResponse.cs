@@ -10,7 +10,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Responses
         public List<Route> Routes { get; set; }
 
         [JsonProperty("totalFound")]
-        public long TotalFound { get; set; }
+        public int TotalFound { get; set; }
 
         [JsonProperty("location")]
         public Location Location { get; set; }
@@ -49,6 +49,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Responses
 
         [JsonProperty("vacancyReference")]
         public string VacancyReference { get; set; }
+        [JsonProperty("vacancyUrl")]
+        public string VacancyUrl { get ; set ; }
     }
 
     public class VacancyLocation

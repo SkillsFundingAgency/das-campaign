@@ -3,24 +3,19 @@ using System.Net.Http;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Interfaces;
-using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
-using SFA.DAS.Campaign.Infrastructure.Geocode;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
-using SFA.DAS.Campaign.Infrastructure.HealthChecks;
 using SFA.DAS.Campaign.Infrastructure.Mappers;
 using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
 using SFA.DAS.Campaign.Infrastructure.Services;
 using StackExchange.Redis;
-using VacanciesApi;
 
 namespace SFA.DAS.Campaign.Web.Helpers
 {
@@ -58,9 +53,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
             var queueStorageConnectionString = configuration.Get<CampaignConfiguration>().QueueConnectionString;
 
             services.AddHealthChecks()
-                .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check")
-                .AddCheck<VacancyServiceApiHealthCheck>("vacancy-api-check")
-                .AddCheck<PostCodeLookupHealthCheck>("postcode-api-check");
+                .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check");
 
             if (configuration["Environment"] != "LOCAL")
             {
@@ -76,15 +69,12 @@ namespace SFA.DAS.Campaign.Web.Helpers
             var vacanciesBaseUrl = configuration.GetValue<string>("CampaignConfiguration:VacanciesApi:BaseUrl");
             var vacanciesHttpClient = new HttpClient() { BaseAddress = new Uri(vacanciesBaseUrl) };
             vacanciesHttpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", configuration.GetValue<string>("CampaignConfiguration:VacanciesApi:ApiKey"));
-
-            services.AddTransient<ILivevacanciesAPI>(client => new LivevacanciesAPI(vacanciesHttpClient, false) { BaseUri = new Uri(vacanciesBaseUrl) });
         }
 
         public static void ConfigureSfaServices(this IServiceCollection services)
         {
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
             services.AddTransient<ISessionService, SessionService>();
-            services.AddTransient<IGeocodeService, GeocodeService>();
             services.AddTransient<IRetryWebRequests, WebRequestRetryService>();
             services.AddTransient<IMappingService, GoogleMappingService>();
             services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
@@ -93,13 +83,11 @@ namespace SFA.DAS.Campaign.Web.Helpers
         public static void ConfigureSfaRepositories(this IServiceCollection services)
         {
             services.AddTransient<IStandardsRepository, StandardsRepository>();
-            services.AddTransient<IVacanciesRepository, VacanciesRepository>();
 
         }
 
         public static void ConfigureSfaMappers(this IServiceCollection services)
         {
-            services.AddTransient<IVacanciesMapper, VacanciesMapper>();
             services.AddTransient<ICountryMapper, CountryMapper>();
         }
 

@@ -6,10 +6,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Requests
     public class GetAdvertsRequest : IGetApiRequest
     {
         private readonly string _postcode;
-        private readonly uint _distance;
+        private readonly int _distance;
         private readonly string _route;
 
-        public GetAdvertsRequest(string postcode, uint distance, string route)
+        public GetAdvertsRequest(string postcode, int distance, string route)
         {
             _postcode = HttpUtility.UrlEncode(postcode);
             _distance = distance;
