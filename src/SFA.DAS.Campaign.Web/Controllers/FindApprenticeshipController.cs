@@ -1,12 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SFA.DAS.Campaign.Application.Geocode;
+using SFA.DAS.Campaign.Application.Vacancies.Queries.GetVacancies;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Interfaces;
-using SFA.DAS.Campaign.Domain.Vacancies;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.Models;
 
@@ -15,14 +13,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
     [Route("FindApprenticeship")]
     public class FindApprenticeshipController : Controller
     {
-        private readonly IVacanciesRepository _vacanciesService;
         private readonly IMappingService _mappingService;
         private readonly IStandardsRepository _repository;
         private readonly IMediator _mediator;
 
-        public FindApprenticeshipController(IVacanciesRepository vacanciesService, IMappingService mappingService, IStandardsRepository repository, IMediator mediator)
+        public FindApprenticeshipController(IMappingService mappingService, IStandardsRepository repository, IMediator mediator)
         {
-            _vacanciesService = vacanciesService;
             _mappingService = mappingService;
             _repository = repository;
             _mediator = mediator;
@@ -69,30 +65,31 @@ namespace SFA.DAS.Campaign.Web.Controllers
             {
                 Route = route, Distance = distance, Postcode = postcode
             };
-            
-            var routeId = route.Replace("-"," ");
 
-            var routes = _repository.GetRoutes();
-            var searchTask = _vacanciesService.GetByRoute(routeId, postcode, Convert.ToInt32(distance));
+            var searchTask = _mediator.Send(new GetVacanciesQuery
+            {
+                Distance = distance,
+                Postcode = postcode,
+                Route = route.Replace("-"," ")
+            }); 
             var staticContent =  _mediator.GetModelForStaticContent();
 
-            await Task.WhenAll(routes, searchTask, staticContent);
+            await Task.WhenAll(searchTask, staticContent);
             var searchResults = searchTask.Result;
             if (searchResults != null)
             {
-                viewModel.TotalResults = searchResults.Results.Count;
-                viewModel.Results = searchResults.Results.Where(w => w.DistanceInMiles <= distance).Take(100).ToList();
+                viewModel = searchResults;
 
-                viewModel.Location = searchResults.searchLocation;
-                viewModel.StaticMapUrl = _mappingService.GetStaticMapsUrl(searchResults.Results.Select(p => p.Location), "680", "530");
-
-                viewModel.Country = searchResults.Country;
-                viewModel.Routes = routes.Result;
-
+                Parallel.ForEach(viewModel.Results.Where(c=>c.Location!=null),
+                    vacancy =>
+                    {
+                        vacancy.StaticMapUrl =
+                            _mappingService.GetStaticMapsUrl(vacancy.Location.Latitude, vacancy.Location.Longitude);
+                    });
+               
                 viewModel.Menu = staticContent.Result.Menu;
                 viewModel.BannerModels = staticContent.Result.BannerModels;
             }
-
 
             return viewModel;
         }
