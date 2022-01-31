@@ -130,7 +130,7 @@ namespace SFA.DAS.Campaign.MockServer
         private static void AddVacanciesResponses(WireMockServer server)
         {
             server.Given(Request.Create()
-                    .WithUrl(o => o.Contains("v1"))
+                    .WithUrl(o => o.Contains("/adverts"))
                     .UsingGet())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
