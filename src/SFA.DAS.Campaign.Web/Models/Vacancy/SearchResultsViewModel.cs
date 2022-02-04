@@ -82,7 +82,7 @@ namespace SFA.DAS.Campaign.Web.Models
         public string VacancyReference { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Category { get; set; }
+        public string SubCategory { get; set; }
         public Uri VacancyUrl { get; set; }
         public Location Location { get; set; }
         public double Distance { get; set; }
@@ -105,7 +105,7 @@ namespace SFA.DAS.Campaign.Web.Models
                 StartDate = source.StartDate,
                 Distance = source.Distance ?? 0,
                 Description = source.Description,
-                Category = source.Category,
+                SubCategory = source.SubCategory,
                 VacancyUrl = new Uri(source.VacancyUrl) ,
                 Location = source.Location != null  ? new Location
                 {

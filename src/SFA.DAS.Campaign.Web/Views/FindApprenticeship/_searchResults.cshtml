@@ -21,7 +21,7 @@
     <dl class="fiu-table-list">
 
         <dt class="fiu-table-list__th">Route</dt>
-        <dd class="fiu-table-list__td">@Model.Category</dd>
+        <dd class="fiu-table-list__td">@Model.SubCategory</dd>
 
         <dt class="fiu-table-list__th">Added</dt>
         <dd class="fiu-table-list__td">@Model.PostedDate.ToFriendlyDaysAgo()</dd>
@@ -33,7 +33,7 @@
         <dd class="fiu-table-list__td">
             @if (Model.Location != null)
             {
-                @:<span class="distance-value">@Model.Distance.ToString("N1")</span> miles    
+                @:<span class="distance-value">@Model.Distance.ToString("N2")</span> miles    
             }
         </dd>
 

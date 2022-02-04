@@ -41,8 +41,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Responses
         [JsonProperty("postedDate")]
         public DateTime PostedDate { get; set; }
 
-        [JsonProperty("category")]
-        public string Category { get; set; }
+        [JsonProperty("subCategory")]
+        public string SubCategory { get; set; }
 
         [JsonProperty("employerName")]
         public string EmployerName { get; set; }
