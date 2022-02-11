@@ -1,4 +1,5 @@
 using System.Web;
+using SFA.DAS.Campaign.Domain.Api.Interfaces;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Requests
 {

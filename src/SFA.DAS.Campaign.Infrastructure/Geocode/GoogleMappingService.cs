@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using SFA.DAS.Campaign.Domain.Vacancies;
+using SFA.DAS.Campaign.Domain.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
 
 namespace SFA.DAS.Campaign.Application.Geocode
@@ -31,31 +29,12 @@ namespace SFA.DAS.Campaign.Application.Geocode
             }
         }
 
-        public string GetStaticMapsUrl(Location coordinates)
+        public string GetStaticMapsUrl(double latitude, double longitude)
         {
-            if (coordinates == null) return "";
-
-            var markers = $"{coordinates.Latitude},{coordinates.Longitude}";
+            
+            var markers = $"{latitude},{longitude}";
 
             return GetStaticMapsUrl(markers);
-        }
-
-        public string GetStaticMapsUrl(IEnumerable<Location> locations)
-        {
-            if (locations == null) return "";
-
-            var markers = string.Join('|', locations.Select(p => $"{p.Latitude},{p.Longitude}"));
-
-            return GetStaticMapsUrl(markers);
-        }
-
-        public string GetStaticMapsUrl(IEnumerable<Location> locations, string height, string width)
-        {
-            if (locations == null) return "";
-
-            var markers = string.Join('|', locations.Select(p => $"{p.Latitude},{p.Longitude}"));
-
-            return GetStaticMapsUrl(markers,height,width);
         }
 
         private string GetStaticMapsUrl(string markers, string height = null, string width = null)

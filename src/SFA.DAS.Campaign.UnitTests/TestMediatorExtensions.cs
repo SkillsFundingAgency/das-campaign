@@ -4,9 +4,9 @@ using System.Text;
 using System.Threading;
 using MediatR;
 using Moq;
+using SFA.DAS.Campaign.Application.Content.Queries;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
-using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 
 namespace SFA.DAS.Campaign.UnitTests
 {

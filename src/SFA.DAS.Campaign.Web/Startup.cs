@@ -16,8 +16,9 @@ using MediatR;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using Polly.Extensions.Http;
+using SFA.DAS.Campaign.Application.Content.Queries;
+using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Api;
-using SFA.DAS.Campaign.Infrastructure.Api.Queries;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
@@ -75,10 +76,8 @@ namespace SFA.DAS.Campaign.Web
 
             services.ConfigureSfaConfigurations(Configuration);
             services.ConfigureSfaConnectionStrings(Configuration);
-            services.ConfigureSfaVacancies(Configuration);
             services.ConfigureSfaServices();
             services.ConfigureSfaRepositories();
-            services.ConfigureSfaMappers();
             services.ConfigureSfaDataCollection();
             services.ConfigureFactorys();
             services.ConfigureJsonConverters();
