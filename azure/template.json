@@ -172,10 +172,10 @@
                   "name": "ConfigurationStorageConnectionString",
                   "value": "[parameters('configurationStorageConnectionString')]"
                 },
-		            {
-		              "name": "ConfigNames",
-		              "value": "[parameters('configNames')]"	
-		            },      
+		      {
+		        "name": "ConfigNames",
+		        "value": "[parameters('configNames')]"	
+		      },      
                 {
                   "name": "Environment",
                   "value": "[parameters('environmentName')]"
