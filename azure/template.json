@@ -62,6 +62,10 @@
     },
     "tags": {
       "type": "object"
+    },
+    "utcValue": {
+      "type": "string",
+      "defaultValue": "[utcNow('yyMMddHHmmss')]"
     }
   },
   "variables": {
@@ -83,7 +87,7 @@
     },
     {
       "apiVersion": "2020-06-01",
-      "name": "campaignSSLCert",
+      "name": "[concat('campaignSSLCert-', parameters('utcValue'))]",
       "resourceGroup": "[parameters('appServicePlanResourceGroupName')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -107,7 +111,7 @@
     },
     {
       "apiVersion": "2020-06-01",
-      "name": "campaignAppInsights",
+      "name": "[concat('campaignAppInsights-', parameters('utcValue'))]",
       "resourceGroup": "[variables('resourceGroupName')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -128,12 +132,12 @@
     },
     {
       "apiVersion": "2020-06-01",
-      "name": "campaignAppService",
+      "name": "[concat('campaignAppService-', parameters('utcValue'))]",
       "resourceGroup": "[variables('resourceGroupName')]",
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
-        "campaignAppInsights",
-        "campaignSSLCert"
+        "[concat('campaignAppInsights-', parameters('utcValue'))]",
+        "[concat('campaignSSLCert-', parameters('utcValue'))]"
       ],
       "properties": {
         "mode": "Incremental",
@@ -162,16 +166,16 @@
               "array": [
                 {
                   "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                  "value": "[reference('campaignAppInsights').outputs.InstrumentationKey.value]"
+                  "value": "[reference(concat('campaignAppInsights-', parameters('utcValue'))).outputs.InstrumentationKey.value]"
                 },
                 {
                   "name": "ConfigurationStorageConnectionString",
                   "value": "[parameters('configurationStorageConnectionString')]"
                 },
-		{
-		  "name": "ConfigNames",
-		  "value": "[parameters('configNames')]"	
-		},      
+		            {
+		              "name": "ConfigNames",
+		              "value": "[parameters('configNames')]"	
+		            },      
                 {
                   "name": "Environment",
                   "value": "[parameters('environmentName')]"
@@ -202,7 +206,7 @@
             "value": "[parameters('customHostname')]"
           },
           "certificateThumbprint": {
-            "value": "[reference('campaignSSLCert').outputs.certificateThumbprint.value]"
+            "value": "[reference(concat('campaignSSLCert-', parameters('utcValue'))).outputs.certificateThumbprint.value]"
           },
           "ipSecurityRestrictions": {
             "value": "[parameters('appServiceAllowedIPs')]"
@@ -212,7 +216,7 @@
     },
     {
       "apiVersion": "2020-06-01",
-      "name": "apim-product-subscription",
+      "name": "[concat('apim-product-subscription-', parameters('utcValue'))]",
       "resourceGroup": "[parameters('sharedApimResourceGroup')]",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -242,7 +246,7 @@
     },
     "AppInsightInstrumentationKey": {
       "type": "string",
-      "value": "[reference('campaignAppInsights').outputs.InstrumentationKey.value]"
+      "value": "[reference(concat('campaignAppInsights-', parameters('utcValue'))).outputs.InstrumentationKey.value]"
     },
     "ResourceGroupName": {
       "type": "string",
