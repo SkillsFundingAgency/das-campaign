@@ -24,8 +24,16 @@
     <div class="fiu-width-container">
         <div class="govuk-grid-row fiu-flex-row">
 
+            <div class="govuk-grid-column-one-quarter">
+                <div class="fiu-card">
+                    <h3 class="fiu-card__heading">Career starter apprenticeships</h3>
+                    <p class="fiu-card__content">A range of opportunties for those with limited work experience. Take a look at the type of apprenticeships available and what each role entails.</p>
+                    <a href="/apprentices/career-starter-apprenticeships" class="fiu-card__link">Learn more <span class="fiu-vh"> about Career starter apprenticeships</span></a>
+                </div>
+            </div>
+
             @{
-                var firstTwo = Model.Content.Cards.Take(2);
+                var firstTwo = Model.Content.Cards.Take(1);
                 for (var i = 0; i < firstTwo.Count(); i++)
                 {
                     @Model.Content.Cards[i].CardToHtml();
@@ -38,7 +46,7 @@
         </div>
 
         @{
-            var items = Model.Content.Cards.Skip(2).Take(Model.Content.Cards.Count - 2);
+            var items = Model.Content.Cards.Skip(1).Take(Model.Content.Cards.Count - 1);
             int columncount = 1;
 
             for (var i = 0; i < items.Count(); i++)
