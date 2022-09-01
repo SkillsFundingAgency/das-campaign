@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = Model.Title;
+    ViewBag.MetaDesc = Model.MetaContent.MetaDescription;
     Layout = $"Redesign_Layout_{Model.HubType.ToString()}Article";
     ViewBag.PageTitle = Model.Title;
     ViewBag.LandingPageSlug = Model.Breadcrumbs != null ? Model.Breadcrumbs.LandingPageSlug : null;
