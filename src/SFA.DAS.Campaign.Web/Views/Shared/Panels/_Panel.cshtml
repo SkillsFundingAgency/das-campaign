@@ -1,0 +1,10 @@
+﻿@*panel model*@
+
+<div class="fiu-banner @Model.GetAnnouncementCssClass()">
+    <div class="fiu-width-container">
+        <h2 class="fiu-banner__heading">@Model.Title</h2>
+        <div class="fiu-banner__body fiu-article">
+            @Model.Content.ToHtml()
+        </div>
+    </div>
+</div>
