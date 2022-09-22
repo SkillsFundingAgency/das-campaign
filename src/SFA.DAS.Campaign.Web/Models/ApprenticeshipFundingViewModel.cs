@@ -12,6 +12,8 @@ namespace SFA.DAS.Campaign.Web.Models
 
         public Menu Menu { get; set; }
         public IEnumerable<Banner> BannerModels { get; set; }
+        public Panel Panel1 { get; set; }
+        public Panel Panel2 { get; set; }
 
         //add panel1 and panel2 and a list of courses to populate the type ahead
     }
