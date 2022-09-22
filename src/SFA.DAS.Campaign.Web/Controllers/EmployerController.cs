@@ -28,24 +28,24 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [Route("/employers/calculate-your-apprenticeship-funding")]
-        public async Task<IActionResult> CalculateApprenticeshipFunding(string slug1, string slug2)
+        public async Task<IActionResult> CalculateApprenticeshipFunding(string slug1, string slug2, [FromQuery] bool preview)
         {
             slug1 = "are-you-ready-to-get-going";
             slug2 = "take-your-next-step-today-estimate-what-funding-could-be-available-to-you";
-            //var routes = _repository.GetRoutes();
+            //var routes = _repository.GetRoutes(); - get courses here for type ahead in calc
             var staticContent = _mediator.GetModelForStaticContent();
-            var panel1 = _mediator.Send(new GetPanelQuery() { Slug = slug1});
-            var panel2 = _mediator.Send(new GetPanelQuery() {Slug = slug2});
+            var panel1 = _mediator.Send(new GetPanelQuery() { Slug = slug1, Preview = true});
+            var panel2 = _mediator.Send(new GetPanelQuery() {Slug = slug2, Preview = true});
 
             await Task.WhenAll(staticContent, panel1, panel2);
 
             return View(new ApprenticeshipFundingViewModel
             {
-                //Routes = routes.Result,
+                //courses
                 Menu = staticContent.Result.Menu,
                 BannerModels = staticContent.Result.BannerModels,
-                Panel1 = panel1.Result.Page.Panel,
-                Panel2 = panel2.Result.Page.Panel
+                Panel1 = panel1.Result.Page,
+                Panel2 = panel2.Result.Page
             });
         }
     }

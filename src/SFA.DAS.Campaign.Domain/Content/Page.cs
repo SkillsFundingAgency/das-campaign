@@ -15,6 +15,5 @@ namespace SFA.DAS.Campaign.Domain.Content
         public Breadcrumbs Breadcrumbs { get; set; }
         public Menu Menu { get; set; }
         public IEnumerable<Banner> BannerModels { get; set; }
-        public Panel Panel { get; set; }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SFA.DAS.Campaign.Domain.Content
 {
@@ -12,5 +10,6 @@ namespace SFA.DAS.Campaign.Domain.Content
         public List<string> ButtonStyle { get; set; }
         public string Title { get; set; }
         public string Id { get; set; }
+        public IEnumerable<IHtmlControl> PageControls { get; set; }
     }
 }
