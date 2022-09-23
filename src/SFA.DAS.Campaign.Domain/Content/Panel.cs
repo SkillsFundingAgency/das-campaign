@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using SFA.DAS.Campaign.Domain.Content.HtmlControl;
+using System.Collections.Generic;
 
 namespace SFA.DAS.Campaign.Domain.Content
 {
     public class Panel : IContentType
     {
         public string Slug { get; set; }
-        public string ButtonText { get; set; }
-        public string ButtonUrl { get; set; }
-        public List<string> ButtonStyle { get; set; }
         public string Title { get; set; }
-        public string Id { get; set; }
-        public IEnumerable<IHtmlControl> PageControls { get; set; }
+        public IEnumerable<IHtmlControl> Content { get; set; }
+        public Image MainImage { get; set; }
+        public Button Button { get; set; }
     }
 }
