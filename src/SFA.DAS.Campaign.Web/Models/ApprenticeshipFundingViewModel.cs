@@ -12,5 +12,7 @@ namespace SFA.DAS.Campaign.Web.Models
         public IEnumerable<Banner> BannerModels { get; set; }
         public Panel Panel1 { get; set; }
         public Panel Panel2 { get; set; }
+        public Panel Panel3 { get; set; }
+
     }
 }
