@@ -9,6 +9,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         {
             Items = new List<Item>();
         }
+        [JsonProperty("title")]
+        public string Title { get; set; }
 
         [JsonProperty("items")]
         public List<Item> Items { get; set; }

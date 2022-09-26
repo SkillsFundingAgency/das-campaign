@@ -31,7 +31,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         public async Task<IActionResult> CalculateApprenticeshipFunding(string slug1, string slug2, [FromQuery] bool preview)
         {
             slug1 = "are-you-ready-to-get-going";
-            slug2 = "take-your-next-step-today-estimate-what-funding-could-be-available-to-you";
+            slug2 = "future-proof-your-business";
             //var routes = _repository.GetRoutes(); - get courses here for type ahead in calc
             var staticContent = _mediator.GetModelForStaticContent();
             var panel1 = _mediator.Send(new GetPanelQuery() { Slug = slug1, Preview = true});
