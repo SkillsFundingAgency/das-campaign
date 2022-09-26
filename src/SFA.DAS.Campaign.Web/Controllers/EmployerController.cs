@@ -44,8 +44,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 //courses
                 Menu = staticContent.Result.Menu,
                 BannerModels = staticContent.Result.BannerModels,
-                Panel1 = panel1.Result.Page,
-                Panel2 = panel2.Result.Page
+                Panel1 = panel1.Result.Panel,
+                Panel2 = panel2.Result.Panel
             });
         }
     }

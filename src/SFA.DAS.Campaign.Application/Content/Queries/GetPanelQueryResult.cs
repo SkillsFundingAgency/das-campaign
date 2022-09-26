@@ -2,8 +2,8 @@
 
 namespace SFA.DAS.Campaign.Application.Content.Queries
 {
-    public class GetPanelQueryResult<T> where T : IContentType
+    public class GetPanelQueryResult
     {
-        public Page<T> Page { get; set; }
+        public Panel Panel { get; set; }
     }
 }

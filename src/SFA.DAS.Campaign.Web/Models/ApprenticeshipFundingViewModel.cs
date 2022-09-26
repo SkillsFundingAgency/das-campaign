@@ -10,7 +10,7 @@ namespace SFA.DAS.Campaign.Web.Models
 
         public Menu Menu { get; set; }
         public IEnumerable<Banner> BannerModels { get; set; }
-        public Page<Panel> Panel1 { get; set; }
-        public Page<Panel> Panel2 { get; set; }
+        public Panel Panel1 { get; set; }
+        public Panel Panel2 { get; set; }
     }
 }

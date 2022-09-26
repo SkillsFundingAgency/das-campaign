@@ -1,4 +1,4 @@
-﻿@model ApprenticeshipFundingViewModel
+﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
 @{
     ViewBag.Title = "Apprenticeship Funding Calculator";
     Layout = $"Redesign_Layout_EmployersForm";
@@ -10,3 +10,7 @@
     ViewBag.ArticlePageTitle = "Calculate your apprenticeship funding";
 }
 <p>This is my TEST page.</p>
+
+@await Html.PartialAsync("_Panel", Model.Panel1)
+
+@await Html.PartialAsync("_Panel", Model.Panel2)

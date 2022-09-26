@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SFA.DAS.Campaign.Application.Content.Queries
 {
-    public class GetPanelQueryHandler : IRequestHandler<GetPanelQuery, GetPanelQueryResult<Panel>>
+    public class GetPanelQueryHandler : IRequestHandler<GetPanelQuery, GetPanelQueryResult>
     {
         private readonly IApiClient _apiClient;
         private readonly IOptions<CampaignConfiguration> _config;
@@ -20,24 +20,24 @@ namespace SFA.DAS.Campaign.Application.Content.Queries
             _config = config;  
         }
 
-        public async Task<GetPanelQueryResult<Panel>> Handle(GetPanelQuery request, CancellationToken cancellationToken)
+        public async Task<GetPanelQueryResult> Handle(GetPanelQuery request, CancellationToken cancellationToken)
         {
             var canPreview = _config.Value.AllowPreview;
-            Page<Panel> panel = null;
+            Panel panel = null;
 
             if (canPreview && request.Preview)
             {
-                panel = await _apiClient.Get<Page<Panel>>(new GetPanelPreviewRequest(request.Slug)).ConfigureAwait(false);
+                panel = await _apiClient.Get<Panel>(new GetPanelPreviewRequest(request.Slug)).ConfigureAwait(false);
             }
 
             if (panel == null)
             {
-                panel = await _apiClient.Get<Page<Panel>>(new GetPanelRequest(request.Slug)).ConfigureAwait(false);
+                panel = await _apiClient.Get<Panel>(new GetPanelRequest(request.Slug)).ConfigureAwait(false);
             }
 
-            return new GetPanelQueryResult<Panel>
+            return new GetPanelQueryResult
             {
-                Page = panel
+                Panel = panel
             };
         }
     }
