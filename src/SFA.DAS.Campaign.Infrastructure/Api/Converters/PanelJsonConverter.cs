@@ -60,8 +60,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
             var pageModel = new Panel
             {
-                Slug = cmsContent.Panel.PageAttributes.Slug,
-                Title = cmsContent.Panel.PageAttributes.Title
+                Title = cmsContent.Panel.MainContent.Title
             };
 
             AddPanelButton(cmsContent, pageModel);
