@@ -1,17 +1,48 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
 @{
-    ViewBag.Title = "Apprenticeship Funding Calculator";
+    ViewBag.Title = "Start your apprenticeship journey";
     Layout = $"Redesign_Layout_EmployersForm";
-    ViewBag.PageTitle = "Apprenticeship Funding Calculator";
-    ViewBag.PageSummary = "";
+    ViewBag.PageTitle = "START YOUR APRENTICESHIP JOURNEY";
+    ViewBag.PageSummary = "Discover how hiring an apprentice can benefit your business and find out what financial support and help is available to you.";
     ViewBag.LandingPageSlug = "are-they-right-for-you";
     ViewBag.LandingPageTitle = "Are they right for you?";
-    ViewBag.ArticlePageSlug = "calculate-your-apprenticeship-funding";
-    ViewBag.ArticlePageTitle = "Calculate your apprenticeship funding";
+    ViewBag.ArticlePageSlug = "start-your-apprenticeship-journey";
+    ViewBag.ArticlePageTitle = "Start your apprenticeship journey";
 }
 
-@await Html.PartialAsync("_Panel", Model.Panel1)
+<div>
+    <h1>On this page</h1>
+    <ul>
+        <li>
+            <a href="#panel1" class="fiu-link">Get going</a>
+        </li>
+        <li>
+            <a href="#panel2" class="fiu-link">Future-proof your business</a>
+        </li>
+        <li>
+            <a href="#panel3" class="fiu-link">Find out what funding you could have available</a>
+        </li>
+    </ul>
+</div>
+<a id="panel1">@await Html.PartialAsync("_Panel", Model.Panel1)</a>
 
-@await Html.PartialAsync("_Panel", Model.Panel2)
+<a id="panel2">@await Html.PartialAsync("_Panel", Model.Panel2)</a>
 
-@await Html.PartialAsync("_Panel", Model.Panel3)
+<div class="fiu-panel fiu-panel--left-align">
+    <a id="panel3">
+        <h2 class="govuk-heading-l">Take your next step today, estimate what funding could be available to you:</h2>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <article class="fiu-article">
+                    Placeholder article.
+                    <div>
+                        @*@await Html.PartialAsync("_Calculator")*@
+                    </div>
+                </article>
+            </div>
+            <div class="">
+                <img src="" alt="Video placeholder" class="" />
+            </div>
+        </div>
+    </a>
+</div>
