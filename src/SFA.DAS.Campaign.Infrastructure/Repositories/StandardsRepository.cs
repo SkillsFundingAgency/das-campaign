@@ -25,10 +25,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             return result.Sectors.Select(c=>c.Route).ToList();
         }
 
-        public async Task<List<int>> GetByRoute(string routeId)
+        public async Task<GetStandardsResponse> GetByRoute(string routeId)
         {
             var result = await _apiClient.Get<GetStandardsResponse>(new GetStandardsBySectorRequest(routeId));
-            return result.Standards.Select(x=>x.Id).ToList();
+            return result;
         }
 
     }

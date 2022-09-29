@@ -10,39 +10,152 @@
     ViewBag.ArticlePageTitle = "Start your apprenticeship journey";
 }
 
-<div>
-    <h1>On this page</h1>
-    <ul>
-        <li>
-            <a href="#panel1" class="fiu-link">Get going</a>
-        </li>
-        <li>
-            <a href="#panel2" class="fiu-link">Future-proof your business</a>
-        </li>
-        <li>
-            <a href="#panel3" class="fiu-link">Find out what funding you could have available</a>
-        </li>
-    </ul>
-</div>
-<a id="panel1">@await Html.PartialAsync("_Panel", Model.Panel1)</a>
-
-<a id="panel2">@await Html.PartialAsync("_Panel", Model.Panel2)</a>
-
-<a id="panel3">
-    <div class="fiu-panel fiu-panel--left-align">
-        <h2 class="govuk-heading-l">Take your next step today, estimate what funding could be available to you:</h2>
+<div class="fiu-grad-row">
+    <div class="fiu-width-container">
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-                <article class="fiu-article">
-                    Placeholder article.
-                    <div>
-                        @*@await Html.PartialAsync("_Calculator")*@
-                    </div>
-                </article>
+            <div class="govuk-grid-column-one-third">
+                <h2 class="govuk-heading-l govuk-!-margin-top-6">On this page</h2>
+                <ul class="govuk-list govuk-list--spaced">
+                    <li><a href="#@Model.Panel1.Position" class="govuk-link govuk-link--no-visited-state">Get going</a></li>
+                    <li><a href="#@Model.Panel2.Position" class="govuk-link govuk-link--no-visited-state">Future-proof your business</a></li>
+                    <li><a href="#funding" class="govuk-link govuk-link--no-visited-state">Find out what funding you could have available</a></li>
+                </ul>
             </div>
-            <div class="">
-                <img src="" alt="Video placeholder" class="" />
+            <div class="govuk-grid-column-two-thirds">
+                
+                    <id=@Model.Panel1.Position>@await Html.PartialAsync("_Panel", Model.Panel1)</id>
+                    <id=@Model.Panel2.Position>@await Html.PartialAsync("_Panel", Model.Panel2)</id>
+
+                <div class="fiu-panel fiu-panel--left-align" id="funding">
+                    <h2 class="govuk-heading-l">Take your next step today, estimate what funding could be available to you</h2>
+
+                    <form method="" action="">
+                        <div class="govuk-form-group">
+                            <fieldset class="govuk-fieldset">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">What is your annual pay bill?</legend>
+                                <div class="govuk-radios" data-module="govuk-radios">
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="pay-bill-under" name="pay-bill" type="radio" value="under">
+                                        <label class="govuk-label govuk-radios__label" for="pay-bill-under">
+                                            Under &pound;3 million
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="pay-bill-over" name="pay-bill" type="radio" value="over">
+                                        <label class="govuk-label govuk-radios__label" for="pay-bill-over">
+                                            Over &pound;3 million
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="govuk-form-group">
+                            <fieldset class="govuk-fieldset">
+                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">How many employees do you have?</legend>
+                                <div class="govuk-radios" data-module="govuk-radios">
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="employees-under" name="employees" type="radio" value="under50">
+                                        <label class="govuk-label govuk-radios__label" for="employees-under">
+                                            1 to 49 employees
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="employees-over" name="employees" type="radio" value="50orover">
+                                        <label class="govuk-label govuk-radios__label" for="employees-over">
+                                            50 or more employees
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="courses">
+                                What training course do you want your apprentice to take?
+                            </label>
+                            <p class="govuk-body">We offer over 637 courses which you can search by keyword or job role,
+                                <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.</p>
+                            <select class="govuk-select" id="courses" name="courses">
+                                <option value="11">Business</option>
+                                <option value="22">Software</option>
+                                <option value="33">Engineering</option>
+                            </select>
+                        </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="roles">
+                                How many roles do you have available for this apprenticeship?
+                            </label>
+                            <p class="govuk-body">
+                                Enter the number of available roles
+                            </p>
+                            <input class="govuk-input govuk-input--width-3" id="roles" name="roles" type="text">
+                        </div>
+                        <div class="govuk-button-group">
+                            <button class="fiu-button fiu-button--employers" type="submit">
+                                Calculate funding
+                            </button>
+                            <button class="fiu-button fiu-button--employers fiu-button--outlined" type="reset">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+​
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-two-thirds">
+                            <figure class="fiu-quote fiu-quote--employer">
+                                <blockquote class="fiu-quote__blockquote">
+                                    "Have a plan of what it is that you would like for your student to learn while they are with you, speak to them about what their goals are. Be ready to offer extra time and support to make sure that you get the best out of them."
+                                </blockquote>
+                                <figcaption class="fiu-quote__caption">
+                                    Employer
+                                    <span class="fiu-quote__caption-description">Organisation</span>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="govuk-grid-column-one-third">
+                            <img src="https://das-roi-tool-prototype.herokuapp.com/public/images/image1.jpg" class="fiu-panel__image" alt="" />
+                        </div>
+                    </div>
+​
+​
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-two-thirds">
+                            <figure class="fiu-quote fiu-quote--employer">
+                                <blockquote class="fiu-quote__blockquote">
+                                    "Have a plan of what it is that you would like for your student to learn while they are with you, speak to them about what their goals are. Be ready to offer extra time and support to make sure that you get the best out of them."
+                                </blockquote>
+                                <figcaption class="fiu-quote__caption">
+                                    Employer
+                                    <span class="fiu-quote__caption-description">Organisation</span>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="govuk-grid-column-one-third">
+                            <img src="https://das-roi-tool-prototype.herokuapp.com/public/images/image1.jpg" class="fiu-panel__image" alt="" />
+                        </div>
+                    </div>
+​
+​
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-two-thirds">
+                            <figure class="fiu-quote fiu-quote--employer">
+                                <blockquote class="fiu-quote__blockquote">
+                                    "Have a plan of what it is that you would like for your student to learn while they are with you, speak to them about what their goals are. Be ready to offer extra time and support to make sure that you get the best out of them."
+                                </blockquote>
+                                <figcaption class="fiu-quote__caption">
+                                    Employer
+                                    <span class="fiu-quote__caption-description">Organisation</span>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <div class="govuk-grid-column-one-third">
+                            <img src="https://das-roi-tool-prototype.herokuapp.com/public/images/image1.jpg" class="fiu-panel__image" alt="" />
+                        </div>
+                    </div>
+​
+                    <a href="#" class="fiu-button fiu-button--employers fiu-button--outlined govuk-!-margin-top-4 govuk-!-margin-bottom-0">See more stories from businesses like yours </a>
+​
+                </div>
             </div>
         </div>
     </div>
-</a>
+</div>

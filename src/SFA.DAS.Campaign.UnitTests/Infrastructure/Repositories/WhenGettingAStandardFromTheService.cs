@@ -52,7 +52,7 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Repositories
             var actual = await _standardsRepository.GetByRoute(_sector);
             
             //Assert
-            actual.Should().BeEquivalentTo(_standardsResponse.Standards.Select(c=>c.Id).ToList());
+            actual.Should().BeEquivalentTo(_standardsResponse.Standards.Select(c=>c.LarsCode).ToList());
         }
     }
 }

@@ -1,3 +1,4 @@
+#nullable enable
 using System.Web;
 using SFA.DAS.Campaign.Domain.Api.Interfaces;
 
@@ -7,7 +8,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Requests
     {
         private readonly string _sector;
 
-        public GetStandardsBySectorRequest(string sector)
+        public GetStandardsBySectorRequest(string? sector)
         {
             _sector = HttpUtility.UrlEncode(sector);
         }

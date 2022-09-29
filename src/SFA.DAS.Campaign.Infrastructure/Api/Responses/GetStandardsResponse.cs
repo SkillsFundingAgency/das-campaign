@@ -12,7 +12,13 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Responses
     public class Standard
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int LarsCode { get; set; }
+        [JsonProperty("standarduid")]
+        public string StandardUId { get; set; }
+        [JsonProperty("title")]
+        public string Title { get; set; }
+        [JsonProperty("level")]
+        public int Level { get; set; }
     }
 
     
