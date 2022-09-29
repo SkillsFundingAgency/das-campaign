@@ -16,15 +16,15 @@
             <div class="govuk-grid-column-one-third">
                 <h2 class="govuk-heading-l govuk-!-margin-top-6">On this page</h2>
                 <ul class="govuk-list govuk-list--spaced">
-                    <li><a href="#panel1" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.LinkTitle</a></li>
-                    <li><a href="#panel2" class="govuk-link govuk-link--no-visited-state">@Model.Panel2.LinkTitle</a></li>
+                    <li><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.LinkTitle</a></li>
+                    <li><a href="#@Model.Panel2.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel2.LinkTitle</a></li>
                     <li><a href="#funding" class="govuk-link govuk-link--no-visited-state">Find out what funding you could have available</a></li>
                 </ul>
             </div>
             <div class="govuk-grid-column-two-thirds">
 
-                <id id="panel1">@await Html.PartialAsync("_Panel", Model.Panel1)</id>
-                <id id="panel2">@await Html.PartialAsync("_Panel", Model.Panel2)</id>
+                <id id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</id>
+                <id id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</id>
                 @if (!(Model.Calculation == null))
                 {
                     <id id="funding">@await Html.PartialAsync("_CalculationResults", Model)</id>

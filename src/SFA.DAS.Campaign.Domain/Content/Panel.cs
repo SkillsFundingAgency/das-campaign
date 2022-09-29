@@ -6,6 +6,7 @@ namespace SFA.DAS.Campaign.Domain.Content
     public class Panel : IContentType
     {
         public string Title { get; set; }
+        public string Slug { get; set; }
         public IEnumerable<IHtmlControl> Content { get; set; }
         public Image MainImage { get; set; }
         public Button Button { get; set; }
