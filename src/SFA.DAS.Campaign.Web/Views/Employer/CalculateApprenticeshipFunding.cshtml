@@ -74,10 +74,12 @@
                             </label>
                             <p class="govuk-body">We offer over 637 courses which you can search by keyword or job role,
                                 <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.</p>
-                            <select class="govuk-select" id="courses" name="courses">
-                                <option value="11">Business</option>
-                                <option value="22">Software</option>
-                                <option value="33">Engineering</option>
+                            <select class="govuk-select" id="courses" name="courses" data-fiu-autocomplete="true">
+                                <option value="">Select a course</option>
+                                @foreach(var standard in Model.Standards)
+                                {
+                                    <option value="@standard">@standard.Title (level @standard.Level)</option>
+                                }
                             </select>
                         </div>
                         <div class="govuk-form-group">

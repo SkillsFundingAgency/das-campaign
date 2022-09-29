@@ -6,8 +6,7 @@ namespace SFA.DAS.Campaign.Web.Models
 {
     public class ApprenticeshipFundingViewModel
     {
-        //public List<string> Routes { get ; set ; } - get courses here
-
+        public List<Standard> Standards { get; set; }
         public Menu Menu { get; set; }
         public IEnumerable<Banner> BannerModels { get; set; }
         public Panel Panel1 { get; set; }
