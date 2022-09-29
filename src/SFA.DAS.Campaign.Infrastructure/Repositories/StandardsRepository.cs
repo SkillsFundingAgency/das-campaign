@@ -25,11 +25,16 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             return result.Sectors.Select(c=>c.Route).ToList();
         }
 
-        public async Task<GetStandardsResponse> GetByRoute(string routeId)
+        async Task<List<int>> IStandardsRepository.GetByRoute(string routeId)
         {
             var result = await _apiClient.Get<GetStandardsResponse>(new GetStandardsBySectorRequest(routeId));
-            return result;
+            return result.Standards.Select(x => x.LarsCode).ToList();
         }
 
+        //public async Task<GetStandardsResponse> GetStandards()
+        //{
+        //    var result = await _apiClient.Get<GetStandardsResponse>(new GetStandardsRequest());
+        //    return result;
+        //}
     }
 }

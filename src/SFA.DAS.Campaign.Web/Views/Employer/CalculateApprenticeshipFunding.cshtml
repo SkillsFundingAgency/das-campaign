@@ -1,7 +1,7 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
 @{
     ViewBag.Title = "Start your apprenticeship journey";
-    Layout = $"Redesign_Layout_EmployersForm";
+    Layout = $"Redesign_Layout_EmployersHub";
     ViewBag.PageTitle = "START YOUR APRENTICESHIP JOURNEY";
     ViewBag.PageSummary = "Discover how hiring an apprentice can benefit your business and find out what financial support and help is available to you.";
     ViewBag.LandingPageSlug = "are-they-right-for-you";
@@ -16,15 +16,15 @@
             <div class="govuk-grid-column-one-third">
                 <h2 class="govuk-heading-l govuk-!-margin-top-6">On this page</h2>
                 <ul class="govuk-list govuk-list--spaced">
-                    <li><a href="#@Model.Panel1.Position" class="govuk-link govuk-link--no-visited-state">Get going</a></li>
-                    <li><a href="#@Model.Panel2.Position" class="govuk-link govuk-link--no-visited-state">Future-proof your business</a></li>
+                    <li><a href="#panel1" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.LinkTitle</a></li>
+                    <li><a href="#panel2" class="govuk-link govuk-link--no-visited-state">@Model.Panel2.LinkTitle</a></li>
                     <li><a href="#funding" class="govuk-link govuk-link--no-visited-state">Find out what funding you could have available</a></li>
                 </ul>
             </div>
             <div class="govuk-grid-column-two-thirds">
                 
-                    <id=@Model.Panel1.Position>@await Html.PartialAsync("_Panel", Model.Panel1)</id>
-                    <id=@Model.Panel2.Position>@await Html.PartialAsync("_Panel", Model.Panel2)</id>
+                    <id id="panel1">@await Html.PartialAsync("_Panel", Model.Panel1)</id>
+                    <id id="panel2">@await Html.PartialAsync("_Panel", Model.Panel2)</id>
 
                 <div class="fiu-panel fiu-panel--left-align" id="funding">
                     <h2 class="govuk-heading-l">Take your next step today, estimate what funding could be available to you</h2>

@@ -61,7 +61,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             var pageModel = new Panel
             {
                 Title = cmsContent.Panel.MainContent.Title,
-                Position = cmsContent.Panel.MainContent.Position
+                LinkTitle = cmsContent.Panel.MainContent.LinkTitle
             };
 
             AddPanelButton(cmsContent, pageModel);

@@ -12,7 +12,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Requests
         {
             _sector = HttpUtility.UrlEncode(sector);
         }
-
+ 
         public string GetUrl => $"trainingcourses?sector={_sector}";
     }
 }

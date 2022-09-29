@@ -9,6 +9,6 @@ namespace SFA.DAS.Campaign.Domain.Content
         public IEnumerable<IHtmlControl> Content { get; set; }
         public Image MainImage { get; set; }
         public Button Button { get; set; }
-        public string Position { get; set; }
+        public string LinkTitle { get; set; }
     }
 }
