@@ -61,7 +61,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             var slug1 = "are-you-ready-to-get-going";
             var slug2 = "future-proof-your-business";
-            //var standards = _repository.GetStandards(null);
             var standardResult = _repository.GetStandard(model.StandardUid);
             var staticContent = _mediator.GetModelForStaticContent();
             var panel1 = _mediator.Send(new GetPanelQuery() { Slug = slug1, Preview = true });
@@ -73,21 +72,30 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 StandardUId = standardResult.Result.StandardUId,
                 LarsCode = standardResult.Result.LarsCode,
                 Level = standardResult.Result.Level,
-                MaxFundingAvailable = standardResult.Result.MaxFundingAvailable,
-                TimeToComplete = standardResult.Result.TimeToComplete
+                MaxFunding = standardResult.Result.MaxFundingAvailable,
+                Duration = standardResult.Result.TimeToComplete
             };
-            CalculationOutputValues result = new CalculationInputValues() { PayBillGreaterThanThreeMillion = model.PayBillGreaterThanThreeMillion, OverFiftyEmployees = model.OverFiftyEmployees, TrainingCourse = standard, NumberRoles = model.NumberOfRoles }.CalculateFundingAndTraining();
+            CalculationOutputValues result = new CalculationInputValues()
+            {
+                PayBillGreaterThanThreeMillion = model.PayBillGreaterThanThreeMillion,
+                OverFiftyEmployees = model.OverFiftyEmployees,
+                TrainingCourse = standard,
+                NumberRoles = model.NumberOfRoles
+            }
+            .CalculateFundingAndTraining();
             return View(new ApprenticeshipFundingViewModel
             {
-                //Standards = standards.Result,
                 Menu = staticContent.Result.Menu,
                 BannerModels = staticContent.Result.BannerModels,
                 Panel1 = panel1.Result.Panel,
                 Panel2 = panel2.Result.Panel,
-                Calculation = new CalculationOutputValues
+                CalculationResults = new CalculationOutputValues
                 {
                     Funding = result.Funding,
-                    Training = result.Training == null ? 0 : result.Training.Value
+                    Training = result.Training == null ? 0 : result.Training,
+                    Duration = result.Duration,
+                    Title = result.Title,
+                    Level = result.Level
                 },
                 Submitted = true
             });

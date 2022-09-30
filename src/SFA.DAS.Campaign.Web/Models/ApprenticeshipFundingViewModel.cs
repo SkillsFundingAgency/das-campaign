@@ -15,13 +15,13 @@ namespace SFA.DAS.Campaign.Web.Models
         public IEnumerable<Banner> BannerModels { get; set; }
         public Panel Panel1 { get; set; }
         public Panel Panel2 { get; set; }
-        public CalculationOutputValues Calculation { get; set; }
+        public string StandardUid { get; set; }
+        public CalculationOutputValues CalculationResults { get; set; }
         public bool Submitted { get; set; }
         public bool PayBillGreaterThanThreeMillion { get; set; }
         public bool OverFiftyEmployees { get; set; }
-        public string StandardUid { get; set; }
         public int NumberOfRoles { get; set; }
-
     }
+
 
 }

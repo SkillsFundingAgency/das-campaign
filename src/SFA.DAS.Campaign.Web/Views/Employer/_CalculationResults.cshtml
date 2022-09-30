@@ -1,5 +1,82 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
 
 <div class="fiu-panel fiu-panel--left-align" id="funding">
-    <h2 class="govuk-heading-l">Funding available: @Model.Calculation.Funding<br /> Training costs: @Model.Calculation.Training</h2>
+    <h2 class="govuk-heading-l">Your estimated funding</h2>
+    <p>
+        From the information you have provided; your company could benefit from <b>£@Model.CalculationResults.Funding</b> funding towards your apprentice’s training costs. This funding would go to your training provider. This figure is based on hiring apprentices for <b>@Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months</b>.
+    </p>
+
+    <p>
+        This means you only have to pay up to <b>£@Model.CalculationResults.Training</b> of the total training costs. You’ll pay the training provider directly and agree on a payment schedule that works for you both.
+    </p>
+    <p>
+        Just a reminder that you have 24 months to use your levy funds once you enter your apprenticeship service account, after this point, your funds will expire.
+
+    </p>
+    <p>
+        Just so you know, you’re also responsible for paying your apprentice for their normal working hours. You must pay them at least the National Minimum Wage rate depending on their age and the year of apprenticeship training they’re in.
+    </p>
+    <div class="govuk-button-group">
+        <button class="fiu-button fiu-button--employers" type="submit">
+            Sign up to the apprenticeship service
+        </button>
+        <button class="fiu-button fiu-button--employers fiu-button--outlined" type="reset">
+            Start again
+        </button>
+    </div>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <figure class="fiu-quote fiu-quote--employer">
+                <blockquote class="fiu-quote__blockquote">
+                    "Have a plan of what it is that you would like for your student to learn while they are with you, speak to them about what their goals are. Be ready to offer extra time and support to make sure that you get the best out of them."
+                </blockquote>
+                <figcaption class="fiu-quote__caption">
+                    Employer
+                    <span class="fiu-quote__caption-description">Organisation</span>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="govuk-grid-column-one-third">
+            <img src="https://das-roi-tool-prototype.herokuapp.com/public/images/image1.jpg" class="fiu-panel__image" alt="" />
+        </div>
+    </div>
+​
+​
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <figure class="fiu-quote fiu-quote--employer">
+                <blockquote class="fiu-quote__blockquote">
+                    "Have a plan of what it is that you would like for your student to learn while they are with you, speak to them about what their goals are. Be ready to offer extra time and support to make sure that you get the best out of them."
+                </blockquote>
+                <figcaption class="fiu-quote__caption">
+                    Employer
+                    <span class="fiu-quote__caption-description">Organisation</span>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="govuk-grid-column-one-third">
+            <img src="https://das-roi-tool-prototype.herokuapp.com/public/images/image1.jpg" class="fiu-panel__image" alt="" />
+        </div>
+    </div>
+​
+​
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <figure class="fiu-quote fiu-quote--employer">
+                <blockquote class="fiu-quote__blockquote">
+                    "Have a plan of what it is that you would like for your student to learn while they are with you, speak to them about what their goals are. Be ready to offer extra time and support to make sure that you get the best out of them."
+                </blockquote>
+                <figcaption class="fiu-quote__caption">
+                    Employer
+                    <span class="fiu-quote__caption-description">Organisation</span>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="govuk-grid-column-one-third">
+            <img src="https://das-roi-tool-prototype.herokuapp.com/public/images/image1.jpg" class="fiu-panel__image" alt="" />
+        </div>
+    </div>
+​
+    <a href="/employers/real-stories-employers" class="fiu-button fiu-button--employers fiu-button--outlined govuk-!-margin-top-4 govuk-!-margin-bottom-0">See more stories from businesses like yours </a>
+​
 </div>

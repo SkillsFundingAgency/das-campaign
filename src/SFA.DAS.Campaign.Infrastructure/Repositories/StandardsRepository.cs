@@ -37,8 +37,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
                     LarsCode = result.LarsCode,
                     Level = result.Level,
                     MaxFundingAvailable = result.MaxFunding,
-                    TimeToComplete = result.MaxFunding
-            };
+                    TimeToComplete = result.Duration            };
             return standard;
         }
 
