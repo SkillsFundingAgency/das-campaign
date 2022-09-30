@@ -7,7 +7,9 @@ namespace SFA.DAS.Campaign.Domain.ApprenticeshipCourses
 {
     public interface IStandardsRepository
     {
-        Task<List<Standard>> GetStandards(string? routeId);
+        Task<List<StandardResponse>> GetStandards(string? routeId = null);
+        Task<StandardResponse> GetStandard(string standardUId);
+
         Task<List<string>> GetRoutes();
     }
 }

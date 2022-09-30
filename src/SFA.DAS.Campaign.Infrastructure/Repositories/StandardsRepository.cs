@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Api.Requests;
 using SFA.DAS.Campaign.Infrastructure.Api.Responses;
-using Standard = SFA.DAS.Campaign.Domain.Content.Standard;
+using StandardResponse = SFA.DAS.Campaign.Domain.Content.StandardResponse;
 
 namespace SFA.DAS.Campaign.Infrastructure.Repositories
 {
@@ -26,10 +26,26 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
             return result.Sectors.Select(c => c.Route).ToList();
         }
 
-        public async Task<List<Standard>> GetStandards(string? routeId)
+        public async Task<StandardResponse> GetStandard(string standardUId)
+        {
+            var result = await _apiClient.Get<GetStandardResponse>(new GetStandardRequest(standardUId));
+
+            var standard = new StandardResponse
+            {
+                    Title = result.Title,
+                    StandardUId = result.StandardUId,
+                    LarsCode = result.LarsCode,
+                    Level = result.Level,
+                    MaxFundingAvailable = result.MaxFunding,
+                    TimeToComplete = result.MaxFunding
+            };
+            return standard;
+        }
+
+        public async Task<List<StandardResponse>> GetStandards(string? routeId = null)
         {
             var result = await _apiClient.Get<GetStandardsResponse>(new GetStandardsBySectorRequest(routeId));
-            var standards = result.Standards.Select(c => new Standard()
+            var standards = result.Standards.Select(c => new StandardResponse()
             {
                 Title = c.Title,
                 StandardUId = c.StandardUId,

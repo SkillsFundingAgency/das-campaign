@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,7 +7,6 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
-using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api
@@ -30,8 +28,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
         public async Task<TResponse> Get<TResponse>(IGetApiRequest request) 
         {
             AddHeaders();
-
-            var response = await _httpClient.GetAsync(request.GetUrl).ConfigureAwait(false);
+ 
+            var response = await _httpClient.GetAsync(request.GetUrl).ConfigureAwait(false); //this is populated successfully
 
             if (response.StatusCode.Equals(HttpStatusCode.NotFound))
             {
@@ -40,7 +38,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
 
             if (response.IsSuccessStatusCode)
             {
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false); //populated successfully
 
                 foreach (var cmsPageConverter in _jsonConverters)
                 {

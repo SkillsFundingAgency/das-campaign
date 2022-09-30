@@ -1,5 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
+
+<div class="fiu-panel fiu-panel--left-align" id="funding">
+    <h2 class="govuk-heading-l">Funding available: @Model.Calculation.Funding<br /> Training costs: @Model.Calculation.Training</h2>
+</div>

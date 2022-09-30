@@ -1,44 +1,45 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+
                 <div class="fiu-panel fiu-panel--left-align" id="funding">
                     <h2 class="govuk-heading-l">Take your next step today, estimate what funding could be available to you</h2>
 
-                    <form method="" action="">
-                        <div class="govuk-form-group">
+                    <form method="post" asp-action="CalculateApprenticeshipFunding" asp-controller="Employer">  
+@*                        <input type="hidden" asp-for="@Model.Standards"/>
+                        <input type="hidden" asp-for="@Model.Menu"/>
+                        <input type="hidden" asp-for="@Model.BannerModels"/>
+                        <input type="hidden" asp-for="@Model.Panel1.Title"/>
+                        <input type="hidden" asp-for="@Model.Panel2.Title"/>*@
+
+
                             <fieldset class="govuk-fieldset">
                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">What is your annual pay bill?</legend>
                                 <div class="govuk-radios" data-module="govuk-radios">
                                     <div class="govuk-radios__item">
-                                        <input class="govuk-radios__input" id="pay-bill-under" name="pay-bill" type="radio" value="under">
+                                        <input class="govuk-radios__input" id="pay-bill-under" name="PayBillGreaterThanThreeMillion" type="radio" value="false" asp-for="@Model.PayBillGreaterThanThreeMillion">
                                         <label class="govuk-label govuk-radios__label" for="pay-bill-under">
                                             Under &pound;3 million
                                         </label>
                                     </div>
                                     <div class="govuk-radios__item">
-                                        <input class="govuk-radios__input" id="pay-bill-over" name="pay-bill" type="radio" value="over">
+                                        <input class="govuk-radios__input" id="pay-bill-over" name="PayBillGreaterThanThreeMillion" type="radio" value="true" asp-for="@Model.PayBillGreaterThanThreeMillion">
                                         <label class="govuk-label govuk-radios__label" for="pay-bill-over">
                                             Over &pound;3 million
                                         </label>
                                     </div>
                                 </div>
                             </fieldset>
-                        </div>
                         <div class="govuk-form-group">
                             <fieldset class="govuk-fieldset">
                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">How many employees do you have?</legend>
                                 <div class="govuk-radios" data-module="govuk-radios">
                                     <div class="govuk-radios__item">
-                                        <input class="govuk-radios__input" id="employees-under" name="employees" type="radio" value="under50">
+                                        <input class="govuk-radios__input" id="employees-under" name="OverFiftyEmployees" type="radio" value="false" asp-for="@Model.OverFiftyEmployees">
                                         <label class="govuk-label govuk-radios__label" for="employees-under">
                                             1 to 49 employees
                                         </label>
                                     </div>
                                     <div class="govuk-radios__item">
-                                        <input class="govuk-radios__input" id="employees-over" name="employees" type="radio" value="50orover">
+                                        <input class="govuk-radios__input" id="employees-over" name="OverFiftyEmployees" type="radio" value="true" asp-for="@Model.OverFiftyEmployees">
                                         <label class="govuk-label govuk-radios__label" for="employees-over">
                                             50 or more employees
                                         </label>
@@ -52,13 +53,7 @@
                             </label>
                             <p class="govuk-body">We offer over 637 courses which you can search by keyword or job role,
                                 <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.</p>
-                            <select class="govuk-select" id="courses" name="courses" data-fiu-autocomplete="true">
-                                <option value="">Select a course</option>
-                                @foreach(var standard in Model.Standards)
-                                {
-                                    <option value="@standard">@standard.Title (level @standard.Level)</option>
-                                }
-                            </select>
+                                <select  class="govuk-select" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true"></select>
                         </div>
                         <div class="govuk-form-group">
                             <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="roles">
@@ -67,7 +62,7 @@
                             <p class="govuk-body">
                                 Enter the number of available roles
                             </p>
-                            <input class="govuk-input govuk-input--width-3" id="roles" name="roles" type="text">
+                            <input class="govuk-input govuk-input--width-3" id="roles" name="NumberOfRoles" type="text" asp-for="@Model.NumberOfRoles">
                         </div>
                         <div class="govuk-button-group">
                             <button class="fiu-button fiu-button--employers" type="submit">
