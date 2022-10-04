@@ -32,12 +32,13 @@ namespace SFA.DAS.Campaign.Infrastructure.Repositories
 
             var standard = new StandardResponse
             {
-                    Title = result.Title,
-                    StandardUId = result.StandardUId,
-                    LarsCode = result.LarsCode,
-                    Level = result.Level,
-                    MaxFundingAvailable = result.MaxFunding,
-                    TimeToComplete = result.Duration            };
+                Title = result.Title,
+                StandardUId = result.StandardUId,
+                LarsCode = result.LarsCode,
+                Level = result.Level,
+                MaxFundingAvailable = result.MaxFunding,
+                TimeToComplete = result.Duration
+            };
             return standard;
         }
 

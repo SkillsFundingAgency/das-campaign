@@ -29,7 +29,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
         {
             AddHeaders();
  
-            var response = await _httpClient.GetAsync(request.GetUrl).ConfigureAwait(false); //this is populated successfully
+            var response = await _httpClient.GetAsync(request.GetUrl).ConfigureAwait(false);
 
             if (response.StatusCode.Equals(HttpStatusCode.NotFound))
             {
@@ -38,7 +38,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api
 
             if (response.IsSuccessStatusCode)
             {
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false); //populated successfully
+                
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 foreach (var cmsPageConverter in _jsonConverters)
                 {

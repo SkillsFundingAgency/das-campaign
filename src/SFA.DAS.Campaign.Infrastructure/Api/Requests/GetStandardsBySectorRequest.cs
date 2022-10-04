@@ -19,7 +19,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Requests
             {
                 return $"trainingcourses?sector={_sector}";
             }
-            return $"trainingcourses";
+            return "trainingcourses";
         }
         public string GetUrl => BuildUrl(_sector);
     }
