@@ -10,7 +10,7 @@ namespace SFA.DAS.Campaign.Web.Models
     public class ApprenticeshipFundingViewModel
     {
         public List<StandardResponse> Standards { get; set; }
-        public IEnumerable<SelectListItem> StandardItems { get { return Standards?.Select(s => new SelectListItem($"{s.Title} ({s.Level})", s.StandardUId)); } }
+        public IEnumerable<SelectListItem> StandardItems { get { return Standards?.Select(s => new SelectListItem($"{s.Title} (Level {s.Level})", s.StandardUId)); } }
         public Menu Menu { get; set; }
         public IEnumerable<Banner> BannerModels { get; set; }
         public Panel Panel1 { get; set; }
@@ -18,8 +18,8 @@ namespace SFA.DAS.Campaign.Web.Models
         public string StandardUid { get; set; }
         public CalculationOutputValues CalculationResults { get; set; }
         public bool Submitted { get; set; }
-        public bool PayBillGreaterThanThreeMillion { get; set; }
-        public bool OverFiftyEmployees { get; set; }
+        public bool? PayBillGreaterThanThreeMillion { get; set; }
+        public bool? OverFiftyEmployees { get; set; }
         public int NumberOfRoles { get; set; }
     }
 

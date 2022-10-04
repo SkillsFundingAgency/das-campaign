@@ -46,7 +46,7 @@
             <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="courses">
                 What training course do you want your apprentice to take?
             </label>
-            <p class="govuk-body">We offer over 637 courses which you can search by keyword or job role,
+            <p class="govuk-body">We offer over @Model.Standards.Count() courses which you can search by keyword or job role,
                 <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.</p>
                 <select  class="govuk-select" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true"><option label=" "></option></select>
         </div>
@@ -100,7 +100,7 @@
             </figure>
         </div>
         <div class="govuk-grid-column-one-third">
-            <img src="https://das-roi-tool-prototype.herokuapp.com/public/images/image1.jpg" class="fiu-panel__image" alt="" />
+            <img src="https://das-roi-tool-prototype.herokuapp.com/public/images/image2.jpg" class="fiu-panel__image" alt="" />
         </div>
     </div>
 ​
@@ -118,7 +118,7 @@
             </figure>
         </div>
         <div class="govuk-grid-column-one-third">
-            <img src="https://das-roi-tool-prototype.herokuapp.com/public/images/image1.jpg" class="fiu-panel__image" alt="" />
+            <img src="https://das-roi-tool-prototype.herokuapp.com/public/images/image5.jpg" class="fiu-panel__image" alt="" />
         </div>
     </div>
 ​

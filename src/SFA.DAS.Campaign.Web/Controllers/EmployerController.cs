@@ -77,8 +77,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
             };
             CalculationOutputValues result = new CalculationInputValues()
             {
-                PayBillGreaterThanThreeMillion = model.PayBillGreaterThanThreeMillion,
-                OverFiftyEmployees = model.OverFiftyEmployees,
+                PayBillGreaterThanThreeMillion = (bool)model.PayBillGreaterThanThreeMillion,
+                OverFiftyEmployees = (bool)model.OverFiftyEmployees,
                 TrainingCourse = standard,
                 NumberRoles = model.NumberOfRoles
             }
