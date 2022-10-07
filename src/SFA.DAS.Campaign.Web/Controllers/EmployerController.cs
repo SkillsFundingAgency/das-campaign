@@ -19,6 +19,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
         private readonly IMediator _mediator;
         private readonly IStandardsRepository _repository;
 
+        private const string calculationPanel1Slug = "are-you-ready-to-get-going";
+        private const string calculationPanel2Slug = "future-proof-your-business";
+
         public EmployerController(IOptions<CampaignConfiguration> configuration, IMediator mediator, IStandardsRepository repository)
         {
             _configuration = configuration.Value;
@@ -34,14 +37,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [Route("/employers/calculate-your-apprenticeship-funding")]
-        public async Task<IActionResult> CalculateApprenticeshipFunding([FromQuery] bool preview)
+        public async Task<IActionResult> CalculateApprenticeshipFunding([FromQuery] bool preview = true)
         {
-            var slug1 = "are-you-ready-to-get-going";
-            var slug2 = "future-proof-your-business";
             var standards = _repository.GetStandards();
             var staticContent = _mediator.GetModelForStaticContent();
-            var panel1 = _mediator.Send(new GetPanelQuery() { Slug = slug1, Preview = preview });
-            var panel2 = _mediator.Send(new GetPanelQuery() { Slug = slug2, Preview = preview });
+            var panel1 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel1Slug, Preview = preview });
+            var panel2 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel2Slug, Preview = preview });
 
             await Task.WhenAll(staticContent, panel1, panel2, standards);
 
@@ -57,15 +58,14 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpPost("/employers/calculate-your-apprenticeship-funding")]
-        public async Task<IActionResult> CalculateApprenticeshipFunding(ApprenticeshipFundingViewModel model)
+        public async Task<IActionResult> CalculateApprenticeshipFunding(ApprenticeshipFundingViewModel model, [FromQuery] bool preview = true)
         {
-            var slug1 = "are-you-ready-to-get-going";
-            var slug2 = "future-proof-your-business";
             var standardResult = _repository.GetStandard(model.StandardUid);
             var staticContent = _mediator.GetModelForStaticContent();
-            var panel1 = _mediator.Send(new GetPanelQuery() { Slug = slug1, Preview = true });
-            var panel2 = _mediator.Send(new GetPanelQuery() { Slug = slug2, Preview = true });
+            var panel1 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel1Slug, Preview = preview });
+            var panel2 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel2Slug, Preview = preview });
             await Task.WhenAll(staticContent, panel1, panel2, standardResult);
+
             var standard = new Standard
             {
                 Title = standardResult.Result.Title,
@@ -75,6 +75,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 MaxFunding = standardResult.Result.MaxFundingAvailable,
                 Duration = standardResult.Result.TimeToComplete
             };
+
             CalculationOutputValues result = new CalculationInputValues()
             {
                 PayBillGreaterThanThreeMillion = (bool)model.PayBillGreaterThanThreeMillion,
@@ -83,6 +84,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 NumberRoles = model.NumberOfRoles
             }
             .CalculateFundingAndTraining();
+
             return View(new ApprenticeshipFundingViewModel
             {
                 Menu = staticContent.Result.Menu,
