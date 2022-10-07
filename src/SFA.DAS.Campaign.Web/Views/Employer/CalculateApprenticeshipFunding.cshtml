@@ -13,7 +13,7 @@
 }
 <div class="govuk-width-container">
     <div class="govuk-grid-row govuk-!-margin-top-9">
-        <div class="govuk-grid-column-one-third govuk-!-margin-top-9">
+        <div class="govuk-grid-column-one-third govuk-!-margin-top-9 fiu-hide-print">
             <h2 class="govuk-heading-l">On this page</h2>
             <ul class="govuk-list govuk-list--spaced">
                 <li><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.LinkTitle</a></li>
@@ -22,8 +22,10 @@
             </ul>
         </div>
         <div class="govuk-grid-column-two-thirds govuk-!-margin-top-6">
-            <id id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</id>
-            <id id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</id>
+            <div class="fiu-hide-print">
+                <id id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</id>
+                <id id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</id>
+            </div>
             @if (Model.Submitted == true)
             {
                 <id id="funding">@await Html.PartialAsync("_CalculationResults", Model)</id>
