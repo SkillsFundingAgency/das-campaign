@@ -37,6 +37,9 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
         private GetPanelQueryResult _panelResult2;
         private List<StandardResponse> _standards;
 
+        private const string calculationPanel1Slug = "are-you-ready-to-get-going";
+        private const string calculationPanel2Slug = "future-proof-your-business";
+
         [SetUp]
         public void Arrange()
         {
@@ -65,8 +68,8 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
             _controller = new EmployerController(_configuration.Object, _mediator.Object, _repository.Object);
 
             _repository.Setup(p => p.GetStandards(null)).ReturnsAsync(_standards);
-            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Slug == _panelResult1.Panel.Slug), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult1);
-            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Slug == _panelResult2.Panel.Slug), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult2);
+            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Slug == calculationPanel1Slug), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult1);
+            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Slug == calculationPanel2Slug), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult2);
             _mediator.Setup(p => p.Send(It.IsAny<GetMenuQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(_menu);
             _mediator.Setup(p => p.Send(It.IsAny<GetBannerQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(_banner);
             _staticContent = new Page<StaticContent>
@@ -79,7 +82,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
         [Test, RecursiveMoqAutoData]
         public async Task Then_The_CalculateYourApprenticeshipFunding_Page_Is_Returned(bool preview)
         {
-            var result = await _controller.CalculateApprenticeshipFunding(_panelResult1.Panel.Slug, _panelResult2.Panel.Slug, preview);
+            var result = await _controller.CalculateApprenticeshipFunding(preview);
 
             var viewResult = result as ViewResult;
 
