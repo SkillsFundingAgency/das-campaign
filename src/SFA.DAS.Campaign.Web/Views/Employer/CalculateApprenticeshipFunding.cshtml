@@ -1,48 +1,39 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
 @{
     ViewBag.Title = "Start your apprenticeship journey";
-    Layout = $"Redesign_Layout_EmployersForm";
-    ViewBag.PageTitle = "START YOUR APRENTICESHIP JOURNEY";
+    ViewBag.HubPage = true;
+    Layout = $"Redesign_Layout_EmployersHub";
+    ViewBag.PageTitle = "Start your apprenticeship journey";
     ViewBag.PageSummary = "Discover how hiring an apprentice can benefit your business and find out what financial support and help is available to you.";
     ViewBag.LandingPageSlug = "are-they-right-for-you";
     ViewBag.LandingPageTitle = "Are they right for you?";
     ViewBag.ArticlePageSlug = "start-your-apprenticeship-journey";
     ViewBag.ArticlePageTitle = "Start your apprenticeship journey";
+    ViewBag.HeadingImage = "https://das-roi-tool-prototype.herokuapp.com/public/images/heroimg.jpg";
 }
-
-<div>
-    <h1>On this page</h1>
-    <ul>
-        <li>
-            <a href="#panel1" class="fiu-link">Get going</a>
-        </li>
-        <li>
-            <a href="#panel2" class="fiu-link">Future-proof your business</a>
-        </li>
-        <li>
-            <a href="#panel3" class="fiu-link">Find out what funding you could have available</a>
-        </li>
-    </ul>
-</div>
-<a id="panel1">@await Html.PartialAsync("_Panel", Model.Panel1)</a>
-
-<a id="panel2">@await Html.PartialAsync("_Panel", Model.Panel2)</a>
-
-<a id="panel3">
-    <div class="fiu-panel fiu-panel--left-align">
-        <h2 class="govuk-heading-l">Take your next step today, estimate what funding could be available to you:</h2>
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-                <article class="fiu-article">
-                    Placeholder article.
-                    <div>
-                        @*@await Html.PartialAsync("_Calculator")*@
-                    </div>
-                </article>
+<div class="govuk-width-container">
+    <div class="govuk-grid-row govuk-!-margin-top-9">
+        <div class="govuk-grid-column-one-third govuk-!-margin-top-9 fiu-hide-print">
+            <h2 class="govuk-heading-l">On this page</h2>
+            <ul class="govuk-list govuk-list--spaced">
+                <li><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.LinkTitle</a></li>
+                <li><a href="#@Model.Panel2.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel2.LinkTitle</a></li>
+                <li><a href="#funding" class="govuk-link govuk-link--no-visited-state">Find out what funding you could have available</a></li>
+            </ul>
+        </div>
+        <div class="govuk-grid-column-two-thirds govuk-!-margin-top-6">
+            <div class="fiu-hide-print">
+                <id id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</id>
+                <id id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</id>
             </div>
-            <div class="">
-                <img src="" alt="Video placeholder" class="" />
-            </div>
+            @if (Model.Submitted == true)
+            {
+                <id id="funding">@await Html.PartialAsync("_CalculationResults", Model)</id>
+            }
+            else
+            {
+                <id id="funding">@await Html.PartialAsync("_Calculation", Model)</id>
+            }
         </div>
     </div>
-</a>
+</div>
