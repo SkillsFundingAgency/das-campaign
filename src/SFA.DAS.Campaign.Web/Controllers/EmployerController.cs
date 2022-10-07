@@ -34,14 +34,14 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [Route("/employers/calculate-your-apprenticeship-funding")]
-        public async Task<IActionResult> CalculateApprenticeshipFunding(string slug1, string slug2, [FromQuery] bool preview)
+        public async Task<IActionResult> CalculateApprenticeshipFunding([FromQuery] bool preview)
         {
-            slug1 = "are-you-ready-to-get-going";
-            slug2 = "future-proof-your-business";
+            var slug1 = "are-you-ready-to-get-going";
+            var slug2 = "future-proof-your-business";
             var standards = _repository.GetStandards();
             var staticContent = _mediator.GetModelForStaticContent();
-            var panel1 = _mediator.Send(new GetPanelQuery() { Slug = slug1, Preview = true });
-            var panel2 = _mediator.Send(new GetPanelQuery() { Slug = slug2, Preview = true });
+            var panel1 = _mediator.Send(new GetPanelQuery() { Slug = slug1, Preview = preview });
+            var panel2 = _mediator.Send(new GetPanelQuery() { Slug = slug2, Preview = preview });
 
             await Task.WhenAll(staticContent, panel1, panel2);
 
