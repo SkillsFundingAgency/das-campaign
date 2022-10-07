@@ -43,7 +43,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             var panel1 = _mediator.Send(new GetPanelQuery() { Slug = slug1, Preview = preview });
             var panel2 = _mediator.Send(new GetPanelQuery() { Slug = slug2, Preview = preview });
 
-            await Task.WhenAll(staticContent, panel1, panel2);
+            await Task.WhenAll(staticContent, panel1, panel2, standards);
 
             return View(new ApprenticeshipFundingViewModel
             {
