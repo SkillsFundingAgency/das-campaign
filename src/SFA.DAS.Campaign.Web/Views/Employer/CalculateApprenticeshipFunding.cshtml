@@ -23,16 +23,16 @@
         </div>
         <div class="govuk-grid-column-two-thirds govuk-!-margin-top-6">
             <div class="fiu-hide-print">
-                <id id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</id>
-                <id id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</id>
+                <div id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</div>
+                <div id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</div>
             </div>
             @if (Model.Submitted == true)
             {
-                <id id="funding">@await Html.PartialAsync("_CalculationResults", Model)</id>
+                <div id="funding">@await Html.PartialAsync("_CalculationResults", Model)</div>
             }
             else
             {
-                <id id="funding">@await Html.PartialAsync("_Calculation", Model)</id>
+                <div id="funding">@await Html.PartialAsync("_Calculation", Model)</div>
             }
         </div>
     </div>
