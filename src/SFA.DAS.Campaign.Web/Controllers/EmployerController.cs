@@ -37,7 +37,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [Route("/employers/calculate-your-apprenticeship-funding")]
-        public async Task<IActionResult> CalculateApprenticeshipFunding([FromQuery] bool preview = true)
+        public async Task<IActionResult> CalculateApprenticeshipFunding([FromQuery] bool preview = false)
         {
             var standards = _repository.GetStandards();
             var staticContent = _mediator.GetModelForStaticContent();
@@ -58,7 +58,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpPost("/employers/calculate-your-apprenticeship-funding")]
-        public async Task<IActionResult> CalculateApprenticeshipFunding(ApprenticeshipFundingViewModel model, [FromQuery] bool preview = true)
+        public async Task<IActionResult> CalculateApprenticeshipFunding(ApprenticeshipFundingViewModel model, [FromQuery] bool preview = false)
         {
             var standardResult = _repository.GetStandard(model.StandardUid);
             var staticContent = _mediator.GetModelForStaticContent();
