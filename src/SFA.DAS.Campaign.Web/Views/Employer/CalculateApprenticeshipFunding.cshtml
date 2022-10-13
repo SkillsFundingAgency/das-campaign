@@ -28,7 +28,21 @@
             </div>
             @if (Model.Submitted == true)
             {
-                <div id="funding">@await Html.PartialAsync("_CalculationResults", Model)</div>
+                if (Model.PayBillGreaterThanThreeMillion == true)
+                {
+                    <div id="funding">@await Html.PartialAsync("_CalculationResultsLevy", Model)</div>
+                }
+                else if (Model.PayBillGreaterThanThreeMillion == false)
+                {
+                    if (Model.OverFiftyEmployees == true)
+                    {
+                        <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyOver50", Model)</div>
+                    }
+                    else if (Model.OverFiftyEmployees == false)
+                    {
+                        <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyUnder50", Model)</div>
+                    }
+                }
             }
             else
             {

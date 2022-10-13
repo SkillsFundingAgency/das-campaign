@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SFA.DAS.Campaign.Application.FundingTool;
+using SFA.DAS.Campaign.Application.FundingTool.Queries.Calculation;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
 
@@ -16,7 +16,7 @@ namespace SFA.DAS.Campaign.Web.Models
         public Panel Panel1 { get; set; }
         public Panel Panel2 { get; set; }
         public string StandardUid { get; set; }
-        public CalculationOutputValues CalculationResults { get; set; }
+        public CalculationQueryResult CalculationResults { get; set; }
         public bool Submitted { get; set; }
         public bool? PayBillGreaterThanThreeMillion { get; set; }
         public bool? OverFiftyEmployees { get; set; }

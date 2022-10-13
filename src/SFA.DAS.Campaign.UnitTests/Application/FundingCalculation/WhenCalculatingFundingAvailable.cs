@@ -1,55 +1,56 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using SFA.DAS.Campaign.Application.FundingTool;
+using SFA.DAS.Campaign.Application.FundingTool.Queries.Calculation;
 using SFA.DAS.Testing.AutoFixture;
 using System;
+using System.Threading;
 
 namespace SFA.DAS.Campaign.UnitTests.Application.FundingCalculation
 {
     public class WhenCalculatingFundingAvailable
-    {
+    { 
         [Test, MoqAutoData]
-        public void AndEmployerIsLevy_ThenTheCorrectFundingAndTrainingCostsAreCalculated(CalculationInputValues calculationInput)
+        public void AndEmployerIsLevy_ThenTheCorrectFundingAndTrainingCostsAreCalculated(CalculationQuery query, CancellationToken cancellationToken, CalculationQueryHandler handler)
         {
-            calculationInput.PayBillGreaterThanThreeMillion = true;
+            query.PayBillGreaterThanThreeMillion = true;
 
-            var actual = calculationInput.CalculateFundingAndTraining();
+            var actual = handler.Handle(query, cancellationToken);
 
-            actual.Duration.Should().Be(calculationInput.TrainingCourse.Duration);
-            actual.Level.Should().Be(calculationInput.TrainingCourse.Level);
-            actual.Title.Should().Be(calculationInput.TrainingCourse.Title);
-            actual.Funding.Should().Be(calculationInput.TrainingCourse.MaxFunding * calculationInput.NumberRoles);
-            actual.Training.Should().Be(null);
+            actual.Result.Duration.Should().Be(query.TrainingCourse.Duration);
+            actual.Result.Level.Should().Be(query.TrainingCourse.Level);
+            actual.Result.Title.Should().Be(query.TrainingCourse.Title);
+            actual.Result.Funding.Should().Be(query.TrainingCourse.MaxFunding * query.NumberRoles);
+            actual.Result.Training.Should().Be(0);
         }
 
         [Test, MoqAutoData]
-        public void AndEmployerIsNonLevyWithLessThanFiftyEmployees_ThenTheCorrectFundingAndTrainingCostsAreCalculated(CalculationInputValues calculationInput)
+        public void AndEmployerIsNonLevyWithLessThanFiftyEmployees_ThenTheCorrectFundingAndTrainingCostsAreCalculated(CalculationQuery query, CancellationToken cancellationToken, CalculationQueryHandler handler)
         {
-            calculationInput.PayBillGreaterThanThreeMillion = false;
-            calculationInput.OverFiftyEmployees = false;
+            query.PayBillGreaterThanThreeMillion = false;
+            query.OverFiftyEmployees = false;
 
-            var actual = calculationInput.CalculateFundingAndTraining();
+            var actual = handler.Handle(query, cancellationToken);
 
-            actual.Duration.Should().Be(calculationInput.TrainingCourse.Duration);
-            actual.Level.Should().Be(calculationInput.TrainingCourse.Level);
-            actual.Title.Should().Be(calculationInput.TrainingCourse.Title);
-            actual.Funding.Should().Be(calculationInput.TrainingCourse.MaxFunding * calculationInput.NumberRoles);
-            actual.Training.Should().Be(null);
+            actual.Result.Duration.Should().Be(query.TrainingCourse.Duration);
+            actual.Result.Level.Should().Be(query.TrainingCourse.Level);
+            actual.Result.Title.Should().Be(query.TrainingCourse.Title);
+            actual.Result.Funding.Should().Be(query.TrainingCourse.MaxFunding * query.NumberRoles);
+            actual.Result.Training.Should().Be(0);
         }
 
         [Test, MoqAutoData]
-        public void AndEmployerIsNonLevyFiftyOrMoreEmployees_ThenTheCorrectFundingAndTrainingCostsAreCalculated(CalculationInputValues calculationInput)
+        public void AndEmployerIsNonLevyFiftyOrMoreEmployees_ThenTheCorrectFundingAndTrainingCostsAreCalculated(CalculationQuery query, CancellationToken cancellationToken, CalculationQueryHandler handler)
         {
-            calculationInput.PayBillGreaterThanThreeMillion = false;
-            calculationInput.OverFiftyEmployees = true;
+            query.PayBillGreaterThanThreeMillion = false;
+            query.OverFiftyEmployees = true;
 
-            var actual = calculationInput.CalculateFundingAndTraining();
+            var actual = handler.Handle(query, cancellationToken);
 
-            actual.Duration.Should().Be(calculationInput.TrainingCourse.Duration);
-            actual.Level.Should().Be(calculationInput.TrainingCourse.Level);
-            actual.Title.Should().Be(calculationInput.TrainingCourse.Title);
-            actual.Funding.Should().Be(Convert.ToInt32((calculationInput.TrainingCourse.MaxFunding * calculationInput.NumberRoles) * 0.95));
-            actual.Training.Should().Be(Convert.ToInt32((calculationInput.TrainingCourse.MaxFunding * calculationInput.NumberRoles) * 0.05));
+            actual.Result.Duration.Should().Be(query.TrainingCourse.Duration);
+            actual.Result.Level.Should().Be(query.TrainingCourse.Level);
+            actual.Result.Title.Should().Be(query.TrainingCourse.Title);
+            actual.Result.Funding.Should().Be(Convert.ToInt32((query.TrainingCourse.MaxFunding * query.NumberRoles) * 0.95));
+            actual.Result.Training.Should().Be(Convert.ToInt32((query.TrainingCourse.MaxFunding * query.NumberRoles) * 0.05));
         }
     }
 }
