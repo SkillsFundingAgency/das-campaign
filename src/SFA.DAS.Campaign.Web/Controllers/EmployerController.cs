@@ -35,7 +35,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return RedirectPermanent(_configuration.FatBaseUrl);
         }
 
-        [Route("/employers/calculate-your-apprenticeship-funding")]
+        [Route("/employers/funding-your-apprenticeship-training")]
         public async Task<IActionResult> CalculateApprenticeshipFunding([FromQuery] bool preview = false)
         {
             var standards = _mediator.Send(new GetStandardsQuery());
@@ -56,9 +56,19 @@ namespace SFA.DAS.Campaign.Web.Controllers
             });
         }
 
-        [HttpPost("/employers/calculate-your-apprenticeship-funding")]
+        [HttpPost("/employers/funding-your-apprenticeship-training")]
         public async Task<IActionResult> CalculateApprenticeshipFunding(ApprenticeshipFundingViewModel model, [FromQuery] bool preview = false)
         {
+            if (!ModelState.IsValid)
+            {
+                if (ModelState.ErrorCount > 1)
+                {
+                    ModelState.AddModelError("MultipleErrorSummary", "There is a problem");
+                }
+
+                return View("CalculateApprenticeshipFunding", model);
+            }
+
             var standard = _mediator.Send(new GetStandardQuery { StandardUId = model.StandardUid });
             var staticContent = _mediator.GetModelForStaticContent();
             var panel1 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel1Slug, Preview = preview });

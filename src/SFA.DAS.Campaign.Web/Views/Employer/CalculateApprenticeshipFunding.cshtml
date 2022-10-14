@@ -1,14 +1,14 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
 @{
-    ViewBag.Title = "Start your apprenticeship journey";
+    ViewBag.Title = "Funding your apprenticeship training";
     ViewBag.HubPage = true;
     Layout = $"Redesign_Layout_EmployersHub";
-    ViewBag.PageTitle = "Start your apprenticeship journey";
-    ViewBag.PageSummary = "Discover how hiring an apprentice can benefit your business and find out what financial support and help is available to you.";
+    ViewBag.PageTitle = "Funding your apprenticeship training";
+    ViewBag.PageSummary = "Explore what benefits apprentices can bring to your organisation and calculate what funding could be available towards your apprentices training costs.";
     ViewBag.LandingPageSlug = "are-they-right-for-you";
     ViewBag.LandingPageTitle = "Are they right for you?";
-    ViewBag.ArticlePageSlug = "start-your-apprenticeship-journey";
-    ViewBag.ArticlePageTitle = "Start your apprenticeship journey";
+    ViewBag.ArticlePageSlug = "funding-your-apprenticeship-training";
+    ViewBag.ArticlePageTitle = "Funding your apprenticeship training";
     ViewBag.HeadingImage = "https://das-roi-tool-prototype.herokuapp.com/public/images/heroimg.jpg";
 }
 <div class="govuk-width-container">
@@ -23,6 +23,9 @@
         </div>
         <div class="govuk-grid-column-two-thirds govuk-!-margin-top-6">
             <div class="fiu-hide-print">
+
+                <partial name="ValidationSummary" />
+
                 <div id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</div>
                 <div id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</div>
             </div>
