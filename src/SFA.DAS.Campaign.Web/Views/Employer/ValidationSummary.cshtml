@@ -6,26 +6,18 @@
         </h2>
         <div class="govuk-error-summary__body">
             <ul class="govuk-list govuk-error-summary__list">
-                @if (ViewContext.ViewData.ModelState.ContainsKey("MultipleErrorSummary"))
+                @foreach (var stateItem in ViewContext.ViewData.ModelState)
                 {
-                    <li>
-                        <a href="#">@ViewContext.ViewData.ModelState["MultipleErrorSummary"].Errors[0].ErrorMessage</a>
-                    </li>
-                }
-                else
-                {
-                    @foreach (var stateItem in ViewContext.ViewData.ModelState)
-                    {
-                        var elementId = Html.GenerateIdFromName(ViewData.TemplateInfo.GetFullHtmlFieldName(stateItem.Key)) ?? stateItem.Key;
+                    var elementId = Html.GenerateIdFromName(ViewData.TemplateInfo.GetFullHtmlFieldName(stateItem.Key)) ?? stateItem.Key;
 
-                        foreach (var error in stateItem.Value.Errors)
-                        {
-                            <li>
-                                <a href="#@elementId">@error.ErrorMessage</a>
-                            </li>
-                        }
+                    foreach (var error in stateItem.Value.Errors)
+                    {
+                        <li>
+                            <a href="#@elementId">@error.ErrorMessage</a>
+                        </li>
                     }
                 }
+                @*}*@
             </ul>
         </div>
     </div>

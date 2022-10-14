@@ -60,11 +60,17 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [HttpPost("/employers/funding-your-apprenticeship-training")]
         public async Task<IActionResult> FundingYourApprenticeshipTraining(FundingYourApprenticeshipTrainingViewModel model, [FromQuery] bool preview = false)
         {
+            if (model.PayBillGreaterThanThreeMillion == false && (model.Roles > 10 || model.Roles < 1))
+            {
+                ModelState.AddModelError("NumberOfRoles", "Enter a number between 1 and 10");
+            }
+
             var staticContent = _mediator.GetModelForStaticContent();
             var panel1 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel1Slug, Preview = preview });
             var panel2 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel2Slug, Preview = preview });
 
             await Task.WhenAll(staticContent, panel1, panel2);
+
             if (!ModelState.IsValid)
             {
                 var standards = await _mediator.Send(new GetStandardsQuery());

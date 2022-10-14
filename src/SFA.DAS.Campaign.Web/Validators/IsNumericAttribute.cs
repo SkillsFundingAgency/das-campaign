@@ -17,7 +17,7 @@ namespace SFA.DAS.Campaign.Web.Validators
                 }
                 else
                 {
-                    if (val > 10 || val < 1)
+                    if (val < 1)
                     {
                         return new ValidationResult("Enter a number between 1 and 10");
                     }
