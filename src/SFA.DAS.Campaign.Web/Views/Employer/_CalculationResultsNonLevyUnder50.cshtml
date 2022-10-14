@@ -1,4 +1,4 @@
-﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
+﻿@model SFA.DAS.Campaign.Web.Models.FundingYourApprenticeshipTrainingViewModel
 
 <div class="fiu-panel fiu-panel--left-align">
     <div class="fiu-confirmation fiu-confirmation--employers">
@@ -18,9 +18,20 @@
             </span>
         </li>
     </ul>
-    <p class="govuk-body">
-        From the information you have provided; your company could benefit from <b>£@Model.CalculationResults.Funding</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on hiring @Model.NumberOfRoles apprentices for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
-    </p>
+    @{
+        if (Model.Roles > 1)
+        {
+            <p class="govuk-body">
+                From the information you have provided; your company could benefit from <b>£@Model.CalculationResults.Funding</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on hiring @Model.NumberOfRoles apprentices for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
+            </p>
+        }
+        else
+        {
+            <p class="govuk-body">
+                From the information you have provided; your company could benefit from <b>£@Model.CalculationResults.Funding</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on hiring @Model.NumberOfRoles apprentice for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
+            </p>
+        }
+    }
     <p class="govuk-body">
         However, you may not need to contribute any money towards your training costs if you hire an apprentice who is:
         <br />
@@ -44,7 +55,7 @@
             <a href="https://accounts.manage-apprenticeships.service.gov.uk/" class="fiu-button fiu-button--employers">
                 Sign up to the apprenticeship service
             </a>
-            <a href="/employers/calculate-your-apprenticeship-funding?#funding" class="fiu-button fiu-button--employers fiu-button--outlined">
+            <a href="/employers/funding-your-apprenticeship-training?#funding" class="fiu-button fiu-button--employers fiu-button--outlined">
                 Start again
             </a>
         </div>

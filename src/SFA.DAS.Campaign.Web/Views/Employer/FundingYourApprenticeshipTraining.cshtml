@@ -1,4 +1,4 @@
-﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
+﻿@model SFA.DAS.Campaign.Web.Models.FundingYourApprenticeshipTrainingViewModel
 @{
     ViewBag.Title = "Funding your apprenticeship training";
     ViewBag.HubPage = true;
@@ -49,7 +49,7 @@
             }
             else
             {
-                <div id="funding">@await Html.PartialAsync("_Calculation", Model)</div>
+                <div id="funding">@await Html.PartialAsync("_CalculationInputPanel", Model)</div>
             }
         </div>
     </div>

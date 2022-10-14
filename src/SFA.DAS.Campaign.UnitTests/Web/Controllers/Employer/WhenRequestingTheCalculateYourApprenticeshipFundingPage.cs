@@ -79,12 +79,12 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
         [Test, RecursiveMoqAutoData]
         public async Task Then_The_CalculateYourApprenticeshipFunding_Page_Is_Returned(bool preview)
         {
-            var result = await _controller.CalculateApprenticeshipFunding(preview);
+            var result = await _controller.FundingYourApprenticeshipTraining(preview);
 
             var viewResult = result as ViewResult;
 
             Assert.AreEqual(null, viewResult.ViewName);
-            var actualModel = viewResult.Model as ApprenticeshipFundingViewModel;
+            var actualModel = viewResult.Model as FundingYourApprenticeshipTrainingViewModel;
             Assert.IsNotNull(actualModel);
             actualModel.Standards.Should().BeEquivalentTo(_standardsResult);
             actualModel.Panel1.Should().BeEquivalentTo(_panelResult1.Panel);

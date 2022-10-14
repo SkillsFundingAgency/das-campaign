@@ -9,6 +9,7 @@ using SFA.DAS.Campaign.Infrastructure.Api.Responses;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.Models;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -36,7 +37,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [Route("/employers/funding-your-apprenticeship-training")]
-        public async Task<IActionResult> CalculateApprenticeshipFunding([FromQuery] bool preview = false)
+        public async Task<IActionResult> FundingYourApprenticeshipTraining([FromQuery] bool preview = false)
         {
             var standards = _mediator.Send(new GetStandardsQuery());
             var staticContent = _mediator.GetModelForStaticContent();
@@ -45,9 +46,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             await Task.WhenAll(standards, staticContent, panel1, panel2);
 
-            return View(new ApprenticeshipFundingViewModel
+            return View(new FundingYourApprenticeshipTrainingViewModel
             {
-                Standards = standards.Result.Standards.Select(s => new Domain.Content.StandardResponse { Title = s.Title, LarsCode = s.LarsCode, Level = s.Level, StandardUId = s.StandardUId}).ToList(),
+                Standards = standards.Result.Standards.Select(s => new Domain.Content.StandardResponse { Title = s.Title, LarsCode = s.LarsCode, Level = s.Level, StandardUId = s.StandardUId }).ToList(),
                 Menu = staticContent.Result.Menu,
                 BannerModels = staticContent.Result.BannerModels,
                 Panel1 = panel1.Result.Panel,
@@ -57,27 +58,30 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpPost("/employers/funding-your-apprenticeship-training")]
-        public async Task<IActionResult> CalculateApprenticeshipFunding(ApprenticeshipFundingViewModel model, [FromQuery] bool preview = false)
+        public async Task<IActionResult> FundingYourApprenticeshipTraining(FundingYourApprenticeshipTrainingViewModel model, [FromQuery] bool preview = false)
         {
-            if (!ModelState.IsValid)
-            {
-                if (ModelState.ErrorCount > 1)
-                {
-                    ModelState.AddModelError("MultipleErrorSummary", "There is a problem");
-                }
-
-                return View("CalculateApprenticeshipFunding", model);
-            }
-
-            var standard = _mediator.Send(new GetStandardQuery { StandardUId = model.StandardUid });
             var staticContent = _mediator.GetModelForStaticContent();
             var panel1 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel1Slug, Preview = preview });
             var panel2 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel2Slug, Preview = preview });
-            var calculationResult = _mediator.Send(new CalculationQuery() { PayBillGreaterThanThreeMillion = (bool)model.PayBillGreaterThanThreeMillion, OverFiftyEmployees = (bool)model.OverFiftyEmployees, NumberRoles = model.NumberOfRoles, TrainingCourse = standard });
 
-            await Task.WhenAll(standard, staticContent, panel1, panel2, calculationResult);
+            await Task.WhenAll(staticContent, panel1, panel2);
+            if (!ModelState.IsValid)
+            {
+                var standards = await _mediator.Send(new GetStandardsQuery());
+                model.Panel1 = panel1.Result.Panel;
+                model.Panel2 = panel2.Result.Panel;
+                model.Standards = standards.Standards.Select(s => new Domain.Content.StandardResponse { Title = s.Title, LarsCode = s.LarsCode, Level = s.Level, StandardUId = s.StandardUId }).ToList();
+                model.Menu = staticContent.Result.Menu;
+                model.BannerModels = staticContent.Result.BannerModels;
+                return View("FundingYourApprenticeshipTraining", model);
+            }
 
-            return View(new ApprenticeshipFundingViewModel
+            var standard = _mediator.Send(new GetStandardQuery { StandardUId = model.StandardUid });
+            var calculationResult = _mediator.Send(new CalculationQuery() { PayBillGreaterThanThreeMillion = (bool)model.PayBillGreaterThanThreeMillion, OverFiftyEmployees = (bool)model.OverFiftyEmployees, NumberRoles = model.Roles, TrainingCourse = standard });
+
+            await Task.WhenAll(standard, calculationResult);
+
+            return View(new FundingYourApprenticeshipTrainingViewModel
             {
                 Menu = staticContent.Result.Menu,
                 BannerModels = staticContent.Result.BannerModels,

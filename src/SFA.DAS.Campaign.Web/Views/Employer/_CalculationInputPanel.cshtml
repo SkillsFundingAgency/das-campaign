@@ -1,9 +1,9 @@
-﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipFundingViewModel
+﻿@model SFA.DAS.Campaign.Web.Models.FundingYourApprenticeshipTrainingViewModel
 
 <div class="fiu-panel fiu-panel--left-align">
     <h2 class="govuk-heading-l">Take your next step today, estimate what funding could be available to you</h2>
-    <form method="post" asp-action="CalculateApprenticeshipFunding" asp-controller="Employer" asp-fragment="funding">
-        <div class="govuk-form-group">
+    <form method="post" asp-action="FundingYourApprenticeshipTraining" asp-controller="Employer" asp-fragment="funding">
+        <div class="govuk-form-group" validation-row-status property-name="PaybillGreaterThanThreeMillion" id="PayBillGreaterThanThreeMillion">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">What is your annual pay bill?</legend>
                 <span asp-validation-for="@Model.PayBillGreaterThanThreeMillion" class="govuk-error-message"></span>
@@ -23,7 +23,7 @@
                 </div>
             </fieldset>
         </div>
-        <div class="govuk-form-group">
+        <div class="govuk-form-group" validation-row-status property-name="OverFiftyEmployees" id="OverFiftyEmployees">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">How many employees do you have?</legend>
                 <span asp-validation-for="@Model.OverFiftyEmployees" class="govuk-error-message"></span>
@@ -43,7 +43,7 @@
                 </div>
             </fieldset>
         </div>
-        <div class="govuk-form-group">
+        <div class="govuk-form-group" validation-row-status property-name="StandardUId">
             <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="courses">
                 What training course do you want your apprentice to take?
             </label>
@@ -54,7 +54,7 @@
             </p>
             <select class="govuk-select" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true"><option label=" "></option></select>
         </div>
-        <div class="govuk-form-group">
+        <div class="govuk-form-group" validation-row-status property-name="NumberOfRoles">
             <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="roles">
                 How many roles do you have available for this apprenticeship?
             </label>
@@ -62,7 +62,7 @@
             <p class="govuk-body">
                 Enter the number of available roles
             </p>
-            <input class="govuk-input govuk-input--width-3" id="roles" name="NumberOfRoles" type="text" value=" " asp-for="@Model.NumberOfRoles">
+            <input class="govuk-input govuk-input--width-3" name="NumberOfRoles" type="text" asp-for="@Model.NumberOfRoles">
         </div>
         <div class="govuk-button-group">
             <button class="fiu-button fiu-button--employers" type="submit">
