@@ -1,6 +1,5 @@
 ﻿using SFA.DAS.Campaign.Application.FundingTool.Queries.GetStandardByStandardUId;
 using SFA.DAS.Campaign.Domain.Content;
-using System;
 using System.Threading.Tasks;
 
 namespace SFA.DAS.Campaign.Application.FundingTool
