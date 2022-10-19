@@ -44,7 +44,7 @@
             </fieldset>
         </div>
         <div class="govuk-form-group" validation-row-status property-name="StandardUId">
-            <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="StandardUid">
+            <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="courses">
                 What training course do you want your apprentice to take?
             </label>
             <span asp-validation-for="@Model.StandardUid" class="govuk-error-message"></span>
@@ -52,17 +52,17 @@
                 We offer over @Model.Standards.Count() courses which you can search by keyword or job role,
                 <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.
             </p>
-            <select class="govuk-select" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true" id="StandardUid"><option label=" "></option></select>
+            <select class="govuk-select" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true"><option label=" "></option></select>
         </div>
         <div class="govuk-form-group" validation-row-status property-name="NumberOfRoles">
-            <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="NumberOfRoles">
+            <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="roles">
                 How many roles do you have available for this apprenticeship?
             </label>
             <span asp-validation-for="@Model.NumberOfRoles" class="govuk-error-message"></span>
             <p class="govuk-body">
                 Enter the number of available roles
             </p>
-            <input class="govuk-input govuk-input--width-3" name="NumberOfRoles" type="text" asp-for="@Model.NumberOfRoles" id="NumberOfRoles">
+            <input class="govuk-input govuk-input--width-3" name="NumberOfRoles" type="text" asp-for="@Model.NumberOfRoles">
         </div>
         <div class="govuk-button-group">
             <button class="fiu-button fiu-button--employers" type="submit">

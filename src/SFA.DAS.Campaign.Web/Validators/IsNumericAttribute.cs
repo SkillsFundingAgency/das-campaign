@@ -15,6 +15,13 @@ namespace SFA.DAS.Campaign.Web.Validators
                 {
                     return new ValidationResult("Enter a number, like 1 or 2");
                 }
+                else
+                {
+                    if (val < 1)
+                    {
+                        return new ValidationResult("Enter a number between 1 and 10");
+                    }
+                }
             }
             return ValidationResult.Success;
         }

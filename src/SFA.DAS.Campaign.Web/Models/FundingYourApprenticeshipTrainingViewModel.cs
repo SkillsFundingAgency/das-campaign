@@ -30,12 +30,12 @@ namespace SFA.DAS.Campaign.Web.Models
         public bool? OverFiftyEmployees { get; set; }
 
         [Required(ErrorMessage = "Enter a number, like 1 or 2")]
-        [IsNumeric] 
+        [IsNumeric]
         public string NumberOfRoles { get; set; }
 
-        public int? Roles
+        public int Roles
         {
-            get { if (int.TryParse(NumberOfRoles, out var n)) return n; return null; }
+            get { if (int.TryParse(NumberOfRoles, out var n)) return n; return 0; }
         }
     }
 }

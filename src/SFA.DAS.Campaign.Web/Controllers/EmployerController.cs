@@ -60,19 +60,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [HttpPost("/employers/funding-your-apprenticeship-training")]
         public async Task<IActionResult> FundingYourApprenticeshipTraining(FundingYourApprenticeshipTrainingViewModel model, [FromQuery] bool preview = false)
         {
-            if (model.PayBillGreaterThanThreeMillion == false)
+            if (model.PayBillGreaterThanThreeMillion == false && (model.Roles > 10 || model.Roles < 1))
             {
-                if ((model.Roles > 10 || model.Roles < 1) && (model.Roles != null))
-                {
-                    ModelState.AddModelError("NumberOfRoles", "Enter a number between 1 and 10");
-                }
-            }
-            else
-            {
-                if (model.Roles < 1)
-                {
-                    ModelState.AddModelError("NumberOfRoles", "Enter a number of roles");
-                }
+                ModelState.AddModelError("NumberOfRoles", "Enter a number between 1 and 10");
             }
 
             var staticContent = _mediator.GetModelForStaticContent();
@@ -93,7 +83,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
 
             var standard = _mediator.Send(new GetStandardQuery { StandardUId = model.StandardUid });
-            var calculationResult = _mediator.Send(new CalculationQuery() { PayBillGreaterThanThreeMillion = (bool)model.PayBillGreaterThanThreeMillion, OverFiftyEmployees = (bool)model.OverFiftyEmployees, NumberRoles = (int)model.Roles, TrainingCourse = standard });
+            var calculationResult = _mediator.Send(new CalculationQuery() { PayBillGreaterThanThreeMillion = (bool)model.PayBillGreaterThanThreeMillion, OverFiftyEmployees = (bool)model.OverFiftyEmployees, NumberRoles = model.Roles, TrainingCourse = standard });
 
             await Task.WhenAll(standard, calculationResult);
 
