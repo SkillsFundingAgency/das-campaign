@@ -68,7 +68,11 @@
             <button class="fiu-button fiu-button--employers" type="submit">
                 Calculate funding
             </button>
-            <a class="fiu-button fiu-button--employers fiu-button--outlined" href="/employers/funding-your-apprenticeship-training">
+            @{
+                var rnd = new Random();
+                var num = rnd.Next();
+            }
+            <a class="fiu-button fiu-button--employers fiu-button--outlined" href="/employers/funding-your-apprenticeship-training?reset=@num#funding">
                 Reset
             </a>
         </div>
