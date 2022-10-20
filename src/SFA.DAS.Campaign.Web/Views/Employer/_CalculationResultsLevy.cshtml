@@ -48,32 +48,10 @@
             </a>
         </div>
         <div data-fiu-print-page-link="true" data-link-content="Print or save page"></div>
-        <figure class="fiu-quote fiu-quote--employer">
-            <blockquote class="fiu-quote__blockquote">
-                "Apprentices have had an amazing impact across our business and bring a fresh perspective to everything we do here at Channel 4. They really challenge the status quo, and we empower them to do just that."
-            </blockquote>
-            <figcaption class="fiu-quote__caption">
-                Laura Boswell,
-                <span class="fiu-quote__caption-description">Industry Talent Specialist, Channel 4</span>
-            </figcaption>
-        </figure>
-        <figure class="fiu-quote fiu-quote--employer">
-            <blockquote class="fiu-quote__blockquote">
-                "Our apprenticeships have improved productivity because they’re learning on the job and they can give back more or less immediately."
-            </blockquote>
-            <figcaption class="fiu-quote__caption">
-                Caroline Ash,
-                <span class="fiu-quote__caption-description">Production Director, Fashion Enter</span>
-            </figcaption>
-        </figure>
-        <figure class="fiu-quote fiu-quote--employer">
-            <blockquote class="fiu-quote__blockquote">
-                "We want to invest in our staff, support them to progress and continue developing their skills and career prospects whilst at the council"
-            </blockquote>
-            <figcaption class="fiu-quote__caption">
-                Lancashire City Council
-            </figcaption>
-        </figure>
+
+         @await Html.PartialAsync("_UseCases")
+
         <a href="/employers/real-stories-employers" class="fiu-button fiu-button--employers fiu-button--outlined govuk-!-margin-top-4 govuk-!-margin-bottom-0">See more stories from businesses like yours </a>
+
     </div>
 </div>
