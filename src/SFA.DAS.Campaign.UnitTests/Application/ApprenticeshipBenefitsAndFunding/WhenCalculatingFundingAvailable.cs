@@ -5,10 +5,10 @@ using SFA.DAS.Testing.AutoFixture;
 using System;
 using System.Threading;
 
-namespace SFA.DAS.Campaign.UnitTests.Application.FundingCalculation
+namespace SFA.DAS.Campaign.UnitTests.Application.ApprenticeshipBenefitsAndFunding
 {
     public class WhenCalculatingFundingAvailable
-    { 
+    {
         [Test, MoqAutoData]
         public void AndEmployerIsLevy_ThenTheCorrectFundingAndTrainingCostsAreCalculated(CalculationQuery query, CancellationToken cancellationToken, CalculationQueryHandler handler)
         {
@@ -49,8 +49,8 @@ namespace SFA.DAS.Campaign.UnitTests.Application.FundingCalculation
             actual.Result.Duration.Should().Be(query.TrainingCourse.Duration);
             actual.Result.Level.Should().Be(query.TrainingCourse.Level);
             actual.Result.Title.Should().Be(query.TrainingCourse.Title);
-            actual.Result.Funding.Should().Be(Convert.ToInt32((query.TrainingCourse.MaxFunding * query.NumberRoles) * 0.95));
-            actual.Result.Training.Should().Be(Convert.ToInt32((query.TrainingCourse.MaxFunding * query.NumberRoles) * 0.05));
+            actual.Result.Funding.Should().Be(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles * 0.95));
+            actual.Result.Training.Should().Be(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles * 0.05));
         }
     }
 }

@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
 {
-    public class WhenRequestingTheCalculateYourApprenticeshipFundingPage
+    public class WhenRequestingTheUnderstandingApprenticeshipBenefitsAndTrainingPage
     {
         private EmployerController _controller;
         private Mock<IOptions<CampaignConfiguration>> _configuration;
@@ -77,14 +77,14 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
         }
 
         [Test, RecursiveMoqAutoData]
-        public async Task Then_The_CalculateYourApprenticeshipFunding_Page_Is_Returned(bool preview)
+        public async Task Then_The_UnderstandingApprenticeshipsBenefitsAndFunding_Page_Is_Returned(bool preview)
         {
-            var result = await _controller.FundingYourApprenticeshipTraining(preview);
+            var result = await _controller.ApprenticeshipBenefitsAndFunding(preview);
 
             var viewResult = result as ViewResult;
 
             Assert.AreEqual(null, viewResult.ViewName);
-            var actualModel = viewResult.Model as FundingYourApprenticeshipTrainingViewModel;
+            var actualModel = viewResult.Model as ApprenticeshipTrainingAndBenefitsViewModel;
             Assert.IsNotNull(actualModel);
             actualModel.Standards.Should().BeEquivalentTo(_standardsResult);
             actualModel.Panel1.Should().BeEquivalentTo(_panelResult1.Panel);

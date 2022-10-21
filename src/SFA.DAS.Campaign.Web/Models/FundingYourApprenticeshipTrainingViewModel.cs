@@ -9,7 +9,7 @@ using SFA.DAS.Campaign.Web.Validators;
 
 namespace SFA.DAS.Campaign.Web.Models
 {
-    public class FundingYourApprenticeshipTrainingViewModel
+    public class ApprenticeshipTrainingAndBenefitsViewModel
     {
         public List<StandardResponse> Standards { get; set; }
         public IEnumerable<SelectListItem> StandardItems { get { return Standards?.Select(s => new SelectListItem($"{s.Title} (Level {s.Level})", s.StandardUId)); } }

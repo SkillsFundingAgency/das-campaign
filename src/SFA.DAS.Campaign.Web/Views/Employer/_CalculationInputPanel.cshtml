@@ -1,8 +1,8 @@
-﻿@model SFA.DAS.Campaign.Web.Models.FundingYourApprenticeshipTrainingViewModel
+﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipTrainingAndBenefitsViewModel
 
 <div class="fiu-panel fiu-panel--left-align">
     <h2 class="govuk-heading-l">Take your next step today, estimate what funding could be available to you</h2>
-    <form method="post" asp-action="FundingYourApprenticeshipTraining" asp-controller="Employer" asp-fragment="funding">
+    <form method="post" asp-action="ApprenticeshipBenefitsAndFunding" asp-controller="Employer" asp-fragment="funding">
         <div class="govuk-form-group" validation-row-status property-name="PaybillGreaterThanThreeMillion" id="PayBillGreaterThanThreeMillion">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">What is your annual pay bill?</legend>
@@ -72,7 +72,7 @@
                 var rnd = new Random();
                 var num = rnd.Next(100, 999);
             }
-            <a class="fiu-button fiu-button--employers fiu-button--outlined" href="/employers/funding-your-apprenticeship-training?reset=@num#funding">Reset</a>
+            <a class="fiu-button fiu-button--employers fiu-button--outlined" href="/employers/understanding-apprenticeship-benefits-and-funding?reset=@num#funding">Reset</a>
         </div>
     </form>
 

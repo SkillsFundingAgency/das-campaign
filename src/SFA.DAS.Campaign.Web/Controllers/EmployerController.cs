@@ -36,8 +36,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return RedirectPermanent(_configuration.FatBaseUrl);
         }
 
-        [Route("/employers/funding-your-apprenticeship-training")]
-        public async Task<IActionResult> FundingYourApprenticeshipTraining([FromQuery] bool preview = false)
+        [Route("/employers/understanding-apprenticeship-benefits-and-funding")]
+        public async Task<IActionResult> ApprenticeshipBenefitsAndFunding([FromQuery] bool preview = false)
         {
             var standards = _mediator.Send(new GetStandardsQuery());
             var staticContent = _mediator.GetModelForStaticContent();
@@ -46,7 +46,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             await Task.WhenAll(standards, staticContent, panel1, panel2);
 
-            return View(new FundingYourApprenticeshipTrainingViewModel
+            return View(new ApprenticeshipTrainingAndBenefitsViewModel
             {
                 Standards = standards.Result.Standards.Select(s => new Domain.Content.StandardResponse { Title = s.Title, LarsCode = s.LarsCode, Level = s.Level, StandardUId = s.StandardUId }).ToList(),
                 Menu = staticContent.Result.Menu,
@@ -57,8 +57,8 @@ namespace SFA.DAS.Campaign.Web.Controllers
             });
         }
 
-        [HttpPost("/employers/funding-your-apprenticeship-training")]
-        public async Task<IActionResult> FundingYourApprenticeshipTraining(FundingYourApprenticeshipTrainingViewModel model, [FromQuery] bool preview = false)
+        [HttpPost("/employers/understanding-apprenticeship-benefits-and-funding")]
+        public async Task<IActionResult> ApprenticeshipBenefitsAndFunding(ApprenticeshipTrainingAndBenefitsViewModel model, [FromQuery] bool preview = false)
         {
             if (model.PayBillGreaterThanThreeMillion == false)
             {
@@ -89,7 +89,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 model.Standards = standards.Standards.Select(s => new Domain.Content.StandardResponse { Title = s.Title, LarsCode = s.LarsCode, Level = s.Level, StandardUId = s.StandardUId }).ToList();
                 model.Menu = staticContent.Result.Menu;
                 model.BannerModels = staticContent.Result.BannerModels;
-                return View("FundingYourApprenticeshipTraining", model);
+                return View("ApprenticeshipBenefitsAndFunding", model);
             }
 
             var standard = _mediator.Send(new GetStandardQuery { StandardUId = model.StandardUid });
@@ -97,7 +97,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             await Task.WhenAll(standard, calculationResult);
 
-            return View(new FundingYourApprenticeshipTrainingViewModel
+            return View(new ApprenticeshipTrainingAndBenefitsViewModel
             {
                 Menu = staticContent.Result.Menu,
                 BannerModels = staticContent.Result.BannerModels,
