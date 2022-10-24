@@ -43,7 +43,11 @@
             <a href="https://accounts.manage-apprenticeships.service.gov.uk/" class="fiu-button fiu-button--employers">
                 Sign up to the apprenticeship service
             </a>
-            <a href="/employers/funding-your-apprenticeship-training?#funding" class="fiu-button fiu-button--employers fiu-button--outlined">
+            @{
+                var rnd = new Random();
+                var num = rnd.Next(100, 999);
+            }
+            <a href="/employers/understanding-apprenticeship-benefits-and-funding?start=@num#funding" class="fiu-button fiu-button--employers fiu-button--outlined">
                 Start again
             </a>
         </div>
