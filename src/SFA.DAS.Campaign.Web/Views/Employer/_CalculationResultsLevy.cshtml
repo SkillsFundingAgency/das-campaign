@@ -7,13 +7,13 @@
     <ul class="fiu-stats-list fiu-stats-list--panels">
         <li class="fiu-stats-list__list-item">
             <span class="fiu-stats-list__panel">
-                <span class="fiu-stats-list__stat">£@Model.CalculationResults.Funding</span>
+                <span class="fiu-stats-list__stat">£@Model.CalculationResults.FundingOutput</span>
                 Estimated government funding available
             </span>
         </li>
         <li class="fiu-stats-list__list-item">
             <span class="fiu-stats-list__panel">
-                <span class="fiu-stats-list__stat">£@Model.CalculationResults.Training</span>
+                <span class="fiu-stats-list__stat">£@Model.CalculationResults.TrainingOutput</span>
                 Training costs paid by you
             </span>
         </li>
@@ -22,13 +22,13 @@
         if (Model.Roles > 1)
         {
             <p class="govuk-body">
-                From the information you have provided; your company could benefit from <b>£@Model.CalculationResults.Funding</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on hiring @Model.NumberOfRoles apprentices for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
+                From the information you have provided; your company could benefit from <b>£@Model.CalculationResults.FundingOutput</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on hiring @Model.NumberOfRoles apprentices for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
             </p>
         }
         else
         {
             <p class="govuk-body">
-                From the information you have provided; your company could benefit from <b>£@Model.CalculationResults.Funding</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on hiring @Model.NumberOfRoles apprentice for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
+                From the information you have provided; your company could benefit from <b>£@Model.CalculationResults.FundingOutput</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on hiring @Model.NumberOfRoles apprentice for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
             </p>
         }
     }
@@ -36,7 +36,7 @@
         Just a reminder that you have 24 months to use your levy funds once you enter your apprenticeship service account, after this point, your funds will expire.
     </p>
     <p class="govuk-body">
-        Just so you know, you're also responsible for paying your apprentice for their normal working hours. You must pay them at least the National Minimum Wage rate depending on their age and the year of apprenticeship training they're in.
+        Just so you know, you're also responsible for paying your apprentice for their normal working hours. You must pay them at least the National Minimum Wage rate depending on their age and the year of apprenticeship training they're in. For more information please visit <a href="https://www.gov.uk/employing-an-apprentice/pay-and-conditions-for-apprentices" class="govuk-link" target="_blank">employing an apprentice (opens in a new tab).</a>
     </p>
     <div class="fiu-hide-print">
         <div class="govuk-button-group">

@@ -33,23 +33,16 @@
             {
                 if (Model.PayBillGreaterThanThreeMillion == true)
                 {
-                            <div id="funding">@await Html.PartialAsync("_CalculationResultsLevy", Model)</div>
+                    <div id="funding">@await Html.PartialAsync("_CalculationResultsLevy", Model)</div>
                 }
                 else if (Model.PayBillGreaterThanThreeMillion == false)
                 {
-                    if (Model.OverFiftyEmployees == true)
-                    {
-                                    <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyOver50", Model)</div>
-                    }
-                    else if (Model.OverFiftyEmployees == false)
-                    {
-                                    <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyUnder50", Model)</div>
-                    }
+                    <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevy", Model)</div>
                 }
             }
             else
             {
-                    <div id="funding">@await Html.PartialAsync("_CalculationInputPanel")</div>
+                <div id="funding">@await Html.PartialAsync("_CalculationInputPanel")</div>
             }
         </div>
     </div>

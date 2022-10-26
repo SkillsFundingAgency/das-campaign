@@ -17,19 +17,12 @@ namespace SFA.DAS.Campaign.Application.FundingTool.Queries.Calculation
                     output.Funding = CalculateLevyFunding(request);
                     break;
                 case false:
-                    switch (request.OverFiftyEmployees)
-                    {
-                        case true:
-                            output.Funding = CalculateNonLevyFundingAndTraining(request).Funding;
-                            output.Training = CalculateNonLevyFundingAndTraining(request).Training;
-                            break;
-                        case false:
-                            output.Funding = CalculateLevyFunding(request);
-                            break;
-                    }
+                    output.Funding = CalculateNonLevyFundingAndTraining(request).Funding;
+                    output.Training = CalculateNonLevyFundingAndTraining(request).Training;
                     break;
                 default: throw new InvalidOperationException("Invalid calculation input values.");
             }
+
             return new CalculationQueryResult
             {
                 Funding = output.Funding,
