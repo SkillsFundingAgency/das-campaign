@@ -21,8 +21,8 @@ namespace SFA.DAS.Campaign.UnitTests.Application.ApprenticeshipBenefitsAndFundin
             actual.Result.Title.Should().Be(query.TrainingCourse.Title);
             actual.Result.Funding.Should().Be(query.TrainingCourse.MaxFunding * query.NumberRoles);
             actual.Result.Training.Should().Be(0);
-            TestFormatting(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles), actual.Result.Format(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles)));
-            TestFormatting(0, actual.Result.Format(0));
+            TestFormatting(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles), actual.Result.FundingOutput);
+            TestFormatting(0, actual.Result.TrainingOutput);
         }
 
         [Test, MoqAutoData]
@@ -37,8 +37,8 @@ namespace SFA.DAS.Campaign.UnitTests.Application.ApprenticeshipBenefitsAndFundin
             actual.Result.Title.Should().Be(query.TrainingCourse.Title);
             actual.Result.Funding.Should().Be(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles * 0.95));
             actual.Result.Training.Should().Be(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles * 0.05));
-            TestFormatting(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles * 0.95), actual.Result.Format(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles * 0.95)));
-            TestFormatting(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles * 0.05), actual.Result.Format(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles * 0.05)));
+            TestFormatting(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles * 0.95), actual.Result.FundingOutput);
+            TestFormatting(Convert.ToInt32(query.TrainingCourse.MaxFunding * query.NumberRoles * 0.05), actual.Result.TrainingOutput);
         }
 
         public AndConstraint<FluentAssertions.Primitives.StringAssertions> TestFormatting(int? num, string numOutput)

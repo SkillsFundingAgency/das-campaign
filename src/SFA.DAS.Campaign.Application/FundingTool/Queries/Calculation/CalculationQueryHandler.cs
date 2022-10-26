@@ -15,6 +15,7 @@ namespace SFA.DAS.Campaign.Application.FundingTool.Queries.Calculation
             {
                 case true:
                     output.Funding = CalculateLevyFunding(request);
+                    output.Training = 0;
                     break;
                 case false:
                     output.Funding = CalculateNonLevyFundingAndTraining(request).Funding;
@@ -26,7 +27,7 @@ namespace SFA.DAS.Campaign.Application.FundingTool.Queries.Calculation
             return new CalculationQueryResult
             {
                 Funding = output.Funding,
-                Training = output.Training != null ? output.Training : 0,
+                Training = output.Training,
                 Duration = request.TrainingCourse.Duration,
                 Level = request.TrainingCourse.Level,
                 Title = request.TrainingCourse.Title
