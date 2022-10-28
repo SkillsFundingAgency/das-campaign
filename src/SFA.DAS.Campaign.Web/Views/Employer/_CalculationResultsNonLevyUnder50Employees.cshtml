@@ -22,25 +22,21 @@
         if (Model.Roles > 1)
         {
             <p class="govuk-body">
-                From the information you have provided; your company could benefit from
-                <b>£@Model.CalculationResults.FundingOutput</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on hiring @Model.NumberOfRoles apprentices for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
+                From the information you have provided; your company could benefit from <b>£@Model.CalculationResults.FundingOutput</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on  your company having a wage bill of under £3m, 1-49 employees, hiring @Model.NumberOfRoles apprentices for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
             </p>
         }
         else
         {
             <p class="govuk-body">
-
-                From the information you have provided; your company could benefit from
-                <b>£@Model.CalculationResults.FundingOutput</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on hiring @Model.NumberOfRoles apprentice for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
+                From the information you have provided; your company could benefit from <b>£@Model.CalculationResults.FundingOutput</b> funding towards your apprentice's training costs. This funding would go to your training provider. This figure is based on  your company having a wage bill of under £3m, 1-49 employees, hiring @Model.NumberOfRoles apprentice for @Model.CalculationResults.Title (Level @Model.CalculationResults.Level) over @Model.CalculationResults.Duration months.
             </p>
-
         }
     }
     <p class="govuk-body">
         This means you only have to pay up to <b>£@Model.CalculationResults.TrainingOutput</b> of the total training costs. You'll pay the training provider directly and agree on a payment schedule that works for you both.
     </p>
     <p class="govuk-body">
-        However, you may not need to contribute any money towards your training costs if you hire an apprentice who is:
+        However, you may not need to contribute any money towards your training costs and be eligible to additional funding if you hire an apprentice who is:
         <br />
         <ul class="govuk-body">
             <li>

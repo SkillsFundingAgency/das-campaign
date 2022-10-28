@@ -29,7 +29,7 @@
                 <div id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</div>
                 <div id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</div>
             </div>
-            @if (Model.Submitted == true)
+            @if (Model.Submitted)
             {
                 if (Model.PayBillGreaterThanThreeMillion == true)
                 {
@@ -37,7 +37,14 @@
                 }
                 else if (Model.PayBillGreaterThanThreeMillion == false)
                 {
-                    <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevy", Model)</div>
+                    if (Model.OverFiftyEmployees == true)
+                    {
+                        <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyOver50Employees", Model)</div>
+                    }
+                    else
+                    {
+                        <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyUnder50Employees", Model)</div>
+                    }
                 }
             }
             else
