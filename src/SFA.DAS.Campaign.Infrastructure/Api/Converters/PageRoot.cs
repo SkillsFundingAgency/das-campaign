@@ -12,5 +12,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public ResponseSiteMap Map { get; set; }
         public ResponseMenu Menu { get; set; }
         public ResponseBanner Banner { get; set; }
+        public ResponsePanel Panel { get; set; }
+        
     }
 }
