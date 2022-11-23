@@ -126,7 +126,10 @@
                 }
             </div>
         </div>
-        <span class="fiu-header-grad"></span>
+        @if (ViewBag.HeadingImage != null)
+        {
+            <span class="fiu-header-grad"></span>
+        }
     }
     @RenderBody()
     <partial name="Banners/_ReadyToGetStartedEmployers" />
