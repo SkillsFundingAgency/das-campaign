@@ -1,7 +1,7 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipTrainingAndBenefitsViewModel
 @{
-    ViewBag.Title = "Understanding Apprenticeship Benefits And Funding";
-    ViewBag.HubPage = true;
+    ViewBag.Title = "Understanding apprenticeship benefits and funding";
+    ViewBag.HubPage = false;
     Layout = $"Redesign_Layout_EmployersHub";
     ViewBag.PageTitle = "Understanding apprenticeship benefits and funding";
     ViewBag.PageSummary = "Explore what benefits apprentices can bring to your organisation and calculate what funding could be available towards your apprentices training costs.";
@@ -12,9 +12,9 @@
     ViewBag.HeadingImage = "/fiu/assets/images/page-headers/employer-computer.jpg";
 }
 <div class="govuk-width-container">
-    <div class="govuk-grid-row govuk-!-margin-top-9">
+    <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third govuk-!-margin-top-9 fiu-hide-print">
-            <h2 class="govuk-heading-l">On this page</h2>
+            <h2 class="govuk-heading-l govuk-!-margin-top-6">On this page</h2>
             <ul class="govuk-list govuk-list--spaced">
                 <li><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.LinkTitle</a></li>
                 <li><a href="#@Model.Panel2.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel2.LinkTitle</a></li>
@@ -22,7 +22,7 @@
             </ul>
         </div>
         <div class="govuk-grid-column-two-thirds govuk-!-margin-top-6">
-            <div class="fiu-hide-print">
+            <div class="fiu-hide-print govuk-!-margin-top-6">
 
                 <partial name="ValidationSummary" />
 
