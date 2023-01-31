@@ -1,6 +1,6 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipTrainingAndBenefitsViewModel
 @{
-    ViewBag.Title = "Understanding apprenticeship benefits and funding";
+    ViewBag.Title = (ViewData.ModelState.IsValid ?  "" : "Error: ") + "Understanding apprenticeship benefits and funding";
     ViewBag.HubPage = false;
     Layout = $"Redesign_Layout_EmployersHub";
     ViewBag.PageTitle = "Understanding apprenticeship benefits and funding";
