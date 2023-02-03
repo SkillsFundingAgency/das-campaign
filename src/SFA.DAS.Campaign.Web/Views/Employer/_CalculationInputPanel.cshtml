@@ -3,7 +3,7 @@
 <div class="fiu-panel fiu-panel--left-align">
     <h2 class="govuk-heading-l">Take your next step today, estimate what funding could be available to you</h2>
     <form method="post" asp-action="ApprenticeshipBenefitsAndFunding" asp-controller="Employer" asp-fragment="funding">
-        <div class="govuk-form-group" validation-row-status property-name="PaybillGreaterThanThreeMillion" id="PayBillGreaterThanThreeMillion">
+        <div class="govuk-form-group" highlight-error-for="PayBillGreaterThanThreeMillion" id="PayBillGreaterThanThreeMillion">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">What is your annual pay bill?</legend>
                 <span asp-validation-for="@Model.PayBillGreaterThanThreeMillion" class="govuk-error-message"></span>
@@ -23,7 +23,7 @@
                 </div>
             </fieldset>
         </div>
-        <div class="govuk-form-group" validation-row-status property-name="OverFiftyEmployees" id="OverFiftyEmployees">
+        <div class="govuk-form-group" highlight-error-for="OverFiftyEmployees" id="OverFiftyEmployees">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">How many employees do you have?</legend>
                 <span asp-validation-for="@Model.OverFiftyEmployees" class="govuk-error-message"></span>
@@ -43,7 +43,7 @@
                 </div>
             </fieldset>
         </div>
-        <div class="govuk-form-group" validation-row-status property-name="StandardUId">
+        <div class="govuk-form-group" highlight-error-for="StandardUid">
             <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="StandardUid">
                 What training course do you want your apprentice to take?
             </label>
@@ -54,7 +54,7 @@
             </p>
             <select class="govuk-select" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true" id="StandardUid"><option label=" "></option></select>
         </div>
-        <div class="govuk-form-group" validation-row-status property-name="NumberOfRoles">
+        <div class="govuk-form-group" highlight-error-for="NumberOfRoles">
             <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="NumberOfRoles">
                 How many roles do you have available for this apprenticeship?
             </label>
