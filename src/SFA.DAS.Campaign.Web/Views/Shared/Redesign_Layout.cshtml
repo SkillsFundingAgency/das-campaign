@@ -149,10 +149,14 @@
     @if(ViewBag.HideCookieBanner == null ) {
     <partial name="./Banners/_CookieBanner" />
     }
-
+    <script src="/libs/govuk-frontend/all.js"></script>
     <script src="libs/accessible-autocomplete/accessible-autocomplete.min.js"></script>
 	<script src="/fiu/js/app.min.js?@frontendVersion"></script>
     <script src="/js/dataLayerPushes.js" no-cdn></script>
+
+    <script>
+        window.GOVUKFrontend.initAll();
+    </script>
 
 </body>
 </html>
