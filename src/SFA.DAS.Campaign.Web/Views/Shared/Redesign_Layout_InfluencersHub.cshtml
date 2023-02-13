@@ -34,6 +34,54 @@
         <partial name="./Banners/_Banner_UserCanHide" model="banner" />
     }
 }
+<div class="govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile fiu-breadcrumbs">
+    <div class="fiu-width-container">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/" id="fiu-breadcrumb-link-home">Home</a>
+            </li>
+            @if (ViewBag.LandingPageSlug is null)
+            {
+                <li class="govuk-breadcrumbs__list-item">
+                    Influencers
+                </li>
+            }
+            else
+            {
+                <li class="govuk-breadcrumbs__list-item">
+                    <a href="/influencers/" class="govuk-breadcrumbs__link">Influencers</a>
+                </li>
+                @if (ViewBag.ArticlePageSlug is null)
+                {
+                    <li class="govuk-breadcrumbs__list-item">
+                        @ViewBag.LandingPageTitle
+                    </li>
+                }
+                else
+                {
+                    <li class="govuk-breadcrumbs__list-item">
+                        <a href="/influencers/@ViewBag.LandingPageSlug" class="govuk-breadcrumbs__link">@ViewBag.LandingPageTitle</a>
+                    </li>
+                    if (ViewBag.IndustryPageTitle is null)
+                    {
+                        <li class="govuk-breadcrumbs__list-item">
+                            @ViewBag.ArticlePageTitle
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="govuk-breadcrumbs__list-item">
+                            <a href="/influencers/@ViewBag.ArticlePageSlug" class="govuk-breadcrumbs__link">@ViewBag.ArticlePageTitle</a>
+                        </li>
+                        <li class="govuk-breadcrumbs__list-item">
+                            @ViewBag.IndustryPageTitle
+                        </li>
+                    }
+                }
+            }
+        </ol>
+    </div>
+</div>
 <main id="main" class="fiu-main-wrapper">
     @if (ViewBag.HidePageHeader is null)
     {
@@ -49,53 +97,6 @@
         }
         <div class="fiu-page-header @(ViewBag.HeadingImage != null ? "fiu-page-header--has-image" : "")">
             <div class="fiu-width-container">
-                <div class="govuk-breadcrumbs fiu-page-header__breadcrumbs">
-                    <ol class="govuk-breadcrumbs__list">
-                        <li class="govuk-breadcrumbs__list-item">
-                            <a class="govuk-breadcrumbs__link" href="/" id="fiu-breadcrumb-link-home">Home</a>
-                        </li>
-                        @if (ViewBag.LandingPageSlug is null)
-                        {
-                            <li class="govuk-breadcrumbs__list-item">
-                                Influencers
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="govuk-breadcrumbs__list-item">
-                                <a href="/influencers" class="govuk-breadcrumbs__link">Influencers</a>
-                            </li>
-                            @if (ViewBag.ArticlePageSlug is null)
-                            {
-                                <li class="govuk-breadcrumbs__list-item">
-                                    @ViewBag.LandingPageTitle
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="govuk-breadcrumbs__list-item">
-                                    <a href="/influencers/@ViewBag.LandingPageSlug" class="govuk-breadcrumbs__link">@ViewBag.LandingPageTitle</a>
-                                </li>
-                                if (ViewBag.IndustryPageTitle is null)
-                                {
-                                    <li class="govuk-breadcrumbs__list-item">
-                                        @ViewBag.ArticlePageTitle
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="govuk-breadcrumbs__list-item">
-                                        <a href="/influencers/@ViewBag.ArticlePageSlug" class="govuk-breadcrumbs__link">@ViewBag.ArticlePageTitle</a>
-                                    </li>
-                                    <li class="govuk-breadcrumbs__list-item">
-                                        @ViewBag.IndustryPageTitle
-                                    </li>
-                                }
-
-                            }
-                        }
-                    </ol>
-                </div>
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-two-thirds fiu-page-header__wrap">
                         @if (ViewBag.HubPage == true)
