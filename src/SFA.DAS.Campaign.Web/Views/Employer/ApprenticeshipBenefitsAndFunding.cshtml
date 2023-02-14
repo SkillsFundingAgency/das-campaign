@@ -19,7 +19,7 @@
             <ul class="govuk-list govuk-list--spaced">
                 <li><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.LinkTitle</a></li>
                 <li><a href="#@Model.Panel2.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel2.LinkTitle</a></li>
-                <li><a href="#funding" class="govuk-link govuk-link--no-visited-state">Find out what funding you could have available</a></li>
+                <li><a href="#available-funding" class="govuk-link govuk-link--no-visited-state">Find out what funding you could have available</a></li>
             </ul>
         </div>
         <div class="govuk-grid-column-two-thirds govuk-!-margin-top-6">
@@ -30,6 +30,7 @@
                 <div id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</div>
                 <div id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</div>
             </div>
+            <div id="available-funding">
             @if (Model.Submitted)
             {
                 if (Model.PayBillGreaterThanThreeMillion == true)
@@ -52,6 +53,7 @@
             {
                 <div>@await Html.PartialAsync("_CalculationInputPanel")</div>
             }
+            </div>
         </div>
     </div>
 </div>
