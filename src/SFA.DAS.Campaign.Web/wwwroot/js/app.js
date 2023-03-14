@@ -101,8 +101,8 @@
       var acceptedAdditionalCookies = Utils.acceptedAdditionalCookies(
         this.cookies_policy
       )
-  
-      if (this.cookies_preferences_set) {
+
+      if (Object.keys(this.cookies_policy).length > 0) {
         this.hideBanner()
       } else {
         this.$module.hidden = false
