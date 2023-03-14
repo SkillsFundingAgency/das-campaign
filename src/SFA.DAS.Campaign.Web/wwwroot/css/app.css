@@ -1,3 +1,13 @@
 .fiu-card__image--naw-2023 {
     background-image: url('/images/naw-2023.png');
 }
+
+.fiu-cookie-banner {
+    display: block;
+}
+
+.fiu-cookie-banner[hidden] { display: none !important; }
+
+.fiu-cookie-banner__message  {
+    margin-bottom: 10px;
+}
