@@ -101,14 +101,15 @@
       var acceptedAdditionalCookies = Utils.acceptedAdditionalCookies(
         this.cookies_policy
       )
-
-      if (Object.keys(this.cookies_policy).length > 0) {
+  
+      if (this.cookies_preferences_set) {
         this.hideBanner()
       } else {
         this.$module.hidden = false
-        this.$module.confirmAccept.hidden = noResponse || !acceptedAdditionalCookies
-        this.$module.confirmReject.hidden = noResponse || acceptedAdditionalCookies
-        Utils.setCookie('cookies_preferences_set', 'true', { days: 365 })
+        this.$module.confirmAccept.hidden =
+          noResponse || !acceptedAdditionalCookies
+        this.$module.confirmReject.hidden =
+          noResponse || acceptedAdditionalCookies
       }
     }
   
