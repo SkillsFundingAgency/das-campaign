@@ -21,7 +21,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
         private readonly IMediator _mediator;
 
         private const string calculationPanel1Slug = "are-you-ready-to-get-going";
-        private const string calculationPanel2Slug = "future-proof-your-business";
+        private const string calculationPanel2Slug = "your-long-term-investment";
+        private const string calculationPanel3Slug = "future-proof-your-business";
+
 
         public EmployerController(IOptions<CampaignConfiguration> configuration, IMediator mediator)
         {
@@ -43,8 +45,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
             var staticContent = _mediator.GetModelForStaticContent();
             var panel1 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel1Slug, Preview = preview });
             var panel2 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel2Slug, Preview = preview });
+            var panel3 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel3Slug, Preview = preview });
 
-            await Task.WhenAll(standards, staticContent, panel1, panel2);
+            await Task.WhenAll(standards, staticContent, panel1, panel2, panel3);
 
             return View(new ApprenticeshipTrainingAndBenefitsViewModel
             {
@@ -53,6 +56,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 BannerModels = staticContent.Result.BannerModels,
                 Panel1 = panel1.Result.Panel,
                 Panel2 = panel2.Result.Panel,
+                Panel3 = panel3.Result.Panel,
                 Submitted = false
             });
         }
@@ -78,14 +82,16 @@ namespace SFA.DAS.Campaign.Web.Controllers
             var staticContent = _mediator.GetModelForStaticContent();
             var panel1 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel1Slug, Preview = preview });
             var panel2 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel2Slug, Preview = preview });
+            var panel3 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel3Slug, Preview = preview });
 
-            await Task.WhenAll(staticContent, panel1, panel2);
+            await Task.WhenAll(staticContent, panel1, panel2, panel3);
 
             if (!ModelState.IsValid)
             {
                 var standards = await _mediator.Send(new GetStandardsQuery());
                 model.Panel1 = panel1.Result.Panel;
                 model.Panel2 = panel2.Result.Panel;
+                model.Panel3 = panel3.Result.Panel;
                 model.Standards = standards.Standards.Select(s => new Domain.Content.StandardResponse { Title = s.Title, LarsCode = s.LarsCode, Level = s.Level, StandardUId = s.StandardUId }).ToList();
                 model.Menu = staticContent.Result.Menu;
                 model.BannerModels = staticContent.Result.BannerModels;
@@ -103,6 +109,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 BannerModels = staticContent.Result.BannerModels,
                 Panel1 = panel1.Result.Panel,
                 Panel2 = panel2.Result.Panel,
+                Panel3 = panel3.Result.Panel,
                 CalculationResults = calculationResult.Result,
                 Submitted = true,
                 PayBillGreaterThanThreeMillion = model.PayBillGreaterThanThreeMillion,

@@ -14,11 +14,12 @@
 }
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third govuk-!-margin-top-9 fiu-hide-print">
+        <div class="govuk-grid-column-one-third govuk-!-margin-top-9 fiu-hide-print" id="nav-menu">
             <h2 class="govuk-heading-l govuk-!-margin-top-6">On this page</h2>
             <ul class="govuk-list govuk-list--spaced">
                 <li><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.LinkTitle</a></li>
                 <li><a href="#@Model.Panel2.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel2.LinkTitle</a></li>
+                <li><a href="#@Model.Panel3.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel3.LinkTitle</a></li>
                 <li><a href="#available-funding" class="govuk-link govuk-link--no-visited-state">Find out what funding you could have available</a></li>
             </ul>
         </div>
@@ -28,7 +29,11 @@
                 <partial name="ValidationSummary" />
 
                 <div id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</div>
+                <a href="#nav-menu" class="govuk-link govuk-link--no-visited-state">< Back to top</a>
                 <div id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</div>
+                <a href="#nav-menu" class="govuk-link govuk-link--no-visited-state">< Back to top</a>
+                <div id="@Model.Panel3.Slug">@await Html.PartialAsync("_Panel", Model.Panel3)</div>
+                <a href="#nav-menu" class="govuk-link govuk-link--no-visited-state">< Back to top</a>
             </div>
             <div id="available-funding">
             @if (Model.Submitted)
@@ -54,6 +59,7 @@
                 <div>@await Html.PartialAsync("_CalculationInputPanel")</div>
             }
             </div>
+            <a href="#nav-menu" class="govuk-link govuk-link--no-visited-state">< Back to top</a>
         </div>
     </div>
 </div>
