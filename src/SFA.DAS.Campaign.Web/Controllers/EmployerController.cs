@@ -20,9 +20,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
         private readonly CampaignConfiguration _configuration;
         private readonly IMediator _mediator;
 
-        private const string calculationPanel1Slug = "are-you-ready-to-get-going";
-        private const string calculationPanel2Slug = "your-long-term-investment";
-        private const string calculationPanel3Slug = "future-proof-your-business";
+        private const string calculationPanel1Slug = "benefits-of-apprenticeships-for-your-business";
+        private const string calculationPanel2Slug = "your-estimated-yearly-gain";
+        private const string calculationPanel3Slug = "the-future-of-your-business";
 
 
         public EmployerController(IOptions<CampaignConfiguration> configuration, IMediator mediator)
