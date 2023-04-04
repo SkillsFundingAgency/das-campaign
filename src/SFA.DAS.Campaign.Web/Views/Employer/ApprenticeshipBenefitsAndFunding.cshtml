@@ -11,16 +11,17 @@
     ViewBag.ArticlePageTitle = "Understanding apprenticeship benefits and funding";
     ViewBag.HeadingImage = "/fiu/assets/images/page-headers/employer-computer.jpg";
     ViewBag.ValidationOrder = "PayBillGreaterThanThreeMillion,OverFiftyEmployees,StandardUid,NumberOfRoles";
+    ViewBag.Panel4Title = "Estimate what funding could be available towards your apprentices training costs";
 }
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third govuk-!-margin-top-9 fiu-hide-print" id="nav-menu">
             <h2 class="govuk-heading-l govuk-!-margin-top-6">On this page</h2>
             <ul class="govuk-list govuk-list--spaced">
-                <li><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.LinkTitle</a></li>
-                <li><a href="#@Model.Panel2.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel2.LinkTitle</a></li>
-                <li><a href="#@Model.Panel3.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel3.LinkTitle</a></li>
-                <li><a href="#available-funding" class="govuk-link govuk-link--no-visited-state">Find out what funding you could have available</a></li>
+                <li><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.Title</a></li>
+                <li><a href="#@Model.Panel2.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel2.Title</a></li>
+                <li><a href="#@Model.Panel3.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel3.Title</a></li>
+                <li><a href="#available-funding" class="govuk-link govuk-link--no-visited-state">@ViewBag.Panel4Title</a></li>
             </ul>
         </div>
         <div class="govuk-grid-column-two-thirds govuk-!-margin-top-6">
@@ -59,6 +60,11 @@
                 <div>@await Html.PartialAsync("_CalculationInputPanel")</div>
             }
             </div>
+
+            <a href="#nav-menu" class="govuk-back-link govuk-!-margin-top-0  govuk-!-margin-bottom-5 app-back-to-top"> Back to top</a>
+
+            <div id="use-cases">@await Html.PartialAsync("_UseCases")</div>
+
             <a href="#nav-menu" class="govuk-back-link govuk-!-margin-top-0  govuk-!-margin-bottom-5 app-back-to-top"> Back to top</a>
         </div>
     </div>

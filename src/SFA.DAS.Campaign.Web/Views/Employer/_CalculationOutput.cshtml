@@ -1,0 +1,53 @@
+﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipTrainingAndBenefitsViewModel
+
+<div class="fiu-confirmation fiu-confirmation--employers">
+    <h2 class="govuk-panel__title">Your estimated funding</h2>
+</div>
+
+@{
+    if (Model.Roles > 1)
+    {
+        <ul class="fiu-stats-list fiu-stats-list--panels">
+            <li class="fiu-stats-list__list-item">
+                <span class="fiu-stats-list__panel">
+                    <span class="fiu-stats-list__stat">£@Model.CalculationResults.AvailableFunding</span>
+                    Estimated government funding available for @Model.Roles apprentices
+                </span>
+            </li>
+            <li class="fiu-stats-list__list-item">
+                <span class="fiu-stats-list__panel">
+                    <span class="fiu-stats-list__stat">£@Model.CalculationResults.TrainingCost</span>
+                    Training costs paid by you
+                </span>
+            </li>
+        </ul>
+    }
+    else
+    {
+        <ul class="fiu-stats-list fiu-stats-list--panels">
+            <li class="fiu-stats-list__list-item">
+                <span class="fiu-stats-list__panel">
+                    <span class="fiu-stats-list__stat">£@Model.CalculationResults.AvailableFunding</span>
+                    Estimated government funding available for 1 apprentice
+                </span>
+            </li>
+            <li class="fiu-stats-list__list-item">
+                <span class="fiu-stats-list__panel">
+                    <span class="fiu-stats-list__stat">£@Model.CalculationResults.TrainingCost</span>
+                    Training costs paid by you
+                </span>
+            </li>
+        </ul>
+    }
+}
+
+<p class="govuk-body">
+    As an employer, you can figure out if it's worth hiring an aprentice by looking at how much money they'll make for you versus how much it'll cost to train and pay them.
+</p>
+
+<label class="govuk-label govuk-label--m govuk-!-font-weight-bold">
+    From the information you have provided
+</label>
+<p class="govuk-body">
+    Your company could benefit from <b>£@Model.CalculationResults.AvailableFunding</b> of funding towards your apprentice's training costs. This funding would go directly to your training provider.
+</p>

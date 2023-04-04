@@ -1,0 +1,29 @@
+﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipTrainingAndBenefitsViewModel
+
+<label class="govuk-label govuk-label--m govuk-!-font-weight-bold">
+    What to do next
+</label>
+<p class="govuk-body">
+    For more information about hiring an apprentice, visit our <a href="https://www.apprenticeships.gov.uk/employers/the-road-to-a-quality-apprenticeship" class="govuk-link" target="_blank">step by step guide to running an apprenticeship</a>.
+</p>
+<p class="govuk-body">
+    You could also look at <a href="https://www.apprenticeships.gov.uk/employers/apprenticeship-alternatives-employers" class="govuk-link" target="_blank">alternatives to apprenticeships</a>.
+</p>
+<p class="govuk-body">
+    If you're ready to get going right away, sign up now.
+</p>
+<div class="fiu-hide-print">
+    <div class="govuk-button-group">
+        <a href="https://accounts.manage-apprenticeships.service.gov.uk/" class="fiu-button fiu-button--employers">
+            Sign up to the apprenticeship service
+        </a>
+        @{
+            var rnd = new Random();
+            var num = rnd.Next(100, 999);
+        }
+        <a href="/employers/understanding-apprenticeship-benefits-and-funding?start=@num#funding" class="fiu-button fiu-button--employers fiu-button--outlined">
+            Start again
+        </a>
+    </div>
+    <div data-fiu-print-page-link="true" data-link-content="Print or save page"></div>
+</div>
