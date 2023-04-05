@@ -50,7 +50,7 @@
             <span asp-validation-for="@Model.StandardUid" class="govuk-error-message"></span>
             <p class="govuk-body">
                 We offer over @Model.Standards.Count() courses which you can search by keyword or job role,
-                <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.
+                <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link govuk-link--no-visited-state" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.
             </p>
             <select class="govuk-select" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true" id="StandardUid"><option label=" "></option></select>
         </div>
