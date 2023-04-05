@@ -9,7 +9,6 @@ using SFA.DAS.Campaign.Infrastructure.Api.Responses;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.Models;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 
