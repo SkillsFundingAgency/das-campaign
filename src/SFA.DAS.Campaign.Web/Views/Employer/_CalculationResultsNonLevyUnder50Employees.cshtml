@@ -8,13 +8,13 @@
         if (Model.Roles > 1)
         {
             <p class="govuk-body">
-                The number is based on your company having a pay bill of under £3 million, between 1 to 49 employees, hiring @Model.Roles apprentices for @Model.CalculationResults.StandardTitle (level @Model.CalculationResults.StandardLevel) over @Model.CalculationResults.StandardDuration months.
+                The number is based on your company having a pay bill of under £3 million, between 1 to 49 employees, hiring @Model.Roles apprentices for @Model.CalculationResults.StandardTitle (Level @Model.CalculationResults.StandardLevel) over @Model.CalculationResults.StandardDuration months.
             </p>
         }
         else
         {
             <p class="govuk-body">
-                The number is based on your company having a pay bill of under £3 million, between 1 to 49 employees, hiring 1 apprentice for @Model.CalculationResults.StandardTitle (level @Model.CalculationResults.StandardLevel) over @Model.CalculationResults.StandardDuration months.
+                The number is based on your company having a pay bill of under £3 million, between 1 to 49 employees, hiring 1 apprentice for @Model.CalculationResults.StandardTitle (Level @Model.CalculationResults.StandardLevel) over @Model.CalculationResults.StandardDuration months.
             </p>
         }
     }
@@ -31,10 +31,10 @@
         If you are eligible and you employ under 50 staff, the government will also fund the apprenticeship training costs, up to the maximum value of the funding band for the apprenticeship.
     </p>
     <p class="govuk-body">
-        You could also be eligible for funding from a levy paying employer which would remove the requirement for you to pay the 5%. Transferred funds cover the cost of the whole duration of the apprenticeship.
+        You could also be eligible for funding from a levy paying employer which would remove the requirement for you to pay the 5%. Transferred funds cover the cost of the whole duration of the apprenticeship. For more information visit <a class="govuk-link govuk-link--no-visited-state" target="_blank" href="https://www.gov.uk/guidance/apprenticeship-funding-rules-for-employers/apprenticeships-funded-by-transfer-of-levy-funds">apprenticeship funding rules for employers (opens in new tab)</a>.
     </p>
     <p class="govuk-body">
-        You do not need to pay Class 1 National insurance contributions for apprentices under 25, if the apprentice is on an approved apprenticeship standard.
+        You do not need to pay Class 1 National insurance contributions for apprentices under 25, if the apprentice is on an approved apprenticeship standard. 
     </p>
 
     @await Html.PartialAsync("_WhatToDoNext", Model)
