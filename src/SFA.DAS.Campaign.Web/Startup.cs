@@ -136,21 +136,11 @@ namespace SFA.DAS.Campaign.Web
                 Secure = CookieSecurePolicy.Always
             });
 
-            app.Use(async (context, next) =>
-            {
-                if (context.Response.Headers.ContainsKey("X-Frame-Options"))
-                {
-                    context.Response.Headers.Remove("X-Frame-Options");
-                }
-
-                context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
-
-                await next();
-            });
-
             app.AddRedirectRules();
             
             app.UseRouting();
+
+            app.UseMiddleware<SecurityHeadersMiddleware>();
             
             app.UseSession();
             
