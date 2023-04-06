@@ -1,7 +1,7 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipTrainingAndBenefitsViewModel
 
 <div class="fiu-panel fiu-panel--left-align">
-    <h2 class="govuk-heading-l">Take your next step today, estimate what funding could be available to you</h2>
+    <h2 class="govuk-heading-l">Estimate what funding could be available towards your apprentices training costs</h2>
     <form method="post" asp-action="ApprenticeshipBenefitsAndFunding" asp-controller="Employer" asp-fragment="funding">
         <div class="govuk-form-group" highlight-error-for="PayBillGreaterThanThreeMillion" id="PayBillGreaterThanThreeMillion">
             <fieldset class="govuk-fieldset">
@@ -50,7 +50,7 @@
             <span asp-validation-for="@Model.StandardUid" class="govuk-error-message"></span>
             <p class="govuk-body">
                 We offer over @Model.Standards.Count() courses which you can search by keyword or job role,
-                <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.
+                <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link govuk-link--no-visited-state" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.
             </p>
             <select class="govuk-select" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true" id="StandardUid"><option label=" "></option></select>
         </div>
@@ -75,8 +75,4 @@
             <a class="fiu-button fiu-button--employers fiu-button--outlined" href="/employers/understanding-apprenticeship-benefits-and-funding?reset=@num#funding">Reset</a>
         </div>
     </form>
-
-     @await Html.PartialAsync("_UseCases")
-   
-    <a href="/employers/real-stories-employers" class="fiu-button fiu-button--employers fiu-button--outlined govuk-!-margin-top-4 govuk-!-margin-bottom-0">See more stories from businesses like yours </a>
 </div>

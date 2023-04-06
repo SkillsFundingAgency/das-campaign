@@ -31,11 +31,13 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
         private GetBannerQueryResult<BannerContentType> _banner;
         private GetPanelQueryResult _panelResult1;
         private GetPanelQueryResult _panelResult2;
+        private GetPanelQueryResult _panelResult3;
         private GetStandardsQueryResult _standards;
         private List<StandardResponse> _standardsResult;
 
-        private const string calculationPanel1Slug = "are-you-ready-to-get-going";
-        private const string calculationPanel2Slug = "future-proof-your-business";
+        private const string calculationPanel1Slug = "benefits-of-apprenticeships-for-your-business";
+        private const string calculationPanel2Slug = "your-estimated-yearly-gain";
+        private const string calculationPanel3Slug = "the-future-of-your-business";
 
         [SetUp]
         public void Arrange()
@@ -56,6 +58,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
             _banner = _fixture.Create<GetBannerQueryResult<BannerContentType>>();
             _panelResult1 = _fixture.Create<GetPanelQueryResult>();
             _panelResult2 = _fixture.Create<GetPanelQueryResult>();
+            _panelResult3 = _fixture.Create<GetPanelQueryResult>();
             _standards = _fixture.Create<GetStandardsQueryResult>();
 
             _configuration = new Mock<IOptions<CampaignConfiguration>>();
@@ -66,6 +69,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
             _mediator.Setup(p => p.Send(It.IsAny<GetStandardsQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(_standards);
             _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Slug == calculationPanel1Slug), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult1);
             _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Slug == calculationPanel2Slug), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult2);
+            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Slug == calculationPanel3Slug), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult3);
             _mediator.Setup(p => p.Send(It.IsAny<GetMenuQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(_menu);
             _mediator.Setup(p => p.Send(It.IsAny<GetBannerQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(_banner);
             _staticContent = new Page<StaticContent>
