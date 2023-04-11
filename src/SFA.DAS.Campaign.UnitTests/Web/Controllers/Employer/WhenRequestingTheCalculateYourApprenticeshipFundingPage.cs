@@ -43,16 +43,20 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
         public void Arrange()
         {
             var _fixture = new Fixture();
+
             _fixture.Customizations.Add(
             new TypeRelay(
             typeof(IHtmlControl),
             typeof(GetMenuQueryResult<Menu>)));
+
             _fixture.Customizations.Add(
             new TypeRelay(
             typeof(IHtmlControl),
             typeof(GetBannerQueryResult<BannerContentType>)));
+
             _fixture.Behaviors.OfType<ThrowingRecursionBehavior>().ToList()
             .ForEach(b => _fixture.Behaviors.Remove(b));
+
             _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
             _menu = _fixture.Create<GetMenuQueryResult<Menu>>();
             _banner = _fixture.Create<GetBannerQueryResult<BannerContentType>>();
@@ -95,6 +99,23 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
             actualModel.Panel2.Should().BeEquivalentTo(_panelResult2.Panel);
             actualModel.Menu.Should().BeEquivalentTo(_menu.Page.Menu);
             actualModel.BannerModels.Should().BeEquivalentTo(_banner.Page.BannerModels);
+        }
+
+        [Test, RecursiveMoqAutoData]
+        public async Task And_The_Posted_Model_Has_No_Apprentices_Then_An_Error_Is_Added(bool preview)
+        {
+            var model = new ApprenticeshipTrainingAndBenefitsViewModel
+            {
+                NumberOfRoles = "0"
+            };
+
+            var result = await _controller.ApprenticeshipBenefitsAndFunding(model, preview);
+
+            var viewResult = result as ViewResult;
+
+            Assert.IsFalse(_controller.ModelState.IsValid);
+            _controller.ModelState.ErrorCount.Should().Be(1);
+            _controller.ModelState.Keys.Should().Contain("NumberOfRoles");
         }
     }
 }
