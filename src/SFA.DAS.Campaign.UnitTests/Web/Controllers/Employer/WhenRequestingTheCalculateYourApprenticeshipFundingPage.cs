@@ -113,7 +113,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
 
             var viewResult = result as ViewResult;
 
-            Assert.IsFalse(_controller.ModelState.IsValid);
+            _controller.ModelState.IsValid.Should().BeFalse();
             _controller.ModelState.ErrorCount.Should().Be(1);
             _controller.ModelState.Keys.Should().Contain("NumberOfRoles");
         }
