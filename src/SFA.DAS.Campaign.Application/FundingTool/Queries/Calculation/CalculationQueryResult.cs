@@ -7,11 +7,11 @@ namespace SFA.DAS.Campaign.Application.FundingTool.Queries.Calculation
     public class CalculationQueryResult : IRequest<CalculationQuery>
     {
         public int Funding { get; set; }
-        public string FundingOutput { get { return String.Format("{0:#,##0.##}", Funding); } }
+        public string AvailableFunding { get { return String.Format("{0:#,##0.##}", Funding); } }
         public int? Training { get; set; }
-        public string? TrainingOutput { get { return String.Format("{0:#,##0.##}", Training); } }
-        public int Duration { get; set; }
-        public int Level { get; set; }
-        public string Title { get; set; } = null!;
+        public string? TrainingCost { get { return String.Format("{0:#,##0.##}", Training); } }
+        public int StandardDuration { get; set; }
+        public int StandardLevel { get; set; }
+        public string StandardTitle { get; set; } = null!;
     }
 }
