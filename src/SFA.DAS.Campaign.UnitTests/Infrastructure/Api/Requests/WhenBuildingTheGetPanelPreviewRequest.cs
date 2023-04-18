@@ -8,11 +8,11 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Requests
     public class WhenBuildingTheGetPanelPreviewRequest
     {
         [Test, MoqAutoData]
-        public void Then_The_Url_Is_Correct(string slug)
+        public void Then_The_Url_Is_Correct(int panelId)
         {
-            var actual = new GetPanelPreviewRequest(slug);
+            var actual = new GetPanelPreviewRequest(panelId);
 
-            actual.GetUrl.Should().Be($"panel/preview/{slug}");
+            actual.GetUrl.Should().Be($"panel/preview/{panelId}");
         }
     }
 }

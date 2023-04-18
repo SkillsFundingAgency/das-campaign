@@ -35,9 +35,9 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
         private GetStandardsQueryResult _standards;
         private List<StandardResponse> _standardsResult;
 
-        private const string calculationPanel1Slug = "benefits-of-apprenticeships-for-your-business";
-        private const string calculationPanel2Slug = "your-estimated-yearly-gain";
-        private const string calculationPanel3Slug = "the-future-of-your-business";
+        private const int panel1Id = 1;
+        private const int panel2Id = 2;
+        private const int panel3Id = 3;
 
         [SetUp]
         public void Arrange()
@@ -71,9 +71,9 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
             _controller = new EmployerController(_configuration.Object, _mediator.Object);
 
             _mediator.Setup(p => p.Send(It.IsAny<GetStandardsQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(_standards);
-            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Slug == calculationPanel1Slug), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult1);
-            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Slug == calculationPanel2Slug), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult2);
-            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Slug == calculationPanel3Slug), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult3);
+            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Id == panel1Id), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult1);
+            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Id == panel2Id), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult2);
+            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Id == panel3Id), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult3);
             _mediator.Setup(p => p.Send(It.IsAny<GetMenuQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(_menu);
             _mediator.Setup(p => p.Send(It.IsAny<GetBannerQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(_banner);
             _staticContent = new Page<StaticContent>
