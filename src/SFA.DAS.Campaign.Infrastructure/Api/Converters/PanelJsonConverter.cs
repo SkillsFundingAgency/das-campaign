@@ -62,7 +62,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             {
                 Title = cmsContent.Panel.MainContent.Title,
                 LinkTitle = cmsContent.Panel.MainContent.LinkTitle,
-                Slug = cmsContent.Panel.MainContent.Slug
+                Slug = cmsContent.Panel.MainContent.Slug,
+                Id = cmsContent.Panel.MainContent.Id
             };
 
             AddPanelButton(cmsContent, pageModel);

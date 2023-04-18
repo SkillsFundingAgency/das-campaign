@@ -11,5 +11,6 @@ namespace SFA.DAS.Campaign.Domain.Content
         public Image MainImage { get; set; }
         public Button Button { get; set; }
         public string LinkTitle { get; set; }
+        public int Id { get; set; }
     }
 }
