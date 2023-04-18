@@ -11,3 +11,24 @@
 .fiu-cookie-banner__message  {
     margin-bottom: 10px;
 }
+
+.app-back-to-top,
+.app-back-to-top:link,
+.app-back-to-top:visited {
+    color: #1d70b8;
+    padding-left: 1.2em;
+}
+
+.app-back-to-top:before {
+    border-color: #1d70b8;
+    transform: rotate(315deg);
+    top: 5px;
+}
+
+.app-back-to-top:focus {
+    color: #000;
+}
+
+.app-back-to-top:focus:before {
+    border-color: #000;
+}

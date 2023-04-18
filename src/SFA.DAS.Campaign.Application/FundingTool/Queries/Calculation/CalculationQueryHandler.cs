@@ -28,9 +28,9 @@ namespace SFA.DAS.Campaign.Application.FundingTool.Queries.Calculation
             {
                 Funding = output.Funding,
                 Training = output.Training,
-                Duration = request.TrainingCourse.Duration,
-                Level = request.TrainingCourse.Level,
-                Title = request.TrainingCourse.Title
+                StandardDuration = request.TrainingCourse.Duration,
+                StandardLevel = request.TrainingCourse.Level,
+                StandardTitle = request.TrainingCourse.Title
             };
         }
 

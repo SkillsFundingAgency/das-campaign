@@ -32,32 +32,30 @@ namespace SFA.DAS.Campaign.Web.Renderers
             }
 
             var parentDiv = new TagBuilder("div");
-            parentDiv.AddCssClass("fiu-tabs");
-            parentDiv.Attributes.Add("data-fiu-tabs", bool.TrueString);
+            parentDiv.AddCssClass("govuk-grid-row app-anchor-links");
+
+            var leftCol = new TagBuilder("div");
+            leftCol.AddCssClass("govuk-grid-column-one-third");
+
+            var rightCol = new TagBuilder("div");
+            rightCol.AddCssClass("govuk-grid-column-two-thirds");
 
             //construct title of tabs
-            ConstructTabHeaders(parentDiv, control);
-            ConstructTabContent(parentDiv, control);
+            ConstructTabHeaders(leftCol, control);
+            ConstructTabContent(rightCol, control);
+
+            parentDiv.InnerHtml.AppendHtml(leftCol.WriteString());
+            parentDiv.InnerHtml.AppendHtml(rightCol.WriteString());
+
             return new HtmlString(parentDiv.WriteString());
         }
 
         private void ConstructTabContent(TagBuilder parentDiv, Tabs tab)
         {
-            var addHiddenCssClass = false;
-
             foreach (var tabContent in tab.TabbedContents)
             {
                 var div = new TagBuilder("div");
-                div.AddCssClass("fiu-tabs__panel");
-                if (addHiddenCssClass)
-                {
-                    div.AddCssClass("fiu-tabs__panel--hidden");
-                }
-                else
-                {
-                    addHiddenCssClass = true;
-                }
-
+                div.AddCssClass("app-anchor-links__panel");
                 div.MergeAttribute("id", tabContent.TabTitle.EnsureHrefUsableTitle());
 
                 var articleEl = new TagBuilder("article");
@@ -80,30 +78,19 @@ namespace SFA.DAS.Campaign.Web.Renderers
         private void ConstructTabHeaders(TagBuilder parentDiv, Tabs tab)
         {
             var h2 = new TagBuilder("h2");
-            h2.AddCssClass("fiu-tabs__title");
-            h2.InnerHtml.Append("Contents");
+            h2.AddCssClass("govuk-heading-m");
+            h2.InnerHtml.Append("On this page");
             parentDiv.InnerHtml.AppendHtml(h2.WriteString());
-
-            var addSelectedCssClass = true;
             var ul = new TagBuilder("ul");
-            ul.AddCssClass("fiu-tabs__list");
+            ul.AddCssClass("govuk-list govuk-list--spaced app-anchor-links__list");
 
             foreach (var tabbedContent in tab.TabbedContents)
             {
                 var li = new TagBuilder("li");
                 var href = new TagBuilder("a");
-
-                if (addSelectedCssClass)
-                {
-                    li.AddCssClass("fiu-tabs__list-item fiu-tabs__list-item--selected");
-                    addSelectedCssClass = false;
-                }
-                else
-                {
-                    li.AddCssClass("fiu-tabs__list-item");
-                }
+                li.AddCssClass("app-anchor-links__list-item");
                 
-                href.AddCssClass("fiu-tabs__tab");
+                href.AddCssClass("govuk-link govuk-link--no-visited-state app-anchor-links__link");
                 href.MergeAttribute("href", $"#{tabbedContent.TabTitle.EnsureHrefUsableTitle()}");
                 href.InnerHtml.Append(tabbedContent.TabTitle);
                 li.InnerHtml.AppendHtml(href.WriteString());

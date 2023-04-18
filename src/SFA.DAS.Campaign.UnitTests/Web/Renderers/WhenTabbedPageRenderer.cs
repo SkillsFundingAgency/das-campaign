@@ -69,7 +69,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(tabs);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<div class=\"fiu-tabs\" data-fiu-tabs=\"True\"><h2 class=\"fiu-tabs__title\">Contents</h2><ul class=\"fiu-tabs__list\"><li class=\"fiu-tabs__list-item fiu-tabs__list-item--selected\"><a class=\"fiu-tabs__tab\" href=\"#Title\">Title</a></li></ul><div class=\"fiu-tabs__panel\" id=\"Title\"><article class=\"fiu-article\"><h2>a heading</h2></article></div></div>");
+            actual.Value.Should().Be("<div class=\"govuk-grid-row app-anchor-links\"><div class=\"govuk-grid-column-one-third\"><h2 class=\"govuk-heading-m\">On this page</h2><ul class=\"govuk-list govuk-list--spaced app-anchor-links__list\"><li class=\"app-anchor-links__list-item\"><a class=\"govuk-link govuk-link--no-visited-state app-anchor-links__link\" href=\"#Title\">Title</a></li></ul></div><div class=\"govuk-grid-column-two-thirds\"><div class=\"app-anchor-links__panel\" id=\"Title\"><article class=\"fiu-article\"><h2>a heading</h2></article></div></div></div>");
         }
     }
 }
