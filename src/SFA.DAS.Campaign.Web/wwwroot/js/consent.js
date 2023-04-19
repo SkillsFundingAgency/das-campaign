@@ -9,6 +9,7 @@
       ? $el.dataset.consentApiUrl.replace(/\/?$/, '/')
       : 'https://consent-api-bgzqvpmbyq-nw.a.run.app/api/v1/consent/'
   })(document.querySelector('[data-consent-api-url]'))
+  var originPattern = /^(https?:)?\/\/([^:/]+)(?::(\d+))?/
 
   function Consent() {
     // one year in milliseconds
@@ -74,11 +75,13 @@
       consent.uid = uid
 
       // add uid URL parameter to consent sharing links
-      var links = document.querySelectorAll('[data-consent-share][href]')
+      var links = document.querySelectorAll('a[href]')
       Array.prototype.forEach.call(links, function (link) {
-        link.addEventListener('click', function (event) {
-          event.target.href = addUrlParameter(event.target.href, uidKey, uid)
-        })
+        if (isCrossOrigin(link.href)) {
+          link.addEventListener('click', function (event) {
+            event.target.href = addUrlParameter(event.target.href, uidKey, uid)
+          })
+        }
       })
 
       // set uid cookie
@@ -156,6 +159,18 @@
         }
       }
     }
+  }
+
+  function isCrossOrigin(url) {
+    var match = url.match(originPattern)
+    if (match) {
+      return (
+        (match[1] && match[1] !== window.location.protocol) ||
+        (match[2] && match[2] !== window.location.hostname) ||
+        (match[3] || '80') !== (window.location.port || '80')
+      )
+    }
+    return false
   }
 
   document.addEventListener('DOMContentLoaded', function () {
