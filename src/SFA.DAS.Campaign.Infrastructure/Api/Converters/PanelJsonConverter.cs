@@ -61,7 +61,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             var pageModel = new Panel
             {
                 Title = cmsContent.Panel.MainContent.Title,
-                LinkTitle = cmsContent.Panel.MainContent.LinkTitle,
                 Slug = cmsContent.Panel.MainContent.Slug,
                 Id = cmsContent.Panel.MainContent.Id
             };

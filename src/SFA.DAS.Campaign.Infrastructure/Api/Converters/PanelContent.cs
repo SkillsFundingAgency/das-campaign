@@ -24,9 +24,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         [JsonProperty("button")]
         public ButtonContent Button { get; set; }
 
-        [JsonProperty("linkTitle")]
-        public string LinkTitle { get; set; }
-
         [JsonProperty("id")]
         public int Id { get; set; }
     }
