@@ -3,14 +3,14 @@
 <div class="fiu-panel fiu-panel--left-align">
     <h2 class="govuk-heading-l">Estimate what funding could be available towards your apprentices training costs</h2>
     <form method="post" asp-action="ApprenticeshipBenefitsAndFunding" asp-controller="Employer" asp-fragment="funding">
-        <div class="govuk-form-group" highlight-error-for="PayBillGreaterThanThreeMillion" id="PayBillGreaterThanThreeMillion">
+        <div class="govuk-form-group" highlight-error-for="PayBillGreaterThanThreeMillion">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">What is your annual pay bill?</legend>
                 <span asp-validation-for="@Model.PayBillGreaterThanThreeMillion" class="govuk-error-message"></span>
                 <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="pay-bill-under" name="PayBillGreaterThanThreeMillion" type="radio" value="@false" asp-for="@Model.PayBillGreaterThanThreeMillion">
-                        <label class="govuk-label govuk-radios__label" for="pay-bill-under">
+                        <input class="govuk-radios__input" id="PayBillGreaterThanThreeMillion" name="PayBillGreaterThanThreeMillion" type="radio" value="@false" asp-for="@Model.PayBillGreaterThanThreeMillion">
+                        <label class="govuk-label govuk-radios__label" for="PayBillGreaterThanThreeMillion">
                             Under &pound;3 million
                         </label>
                     </div>
@@ -23,14 +23,14 @@
                 </div>
             </fieldset>
         </div>
-        <div class="govuk-form-group" highlight-error-for="OverFiftyEmployees" id="OverFiftyEmployees">
+        <div class="govuk-form-group" highlight-error-for="OverFiftyEmployees">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">How many employees do you have?</legend>
                 <span asp-validation-for="@Model.OverFiftyEmployees" class="govuk-error-message"></span>
                 <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="employees-under" name="OverFiftyEmployees" type="radio" value="@false" asp-for="@Model.OverFiftyEmployees">
-                        <label class="govuk-label govuk-radios__label" for="employees-under">
+                        <input class="govuk-radios__input" id="OverFiftyEmployees" name="OverFiftyEmployees" type="radio" value="@false" asp-for="@Model.OverFiftyEmployees">
+                        <label class="govuk-label govuk-radios__label" for="OverFiftyEmployees">
                             1 to 49 employees
                         </label>
                     </div>
