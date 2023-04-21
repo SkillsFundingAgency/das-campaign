@@ -18,11 +18,29 @@
     }
     <div class="fiu-width-container">
         <div class="govuk-grid-row fiu-flex-row">
+
             @{
-                var firstTwo = Model.Content.Cards.Take(2);
-                for (var i = 0; i < firstTwo.Count(); i++)
+                int noOfCardsinFirstRow = 2;
+            }
+
+            @if (Model.Slug == "useful-resources-for-apprentices")
+            {
+                noOfCardsinFirstRow = 1;
+                <div class="govuk-grid-column-one-quarter">
+                    <div class="fiu-card">
+                        <span class="fiu-card__category"><a class="fiu-card__category-link" href="/apprentices/useful-resources-for-apprentices">Useful resources and support</a></span>
+                        <h3 class="fiu-card__heading">Apprenticeship support centre</h3>
+                        <p class="fiu-card__content">Essential information and support for apprentices, to help you successfully complete your apprenticeship programme.</p>
+                        <a href="https://apprenticesupportcentre.apprenticeships.gov.uk/" target="_blank" class="fiu-card__link" rel="noopener">Learn more <span class="fiu-vh"> about the support centre</span></a>
+                    </div>
+                </div>
+            }
+
+            @{
+                var firstCards = Model.Content.Cards.Take(noOfCardsinFirstRow);
+                for (var i = 0; i < firstCards.Count(); i++)
                 {
-                    @firstTwo.ElementAt(i).CardToHtml();
+                    @firstCards.ElementAt(i).CardToHtml();
                 }
             }
             <div class="govuk-grid-column-one-half">
@@ -30,7 +48,7 @@
             </div>
         </div>
         @{
-            var items = Model.Content.Cards.Skip(2).Take(Model.Content.Cards.Count - 2);
+            var items = Model.Content.Cards.Skip(noOfCardsinFirstRow).Take(Model.Content.Cards.Count - noOfCardsinFirstRow);
             int columncount = 1;
 
             for (var i = 0; i < items.Count(); i++)
