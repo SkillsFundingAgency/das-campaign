@@ -4,13 +4,13 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Requests
 {
     public class GetPanelRequest : IGetApiRequest
     {
-        private readonly string _slug;
+        private readonly int _panelId;
 
-        public GetPanelRequest(string slug)
+        public GetPanelRequest(int id)
         {
-            _slug = slug;
+            _panelId = id;
         }
 
-        public string GetUrl => $"panel/{_slug}";
+        public string GetUrl => $"panel/{_panelId}";
     }
 }
