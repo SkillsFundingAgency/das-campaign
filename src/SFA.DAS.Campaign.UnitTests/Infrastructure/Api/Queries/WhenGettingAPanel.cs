@@ -16,43 +16,105 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
 {
     public class WhenGettingAPanel
     {
-        [Test, RecursiveMoqAutoData]
-        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_And_The_Panel_Is_Returned_From_The_Preview_Api_if_Config_And_Param_Set(
-            GetPanelQuery query, Panel response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetPanelQueryHandler handler)
+        [Test]
+        [MoqInlineAutoData(true, true)]
+        [MoqInlineAutoData(true, false)]
+        [MoqInlineAutoData(false, true)]
+        [MoqInlineAutoData(false, false)]
+        public async Task AndForcePreviewIsTrue_ThenThePanelIsReturnedFromThePreviewAPI(
+            bool allowPreview, bool previewWanted, GetPanelQuery query, Panel response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetPanelQueryHandler handler)
         {
-            SetupMockConfig(config);
-            query.Preview = true;
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, true);
             client.Setup(o => o.Get<Panel>(It.Is<GetPanelPreviewRequest>(r => r.GetUrl == $"panel/preview/{query.Id}"))).ReturnsAsync(response);
 
             var actual = await handler.Handle(query, CancellationToken.None);
 
-            client.Verify(o => o.Get<Panel>(It.Is<GetPanelPreviewRequest>(r => r.GetUrl == $"panel/preview/{query.Id}")), Times.Once);
-            actual.Should().NotBeNull();
-            actual.Panel.Should().NotBeNull();
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Panel>(It.Is<GetPanelPreviewRequest>(r => r.GetUrl == $"panel/preview/{query.Id}")), Times.Once);
+                actual.Should().NotBeNull();
+                actual.Panel.Should().NotBeNull();
+            });
         }
 
-        [Test]
-        [RecursiveMoqInlineAutoData(true)]
-        [RecursiveMoqInlineAutoData(false)]
-        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_And_Preview_Is_Disabled_Then_The_Panel_Is_Returned_From_The_Api(
-            bool preview, GetPanelQuery query, Panel response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetPanelQueryHandler handler)
+        [Test, MoqInlineAutoData(true, true)]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsTrue_AndPreviewIsWanted_ThenThePanelIsReturnedFromThePreviewAPI(
+           bool allowPreview, bool previewWanted, GetPanelQuery query, Panel response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetPanelQueryHandler handler)
         {
-            query.Preview = preview;
-            SetupMockConfig(config, false);
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, false);
+            client.Setup(o => o.Get<Panel>(It.Is<GetPanelPreviewRequest>(r => r.GetUrl == $"panel/preview/{query.Id}"))).ReturnsAsync(response);
 
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Panel>(It.Is<GetPanelPreviewRequest>(r => r.GetUrl == $"panel/preview/{query.Id}")), Times.Once);
+                actual.Should().NotBeNull();
+                actual.Panel.Should().NotBeNull();
+            });
+        }
+
+        [Test, MoqInlineAutoData(false, true)]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsFalse_AndPreviewIsWanted_ThenThePanelIsReturnedFromTheProductionAPI(
+            bool allowPreview, bool previewWanted, GetPanelQuery query, Panel response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetPanelQueryHandler handler)
+        {
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, false);
             client.Setup(o => o.Get<Panel>(It.Is<GetPanelRequest>(r => r.GetUrl == $"panel/{query.Id}"))).ReturnsAsync(response);
 
             var actual = await handler.Handle(query, CancellationToken.None);
 
-            client.Verify(
-                o => o.Get<Panel>(It.Is<GetPanelRequest>(r => r.GetUrl == $"panel/{query.Id}")), Times.Once);
-            client.Verify(o => o.Get<Panel>(It.IsAny<GetPanelPreviewRequest>()), Times.Never);
-            actual.Should().NotBeNull();
-            actual.Panel.Should().NotBeNull();
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Panel>(It.Is<GetPanelRequest>(r => r.GetUrl == $"panel/{query.Id}")), Times.Once);
+                client.Verify(o => o.Get<Panel>(It.IsAny<GetPanelPreviewRequest>()), Times.Never);
+                actual.Should().NotBeNull();
+                actual.Panel.Should().NotBeNull();
+            });
+        }
+
+        [Test, MoqInlineAutoData(true, false)]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsTrue_AndPreviewIsNotWanted_ThenThePanelIsReturnedFromTheProductionAPI(
+            bool allowPreview, bool previewWanted, GetPanelQuery query, Panel response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetPanelQueryHandler handler)
+        {
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, false);
+            client.Setup(o => o.Get<Panel>(It.Is<GetPanelRequest>(r => r.GetUrl == $"panel/{query.Id}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Panel>(It.Is<GetPanelRequest>(r => r.GetUrl == $"panel/{query.Id}")), Times.Once);
+                client.Verify(o => o.Get<Panel>(It.IsAny<GetPanelPreviewRequest>()), Times.Never);
+                actual.Should().NotBeNull();
+                actual.Panel.Should().NotBeNull();
+            });
+        }
+
+        [Test, MoqInlineAutoData(false, false)]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsFalse_AndPreviewIsNotWanted_ThenThePanelIsReturnedFromTheProductionAPI(
+            bool allowPreview, bool previewWanted, GetPanelQuery query, Panel response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetPanelQueryHandler handler)
+        {
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, false);
+            client.Setup(o => o.Get<Panel>(It.Is<GetPanelRequest>(r => r.GetUrl == $"panel/{query.Id}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Panel>(It.Is<GetPanelRequest>(r => r.GetUrl == $"panel/{query.Id}")), Times.Once);
+                client.Verify(o => o.Get<Panel>(It.IsAny<GetPanelPreviewRequest>()), Times.Never);
+                actual.Should().NotBeNull();
+                actual.Panel.Should().NotBeNull();
+            });
         }
 
         [Test, RecursiveMoqAutoData]
-        public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_Then_No_Panel_Is_Returned(
+        public async Task AndTheApiIsCalledWithInvalidRequestParameters_ThenNoPanelIsReturned(
              GetPanelQuery query, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetPanelQueryHandler handler)
         {
             SetupMockConfig(config);
@@ -65,9 +127,10 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             actual.Panel.Should().BeNull();
         }
 
-        private static void SetupMockConfig(Mock<IOptions<CampaignConfiguration>> config, bool allowPreview = true)
+        private static void SetupMockConfig(Mock<IOptions<CampaignConfiguration>> config, bool allowPreview = true, bool forcePreview = false)
         {
             config.Object.Value.AllowPreview = allowPreview;
+            config.Object.Value.ForcePreview = forcePreview;
         }
     }
 }

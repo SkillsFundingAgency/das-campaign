@@ -8,7 +8,6 @@ using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Content.Queries;
 using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Domain.Content;
-using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Requests;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Testing.AutoFixture;

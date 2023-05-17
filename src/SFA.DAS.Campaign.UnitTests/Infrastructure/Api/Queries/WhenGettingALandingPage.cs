@@ -8,7 +8,6 @@ using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Content.Queries;
 using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Domain.Content;
-using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Requests;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Testing.AutoFixture;
@@ -17,30 +16,112 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
 {
     public class WhenGettingALandingPage
     {
-        [Test, RecursiveMoqAutoData]
-        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_And_The_Landing_Page_Is_Returned_From_The_Preview_Api_if_Config_And_Param_Set(
-            GetLandingPageQuery query, Page<LandingPage> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetLandingPageQueryHandler handler)
+        [Test]
+        [MoqInlineAutoData(true, true)]
+        [MoqInlineAutoData(true, false)]
+        [MoqInlineAutoData(false, true)]
+        [MoqInlineAutoData(false, false)]
+        public async Task AndForcePreviewIsTrue_ThenTheLandingPageIsReturnedFromThePreviewAPI(
+            bool allowPreview, bool previewWanted, GetLandingPageQuery query, Page<LandingPage> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetLandingPageQueryHandler handler)
         {
-            SetupMockConfig(config);
-            query.Preview = true;
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, true);
             client.Setup(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPagePreviewRequest>(r => r.GetUrl == $"landingpage/preview/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
 
             var actual = await handler.Handle(query, CancellationToken.None);
 
-            client.Verify(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPagePreviewRequest>(r => r.GetUrl == $"landingpage/preview/{query.Hub}/{query.Slug}")), Times.Once);
-            actual.Should().NotBeNull();
-            actual.Page.Should().NotBeNull();
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPagePreviewRequest>(r => r.GetUrl == $"landingpage/preview/{query.Hub}/{query.Slug}")), Times.Once);
+                actual.Should().NotBeNull();
+                actual.Page.Should().NotBeNull();
+            });
+        }
+
+        [Test, MoqInlineAutoData(true, true)]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsTrue_AndPreviewIsWanted_ThenTheLandingPageIsReturnedFromThePreviewAPI(
+           bool allowPreview, bool previewWanted, GetLandingPageQuery query, Page<LandingPage> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetLandingPageQueryHandler handler)
+        {
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, false);
+            client.Setup(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPagePreviewRequest>(r => r.GetUrl == $"landingpage/preview/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPagePreviewRequest>(r => r.GetUrl == $"landingpage/preview/{query.Hub}/{query.Slug}")), Times.Once);
+                actual.Should().NotBeNull();
+                actual.Page.Should().NotBeNull();
+            });
+        }
+
+        [Test, MoqInlineAutoData(false, true)]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsFalse_AndPreviewIsWanted_ThenTheLandingPageIsReturnedFromTheProductionAPI(
+            bool allowPreview, bool previewWanted, GetLandingPageQuery query, Page<LandingPage> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetLandingPageQueryHandler handler)
+        {
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, false);
+            client.Setup(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}")), Times.Once);
+                client.Verify(o => o.Get<Page<LandingPage>>(It.IsAny<GetLandingPagePreviewRequest>()), Times.Never);
+                actual.Should().NotBeNull();
+                actual.Page.Should().NotBeNull();
+            });
+        }
+
+        [Test, MoqInlineAutoData(true, false)]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsTrue_AndPreviewIsNotWanted_ThenTheLandingPageIsReturnedFromTheProductionAPI(
+            bool allowPreview, bool previewWanted, GetLandingPageQuery query, Page<LandingPage> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetLandingPageQueryHandler handler)
+        {
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, false);
+            client.Setup(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}")), Times.Once);
+                client.Verify(o => o.Get<Page<LandingPage>>(It.IsAny<GetLandingPagePreviewRequest>()), Times.Never);
+                actual.Should().NotBeNull();
+                actual.Page.Should().NotBeNull();
+            });
+        }
+
+        [Test, MoqInlineAutoData(false, false)]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsFalse_AndPreviewIsNotWanted_ThenTheLandingPageIsReturnedFromTheProductionAPI(
+            bool allowPreview, bool previewWanted, GetLandingPageQuery query, Page<LandingPage> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetLandingPageQueryHandler handler)
+        {
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, false);
+            client.Setup(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}")), Times.Once);
+                client.Verify(o => o.Get<Page<LandingPage>>(It.IsAny<GetLandingPagePreviewRequest>()), Times.Never);
+                actual.Should().NotBeNull();
+                actual.Page.Should().NotBeNull();
+            });
         }
 
         [Test]
-        [RecursiveMoqInlineAutoData(true)]
-        [RecursiveMoqInlineAutoData(false)]
-        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_And_Preview_Is_Disabled_Then_The_Landing_Page_Is_Returned_From_The_Api(
-            bool preview, GetLandingPageQuery query, Page<LandingPage> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetLandingPageQueryHandler handler)
+        [RecursiveMoqInlineAutoData(true, false)]
+        [RecursiveMoqInlineAutoData(false, false)]
+        public async Task ThenTheApiIsCalledWithTheValidRequestParameters_ThenTheLandingPageIsReturnedFromTheApiWithTheMenu(
+            bool previewWanted, bool allowPreview, GetLandingPageQuery query, Page<LandingPage> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetLandingPageQueryHandler handler)
         {
-            query.Preview = preview;
-            SetupMockConfig(config, false);
-            
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, false);
+
             client.Setup(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
 
             var actual = await handler.Handle(query, CancellationToken.None);
@@ -48,27 +129,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             client.Verify(
                 o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}")), Times.Once);
             client.Verify(o => o.Get<Page<LandingPage>>(It.IsAny<GetLandingPagePreviewRequest>()), Times.Never);
-            actual.Should().NotBeNull();
-            actual.Page.Should().NotBeNull();
-        }
 
-        [Test]
-        [RecursiveMoqInlineAutoData(true)]
-        [RecursiveMoqInlineAutoData(false)]
-        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_Then_The_Landing_Page_Is_Returned_From_The_Api_With_The_Menu(
-            bool preview, GetLandingPageQuery query, Page<LandingPage> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetLandingPageQueryHandler handler)
-        {
-            query.Preview = preview;
-            SetupMockConfig(config, false);
-
-            client.Setup(o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
-
-            var actual = await handler.Handle(query, CancellationToken.None);
-
-            client.Verify(
-                o => o.Get<Page<LandingPage>>(It.Is<GetLandingPageRequest>(r => r.GetUrl == $"landingpage/{query.Hub}/{query.Slug}")), Times.Once);
-            client.Verify(o => o.Get<Page<LandingPage>>(It.IsAny<GetLandingPagePreviewRequest>()), Times.Never);
-            
             actual.Should().NotBeNull();
             actual.Page.Should().NotBeNull();
             actual.Page.Content.Should().NotBeNull();
@@ -80,7 +141,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
         }
 
         [Test, RecursiveMoqAutoData]
-        public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_Then_No_Landing_Page_Is_Returned(
+        public async Task AndTheApiIsCalledWithInvalidRequestParameters_ThenNoLandingPageIsReturned(
             GetLandingPageQuery query, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetLandingPageQueryHandler handler)
         {
             SetupMockConfig(config);
@@ -93,9 +154,10 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             actual.Page.Should().BeNull();
         }
 
-        private static void SetupMockConfig(Mock<IOptions<CampaignConfiguration>> config, bool allowPreview = true)
+        private static void SetupMockConfig(Mock<IOptions<CampaignConfiguration>> config, bool allowPreview = true, bool forcePreview = false)
         {
             config.Object.Value.AllowPreview = allowPreview;
+            config.Object.Value.ForcePreview = forcePreview;
         }
     }
 }
