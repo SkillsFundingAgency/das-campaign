@@ -10,6 +10,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Configuration
         public virtual OuterApiConfiguration OuterApi { get; set; }
         public virtual string EmployerAccountBaseUrl { get; set; }
         public bool AllowPreview { get;set; }
+        public bool ForcePreview { get; set; }
         public string BuildNumber { get ; set ; }
     }
 
