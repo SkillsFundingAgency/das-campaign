@@ -22,10 +22,11 @@ namespace SFA.DAS.Campaign.Application.Content.Queries
 
         public async Task<GetArticleQueryResult<Article>> Handle(GetArticleQuery request, CancellationToken cancellationToken)
         {
-            var canPreview = _config.Value.AllowPreview;
+            var allowPreview = _config.Value.AllowPreview;
+            var forcePreview = _config.Value.ForcePreview;
             Page<Article> article = null;
 
-            if (canPreview && request.Preview)
+            if (allowPreview && request.Preview || forcePreview)
             {
                 article = await _apiClient.Get<Page<Article>>(new GetArticlesPreviewRequest(request.Hub, request.Slug)).ConfigureAwait(false);
             }
