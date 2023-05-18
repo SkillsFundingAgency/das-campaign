@@ -26,7 +26,7 @@ namespace SFA.DAS.Campaign.Application.Content.Queries
             var forcePreview = _config.Value.ForcePreview;
             Panel panel = null;
 
-            if (allowPreview && request.Preview || forcePreview)
+            if ((allowPreview && request.Preview) || forcePreview)
             {
                 panel = await _apiClient.Get<Panel>(new GetPanelPreviewRequest(request.Id)).ConfigureAwait(false);
             }

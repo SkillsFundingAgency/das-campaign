@@ -26,7 +26,7 @@ namespace SFA.DAS.Campaign.Application.Content.Queries
             var forcePreview = _config.Value.ForcePreview;
             Page<LandingPage> landingPage = null;
 
-            if (allowPreview && request.Preview || forcePreview)
+            if ((allowPreview && request.Preview) || forcePreview)
             {
                 landingPage = await _apiClient.Get<Page<LandingPage>>(new GetLandingPagePreviewRequest(request.Hub, request.Slug)).ConfigureAwait(false);
             }

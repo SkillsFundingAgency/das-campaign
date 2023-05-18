@@ -26,7 +26,7 @@ namespace SFA.DAS.Campaign.Application.Content.Queries
             var forcePreview = _config.Value.ForcePreview;
             Page<Article> article = null;
 
-            if (allowPreview && request.Preview || forcePreview)
+            if ((allowPreview && request.Preview) || forcePreview)
             {
                 article = await _apiClient.Get<Page<Article>>(new GetArticlesPreviewRequest(request.Hub, request.Slug)).ConfigureAwait(false);
             }
