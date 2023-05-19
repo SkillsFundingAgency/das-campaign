@@ -114,12 +114,12 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
         }
 
         [Test]
-        [RecursiveMoqInlineAutoData(true, false)]
-        [RecursiveMoqInlineAutoData(false, false)]
+        [RecursiveMoqInlineAutoData(true)]
+        [RecursiveMoqInlineAutoData(false)]
         public async Task AndTheApiIsCalledWithTheValidRequestParameters_ThenTheHubIsReturnedFromTheProductionApiWithTheMenu(
-            bool allowPreview, bool previewWanted, GetHubQuery query, Page<Hub> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetHubQueryHandler handler)
+            bool allowPreview, GetHubQuery query, Page<Hub> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetHubQueryHandler handler)
         {
-            query.Preview = previewWanted;
+            query.Preview = false;
             SetupMockConfig(config, allowPreview, false);
 
             client.Setup(o => o.Get<Page<Hub>>(It.Is<GetHubRequest>(r => r.GetUrl == $"hub/{query.Hub}"))).ReturnsAsync(response);

@@ -114,13 +114,13 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
         }
 
         [Test]
-        [RecursiveMoqInlineAutoData(true, false)]
-        [RecursiveMoqInlineAutoData(false, false)]
+        [RecursiveMoqInlineAutoData(true)]
+        [RecursiveMoqInlineAutoData(false)]
         public async Task AndTheApiIsCalledWithTheValidRequestParameters_ThenTheArticleIsReturnedFromTheApiWithTheMenu(
-            bool previewWanted, bool allowPreview, GetArticleQuery query, Page<Article> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetArticleQueryHandler handler)
+            bool previewWanted, GetArticleQuery query, Page<Article> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetArticleQueryHandler handler)
         {
             query.Preview = previewWanted;
-            SetupMockConfig(config, allowPreview, false);
+            SetupMockConfig(config, false, false);
 
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
 
