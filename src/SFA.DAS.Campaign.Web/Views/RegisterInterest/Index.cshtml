@@ -4,13 +4,13 @@
 @model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
 
 @{
-    ViewBag.Title = "Sign up to stay connected";
-    ViewBag.PageTitle = "Sign up to stay connected";
+    ViewBag.Title = "Sign up to receive our employer skills newsletter";
+    ViewBag.PageTitle = "Sign up to receive our employer skills newsletter";
     ViewBag.MetaDesc = "";
     Layout = "Redesign_Layout_EmployersHub";
     
     ViewBag.LandingPageSlug = "sign-up";
-    ViewBag.LandingPageTitle = "Sign up to stay connected";
+    ViewBag.LandingPageTitle = "Sign up to receive our employer skills newsletter";
 
     var errorOrder = new List<string>()
     {
@@ -50,7 +50,14 @@
                     </ul>
                 </div>
             </div>
-            <p class="govuk-body-l">Keep me up to date with the latest information</p>
+            <p class="govuk-body">You'll get updates every other month about:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>apprenticeships, T levels and other skills programmes</li>
+                <li>policy changes and initiatives</li>
+                <li>upcoming events Your details are protected under the terms of our <a href="/privacy" class="govuk-link">privacy notice</a>. Our privacy notice explains how we use your personal data. It's important you read this before signing up to receive emails.</li>
+            </ul>
+            <p class="govuk-body">You can unsubscribe from these emails at any time.</p>
+
             <form asp-controller="RegisterInterest" asp-action="index">
                 <input type="hidden" asp-for="Version"/>
                 <div class="govuk-form-group" das-validation-for="FirstName" das-validationerror-class="form-group-validation-error">
