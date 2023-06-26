@@ -19,10 +19,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
         private readonly CampaignConfiguration _configuration;
         private readonly IMediator _mediator;
 
-        private const string calculationPanel1Slug = "benefits-of-apprenticeships-for-your-business";
-        private const string calculationPanel2Slug = "your-estimated-yearly-gain";
-        private const string calculationPanel3Slug = "the-future-of-your-business";
-
+        private const int panel1Id = 1;
+        private const int panel2Id = 2;
+        private const int panel3Id = 3;
 
         public EmployerController(IOptions<CampaignConfiguration> configuration, IMediator mediator)
         {
@@ -42,9 +41,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             var standards = _mediator.Send(new GetStandardsQuery());
             var staticContent = _mediator.GetModelForStaticContent();
-            var panel1 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel1Slug, Preview = preview });
-            var panel2 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel2Slug, Preview = preview });
-            var panel3 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel3Slug, Preview = preview });
+            var panel1 = _mediator.Send(new GetPanelQuery() { Id = panel1Id, Preview = preview });
+            var panel2 = _mediator.Send(new GetPanelQuery() { Id = panel2Id, Preview = preview });
+            var panel3 = _mediator.Send(new GetPanelQuery() { Id = panel3Id, Preview = preview });
 
             await Task.WhenAll(standards, staticContent, panel1, panel2, panel3);
 
@@ -69,9 +68,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
             
             var staticContent = _mediator.GetModelForStaticContent();
-            var panel1 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel1Slug, Preview = preview });
-            var panel2 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel2Slug, Preview = preview });
-            var panel3 = _mediator.Send(new GetPanelQuery() { Slug = calculationPanel3Slug, Preview = preview });
+            var panel1 = _mediator.Send(new GetPanelQuery() { Id = panel1Id, Preview = preview });
+            var panel2 = _mediator.Send(new GetPanelQuery() { Id = panel2Id, Preview = preview });
+            var panel3 = _mediator.Send(new GetPanelQuery() { Id = panel3Id, Preview = preview });
 
             await Task.WhenAll(staticContent, panel1, panel2, panel3);
 
