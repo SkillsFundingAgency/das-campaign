@@ -9,11 +9,11 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Requests
     public class WhenBuildingTheGetPanelRequest
     {
         [Test, MoqAutoData]
-        public void Then_The_Url_Is_Correct(string slug)
+        public void Then_The_Url_Is_Correct(int panelId)
         {
-            var actual = new GetPanelRequest(slug);
+            var actual = new GetPanelRequest(panelId);
 
-            actual.GetUrl.Should().Be($"panel/{slug}");
+            actual.GetUrl.Should().Be($"panel/{panelId}");
         }
     }
 }

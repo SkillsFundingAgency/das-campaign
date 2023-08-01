@@ -27,12 +27,12 @@ namespace SFA.DAS.Campaign.Application.Content.Queries
 
             if (canPreview && request.Preview)
             {
-                panel = await _apiClient.Get<Panel>(new GetPanelPreviewRequest(request.Slug)).ConfigureAwait(false);
+                panel = await _apiClient.Get<Panel>(new GetPanelPreviewRequest(request.Id)).ConfigureAwait(false);
             }
 
             if (panel == null)
             {
-                panel = await _apiClient.Get<Panel>(new GetPanelRequest(request.Slug)).ConfigureAwait(false);
+                panel = await _apiClient.Get<Panel>(new GetPanelRequest(request.Id)).ConfigureAwait(false);
             }
 
             return new GetPanelQueryResult
