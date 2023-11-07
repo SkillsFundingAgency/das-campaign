@@ -80,6 +80,8 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
             options.Add(new PathWithQueryRule(@"(?i)parents\b\/(their\-career)$", "/apprentices/help-shape-their-career"));
             options.AddRedirect(@"(?i)parents\b\/(their\-career)$", "/apprentices/help-shape-their-career", (int)HttpStatusCode.PermanentRedirect);
 
+            options.Add(new PathWithQueryRule(@"(?i)influencers\b\/(become\-an\-ambassador)$", "/influencers/what-is-the-aan"));
+            options.AddRedirect(@"(?i)influencers\b\/(become\-an\-ambassador)$", "/influencers/what-is-the-aan", (int)HttpStatusCode.PermanentRedirect);
 
             app.UseRewriter(options);
         }
