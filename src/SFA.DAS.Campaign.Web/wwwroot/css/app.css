@@ -2,6 +2,14 @@
     background-image: url('/images/naw-2023.png');
 }
 
+.fiu-card__image--naw-2024 {
+    background-image: url(/images/naw-2024.png);
+    border-bottom-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #346ef7;
+}
+
 .fiu-cookie-banner {
     display: block;
 }
