@@ -83,6 +83,12 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
             options.Add(new PathWithQueryRule(@"(?i)influencers\b\/(become\-an\-ambassador)$", "/influencers/what-is-the-aan"));
             options.AddRedirect(@"(?i)influencers\b\/(become\-an\-ambassador)$", "/influencers/what-is-the-aan", (int)HttpStatusCode.PermanentRedirect);
 
+            options.AddRedirect("/apprentices/real-stories", "/apprentices/apprentice-stories", (int)HttpStatusCode.PermanentRedirect);
+            options.AddRedirect("/apprentices/becoming-apprentice", "/apprentices/about-apprenticeships", (int)HttpStatusCode.PermanentRedirect);
+            options.AddRedirect("/apprentices/assessment-and-certification", "/apprentices/understanding-end-point-assessments", (int)HttpStatusCode.PermanentRedirect);
+            options.AddRedirect("/apprentices/create-account", "/apprentices/how-to-find-apprenticeships", (int)HttpStatusCode.PermanentRedirect);
+            options.AddRedirect("/apprentices/useful-resources-for-apprentices", "/apprentices/support-centre", (int)HttpStatusCode.PermanentRedirect);
+
             app.UseRewriter(options);
         }
     }
