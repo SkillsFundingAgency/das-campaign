@@ -34,7 +34,7 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
                     $"style-src 'self' 'unsafe-inline' {dasCdn} *.typekit.net https://tagmanager.google.com https://fonts.googleapis.com https://*.rcrsv.io ; " +
                     $"img-src {dasCdn} {authority} https://t.co ib.adnxs.com www.facebook.com bat.bing.com px.ads.linkedin.com www.facebook.com https://analytics.twitter.com www.google.com www.google.co.uk www.googletagmanager.com https://ssl.gstatic.com https://www.gstatic.com https://*.google-analytics.com ; " +
                     $"font-src {dasCdn} *.typekit.net https://fonts.gstatic.com https://*.rcrsv.io data: ;" +
-                    $"connect-src wss://{authority} wss://localhost:* https://t.co 665-cpw-432.mktoresp.com stats.g.doubleclick.net px.ads.linkedin.com *.snapchat.com https://consent-api-bgzqvpmbyq-nw.a.run.app https://*.google-analytics.com https://*.zendesk.com https://*.zdassets.com wss://*.zopim.com https://*.rcrsv.io ;"));
+                    $"connect-src  https://*.google-analytics.com https://*.zendesk.com https://*.zdassets.com wss://*.zopim.com https://*.rcrsv.io ;"));
 
             await next(context);
         }
