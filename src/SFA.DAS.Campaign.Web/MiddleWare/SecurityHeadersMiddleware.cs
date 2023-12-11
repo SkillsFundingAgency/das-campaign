@@ -22,11 +22,11 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
             context.Response.Headers.AddIfNotPresent(
                 "Content-Security-Policy",
                 new StringValues(
-                    $"script-src 'self' 'unsafe-inline' 'unsafe-eval' {dasCdn} *.snapchat.com snap.licdn.com static.ads-twitter.com sc-static.net munchkin.marketo.net acdn.adnxs.com www.youtube.com connect.facebook.net bat.bing.com *.typekit.net https://consent-api-bgzqvpmbyq-nw.a.run.app https://www.googletagmanager.com https://tagmanager.google.com https://www.google-analytics.com https://ssl.google-analytics.com https://*.zdassets.com https://*.zopim.com https://*.rcrsv.io; " +
+                    $"script-src 'self' 'unsafe-inline' 'unsafe-eval' {dasCdn} https://*.twitter.com *.snapchat.com snap.licdn.com static.ads-twitter.com sc-static.net munchkin.marketo.net acdn.adnxs.com www.youtube.com connect.facebook.net bat.bing.com *.typekit.net https://consent-api-bgzqvpmbyq-nw.a.run.app https://www.googletagmanager.com https://tagmanager.google.com https://www.google-analytics.com https://ssl.google-analytics.com https://*.zdassets.com https://*.zopim.com https://*.rcrsv.io; " +
                     $"style-src 'self' 'unsafe-inline' {dasCdn} *.typekit.net https://tagmanager.google.com https://fonts.googleapis.com https://*.rcrsv.io ; " +
-                    $"img-src {dasCdn} {authority} https://t.co ib.adnxs.com www.facebook.com bat.bing.com px.ads.linkedin.com www.facebook.com https://analytics.twitter.com www.google.com www.google.co.uk www.googletagmanager.com https://ssl.gstatic.com https://www.gstatic.com https://*.google-analytics.com ; " +
+                    $"img-src {dasCdn} {authority} images.ctfassets.net https://*.doubleclick.net https://t.co ib.adnxs.com www.facebook.com bat.bing.com https://*.linkedin.com www.facebook.com https://analytics.twitter.com https://*.google.com https://*.google.co.uk www.googletagmanager.com https://ssl.gstatic.com https://www.gstatic.com https://*.google-analytics.com ; " +
                     $"font-src {dasCdn} *.typekit.net https://fonts.gstatic.com https://*.rcrsv.io data: ;" +
-                    $"connect-src wss://localhost:* https://t.co 665-cpw-432.mktoresp.com stats.g.doubleclick.net px.ads.linkedin.com *.snapchat.com https://consent-api-bgzqvpmbyq-nw.a.run.app https://*.google-analytics.com https://*.zendesk.com https://*.zdassets.com wss://*.zopim.com https://*.rcrsv.io ;"));
+                    $"connect-src wss://localhost:* bat.bing.com https://t.co 665-cpw-432.mktoresp.com https://*.doubleclick.net https://*.linkedin.com https://*.snapchat.com https://consent-api-bgzqvpmbyq-nw.a.run.app https://*.google-analytics.com https://*.zendesk.com https://*.zdassets.com wss://*.zopim.com https://*.rcrsv.io ;"));
 
             await next(context);
         }
