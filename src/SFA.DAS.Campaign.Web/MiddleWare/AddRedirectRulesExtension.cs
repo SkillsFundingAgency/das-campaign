@@ -92,6 +92,9 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
             options.Add(new PathWithQueryRule(@"(?i)apprentices\b\/(starting\-apprenticeship)$", "/apprentices/preparing-apprenticeship"));
             options.AddRedirect(@"(?i)apprentices\b\/(starting\-apprenticeship)$", "/apprentices/preparing-apprenticeship", (int)HttpStatusCode.PermanentRedirect);
 
+            options.Add(new PathWithQueryRule(@"(?i)apprentices\b\/(useful\-resources\-for\-apprentices)$", "/apprentices/support-centre"));
+            options.AddRedirect(@"(?i)apprentices\b\/(useful\-resources\-for\-apprentices)$", "/apprentices/support-centre", (int)HttpStatusCode.PermanentRedirect);
+
             app.UseRewriter(options);
         }
     }
