@@ -21,26 +21,11 @@
 
             @{
                 int noOfCardsinFirstRow = 2;
-            }
-
-            @if (Model.Slug == "useful-resources-for-apprentices")
-            {
-                noOfCardsinFirstRow = 1;
-                <div class="govuk-grid-column-one-quarter">
-                    <div class="fiu-card">
-                        <span class="fiu-card__category"><a class="fiu-card__category-link" href="/apprentices/useful-resources-for-apprentices">Useful resources and support</a></span>
-                        <h3 class="fiu-card__heading">Apprentice support centre</h3>
-                        <p class="fiu-card__content">Essential information and support for apprentices, to help you successfully complete your apprenticeship programme.</p>
-                        <a href="https://apprenticesupportcentre.apprenticeships.gov.uk/" target="_blank" class="fiu-card__link" rel="noopener">Learn more <span class="fiu-vh"> about the support centre</span></a>
-                    </div>
-                </div>
-            }
-
-            @{
                 var firstCards = Model.Content.Cards.Take(noOfCardsinFirstRow);
                 for (var i = 0; i < firstCards.Count(); i++)
                 {
-                    @firstCards.ElementAt(i).CardToHtml();
+                    @firstCards.ElementAt(i).CardToHtml()
+                    ;
                 }
             }
             <div class="govuk-grid-column-one-half">
@@ -56,10 +41,12 @@
                 if (columncount == 1)
                 {
                     @:<div class="govuk-grid-row fiu-flex-row">
-                    }
-                    @items.ElementAt(i).CardToHtml();
-                    if (columncount == 4 || i == items.Count() - 1)
-                    {
+                }
+
+                @items.ElementAt(i).CardToHtml()
+
+                if (columncount == 4 || i == items.Count() - 1)
+                {
                     @:</div>
                     columncount = 1;
                 }
