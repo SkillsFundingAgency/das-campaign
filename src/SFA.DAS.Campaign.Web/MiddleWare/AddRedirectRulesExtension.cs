@@ -80,6 +80,20 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
             options.Add(new PathWithQueryRule(@"(?i)parents\b\/(their\-career)$", "/apprentices/help-shape-their-career"));
             options.AddRedirect(@"(?i)parents\b\/(their\-career)$", "/apprentices/help-shape-their-career", (int)HttpStatusCode.PermanentRedirect);
 
+            options.Add(new PathWithQueryRule(@"(?i)influencers\b\/(become\-an\-ambassador)$", "/influencers/what-is-the-aan"));
+            options.AddRedirect(@"(?i)influencers\b\/(become\-an\-ambassador)$", "/influencers/what-is-the-aan", (int)HttpStatusCode.PermanentRedirect);
+
+            options.Add(new PathWithQueryRule(@"(?i)apprentices\b\/(becoming\-apprentice)$", "/apprentices/about-apprenticeships"));
+            options.AddRedirect(@"(?i)apprentices\b\/(becoming\-apprentice)$", "/apprentices/about-apprenticeships", (int)HttpStatusCode.PermanentRedirect);
+
+            options.Add(new PathWithQueryRule(@"(?i)apprentices\b\/(assessment\-and\-certification)$", "/apprentices/understanding-end-point-assessments"));
+            options.AddRedirect(@"(?i)apprentices\b\/(assessment\-and\-certification)$", "/apprentices/understanding-end-point-assessments", (int)HttpStatusCode.PermanentRedirect);
+
+            options.Add(new PathWithQueryRule(@"(?i)apprentices\b\/(starting\-apprenticeship)$", "/apprentices/preparing-apprenticeship"));
+            options.AddRedirect(@"(?i)apprentices\b\/(starting\-apprenticeship)$", "/apprentices/preparing-apprenticeship", (int)HttpStatusCode.PermanentRedirect);
+
+            options.Add(new PathWithQueryRule(@"(?i)apprentices\b\/(useful\-resources\-for\-apprentices)$", "/apprentices/support-centre"));
+            options.AddRedirect(@"(?i)apprentices\b\/(useful\-resources\-for\-apprentices)$", "/apprentices/support-centre", (int)HttpStatusCode.PermanentRedirect);
 
             app.UseRewriter(options);
         }
