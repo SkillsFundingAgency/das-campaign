@@ -22,10 +22,11 @@ namespace SFA.DAS.Campaign.Application.Content.Queries
 
         public async Task<GetHubQueryResult<Hub>> Handle(GetHubQuery request, CancellationToken cancellationToken)
         {
-            var canPreview = _config.Value.AllowPreview;
+            var allowPreview = _config.Value.AllowPreview;
+            var forcePreview = _config.Value.ForcePreview;
             Page<Hub> hub = null;
 
-            if (canPreview && request.Preview)
+            if ((allowPreview && request.Preview) || forcePreview)
             {
                 hub = await _apiClient.Get<Page<Hub>>(new GetHubPreviewRequest(request.Hub)).ConfigureAwait(false);
             }

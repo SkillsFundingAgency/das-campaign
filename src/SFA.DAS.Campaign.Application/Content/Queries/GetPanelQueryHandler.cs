@@ -22,10 +22,11 @@ namespace SFA.DAS.Campaign.Application.Content.Queries
 
         public async Task<GetPanelQueryResult> Handle(GetPanelQuery request, CancellationToken cancellationToken)
         {
-            var canPreview = _config.Value.AllowPreview;
+            var allowPreview = _config.Value.AllowPreview;
+            var forcePreview = _config.Value.ForcePreview;
             Panel panel = null;
 
-            if (canPreview && request.Preview)
+            if ((allowPreview && request.Preview) || forcePreview)
             {
                 panel = await _apiClient.Get<Panel>(new GetPanelPreviewRequest(request.Id)).ConfigureAwait(false);
             }

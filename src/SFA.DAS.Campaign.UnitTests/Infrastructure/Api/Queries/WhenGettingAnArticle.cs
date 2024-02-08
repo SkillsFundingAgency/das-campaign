@@ -8,7 +8,6 @@ using NUnit.Framework;
 using SFA.DAS.Campaign.Application.Content.Queries;
 using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Domain.Content;
-using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Infrastructure.Api.Requests;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Testing.AutoFixture;
@@ -17,49 +16,111 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
 {
     public class WhenGettingAnArticle
     {
-        [Test, RecursiveMoqAutoData]
-        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_And_The_Article_Is_Returned_From_The_Preview_Api_if_Config_And_Param_Set(
-            GetArticleQuery query, Page<Article> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetArticleQueryHandler handler)
+        [Test]
+        [MoqInlineAutoData(true, true)]
+        [MoqInlineAutoData(true, false)]
+        [MoqInlineAutoData(false, true)]
+        [MoqInlineAutoData(false, false)]
+        public async Task AndForcePreviewIsTrue_ThenTheArticleIsReturnedFromThePreviewAPI(
+            bool allowPreview, bool previewWanted, GetArticleQuery query, Page<Article> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetArticleQueryHandler handler)
         {
-            SetupMockConfig(config);
-            query.Preview = true;
+            query.Preview = previewWanted;
+            SetupMockConfig(config, allowPreview, true);
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
 
             var actual = await handler.Handle(query, CancellationToken.None);
 
-            client.Verify(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}")), Times.Once);
-            actual.Should().NotBeNull();
-            actual.Page.Should().NotBeNull();
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}")), Times.Once);
+                actual.Should().NotBeNull();
+                actual.Page.Should().NotBeNull();
+            });
         }
 
-        [Test]
-        [RecursiveMoqInlineAutoData(true)]
-        [RecursiveMoqInlineAutoData(false)]
-        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_And_Preview_Is_Disabled_Then_The_Article_Is_Returned_From_The_Api(
-            bool preview, GetArticleQuery query, Page<Article> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetArticleQueryHandler handler)
+        [Test, MoqAutoData]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsTrue_AndPreviewIsWanted_ThenThePanelIsReturnedFromThePreviewAPI(
+           GetArticleQuery query, Page<Article> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetArticleQueryHandler handler)
         {
-            query.Preview = preview;
-            SetupMockConfig(config, false);
-            
+            query.Preview = true;
+            SetupMockConfig(config, true, false);
+            client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}")), Times.Once);
+                actual.Should().NotBeNull();
+                actual.Page.Should().NotBeNull();
+            });
+        }
+
+        [Test, MoqAutoData]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsFalse_AndPreviewIsWanted_ThenThePanelIsReturnedFromTheProductionAPI(
+            GetArticleQuery query, Page<Article> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetArticleQueryHandler handler)
+        {
+            query.Preview = true;
+            SetupMockConfig(config, false, false);
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
 
             var actual = await handler.Handle(query, CancellationToken.None);
 
-            client.Verify(
-                o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}")), Times.Once);
-            client.Verify(o => o.Get<Page<Article>>(It.IsAny<GetArticlesPreviewRequest>()), Times.Never);
-            actual.Should().NotBeNull();
-            actual.Page.Should().NotBeNull();
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}")), Times.Once);
+                client.Verify(o => o.Get<Page<Article>>(It.IsAny<GetArticlesPreviewRequest>()), Times.Never);
+                actual.Should().NotBeNull();
+                actual.Page.Should().NotBeNull();
+            });
+        }
+
+        [Test, MoqAutoData]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsTrue_AndPreviewIsNotWanted_ThenThePanelIsReturnedFromTheProductionAPI(
+            GetArticleQuery query, Page<Article> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetArticleQueryHandler handler)
+        {
+            query.Preview = false;
+            SetupMockConfig(config, true, false);
+            client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}")), Times.Once);
+                client.Verify(o => o.Get<Page<Article>>(It.IsAny<GetArticlesPreviewRequest>()), Times.Never);
+                actual.Should().NotBeNull();
+                actual.Page.Should().NotBeNull();
+            });
+        }
+
+        [Test, MoqAutoData]
+        public async Task AndForcePreviewIsFalse_AndAllowPreviewIsFalse_AndPreviewIsNotWanted_ThenThePanelIsReturnedFromTheProductionAPI(
+            GetArticleQuery query, Page<Article> response, [Frozen] Mock<IOptions<CampaignConfiguration>> config, [Frozen] Mock<IApiClient> client, GetArticleQueryHandler handler)
+        {
+            query.Preview = false;
+            SetupMockConfig(config, false, false);
+            client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
+
+            var actual = await handler.Handle(query, CancellationToken.None);
+
+            Assert.Multiple(() =>
+            {
+                client.Verify(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}")), Times.Once);
+                client.Verify(o => o.Get<Page<Article>>(It.IsAny<GetArticlesPreviewRequest>()), Times.Never);
+                actual.Should().NotBeNull();
+                actual.Page.Should().NotBeNull();
+            });
         }
 
         [Test]
         [RecursiveMoqInlineAutoData(true)]
         [RecursiveMoqInlineAutoData(false)]
-        public async Task Then_The_Api_Is_Called_With_The_Valid_Request_Parameters_Then_The_Article_Is_Returned_From_The_Api_With_The_Menu(
-            bool preview, GetArticleQuery query, Page<Article> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetArticleQueryHandler handler)
+        public async Task AndTheApiIsCalledWithTheValidRequestParameters_ThenTheArticleIsReturnedFromTheApiWithTheMenu(
+            bool previewWanted, GetArticleQuery query, Page<Article> response, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetArticleQueryHandler handler)
         {
-            query.Preview = preview;
-            SetupMockConfig(config, false);
+            query.Preview = previewWanted;
+            SetupMockConfig(config, false, false);
 
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync(response);
 
@@ -80,10 +141,10 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
         }
 
         [Test, RecursiveMoqAutoData]
-        public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_Then_No_Article_Is_Returned(
+        public async Task AndTheApiIsCalledWithInvalidRequestParameters_ThenNoArticleIsReturned(
             GetArticleQuery query, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetArticleQueryHandler handler)
         {
-            SetupMockConfig(config);
+            SetupMockConfig(config, false, false);
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
             client.Setup(o => o.Get<Page<Menu>>(It.Is<GetMenuRequest>(r => r.GetUrl == $"menu"))).ReturnsAsync((Page<Menu>)null);
@@ -95,10 +156,10 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
         }
 
         [Test, RecursiveMoqAutoData]
-        public async Task And_The_Api_Is_Called_With_Invalid_Request_Parameters_For_Article_Page_Then_Landing_Page_Is_Returned(
+        public async Task AndTheApiIsCalledWithInvalidRequestParametersForArticlePage_ThenLandingPageIsReturned(
             GetLandingPageQuery query, Page<LandingPage> pageResponse, [Frozen] Mock<IApiClient> client, [Frozen] Mock<IOptions<CampaignConfiguration>> config, GetLandingPageQueryHandler landingPageHandler)
         {
-            SetupMockConfig(config);
+            SetupMockConfig(config, false, false);
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesPreviewRequest>(r => r.GetUrl == $"article/preview/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
             client.Setup(o => o.Get<Page<Article>>(It.Is<GetArticlesRequest>(r => r.GetUrl == $"article/{query.Hub}/{query.Slug}"))).ReturnsAsync((Page<Article>)null);
 
@@ -111,9 +172,10 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             actual.Page.Should().NotBeNull();
         }
 
-        private static void SetupMockConfig(Mock<IOptions<CampaignConfiguration>> config, bool allowPreview = true)
+        private static void SetupMockConfig(Mock<IOptions<CampaignConfiguration>> config, bool allowPreview = true, bool forcePreview = false)
         {
             config.Object.Value.AllowPreview = allowPreview;
+            config.Object.Value.ForcePreview = forcePreview;
         }
     }
 }

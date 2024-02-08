@@ -22,10 +22,11 @@ namespace SFA.DAS.Campaign.Application.Content.Queries
 
         public async Task<GetLandingPageQueryResult<LandingPage>> Handle(GetLandingPageQuery request, CancellationToken cancellationToken)
         {
-            var canPreview = _config.Value.AllowPreview;
+            var allowPreview = _config.Value.AllowPreview;
+            var forcePreview = _config.Value.ForcePreview;
             Page<LandingPage> landingPage = null;
 
-            if (canPreview && request.Preview)
+            if ((allowPreview && request.Preview) || forcePreview)
             {
                 landingPage = await _apiClient.Get<Page<LandingPage>>(new GetLandingPagePreviewRequest(request.Hub, request.Slug)).ConfigureAwait(false);
             }
