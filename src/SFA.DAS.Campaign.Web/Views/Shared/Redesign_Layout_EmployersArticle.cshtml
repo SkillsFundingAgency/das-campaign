@@ -5,6 +5,9 @@
 
 <span class="fiu-header-content-spacer"></span>
 <div class="fiu-width-container">
+
+    @if (ViewBag.HasNotGotTabs == true)
+    {
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             @RenderBody()
@@ -15,5 +18,13 @@
             <partial name="./Panels/_GetSupportEmployer"/>
         </div>
     </div>
+    }
+    else 
+    {
+        @RenderBody()
+    }
+
+
+
     <hr class="fiu-section-break fiu-section-break--l">
 </div>

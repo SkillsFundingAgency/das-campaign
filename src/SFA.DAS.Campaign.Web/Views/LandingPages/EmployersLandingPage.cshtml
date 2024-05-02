@@ -10,6 +10,10 @@
     ViewBag.LandingPageSlug = Model.Slug;
     ViewBag.LandingPageTitle = Model.Title;
 }
+<span class="fiu-header-content-spacer"></span>
+<div class="fiu-width-container">
+    <a href="/employers" class="fiu-back-link--top">Back to: Information for employers</a>
+</div>
 
 <div class="fiu-grad-row">
     @if (ViewBag.HeadingImage == null)
@@ -17,42 +21,8 @@
         <span class="fiu-grad-row__bg"></span>
     }
     <div class="fiu-width-container">
-        <div class="govuk-grid-row fiu-flex-row">
-            @{
-                var firstTwo = Model.Content.Cards.Take(2);
-                for (var i = 0; i < firstTwo.Count(); i++)
-                {
-                    @firstTwo.ElementAt(i).CardToHtml();
-                }
-            }
-            <div class="govuk-grid-column-one-half">
-                <partial name="Panels/_FindTheRightApprenticeship" />
-            </div>
-        </div>
-        <div class="govuk-grid-row fiu-flex-row">
-            @{
-                var secondTwo = Model.Content.Cards.Skip(2).Take(2);
-                for (var i = 0; i < secondTwo.Count(); i++)
-                {
-                    @secondTwo.ElementAt(i).CardToHtml();
-                }
-
-                if (!secondTwo.Any())
-                {
-                    <div class="govuk-grid-column-one-half">&nbsp;</div>
-                }
-
-                if (secondTwo.Count() == 1)
-                {
-                    <div class="govuk-grid-column-one-quarter"></div>
-                }
-            }
-            <div class="govuk-grid-column-one-half">
-                <partial name="Panels/_RegisterInterestEmployer" />
-            </div>
-        </div>
         @{
-            var items = Model.Content.Cards.Skip(4).Take(Model.Content.Cards.Count - 4);
+            var items = Model.Content.Cards.Take(Model.Content.Cards.Count);
             int columncount = 1;
 
             for (var i = 0; i < items.Count(); i++)
@@ -62,7 +32,7 @@
                     @:<div class="govuk-grid-row fiu-flex-row">
                     }
                     @items.ElementAt(i).CardToHtml();
-                    if (columncount == 4 || i == items.Count() - 1)
+                    if (columncount == 3 || i == items.Count() - 1)
                     {
                     @:</div>
                     columncount = 1;
@@ -73,5 +43,19 @@
                 }
             }
         }
+        <hr class="fiu-section-break fiu-section-break--l"/>
+        <div class="govuk-grid-row fiu-flex-row">
+            <div class="govuk-grid-column-one-half">
+                <partial name="Panels/_EmployerSearchForAnApprenticeship"/>
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <partial name="Panels/_FindTheRightApprenticeship"/>
+            </div>
+        </div>
+        <div class="govuk-grid-row fiu-flex-row">
+            <div class="govuk-grid-column-full">
+                 <partial name="Panels/_EmployerSupport"/>
+            </div>
+        </div>
     </div>
 </div>

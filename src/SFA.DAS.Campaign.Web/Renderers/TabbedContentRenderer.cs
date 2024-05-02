@@ -61,6 +61,11 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 var articleEl = new TagBuilder("article");
                 articleEl.AddCssClass("fiu-article");
                 articleEl.InnerHtml.AppendHtml(tabContent.Content.ToHtml());
+
+                var backToTopLink = new TagBuilder("a");
+                backToTopLink.AddCssClass("govuk-back-link govuk-!-margin-top-0  govuk-!-margin-bottom-5 app-back-to-top");
+                backToTopLink.InnerHtml.AppendHtml(tabContent.Content.ToHtml());
+
                 if (tabContent.FindTraineeShip)
                 {
                     var viewText =

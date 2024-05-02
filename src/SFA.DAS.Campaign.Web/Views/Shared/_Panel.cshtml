@@ -1,9 +1,7 @@
 ﻿@using SFA.DAS.Campaign.Web.Helpers
 @model SFA.DAS.Campaign.Domain.Content.Panel
 
-<div class="fiu-panel fiu-panel--left-align">
+<div class="fiu-article">
     <h2 class="govuk-heading-l">@Model.Title</h2>
-        <article class="fiu-article">
-            @Model.Content.ToHtml()
-        </article>
+    @Model.Content.ToHtml()
 </div>
