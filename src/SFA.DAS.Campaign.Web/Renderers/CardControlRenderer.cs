@@ -24,7 +24,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
             card.InnerHtml.AppendHtml($"<h3 class=\"fiu-card__heading\">{control?.Title}</h3>");
             card.InnerHtml.AppendHtml($"<p class=\"fiu-card__content\">{control?.Summary}</p>");
             card.InnerHtml.AppendHtml(
-                $"<a href=\"{control?.Url.ToString().ToLower()}\" class=\"fiu-card__link\">Learn more <span class=\"fiu-vh\"> about {control?.Title}</span></a></div>");
+                $"<a href=\"{control?.Url.ToString().ToLower()}\" class=\"fiu-card__link\">{control?.Title}</a></div>");
             string result = card.WriteString();
 
             return new HtmlString(result);
