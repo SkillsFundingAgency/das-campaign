@@ -92,10 +92,10 @@
                         <div class="govuk-grid-column-two-thirds fiu-page-header__wrap">
                             @if (ViewBag.HubPage == true)
                             {
-                                <div class="fiu-feature-text">
-                                    <strong class="fiu-tag fiu-tag--employers fiu-page-header__tag">Employers</strong>
-                                    <h1 class="govuk-heading-xl fiu-page-heading__title-hub">@ViewBag.PageTitle</h1>
-                                </div>
+                             
+                                    <strong class="fiu-tag fiu-tag--employers fiu-page-header__tag fiu-feature-text">Employers</strong>
+                                    <h1 class="govuk-heading-xl fiu-page-heading__title-hub govuk-!-margin-bottom-4">@ViewBag.PageTitle</h1>
+                           
                                 @if (ViewBag.PageSummary != null)
                                 {<p class="fiu-page-header__content-l govuk-!-width-two-thirds">@ViewBag.PageSummary</p>}
                             }

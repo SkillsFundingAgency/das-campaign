@@ -10,6 +10,7 @@
     ViewBag.LandingPageTitle = Model.Breadcrumbs != null ? Model.Breadcrumbs.LandingPage : null;
     ViewBag.ArticlePageSlug = Model.Slug;
     ViewBag.ArticlePageTitle = Model.Title;
+    ViewBag.HasNotGotTabs = Model.Content.TabbedContents is null;
 }
 
 @if (Model.Slug == "traineeship-resources" || Model.Slug == "apprenticeships-alternatives")
@@ -22,9 +23,7 @@
     </div>
 }
 
-<article class="fiu-article">
-    @Model.Content.PageControls.ToHtml()
-</article>
+<article class="fiu-article">@Model.Content.PageControls.ToHtml()</article>
 
 @Model.Content?.TabbedContents?.TabbedContentToHtml(Context, TempData)
 

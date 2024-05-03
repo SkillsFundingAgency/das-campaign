@@ -69,7 +69,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(tabs);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<div class=\"govuk-grid-row app-anchor-links\"><div class=\"govuk-grid-column-one-third\"><h2 class=\"govuk-heading-m\">On this page</h2><ul class=\"govuk-list govuk-list--spaced app-anchor-links__list\"><li class=\"app-anchor-links__list-item\"><a class=\"govuk-link govuk-link--no-visited-state app-anchor-links__link\" href=\"#Title\">Title</a></li></ul></div><div class=\"govuk-grid-column-two-thirds\"><div class=\"app-anchor-links__panel\" id=\"Title\"><article class=\"fiu-article\"><h2>a heading</h2></article></div></div></div>");
+            actual.Value.Should().Be("<div class=\"govuk-grid-row app-anchor-links\"><div class=\"govuk-grid-column-one-third\"><h2 class=\"govuk-heading-m\">On this page</h2><ul class=\"govuk-list govuk-list--spaced app-anchor-links__list\" id=\"nav-menu\"><li class=\"app-anchor-links__list-item\"><a class=\"govuk-link govuk-link--no-visited-state app-anchor-links__link\" href=\"#Title\">Title</a></li></ul></div><div class=\"govuk-grid-column-two-thirds\"><div class=\"app-anchor-links__panel\" id=\"Title\"><article class=\"fiu-article\"><h2>a heading</h2></article><a class=\"govuk-back-link govuk-!-margin-top-0  govuk-!-margin-bottom-5 app-back-to-top\" href=\"#nav-menu\">Back to top</a></div></div></div>");
         }
     }
 }

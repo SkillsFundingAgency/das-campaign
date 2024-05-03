@@ -61,6 +61,12 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 var articleEl = new TagBuilder("article");
                 articleEl.AddCssClass("fiu-article");
                 articleEl.InnerHtml.AppendHtml(tabContent.Content.ToHtml());
+
+                var backToTopLink = new TagBuilder("a");
+                backToTopLink.MergeAttribute("href", "#nav-menu");
+                backToTopLink.AddCssClass("govuk-back-link govuk-!-margin-top-0  govuk-!-margin-bottom-5 app-back-to-top");
+                backToTopLink.InnerHtml.AppendHtml("Back to top");
+
                 if (tabContent.FindTraineeShip)
                 {
                     var viewText =
@@ -70,6 +76,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 }
 
                 div.InnerHtml.AppendHtml(articleEl.WriteString());
+                div.InnerHtml.AppendHtml(backToTopLink.WriteString());
                 
                 parentDiv.InnerHtml.AppendHtml(div.WriteString());
             }
@@ -82,6 +89,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
             h2.InnerHtml.Append("On this page");
             parentDiv.InnerHtml.AppendHtml(h2.WriteString());
             var ul = new TagBuilder("ul");
+            ul.MergeAttribute("id", "nav-menu");
             ul.AddCssClass("govuk-list govuk-list--spaced app-anchor-links__list");
 
             foreach (var tabbedContent in tab.TabbedContents)
