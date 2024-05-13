@@ -16,11 +16,14 @@
 @if (Model.Slug == "traineeship-resources" || Model.Slug == "apprenticeships-alternatives")
 {
     <div class="fiu-notification">
-    	<h2 class="fiu-notification__heading">Traineeship delivery changes</h2>
-    	<p class="fiu-notification__body">
-    		How traineeships are delivered is changing from 1 August 2023. The last start date for traineeships under the current programme is 31 July 2023. Find out more about the <a href="https://questions-statements.parliament.uk/written-statements/detail/2022-12-12/hcws434" class="govuk-link govuk-link--inverse">traineeship delivery changes</a>.
-    	</p>
-    </div>
+    <h2 class="fiu-notification__heading">Traineeship delivery changes</h2>
+    <p class="fiu-notification__body">
+        How traineeships are delivered is changing from 1 August 2023. The last start date for traineeships under the
+        current programme is 31 July 2023. Find out more about the <a
+            href="https://questions-statements.parliament.uk/written-statements/detail/2022-12-12/hcws434"
+            class="govuk-link govuk-link--inverse">traineeship delivery changes</a>.
+    </p>
+</div>
 }
 
 <article class="fiu-article">@Model.Content.PageControls.ToHtml()</article>
@@ -30,16 +33,21 @@
 @if (Model.Attachments != null && Model.Attachments.Any())
 {
     <div class="fiu-attachment__wrap">
-        @Model.Attachments.ToHtml()
-    </div>
+    @Model.Attachments.ToHtml()
+</div>
 }
 
 @if (Model.RelatedPages != null && Model.RelatedPages.Any())
 {
-    <hr class="fiu-section-break fiu-section-break--l" />
-
-    <h2 class="govuk-heading-m">More on apprenticeships</h2>
-    <div class="govuk-grid-row fiu-flex-row">
-        @Model.RelatedPages.ToHtml()
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+        @if (!ViewBag.HasNotGotTabs)
+            {
+                <span>&nbsp;</span>
+            }
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+            @Model.RelatedPages.ToHtml()
+        </div>
     </div>
 }
