@@ -43,7 +43,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(attachment);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<div class=\"govuk-grid-column-one-half\"><div class=\"fiu-card\"><span class=\"fiu-card__category\"><a class=\"fiu-card__category-link\" href=\"/hub/slug\">title</a></span><h3 class=\"fiu-card__heading\">title</h3><p class=\"fiu-card__content\">description</p><a href=\"/hub/slug\" class=\"fiu-card__link\">Learn more <span class=\"fiu-vh\"> about title</span></a></div></div>");
+            actual.Value.Should().Be("<div><div class=\"fiu-next-link-wrap\"><a href=\"/hub/slug\" class=\"fiu-button fiu-button--employers fiu-next-link\">Next: title &gt;</a></div></div>");
         }
     }
 }
