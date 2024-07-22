@@ -23,26 +23,6 @@
                 </div>
             </fieldset>
         </div>
-        <div class="govuk-form-group" highlight-error-for="OverFiftyEmployees">
-            <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">How many employees do you have?</legend>
-                <span asp-validation-for="@Model.OverFiftyEmployees" class="govuk-error-message"></span>
-                <div class="govuk-radios" data-module="govuk-radios">
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="OverFiftyEmployees" name="OverFiftyEmployees" type="radio" value="@false" asp-for="@Model.OverFiftyEmployees">
-                        <label class="govuk-label govuk-radios__label" for="OverFiftyEmployees">
-                            1 to 49 employees
-                        </label>
-                    </div>
-                    <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="employees-over" name="OverFiftyEmployees" type="radio" value="@true" asp-for="@Model.OverFiftyEmployees">
-                        <label class="govuk-label govuk-radios__label" for="employees-over">
-                            50 or more employees
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
         <div class="govuk-form-group" highlight-error-for="StandardUid">
             <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="StandardUid">
                 What training course do you want your apprentice to take?
