@@ -46,7 +46,8 @@
                 }
                 else if (Model.PayBillGreaterThanThreeMillion == false)
                 {
-                   <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyOver50Employees", Model)</div>
+                   @* <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyOver50Employees", Model)</div> *@
+                    <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyUnder50Employees", Model)</div>
                 }
             }
             else
