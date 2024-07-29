@@ -10,7 +10,7 @@
     ViewBag.ArticlePageSlug = "understanding-apprenticeship-benefits-and-funding";
     ViewBag.ArticlePageTitle = "Understanding apprenticeship benefits and funding";
     ViewBag.HeadingImage = "/fiu/assets/images/page-headers/employer-computer.jpg";
-    ViewBag.ValidationOrder = "PayBillGreaterThanThreeMillion,OverFiftyEmployees,StandardUid,NumberOfRoles";
+    ViewBag.ValidationOrder = "PayBillGreaterThanThreeMillion,StandardUid,NumberOfRoles";
     ViewBag.Panel4Title = "Estimate what funding could be available towards your apprentices training costs";
 }
 <div class="govuk-width-container">
@@ -46,14 +46,7 @@
                 }
                 else if (Model.PayBillGreaterThanThreeMillion == false)
                 {
-                    if (Model.OverFiftyEmployees == true)
-                    {
-                        <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyOver50Employees", Model)</div>
-                    }
-                    else
-                    {
-                        <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyUnder50Employees", Model)</div>
-                    }
+                   <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyOver50Employees", Model)</div>
                 }
             }
             else
