@@ -1,6 +1,6 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipTrainingAndBenefitsViewModel
 @{
-    ViewBag.Title = (ViewData.ModelState.IsValid ?  "" : "Error: ") + "Understanding apprenticeship benefits and funding";
+    ViewBag.Title = (ViewData.ModelState.IsValid ? "" : "Error: ") + "Understanding apprenticeship benefits and funding";
     ViewBag.HubPage = false;
     Layout = $"Redesign_Layout_EmployersHub";
     ViewBag.PageTitle = "Understanding apprenticeship benefits and funding";
@@ -38,21 +38,21 @@
                 <a href="#nav-menu" class="govuk-back-link govuk-!-margin-top-0  govuk-!-margin-bottom-5 app-back-to-top"> Back to top</a>
             </div>
             <div id="available-funding">
-            @if (Model.Submitted)
-            {
-                if (Model.PayBillGreaterThanThreeMillion == true)
+                @if (Model.Submitted)
                 {
-                    <div id="funding">@await Html.PartialAsync("_CalculationResultsLevy", Model)</div>
+                    if (Model.PayBillGreaterThanThreeMillion == true)
+                    {
+                        <div id="funding">@await Html.PartialAsync("_CalculationResultsLevy", Model)</div>
+                    }
+                    else if (Model.PayBillGreaterThanThreeMillion == false)
+                    {
+                        <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevy", Model)</div>
+                    }
                 }
-                else if (Model.PayBillGreaterThanThreeMillion == false)
+                else
                 {
-                   <div id="funding">@await Html.PartialAsync("_CalculationResultsNonLevyOver50Employees", Model)</div>
+                    <div>@await Html.PartialAsync("_CalculationInputPanel")</div>
                 }
-            }
-            else
-            {
-                <div>@await Html.PartialAsync("_CalculationInputPanel")</div>
-            }
             </div>
 
             <a href="#nav-menu" class="govuk-back-link govuk-!-margin-top-0  govuk-!-margin-bottom-5 app-back-to-top"> Back to top</a>
