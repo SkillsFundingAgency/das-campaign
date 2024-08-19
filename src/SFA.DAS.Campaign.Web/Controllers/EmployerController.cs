@@ -87,7 +87,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             }
 
             var standard = _mediator.Send(new GetStandardQuery { StandardUId = model.StandardUid });
-            var calculationResult = _mediator.Send(new CalculationQuery() { PayBillGreaterThanThreeMillion = (bool)model.PayBillGreaterThanThreeMillion, OverFiftyEmployees = (bool)model.OverFiftyEmployees, NumberRoles = (int)model.Roles, TrainingCourse = standard });
+            var calculationResult = _mediator.Send(new CalculationQuery() { PayBillGreaterThanThreeMillion = (bool)model.PayBillGreaterThanThreeMillion, NumberRoles = (int)model.Roles, TrainingCourse = standard });
 
             await Task.WhenAll(standard, calculationResult);
 
@@ -101,7 +101,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 CalculationResults = calculationResult.Result,
                 Submitted = true,
                 PayBillGreaterThanThreeMillion = model.PayBillGreaterThanThreeMillion,
-                OverFiftyEmployees = model.OverFiftyEmployees,
                 NumberOfRoles = model.NumberOfRoles
             });
         }
