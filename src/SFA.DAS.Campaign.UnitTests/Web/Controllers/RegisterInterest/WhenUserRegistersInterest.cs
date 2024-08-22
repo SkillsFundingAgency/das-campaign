@@ -42,6 +42,9 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
                 FirstName = "Test",
                 Route = RouteType.Apprentice,
                 LastName = "test",
+                SizeOfYourCompany="10",
+                Industry = "test",
+                Location = "test",
                 ShowRouteQuestion = false
             };
 

@@ -65,9 +65,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
             var staticContent = await _mediator.GetModelForStaticContent();
             registerInterest.Menu = staticContent.Menu;
             registerInterest.BannerModels = staticContent.BannerModels;
-            
+
             if (!ModelState.IsValid)
-            { 
+            {
                 registerInterest.ShowRouteQuestion = this.RouteData.Values.ContainsKey("route") == false;
 
                 return View("Index", registerInterest);
@@ -80,6 +80,11 @@ namespace SFA.DAS.Campaign.Web.Controllers
                     FirstName = registerInterest.FirstName,
                     LastName = registerInterest.LastName,
                     Email = registerInterest.Email,
+                    UkEmployerSize = registerInterest.SizeOfYourCompany,
+                    PrimaryIndustry = registerInterest.Industry,
+                    PrimaryLocation = registerInterest.Location,
+                    AppsgovSignUpDate = DateTime.Now,
+                    PersonOrigin = "apprenticeships.gov.uk",
                     CookieId = !string.IsNullOrEmpty(HttpContext.Request.Cookies["_ga"]) ? HttpContext.Request.Cookies["_ga"] : "not-available",
                     RouteId = ((int)registerInterest.Route).ToString(),
                     Consent = true,

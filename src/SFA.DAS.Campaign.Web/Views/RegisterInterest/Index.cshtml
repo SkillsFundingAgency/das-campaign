@@ -4,19 +4,22 @@
 @model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
 
 @{
-    ViewBag.Title = "Sign up to receive our employer skills newsletter";
-    ViewBag.PageTitle = "Sign up to receive our employer skills newsletter";
+    ViewBag.Title = "Sign up to receive our employer skills newsletter1";
+    ViewBag.PageTitle = "Get emails about taking on your first apprentice";
     ViewBag.MetaDesc = "";
     Layout = "Redesign_Layout_EmployersHub";
-    
+
     ViewBag.LandingPageSlug = "sign-up";
-    ViewBag.LandingPageTitle = "Sign up to receive our employer skills newsletter";
+    ViewBag.LandingPageTitle = "Sign up to receive our employer skills newsletter3";
 
     var errorOrder = new List<string>()
     {
         "FirstName",
         "LastName",
         "Email",
+        "SizeOfYourCompany",
+        "Industry",
+        "Location",
         "Route",
         "AcceptTandCs"
     };
@@ -27,10 +30,10 @@
 <div class="fiu-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            
+
 
             <div class="govuk-error-summary" role="alert" tabindex="-1" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
-                <h2 class="govuk-error-summary__title">Sorry but there seems to be a problem with your registration</h2>
+                <h2 class="govuk-error-summary__title">There's a problem</h2>
                 <div class="govuk-error-summary__body">
                     <ul class="govuk-list govuk-error-summary__list">
                         @{
@@ -50,49 +53,132 @@
                     </ul>
                 </div>
             </div>
-            <p class="govuk-body">You'll get updates every other month about:</p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>apprenticeships, T levels and other skills programmes</li>
-                <li>policy changes and initiatives</li>
-                <li>upcoming events </li>
-            </ul>
-            <p class="govuk-body">Your details are protected under the terms of our <a href="/privacy" class="govuk-link">privacy notice</a>. Our privacy notice explains how we use your personal data. It's important you read this before signing up to receive emails.</p>
-            <p class="govuk-body">You can unsubscribe from these emails at any time.</p>
+
+            <p class="govuk-body">Get ready to take on your first apprentice. We'll tell you everything you need to know , with advice matched to your industry.</p>
 
             <form asp-controller="RegisterInterest" asp-action="index">
-                <input type="hidden" asp-for="Version"/>
-                <div class="govuk-form-group" das-validation-for="FirstName" das-validationerror-class="form-group-validation-error">
-                    <label class="govuk-label" asp-for="FirstName">
-                        First name
-                    </label>
-                    <input id="FirstName" class="govuk-input govuk-!-width-two-thirds" asp-for="FirstName" type="text" autocomplete="given-name">
-                </div>
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Your details</legend>
+                    <input type="hidden" asp-for="Version" />
+                    <div class="govuk-form-group" highlight-error-for="FirstName" das-validation-for="FirstName" das-validationerror-class="form-group-validation-error">
+                        <span asp-validation-for="@Model.FirstName" class="govuk-error-message"></span>
+                        <label class="govuk-label" asp-for="FirstName">
+                            First name
+                        </label>
+                        <input id="FirstName" class="govuk-input govuk-!-width-two-thirds" asp-for="FirstName" type="text" autocomplete="given-name">
+                    </div>
 
-                <div class="govuk-form-group" das-validation-for="LastName" das-validationerror-class="form-group-validation-error">
-                    <label class="govuk-label" asp-for="LastName">
-                        Last name
-                    </label>
-                    <input id="LastName" class="govuk-input govuk-!-width-two-thirds" asp-for="LastName" type="text" autocomplete="family-name">
-                </div>
+                    <div class="govuk-form-group" highlight-error-for="LastName" das-validation-for="LastName" das-validationerror-class="form-group-validation-error">
+                        <span asp-validation-for="@Model.LastName" class="govuk-error-message"></span>
+                        <label class="govuk-label" asp-for="LastName">
+                            Last name
+                        </label>
+                        <input id="LastName" class="govuk-input govuk-!-width-two-thirds" asp-for="LastName" type="text" autocomplete="family-name">
+                    </div>
 
-                <div class="govuk-form-group" das-validation-for="Email" das-validationerror-class="form-group-validation-error">
-                    <label class="govuk-label" asp-for="Email">
-                        Email address
-                    </label>
-                    <input id="Email" class="govuk-input govuk-!-width-two-thirds" asp-for="Email" type="text" autocomplete="email">
-                </div>
-                <input asp-for="Route" value="Employer" type="hidden"/>
+                    <div class="govuk-form-group" highlight-error-for="Email" das-validation-for="Email" das-validationerror-class="form-group-validation-error">
+                        <span asp-validation-for="@Model.Email" class="govuk-error-message"></span>
+                        <label class="govuk-label" asp-for="Email">
+                            Email address
+                        </label>
+                        <input id="Email" class="govuk-input govuk-!-width-two-thirds" asp-for="Email" type="text" autocomplete="email">
+                    </div>
+                </fieldset>
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Your company</legend>
+                    <div class="govuk-form-group" highlight-error-for="SizeOfYourCompany">
+                        <span asp-validation-for="@Model.SizeOfYourCompany" class="govuk-error-message"></span>
+                        <label class="govuk-label">
+                            Size of your company
+                        </label>
+                        <span class="govuk-caption-m  govuk-!-margin-bottom-2">Only include people based in the UK</span>
+                        <div class="govuk-radios" data-module="govuk-radios" das-validation-for="SizeOfYourCompany" das-validationerror-class="form-group-validation-error">
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="SizeOfYourCompany" name="SizeOfYourCompany" type="radio" value="Less than 10 employees" asp-for="@Model.SizeOfYourCompany">
+                                <label class="govuk-label govuk-radios__label" for="SizeOfYourCompany">
+                                    Less than 10 employees
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="between10and49employees" name="SizeOfYourCompany" type="radio" value="Between 10 and 49 employees" asp-for="@Model.SizeOfYourCompany">
+                                <label class="govuk-label govuk-radios__label" for="SizeOfYourCompany">
+                                    Between 10 and 49 employees
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="between50and249employees" name="SizeOfYourCompany" type="radio" value="Between 50 and 249 employees" asp-for="@Model.SizeOfYourCompany">
+                                <label class="govuk-label govuk-radios__label" for="SizeOfYourCompany">
+                                    Between 50 and 249 employees
+                                </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="over250employees" name="SizeOfYourCompany" type="radio" value="Over 250 employees" asp-for="@Model.SizeOfYourCompany">
+                                <label class="govuk-label govuk-radios__label" for="SizeOfYourCompany">
+                                    Over 250 employees
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-form-group" highlight-error-for="Industry">
+                        <span asp-validation-for="@Model.Industry" class="govuk-error-message"></span>
+                        <label for="Industry" class="govuk-label">Industry</label>
+                        <span class="govuk-caption-m govuk-!-margin-bottom-2">Select only one</span>
+                        <select class="govuk-select" asp-for="Industry" data-val="true" das-validation-for="Industry" das-validationerror-class="form-group-validation-error" id="Industry" name="Industry">
+                            <option>Agriculture, environmental and animal care</option>
+                            <option>Business and administration</option>
+                            <option>Care services</option>
+                            <option>Catering and hospitality</option>
+                            <option>Construction and the built environment</option>
+                            <option>Creative and design</option>
+                            <option>Digital</option>
+                            <option>Education and early years</option>
+                            <option>Engineering and manufacturing</option>
+                            <option>Hair and beauty</option>
+                            <option>Health and science</option>
+                            <option>Legal, finance and accounting</option>
+                            <option>Protective services</option>
+                            <option>Sales, marketing and procurement</option>
+                            <option>Transport and logistics</option>
+                            <option value="" selected="selected">Choose your industry</option>
+                        </select>
+                    </div>
+
+                    <div class="govuk-form-group" highlight-error-for="Location">
+                        <span asp-validation-for="@Model.Location" class="govuk-error-message"></span>
+                        <label for="Location" class="govuk-label">Region</label>
+                        <span class="govuk-caption-m govuk-!-margin-bottom-2">Select only one</span>
+                        <select class="govuk-select" asp-for="Location" data-val="true" das-validation-for="Location" das-validationerror-class="form-group-validation-error" id="Location" name="Location">
+                            <option>South West</option>
+                            <option>South East</option>
+                            <option>London</option>
+                            <option>East of England</option>
+                            <option>East Midlands</option>
+                            <option>West Midlands</option>
+                            <option>North West</option>
+                            <option>Yorkshire and Humber</option>
+                            <option>North East</option>
+                            <option value="" selected="selected">Choose your location</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <input asp-for="Route" value="Employer" type="hidden" />
+                <p class="govuk-body">
+                    Your data is protected under the terms of our <a href="/privacy" class="govuk-link">privacy policy</a>.
+                </p>
+                <p class="govuk-body">
+                    You can unsubscribe from these emails at any time.
+                </p>
                 <div class="govuk-form-group" das-validation-for="IncludeInUR" das-validationerror-class="form-group-validation-error">
                     <div class="govuk-checkboxes__item">
                         <input class="govuk-checkboxes__input fiu-checkboxes__input" asp-for="IncludeInUR" type="checkbox" value="true">
                         <label class="govuk-checkboxes__label fiu-checkboxes__label" asp-for="IncludeInUR">
-                            I’m happy to be contacted about research to help improve this website.
+                            I'am happy to be take part in research that'll help improve the Apprenticeship service.
                         </label>
                     </div>
                 </div>
-                <input asp-for="ReturnUrl" type="hidden" value="@Model.ReturnUrl"/>
+                <input asp-for="ReturnUrl" type="hidden" value="@Model.ReturnUrl" />
                 <button formnovalidate="formnovalidate" class="fiu-button fiu-button--employers " name="registerInterestSubmit" type="submit" id="btn-register-interest-complete">Sign up</button>
-            </form>            
+            </form>
         </div>
     </div>
 </div>

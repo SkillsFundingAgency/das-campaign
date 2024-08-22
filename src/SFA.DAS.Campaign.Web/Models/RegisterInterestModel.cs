@@ -27,14 +27,23 @@ namespace SFA.DAS.Campaign.Web.Models
         public IEnumerable<Banner> BannerModels { get; set; }
         public Dictionary<string, string> ValidationMessages { get; internal set; }
 
-        [Required]
+        [Required(ErrorMessage = "Enter your first name")]
         [DisplayName("Given name")]
         public string FirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Enter your last name")]
         [DisplayName("Family name")]
         public string LastName { get; set; }
+        [Required(ErrorMessage = "Select the size of your company")]
+        [DisplayName("Size Of Your Company")]
+        public string SizeOfYourCompany { get; set; }
+        [Required(ErrorMessage = "Select your industry")]
+        [DisplayName("Industry")]
+        public string Industry { get; set; }
+        [Required(ErrorMessage = "Select your region")]
+        [DisplayName("Location")]
+        public string Location { get; set; }
         [EmailAddress]
-        [Required]
+        [Required(ErrorMessage = "Enter your email address")]
         [DisplayName("Email address")]
         public string Email { get; set; }
         [Required]
@@ -57,6 +66,9 @@ namespace SFA.DAS.Campaign.Web.Models
                 {"FirstName", "Enter your first name"},
                 {"LastName", "Enter your last name"},
                 {"Email", "Enter your email address"},
+                {"SizeOfYourCompany", "Select the size of your company"},
+                {"Location", "Select your region"},
+                {"Industry", "Select your industry"},
                 {"Route", "Select if you want to become an apprentice or employ an apprentice"},
                 {"AcceptTandCs", "Confirm you would like to receive more information" }
             };
