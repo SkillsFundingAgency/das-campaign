@@ -31,8 +31,8 @@ namespace SFA.DAS.Campaign.Infrastructure.UnitTests.Geocode
 
             var result = _sut.GetStaticMapsUrl(0.000, 52.000);
 
-            Assert.IsNotNull(result);
-            Assert.AreEqual(result,expectedResult);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result, Is.EqualTo(expectedResult));
 
         }
     }

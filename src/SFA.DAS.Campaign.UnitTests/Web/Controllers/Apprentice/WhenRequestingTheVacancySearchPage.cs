@@ -40,9 +40,9 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Apprentice
 
             var viewResult = result as ViewResult;
 
-            Assert.AreEqual(null, viewResult.ViewName);
+            Assert.That(viewResult.ViewName, Is.Null);
             var actualModel = viewResult.Model as FindApprenticeshipSearchModel;
-            Assert.IsNotNull(actualModel);
+            Assert.That(actualModel, Is.Not.Null);
             actualModel.Routes.Should().BeEquivalentTo(_routes);
         }
     }
