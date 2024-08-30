@@ -49,9 +49,9 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.EmployerInform.FundingAndAp
             
             //Assert
             mediator.Verify(x=>x.Send(It.IsAny<GetMenuQuery>(), CancellationToken.None), Times.Once);
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.Null);
             var actualModel = actual.Model as LevyOptionViewModel;
-            Assert.IsNotNull(actualModel);
+            Assert.That(actualModel, Is.Not.Null);
             actualModel.Menu.Should().BeEquivalentTo(mediatorResult.Page.Menu);
         }
     }

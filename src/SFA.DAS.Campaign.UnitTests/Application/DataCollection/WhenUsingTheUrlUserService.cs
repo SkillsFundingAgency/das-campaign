@@ -45,8 +45,9 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection
             var actual = _userDataCryptographyService.GenerateEncodedUserEmail(userId);
 
             //Assert
-            Assert.AreNotEqual(string.Empty, actual);
-            Assert.AreNotEqual(userId, actual);
+            Assert.That(string.Empty, Is.Not.EqualTo(actual));
+            Assert.That(userId, Is.Not.EqualTo(actual));
+
         }
 
         [Test]
@@ -60,7 +61,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection
             var actual = _userDataCryptographyService.DecodeUserEmail(encoded);
 
             //Assert
-            Assert.AreEqual(userId, actual);
+            Assert.That(userId, Is.EqualTo(actual));
         }
 
         [Test]
@@ -70,7 +71,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection
             var actual = _userDataCryptographyService.DecodeUserEmail("AA99BBCCDDEEFF");
 
             //Assert
-            Assert.AreEqual("", actual);
+            Assert.That("", Is.EqualTo(actual));
         }
 
     }

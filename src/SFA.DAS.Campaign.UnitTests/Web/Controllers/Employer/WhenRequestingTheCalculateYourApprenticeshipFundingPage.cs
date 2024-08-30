@@ -91,9 +91,9 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
 
             var viewResult = result as ViewResult;
 
-            Assert.AreEqual(null, viewResult.ViewName);
+            Assert.That(viewResult.ViewName, Is.Null);
             var actualModel = viewResult.Model as ApprenticeshipTrainingAndBenefitsViewModel;
-            Assert.IsNotNull(actualModel);
+            Assert.That(actualModel, Is.Not.Null);
             actualModel.Standards.Should().BeEquivalentTo(_standardsResult);
             actualModel.Panel1.Should().BeEquivalentTo(_panelResult1.Panel);
             actualModel.Panel2.Should().BeEquivalentTo(_panelResult2.Panel);
