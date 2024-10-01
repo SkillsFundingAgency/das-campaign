@@ -62,7 +62,6 @@ namespace SFA.DAS.Campaign.Web
             Configuration = config.Build();
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging();
@@ -79,11 +78,23 @@ namespace SFA.DAS.Campaign.Web
                         factory: partition => new FixedWindowRateLimiterOptions
                         {
                             AutoReplenishment = true,
-                            PermitLimit = 5, // Max 10 requests
+                            PermitLimit = 5, // Max 5 requests
                             QueueLimit = 0,   // No queueing of requests
                             Window = TimeSpan.FromMinutes(1) // 1-minute window
                         });
                 });
+
+                // Optional: Configure on-rejection behavior, logging, etc.
+                options.OnRejected = async (context, token) =>
+                {
+                    // Log the rejection for debugging/monitoring
+                    var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Startup>>();
+                    logger.LogWarning($"Rate limit exceeded for IP: {context.HttpContext.Connection.RemoteIpAddress}");
+
+                    // Return 429 Too Many Requests
+                    context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+                    await context.HttpContext.Response.WriteAsync("Too many requests. Please try again later.");
+                };
             });
 
             services.Configure<CookiePolicyOptions>(options =>
@@ -121,13 +132,13 @@ namespace SFA.DAS.Campaign.Web
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-            
-            #if DEBUG
-                services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            #endif
+
+#if DEBUG
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+#endif
 
 
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -151,7 +162,7 @@ namespace SFA.DAS.Campaign.Web
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -174,13 +185,15 @@ namespace SFA.DAS.Campaign.Web
             });
 
             app.AddRedirectRules();
-            
+
             app.UseRouting();
 
+            app.UseRateLimiter();
+
             app.UseMiddleware<SecurityHeadersMiddleware>();
-            
+
             app.UseSession();
-            
+
             app.UseEndpoints(builder =>
             {
                 builder.MapControllerRoute(
@@ -194,7 +207,7 @@ namespace SFA.DAS.Campaign.Web
                 builder.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-               
+
             });
         }
 
