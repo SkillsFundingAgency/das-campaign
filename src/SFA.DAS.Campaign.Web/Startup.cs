@@ -23,6 +23,7 @@ using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
 using System.Threading.RateLimiting;
+using Microsoft.Extensions.Logging;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -64,6 +65,7 @@ namespace SFA.DAS.Campaign.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLogging();
             services.AddRateLimiter(options =>
             {
                 options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
@@ -71,9 +73,6 @@ namespace SFA.DAS.Campaign.Web
                     var ipAddress = httpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault()
                                     ?? httpContext.Connection.RemoteIpAddress?.ToString()
                                     ?? "unknown";
-
-                    // Log the extracted IP address for debugging
-                    Console.WriteLine($"Extracted IP: {ipAddress}");
 
                     return RateLimitPartition.GetFixedWindowLimiter(
                         partitionKey: ipAddress,
@@ -132,8 +131,21 @@ namespace SFA.DAS.Campaign.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            app.Use(async (context, next) =>
+            {
+                // Extract the IP address from the request
+                var ipAddress = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()
+                                ?? context.Connection.RemoteIpAddress?.ToString()
+                                ?? "unknown";
+
+                // Log the IP address
+                logger.LogInformation($"Request from IP Address: {ipAddress}");
+
+                await next(); // Call the next middleware
+            });
+
             var cultureInfo = new CultureInfo("en-GB");
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
