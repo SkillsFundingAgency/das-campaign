@@ -23,6 +23,7 @@ using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
 using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Logging;
 
 namespace SFA.DAS.Campaign.Web
@@ -156,6 +157,12 @@ namespace SFA.DAS.Campaign.Web
 
                 await next(); // Call the next middleware
             });
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
 
             var cultureInfo = new CultureInfo("en-GB");
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
