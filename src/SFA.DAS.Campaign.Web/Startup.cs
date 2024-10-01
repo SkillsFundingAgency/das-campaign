@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SFA.DAS.Campaign.Web.HealthChecks;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using MediatR;
 using Microsoft.Extensions.Hosting;
@@ -67,19 +68,19 @@ namespace SFA.DAS.Campaign.Web
             {
                 options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
                 {
-                    var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
+                    var ipAddress = httpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault()
+                                    ?? httpContext.Connection.RemoteIpAddress?.ToString()
+                                    ?? "unknown";
 
-                    if (string.IsNullOrEmpty(ipAddress) || ipAddress == "::1" || ipAddress == "127.0.0.1")
-                    {
-                        ipAddress = "localhost";
-                    }
+                    // Log the extracted IP address for debugging
+                    Console.WriteLine($"Extracted IP: {ipAddress}");
 
                     return RateLimitPartition.GetFixedWindowLimiter(
                         partitionKey: ipAddress,
                         factory: partition => new FixedWindowRateLimiterOptions
                         {
                             AutoReplenishment = true,
-                            PermitLimit = 5, // Max 5 requests
+                            PermitLimit = 5, // Max 10 requests
                             QueueLimit = 0,   // No queueing of requests
                             Window = TimeSpan.FromMinutes(1) // 1-minute window
                         });
@@ -121,13 +122,13 @@ namespace SFA.DAS.Campaign.Web
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            
+            #if DEBUG
+                services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            #endif
 
-#if DEBUG
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
-#endif
 
-
-
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -138,7 +139,7 @@ namespace SFA.DAS.Campaign.Web
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -161,13 +162,13 @@ namespace SFA.DAS.Campaign.Web
             });
 
             app.AddRedirectRules();
-
+            
             app.UseRouting();
 
             app.UseMiddleware<SecurityHeadersMiddleware>();
-
+            
             app.UseSession();
-
+            
             app.UseEndpoints(builder =>
             {
                 builder.MapControllerRoute(
@@ -181,7 +182,7 @@ namespace SFA.DAS.Campaign.Web
                 builder.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+               
             });
         }
 
