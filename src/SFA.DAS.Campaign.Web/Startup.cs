@@ -72,14 +72,13 @@ namespace SFA.DAS.Campaign.Web
                         partitionKey: ipAddress,
                         factory: partition => new FixedWindowRateLimiterOptions
                         {
-                            AutoReplenishment = false,
+                            AutoReplenishment = true,
                             PermitLimit = 3,
                             QueueLimit = 0,
                             Window = TimeSpan.FromMinutes(1)
                         });
                 });
 
-                // Optional: Configure on-rejection behavior, logging, etc.
                 options.OnRejected = async (context, token) =>
                 {
                     // Return 429 Too Many Requests
