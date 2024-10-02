@@ -59,6 +59,7 @@ namespace SFA.DAS.Campaign.Web
             Configuration = config.Build();
         }
 
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRateLimiter(options =>
@@ -121,11 +122,9 @@ namespace SFA.DAS.Campaign.Web
                 options.Cookie.IsEssential = true;
             });
 
-#if DEBUG
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
-#endif
-
-
+            #if DEBUG
+                        services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            #endif
 
         }
 
