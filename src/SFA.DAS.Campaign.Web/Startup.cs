@@ -10,9 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SFA.DAS.Campaign.Web.HealthChecks;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using MediatR;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using Polly.Extensions.Http;
@@ -22,9 +20,8 @@ using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
-using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.Extensions.Logging;
+using System.Threading.RateLimiting;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -66,76 +63,32 @@ namespace SFA.DAS.Campaign.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging();
-            //services.AddRateLimiter(options =>
-            //{
-            //    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
-            //    {
-            //        var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
-
-
-            //        return RateLimitPartition.GetFixedWindowLimiter(
-            //            partitionKey: ipAddress,
-            //            factory: partition => new FixedWindowRateLimiterOptions
-            //            {
-            //                AutoReplenishment = true,
-            //                PermitLimit = 3, // Max 5 requests
-            //                QueueLimit = 0,   // No queueing of requests
-            //                Window = TimeSpan.FromMinutes(1) // 1-minute window
-            //            });
-            //    });
-
-            //    // Optional: Configure on-rejection behavior, logging, etc.
-            //    options.OnRejected = async (context, token) =>
-            //    {
-            //        // Log the rejection for debugging/monitoring
-            //        var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Startup>>();
-            //        logger.LogWarning($"Rate limit exceeded for IP: {context.HttpContext.Connection.RemoteIpAddress}");
-
-            //        // Return 429 Too Many Requests
-            //        context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
-            //        await context.HttpContext.Response.WriteAsync("Too many requests. Please try again later.");
-            //    };
-            //});
-
             services.AddRateLimiter(options =>
             {
-                options.GlobalLimiter = PartitionedRateLimiter.CreateChained(
-                    PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
-                        RateLimitPartition.GetFixedWindowLimiter(
-                            partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
-                            factory: _ => new FixedWindowRateLimiterOptions
-                            {
-                                PermitLimit = 3, 
-                                QueueLimit = 0,
-                                Window = TimeSpan.FromMinutes(1),
-                                AutoReplenishment = false
-                            })),
+                options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+                {
+                    var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
 
-                    PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
-                        RateLimitPartition.GetConcurrencyLimiter(
-                            partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
-                            factory: _ => new ConcurrencyLimiterOptions
-                            {
-                                PermitLimit = 3, 
-                                QueueLimit = 0
-                            }))
-                );
 
-                // Handle requests rejected by rate limiting
+                    return RateLimitPartition.GetFixedWindowLimiter(
+                        partitionKey: ipAddress,
+                        factory: partition => new FixedWindowRateLimiterOptions
+                        {
+                            AutoReplenishment = false,
+                            PermitLimit = 3,
+                            QueueLimit = 0,
+                            Window = TimeSpan.FromMinutes(1)
+                        });
+                });
+
+                // Optional: Configure on-rejection behavior, logging, etc.
                 options.OnRejected = async (context, token) =>
                 {
-                    var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
-                    logger.LogWarning($"Rate limit exceeded for IP: {context.HttpContext.Connection.RemoteIpAddress}");
-
+                    // Return 429 Too Many Requests
                     context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
                     await context.HttpContext.Response.WriteAsync("Too many requests. Please try again later.");
                 };
             });
-
-
-
-
-
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -146,8 +99,6 @@ namespace SFA.DAS.Campaign.Web
 
             services.AddOptions();
             services.AddHttpClient<IApiClient, ApiClient>().AddPolicyHandler(HttpClientRetryPolicy());
-
-
 
             services.ConfigureSfaConfigurations(Configuration);
             services.ConfigureSfaConnectionStrings(Configuration);
@@ -180,7 +131,7 @@ namespace SFA.DAS.Campaign.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {

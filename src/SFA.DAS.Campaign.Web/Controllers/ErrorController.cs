@@ -59,26 +59,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View("PageNotFound");
         }
 
-        [HttpGet("/show-ip")]
-        public IActionResult ShowIp()
-        {
-            // Extract the X-Forwarded-For IP and Remote IP Address
-            var forwardedForIp = HttpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault() ?? "N/A";
-            var remoteIpAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "N/A";
-
-            // Log both IPs for troubleshooting
-            _logger.LogInformation($"X-Forwarded-For IP: {forwardedForIp}, Remote IP Address: {remoteIpAddress}");
-
-            // Return both IPs to the view
-            var model = new IpInfoModel
-            {
-                ForwardedForIp = forwardedForIp,
-                RemoteIpAddress = remoteIpAddress
-            };
-
-            return View("ShowIp", model);
-        }
-
         private void LogException()
         {
             var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
