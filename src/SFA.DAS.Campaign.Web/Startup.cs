@@ -66,36 +66,76 @@ namespace SFA.DAS.Campaign.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging();
+            //services.AddRateLimiter(options =>
+            //{
+            //    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+            //    {
+            //        var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
+
+
+            //        return RateLimitPartition.GetFixedWindowLimiter(
+            //            partitionKey: ipAddress,
+            //            factory: partition => new FixedWindowRateLimiterOptions
+            //            {
+            //                AutoReplenishment = true,
+            //                PermitLimit = 3, // Max 5 requests
+            //                QueueLimit = 0,   // No queueing of requests
+            //                Window = TimeSpan.FromMinutes(1) // 1-minute window
+            //            });
+            //    });
+
+            //    // Optional: Configure on-rejection behavior, logging, etc.
+            //    options.OnRejected = async (context, token) =>
+            //    {
+            //        // Log the rejection for debugging/monitoring
+            //        var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Startup>>();
+            //        logger.LogWarning($"Rate limit exceeded for IP: {context.HttpContext.Connection.RemoteIpAddress}");
+
+            //        // Return 429 Too Many Requests
+            //        context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+            //        await context.HttpContext.Response.WriteAsync("Too many requests. Please try again later.");
+            //    };
+            //});
+
             services.AddRateLimiter(options =>
             {
-                options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
-                {
-                    var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
- 
+                options.GlobalLimiter = PartitionedRateLimiter.CreateChained(
+                    PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+                        RateLimitPartition.GetFixedWindowLimiter(
+                            partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+                            factory: _ => new FixedWindowRateLimiterOptions
+                            {
+                                PermitLimit = 3, 
+                                QueueLimit = 0,
+                                Window = TimeSpan.FromMinutes(1),
+                                AutoReplenishment = true
+                            })),
 
-                    return RateLimitPartition.GetFixedWindowLimiter(
-                        partitionKey: ipAddress,
-                        factory: partition => new FixedWindowRateLimiterOptions
-                        {
-                            AutoReplenishment = true,
-                            PermitLimit = 3, // Max 5 requests
-                            QueueLimit = 0,   // No queueing of requests
-                            Window = TimeSpan.FromMinutes(1) // 1-minute window
-                        });
-                });
+                    PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+                        RateLimitPartition.GetConcurrencyLimiter(
+                            partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+                            factory: _ => new ConcurrencyLimiterOptions
+                            {
+                                PermitLimit = 3, 
+                                QueueLimit = 0
+                            }))
+                );
 
-                // Optional: Configure on-rejection behavior, logging, etc.
+                // Handle requests rejected by rate limiting
                 options.OnRejected = async (context, token) =>
                 {
-                    // Log the rejection for debugging/monitoring
-                    var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Startup>>();
+                    var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
                     logger.LogWarning($"Rate limit exceeded for IP: {context.HttpContext.Connection.RemoteIpAddress}");
 
-                    // Return 429 Too Many Requests
                     context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
                     await context.HttpContext.Response.WriteAsync("Too many requests. Please try again later.");
                 };
             });
+
+
+
+
+
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -123,8 +163,6 @@ namespace SFA.DAS.Campaign.Web
                 options.LowercaseUrls = true;
             }).AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddLogging();
-
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
             services.AddSession(options =>
@@ -144,19 +182,6 @@ namespace SFA.DAS.Campaign.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
-            app.Use(async (context, next) =>
-            {
-                // Extract the IP address from the request
-                var ipAddress = context.Request.Headers["X-Forwarded-For"].FirstOrDefault()
-                                ?? context.Connection.RemoteIpAddress?.ToString()
-                                ?? "unknown";
-
-                // Log the IP address
-                logger.LogInformation($"Request from IP Address: {ipAddress}");
-
-                await next(); // Call the next middleware
-            });
-
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
