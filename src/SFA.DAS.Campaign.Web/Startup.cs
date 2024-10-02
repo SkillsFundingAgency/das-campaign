@@ -108,7 +108,7 @@ namespace SFA.DAS.Campaign.Web
                                 PermitLimit = 3, 
                                 QueueLimit = 0,
                                 Window = TimeSpan.FromMinutes(1),
-                                AutoReplenishment = true
+                                AutoReplenishment = false
                             })),
 
                     PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
