@@ -20,7 +20,6 @@ using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
-using Microsoft.AspNetCore.HttpOverrides;
 using System.Threading.RateLimiting;
 
 namespace SFA.DAS.Campaign.Web
@@ -62,13 +61,11 @@ namespace SFA.DAS.Campaign.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogging();
             services.AddRateLimiter(options =>
             {
                 options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
                 {
                     var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
-
 
                     return RateLimitPartition.GetFixedWindowLimiter(
                         partitionKey: ipAddress,
@@ -114,6 +111,8 @@ namespace SFA.DAS.Campaign.Web
                 options.LowercaseUrls = true;
             }).AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
+            services.AddLogging();
+
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
             services.AddSession(options =>
@@ -133,12 +132,6 @@ namespace SFA.DAS.Campaign.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
-
-
             var cultureInfo = new CultureInfo("en-GB");
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
@@ -155,6 +148,8 @@ namespace SFA.DAS.Campaign.Web
                 app.UseHsts();
             }
 
+            app.UseRateLimiter();
+
             app.UseHealthChecks("/health", new HealthCheckOptions
             {
                 ResponseWriter = HealthCheckResponseWriter.WriteJsonResponse
@@ -169,8 +164,6 @@ namespace SFA.DAS.Campaign.Web
             app.AddRedirectRules();
 
             app.UseRouting();
-
-            app.UseRateLimiter();
 
             app.UseMiddleware<SecurityHeadersMiddleware>();
 
