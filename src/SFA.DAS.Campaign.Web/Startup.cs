@@ -70,9 +70,8 @@ namespace SFA.DAS.Campaign.Web
             {
                 options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
                 {
-                    var ipAddress = httpContext.Request.Headers["X-Forwarded-For"].FirstOrDefault()
-                                    ?? httpContext.Connection.RemoteIpAddress?.ToString()
-                                    ?? "unknown";
+                    var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
+ 
 
                     return RateLimitPartition.GetFixedWindowLimiter(
                         partitionKey: ipAddress,
