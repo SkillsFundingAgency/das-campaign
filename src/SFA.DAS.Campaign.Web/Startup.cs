@@ -11,7 +11,6 @@ using SFA.DAS.Campaign.Web.HealthChecks;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
-using MediatR;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using Polly.Extensions.Http;
@@ -21,6 +20,7 @@ using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
+using System.Threading.RateLimiting;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -62,6 +62,31 @@ namespace SFA.DAS.Campaign.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRateLimiter(options =>
+            {
+                options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+                {
+                    var ipAddress = httpContext.Connection.RemoteIpAddress?.ToString();
+
+                    return RateLimitPartition.GetFixedWindowLimiter(
+                        partitionKey: ipAddress,
+                        factory: partition => new FixedWindowRateLimiterOptions
+                        {
+                            AutoReplenishment = true,
+                            PermitLimit = 120,
+                            QueueLimit = 0,
+                            Window = TimeSpan.FromMinutes(1)
+                        });
+                });
+
+                options.OnRejected = async (context, token) =>
+                {
+                    // Return 429 Too Many Requests
+                    context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+                    await context.HttpContext.Response.WriteAsync("Too many requests. Please try again later.");
+                };
+            });
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -71,7 +96,6 @@ namespace SFA.DAS.Campaign.Web
 
             services.AddOptions();
             services.AddHttpClient<IApiClient, ApiClient>().AddPolicyHandler(HttpClientRetryPolicy());
-
 
             services.ConfigureSfaConfigurations(Configuration);
             services.ConfigureSfaConnectionStrings(Configuration);
@@ -96,13 +120,11 @@ namespace SFA.DAS.Campaign.Web
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-            
+
             #if DEBUG
-                services.AddControllersWithViews().AddRazorRuntimeCompilation();
+                        services.AddControllersWithViews().AddRazorRuntimeCompilation();
             #endif
 
-
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -113,7 +135,7 @@ namespace SFA.DAS.Campaign.Web
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -123,6 +145,8 @@ namespace SFA.DAS.Campaign.Web
                 app.UseExceptionHandler("/Error/Error");
                 app.UseHsts();
             }
+
+            app.UseRateLimiter();
 
             app.UseHealthChecks("/health", new HealthCheckOptions
             {
@@ -136,13 +160,13 @@ namespace SFA.DAS.Campaign.Web
             });
 
             app.AddRedirectRules();
-            
+
             app.UseRouting();
 
             app.UseMiddleware<SecurityHeadersMiddleware>();
-            
+
             app.UseSession();
-            
+
             app.UseEndpoints(builder =>
             {
                 builder.MapControllerRoute(
@@ -156,7 +180,7 @@ namespace SFA.DAS.Campaign.Web
                 builder.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-               
+
             });
         }
 
