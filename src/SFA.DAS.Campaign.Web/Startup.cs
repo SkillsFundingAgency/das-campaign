@@ -70,7 +70,7 @@ namespace SFA.DAS.Campaign.Web
                 limiterOptions.AddPolicy(fixedPolicy, context =>
                               {
                                   return RateLimitPartition.GetFixedWindowLimiter(
-                                      partitionKey: context.Connection.Id,
+                                      partitionKey: context.Connection.RemoteIpAddress,
                                       factory: partition => new FixedWindowRateLimiterOptions
                                       {
                                           AutoReplenishment = true,
