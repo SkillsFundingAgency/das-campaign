@@ -1,0 +1,15 @@
+@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.SiteMap>
+
+@{
+    ViewBag.Title = "Rate Limit Exceeded";
+    ViewBag.PageTitle = "Rate Limit Exceeded";
+    ViewBag.MetaTitle = "Rate Limit Exceeded";
+    ViewBag.FullWidthContent = true;
+    Layout = "Redesign_Layout_Generic";
+}
+
+<p class="govuk-body-l">
+    Too many requests. Please try again later.
+</p>
+
+<partial name="./_Sitemap", model="Model" />
