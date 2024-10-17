@@ -74,9 +74,9 @@ namespace SFA.DAS.Campaign.Web
                                       factory: partition => new FixedWindowRateLimiterOptions
                                       {
                                           AutoReplenishment = true,
-                                          PermitLimit = 1,
+                                          PermitLimit = 10,
                                           QueueLimit = 0,
-                                          Window = TimeSpan.FromSeconds(10)
+                                          Window = TimeSpan.FromSeconds(100)
                                       });
 
                               });
