@@ -85,12 +85,12 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.EqualTo(null));
             var viewResult = actual as ViewResult;
-            Assert.IsNotNull(viewResult);
+            Assert.That(viewResult, Is.Not.EqualTo(null));
             var model = viewResult.Model as RegisterInterestModel;
-            Assert.IsNotNull(model);
-            Assert.AreEqual(ExpectedReferrerUrl, model.ReturnUrl);
+            Assert.That(model, Is.Not.EqualTo(null));
+            Assert.That(ExpectedReferrerUrl, Is.EqualTo(model.ReturnUrl));
         }
 
         [Test]
@@ -123,12 +123,12 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.EqualTo(null));
             var viewResult = actual as ViewResult;
-            Assert.IsNotNull(viewResult);
+            Assert.That(viewResult, Is.Not.EqualTo(null));
             var model = viewResult.Model as RegisterInterestModel;
-            Assert.IsNotNull(model);
-            Assert.AreEqual(ExpectedDefaultUrl, model.ReturnUrl);
+            Assert.That(model, Is.Not.EqualTo(null));
+            Assert.That(ExpectedDefaultUrl, Is.EqualTo(model.ReturnUrl));
         }
 
         [Test]
@@ -153,12 +153,12 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.Null);
             var viewResult = actual as ViewResult;
-            Assert.IsNotNull(viewResult);
+            Assert.That(viewResult, Is.Not.Null);
             var model = viewResult.Model as RegisterInterestModel;
-            Assert.IsNotNull(model);
-            Assert.AreEqual(ExpectedDefaultUrl, model.ReturnUrl);
+            Assert.That(model, Is.Not.Null);
+            Assert.That(ExpectedDefaultUrl, Is.EqualTo(model.ReturnUrl));
             mockUrlHelper.Verify(x => x.Action(It.Is<UrlActionContext>(c => c.Action.Equals("Index") && c.Controller.Equals("Home"))));
         }
 
@@ -192,11 +192,12 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.EqualTo(null));
             var viewResult = actual as ViewResult;
-            Assert.IsNotNull(viewResult);
+            Assert.That(viewResult, Is.Not.EqualTo(null));
             var model = viewResult.Model as RegisterInterestModel;
-            Assert.IsNotNull(model);
+            Assert.That(model, Is.Not.EqualTo(null));
+
 
             mockUrlHelper.Verify(x => x.Action(It.Is<UrlActionContext>(c => c.Action.Equals("some") && c.Controller.Equals("some-controller"))));
         }
@@ -231,13 +232,13 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.EqualTo(null));
             var viewResult = actual as ViewResult;
-            Assert.IsNotNull(viewResult);
+            Assert.That(viewResult, Is.Not.EqualTo(null));
             var model = viewResult.Model as RegisterInterestModel;
-            Assert.IsNotNull(model);
+            Assert.That(model, Is.Not.EqualTo(null));
 
-            Assert.AreEqual(ExpectedDefaultUrl, model.ReturnUrl);
+            Assert.That(ExpectedDefaultUrl, Is.EqualTo(model.ReturnUrl));
             mockUrlHelper.Verify(x=>x.Action(It.Is<UrlActionContext>(c=>c.Action.Equals("Index") && c.Controller.Equals("Home"))));
         }
 
@@ -275,14 +276,14 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.EqualTo(null));
 
             var viewResult = actual as ViewResult;
-            Assert.IsNotNull(viewResult);
+            Assert.That(viewResult, Is.Not.EqualTo(null));
 
             var model = viewResult.Model as RegisterInterestModel;
-            Assert.IsNotNull(model);
-            Assert.AreEqual(ExpectedRefererUrlWithQuerystring, model.ReturnUrl);
+            Assert.That(model, Is.Not.EqualTo(null));
+            Assert.That(ExpectedRefererUrlWithQuerystring, Is.EqualTo(model.ReturnUrl));
         }
         [Test]
         public async Task Then_StoreData_Is_Called_On_The_UserDataCollection_Service()
@@ -350,9 +351,14 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
 
             //Assert
             _mediator.Verify(x=>x.Send(It.IsAny<GetMenuQuery>(), CancellationToken.None), Times.Once);
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.Null);
+            // correct the above error
+            
+            // rewrite the above
+            // 
+
             var actualModel = actual.Model as RegisterInterestModel;
-            Assert.IsNotNull(actualModel);
+            Assert.That(actualModel, Is.Not.Null);
             actualModel.Menu.Should().NotBeNull();
         }
 
@@ -365,13 +371,13 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             //Act
             var actual = await _controller.Index(_registerInterestModel);
 
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.Null);
             var viewResult = actual as ViewResult;
-            Assert.IsNotNull(viewResult);
+            Assert.That(viewResult, Is.Not.Null);
             var model = viewResult.Model as RegisterInterestModel;
-            Assert.IsNotNull(model);
+            Assert.That(model, Is.Not.Null);
 
-            Assert.IsTrue(model.ShowRouteQuestion);
+            Assert.That(model.ShowRouteQuestion, Is.EqualTo(true));
         }
 
         [Test]
@@ -401,13 +407,13 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             //Act
             var actual = await _controller.Index(_registerInterestModel);
 
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.EqualTo(null));
             var viewResult = actual as ViewResult;
-            Assert.IsNotNull(viewResult);
+            Assert.That(viewResult, Is.Not.EqualTo(null));
             var model = viewResult.Model as RegisterInterestModel;
-            Assert.IsNotNull(model);
+            Assert.That(model, Is.Not.EqualTo(null));
 
-            Assert.IsFalse(model.ShowRouteQuestion);
+            Assert.That(model.ShowRouteQuestion, Is.EqualTo(false));
         }
         [Test]
         public async Task Then_If_The_UserDataCollection_Fails_Validation_The_Errors_Are_Returned_To_The_View()
@@ -422,14 +428,14 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             var actual = await _controller.Index(_registerInterestModel);
 
             //Assert
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.EqualTo(null));
             var actualViewResult = actual as ViewResult;
-            Assert.IsNotNull(actualViewResult);
-            Assert.IsFalse(actualViewResult.ViewData.ModelState.IsValid);
-            Assert.IsTrue(actualViewResult.ViewData.ModelState.ContainsKey("Email"));
+            Assert.That(actualViewResult, Is.Not.EqualTo(null));
+            Assert.That(actualViewResult.ViewData.ModelState.IsValid, Is.EqualTo(false));
+            Assert.That(actualViewResult.ViewData.ModelState.ContainsKey("Email"), Is.EqualTo(true));
             var model = actualViewResult.Model as RegisterInterestModel;
-            Assert.IsNotNull(model);
-            Assert.IsNotNull(model.Menu);
+            Assert.That(model, Is.Not.EqualTo(null));
+            Assert.That(model.Menu, Is.Not.EqualTo(null));
         }
         
         [Test]
@@ -462,13 +468,13 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             var actual = await _controller.Index(RouteType.Apprentice);
 
             //Assert
-            Assert.IsNotNull(actual);
+            Assert.That(actual, Is.Not.EqualTo(null));
             var viewResult = actual as ViewResult;
-            Assert.IsNotNull(viewResult);
+            Assert.That(viewResult, Is.Not.EqualTo(null));
             var model = viewResult.Model as RegisterInterestModel;
-            Assert.IsNotNull(model);
+            Assert.That(model, Is.Not.EqualTo(null));
 
-            Assert.AreEqual(ExpectedDefaultUrl, model.ReturnUrl);
+            Assert.That(ExpectedDefaultUrl, Is.EqualTo(model.ReturnUrl));
             mockUrlHelper.Verify(x => x.Action(It.Is<UrlActionContext>(c => c.Action.Equals("SearchResults/standard/postcode/distance") && c.Controller.Equals("cpg"))));
         }
     }

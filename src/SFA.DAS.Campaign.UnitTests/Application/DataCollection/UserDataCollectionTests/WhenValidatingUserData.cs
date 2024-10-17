@@ -26,7 +26,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             var actual = _validator.Validate(new UserData());
 
             //Assert
-            Assert.IsFalse(actual.IsValid);
+            Assert.That(actual.IsValid, Is.EqualTo(false));
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             });
 
             //Assert
-            Assert.IsTrue(actual.IsValid);
+            Assert.That(actual.IsValid, Is.EqualTo(true));
         }
 
         [Test]
@@ -60,7 +60,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             });
 
             //Assert
-            Assert.IsFalse(actual.IsValid);
+            Assert.That(actual.IsValid, Is.EqualTo(false));
         }
 
         [Test]
@@ -70,13 +70,13 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             var actual = _validator.Validate(new UserData());
 
             //Assert
-            Assert.IsNotEmpty(actual.Results);
-            Assert.Contains("Email|The Email field is required.", actual.Results);
-            Assert.Contains("FirstName|The FirstName field is required.", actual.Results);
-            Assert.Contains("LastName|The LastName field is required.", actual.Results);
-            Assert.Contains("RouteId|The RouteId field is required.", actual.Results);
-            Assert.Contains("CookieId|The CookieId field is required.", actual.Results);
-            Assert.Contains("Email|The Email field is not valid.", actual.Results);
+            Assert.That(actual.Results, Is.Not.Empty);
+            Assert.That(actual.Results, Does.Contain("Email|The Email field is required."));
+            Assert.That(actual.Results, Does.Contain("FirstName|The FirstName field is required."));
+            Assert.That(actual.Results, Does.Contain("LastName|The LastName field is required."));
+            Assert.That(actual.Results, Does.Contain("RouteId|The RouteId field is required."));
+            Assert.That(actual.Results, Does.Contain("CookieId|The CookieId field is required."));
+            Assert.That(actual.Results, Does.Contain("Email|The Email field is not valid."));
         }
 
         [TestCase("test@test.com", true)]
@@ -89,7 +89,7 @@ namespace SFA.DAS.Campaign.Application.UnitTests.DataCollection.UserDataCollecti
             var actual = _validator.ValidateEmail(email);
 
             //Assert
-            Assert.AreEqual(expectedResult, actual);
+            Assert.That(expectedResult, Is.EqualTo(actual));
         }
     }
 }

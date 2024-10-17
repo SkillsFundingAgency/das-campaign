@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Web.HealthChecks;
 using System.Globalization;
 using System.IO;
@@ -81,7 +80,7 @@ namespace SFA.DAS.Campaign.Web
             services.ConfigureSfaDataCollection();
             services.ConfigureFactorys();
             services.ConfigureJsonConverters();
-            services.AddMediatR(typeof(GetArticleQuery).Assembly);
+            services.AddMediatR(c => c.RegisterServicesFromAssembly(typeof(GetArticleQuery).Assembly));
 
             services.Configure<RouteOptions>(options =>
             {
