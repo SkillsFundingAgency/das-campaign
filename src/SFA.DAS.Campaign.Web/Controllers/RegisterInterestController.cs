@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.Models;
@@ -59,6 +60,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
         [HttpPost]
         [HttpPost("/employers/sign-up")]
+        [EnableRateLimiting("fixed")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
         {

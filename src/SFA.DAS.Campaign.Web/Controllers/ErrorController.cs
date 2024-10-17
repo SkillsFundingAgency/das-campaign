@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Logging;
 using SFA.DAS.Campaign.Application.Content.Queries;
 using SFA.DAS.Campaign.Domain.Content;
@@ -21,7 +22,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             _logger = logger;
             _mediator = mediator;
         }
-        
+
         [Route("error/{id?}")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Error(int? id = 500)
@@ -58,6 +59,13 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View("PageNotFound");
         }
 
+        [Route("/Rate-Limit-Exceeded")]
+        public async Task<IActionResult> RateLimitExceeded()
+        {
+            Response.StatusCode = (int)HttpStatusCode.TooManyRequests;
+            var result = await _mediator.Send(new GetSiteMapQuery());
+            return View("RateLimitExceeded", result.Page);
+        }
         private void LogException()
         {
             var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
