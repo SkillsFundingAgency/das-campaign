@@ -81,7 +81,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
                 Menu = _menu.Page.Menu,
                 BannerModels = _banner.Page.BannerModels
             };
-            _standardsResult = _standards.Standards.Select(s => new StandardResponse { Title = s.Title, LarsCode = s.LarsCode, Level = s.Level, StandardUId = s.StandardUId}).ToList();
+            _standardsResult = _standards.Standards.Select(s => new StandardResponse { Title = s.Title, LarsCode = s.LarsCode, Level = s.Level, StandardUId = s.StandardUId }).ToList();
         }
 
         [Test, RecursiveMoqAutoData]
@@ -109,13 +109,17 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
                 NumberOfRoles = "0"
             };
 
+            _controller.ModelState.AddModelError("NumberOfRoles", "Number of roles available for this apprenticeship must be 1 or more");
+
             var result = await _controller.ApprenticeshipBenefitsAndFunding(model, preview);
 
             var viewResult = result as ViewResult;
-
-            _controller.ModelState.IsValid.Should().BeFalse();
-            _controller.ModelState.ErrorCount.Should().Be(1);
-            _controller.ModelState.Keys.Should().Contain("NumberOfRoles");
+            Assert.That(viewResult, Is.Not.Null);
+            Assert.That(viewResult.ViewName, Is.EqualTo("ApprenticeshipBenefitsAndFunding"));
+            var returnedModel = viewResult.Model as ApprenticeshipTrainingAndBenefitsViewModel;
+            Assert.That(returnedModel, Is.Not.Null);
+            Assert.That(_controller.ModelState.IsValid, Is.False);
+            Assert.That(_controller.ModelState["NumberOfRoles"].Errors.First().ErrorMessage, Is.EqualTo("Number of roles available for this apprenticeship must be 1 or more"));
         }
     }
 }

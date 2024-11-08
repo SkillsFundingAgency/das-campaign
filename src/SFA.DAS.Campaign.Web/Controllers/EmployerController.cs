@@ -62,11 +62,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
         [HttpPost("/employers/understanding-apprenticeship-benefits-and-funding")]
         public async Task<IActionResult> ApprenticeshipBenefitsAndFunding(ApprenticeshipTrainingAndBenefitsViewModel model, [FromQuery] bool preview = false)
         {
-            if (model.Roles == null || model.Roles < 1)
-            {
-                ModelState.AddModelError("NumberOfRoles", "Number of roles available for this apprenticeship must be 1 or more");
-            }
-
             var staticContent = _mediator.GetModelForStaticContent();
             var panel1 = _mediator.Send(new GetPanelQuery() { Id = panel1Id, Preview = preview });
             var panel2 = _mediator.Send(new GetPanelQuery() { Id = panel2Id, Preview = preview });
