@@ -64,7 +64,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         {
             if (model.Roles == null || model.Roles < 1)
             {
-                ModelState.AddModelError("NumberOfRoles", "Enter a valid whole number for the number of roles");
+                ModelState.AddModelError("NumberOfRoles", "Number of roles available for this apprenticeship must be 1 or more");
             }
 
             var staticContent = _mediator.GetModelForStaticContent();
