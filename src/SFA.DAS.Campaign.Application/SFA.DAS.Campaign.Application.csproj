@@ -7,7 +7,6 @@
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.4.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
-    <PackageReference Include="NLog" Version="5.3.3" />
     <PackageReference Include="Hashids.net" Version="1.7.0" />
     <PackageReference Include="Microsoft.Extensions.options" Version="8.0.2" />
   </ItemGroup>

@@ -23,6 +23,7 @@
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.AzureStorage" Version="7.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="8.0.1" />
+    <PackageReference Include="Azure.Monitor.OpenTelemetry.AspNetCore" Version="1.2.0" />
     <PackageReference Include="MediatR" Version="12.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="8.0.8" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.8" />
@@ -35,19 +36,12 @@
     <PackageReference Include="StackExchange.Redis" Version="2.8.0" />
     <PackageReference Include="WebEssentials.AspNetCore.CdnTagHelpers" Version="1.0.21" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.12" />
-    <PackageReference Include="SFA.DAS.NLog.Targets.Redis" Version="1.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.8" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SFA.DAS.Campaign.Application\SFA.DAS.Campaign.Application.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Domain\SFA.DAS.Campaign.Domain.csproj" />
     <ProjectReference Include="..\SFA.DAS.Campaign.Infrastructure\SFA.DAS.Campaign.Infrastructure.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Update="nlog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\OLD_LandingPages\ExpressionOfInterest.cshtml" />

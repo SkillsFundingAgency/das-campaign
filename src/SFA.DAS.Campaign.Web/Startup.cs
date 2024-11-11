@@ -21,6 +21,8 @@ using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
+using Microsoft.Extensions.Logging.ApplicationInsights;
+using Microsoft.Extensions.Logging;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -85,11 +87,9 @@ namespace SFA.DAS.Campaign.Web
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
-            }).AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            }).AddMvc();
 
-            services.AddLogging();
-
-            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
+            services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
 
             services.AddSession(options =>
             {
