@@ -74,6 +74,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddOptions();
             services.AddHttpClient<IApiClient, ApiClient>().AddPolicyHandler(HttpClientRetryPolicy());
 
+            services.AddHttpContextAccessor();
 
             services.ConfigureSfaConfigurations(Configuration);
             services.ConfigureSfaConnectionStrings(Configuration);
@@ -89,6 +90,7 @@ namespace SFA.DAS.Campaign.Web
                 options.LowercaseUrls = true;
             }).AddMvc();
 
+            services.AddApplicationInsightsTelemetry();
             services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
 
             services.AddSession(options =>
