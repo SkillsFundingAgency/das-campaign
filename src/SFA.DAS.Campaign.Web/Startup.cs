@@ -23,6 +23,7 @@ using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
 using Microsoft.Extensions.Logging.ApplicationInsights;
 using Microsoft.Extensions.Logging;
+using OpenTelemetry.Logs;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -92,6 +93,18 @@ namespace SFA.DAS.Campaign.Web
 
             services.AddApplicationInsightsTelemetry();
             services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
+
+            services.AddLogging(options =>
+            {
+                options.AddFilter<ApplicationInsightsLoggerProvider>("SFA.DAS", LogLevel.Information);
+                options.AddFilter<ApplicationInsightsLoggerProvider>("Microsoft", LogLevel.Warning);
+                options.AddApplicationInsights();
+
+                options.AddFilter<OpenTelemetryLoggerProvider>("SFA.DAS", LogLevel.Information);
+                options.AddFilter<OpenTelemetryLoggerProvider>("Microsoft", LogLevel.Warning);
+                options.AddOpenTelemetry();
+
+            });
 
             services.AddSession(options =>
             {
