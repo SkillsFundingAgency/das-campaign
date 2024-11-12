@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using AutoFixture;
 using FluentAssertions;
 using MediatR;
+using Microsoft.Build.Framework;
+using Microsoft.Extensions.Logging;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Web.Models;
 
@@ -30,7 +32,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Apprentice
             _mediator = new Mock<IMediator>();
             _mediator.SetupMockMediator();
 
-             _sut = new ApprenticeController(_standardRepository.Object, _mediator.Object);
+             _sut = new ApprenticeController(_standardRepository.Object, _mediator.Object, Mock.Of<ILogger<ApprenticeController>>());
         }
 
         [Test]
