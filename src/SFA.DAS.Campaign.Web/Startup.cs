@@ -91,15 +91,15 @@ namespace SFA.DAS.Campaign.Web
             services.AddApplicationInsightsTelemetry();
             services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
 
-            services.AddLogging(options =>
-            {
-                options.ClearProviders();
-                options.AddApplicationInsights();
-                options.AddFilter<OpenTelemetryLoggerProvider>("SFA.DAS", LogLevel.Information);
-                options.AddFilter<OpenTelemetryLoggerProvider>("Microsoft", LogLevel.Warning);
-                options.AddOpenTelemetry();
-                options.AddConsole();
-            });
+            //services.AddLogging(options =>
+            //{
+            //    options.ClearProviders();
+            //    options.AddApplicationInsights();
+            //    options.AddFilter<OpenTelemetryLoggerProvider>("SFA.DAS", LogLevel.Information);
+            //    options.AddFilter<OpenTelemetryLoggerProvider>("Microsoft", LogLevel.Warning);
+            //    options.AddOpenTelemetry();
+            //    options.AddConsole();
+            //});
 
             services.AddSession(options =>
             {
