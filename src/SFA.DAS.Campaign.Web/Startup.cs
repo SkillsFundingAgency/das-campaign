@@ -88,7 +88,7 @@ namespace SFA.DAS.Campaign.Web
                 options.LowercaseUrls = true;
             }).AddMvc();
 
-            //services.AddApplicationInsightsTelemetry();
+            services.AddApplicationInsightsTelemetry();
             services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
             services.AddLogging();
 
