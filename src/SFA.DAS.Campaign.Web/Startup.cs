@@ -88,19 +88,9 @@ namespace SFA.DAS.Campaign.Web
                 options.LowercaseUrls = true;
             }).AddMvc();
 
-            services.AddApplicationInsightsTelemetry();
+            //services.AddApplicationInsightsTelemetry();
             services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
             services.AddLogging();
-
-            //services.AddLogging(options =>
-            //{
-            //    options.ClearProviders();
-            //    options.AddApplicationInsights();
-            //    options.AddFilter<OpenTelemetryLoggerProvider>("SFA.DAS", LogLevel.Information);
-            //    options.AddFilter<OpenTelemetryLoggerProvider>("Microsoft", LogLevel.Warning);
-            //    options.AddOpenTelemetry();
-            //    options.AddConsole();
-            //});
 
             services.AddSession(options =>
             {
@@ -111,9 +101,6 @@ namespace SFA.DAS.Campaign.Web
             #if DEBUG
                 services.AddControllersWithViews().AddRazorRuntimeCompilation();
             #endif
-
-
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
