@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +10,6 @@ using SFA.DAS.Campaign.Web.HealthChecks;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
-using MediatR;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using Polly.Extensions.Http;
@@ -21,7 +19,6 @@ using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
-using Microsoft.Extensions.Logging.ApplicationInsights;
 using Microsoft.Extensions.Logging;
 using OpenTelemetry.Logs;
 
@@ -94,18 +91,16 @@ namespace SFA.DAS.Campaign.Web
             services.AddApplicationInsightsTelemetry();
             services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
 
-
             services.AddLogging(options =>
             {
-                options.ClearProviders();
-                options.AddFilter<ApplicationInsightsLoggerProvider>("SFA.DAS", LogLevel.Information);
-                options.AddFilter<ApplicationInsightsLoggerProvider>("Microsoft", LogLevel.Warning);
+                //options.ClearProviders();
+                //options.AddFilter<ApplicationInsightsLoggerProvider>("SFA.DAS", LogLevel.Information);
+                //options.AddFilter<ApplicationInsightsLoggerProvider>("Microsoft", LogLevel.Warning);
+                
                 options.AddApplicationInsights();
-
                 options.AddFilter<OpenTelemetryLoggerProvider>("SFA.DAS", LogLevel.Information);
                 options.AddFilter<OpenTelemetryLoggerProvider>("Microsoft", LogLevel.Warning);
                 options.AddOpenTelemetry();
-
                 options.AddConsole();
             });
 
