@@ -93,10 +93,7 @@ namespace SFA.DAS.Campaign.Web
 
             services.AddLogging(options =>
             {
-                //options.ClearProviders();
-                //options.AddFilter<ApplicationInsightsLoggerProvider>("SFA.DAS", LogLevel.Information);
-                //options.AddFilter<ApplicationInsightsLoggerProvider>("Microsoft", LogLevel.Warning);
-                
+                options.ClearProviders();
                 options.AddApplicationInsights();
                 options.AddFilter<OpenTelemetryLoggerProvider>("SFA.DAS", LogLevel.Information);
                 options.AddFilter<OpenTelemetryLoggerProvider>("Microsoft", LogLevel.Warning);
