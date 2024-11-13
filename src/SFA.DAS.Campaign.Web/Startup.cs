@@ -90,6 +90,7 @@ namespace SFA.DAS.Campaign.Web
 
             services.AddApplicationInsightsTelemetry();
             services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
+            services.AddLogging();
 
             //services.AddLogging(options =>
             //{
