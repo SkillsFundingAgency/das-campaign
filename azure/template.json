@@ -165,8 +165,8 @@
             "value": {
               "array": [
                 {
-                  "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                  "value": "[reference(concat('campaignAppInsights-', parameters('utcValue'))).outputs.InstrumentationKey.value]"
+                  "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+                  "value": "[reference(concat('campaignAppInsights-', parameters('utcValue'))).outputs.ConnectionString.value]"
                 },
                 {
                   "name": "ConfigurationStorageConnectionString",
