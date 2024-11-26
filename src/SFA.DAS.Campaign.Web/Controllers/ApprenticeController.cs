@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Campaign.Web.Controllers.Redesign;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.Models;
 
