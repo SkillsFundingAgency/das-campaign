@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +21,8 @@ using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
 using System.Threading.RateLimiting;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using OpenTelemetry.Logs;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -98,6 +99,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddOptions();
             services.AddHttpClient<IApiClient, ApiClient>().AddPolicyHandler(HttpClientRetryPolicy());
 
+            services.AddHttpContextAccessor();
             services.ConfigureSfaConfigurations(Configuration);
             services.ConfigureSfaConnectionStrings(Configuration);
             services.ConfigureSfaServices();
@@ -110,22 +112,21 @@ namespace SFA.DAS.Campaign.Web
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
-            }).AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            }).AddMvc();
 
+            services.AddApplicationInsightsTelemetry();
+            services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
             services.AddLogging();
-
-            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
             services.AddSession(options =>
             {
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-
-#if DEBUG
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
-#endif
-
+            
+            #if DEBUG
+                services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            #endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
