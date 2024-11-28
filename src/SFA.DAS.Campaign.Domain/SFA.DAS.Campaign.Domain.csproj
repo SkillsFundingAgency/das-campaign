@@ -8,6 +8,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="StackExchange.Redis" Version="2.8.0" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="9.0.0" />
   </ItemGroup>
   
 </Project>
