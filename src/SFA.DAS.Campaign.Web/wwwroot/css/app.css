@@ -1,42 +1,52 @@
 .fiu-card__image--naw-2023 {
-    background-image: url('/images/naw-2023.png');
+  background-image: url("/images/naw-2023.png");
 }
 
 .fiu-card__image--naw-2024 {
-    background-image: url(/images/naw-2024.png);
-    border-bottom-color: black;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #346ef7;
+  background-image: url(/images/naw-2024.png);
+  border-bottom-color: black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #346ef7;
+}
+
+.fiu-card__image--naw-2025 {
+  background-image: url(/images/naw-2025.png);
+  border-bottom-color: #346ef7;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
 }
 
 .fiu-cookie-banner {
-    display: block;
+  display: block;
 }
 
-.fiu-cookie-banner[hidden] { display: none !important; }
+.fiu-cookie-banner[hidden] {
+  display: none !important;
+}
 
-.fiu-cookie-banner__message  {
-    margin-bottom: 10px;
+.fiu-cookie-banner__message {
+  margin-bottom: 10px;
 }
 
 .app-back-to-top,
 .app-back-to-top:link,
 .app-back-to-top:visited {
-    color: #1d70b8;
-    padding-left: 1.2em;
+  color: #1d70b8;
+  padding-left: 1.2em;
 }
 
 .app-back-to-top:before {
-    border-color: #1d70b8;
-    transform: rotate(315deg);
-    top: 5px;
+  border-color: #1d70b8;
+  transform: rotate(315deg);
+  top: 5px;
 }
 
 .app-back-to-top:focus {
-    color: #000;
+  color: #000;
 }
 
 .app-back-to-top:focus:before {
-    border-color: #000;
+  border-color: #000;
 }
