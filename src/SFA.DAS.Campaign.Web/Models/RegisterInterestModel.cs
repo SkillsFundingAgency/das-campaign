@@ -28,24 +28,33 @@ namespace SFA.DAS.Campaign.Web.Models
         public Dictionary<string, string> ValidationMessages { get; internal set; }
 
         [Required(ErrorMessage = "Enter your first name")]
+        [RegularExpression(@"^[\w\s'-]+$", ErrorMessage = "Invalid First Name")]
         [DisplayName("Given name")]
         public string FirstName { get; set; }
+
         [Required(ErrorMessage = "Enter your last name")]
+        [RegularExpression(@"^[\w\s'-]+$", ErrorMessage = "Invalid Last Name")]
         [DisplayName("Family name")]
         public string LastName { get; set; }
+
         [Required(ErrorMessage = "Select the size of your company")]
         [DisplayName("Size Of Your Company")]
         public string SizeOfYourCompany { get; set; }
+
         [Required(ErrorMessage = "Select your industry")]
         [DisplayName("Industry")]
         public string Industry { get; set; }
+
         [Required(ErrorMessage = "Select your region")]
         [DisplayName("Location")]
         public string Location { get; set; }
+
         [EmailAddress]
         [Required(ErrorMessage = "Enter your email address")]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Invalid Email")]
         [DisplayName("Email address")]
         public string Email { get; set; }
+
         [Required]
         [Range((int)RouteType.Apprentice, (int)RouteType.Employer)]
         [DisplayName("Registration type")]
