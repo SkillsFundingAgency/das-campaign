@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +10,6 @@ using SFA.DAS.Campaign.Web.HealthChecks;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
-using MediatR;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using Polly.Extensions.Http;
@@ -21,6 +19,10 @@ using SFA.DAS.Campaign.Infrastructure.Api;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
+using System.Threading.RateLimiting;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using OpenTelemetry.Logs;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -62,6 +64,31 @@ namespace SFA.DAS.Campaign.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var fixedPolicy = "fixed";
+
+            services.AddRateLimiter(limiterOptions =>
+            {
+                limiterOptions.AddPolicy(fixedPolicy, context =>
+                              {
+                                  return RateLimitPartition.GetFixedWindowLimiter(
+                                      partitionKey: context.Connection.RemoteIpAddress,
+                                      factory: partition => new FixedWindowRateLimiterOptions
+                                      {
+                                          AutoReplenishment = true,
+                                          PermitLimit = 10,
+                                          QueueLimit = 0,
+                                          Window = TimeSpan.FromSeconds(100)
+                                      });
+
+                              });
+                limiterOptions.OnRejected = async (context, token) =>
+                {
+                    var response = context.HttpContext.Response;
+                    response.Redirect("/Rate-Limit-Exceeded");
+                    await Task.CompletedTask;
+                };
+            });
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -72,7 +99,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddOptions();
             services.AddHttpClient<IApiClient, ApiClient>().AddPolicyHandler(HttpClientRetryPolicy());
 
-
+            services.AddHttpContextAccessor();
             services.ConfigureSfaConfigurations(Configuration);
             services.ConfigureSfaConnectionStrings(Configuration);
             services.ConfigureSfaServices();
@@ -85,11 +112,11 @@ namespace SFA.DAS.Campaign.Web
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
-            }).AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            }).AddMvc();
 
+            services.AddApplicationInsightsTelemetry();
+            services.AddOpenTelemetryRegistration(Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]!);
             services.AddLogging();
-
-            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
             services.AddSession(options =>
             {
@@ -100,9 +127,6 @@ namespace SFA.DAS.Campaign.Web
             #if DEBUG
                 services.AddControllersWithViews().AddRazorRuntimeCompilation();
             #endif
-
-
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -113,7 +137,7 @@ namespace SFA.DAS.Campaign.Web
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -136,13 +160,15 @@ namespace SFA.DAS.Campaign.Web
             });
 
             app.AddRedirectRules();
-            
+
             app.UseRouting();
 
+            app.UseRateLimiter();
+
             app.UseMiddleware<SecurityHeadersMiddleware>();
-            
+
             app.UseSession();
-            
+
             app.UseEndpoints(builder =>
             {
                 builder.MapControllerRoute(
@@ -155,8 +181,8 @@ namespace SFA.DAS.Campaign.Web
                     new { controller = "Home", action = "sitemap" });
                 builder.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-               
+                    pattern: "{controller=Home}/{action=Index}/{id?}").RequireRateLimiting("fixed");
+
             });
         }
 
