@@ -27,8 +27,7 @@ namespace SFA.DAS.Campaign.Web.Models
         [Required(ErrorMessage = "Select your annual pay bill")]
         public bool? PayBillGreaterThanThreeMillion { get; set; }
 
-        [Required(ErrorMessage = "Enter how many roles you have available for this apprenticeship")]
-        [IsNumeric] 
+        [RolesValidation(1)]
         public string NumberOfRoles { get; set; }
 
         public int? Roles
