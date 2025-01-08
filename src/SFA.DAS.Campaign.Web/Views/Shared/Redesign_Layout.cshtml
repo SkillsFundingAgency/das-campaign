@@ -6,31 +6,33 @@
 <html lang="en" class="fiu-template fiu-template--@ViewBag.Section">
 
 <head>
-    
+
     <partial name="./Components/_GtmHead" />
 
-	<meta charset="utf-8">
-	<title>@(ViewData["MetaTitle"] != null ? ViewData["MetaTitle"] : ViewData["Title"])</title>
-    @if (ViewData["MetaDesc"] != null){
-    <meta name="description" content="@(ViewData["MetaDesc"])" />
+    <meta charset="utf-8">
+    <title>@(ViewData["MetaTitle"] != null ? ViewData["MetaTitle"] : ViewData["Title"])</title>
+    @if (ViewData["MetaDesc"] != null)
+    {
+        <meta name="description" content="@(ViewData["MetaDesc"])" />
     }
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="theme-color" content="#0b0c0c" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0c0c" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <meta name="facebook-domain-verification" content="kh4khj78brlww6y7llhp7r7z7cz2d1" />
 
-	<link rel="apple-touch-icon" href="/fiu/assets/images/apple-touch-icon.png?@frontendVersion" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png?@frontendVersion" no-cdn />
 
-	<link rel="stylesheet" href="https://use.typekit.net/xwy5uap.css" />
-	<link rel="stylesheet" href="/fiu/css/all.css?@frontendVersion" />
+    <link rel="stylesheet" href="https://use.typekit.net/xwy5uap.css" />
+    <link rel="stylesheet" href="/fiu/css/all.css?@frontendVersion" />
     <link rel="stylesheet" href="/css/app.css?@frontendVersion" no-cdn />
 
-    @if(ViewBag.Canonical != null ) {
+    @if (ViewBag.Canonical != null)
+    {
         <link rel="canonical" href="https://www.apprenticeships.gov.uk@ViewBag.Canonical" />
     }
 
-	<meta property="og:image" content="/fiu/assets/images/opengraph.png?@frontendVersion" cdn-prop />
+    <meta property="og:image" content="/images/opengraph.png?@frontendVersion" no-cdn />
 
 </head>
 
@@ -38,30 +40,34 @@
 
     <partial name="./Components/_GtmBody" />
 
-	<script>
-		document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
-	</script>
+    <script>
+        document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    </script>
 
-	<a href="#main" class="govuk-skip-link">Skip to main content</a>
+    <a href="#main" class="govuk-skip-link">Skip to main content</a>
 
     <header class="fiu-header">
         <div class="fiu-width-container fiu-clearfix">
             <a href="/" class="fiu-header__apprenticeship-logo-link" id="fiu-header-link-logo">
-                <span class="fiu-vh">Home</span><img src="/fiu/assets/images/apprenticeships-logo-black.svg" alt="Apprenticeships logo" class="fiu-header__apprenticeship-logo" />
+                <span class="fiu-vh">Home</span><img src="/images/Apprenticeships-Logo.png" no-cdn
+                    alt="Apprenticeships logo" class="fiu-header__apprenticeship-logo" />
             </a>
             <nav class="fiu-header__nav" aria-label="Main navigation">
                 <ul id="fiu-nav" class="fiu-header__navigation">
-                    <li class="fiu-header__navigation-item @(ViewBag.Section == "apprentices" ? "fiu-header__navigation-item--citizens-active" : "")">
+                    <li
+                        class="fiu-header__navigation-item @(ViewBag.Section == "apprentices" ? "fiu-header__navigation-item--citizens-active" : "")">
                         <a class="fiu-header__link" href="/apprentices" id="fiu-header-link-apprentices">
                             Apprentices
                         </a>
                     </li>
-                    <li class="fiu-header__navigation-item @(ViewBag.Section == "employers" ? "fiu-header__navigation-item--employers-active" : "")">
+                    <li
+                        class="fiu-header__navigation-item @(ViewBag.Section == "employers" ? "fiu-header__navigation-item--employers-active" : "")">
                         <a class="fiu-header__link" href="/employers" id="fiu-header-link-employers">
                             Employers
                         </a>
                     </li>
-                    <li class="fiu-header__navigation-item @(ViewBag.Section == "influencers" ? "fiu-header__navigation-item--influencers-active" : "")">
+                    <li
+                        class="fiu-header__navigation-item @(ViewBag.Section == "influencers" ? "fiu-header__navigation-item--influencers-active" : "")">
                         <a class="fiu-header__link" href="/influencers" id="fiu-header-link-influencers">
                             Influencers
                         </a>
@@ -76,7 +82,8 @@
     <footer class="fiu-footer">
         <div class="fiu-width-container">
             <div class="fiu-footer__apprenticeship-logo-wrap">
-                <img src="/fiu/assets/images/apprenticeships-logo.svg" alt="Apprenticeships logo" class="fiu-footer__apprenticeship-logo" />
+                <img src="/images/Apprenticeships-Logo-White.png" no-cdn alt="Apprenticeships logo"
+                    class="fiu-footer__apprenticeship-logo" />
             </div>
             <div class="govuk-grid-row fiu-footer__row">
                 <div class="govuk-grid-column-one-half">
@@ -87,7 +94,9 @@
                         <dt class="fiu-footer__contact-list-title">Call</dt>
                         <dd class="fiu-footer__contact-list-item">08000 150 400</dd>
                         <dt class="fiu-footer__contact-list-title">Email</dt>
-                        <dd class="fiu-footer__contact-list-item"><a href="mailto:nationalhelpdesk@apprenticeships.gov.uk" class="fiu-footer__contact-list-link">nationalhelpdesk@apprenticeships.gov.uk</a> </dd>
+                        <dd class="fiu-footer__contact-list-item"><a
+                                href="mailto:nationalhelpdesk@apprenticeships.gov.uk"
+                                class="fiu-footer__contact-list-link">nationalhelpdesk@apprenticeships.gov.uk</a> </dd>
                     </dl>
                 </div>
             </div>
@@ -100,13 +109,19 @@
                     <dl class="fiu-footer__inline-list">
                         <dt class="fiu-footer__inline-list-title">Find out what opportunities are available in:</dt>
                         <dd class="fiu-footer__inline-list-item">
-                            <a class="fiu-footer__link" href="https://www.apprenticeships.scot/" target="_blank" rel="external" id="link-footer-scotland">Scotland<span class="fiu-vh"> (Opens in a new window)</span></a>
+                            <a class="fiu-footer__link" href="https://www.apprenticeships.scot/" target="_blank"
+                                rel="external" id="link-footer-scotland">Scotland<span class="fiu-vh"> (Opens in a new
+                                    window)</span></a>
                         </dd>
                         <dd class="fiu-footer__inline-list-item">
-                            <a class="fiu-footer__link" href="https://www.nidirect.gov.uk/campaigns/apprenticeships" target="_blank" rel="external" id="link-footer-northern-ireland">Northern Ireland<span class="fiu-vh"> (Opens in a new window)</span></a>
+                            <a class="fiu-footer__link" href="https://www.nidirect.gov.uk/campaigns/apprenticeships"
+                                target="_blank" rel="external" id="link-footer-northern-ireland">Northern Ireland<span
+                                    class="fiu-vh"> (Opens in a new window)</span></a>
                         </dd>
                         <dd class="fiu-footer__inline-list-item">
-                            <a class="fiu-footer__link" href="https://www.gov.wales/apprenticeships" target="_blank" rel="external" id="link-footer-wales">Wales<span class="fiu-vh"> (Opens in a new window)</span></a>
+                            <a class="fiu-footer__link" href="https://www.gov.wales/apprenticeships" target="_blank"
+                                rel="external" id="link-footer-wales">Wales<span class="fiu-vh"> (Opens in a new
+                                    window)</span></a>
                         </dd>
                     </dl>
                 </div>
@@ -115,43 +130,56 @@
                 <div class="govuk-grid-column-full fiu-grid-column-pull-right fiu-footer__content">
                     <ul class="fiu-footer__list">
                         <li class="fiu-footer__list-item">
-                            <a class="fiu-footer__link" href="https://www.smartsurvey.co.uk/s/S2NQQ" id="link-footer-feedback" target="_blank" rel="external">Give us feedback<span class="fiu-vh"> (Opens in a new window)</span></a>
+                            <a class="fiu-footer__link" href="https://www.smartsurvey.co.uk/s/S2NQQ"
+                                id="link-footer-feedback" target="_blank" rel="external">Give us feedback<span
+                                    class="fiu-vh"> (Opens in a new window)</span></a>
                         </li>
                         <li class="fiu-footer__list-item">
-                            <a class="fiu-footer__link" id="link-footer-sitemap"  asp-controller="Home" asp-action="Sitemap">Sitemap</a>
+                            <a class="fiu-footer__link" id="link-footer-sitemap" asp-controller="Home"
+                                asp-action="Sitemap">Sitemap</a>
                         </li>
                         <li class="fiu-footer__list-item">
-                            <a class="fiu-footer__link" id="link-footer-cookie-policy" asp-controller="Home" asp-action="Cookies">Cookies</a>
+                            <a class="fiu-footer__link" id="link-footer-cookie-policy" asp-controller="Home"
+                                asp-action="Cookies">Cookies</a>
                         </li>
                         <li class="fiu-footer__list-item">
-                            <a class="fiu-footer__link" id="link-footer-privacy-notice"  asp-controller="Home" asp-action="Privacy">Privacy notice</a>
+                            <a class="fiu-footer__link" id="link-footer-privacy-notice" asp-controller="Home"
+                                asp-action="Privacy">Privacy notice</a>
                         </li>
                         <li class="fiu-footer__list-item">
-                            <a class="fiu-footer__link" id="link-footer-accessibility"  asp-controller="Home" asp-action="Accessibility">Accessibility statement</a>
+                            <a class="fiu-footer__link" id="link-footer-accessibility" asp-controller="Home"
+                                asp-action="Accessibility">Accessibility statement</a>
                         </li>
                         <li class="fiu-footer__list-item">
-                            Built by <a class="fiu-footer__link" id="link-footer-built-by"  href="https://www.gov.uk/government/organisations/education-and-skills-funding-agency" rel="external" target="_blank">Education and Skills Funding Agency</a>
+                            Built by <a class="fiu-footer__link" id="link-footer-built-by"
+                                href="https://www.gov.uk/government/organisations/education-and-skills-funding-agency"
+                                rel="external" target="_blank">Education and Skills Funding Agency</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="govuk-grid-row fiu-footer__row fiu-footer__row-flex">
                 <div class="govuk-grid-column-three-quarters fiu-grid-column-pull-right fiu-footer__content">
-                    <p class="fiu-footer__copyright">All content is available under the <a class="fiu-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" target="_blank" rel="external" id="link-footer-ogl">Open Government Licence v3.0<span class="fiu-vh"> (Opens in a new window)</span></a>, except where otherwise stated.</p>
+                    <p class="fiu-footer__copyright">All content is available under the <a class="fiu-footer__link"
+                            href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+                            target="_blank" rel="external" id="link-footer-ogl">Open Government Licence v3.0<span
+                                class="fiu-vh"> (Opens in a new window)</span></a>, except where otherwise stated.</p>
                 </div>
                 <div class="govuk-grid-column-one-quarter">
-                    <img class="fiu-footer__hm-logo" src="/fiu/assets/images/hm-government-logo.svg" alt="HM Government logo" />
+                    <img class="fiu-footer__hm-logo" src="/fiu/assets/images/hm-government-logo.svg"
+                        alt="HM Government logo" />
                 </div>
             </div>
         </div>
     </footer>
 
-    @if(ViewBag.HideCookieBanner == null ) {
-    <partial name="./Banners/_CookieBanner" />
+    @if (ViewBag.HideCookieBanner == null)
+    {
+        <partial name="./Banners/_CookieBanner" />
     }
     <script src="/libs/govuk-frontend/all.js"></script>
     <script src="libs/accessible-autocomplete/accessible-autocomplete.min.js"></script>
-	<script src="/fiu/js/app.min.js?@frontendVersion"></script>
+    <script src="/fiu/js/app.min.js?@frontendVersion"></script>
     <script src="/js/dataLayerPushes.js" no-cdn></script>
     <script src="/js/consent.js" no-cdn></script>
     <script src="/js/cookies-page.js" no-cdn></script>
@@ -162,4 +190,5 @@
     </script>
 
 </body>
+
 </html>
