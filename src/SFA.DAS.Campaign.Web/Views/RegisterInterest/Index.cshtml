@@ -1,4 +1,5 @@
 ﻿@using System.Text
+@using System.Web
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @using SFA.DAS.Campaign.Web.Models.Components.Form
 @model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
@@ -45,7 +46,8 @@
                                 if (ViewData.ModelState[error]?.ValidationState == ModelValidationState.Invalid)
                                 {
                                     var errorKey = error == "Route" ? "rbApprentice" : error;
-                                    errorStringBuilder.Append($" <li><a href =\"#{errorKey}\" class=\"govuk-form-validation-summary__link\">{Model.ValidationMessages[error]}</a></li>");
+                                    var errorEncoded = HttpUtility.HtmlEncode(error);
+                                    errorStringBuilder.Append($" <li><a href =\"#{errorKey}\" class=\"govuk-form-validation-summary__link\">{Model.ValidationMessages[errorEncoded]}</a></li>");
                                 }
                             }
                         }
