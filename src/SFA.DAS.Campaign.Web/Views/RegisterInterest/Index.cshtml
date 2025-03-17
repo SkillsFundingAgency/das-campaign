@@ -46,8 +46,7 @@
                                 if (ViewData.ModelState[error]?.ValidationState == ModelValidationState.Invalid)
                                 {
                                     var errorKey = error == "Route" ? "rbApprentice" : error;
-                                    var errorEncoded = HttpUtility.HtmlEncode(error);
-                                    errorStringBuilder.Append($" <li><a href =\"#{errorKey}\" class=\"govuk-form-validation-summary__link\">{Model.ValidationMessages[errorEncoded]}</a></li>");
+                                    errorStringBuilder.Append(HttpUtility.HtmlEncode($" <li><a href =\"#{errorKey}\" class=\"govuk-form-validation-summary__link\">{Model.ValidationMessages[error]}</a></li>"));
                                 }
                             }
                         }
