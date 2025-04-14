@@ -23,6 +23,9 @@
     "keyvaultName": {
       "type": "string"
     },
+    "deployPrivateLinkedScopedResource": {
+            "type": "bool"
+    },
     "keyvaultResourceGroup": {
       "type": "string"
     },
@@ -73,7 +76,8 @@
     "appServicePrefix": "[concat('das-',toLower(parameters('resourceEnvironmentName')),'-cpg')]",
     "appServiceName": "[concat(variables('appServicePrefix'),'-as')]",
     "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
-    "resourceGroupName": "[concat(variables('appServicePrefix'), '-rg')]"
+    "resourceGroupName": "[concat(variables('appServicePrefix'), '-rg')]",
+    "privateLinkScopeName": "[toLower(concat('das-', parameters('resourceEnvironmentName'),'-shared-ampls'))]"
   },
   "resources": [
     {
@@ -126,6 +130,31 @@
           },
           "attachedService": {
             "value": "[variables('appServiceName')]"
+          }
+        }
+      }
+    },
+    {
+      "condition": "[parameters('deployPrivateLinkedScopedResource')]",
+      "apiVersion": "2021-04-01",
+      "name": "[concat(variables('appServiceName'), '-private-link-scoped-', parameters('utcValue'))]",
+      "type": "Microsoft.Resources/deployments",
+      "resourceGroup": "[parameters('sharedEnvResourceGroup')]",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('deploymentUrlBase'),'private-linked-scoped-resource.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "privateLinkScopeName": {
+            "value": "[variables('privateLinkScopeName')]"
+          },
+          "scopedResourceName": {
+            "value": "[variables('appServiceName')]"
+          },
+          "scopedResourceId": {
+            "value": "[reference(concat('campaignAppInsights-', parameters('utcValue'))).outputs.AppInsightsResourceId.value]"
           }
         }
       }
