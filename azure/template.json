@@ -17,6 +17,9 @@
     "cdnUrl": {
       "type": "string"
     },
+    "sharedEnvResourceGroup": {
+      "type": "string"
+    },
     "keyvaultCertificateName": {
       "type": "string"
     },
