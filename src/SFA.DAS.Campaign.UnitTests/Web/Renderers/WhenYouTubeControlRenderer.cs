@@ -39,7 +39,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(heading);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<div class=\"fiu-video-player\"><div class=\"fiu-video-player__inner-wrap\"><iframe class=\"fiu-video-player__size-100\" src=\"http://yt.video\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div></div>");
+            actual.Value.Should().Be("<div class=\"fiu-video-player\"><div class=\"fiu-video-player__inner-wrap\"><iframe class=\"fiu-video-player__size-100\" src=\"http://yt.video?cc_load_policy=1\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div></div>");
         }
     }
 }
