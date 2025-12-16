@@ -42,7 +42,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(attachment);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<div class=\"fiu-attachment\"><h2 class=\"govuk-heading-m fiu-attachment__heading\">title</h2><dl class=\"fiu-attachment__meta\"><dt class=\"fiu-attachment__meta-title\">File type</dt><dd class=\"fiu-attachment__meta-description\">pdf</dd><dt class=\"fiu-attachment__meta-title\">File size</dt><dd class=\"fiu-attachment__meta-description\">1KB</dd></dl><p class=\"govuk-body fiu-attachment__description\">description</p><p class=\"govuk-body fiu-attachment__link-wrap\"><a href=\"http://image.url\" class=\"govuk-link fiu-attachment__link\" target=\"_blank\">Download <span class=\"fiu-vh\">title</span></a></p><span class=\"fiu-attachment__icon\"><span class=\"fiu-attachment__icon-label\">pdf</span></span></div>");
+            actual.Value.Should().Be("<div class=\"fiu-attachment\"><h2 class=\"govuk-heading-m fiu-attachment__heading\">title</h2><dl class=\"fiu-attachment__meta\"><dt class=\"fiu-attachment__meta-title\">File type</dt><dd class=\"fiu-attachment__meta-description\">pdf</dd><dt class=\"fiu-attachment__meta-title\">File size</dt><dd class=\"fiu-attachment__meta-description\">1KB</dd></dl><p class=\"govuk-body fiu-attachment__description\">description</p><p class=\"govuk-body fiu-attachment__link-wrap\"><a href=\"http://image.url\" class=\"govuk-link fiu-attachment__link\" target=\"_blank\">Download <span class=\"fiu-vh\">title</span></a></p></div>");
         }
     }
 }

@@ -75,9 +75,9 @@
         
         <input type="text" class="govuk-input govuk-input--width-10 " asp-for="Postcode" id="Postcode" name="Postcode" autocomplete="postal-code" das-validation-for="Postcode" das-validationerror-class="govuk-input--error"/>
     </div>
-    <div class="govuk-form-group fiu-visually-hidden">
+    <div class="govuk-form-group fiu-visually-hidden" aria-hidden="true">
         <label for="header-distance" class="govuk-label">Within</label>
-        <select class="govuk-select" asp-for="Distance" data-val="true" data-val-required="The Distance field is required." id="header-distance" name="Distance">
+        <select class="govuk-select" asp-for="Distance" tabindex="-1" data-val="true" data-val-required="The Distance field is required." id="header-distance" name="Distance">
             <option value="2">2 miles</option>
             <option value="5">5 miles</option>
             <option value="10">10 miles</option>
