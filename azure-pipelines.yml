@@ -54,6 +54,7 @@ stages:
     variables:
       - group: DevTest Management Resources
       - group: AT DevTest Shared Resources
+      - group: AT das-campaign
     jobs:
       - template: pipeline-templates/job/deploy.yml
         parameters:
@@ -68,6 +69,7 @@ stages:
     variables:
       - group: DevTest Management Resources
       - group: TEST DevTest Shared Resources
+      - group: TEST das-campaign
     jobs:
       - template: pipeline-templates/job/deploy.yml
         parameters:
@@ -82,6 +84,7 @@ stages:
     variables:
       - group: DevTest Management Resources
       - group: TEST2 DevTest Shared Resources
+      - group: TEST2 das-campaign
     jobs:
       - template: pipeline-templates/job/deploy.yml
         parameters:
@@ -96,6 +99,7 @@ stages:
     variables:
       - group: DevTest Management Resources
       - group: DEMO DevTest Shared Resources
+      - group: DEMO das-campaign
     jobs:
       - template: pipeline-templates/job/deploy.yml
         parameters:
@@ -110,6 +114,7 @@ stages:
     variables:
       - group: PreProd Management Resources
       - group: PreProd Shared Resources
+      - group: PREPROD das-campaign
     jobs:
       - template: pipeline-templates/job/deploy.yml
         parameters:
@@ -117,31 +122,33 @@ stages:
           SolutionBaseName: $(SolutionBaseName).Web
           ServiceConnection: SFA-DIG-PreProd-ARM
           DacPacSolutionBaseName: $(SolutionBaseName).Database
-# - stage: Deploy_PROD
-#   dependsOn: Build
-#   displayName: Deploy to PROD
-#   variables:
-#   - group: PROD Management Resources
-#   - group: PROD Shared Resources
-#   - group: __PRODSpecificReleaseVariables__ #PLACEHOLDER
-#   jobs:
-#   - template: pipeline-templates/job/deploy.yml
-#     parameters:
-#       Environment: PROD
-#       SolutionBaseName: $(SolutionBaseName).Web
-#       ServiceConnection: SFA-DIG-Prod-ARM
-#       DacPacSolutionBaseName: $(SolutionBaseName).Database
-#
-# - stage: Deploy_MO
-#   dependsOn: Build
-#   displayName: Deploy to MO
-#   variables:
-#   - group: MO Management Resources
-#   - group: MO Shared Resources
-#   jobs:
-#   - template: pipeline-templates/job/deploy.yml
-#     parameters:
-#       Environment: MO
-#       SolutionBaseName: $(SolutionBaseName).Web
-#       ServiceConnection: SFA-ASM-ModelOffice-ARM
-#       DacPacSolutionBaseName: $(SolutionBaseName).Database
+
+  - stage: Deploy_PROD
+    dependsOn: Build
+    displayName: Deploy to PROD
+    variables:
+      - group: PROD Management Resources
+      - group: PROD Shared Resources
+      - group: PROD das-campaign
+    jobs:
+      - template: pipeline-templates/job/deploy.yml
+        parameters:
+          Environment: PROD
+          SolutionBaseName: $(SolutionBaseName).Web
+          ServiceConnection: SFA-DIG-Prod-ARM
+          DacPacSolutionBaseName: $(SolutionBaseName).Database
+
+  - stage: Deploy_MO
+    dependsOn: Build
+    displayName: Deploy to MO
+    variables:
+      - group: MO Management Resources
+      - group: MO Shared Resources
+      - group: MO das-campaign
+    jobs:
+      - template: pipeline-templates/job/deploy.yml
+        parameters:
+          Environment: MO
+          SolutionBaseName: $(SolutionBaseName).Web
+          ServiceConnection: SFA-ASM-ModelOffice-ARM
+          DacPacSolutionBaseName: $(SolutionBaseName).Database
