@@ -72,7 +72,32 @@
     "utcValue": {
       "type": "string",
       "defaultValue": "[utcNow('yyMMddHHmmss')]"
-    }
+    },
+    "sharedSqlServerName": {
+      "type": "string"
+    },
+    "databaseSkuName": {
+      "type": "string",
+      "defaultValue": "S0"
+    },
+    "databaseTier": {
+      "type": "string",
+      "defaultValue": "Standard"
+    },
+    "elasticPoolName": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "logAnalyticsWorkspaceName": {
+      "type": "string"
+    },
+    "sharedManagementResourceGroup": {
+      "type": "string"
+    },
+    "serverlessAutoPauseDelay": {
+      "type": "string",
+      "defaultValue": "480"
+    }    
   },
   "variables": {
     "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/das-platform-building-blocks/master/templates/",
@@ -80,7 +105,8 @@
     "appServiceName": "[concat(variables('appServicePrefix'),'-as')]",
     "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
     "resourceGroupName": "[concat(variables('appServicePrefix'), '-rg')]",
-    "privateLinkScopeName": "[toLower(concat('das-', parameters('resourceEnvironmentName'),'-shared-ampls'))]"
+    "privateLinkScopeName": "[toLower(concat('das-', parameters('resourceEnvironmentName'),'-shared-ampls'))]",
+    "databaseName": "[concat(variables('appServicePrefix'), '-db')]"
   },
   "resources": [
     {
@@ -204,10 +230,10 @@
                   "name": "ConfigurationStorageConnectionString",
                   "value": "[parameters('configurationStorageConnectionString')]"
                 },
-		{
-		  "name": "ConfigNames",
-		  "value": "[parameters('configNames')]"
-		},      
+                {
+                  "name": "ConfigNames",
+                  "value": "[parameters('configNames')]"
+                },      
                 {
                   "name": "Environment",
                   "value": "[parameters('environmentName')]"
@@ -269,7 +295,49 @@
           }
         }
       }
-    }
+    },
+        {
+            "apiVersion": "2021-04-01",
+            "name": "[concat('sql-database-', parameters('utcValue'))]",
+            "type": "Microsoft.Resources/deployments",
+            "resourceGroup": "[parameters('sharedEnvResourceGroup')]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(variables('deploymentUrlBase'),'sql-database.json')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "databaseName": {
+                        "value": "[variables('databaseName')]"
+                    },
+                    "sqlServerName": {
+                        "value": "[parameters('sharedSqlServerName')]"
+                    },
+                    "elasticPoolName": {
+                        "value": "[parameters('elasticPoolName')]"
+                    },
+                    "databaseSkuName": {
+                        "value": "[parameters('databaseSkuName')]"
+                    },
+                    "databaseTier": {
+                        "value": "[parameters('databaseTier')]"
+                    },
+                    "serverlessAutoPauseDelay": {
+                        "value": "[parameters('serverlessAutoPauseDelay')]"
+                    },
+                    "logAnalyticsSubscriptionId": {
+                        "value": "[subscription().subscriptionId]"
+                    },
+                    "logAnalyticsResourceGroup": {
+                        "value": "[parameters('sharedManagementResourceGroup')]"
+                    },
+                    "logAnalyticsWorkspaceName": {
+                        "value": "[parameters('logAnalyticsWorkspaceName')]"
+                    }
+                }
+            }
+        }
   ],
   "outputs": {
     "AppServiceName": {
