@@ -29,9 +29,6 @@
     "deployPrivateLinkedScopedResource": {
       "type": "bool"
     },
-    "keyvaultResourceGroup": {
-      "type": "string"
-    },
     "configNames": {
       "type": "string",
       "defaultValue": "SFA.DAS.Campaign:CampaignConfiguration"
@@ -135,7 +132,7 @@
             "value": "[parameters('sharedKeyVaultName')]"
           },
           "keyVaultResourceGroup": {
-            "value": "[parameters('keyvaultResourceGroup')]"
+            "value": "[parameters('sharedManagementResourceGroup')]"
           }
         }
       }
