@@ -10,5 +10,5 @@
 	AppsgovSignUpDate	DATETIME NOT NULL,
 	PersonOrigin		VARCHAR(50) NULL,
 	IncludeInUR			BIT NULL
-)
+) ON [PRIMARY]
 GO
