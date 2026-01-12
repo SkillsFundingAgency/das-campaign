@@ -2,6 +2,7 @@ parameters:
   ServiceConnection:
   SolutionBaseName:
   Environment:
+  OverrideBlockOnPossibleDataLoss:
 
 jobs:
   - deployment: DeployWebApp
@@ -42,6 +43,15 @@ jobs:
                 TemplateSecrets:
                   LoggingRedisConnectionString: $(LoggingRedisConnectionString)
                   ConfigurationStorageConnectionString: $(ConfigurationStorageConnectionString)
+            - template: azure-pipelines-templates/deploy/step/sql-dacpac-deploy.yml@das-platform-building-blocks
+              parameters:
+                AzureSubscription: ${{ parameters.ServiceConnection }}
+                ServerName: $(SharedSQLServerFQDN)
+                SqlUsername: $(SharedSQLServerUsername)
+                DacpacFile: $(Pipeline.Workspace)/DacpacArtifact/src/SFA.DAS.Campaign.Database/bin/Output/SFA.DAS.Campaign.Database.dacpac
+                DatabaseName: $(DatabaseName)
+                OverrideBlockOnPossibleDataLoss: ${{ parameters.OverrideBlockOnPossibleDataLoss }}
+                Environment: ${{ parameters.Environment }}
             - template: azure-pipelines-templates/deploy/step/get-apim-subscription-key.yml@das-platform-building-blocks
               parameters:
                 ServiceConnection: ${{ parameters.ServiceConnection }}
