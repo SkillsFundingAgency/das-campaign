@@ -20,10 +20,10 @@
     "sharedEnvResourceGroup": {
       "type": "string"
     },
-    "keyvaultCertificateName": {
+    "keyVaultCertificateName": {
       "type": "string"
     },
-    "keyvaultName": {
+    "sharedKeyVaultName": {
       "type": "string"
     },
     "deployPrivateLinkedScopedResource": {
@@ -129,10 +129,10 @@
         },
         "parameters": {
           "keyVaultCertificateName": {
-            "value": "[parameters('keyvaultCertificateName')]"
+            "value": "[parameters('keyVaultCertificateName')]"
           },
           "keyVaultName": {
-            "value": "[parameters('keyvaultName')]"
+            "value": "[parameters('sharedKeyVaultName')]"
           },
           "keyVaultResourceGroup": {
             "value": "[parameters('keyvaultResourceGroup')]"
