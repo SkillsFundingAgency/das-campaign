@@ -16,6 +16,7 @@ jobs:
       runOnce:
         deploy:
           steps:
+            - checkout: das-platform-automation
             - template: azure-pipelines-templates/deploy/step/wait-azure-devops-deployment.yml@das-platform-building-blocks
               parameters:
                 ServiceConnection: ${{ parameters.ServiceConnection }}
