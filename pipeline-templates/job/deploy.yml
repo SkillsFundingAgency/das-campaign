@@ -17,6 +17,16 @@ jobs:
         deploy:
           steps:
             - checkout: das-platform-automation
+            - task: PowerShell@2
+              displayName: "Debug - List Pipeline Workspace Contents"
+              inputs:
+                targetType: "inline"
+                script: |
+                  Write-Host "=== Pipeline.Workspace contents ===" 
+                  Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Depth 3 | Select-Object FullName
+                  Write-Host "=== Agent.BuildDirectory contents ==="
+                  Get-ChildItem -Path "$(Agent.BuildDirectory)" -Recurse -Depth 3 | Select-Object FullName
+                pwsh: true
             - template: azure-pipelines-templates/deploy/step/wait-azure-devops-deployment.yml@das-platform-building-blocks
               parameters:
                 ServiceConnection: ${{ parameters.ServiceConnection }}
@@ -65,7 +75,7 @@ jobs:
               displayName: "Get Digeng Storage Account Connection String"
               inputs:
                 azureSubscription: ${{ parameters.ServiceConnection }}
-                ScriptPath: "$(Pipeline.Workspace)/das-platform-automation/Infrastructure-Scripts/Get-StorageAccountConnectionString.ps1"
+                ScriptPath: "$(Pipeline.Workspace)/s/das-platform-automation/Infrastructure-Scripts/Get-StorageAccountConnectionString.ps1"
                 ScriptArguments: '-ResourceGroup "$(DigengResourceGroupName)" -StorageAccount "$(DigengStorageAccountName)" -OutputVariable "DigEngQueuesStorageConnectionString"'
                 FailOnStandardError: true
                 azurePowerShellVersion: LatestVersion
@@ -74,12 +84,12 @@ jobs:
               parameters:
                 EnvironmentName: $(EnvironmentName)
                 ServiceConnection: ${{ parameters.ServiceConnection }}
-                SourcePath: $(Pipeline.Workspace)/das-employer-config/Configuration/das-csjproxy-api
+                SourcePath: $(Pipeline.Workspace)/das-employer-config/Configuration/das-campaign
                 StorageAccountName: $(ConfigurationStorageAccountName)
                 StorageAccountResourceGroup: $(SharedEnvResourceGroup)
                 TargetFileName: "*.schema.json"
                 TableName: Configuration
-                ConfigurationSecrets: {} # remove this if there are no secrets that need to be mapped for config
+                ConfigurationSecrets: {}
             - template: azure-pipelines-templates/deploy/step/app-deploy.yml@das-platform-building-blocks
               parameters:
                 ServiceConnection: ${{ parameters.ServiceConnection }}
