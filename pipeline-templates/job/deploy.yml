@@ -71,20 +71,6 @@ jobs:
                 FailOnStandardError: true
                 azurePowerShellVersion: LatestVersion
                 pwsh: true
-            - task: PowerShell@2
-              displayName: "Debug - Check DigEngQueuesStorageConnectionString Variable"
-              inputs:
-                targetType: "inline"
-                script: |
-                  Write-Host "=== Checking DigEngQueuesStorageConnectionString ==="
-                  Write-Host "Variable exists: $([string]::IsNullOrEmpty('$(DigEngQueuesStorageConnectionString)') -eq $false)"
-                  Write-Host "Variable length: $('$(DigEngQueuesStorageConnectionString)'.Length)"
-                  if ('$(DigEngQueuesStorageConnectionString)'.Length -gt 0) {
-                    Write-Host "Variable is SET (value hidden as it's a secret)"
-                  } else {
-                    Write-Host "WARNING: Variable is EMPTY or NOT SET"
-                  }
-                pwsh: true
             - template: azure-pipelines-templates/deploy/step/generate-config.yml@das-platform-building-blocks
               parameters:
                 EnvironmentName: $(EnvironmentName)
@@ -97,6 +83,7 @@ jobs:
                 ConfigurationSecrets:
                   DigEngQueuesStorageConnectionString: $(DigEngQueuesStorageConnectionString)
                   CampaignApimSubscriptionKey: $(CampaignApimSubscriptionKey)
+                  SharedRedisConnectionString: $(SharedRedisConnectionString)
             - template: azure-pipelines-templates/deploy/step/app-deploy.yml@das-platform-building-blocks
               parameters:
                 ServiceConnection: ${{ parameters.ServiceConnection }}
