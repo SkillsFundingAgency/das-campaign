@@ -17,16 +17,6 @@ jobs:
         deploy:
           steps:
             - checkout: das-platform-automation
-            - task: PowerShell@2
-              displayName: "Debug - List Pipeline Workspace Contents"
-              inputs:
-                targetType: "inline"
-                script: |
-                  Write-Host "=== Pipeline.Workspace contents ===" 
-                  Get-ChildItem -Path "$(Pipeline.Workspace)" -Recurse -Depth 3 | Select-Object FullName
-                  Write-Host "=== Agent.BuildDirectory contents ==="
-                  Get-ChildItem -Path "$(Agent.BuildDirectory)" -Recurse -Depth 3 | Select-Object FullName
-                pwsh: true
             - template: azure-pipelines-templates/deploy/step/wait-azure-devops-deployment.yml@das-platform-building-blocks
               parameters:
                 ServiceConnection: ${{ parameters.ServiceConnection }}
