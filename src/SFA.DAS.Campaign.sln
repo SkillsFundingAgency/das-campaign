@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.1.11312.151 d18.0
+VisualStudioVersion = 18.1.11312.151
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.Web", "SFA.DAS.Campaign.Web\SFA.DAS.Campaign.Web.csproj", "{78963483-FF2C-42AF-9C29-8DC42B98D6A6}"
 EndProject
@@ -14,8 +14,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.UnitTests", "SFA.DAS.Campaign.UnitTests\SFA.DAS.Campaign.UnitTests.csproj", "{03B6C152-7554-44FB-9DB5-673F14C69E00}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SFA.DAS.Campaign.MockServer", "SFA.DAS.Campaign.MockServer\SFA.DAS.Campaign.MockServer.csproj", "{0CF199BA-090D-4622-8549-354977E163B2}"
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SFA.DAS.Campaign.Database", "SFA.DAS.Campaign.Database\SFA.DAS.Campaign.Database.sqlproj", "{4AD49E2C-C8D0-46E7-88AD-FDB1F01E2138}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,12 +45,6 @@ Global
 		{0CF199BA-090D-4622-8549-354977E163B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CF199BA-090D-4622-8549-354977E163B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CF199BA-090D-4622-8549-354977E163B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AD49E2C-C8D0-46E7-88AD-FDB1F01E2138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AD49E2C-C8D0-46E7-88AD-FDB1F01E2138}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AD49E2C-C8D0-46E7-88AD-FDB1F01E2138}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{4AD49E2C-C8D0-46E7-88AD-FDB1F01E2138}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AD49E2C-C8D0-46E7-88AD-FDB1F01E2138}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AD49E2C-C8D0-46E7-88AD-FDB1F01E2138}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

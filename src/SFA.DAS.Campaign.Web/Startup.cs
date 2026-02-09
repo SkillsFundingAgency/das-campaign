@@ -102,7 +102,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddHttpContextAccessor();
             services.ConfigureSfaConfigurations(Configuration);
             services.ConfigureSfaConnectionStrings(Configuration);
-            services.ConfigureSfaServices();
+            services.ConfigureSfaServices(Configuration);
             services.ConfigureSfaRepositories();
             services.ConfigureSfaDataCollection();
             services.ConfigureFactorys();
