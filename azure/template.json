@@ -65,29 +65,7 @@
     "tags": {
       "type": "object"
     },
-    "sharedSQLServerName": {
-      "type": "string"
-    },
-    "elasticPoolName": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "databaseSkuName": {
-      "type": "string",
-      "defaultValue": "S0"
-    },
-    "databaseTier": {
-      "type": "string",
-      "defaultValue": "Standard"
-    },
-    "logAnalyticsSubscriptionId": {
-      "type": "string",
-      "defaultValue": "[subscription().subscriptionId]"
-    },
     "sharedManagementResourceGroup": {
-      "type": "string"
-    },
-    "logAnalyticsWorkspaceName": {
       "type": "string"
     },
     "utcValue": {
