@@ -39,7 +39,9 @@ public class ExternalApiService : IExternalApiService
         _logger.LogInformation("Making POST request to {RequestUrl}", requestUrl);
 
         var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-        request.Headers.Authorization = new AuthenticationHeaderValue("Token", _apiKey);
+        request.Headers.Add("Accept","text/plain");
+        request.Headers.Add("X-Version", "1");
+        request.Headers.Add("Ocp-Apim-Subscription-Key", _apiKey);
 
         // Serialize the body object to JSON and set it as the content
         var jsonBody = JsonSerializer.Serialize(body);

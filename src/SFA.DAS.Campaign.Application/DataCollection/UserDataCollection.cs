@@ -19,7 +19,20 @@ public class UserDataCollection(IUserDataCollectionValidator validator, ILogger<
         {
             logger.LogInformation("Registering Interest with UserData supplied.");
 
-            await externalApiService.PostDataAsync("RegisterInterest", userData);
+            var userDataDto = new UserDataDto
+            {
+                FirstName = userData.FirstName,
+                LastName = userData.LastName,
+                Email = userData.Email,
+                UkEmployerSize = userData.UkEmployerSize,
+                PrimaryIndustry = userData.PrimaryIndustry,
+                PrimaryLocation = userData.PrimaryLocation,
+                AppsgovSignUpDate = userData.AppsgovSignUpDate,
+                PersonOrigin = userData.PersonOrigin,
+                IncludeInUR = userData.IncludeInUR
+            };
+
+            await externalApiService.PostDataAsync("RegisterInterest", userDataDto);
 
             logger.LogInformation("Successfully registered campaign interest.");
         }
