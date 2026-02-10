@@ -67,7 +67,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.AddTransient<IMappingService, GoogleMappingService>();
             services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
 
-            string? tenantId = configuration.GetSection("TenantId").Value ?? throw new ConfigurationErrorsException("TenantId is not configured");
+            string tenantId = configuration.GetSection("TenantId").Value ?? throw new ConfigurationErrorsException("TenantId is not configured");
             services.AddSingleton<TokenCredential>(sp =>
                                                     new ChainedTokenCredential(
                                                         new ManagedIdentityCredential(),

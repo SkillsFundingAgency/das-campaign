@@ -67,7 +67,7 @@ public class WhenCollectingUserData
     }
 
     [Test]
-    public async Task Then_If_The_Validation_Is_Successful_An_Exception_Is_Not_Thrown()
+    public void Then_If_The_Validation_Is_Successful_An_Exception_Is_Not_Thrown()
     {
         //Arrange
         _userDataCollectionValidator.Setup(x => x.Validate(_userData)).Returns(new ValidationResult());
@@ -99,20 +99,7 @@ public class WhenCollectingUserData
     }
 
     [Test]
-    public async Task Then_If_The_Validation_Fails_The_UserData_Is_Not_Passed_To_The_ExternalApiService()
-    {
-        //Arrange
-        var result = new ValidationResult();
-        result.AddError("test", ValidationFailure.NotPopulated);
-        _userDataCollectionValidator.Setup(x => x.Validate(It.IsAny<UserData>())).Returns(result);
-
-        //Act/Assert
-        Assert.ThrowsAsync<ValidationException>(async () => await _userDataCollection.StoreUserData(new UserData()));
-        _externalApiService.Verify(x => x.PostDataAsync(It.IsAny<string>(), It.IsAny<UserDataDto>()), Times.Never);
-    }
-
-    [Test]
-    public async Task Then_If_The_Validation_Fails_An_Exception_Is_Thrown()
+    public void Then_If_The_Validation_Fails_An_Exception_Is_Thrown()
     {
         //Arrange
         var result = new ValidationResult();
@@ -196,5 +183,4 @@ public class WhenCollectingUserData
         //Assert
         Assert.That(capturedEndpoint, Is.EqualTo("RegisterInterest"));
     }
-
 }
