@@ -8,6 +8,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Configuration
         public virtual UserDataCryptography UserDataCryptography { get; set; }
         public virtual string FatBaseUrl { get ; set ; }
         public virtual OuterApiConfiguration OuterApi { get; set; }
+        public virtual OuterApiConfiguration CampaignRegisterInterestOuterApi { get; set; }
         public virtual string EmployerAccountBaseUrl { get; set; }
         public bool AllowPreview { get;set; }
         public bool ForcePreview { get; set; }

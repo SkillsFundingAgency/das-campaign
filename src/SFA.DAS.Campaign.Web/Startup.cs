@@ -1,4 +1,3 @@
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -6,23 +5,22 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SFA.DAS.Campaign.Web.HealthChecks;
-using System.Globalization;
-using System.IO;
-using System.Net.Http;
 using Microsoft.Extensions.Hosting;
 using Polly;
 using Polly.Extensions.Http;
 using SFA.DAS.Campaign.Application.Content.Queries;
 using SFA.DAS.Campaign.Domain.Api.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Api;
+using SFA.DAS.Campaign.Web.HealthChecks;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.MiddleWare;
 using SFA.DAS.Configuration.AzureTableStorage;
+using System;
+using System.Globalization;
+using System.IO;
+using System.Net.Http;
 using System.Threading.RateLimiting;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using OpenTelemetry.Logs;
 
 namespace SFA.DAS.Campaign.Web
 {
@@ -102,7 +100,7 @@ namespace SFA.DAS.Campaign.Web
             services.AddHttpContextAccessor();
             services.ConfigureSfaConfigurations(Configuration);
             services.ConfigureSfaConnectionStrings(Configuration);
-            services.ConfigureSfaServices();
+            services.ConfigureSfaServices(Configuration);
             services.ConfigureSfaRepositories();
             services.ConfigureSfaDataCollection();
             services.ConfigureFactorys();
@@ -123,10 +121,10 @@ namespace SFA.DAS.Campaign.Web
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-            
-            #if DEBUG
-                services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            #endif
+
+#if DEBUG
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

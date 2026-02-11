@@ -1,8 +1,11 @@
+using Azure.Core;
+using Azure.Identity;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.Geocode;
+using SFA.DAS.Campaign.Application.Services;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
@@ -12,6 +15,7 @@ using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
 using StackExchange.Redis;
+using System.Configuration;
 
 namespace SFA.DAS.Campaign.Web.Helpers
 {
@@ -45,29 +49,39 @@ namespace SFA.DAS.Campaign.Web.Helpers
             var queueStorageConnectionString = configuration.Get<CampaignConfiguration>().QueueConnectionString;
 
             services.AddHealthChecks()
-                .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check");
+                    .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check");
 
             if (configuration["Environment"] != "LOCAL")
             {
                 var redis = ConnectionMultiplexer.Connect($"{connectionStrings.SharedRedis},DefaultDatabase=3");
                 services.AddDataProtection()
-                    .SetApplicationName("das-campaign-web")
-                    .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys");    
+                        .SetApplicationName("das-campaign-web")
+                        .PersistKeysToStackExchangeRedis(redis, "DataProtection-Keys");    
             }
         }
 
-        public static void ConfigureSfaServices(this IServiceCollection services)
+        public static void ConfigureSfaServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
             services.AddTransient<ISessionService, SessionService>();
             services.AddTransient<IMappingService, GoogleMappingService>();
             services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
+
+            string tenantId = configuration.GetSection("TenantId").Value ?? throw new ConfigurationErrorsException("TenantId is not configured");
+            services.AddSingleton<TokenCredential>(sp =>
+                                                    new ChainedTokenCredential(
+                                                        new ManagedIdentityCredential(),
+                                                        new AzureCliCredential(new AzureCliCredentialOptions { TenantId = tenantId }),
+                                                        new VisualStudioCodeCredential(new VisualStudioCodeCredentialOptions { TenantId = tenantId }),
+                                                        new VisualStudioCredential(new VisualStudioCredentialOptions { TenantId = tenantId })
+                                                    ));
+
+            services.AddTransient<IExternalApiService, ExternalApiService>();
         }
 
         public static void ConfigureSfaRepositories(this IServiceCollection services)
         {
             services.AddTransient<IStandardsRepository, StandardsRepository>();
-
         }
 
         public static void ConfigureSfaDataCollection(this IServiceCollection services)

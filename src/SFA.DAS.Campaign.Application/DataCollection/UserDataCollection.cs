@@ -1,39 +1,44 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using SFA.DAS.Campaign.Application.Services;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using SFA.DAS.Campaign.Domain.Interfaces;
-using SFA.DAS.Campaign.Infrastructure.Configuration;
 
-namespace SFA.DAS.Campaign.Application.DataCollection
+namespace SFA.DAS.Campaign.Application.DataCollection;
+
+public class UserDataCollection(IUserDataCollectionValidator validator, ILogger<UserDataCollection> logger, IExternalApiService externalApiService) : IUserDataCollection
 {
-    public class UserDataCollection : IUserDataCollection
+    public async Task StoreUserData(UserData userData)
     {
-        private readonly IUserDataCollectionValidator _validator;
-        private readonly IQueueService<UserData> _queueService;
-        private readonly IOptions<UserDataQueueNames> _options;
-        private readonly IUserDataCryptographyService _userDataCryptographyService;
-
-        public UserDataCollection(IUserDataCollectionValidator validator, IQueueService<UserData> queueService,
-            IOptions<UserDataQueueNames> options, IUserDataCryptographyService userDataCryptographyService)
+        var validationResult = validator.Validate(userData);
+        if (!validationResult.IsValid)
         {
-            _validator = validator;
-            _queueService = queueService;
-            _options = options;
-            _userDataCryptographyService = userDataCryptographyService;
+            throw new ValidationException(new System.ComponentModel.DataAnnotations.ValidationResult("UserData model failed Validation", validationResult.Results), null, null);
         }
 
-        public async Task StoreUserData(UserData userData)
+        try
         {
-            var validationResult = _validator.Validate(userData);
-            if (!validationResult.IsValid)
+            logger.LogInformation("Registering Interest with UserData supplied.");
+
+            var userDataDto = new UserDataDto
             {
-                throw new ValidationException(new System.ComponentModel.DataAnnotations.ValidationResult("UserData model failed Validation", validationResult.Results), null, null);
-            }
+                FirstName = userData.FirstName,
+                LastName = userData.LastName,
+                Email = userData.Email,
+                UkEmployerSize = userData.UkEmployerSize,
+                PrimaryIndustry = userData.PrimaryIndustry,
+                PrimaryLocation = userData.PrimaryLocation,
+                AppsgovSignUpDate = userData.AppsgovSignUpDate,
+                PersonOrigin = userData.PersonOrigin,
+                IncludeInUR = userData.IncludeInUR
+            };
 
-            userData.EncodedEmail = _userDataCryptographyService.GenerateEncodedUserEmail(userData.Email);
+            await externalApiService.PostDataAsync("RegisterInterest", userDataDto);
 
-            await _queueService.AddMessageToQueue(userData, _options.Value.StoreUserDataQueueName);
+            logger.LogInformation("Successfully registered campaign interest.");
+        }
+        catch (System.Exception ex)
+        {
+            logger.LogError(ex, "An error occurred while logging validation success");
         }
     }
 }
