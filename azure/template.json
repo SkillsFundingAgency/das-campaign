@@ -79,7 +79,6 @@
     "appServiceName": "[concat(variables('appServicePrefix'),'-as')]",
     "appInsightName": "[concat(variables('appServicePrefix'),'-ai')]",
     "resourceGroupName": "[concat(variables('appServicePrefix'), '-rg')]",
-    "databaseName": "[concat(variables('appServicePrefix'), '-db')]",
     "privateLinkScopeName": "[toLower(concat('das-', parameters('resourceEnvironmentName'),'-shared-ampls'))]"
   },
   "resources": [
@@ -132,45 +131,6 @@
           },
           "attachedService": {
             "value": "[variables('appServiceName')]"
-          }
-        }
-      }
-    },
-    {
-      "apiVersion": "2021-04-01",
-      "name": "[concat(variables('databaseName'), '-', parameters('utcValue'))]",
-      "type": "Microsoft.Resources/deployments",
-      "resourceGroup": "[parameters('sharedEnvResourceGroup')]",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(variables('deploymentUrlBase'),'sql-database.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "databaseName": {
-            "value": "[variables('databaseName')]"
-          },
-          "sqlServerName": {
-            "value": "[parameters('sharedSQLServerName')]"
-          },
-          "elasticPoolName": {
-            "value": "[parameters('elasticPoolName')]"
-          },
-          "databaseSkuName": {
-            "value": "[parameters('databaseSkuName')]"
-          },
-          "databaseTier": {
-            "value": "[parameters('databaseTier')]"
-          },
-          "logAnalyticsSubscriptionId": {
-            "value": "[parameters('logAnalyticsSubscriptionId')]"
-          },
-          "logAnalyticsResourceGroup": {
-            "value": "[parameters('sharedManagementResourceGroup')]"
-          },
-          "logAnalyticsWorkspaceName": {
-            "value": "[parameters('logAnalyticsWorkspaceName')]"
           }
         }
       }
@@ -321,10 +281,6 @@
     "ResourceGroupName": {
       "type": "string",
       "value": "[variables('resourceGroupName')]"
-    },
-    "DatabaseName": {
-      "type": "string",
-      "value": "[variables('databaseName')]"
     }
   }
 }
