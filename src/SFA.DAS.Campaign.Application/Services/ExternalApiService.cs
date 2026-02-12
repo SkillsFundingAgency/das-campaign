@@ -19,23 +19,23 @@ public class ExternalApiService : IExternalApiService
 
     public ExternalApiService(HttpClient httpClient, IOptions<CampaignConfiguration> config, ILogger<ExternalApiService> logger)
     {
-        if (config.Value.CampaignRegisterInterestOuterApi.BaseUrl == null)
+        if (config.Value.OuterApi.BaseUrl == null)
         {
             throw new ArgumentNullException(nameof(config));
         }
-        if (config.Value.CampaignRegisterInterestOuterApi.Key == null)
+        if (config.Value.OuterApi.Key == null)
         {
             throw new ArgumentNullException(nameof(config));
         }
         _httpClient = httpClient;
-        _apiUrl = config.Value.CampaignRegisterInterestOuterApi.BaseUrl;
-        _apiKey = config.Value.CampaignRegisterInterestOuterApi.Key;
+        _apiUrl = config.Value.OuterApi.BaseUrl;
+        _apiKey = config.Value.OuterApi.Key;
         _logger = logger;
     }
 
     public async Task<string> PostDataAsync(string endpoint, object body)
     {
-        var requestUrl = $"{_apiUrl}/{endpoint}";
+        var requestUrl = $"{_apiUrl}/CampaignEnquiry/{endpoint}";
         _logger.LogInformation("Making POST request to {RequestUrl}", requestUrl);
 
         var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
