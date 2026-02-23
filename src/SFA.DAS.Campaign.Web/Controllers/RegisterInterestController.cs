@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+﻿using Ganss.Xss;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +6,11 @@ using Microsoft.AspNetCore.RateLimiting;
 using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Web.Helpers;
 using SFA.DAS.Campaign.Web.Models;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
 
 namespace SFA.DAS.Campaign.Web.Controllers
 {
@@ -77,14 +78,17 @@ namespace SFA.DAS.Campaign.Web.Controllers
 
             try
             {
+                // Sanitize inputs to prevent XSS
+                var sanitizer = new HtmlSanitizer();
+
                 await userDataCollection.StoreUserData(new UserData
                 {
-                    FirstName = registerInterest.FirstName,
-                    LastName = registerInterest.LastName,
-                    Email = registerInterest.Email,
-                    UkEmployerSize = registerInterest.SizeOfYourCompany,
-                    PrimaryIndustry = registerInterest.Industry,
-                    PrimaryLocation = registerInterest.Location,
+                    FirstName = sanitizer.Sanitize(registerInterest.FirstName),
+                    LastName = sanitizer.Sanitize(registerInterest.LastName),
+                    Email = sanitizer.Sanitize(registerInterest.Email),
+                    UkEmployerSize = sanitizer.Sanitize(registerInterest.SizeOfYourCompany),
+                    PrimaryIndustry = sanitizer.Sanitize(registerInterest.Industry),
+                    PrimaryLocation = sanitizer.Sanitize(registerInterest.Location),
                     AppsgovSignUpDate = DateTime.Now,
                     PersonOrigin = "apprenticeships.gov.uk",
                     CookieId = !string.IsNullOrEmpty(HttpContext.Request.Cookies["_ga"]) ? HttpContext.Request.Cookies["_ga"] : "not-available",
