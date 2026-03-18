@@ -16,11 +16,11 @@
     {
         <span class="fiu-grad-row__bg"></span>
     }
-    <div class="fiu-width-container">
-        <div class="govuk-grid-row fiu-flex-row">
+    <div class="fiu-width-container fiu-grid-layout govuk-!-margin-bottom-8">
+
 
             @{
-                int noOfCardsinFirstRow = 2;
+                int noOfCardsinFirstRow = 3;
                 var firstCards = Model.Content.Cards.Take(noOfCardsinFirstRow);
                 for (var i = 0; i < firstCards.Count(); i++)
                 {
@@ -28,32 +28,15 @@
                     ;
                 }
             }
-            <div class="govuk-grid-column-one-half">
+      
                 @Html.Partial("./Panels/_BrowseApprenticeships", "")
-            </div>
-        </div>
+  
         @{
             var items = Model.Content.Cards.Skip(noOfCardsinFirstRow).Take(Model.Content.Cards.Count - noOfCardsinFirstRow);
-            int columncount = 1;
 
             for (var i = 0; i < items.Count(); i++)
             {
-                if (columncount == 1)
-                {
-                    @:<div class="govuk-grid-row fiu-flex-row">
-                }
-
                 @items.ElementAt(i).CardToHtml()
-
-                if (columncount == 4 || i == items.Count() - 1)
-                {
-                    @:</div>
-                    columncount = 1;
-                }
-                else
-                {
-                    columncount++;
-                }
             }
         }
     </div>

@@ -2,71 +2,161 @@
 @using SFA.DAS.Campaign.Web.Renderers
 @model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.Hub>
 @{
-    ViewBag.Title = Model.Title;
-    Layout = "Redesign_Layout_EmployersHub";
-
-    ViewBag.PageTitle = Model.Title;
-    ViewBag.PageSummary = Model.Content.Summary;
-
-    ViewBag.HubPage = true;
-    ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
+ViewBag.Title = Model.Title;
+Layout = "Redesign_Layout_EmployersHub";
+ViewBag.PageTitle = Model.Title;
+ViewBag.PageSummary = Model.Content.Summary;
+ViewBag.HubPage = true;
+ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
 }
-
 <span class="fiu-header-content-spacer"></span>
 <div class="fiu-grad-row">
-    @if (ViewBag.HeadingImage == null)
-    {
-        <span class="fiu-grad-row__bg"></span>
-    }
-    <div class="fiu-width-container">
-
-    <h2 class="govuk-heading-l">Considering hiring an apprentice?</h2>
-
-    <div class="govuk-grid-row fiu-flex-row">
-<div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/considering-hiring-an-apprentice">Considering hiring an apprentice?</a></span><h3 class="fiu-card__heading">What is an apprenticeship?</h3><p class="fiu-card__content">Find out how apprenticeships work.</p><a href="/employers/new-what-is-an-apprenticeship" class="fiu-card__link">What is an apprenticeship?</a></div></div><div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/considering-hiring-an-apprentice">Considering hiring an apprentice?</a></span><h3 class="fiu-card__heading">Who can be an apprentice?</h3><p class="fiu-card__content">Learn about who is eligible for apprenticeships, including education requirements and any other conditions.</p><a href="/employers/who-can-be-an-apprentice" class="fiu-card__link">Who can be an apprentice?</a></div></div><div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/considering-hiring-an-apprentice">Considering hiring an apprentice?</a></span><h3 class="fiu-card__heading">Explore funding options </h3><p class="fiu-card__content">Explore the different funding opportunities available to support you when hiring apprentices.</p><a href="/employers/explore-funding-options" class="fiu-card__link">Explore funding options </a></div></div>                    </div>
-<div class="govuk-grid-row fiu-flex-row">
-<div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/considering-hiring-an-apprentice">Considering hiring an apprentice?</a></span><h3 class="fiu-card__heading">Understanding apprenticeship benefits and funding</h3><p class="fiu-card__content">Use this service to explore what benefits apprentices can bring to your organisation and calculate what funding could be available towards your apprentices training costs.</p><a href="/employers/understanding-apprenticeship-benefits-and-funding" class="fiu-card__link">Understanding apprenticeship benefits and funding</a></div></div><div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/considering-hiring-an-apprentice">Considering hiring an apprentice?</a></span><h3 class="fiu-card__heading">Your responsibilities as an employer</h3><p class="fiu-card__content">Understanding your role as an employer when you hire an apprentice.</p><a href="/employers/your-responsibilities-as-an-employer" class="fiu-card__link">Your responsibilities as an employer</a></div></div><div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/considering-hiring-an-apprentice">Considering hiring an apprentice?</a></span><h3 class="fiu-card__heading">See what other employers have to say</h3><p class="fiu-card__content">Explore case studies that share experiences and insights from businesses that have implemented apprenticeships.</p><a href="/employers/real-stories-employers" class="fiu-card__link">See what other employers have to say</a></div></div>                    </div>
-        
-        <h2 class="govuk-heading-l">Get started</h2>
-        <div class="govuk-grid-row fiu-flex-row">
-<div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/get-started">Get started</a></span><h3 class="fiu-card__heading">Find the right apprenticeship</h3><p class="fiu-card__content">Find an apprenticeship that matches the job role you need.</p><a href="/employers/find-the-right-apprenticeship" class="fiu-card__link">Find the right apprenticeship</a></div></div><div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/get-started">Get started</a></span><h3 class="fiu-card__heading">Choose a training provider </h3><p class="fiu-card__content">Choose the training provider who will teach your apprentice's off-the-job training.</p><a href="/employers/choose-a-training-provider" class="fiu-card__link">Choose a training provider </a></div></div><div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/get-started">Get started</a></span><h3 class="fiu-card__heading">Create your apprenticeship service account </h3><p class="fiu-card__content">Create an apprenticeship service account to set up and manage your apprenticeships.</p><a href="/employers/create-your-apprenticeship-service-account" class="fiu-card__link">Create your apprenticeship service account </a></div></div>                    </div>
-    <div class="govuk-grid-row fiu-flex-row">
-<div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/get-started">Get started</a></span><h3 class="fiu-card__heading">Recruit your apprentice </h3><p class="fiu-card__content">Start your journey to recruiting the right apprentice. </p><a href="/employers/recruit-your-apprentice" class="fiu-card__link">Recruit your apprentice </a></div></div>                    </div>
-
-
-<h2 class="govuk-heading-l">What's next?</h2>
-<div class="govuk-grid-row fiu-flex-row">
-<div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/whats-next">What's next?</a></span><h3 class="fiu-card__heading">Have an initial assessment </h3><p class="fiu-card__content">Work with your apprentice and training provider to assess your apprentice’s existing knowledge and agree a training plan to match.</p><a href="/employers/have-an-initial-assessment" class="fiu-card__link">Have an initial assessment </a></div></div><div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/whats-next">What's next?</a></span><h3 class="fiu-card__heading">Support your apprentice</h3><p class="fiu-card__content">How to give your apprentice the extra support they need.</p><a href="/employers/new-support-your-apprentice" class="fiu-card__link">Support your apprentice</a></div></div><div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/whats-next">What's next?</a></span><h3 class="fiu-card__heading">Plan what's next for your apprentice</h3><p class="fiu-card__content">What happens once your apprentice has completed their apprenticeship?</p><a href="/employers/plan-whats-next-for-your-apprentice" class="fiu-card__link">Plan what's next for your apprentice</a></div></div>                    </div>
-<div class="govuk-grid-row fiu-flex-row">
-<div class="govuk-grid-column-one-third"><div class="fiu-card"><span class="fiu-card__category"><a class="fiu-card__category-link" href="/employers/whats-next">What's next?</a></span><h3 class="fiu-card__heading">Celebrate apprenticeships and upcoming events</h3><p class="fiu-card__content"></p><a href="/employers/celebrate-apprenticeships-and-upcoming-events" class="fiu-card__link">Celebrate apprenticeships and upcoming events</a></div></div>                    </div>
-
-        @* @{
-            var items = Model.Content.Cards.Take(Model.Content.Cards.Count);
-            int columncount = 1;
-
-            for (var i = 0; i < items.Count(); i++)
-            {
-                if (columncount == 1)
-                {
-                    @:<div class="govuk-grid-row fiu-flex-row">
-                }
-                    @items.ElementAt(i).CardToHtml();
-                if (columncount == 3 || i == items.Count() - 1)
-                {
-                    @:</div>
-                    columncount = 1;
-                }
-                else
-                {
-                    columncount++;
-                }                
-            }
-        } *@
-
-        <div class="govuk-grid-row fiu-flex-row">
-            <div class="govuk-grid-column-full">
-                 <partial name="Panels/_EmployerSupport"/>
+   @if (ViewBag.HeadingImage == null)
+   {
+   <span class="fiu-grad-row__bg"></span>
+   }
+   <div class="fiu-width-container">
+      <h2 class="govuk-heading-l">Considering hiring an apprentice?</h2>
+      <div class="govuk-grid-row fiu-flex-row">
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Choose the right training for your business</h3>
+               <p class="fiu-card__content">Find out how apprenticeships work, and explore different ways to help your employees learn on the job.</p>
+               <a href="/employers/new-what-is-an-apprenticeship" class="fiu-card__link">Choose the right training</a>
             </div>
-        </div>
-    </div>
+         </div>
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Find out who can do apprenticeship training</h3>
+               <p class="fiu-card__content">Learn about eligibility for apprenticeship training, including education requirements.
+               </p>
+               <a href="/employers/who-can-be-an-apprentice" class="fiu-card__link">Who can do apprenticeship training</a>
+            </div>
+         </div>
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Explore funding options </h3>
+               <p class="fiu-card__content">Explore the different funding opportunities available to support you.</p>
+               <a href="/employers/explore-funding-options" class="fiu-card__link">Explore funding options </a>
+            </div>
+         </div>
+      </div>
+      <div class="govuk-grid-row fiu-flex-row">
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Understanding apprenticeship benefits and funding</h3>
+               <p class="fiu-card__content">Explore the benefits apprenticeships can bring to your organisation and calculate what funding could be available.</p>
+               <a href="/employers/understanding-apprenticeship-benefits-and-funding" class="fiu-card__link">Understanding apprenticeship benefits and funding</a>
+            </div>
+         </div>
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Check what you’re responsible for</h3>
+               <p class="fiu-card__content">Understanding what you need to do during apprenticeship training, and where to get support. </p>
+               <a href="/employers/your-responsibilities-as-an-employer" class="fiu-card__link">Your responsibilities as an employer</a>
+            </div>
+         </div>
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">See what’s worked for other employers</h3>
+               <p class="fiu-card__content">Explore case studies that share experiences and insights from businesses offering apprenticeships.</p>
+               <a href="/employers/real-stories-employers" class="fiu-card__link">See what’s worked for other employers</a>
+            </div>
+         </div>
+      </div>
+      <h2 class="govuk-heading-l">Get started</h2>
+      <div class="govuk-grid-row fiu-flex-row">
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Find the right training</h3>
+               <p class="fiu-card__content">Find apprenticeships or training that match the job role you need.</p>
+               <a href="/employers/find-the-right-apprenticeship" class="fiu-card__link">Find the right training</a>
+            </div>
+         </div>
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Choose a training provider </h3>
+               <p class="fiu-card__content">Learn how to choose a training provider that’s right for your business.</p>
+               <a href="/employers/choose-a-training-provider" class="fiu-card__link">Choose a training provider </a>
+            </div>
+         </div>
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Create your apprenticeship service account </h3>
+               <p class="fiu-card__content">Create an apprenticeship service account to set up and manage your apprenticeships or training.</p>
+               <a href="/employers/create-your-apprenticeship-service-account" class="fiu-card__link">Create your apprenticeship service account </a>
+            </div>
+         </div>
+      </div>
+      <div class="govuk-grid-row fiu-flex-row">
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Recruit your apprentice </h3>
+               <p class="fiu-card__content">Start your journey to recruiting the right apprentice. </p>
+               <a href="/employers/recruit-your-apprentice" class="fiu-card__link">Recruit your apprentice </a>
+            </div>
+         </div>
+      </div>
+      <h2 class="govuk-heading-l">What's next?</h2>
+      <div class="govuk-grid-row fiu-flex-row">
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Have an initial assessment </h3>
+               <p class="fiu-card__content">Create a tailored training plan so your business gets the skills it needs. </p>
+               <a href="/employers/have-an-initial-assessment" class="fiu-card__link">Have an initial assessment </a>
+            </div>
+         </div>
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Provide support and get help</h3>
+               <p class="fiu-card__content">Learn what support you need to provide as an employer, and where to get help. </p>
+               <a href="/employers/new-support-your-apprentice" class="fiu-card__link">Support your apprentice</a>
+            </div>
+         </div>
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Plan your apprentice’s next steps</h3>
+               <p class="fiu-card__content">What’s next for your apprentice once training is complete.</p>
+               <a href="/employers/plan-whats-next-for-your-apprentice" class="fiu-card__link">Plan your apprentice’s next steps</a>
+            </div>
+         </div>
+      </div>
+      <div class="govuk-grid-row fiu-flex-row">
+         <div class="govuk-grid-column-one-third">
+            <div class="fiu-card">
+               <h3 class="fiu-card__heading">Become an apprenticeship ambassador</h3>
+               <p class="fiu-card__content">Learn how to join the Apprenticeship Ambassador Network in your area and champion apprenticeships.</p>
+               <a href="/employers/celebrate-apprenticeships-and-upcoming-events" class="fiu-card__link">Celebrate apprenticeships and upcoming events</a>
+            </div>
+         </div>
+      </div>
+      @* @{
+      var items = Model.Content.Cards.Take(Model.Content.Cards.Count);
+      int columncount = 1;
+      for (var i = 0; i < items.Count(); i++)
+      {
+      if (columncount == 1)
+      {
+      @:
+      <div class="govuk-grid-row fiu-flex-row">
+         }
+         @items.ElementAt(i).CardToHtml();
+         if (columncount == 3 || i == items.Count() - 1)
+         {
+         @:
+      </div>
+      columncount = 1;
+      }
+      else
+      {
+      columncount++;
+      }                
+      }
+      } *@
+      <div class="govuk-grid-row fiu-flex-row">
+         <div class="govuk-grid-column-full">
+            <partial name="Panels/_EmployerSupport"/>
+         </div>
+      </div>
+   </div>
 </div>
