@@ -23,7 +23,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
             var quote = new TagBuilder($"div");
             quote.InnerHtml.AppendHtml("<div class=\"fiu-next-link-wrap\">");
             quote.InnerHtml.AppendHtml(
-                $"<a href=\"{control.Url}\" class=\"fiu-button fiu-button--employers fiu-next-link\">Next: {control.Title} &gt;</a></div>");
+                $"<a href=\"{control.Url}\" class=\"fiu-button fiu-next-link\">Next: {control.Title} &gt;</a></div>");
             string result = quote.WriteString();
 
             return new HtmlString(result);

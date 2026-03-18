@@ -14,15 +14,14 @@ namespace SFA.DAS.Campaign.Web.Renderers
         public HtmlString Render(IHtmlControl content)
         {
             var control = content as Card;
-            var cardWidthCssClass = control?.HubType == "Employers" ? "govuk-grid-column-one-third" : "govuk-grid-column-one-quarter";
 
             var card = new TagBuilder($"div");
-            card.AddCssClass(cardWidthCssClass);
-            card.InnerHtml.AppendHtml("<div class=\"fiu-card\">");
+            card.AddCssClass("fiu-card");
+
             card.InnerHtml.AppendHtml($"<h3 class=\"fiu-card__heading\">{control?.Title}</h3>");
             card.InnerHtml.AppendHtml($"<p class=\"fiu-card__content\">{control?.Summary}</p>");
             card.InnerHtml.AppendHtml(
-                $"<a href=\"{control?.Url.ToString().ToLower()}\" class=\"fiu-card__link\">{control?.Title}</a></div>");
+                $"<a href=\"{control?.Url.ToString().ToLower()}\" class=\"fiu-card__link\">{control?.Title}</a>");
             string result = card.WriteString();
 
             return new HtmlString(result);

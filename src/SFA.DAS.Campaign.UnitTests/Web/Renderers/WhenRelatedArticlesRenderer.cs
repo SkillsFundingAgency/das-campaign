@@ -43,7 +43,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(attachment);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<div><div class=\"fiu-next-link-wrap\"><a href=\"/hub/slug\" class=\"fiu-button fiu-button--employers fiu-next-link\">Next: title &gt;</a></div></div>");
+            actual.Value.Should().Be("<div><div class=\"fiu-next-link-wrap\"><a href=\"/hub/slug\" class=\"fiu-button fiu-next-link\">Next: title &gt;</a></div></div>");
         }
     }
 }
