@@ -36,7 +36,7 @@
         }
         @Html.Partial("./Panels/_BrowseApprenticeships", "")
         @{
-            var items = Model.Content.Cards.Skip(1).Take(Model.Content.Cards.Count - 1);
+            var items = Model.Content.Cards.Skip(2).Take(Model.Content.Cards.Count - 1);
             for (var i = 0; i < items.Count(); i++)
             {
                 @items.ElementAt(i).CardToHtml();
