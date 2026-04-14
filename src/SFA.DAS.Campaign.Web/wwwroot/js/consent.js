@@ -4,11 +4,7 @@
   var uidKey = 'consent_uid'
   var uidFromCookie = findByKey(uidKey, document.cookie.split(';'))
   var uidFromUrl = findByKey(uidKey, parseUrl(location.href).params)
-  var apiUrl = (function ($el) {
-    return $el
-      ? $el.dataset.consentApiUrl.replace(/\/?$/, '/')
-      : 'https://consent-api-bgzqvpmbyq-nw.a.run.app/api/v1/consent/'
-  })(document.querySelector('[data-consent-api-url]'))
+  
   var originPattern = /^(https?:)?\/\/([^:/]+)(?::(\d+))?/
 
   function Consent() {
@@ -35,39 +31,10 @@
 
     // get the current uid from the cookie or the URL if it exists
     setUid(this, uidFromCookie || uidFromUrl)
-    if (this.uid) {
-      // fetch consent status from API and notify listeners on response
-      request(
-        apiUrl.concat(this.uid),
-        {},
-        function (response) {
-          this.eventListeners.forEach(function (callback) {
-            callback(response.status)
-          })
-        }.bind(this)
-      )
-    }
   }
 
   Consent.prototype.onStatusLoaded = function (callback) {
     this.eventListeners.push(callback)
-  }
-
-  Consent.prototype.setStatus = function (status) {
-    if (status) {
-      request(
-        apiUrl.concat(this.uid || ''),
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: 'status='.concat(JSON.stringify(status)),
-        },
-        function (response) {
-          // get the current uid from the API if we don't already have one
-          setUid(this, response.uid)
-        }.bind(this)
-      )
-    }
   }
 
   function setUid(consent, uid) {
@@ -93,24 +60,6 @@
           document.location.protocol === 'https:' ? '; Secure' : ''
         )
     }
-  }
-
-  function request(url, options, callback) {
-    var req = new XMLHttpRequest()
-    options = options || {}
-    req.onreadystatechange = function () {
-      if (
-        req.readyState === req.DONE &&
-        (req.status === 0 || (req.status >= 200 && req.status < 400))
-      ) {
-        callback(JSON.parse(req.responseText))
-      }
-    }
-    req.open(options.method || 'GET', url)
-    for (var name in options.headers || {}) {
-      req.setRequestHeader(name, options.headers[name])
-    }
-    req.send(options.body || null)
   }
 
   function addUrlParameter(url, name, value) {
