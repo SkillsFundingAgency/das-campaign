@@ -120,7 +120,6 @@
     CookieBannerShared.prototype.acceptCookies = function () {
       this.$module.showAcceptConfirmation()
       this.setCookiesPolicyCookie(Consent.ACCEPT_ALL)
-      Consent.setStatus(Consent.ACCEPT_ALL)
     }
   
     CookieBannerShared.prototype.setCookiesPolicyCookie = function (cookiesPolicy) {
@@ -139,7 +138,6 @@
     CookieBannerShared.prototype.rejectCookies = function () {
       this.$module.showRejectConfirmation()
       this.setCookiesPolicyCookie(Consent.REJECT_ALL)
-      Consent.setStatus(Consent.REJECT_ALL)
     }
   
     CookieBannerShared.prototype.showRejectConfirmation = function () {
