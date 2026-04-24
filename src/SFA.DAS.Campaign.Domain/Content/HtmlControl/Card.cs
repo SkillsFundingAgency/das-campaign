@@ -12,6 +12,7 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
         public string Summary { get; set; }
         public string Description { get; set; }
         public string Url => $"/{HubType}/{Slug}";
+        public Image CardImage { get; set; }
         public CardLandingPage LandingPage { get; set; }
     }
 

@@ -22,13 +22,6 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View("Sectors", staticContent);
         }
 
-        [Route("/apprentices/browse-by-interests/")]
-        public async Task<IActionResult> ApprenticesInterests()
-        {
-            var staticContent = await _mediator.GetModelForStaticContent();
-            return View("Interests", staticContent);
-        }
-
         [Route("/employers/browse-by-sector/{slug}")]
         public async Task<IActionResult> Sector(string slug)
         {

@@ -99,7 +99,19 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
                 return;
             }
 
-            model.Content.Cards = cmsContent.Hub.MainContent.Cards;
+            model.Content.Cards = cmsContent.Hub.MainContent.Cards.Select(c => new Card
+            {
+                Title = c.Title,
+                Slug = c.Slug,
+                HubType = c.HubType,
+                Summary = c.Summary,
+                CardImage = new Image
+                {
+                    Description = c.CardImage?.EmbeddedResource?.Description,
+                    Title = c.CardImage?.EmbeddedResource?.Title,
+                    Url = c.CardImage?.EmbeddedResource?.Url
+                }
+            }).ToList();
         }
     }
 }

@@ -50,3 +50,32 @@
 .app-back-to-top:focus:before {
   border-color: #000;
 }
+
+.fiu-card {
+  z-index: 1;
+}
+
+a.fiu-card {
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid #cecece;
+}
+
+.fiu-grid-layout {
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 60px;
+  grid-row-gap: 60px;
+}
+
+.fiu-card__img {
+  display: block;
+  height: 150px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 7px 7px 0 0;
+}
+
+.fiu-card__body {
+  padding: 1rem;
+}

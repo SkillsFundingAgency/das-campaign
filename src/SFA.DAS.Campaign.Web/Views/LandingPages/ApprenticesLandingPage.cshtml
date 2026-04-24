@@ -1,5 +1,4 @@
 @using SFA.DAS.Campaign.Web.Helpers
-@using SFA.DAS.Campaign.Web.Renderers
 @model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.LandingPage>
 @{
     ViewBag.Title = Model.Title;
@@ -17,27 +16,15 @@
         <span class="fiu-grad-row__bg"></span>
     }
     <div class="fiu-width-container fiu-grid-layout govuk-!-margin-bottom-8">
-
-
-            @{
-                int noOfCardsinFirstRow = 3;
-                var firstCards = Model.Content.Cards.Take(noOfCardsinFirstRow);
-                for (var i = 0; i < firstCards.Count(); i++)
-                {
-                    @firstCards.ElementAt(i).CardToHtml()
-                    ;
-                }
-            }
-      
-                @Html.Partial("./Panels/_BrowseApprenticeships", "")
-  
-        @{
-            var items = Model.Content.Cards.Skip(noOfCardsinFirstRow).Take(Model.Content.Cards.Count - noOfCardsinFirstRow);
-
-            for (var i = 0; i < items.Count(); i++)
-            {
-                @items.ElementAt(i).CardToHtml()
-            }
+        @foreach (var card in Model.Content.Cards)
+        {
+            <a class="fiu-card" href="@card.Url.ToLower()">
+                <span class="fiu-card__img" style="background-image:url(@card.CardImage.Url)"></span>
+                <div class="fiu-card__body">
+                    <h3 class="fiu-card__heading">@card.Title</h3>
+                    <p class="fiu-card__content">@card.Summary</p>
+                </div>
+            </a>
         }
     </div>
 </div>
