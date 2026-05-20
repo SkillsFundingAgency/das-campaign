@@ -83,5 +83,37 @@
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\Default.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\DefaultNew.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\FormSidebar.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\agriculture-environment-animal-care.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\business-administration.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\care-services.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\catering-hospitality.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\construction.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\creative-design.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\digital.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\education-childcare.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\engineering-manufacturing.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\hair-beauty.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\health-science.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\legal-finance-accounting.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\protective-services.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\sales-marketing-procurement.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Apprentices\transport-logistics.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\agriculture-environment-animal-care.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\business-administration.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\care-services.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\catering-hospitality.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\construction.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\creative-design.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\digital.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\education-childcare.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\engineering-manufacturing.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\hair-beauty.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\health-science.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\legal-finance-accounting.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\protective-services.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\sales-marketing-procurement.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Employers\transport-logistics.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Interests.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Industries\Sectors.cshtml" />
   </ItemGroup>
 </Project>

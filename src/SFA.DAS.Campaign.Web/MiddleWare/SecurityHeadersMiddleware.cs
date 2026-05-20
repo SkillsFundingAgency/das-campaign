@@ -13,7 +13,7 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
         public async Task InvokeAsync(HttpContext context)
         {
             var authority = context.Request.GetUri().Authority;
-            const string dasCdn = " das-at-frnt-end.azureedge.net das-pp-frnt-end.azureedge.net das-mo-frnt-end.azureedge.net das-test-frnt-end.azureedge.net das-test2-frnt-end.azureedge.net das-prd-frnt-end.azureedge.net";
+            const string dasCdn = " http://localhost:1045 das-at-frnt-end.azureedge.net das-pp-frnt-end.azureedge.net das-mo-frnt-end.azureedge.net das-test-frnt-end.azureedge.net das-test2-frnt-end.azureedge.net das-prd-frnt-end.azureedge.net";
             
             context.Response.Headers.AddIfNotPresent("x-frame-options", new StringValues("DENY"));
             context.Response.Headers.AddIfNotPresent("x-content-type-options", new StringValues("nosniff"));
