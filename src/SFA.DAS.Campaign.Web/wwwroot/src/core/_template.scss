@@ -1,0 +1,55 @@
+.fiu-template {
+  @extend .govuk-template;
+  background: $fiu-page-bg-colour;
+  scroll-behavior: smooth;
+}
+
+.fiu-template__body {
+  @extend .govuk-template__body;
+  background: $fiu-body-colour;
+}
+
+.fiu-feature-row {
+  background: $black;
+  padding-bottom: 1px;
+}
+
+.fiu-grad-row {
+  position: relative;
+}
+
+.fiu-grad-row__bg {
+  height: 100px;
+  border-top: 50px solid $black;
+  background: url('../assets/images/design/step-gradient-bg-black.png') repeat-x;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.fiu-grad-row__bg--grey {
+  height: 50px;
+  border-top: none;
+  background: url('../assets/images/design/step-gradient-bg-grey.png') repeat-x;
+}
+
+.fiu-header-content-spacer {
+  background: url('../assets/images/design/step-gradient-bg-black.png') repeat-x;
+  height: 50px;
+  display: block;
+  margin-bottom: 30px;
+  @include govuk-media-query($media-type: print) {
+    display: none;
+  }
+}
+
+.fiu-header-content-spacer--grey {
+  background: url('../assets/images/design/step-gradient-bg-grey.png') repeat-x;
+  height: 50px;
+  display: block;
+  @include govuk-media-query($media-type: print) {
+    display: none;
+  }
+}
