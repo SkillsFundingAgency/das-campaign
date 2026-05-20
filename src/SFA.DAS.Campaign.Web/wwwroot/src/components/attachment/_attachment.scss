@@ -1,3 +1,6 @@
+@use '../../shared' as *;
+@use '../../utilities/visually-hidden';
+
 .fiu-attachment {
   @include fiu-typography-common;
   background: $white;

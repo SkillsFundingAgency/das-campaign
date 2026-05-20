@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-footer {
   @include fiu-typography-common;
   background: $fiu-footer-bg-colour;

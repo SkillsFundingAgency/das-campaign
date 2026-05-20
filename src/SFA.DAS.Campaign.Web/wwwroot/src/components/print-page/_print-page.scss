@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-print-page-link {
   display: inline-block;
   @include govuk-media-query($media-type: print) {

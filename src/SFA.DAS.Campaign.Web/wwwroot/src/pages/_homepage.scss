@@ -1,3 +1,5 @@
+@use '../shared' as *;
+
 .fiu-homepage-card-container {
   @include govuk-media-query($from: tablet) {
     position: relative;

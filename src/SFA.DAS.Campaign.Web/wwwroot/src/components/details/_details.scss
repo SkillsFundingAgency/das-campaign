@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-details {
   @include fiu-typography-common;
   @include govuk-media-query(tablet) {

@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-pagination {
   @include fiu-typography-common;
   text-align: center;

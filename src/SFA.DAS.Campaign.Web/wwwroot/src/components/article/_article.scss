@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-article {
   .fiu-template--employers .fiu-main-wrapper & {
     background: $white;

@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-button {
   @extend .govuk-button;
   border-radius: 2px;

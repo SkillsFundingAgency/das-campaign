@@ -1,3 +1,5 @@
+@use '../shared' as *;
+
 .fiu-width-container {
   @extend .govuk-width-container;
   @include govuk-media-query($until: 1020px) {

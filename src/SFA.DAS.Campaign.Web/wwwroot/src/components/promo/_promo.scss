@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-promo {
   @include fiu-typography-common;
   text-align: center;

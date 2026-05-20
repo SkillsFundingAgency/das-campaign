@@ -1,3 +1,5 @@
+@use '../shared' as *;
+
 .fiu-vh,
 .fiu-visually-hidden {
   position: absolute !important;

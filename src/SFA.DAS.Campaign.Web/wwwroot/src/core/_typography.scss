@@ -1,3 +1,7 @@
+@use '../shared' as *;
+@use 'section-break';
+@use '../components/quote/quote';
+
 .govuk-heading-xl,
 .govuk-heading-l,
 .govuk-heading-m,

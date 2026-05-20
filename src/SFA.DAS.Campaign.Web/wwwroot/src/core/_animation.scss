@@ -1,3 +1,5 @@
+@use '../shared' as *;
+
 .fiu-fade-in {
   animation: fadeIn ease 1s;
 }

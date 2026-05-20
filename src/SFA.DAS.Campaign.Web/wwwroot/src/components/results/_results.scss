@@ -1,3 +1,6 @@
+@use '../../shared' as *;
+@use '../panel/panel';
+
 .fiu-results-summary {
   @include fiu-typography-common;
 }

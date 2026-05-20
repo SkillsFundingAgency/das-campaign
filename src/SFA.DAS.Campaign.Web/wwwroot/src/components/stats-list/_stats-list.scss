@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-stats-list {
   @include fiu-typography-common;
   list-style: none;

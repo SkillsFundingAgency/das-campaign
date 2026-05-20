@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-breadcrumbs {
   @include fiu-typography-common;
   background: #000;

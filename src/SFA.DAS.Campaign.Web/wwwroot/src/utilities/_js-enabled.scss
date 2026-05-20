@@ -1,3 +1,5 @@
+@use '../shared' as *;
+
 .js-enabled {
   .fiu-js-hide {
     display: none;

@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-banner {
   @include fiu-typography-common;
   background: #333;

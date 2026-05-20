@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-notification {
   @include fiu-typography-common;
   background: $fiu-action-information;

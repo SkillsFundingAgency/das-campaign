@@ -1,3 +1,5 @@
+@use '../shared' as *;
+
 .fiu-template {
   @extend .govuk-template;
   background: $fiu-page-bg-colour;

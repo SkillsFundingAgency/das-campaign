@@ -1,3 +1,6 @@
+@use '../shared' as *;
+@use '../components/button/button';
+
 @use "sass:color";
 
 .fiu-link {

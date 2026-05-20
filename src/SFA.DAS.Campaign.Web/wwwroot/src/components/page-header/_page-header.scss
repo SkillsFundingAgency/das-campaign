@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-page-header {
   @include fiu-typography-common;
   background-color: $black;
@@ -46,7 +48,7 @@
 }
 
 .fiu-page-heading__title-hub {
-  @include fiu-uppercase-title;
+  letter-spacing: -0.03em;
   margin-bottom: 40px;
   color: inherit;
   @include govuk-media-query(tablet) {
@@ -71,6 +73,7 @@
 
 .fiu-page-header__content-l {
   @extend .govuk-body-l;
+  @include fiu-typography-common;
   color: inherit;
   @include govuk-media-query($media-type: print) {
     display: none;

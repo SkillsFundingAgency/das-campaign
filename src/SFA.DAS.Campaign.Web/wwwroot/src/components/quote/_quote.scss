@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-quote {
   @include fiu-typography-common;
   color: $fiu-text-colour;

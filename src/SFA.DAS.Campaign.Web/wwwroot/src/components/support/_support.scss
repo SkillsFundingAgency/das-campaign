@@ -1,3 +1,6 @@
+@use '../../shared' as *;
+@use '../panel/panel';
+
 .fiu-support-panel {
   @extend .fiu-panel;
 }

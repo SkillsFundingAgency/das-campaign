@@ -1,3 +1,5 @@
+@use '../settings/colours-palette' as *;
+
 @mixin arrow($bgcolour: $black) {
   content: '';
   display: inline-block;

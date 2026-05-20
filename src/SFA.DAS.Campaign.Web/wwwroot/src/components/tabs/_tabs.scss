@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-tabs {
   @extend .govuk-tabs;
 }

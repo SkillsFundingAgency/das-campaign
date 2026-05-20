@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-phase-banner {
   @include fiu-typography-common;
   padding-top: 20px;

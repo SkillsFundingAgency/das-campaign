@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-back-link {
   @extend .govuk-back-link;
   @include fiu-typography-common;

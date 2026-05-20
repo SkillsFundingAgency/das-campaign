@@ -1,3 +1,5 @@
+@use '../../shared' as *;
+
 .fiu-card {
   @include fiu-typography-common;
   background: $white;
@@ -67,6 +69,7 @@
 
 .fiu-card__content {
   @extend .govuk-body;
+  @include fiu-typography-common;
 }
 
 .fiu-card__link {
