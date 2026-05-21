@@ -1,15 +1,5 @@
 @use '../shared' as *;
 
-.fiu-homepage-card-container {
-  @include govuk-media-query($from: tablet) {
-    position: relative;
-    top: -100px;
-    .fiu-grad-row__bg {
-      top: 100px;
-    }
-  }
-}
-
 .fiu-homepage-row-highlight {
   background: $fiu-body-colour;
   border-top: 5px solid $lighter-grey;

@@ -10,6 +10,7 @@
   &:focus {
     @include fiu-focused-block;
   }
+  display: none;
 }
 
 .fiu-banner--warning {
