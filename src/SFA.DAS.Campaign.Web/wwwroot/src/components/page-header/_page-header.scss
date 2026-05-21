@@ -8,10 +8,6 @@
   position: relative;
 }
 
-.fiu-page-header--has-image {
-  background: none;
-}
-
 .fiu-page-header .fiu-width-container {
   position: relative;
   padding-top: 1px;
@@ -82,6 +78,7 @@
 .fiu-page-header__gov-logo {
   height: 30px;
   display: block;
+  margin-bottom: 10px;
   @include govuk-media-query($media-type: print) {
     display: none;
   }
@@ -98,19 +95,26 @@
 .fiu-page-header__image-wrap {
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: 0 70px;
   position: relative;
+  @include govuk-media-query(tablet) {
+    background-position: right;
+  }
 }
 
 
 .fiu-page-header__image-mask {
   position: absolute;
-  top: 0;
+  top: 70px;
   left: 0;
   width: 100%;
   height: 100%;
   background-image: url('/images/mask.png');
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: top;
+  @include govuk-media-query(tablet) {
+    background-position: right;
+    top: 0;
+  }
 }

@@ -3,8 +3,7 @@
 .fiu-tag {
   @extend .govuk-tag;
   @include fiu-typography-common;
-  font-weight: $fiu-font-weight-bold;
-  font-size: 11px;
+  font-size: 19px;
   letter-spacing: 0;
   color: #fff;
 }

@@ -9,12 +9,7 @@ ViewBag.PageSummary = Model.Content.Summary;
 ViewBag.HubPage = true;
 ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
 }
-<span class="fiu-header-content-spacer"></span>
 <div class="fiu-grad-row">
-   @if (ViewBag.HeadingImage == null)
-   {
-   <span class="fiu-grad-row__bg"></span>
-   }
    <div class="fiu-width-container">
       <h2 class="govuk-heading-l">Considering hiring an apprentice?</h2>
       <div class="govuk-grid-row fiu-flex-row">

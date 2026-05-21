@@ -12,15 +12,8 @@
     ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
 }
 
-@section PageHeaderContent {
-    <h2 class="govuk-heading-l fiu-page-header__sub-heading">What you need to know</h2>
-}
 
 <div class="fiu-grad-row">
-    @if (ViewBag.HeadingImage == null)
-    {
-        <span class="fiu-grad-row__bg"></span>
-    }
     <div class="fiu-width-container fiu-grid-layout">
         <div class="fiu-card">
             <h3 class="fiu-card__heading">Career starter apprenticeships</h3>

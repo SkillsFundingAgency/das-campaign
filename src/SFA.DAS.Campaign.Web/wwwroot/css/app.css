@@ -343,46 +343,46 @@
 
 
 
-.govuk-list, .fiu-navigation__list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
+.govuk-list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 @media print {
-  .govuk-list, .fiu-navigation__list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
+  .govuk-list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
     font-family: sans-serif;
   }
 }
-.govuk-list, .fiu-navigation__list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
+.govuk-list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
 }
 @media print {
-  .govuk-list, .fiu-navigation__list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
+  .govuk-list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
     font-size: 14pt;
     line-height: 1.15;
   }
 }
-.govuk-list, .fiu-navigation__list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
+.govuk-list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
   margin-top: 0;
   margin-bottom: 15px;
 }
 @media (min-width: 40.0625em) {
-  .govuk-list, .fiu-navigation__list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
+  .govuk-list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
     margin-bottom: 20px;
   }
 }
-.govuk-list, .fiu-navigation__list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
+.govuk-list, .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) {
   padding-left: 0;
   list-style-type: none;
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-list .govuk-list, .fiu-navigation__list .govuk-list, .fiu-article > ul:not([class]) .govuk-list, .fiu-article > ol:not([class]) .govuk-list, .govuk-list .fiu-navigation__list, .fiu-navigation__list .fiu-navigation__list, .fiu-article > ul:not([class]) .fiu-navigation__list, .fiu-article > ol:not([class]) .fiu-navigation__list, .govuk-list .fiu-article > ul:not([class]), .fiu-navigation__list .fiu-article > ul:not([class]), .fiu-article > ul:not([class]) .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) .fiu-article > ul:not([class]), .govuk-list .fiu-article > ol:not([class]), .fiu-navigation__list .fiu-article > ol:not([class]), .fiu-article > ul:not([class]) .fiu-article > ol:not([class]), .fiu-article > ol:not([class]) .fiu-article > ol:not([class]) {
+.govuk-list .govuk-list, .fiu-article > ul:not([class]) .govuk-list, .fiu-article > ol:not([class]) .govuk-list, .govuk-list .fiu-article > ul:not([class]), .fiu-article > ul:not([class]) .fiu-article > ul:not([class]), .fiu-article > ol:not([class]) .fiu-article > ul:not([class]), .govuk-list .fiu-article > ol:not([class]), .fiu-article > ul:not([class]) .fiu-article > ol:not([class]), .fiu-article > ol:not([class]) .fiu-article > ol:not([class]) {
   margin-top: 10px;
 }
 
-.govuk-list > li, .fiu-navigation__list > li, .fiu-article > ul:not([class]) > li, .fiu-article > ol:not([class]) > li {
+.govuk-list > li, .fiu-article > ul:not([class]) > li, .fiu-article > ol:not([class]) > li {
   margin-bottom: 5px;
 }
 
@@ -813,11 +813,9 @@
 .govuk-body-s + .govuk-heading-l,
 .fiu-article > .govuk-body-s + h2:not([class]),
 .govuk-list + .govuk-heading-l,
-.fiu-navigation__list + .govuk-heading-l,
 .fiu-article > ul:not([class]) + .govuk-heading-l,
 .fiu-article > ol:not([class]) + .govuk-heading-l,
 .fiu-article > .govuk-list + h2:not([class]),
-.fiu-article > .fiu-navigation__list + h2:not([class]),
 .fiu-article > ul:not([class]) + h2:not([class]),
 .fiu-article > ol:not([class]) + h2:not([class]) {
   padding-top: 15px;
@@ -827,11 +825,9 @@
   .govuk-body-s + .govuk-heading-l,
   .fiu-article > .govuk-body-s + h2:not([class]),
   .govuk-list + .govuk-heading-l,
-  .fiu-navigation__list + .govuk-heading-l,
   .fiu-article > ul:not([class]) + .govuk-heading-l,
   .fiu-article > ol:not([class]) + .govuk-heading-l,
   .fiu-article > .govuk-list + h2:not([class]),
-  .fiu-article > .fiu-navigation__list + h2:not([class]),
   .fiu-article > ul:not([class]) + h2:not([class]),
   .fiu-article > ol:not([class]) + h2:not([class]) {
     padding-top: 20px;
@@ -845,23 +841,18 @@
 .fiu-article > .govuk-body-s + h3:not([class]),
 .govuk-body-s + .fiu-notification__heading,
 .govuk-list + .govuk-heading-m,
-.fiu-navigation__list + .govuk-heading-m,
 .fiu-article > ul:not([class]) + .govuk-heading-m,
 .fiu-article > ol:not([class]) + .govuk-heading-m,
 .govuk-list + .fiu-support-panel__heading,
-.fiu-navigation__list + .fiu-support-panel__heading,
 .fiu-article > ul:not([class]) + .fiu-support-panel__heading,
 .fiu-article > ol:not([class]) + .fiu-support-panel__heading,
 .govuk-list + .fiu-heading-m-l,
-.fiu-navigation__list + .fiu-heading-m-l,
 .fiu-article > ul:not([class]) + .fiu-heading-m-l,
 .fiu-article > ol:not([class]) + .fiu-heading-m-l,
 .fiu-article > .govuk-list + h3:not([class]),
-.fiu-article > .fiu-navigation__list + h3:not([class]),
 .fiu-article > ul:not([class]) + h3:not([class]),
 .fiu-article > ol:not([class]) + h3:not([class]),
 .govuk-list + .fiu-notification__heading,
-.fiu-navigation__list + .fiu-notification__heading,
 .fiu-article > ul:not([class]) + .fiu-notification__heading,
 .fiu-article > ol:not([class]) + .fiu-notification__heading,
 .govuk-body-m + .govuk-heading-s,
@@ -898,15 +889,12 @@
 .govuk-body-s + .fiu-banner__heading,
 .fiu-article > .govuk-body-s + h4:not([class]),
 .govuk-list + .govuk-heading-s,
-.fiu-navigation__list + .govuk-heading-s,
 .fiu-article > ul:not([class]) + .govuk-heading-s,
 .fiu-article > ol:not([class]) + .govuk-heading-s,
 .govuk-list + .fiu-banner__heading,
-.fiu-navigation__list + .fiu-banner__heading,
 .fiu-article > ul:not([class]) + .fiu-banner__heading,
 .fiu-article > ol:not([class]) + .fiu-banner__heading,
 .fiu-article > .govuk-list + h4:not([class]),
-.fiu-article > .fiu-navigation__list + h4:not([class]),
 .fiu-article > ul:not([class]) + h4:not([class]),
 .fiu-article > ol:not([class]) + h4:not([class]) {
   padding-top: 5px;
@@ -919,23 +907,18 @@
   .fiu-article > .govuk-body-s + h3:not([class]),
   .govuk-body-s + .fiu-notification__heading,
   .govuk-list + .govuk-heading-m,
-  .fiu-navigation__list + .govuk-heading-m,
   .fiu-article > ul:not([class]) + .govuk-heading-m,
   .fiu-article > ol:not([class]) + .govuk-heading-m,
   .govuk-list + .fiu-support-panel__heading,
-  .fiu-navigation__list + .fiu-support-panel__heading,
   .fiu-article > ul:not([class]) + .fiu-support-panel__heading,
   .fiu-article > ol:not([class]) + .fiu-support-panel__heading,
   .govuk-list + .fiu-heading-m-l,
-  .fiu-navigation__list + .fiu-heading-m-l,
   .fiu-article > ul:not([class]) + .fiu-heading-m-l,
   .fiu-article > ol:not([class]) + .fiu-heading-m-l,
   .fiu-article > .govuk-list + h3:not([class]),
-  .fiu-article > .fiu-navigation__list + h3:not([class]),
   .fiu-article > ul:not([class]) + h3:not([class]),
   .fiu-article > ol:not([class]) + h3:not([class]),
   .govuk-list + .fiu-notification__heading,
-  .fiu-navigation__list + .fiu-notification__heading,
   .fiu-article > ul:not([class]) + .fiu-notification__heading,
   .fiu-article > ol:not([class]) + .fiu-notification__heading,
   .govuk-body-m + .govuk-heading-s,
@@ -972,15 +955,12 @@
   .govuk-body-s + .fiu-banner__heading,
   .fiu-article > .govuk-body-s + h4:not([class]),
   .govuk-list + .govuk-heading-s,
-  .fiu-navigation__list + .govuk-heading-s,
   .fiu-article > ul:not([class]) + .govuk-heading-s,
   .fiu-article > ol:not([class]) + .govuk-heading-s,
   .govuk-list + .fiu-banner__heading,
-  .fiu-navigation__list + .fiu-banner__heading,
   .fiu-article > ul:not([class]) + .fiu-banner__heading,
   .fiu-article > ol:not([class]) + .fiu-banner__heading,
   .fiu-article > .govuk-list + h4:not([class]),
-  .fiu-article > .fiu-navigation__list + h4:not([class]),
   .fiu-article > ul:not([class]) + h4:not([class]),
   .fiu-article > ol:not([class]) + h4:not([class]) {
     padding-top: 10px;
@@ -16475,6 +16455,7 @@
   height: 50px;
   background: url("/images/step-gradient-bg-black.png") repeat-x;
   display: block;
+  margin-bottom: 20px;
 }
 
 .fiu-grad-row__bg--grey {
@@ -18677,219 +18658,56 @@ b {
   right: 0;
 }
 
-.fiu-navigation {
-  background: #0b0c0c;
-  padding: 5px 0;
-  min-height: 45px;
-}
-
-.fiu-navigation--citizens {
-  background: #2e8540;
-}
-
-.fiu-navigation--employers {
-  background: #4d43a3;
-}
-
-.fiu-navigation--influencers {
-  background: #4282ba;
-}
-
-.fiu-navigation__toggle {
-  display: none;
-}
-
-.js-enabled .fiu-navigation__toggle {
-  color: #ffffff;
-  display: block;
-  text-decoration: none;
+.fiu-nav {
   position: relative;
-  height: 40px;
-  width: 40px;
-  margin-left: 10px;
+  z-index: 10;
 }
-.js-enabled .fiu-navigation__toggle:focus {
-  outline: 3px solid var(--govuk-focus-colour, #ffdd00);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
-}
-@media (min-width: 40.0625em) {
-  .js-enabled .fiu-navigation__toggle {
-    margin-left: -5px;
-  }
-}
-@media (min-width: 56.25em) {
-  .js-enabled .fiu-navigation__toggle {
-    display: none;
-  }
-}
-
-.fiu-navigation__toggle-label {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;
-  border: 0 !important;
-  white-space: nowrap !important;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.fiu-navigation__toggle-label::before {
-  content: " ";
-}
-.fiu-navigation__toggle-label::after {
-  content: " ";
-}
-
-.fiu-navigation__toggle-icon {
-  top: 19px;
-  left: 5px;
-}
-.fiu-navigation__toggle-icon:after, .fiu-navigation__toggle-icon:before {
-  content: "";
-  left: 0;
-  top: -9px;
-}
-.fiu-navigation__toggle-icon:after {
-  top: 9px;
-}
-
-.fiu-navigation-menu-open .fiu-navigation__toggle-icon {
-  background: transparent;
-}
-.fiu-navigation-menu-open .fiu-navigation__toggle-icon:after {
-  top: 0;
-  transform: rotate(45deg);
-}
-.fiu-navigation-menu-open .fiu-navigation__toggle-icon:before {
-  top: 0;
-  transform: rotate(-45deg);
-}
-
-.fiu-navigation__toggle-icon, .fiu-navigation__toggle-icon:after, .fiu-navigation__toggle-icon:before {
-  display: block;
-  height: 3px;
-  width: 30px;
-  position: absolute;
-  border-radius: 2px;
-  background: #ffffff;
-  transition: all 0.3s ease;
-}
-
-.fiu-navigation__heading {
-  color: #ffffff;
-  margin: 15px;
-}
-@media (min-width: 40.0625em) {
-  .fiu-navigation__heading {
-    margin: 15px 0;
-  }
-}
-@media (min-width: 56.25em) {
-  .fiu-navigation__heading {
-    display: none;
-  }
-}
-
-@media (min-width: 56.25em) {
-  .fiu-navigation__nav {
-    margin-left: -5px;
-  }
-}
-
-.js-enabled .fiu-navigation__nav {
-  display: none;
-}
-@media (min-width: 56.25em) {
-  .js-enabled .fiu-navigation__nav {
-    display: block;
-  }
-}
-
-.fiu-navigation-menu-open .fiu-navigation__nav {
-  display: block;
-}
-
-@media (min-width: 56.25em) {
-  .js-enabled .fiu-navigation__nav--homepage,
-  .fiu-navigation__nav--homepage {
-    display: none;
-  }
-}
-
-.fiu-navigation__list {
-  margin: 15px 10px;
-  padding: 0;
+.fiu-nav__list {
+  margin: 0;
+  padding: 20px 0;
   list-style: none;
+  display: flex;
+  gap: 20px;
 }
 @media (min-width: 40.0625em) {
-  .fiu-navigation__list {
-    margin: 15px 0 15px -5px;
+  .fiu-nav__list {
+    gap: 40px;
   }
 }
-@media (min-width: 56.25em) {
-  .fiu-navigation__list {
-    margin: 5px 0 0;
-  }
-}
-
-@media (min-width: 56.25em) {
-  .fiu-navigation__list-item {
-    display: inline-block;
-    margin-right: 15px;
-  }
-}
-
-.fiu-navigation__link {
+.fiu-nav__link {
   font-family: nobel, sans-serif;
   font-weight: 300;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  color: #fff;
+  font-size: 19px;
+  -webkit-font-smoothing: unset;
+}
+.fiu-nav__link--active {
   text-decoration: underline;
-  text-decoration-thickness: max(1px, .0625rem);
-  text-underline-offset: 0.1578em;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 15px;
 }
-.fiu-navigation__link:hover {
-  text-decoration-thickness: max(3px, .1875rem, .12em);
-  -webkit-text-decoration-skip-ink: none;
-  text-decoration-skip-ink: none;
-  -webkit-text-decoration-skip: none;
-  text-decoration-skip: none;
-}
-.fiu-navigation__link:focus {
-  outline: 3px solid transparent;
-  color: var(--govuk-focus-text-colour, #0b0c0c);
-  background-color: var(--govuk-focus-colour, #ffdd00);
-  box-shadow: 0 -2px var(--govuk-focus-colour, #ffdd00), 0 4px var(--govuk-focus-text-colour, #0b0c0c);
-  text-decoration: none;
-}
-@supports not (text-wrap: balance) {
-  .fiu-navigation__link:focus {
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-  }
-}
-.fiu-navigation__link {
-  color: #ffffff;
-  padding: 1px 5px 3px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.fiu-navigation__link:hover {
+.fiu-nav__link:hover {
   text-decoration: underline;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 15px;
 }
-
-.fiu-navigation__link:active,
-.fiu-navigation__link:focus {
-  text-decoration: none;
+.fiu-nav__link:focus {
+  outline: 3px solid #fd0;
+  background-color: #fd0;
+  color: #000;
+}
+.fiu-nav__link:focus-visible {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  color: #000;
+}
+.fiu-nav__link:active {
+  background-color: #fd0;
+  color: #000;
 }
 
 .fiu-page-header {
@@ -18902,10 +18720,6 @@ b {
   padding: 1px 0;
   color: #ffffff;
   position: relative;
-}
-
-.fiu-page-header--has-image {
-  background: none;
 }
 
 .fiu-page-header .fiu-width-container {
@@ -18992,6 +18806,7 @@ b {
 .fiu-page-header__gov-logo {
   height: 30px;
   display: block;
+  margin-bottom: 10px;
 }
 @media print {
   .fiu-page-header__gov-logo {
@@ -19012,20 +18827,31 @@ b {
 .fiu-page-header__image-wrap {
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: 0 70px;
   position: relative;
+}
+@media (min-width: 40.0625em) {
+  .fiu-page-header__image-wrap {
+    background-position: right;
+  }
 }
 
 .fiu-page-header__image-mask {
   position: absolute;
-  top: 0;
+  top: 70px;
   left: 0;
   width: 100%;
   height: 100%;
   background-image: url("/images/mask.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: top;
+}
+@media (min-width: 40.0625em) {
+  .fiu-page-header__image-mask {
+    background-position: right;
+    top: 0;
+  }
 }
 
 .fiu-pagination {
@@ -20306,8 +20132,7 @@ b {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: 700;
-  font-size: 11px;
+  font-size: 19px;
   letter-spacing: 0;
   color: #fff;
 }
