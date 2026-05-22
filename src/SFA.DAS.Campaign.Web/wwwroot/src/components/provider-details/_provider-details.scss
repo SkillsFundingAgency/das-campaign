@@ -226,18 +226,18 @@ $barmargin: 10px;
   background-color: color.adjust($fiu-employers-brand-colour, $lightness: 35%);
 }
 
-.fiu-provider-details-bars__value--citizens-default > span,
-.fiu-provider-details-bars__value--citizens-excellent > span {
-  background-color: $fiu-citizens-brand-colour;
+.fiu-provider-details-bars__value--apprentices-default > span,
+.fiu-provider-details-bars__value--apprentices-excellent > span {
+  background-color: $fiu-apprentices-brand-colour;
 }
-.fiu-provider-details-bars__value--citizens-good > span {
-  background-color: color.adjust($fiu-citizens-brand-colour, $lightness: 15%);
+.fiu-provider-details-bars__value--apprentices-good > span {
+  background-color: color.adjust($fiu-apprentices-brand-colour, $lightness: 15%);
 }
-.fiu-provider-details-bars__value--citizens-poor > span {
-  background-color: color.adjust($fiu-citizens-brand-colour, $lightness: 25%);
+.fiu-provider-details-bars__value--apprentices-poor > span {
+  background-color: color.adjust($fiu-apprentices-brand-colour, $lightness: 25%);
 }
-.fiu-provider-details-bars__value--citizens-very-poor > span {
-  background-color: color.adjust($fiu-citizens-brand-colour, $lightness: 35%);
+.fiu-provider-details-bars__value--apprentices-very-poor > span {
+  background-color: color.adjust($fiu-apprentices-brand-colour, $lightness: 35%);
 }
 
 .fiu-provider-details-bars__value--default > span {

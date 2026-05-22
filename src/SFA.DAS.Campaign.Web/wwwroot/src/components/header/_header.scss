@@ -97,8 +97,8 @@
   }
 }
 
-.fiu-header__navigation-item--citizens-active:after {
-  @include arrow($fiu-citizens-brand-colour);
+.fiu-header__navigation-item--apprentices-active:after {
+  @include arrow($fiu-apprentices-brand-colour);
 }
 
 .fiu-header__navigation-item--employers-active:after {

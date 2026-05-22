@@ -30,8 +30,8 @@
 
 .fiu-stats-list__stat {
   font-weight: $fiu-font-weight-bold;
-  .fiu-stats-list--citizens & {
-    color: $fiu-citizens-brand-colour;
+  .fiu-stats-list--apprentices & {
+    color: $fiu-apprentices-brand-colour;
   }
   .fiu-stats-list--employers & {
     color: $fiu-employers-brand-colour;

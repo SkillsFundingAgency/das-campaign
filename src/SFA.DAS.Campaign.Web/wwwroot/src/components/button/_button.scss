@@ -20,16 +20,16 @@
   }
 }
 
-.fiu-button--citizens {
-  background: $fiu-citizens-brand-colour;
+.fiu-button--apprentices {
+  background: $fiu-apprentices-brand-colour;
 
   &:hover {
-    background: $fiu-citizens-link-hover-colour;
+    background: $fiu-apprentices-link-hover-colour;
   }
 }
 
 .fiu-template--apprentices .fiu-next-link {
-  @extend .fiu-button--citizens;
+  @extend .fiu-button--apprentices;
 }
 
 .fiu-button--employers {
@@ -70,20 +70,20 @@
     color: $fiu-global-link-colour;
   }
 
-  &.fiu-button--citizens {
-    color: $fiu-citizens-link-colour;
+  &.fiu-button--apprentices {
+    color: $fiu-apprentices-link-colour;
 
     &:hover {
-      color: $fiu-citizens-link-hover-colour;
+      color: $fiu-apprentices-link-hover-colour;
     }
   }
 
-  &.fiu-button--citizens-light {
+  &.fiu-button--apprentices-light {
     border-color: $light-green;
-    color: $fiu-citizens-link-colour;
+    color: $fiu-apprentices-link-colour;
 
     &:hover {
-      color: $fiu-citizens-link-hover-colour;
+      color: $fiu-apprentices-link-hover-colour;
     }
   }
 

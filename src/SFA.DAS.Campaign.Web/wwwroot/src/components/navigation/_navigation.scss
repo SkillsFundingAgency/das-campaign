@@ -5,13 +5,13 @@
   z-index: 10;
   
   &__list {
-    margin: 0;
-    padding: 20px 0;
+    margin: 0 0 0 -10px;
+    padding: 10px 0;
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 10px;
     @include govuk-media-query(tablet) {
-      gap: 40px;
+      gap: 20px;
     }
   }
   
@@ -20,6 +20,8 @@
     text-decoration: none;
     color: #fff;
     font-size: 19px;
+    padding: 10px;
+    display: block;
     -webkit-font-smoothing: unset
   }
 
@@ -31,18 +33,16 @@
   
   &__link:hover {
     text-decoration: underline;
-    text-decoration-thickness: 1px;
+    text-decoration-thickness: 4px;
     text-underline-offset: 15px;
   }
   
   &__link:focus {
-    outline: 3px solid #fd0;
     background-color: #fd0;
     color: #000;
   }
   
   &__link:focus-visible {
-    outline: 3px solid #fd0;
     outline-offset: 0;
     color: #000;
   }

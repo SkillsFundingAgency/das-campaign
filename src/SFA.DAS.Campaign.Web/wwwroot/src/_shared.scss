@@ -4,7 +4,7 @@
 // settings/helpers without prefixes.
 
 @forward 'govuk/index' with (
-  $govuk-gutter: 20px
+  $govuk-gutter: 30px
 );
 
 @forward 'settings/colours-palette';

@@ -3,7 +3,7 @@
 
 <div class="fiu-results-panel" data-id="@Model.VacancyReference" data-lat="@(Model.Location?.Latitude ?? 0)" data-lon="@(Model.Location?.Longitude ?? 0)">
     <h2 class="govuk-heading-m fiu-results-panel__heading">
-        <a href="@Model.VacancyUrl" class="fiu-link fiu-link--citizens">@Model.Title<span class="fiu-visually-hidden"> (Opens in a new window)</span></a>
+        <a href="@Model.VacancyUrl" class="fiu-link fiu-link--apprentices">@Model.Title<span class="fiu-visually-hidden"> (Opens in a new window)</span></a>
     </h2>
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
@@ -45,7 +45,7 @@
     </dl>
 
     <div class="fiu-results-favbar">
-        <a href="@Model.VacancyUrl" class="fiu-link fiu-link--citizens">View this apprenticeship<span class="fiu-visually-hidden"> - @Model.Title (Opens in a new window)</span></a>
+        <a href="@Model.VacancyUrl" class="fiu-link fiu-link--apprentices">View this apprenticeship<span class="fiu-visually-hidden"> - @Model.Title (Opens in a new window)</span></a>
     </div>
 
 </div>

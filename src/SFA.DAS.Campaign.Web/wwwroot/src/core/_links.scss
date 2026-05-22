@@ -22,11 +22,11 @@
   }
 }
 
-.fiu-link--citizens {
-  color: $fiu-citizens-link-colour;
+.fiu-link--apprentices {
+  color: $fiu-apprentices-link-colour;
 
   &:hover {
-    color: $fiu-citizens-link-hover-colour;
+    color: $fiu-apprentices-link-hover-colour;
   }
 
   &:focus {
@@ -35,14 +35,14 @@
 }
 
 .fiu-template--apprentices .app-anchor-links__link {
-  @extend .fiu-link--citizens;
+  @extend .fiu-link--apprentices;
 }
 
-.fiu-link--citizens-light {
-  color: $fiu-citizens-link-colour-light;
+.fiu-link--apprentices-light {
+  color: $fiu-apprentices-link-colour-light;
 
   &:hover {
-    color: color.adjust($fiu-citizens-link-colour-light, $lightness: 15%);
+    color: color.adjust($fiu-apprentices-link-colour-light, $lightness: 15%);
   }
 
   &:focus {
@@ -87,7 +87,7 @@
   font-weight: inherit;
 
   .fiu-template--apprentices & {
-    @extend .fiu-link--citizens;
+    @extend .fiu-link--apprentices;
   }
 
   .fiu-template--employers & {
@@ -100,7 +100,7 @@
 }
 
 .fiu-template--apprentices .fiu-article > h2 > a {
-  @extend .fiu-button--citizens;
+  @extend .fiu-button--apprentices;
 }
 
 .fiu-template--employers .fiu-article > h2 > a {

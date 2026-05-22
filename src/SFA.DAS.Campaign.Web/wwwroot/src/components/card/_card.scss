@@ -22,6 +22,7 @@
   }
 }
 
+
 .fiu-card__category {
   @include govuk-clearfix;
   display: block;
@@ -83,10 +84,10 @@
 }
 
 .fiu-template--apprentices .fiu-card__link {
-  color: $fiu-citizens-link-colour;
+  color: $fiu-apprentices-link-colour;
 
   &:hover {
-    color: $fiu-citizens-link-hover-colour;
+    color: $fiu-apprentices-link-hover-colour;
   }
 
   &:focus {
@@ -232,4 +233,40 @@
 .fiu-interest-card__content {
   @extend .govuk-body;
   color: inherit;
+}
+
+
+
+.fiu-card-homepage {
+  @extend .fiu-card;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px 20px;
+
+  .fiu-panel__tag {
+    margin-bottom: 1rem;
+  }
+  
+  &:hover {
+    background: $fiu-apprentices-brand-colour;
+    .fiu-panel__tag {
+      color: $fiu-apprentices-brand-colour;
+      background: #fff;
+    }
+  }
+  
+  &--employers {
+    &:hover {
+      background: $fiu-employers-brand-colour;
+      .fiu-panel__tag {
+        color: $fiu-employers-brand-colour;
+        background: #fff;
+      }
+    }
+  }
+  
+  .fiu-card__content {
+    color: inherit;
+  }
 }
