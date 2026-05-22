@@ -18207,11 +18207,10 @@ b {
 
 .fiu-footer__row {
   padding: 20px 0;
-  text-align: center;
+  text-align: left;
 }
 @media (min-width: 40.0625em) {
   .fiu-footer__row {
-    text-align: left;
     padding: 30px 0 0;
   }
 }
@@ -18241,12 +18240,6 @@ b {
   overflow: hidden;
   margin: 0;
   color: #fff;
-  font-size: 18px;
-}
-@media (min-width: 40.0625em) {
-  .fiu-footer__contact-list {
-    font-size: 21px;
-  }
 }
 
 .fiu-footer__contact-list-title {
@@ -18257,7 +18250,7 @@ b {
   .fiu-footer__contact-list-title {
     clear: both;
     float: left;
-    margin: 0 10px 0;
+    margin: 0 10px 0 0;
     min-width: 50px;
   }
 }
@@ -18308,8 +18301,7 @@ b {
 
 .fiu-footer__apprenticeship-logo-wrap {
   text-align: center;
-  padding: 20px 0;
-  border-bottom: 1px solid #6f777b;
+  padding: 40px 0 20px;
 }
 @media (min-width: 40.0625em) {
   .fiu-footer__apprenticeship-logo-wrap {
@@ -18374,7 +18366,13 @@ b {
 .fiu-footer__list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 2rem 0 0 0;
+}
+@media (min-width: 40.0625em) {
+  .fiu-footer__inline-list,
+  .fiu-footer__list {
+    margin-left: -0.7em;
+  }
 }
 
 .fiu-footer__inline-list-item {
@@ -18413,10 +18411,14 @@ b {
   }
 }
 
-@media (min-width: 40.0625em) {
-  .fiu-footer__content {
-    text-align: right;
-  }
+.fiu-footer__inline-list-title {
+  padding-left: 0;
+  display: block;
+  border-right: 0;
+}
+
+.fiu-footer__inline-list-title + .fiu-footer__inline-list-item {
+  padding-left: 0;
 }
 
 .fiu-footer__copyright {
