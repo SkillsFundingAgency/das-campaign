@@ -1,7 +1,5 @@
 @use '../shared' as *;
 
-.fiu-homepage-row-highlight {
-  background: $fiu-body-colour;
-  border-top: 5px solid $lighter-grey;
-  padding: 20px 0 1px;
+.fiu-homepage-card-container {
+  margin-bottom: 2rem;
 }

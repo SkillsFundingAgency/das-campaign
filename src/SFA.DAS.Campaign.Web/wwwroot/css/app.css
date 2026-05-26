@@ -18199,10 +18199,10 @@ b {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #000;
-  color: #cecece;
+  color: #ffffff;
   font-size: 18px;
   line-height: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .fiu-footer__row {
@@ -18289,6 +18289,7 @@ b {
 @media (min-width: 40.0625em) {
   .fiu-footer__section-break {
     margin-top: 20px;
+    margin-bottom: 30px;
   }
 }
 
@@ -18359,17 +18360,15 @@ b {
   }
 }
 .fiu-footer__link {
-  color: #cecece;
+  color: #ffffff;
 }
 
-.fiu-footer__inline-list,
 .fiu-footer__list {
   list-style: none;
   padding: 0;
   margin: 2rem 0 0 0;
 }
 @media (min-width: 40.0625em) {
-  .fiu-footer__inline-list,
   .fiu-footer__list {
     margin-left: -0.7em;
   }
@@ -18393,7 +18392,7 @@ b {
 
 .fiu-footer__inline-list-title,
 .fiu-footer__list-item {
-  margin-bottom: 0.7em;
+  margin-bottom: 1rem;
   display: block;
 }
 @media (min-width: 40.0625em) {
@@ -18429,6 +18428,26 @@ b {
   .fiu-footer__copyright {
     margin-bottom: 0;
   }
+}
+
+.govuk-footer__copyright-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 40.0625em) {
+  .govuk-footer__copyright-logo {
+    float: right;
+  }
+}
+
+.govuk-footer__copyright-logo:link, .govuk-footer__copyright-logo:visited {
+  color: #ffffff;
+}
+
+.govuk-footer__copyright-logo:focus,
+.govuk-footer__copyright-logo:active {
+  color: #0b0c0c;
 }
 
 .fiu-govuk-panel {
@@ -20233,10 +20252,8 @@ a.fiu-tag:focus {
   width: 100%;
 }
 
-.fiu-homepage-row-highlight {
-  background: #f3f3f3;
-  border-top: 5px solid #e6e8ea;
-  padding: 20px 0 1px;
+.fiu-homepage-card-container {
+  margin-bottom: 2rem;
 }
 
 .fiu-roadmap {
