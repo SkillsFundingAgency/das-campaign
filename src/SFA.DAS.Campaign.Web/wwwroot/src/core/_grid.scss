@@ -29,7 +29,4 @@
   @include govuk-media-query(700px) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @include govuk-media-query(900px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }

@@ -26,7 +26,22 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         [JsonProperty("headerImage")]
         public Item HeaderImage { get; set; }
 
+        [JsonProperty("cardsTitle")]
+        public string CardsTitle { get; set; }
+
         [JsonProperty("cards")]
         public List<Card> Cards { get; set; }
+
+        [JsonProperty("cardsTitle2")]
+        public string CardsTitle2 { get; set; }
+
+        [JsonProperty("cards2")]
+        public List<Card> Cards2 { get; set; }
+
+        [JsonProperty("cardsTitle3")]
+        public string CardsTitle3 { get; set; }
+
+        [JsonProperty("cards3")]
+        public List<Card> Cards3 { get; set; }
     }
 }

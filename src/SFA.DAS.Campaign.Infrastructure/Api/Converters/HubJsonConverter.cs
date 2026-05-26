@@ -71,7 +71,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
                 },
                 Content = new Hub
                 {
-                    Summary = cmsContent.Hub.PageAttributes.Summary
+                    Summary = cmsContent.Hub.PageAttributes.Summary,
+                    CardsTitle = cmsContent.Hub.MainContent?.CardsTitle,
+                    CardsTitle2 = cmsContent.Hub.MainContent?.CardsTitle2,
+                    CardsTitle3 = cmsContent.Hub.MainContent?.CardsTitle3
                 }
             };
 
@@ -94,12 +97,26 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         }
         private static void AddCards(PageRoot cmsContent, Page<Hub> model)
         {
-            if (cmsContent.Hub.MainContent.Cards == null || !cmsContent.Hub.MainContent.Cards.Any())
+            var mainContent = cmsContent.Hub.MainContent;
+            if (mainContent == null)
             {
                 return;
             }
 
-            model.Content.Cards = cmsContent.Hub.MainContent.Cards;
+            if (mainContent.Cards != null && mainContent.Cards.Any())
+            {
+                model.Content.Cards = mainContent.Cards;
+            }
+
+            if (mainContent.Cards2 != null && mainContent.Cards2.Any())
+            {
+                model.Content.Cards2 = mainContent.Cards2;
+            }
+
+            if (mainContent.Cards3 != null && mainContent.Cards3.Any())
+            {
+                model.Content.Cards3 = mainContent.Cards3;
+            }
         }
     }
 }
