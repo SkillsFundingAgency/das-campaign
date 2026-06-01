@@ -12,37 +12,31 @@
     ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
 }
 
+@functions {
+    void RenderCardGroup(string title, IReadOnlyCollection<SFA.DAS.Campaign.Domain.Content.HtmlControl.Card> cards)
+    {
+        if (cards == null || !cards.Any())
+        {
+            return;
+        }
 
+        if (!string.IsNullOrWhiteSpace(title))
+        {
+            <h2 class="govuk-heading-l fiu-card-group__title">@title</h2>
+        }
+
+        <div class="fiu-grid-layout fiu-card-group">
+            @foreach (var card in cards)
+            {
+                @card.CardToHtml()
+            }
+        </div>
+    }
+}
 <div class="fiu-grad-row">
-    <div class="fiu-width-container fiu-grid-layout">
-        <div class="fiu-card">
-            <h3 class="fiu-card__heading">Career starter apprenticeships</h3>
-            <p class="fiu-card__content">A range of opportunities for those with limited work experience. Take a look at the type of apprenticeships available and what each role entails.</p>
-            <a href="/apprentices/career-starter-apprenticeships" class="fiu-card__link">Learn more <span class="fiu-vh"> about Career starter apprenticeships</span></a>
-        </div>
-        @{
-            var firstThree = Model.Content.Cards.Take(2);
-            for (var i = 0; i < firstThree.Count(); i++)
-            {
-                @Model.Content.Cards[i].CardToHtml();
-            }
-        }
-        @Html.Partial("./Panels/_BrowseApprenticeships", "")
-        @{
-            var items = Model.Content.Cards.Skip(2).Take(Model.Content.Cards.Count - 1);
-            for (var i = 0; i < items.Count(); i++)
-            {
-                @items.ElementAt(i).CardToHtml();
-            }
-        }
-    </div>
     <div class="fiu-width-container">
-        <hr class="fiu-section-break fiu-section-break--l" />
-        <div class="govuk-grid-row fiu-flex-row">
-            <div class="govuk-grid-column-full">
-                <partial name="Panels/_GetFreeHelpAndSupport" />
-            </div>
-        </div>
-        <hr class="fiu-section-break fiu-section-break--l" />
-        </div>
+        @{ RenderCardGroup(Model.Content.CardsTitle, Model.Content.Cards); }
+        @{ RenderCardGroup(Model.Content.CardsTitle2, Model.Content.Cards2); }
+        @{ RenderCardGroup(Model.Content.CardsTitle3, Model.Content.Cards3); }
     </div>
+</div>

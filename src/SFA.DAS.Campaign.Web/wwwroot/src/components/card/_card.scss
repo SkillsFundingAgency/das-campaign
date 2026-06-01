@@ -29,15 +29,6 @@
   }
 }
 
-.fiu-card-group--employers {
-  .fiu-card {
-    &:active,
-    &:hover {
-      background: $fiu-employers-brand-colour;
-      border-color: $fiu-employers-link-hover-colour;
-    }
-  }
-}
 
 .fiu-card__heading {
   margin: 0 0 0.7em 0;
@@ -47,6 +38,7 @@
   text-decoration: underline;
   text-decoration-thickness: max(1px, .0625rem);
   text-underline-offset: 0.1578em;
+  color: $fiu-apprentices-brand-colour;
   @include govuk-media-query($from: tablet) {
     font-size: 18px;
   }
@@ -55,10 +47,24 @@
   }
 }
 
+.fiu-card-group--employers {
+  .fiu-card {
+    &:active,
+    &:hover {
+      background: $fiu-employers-brand-colour;
+      border-color: $fiu-employers-link-hover-colour;
+    }
+    .fiu-card__heading {
+      color: $fiu-employers-brand-colour;
+    }
+  }
+}
+
 .fiu-card {
   &:hover {
     .fiu-card__heading {
       text-decoration-thickness: 2px;
+      color: #fff;
     }
   }
 }

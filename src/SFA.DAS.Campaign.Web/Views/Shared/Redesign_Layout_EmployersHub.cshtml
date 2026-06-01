@@ -1,9 +1,13 @@
 @{
     Layout = "Redesign_Layout";
     ViewBag.Section = "employers";
+    
     var headingImageStyle = ViewBag.HeadingImage != null
         ? $"background-image: url('{ViewBag.HeadingImage}')"
         : null;
+    var headingColWidth = ViewBag.HeadingImage != null
+        ? "one-half"
+        : "full";
 }
 
 @if (Model.BannerModels != null && Model.BannerModels.Count > 0)
@@ -21,7 +25,7 @@
                 <partial name="_Navigation" model="@("employers")" />
                 <span class="fiu-page-header__image-mask"></span>
                 <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-half fiu-page-header__wrap">
+                    <div class="govuk-grid-column-@headingColWidth fiu-page-header__wrap">
                         <strong class="fiu-tag fiu-tag--employers fiu-page-header__tag fiu-feature-text">Employers</strong>
                         <h1 class="govuk-heading-xl fiu-page-heading__title">@ViewBag.PageTitle</h1>
                         @if (ViewBag.PageSummary != null)

@@ -17763,11 +17763,6 @@ b {
   }
 }
 
-.fiu-card-group--employers .fiu-card:active, .fiu-card-group--employers .fiu-card-homepage:active, .fiu-card-group--employers .fiu-card:hover, .fiu-card-group--employers .fiu-card-homepage:hover {
-  background: #4d43a3;
-  border-color: rgb(59.9260869565, 52.1434782609, 126.8565217391);
-}
-
 .fiu-card__heading {
   margin: 0 0 0.7em 0;
   font-size: 20px;
@@ -17776,6 +17771,7 @@ b {
   text-decoration: underline;
   text-decoration-thickness: max(1px, 0.0625rem);
   text-underline-offset: 0.1578em;
+  color: #2e8540;
 }
 @media (min-width: 40.0625em) {
   .fiu-card__heading {
@@ -17788,8 +17784,17 @@ b {
   }
 }
 
+.fiu-card-group--employers .fiu-card:active, .fiu-card-group--employers .fiu-card-homepage:active, .fiu-card-group--employers .fiu-card:hover, .fiu-card-group--employers .fiu-card-homepage:hover {
+  background: #4d43a3;
+  border-color: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+}
+.fiu-card-group--employers .fiu-card .fiu-card__heading, .fiu-card-group--employers .fiu-card-homepage .fiu-card__heading {
+  color: #4d43a3;
+}
+
 .fiu-card:hover .fiu-card__heading, .fiu-card-homepage:hover .fiu-card__heading {
   text-decoration-thickness: 2px;
+  color: #fff;
 }
 
 .fiu-card__content {

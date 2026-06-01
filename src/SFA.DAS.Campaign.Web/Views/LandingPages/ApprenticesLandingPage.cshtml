@@ -12,32 +12,16 @@
 }
 
 <div class="fiu-grad-row">
-    @if (ViewBag.HeadingImage == null)
-    {
-        <span class="fiu-grad-row__bg"></span>
-    }
-    <div class="fiu-width-container fiu-grid-layout govuk-!-margin-bottom-8">
-
-
-            @{
-                int noOfCardsinFirstRow = 3;
-                var firstCards = Model.Content.Cards.Take(noOfCardsinFirstRow);
-                for (var i = 0; i < firstCards.Count(); i++)
-                {
-                    @firstCards.ElementAt(i).CardToHtml()
-                    ;
-                }
-            }
-      
-                @Html.Partial("./Panels/_BrowseApprenticeships", "")
-  
+    <div class="fiu-width-container">
+        <div class="fiu-grid-layout fiu-card-group">
         @{
-            var items = Model.Content.Cards.Skip(noOfCardsinFirstRow).Take(Model.Content.Cards.Count - noOfCardsinFirstRow);
+            var items = Model.Content.Cards;
 
             for (var i = 0; i < items.Count(); i++)
             {
                 @items.ElementAt(i).CardToHtml()
             }
         }
+        </div>
     </div>
 </div>
