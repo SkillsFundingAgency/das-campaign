@@ -17806,6 +17806,16 @@ b {
   color: inherit;
 }
 
+.fiu-card__img {
+  display: block;
+  height: 160px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 7px 7px 0 0;
+  margin: -20px -20px 20px;
+}
+
 .fiu-card-homepage {
   background: #333;
   color: #fff;

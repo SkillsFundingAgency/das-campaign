@@ -19,8 +19,13 @@ namespace SFA.DAS.Campaign.Web.Renderers
             card.AddCssClass("fiu-card");
             card.Attributes.Add("href", control?.Url.ToLower());
 
-            card.InnerHtml.AppendHtml($"<h3 class=\"fiu-card__heading\">{control?.Title}</h3>");
-            card.InnerHtml.AppendHtml($"<p class=\"fiu-card__content\">{control?.Summary}</p>");
+            if (control?.CardImage?.Url != null)
+            {
+                card.InnerHtml.AppendHtml($"<span class=\"fiu-card__img\" style=\"background-image:url({control.CardImage.Url})\"></span>");
+            }
+
+            card.InnerHtml.AppendHtml($"<div class=\"fiu-card__body\"><h3 class=\"fiu-card__heading\">{control?.Title}</h3>");
+            card.InnerHtml.AppendHtml($"<p class=\"fiu-card__content\">{control?.Summary}</p></div>");
             string result = card.WriteString();
 
             return new HtmlString(result);
