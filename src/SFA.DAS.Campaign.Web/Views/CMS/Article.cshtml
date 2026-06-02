@@ -5,14 +5,16 @@
     ViewBag.Title = Model.Title;
     ViewBag.MetaDesc = Model.MetaContent.MetaDescription;
     Layout = $"Redesign_Layout_{Model.HubType.ToString()}Article";
-    ViewBag.PageTitle = Model.Title;
+    ViewBag.PageTitle = Model.Content.ArticleType == "Interest" ? Model.Title + " apprenticeships"  : Model.Title;
     ViewBag.HeadingImage = Model.Content?.HeaderImage?.Url;
     ViewBag.ArticleType = Model.Content?.ArticleType;
     ViewBag.ParentPageUrl = Model.Breadcrumbs?.ParentPageUrl;
     ViewBag.HasNotGotTabs = Model.Content?.TabbedContents is null;
 }
-@ViewBag.ArticleType
+
+
 <article class="fiu-article">@Model.Content?.PageControls.ToHtml()</article>
+
 
 @Model.Content?.TabbedContents?.TabbedContentToHtml(Context, TempData)
 
