@@ -16622,6 +16622,27 @@
   }
 }
 
+@media (min-width: 43.75em) {
+  .fiu-grid-layout--4 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .fiu-grid-layout--4 .fiu-card {
+    grid-column: span 3;
+  }
+}
+
+@media (min-width: 43.75em) {
+  .fiu-grid-layout--5 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .fiu-grid-layout--5 .fiu-card {
+    grid-column: span 3;
+  }
+  .fiu-grid-layout--5 .fiu-card:nth-child(-n+3) {
+    grid-column: span 2;
+  }
+}
+
 .fiu-article-image {
   max-width: 100%;
   margin-bottom: 20px;
@@ -18592,7 +18613,7 @@ b {
 }
 
 .fiu-page-heading__title {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: inherit;
 }
 @media print {

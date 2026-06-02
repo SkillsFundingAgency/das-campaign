@@ -13,7 +13,7 @@
 }
 
 @functions {
-    void RenderCardGroup(string title, IReadOnlyCollection<SFA.DAS.Campaign.Domain.Content.HtmlControl.Card> cards)
+    void RenderCardGroup(string title, IReadOnlyCollection<SFA.DAS.Campaign.Domain.Content.HtmlControl.Card> cards, int maxCards = 100)
     {
         if (cards == null || !cards.Any())
         {
@@ -24,9 +24,11 @@
         {
             <h2 class="govuk-heading-l fiu-card-group__title">@title</h2>
         }
+        
+        var cardCount = Math.Min(cards.Count, maxCards);
 
-        <div class="fiu-grid-layout fiu-card-group">
-            @foreach (var card in cards)
+        <div class="fiu-grid-layout fiu-grid-layout--@cardCount fiu-card-group">
+            @foreach (var card in cards.Take(cardCount))
             {
                 @card.CardToHtml()
             }
@@ -35,8 +37,10 @@
 }
 <div class="fiu-grad-row">
     <div class="fiu-width-container">
-        @{ RenderCardGroup(Model.Content.CardsTitle, Model.Content.Cards); }
+        @{ RenderCardGroup(Model.Content.CardsTitle, Model.Content.Cards, 5); }
+        <partial name="Panels/_FindAnApprenticeship" />
         @{ RenderCardGroup(Model.Content.CardsTitle2, Model.Content.Cards2); }
         @{ RenderCardGroup(Model.Content.CardsTitle3, Model.Content.Cards3); }
+        <partial name="Panels/_GetFreeHelpAndSupport" />
     </div>
 </div>

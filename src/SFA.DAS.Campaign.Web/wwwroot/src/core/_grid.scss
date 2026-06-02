@@ -30,3 +30,24 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.fiu-grid-layout--4 {
+  @include govuk-media-query(700px) {
+    grid-template-columns: repeat(6, 1fr);
+    .fiu-card {
+      grid-column: span 3;
+    }
+  }
+}
+
+.fiu-grid-layout--5 {
+  @include govuk-media-query(700px) {
+    grid-template-columns: repeat(6, 1fr);
+    .fiu-card {
+      grid-column: span 3;
+    }
+    .fiu-card:nth-child(-n + 3) {
+      grid-column: span 2;
+    }
+  }
+}

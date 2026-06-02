@@ -21,7 +21,7 @@ ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
          <h2 class="govuk-heading-l fiu-card-group__title">@title</h2>
       }
 
-      <div class="fiu-grid-layout fiu-card-group fiu-card-group--employers">
+      <div class="fiu-grid-layout fiu-grid-layout--@cards.Count fiu-card-group fiu-card-group--employers ">
          @foreach (var card in cards)
          {
             @card.CardToHtml()
