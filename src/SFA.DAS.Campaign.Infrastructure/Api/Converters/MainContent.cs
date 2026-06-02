@@ -9,5 +9,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             Items = new List<Item>();
         }
         public List<Item> Items { get; set; }
+        public Item HeaderImage { get; set; }
     }
 }

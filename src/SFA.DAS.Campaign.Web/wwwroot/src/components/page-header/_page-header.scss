@@ -15,9 +15,13 @@
 }
 
 .fiu-page-header__wrap {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 20px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .govuk-back-link {
@@ -28,6 +32,7 @@
 }
 
 .fiu-page-header__tag {
+  margin-top: 15px;
   margin-bottom: 15px;
   @include govuk-media-query($media-type: print) {
     display: none;
@@ -113,4 +118,8 @@
   @include govuk-media-query(tablet) {
     top: 0;
   }
+}
+
+.fiu-page-header__back {
+  display: block;
 }

@@ -8,5 +8,7 @@
         public string Slug { get; set; }
         public string HubType { get; set; }
         public string Summary { get; set; }
+        
+        public string ArticleType { get; set; }
     }
 }

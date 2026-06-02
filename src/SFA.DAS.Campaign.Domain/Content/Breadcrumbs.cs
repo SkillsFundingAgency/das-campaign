@@ -9,5 +9,9 @@ namespace SFA.DAS.Campaign.Domain.Content
         public string HubPage { get; set; }
         public string LandingPage { get; set; }
         public string LandingPageSlug { get; set; }
+
+        public string ParentPageUrl => string.IsNullOrWhiteSpace(LandingPageSlug)
+            ? null
+            : $"/{HubPage}/{LandingPageSlug}".ToLower();
     }
 }
