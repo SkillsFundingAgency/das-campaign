@@ -1,6 +1,8 @@
+@using System.Linq
 @using SFA.DAS.Campaign.Web.Helpers
+@using SFA.DAS.Campaign.Web.Renderers
 @model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.Article>
-
+@using SFA.DAS.Campaign.Domain.Content.HtmlControl
 @{
     ViewBag.Title = Model.Title;
     ViewBag.MetaDesc = Model.MetaContent.MetaDescription;
@@ -12,14 +14,73 @@
     ViewBag.HasNotGotTabs = Model.Content?.TabbedContents is null;
 }
 
-
-<article class="fiu-article">@Model.Content?.PageControls.ToHtml()</article>
-
-@Model.Content?.TabbedContents?.TabbedContentToHtml(Context, TempData)
-
-@if (Model.Attachments != null && Model.Attachments.Any())
-{
-    <div class="fiu-attachment__wrap">
-        @Model.Attachments.ToHtml()
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+    @if (Model.Content?.TabbedContents != null)
+    {
+        <h2 class="govuk-heading-m">On this page</h2>
+        <ul id="nav-menu" class="govuk-list govuk-list--spaced app-anchor-links app-anchor-links__list">
+            @foreach (var tab in Model.Content.TabbedContents)
+            {
+                <li class="app-anchor-links__list-item">
+                    <a class="govuk-link govuk-link--no-visited-state app-anchor-links__link" href="#@tab.TabTitle.EnsureHrefUsableTitle()">@tab.TabTitle</a>
+                </li>
+            }
+        </ul>
+    }
+    @if ((string)ViewBag.ArticleType == "Interest")
+    {
+        var relatedPages = (IEnumerable<ArticleRelated>)Model.RelatedPages ?? Enumerable.Empty<ArticleRelated>();
+        var links = relatedPages
+            .Select(p => new { p.Title, p.Url, IsActive = false })
+            .Append(new { Title = (string)Model.Title, Url = (string)null, IsActive = true })
+            .OrderBy(p => p.Title, StringComparer.CurrentCultureIgnoreCase);
+        
+        <h2 class="govuk-heading-m">Areas of interest</h2>
+        <ul class="govuk-list govuk-list--spaced app-anchor-links__list">
+            @foreach (var link in links)
+            {
+                <li class="app-anchor-links__list-item">
+                    @if (link.IsActive)
+                    {
+                        <strong>@link.Title</strong>
+                    }
+                    else
+                    {
+                        <a href="@link.Url" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@link.Title</a>
+                    }
+                </li>
+            }
+        </ul>
+    }
     </div>
-}
+    <div class="govuk-grid-column-two-thirds">
+        <article class="fiu-article">@Model.Content?.PageControls.ToHtml()</article>
+        @if (Model.Content?.TabbedContents != null)
+        {
+            @foreach (var tab in Model.Content.TabbedContents)
+            {
+                <div class="app-anchor-links__panel" id="@tab.TabTitle.EnsureHrefUsableTitle()">
+                    <article class="fiu-article">
+                        @tab.Content.ToHtml()
+                        @if (tab.FindTraineeShip)
+                        {
+                            @(await tab.RenderViewAsync("~/Views/Shared/Panels/_FindTraineeship.cshtml", Context, TempData))
+                        }
+                    </article>
+                    <a href="#nav-menu" class="govuk-back-link govuk-!-margin-top-0  govuk-!-margin-bottom-5 app-back-to-top">Back to top</a>
+                </div>
+            }
+        }
+        @if (Model.Attachments != null && Model.Attachments.Any())
+        {
+            <div class="fiu-attachment__wrap">
+                @Model.Attachments.ToHtml()
+            </div>
+        }
+
+    </div>
+</div>
+
+
+

@@ -1,3 +1,5 @@
+@using System.Linq
+@using SFA.DAS.Campaign.Domain.Content.HtmlControl
 @{
     Layout = "Redesign_Layout_ApprenticesHub";
     ViewBag.PanelsInNarrowColumn = true;
@@ -5,19 +7,6 @@
 }
 
 <div class="fiu-width-container">
-    <div class="govuk-grid-row">
-        @if (ViewBag.HasNotGotTabs == false)
-        {
-            <div class="govuk-grid-column-full">
-                @RenderBody()
-            </div>
-        }
-        else
-        {
-            <div class="govuk-grid-column-two-thirds">
-                @RenderBody()
-            </div>
-        }
-    </div>
+    @RenderBody()
     <hr class="govuk-section-break govuk-section-break--xl" />
 </div>

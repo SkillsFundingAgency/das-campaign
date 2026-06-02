@@ -73,6 +73,7 @@
   @extend .govuk-body;
   @include fiu-typography-common;
   color: inherit;
+  margin-bottom: 0;
 }
 
 
