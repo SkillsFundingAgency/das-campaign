@@ -19,7 +19,7 @@
     @if (Model.Content?.TabbedContents != null)
     {
         <h2 class="govuk-heading-m">On this page</h2>
-        <ul id="nav-menu" class="govuk-list govuk-list--spaced app-anchor-links app-anchor-links__list">
+        <ul class="govuk-list govuk-list--spaced app-anchor-links app-anchor-links__list">
             @foreach (var tab in Model.Content.TabbedContents)
             {
                 <li class="app-anchor-links__list-item">
@@ -33,22 +33,17 @@
         var relatedPages = (IEnumerable<ArticleRelated>)Model.RelatedPages ?? Enumerable.Empty<ArticleRelated>();
         var links = relatedPages
             .Select(p => new { p.Title, p.Url, IsActive = false })
-            .Append(new { Title = (string)Model.Title, Url = (string)null, IsActive = true })
+            .Append(new { Title = (string)Model.Title, Url = Context.Request.Path.Value, IsActive = true })
             .OrderBy(p => p.Title, StringComparer.CurrentCultureIgnoreCase);
-        
-        <h2 class="govuk-heading-m">Areas of interest</h2>
-        <ul class="govuk-list govuk-list--spaced app-anchor-links__list">
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-9">Areas of interest</h2>
+        <ul class="govuk-list govuk-list--spaced app-anchor-links__list app-anchor-links__list--no-marker">
             @foreach (var link in links)
             {
                 <li class="app-anchor-links__list-item">
-                    @if (link.IsActive)
-                    {
-                        <strong>@link.Title</strong>
-                    }
-                    else
-                    {
-                        <a href="@link.Url" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@link.Title</a>
-                    }
+                    <a href="@link.Url"
+                       class="govuk-link govuk-link--no-visited-state app-anchor-links__link @(link.IsActive ? "app-anchor-links__link--active" : null)"
+                       aria-current="@(link.IsActive ? "page" : null)">@link.Title</a>
                 </li>
             }
         </ul>
@@ -68,7 +63,7 @@
                             @(await tab.RenderViewAsync("~/Views/Shared/Panels/_FindTraineeship.cshtml", Context, TempData))
                         }
                     </article>
-                    <a href="#nav-menu" class="govuk-back-link govuk-!-margin-top-0  govuk-!-margin-bottom-5 app-back-to-top">Back to top</a>
+                    <a href="#main" class="fiu-back-link--top">Back to top</a>
                 </div>
             }
         }

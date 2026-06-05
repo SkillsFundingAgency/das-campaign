@@ -16,21 +16,28 @@
 }
 
 .fiu-back-link--top {
-  @extend .govuk-back-link;
+  @include govuk-link-common;
   @include fiu-typography-common;
-  text-transform: uppercase;
-  font-size: 15px;
-  color: $black;
-  -webkit-font-smoothing: auto;
   margin: 0;
-  position: relative;
-  top: -20px;
-  &:link,
-  &:active,
-  &:visited {
-    color: $black;
+  font-size: 19px;
+  color: $fiu-apprentices-link-colour;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    margin-right: govuk-spacing(1);
+    background-color: currentColor;
+    -webkit-mask: url('../assets/images/icon-back-to-top.svg') no-repeat center / contain;
+    mask: url('../assets/images/icon-back-to-top.svg') no-repeat center / contain;
   }
-  &:focus {
-    @include govuk-focused-text;
+}
+
+.fiu-template--employers {
+  .fiu-back-link--top {
+    color: $fiu-employers-brand-colour;
+    &:focus {
+      @include govuk-focused-text;
+    }
   }
 }

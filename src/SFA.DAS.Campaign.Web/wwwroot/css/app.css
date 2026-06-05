@@ -2687,39 +2687,39 @@
 
 
 
-.govuk-back-link, .fiu-back-link, .fiu-back-link--top {
+.govuk-back-link, .fiu-back-link {
   font-size: 1rem;
   line-height: 1.25;
 }
 @media print {
-  .govuk-back-link, .fiu-back-link, .fiu-back-link--top {
+  .govuk-back-link, .fiu-back-link {
     font-size: 14pt;
     line-height: 1.2;
   }
 }
-.govuk-back-link, .fiu-back-link, .fiu-back-link--top {
+.govuk-back-link, .fiu-back-link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 @media print {
-  .govuk-back-link, .fiu-back-link, .fiu-back-link--top {
+  .govuk-back-link, .fiu-back-link {
     font-family: sans-serif;
   }
 }
-.govuk-back-link, .fiu-back-link, .fiu-back-link--top {
+.govuk-back-link, .fiu-back-link {
   text-decoration: underline;
   text-decoration-thickness: max(1px, .0625rem);
   text-underline-offset: 0.1578em;
 }
-.govuk-back-link:hover, .fiu-back-link:hover, .fiu-back-link--top:hover {
+.govuk-back-link:hover, .fiu-back-link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
   -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
   -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
-.govuk-back-link:focus, .fiu-back-link:focus, .fiu-back-link--top:focus {
+.govuk-back-link:focus, .fiu-back-link:focus {
   outline: 3px solid transparent;
   color: var(--govuk-focus-text-colour, #0b0c0c);
   background-color: var(--govuk-focus-colour, #ffdd00);
@@ -2727,18 +2727,18 @@
   text-decoration: none;
 }
 @supports not (text-wrap: balance) {
-  .govuk-back-link:focus, .fiu-back-link:focus, .fiu-back-link--top:focus {
+  .govuk-back-link:focus, .fiu-back-link:focus {
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
-.govuk-back-link:link, .fiu-back-link:link, .fiu-back-link--top:link, .govuk-back-link:visited, .fiu-back-link:visited, .fiu-back-link--top:visited, .govuk-back-link:active, .fiu-back-link:active, .fiu-back-link--top:active {
+.govuk-back-link:link, .fiu-back-link:link, .govuk-back-link:visited, .fiu-back-link:visited, .govuk-back-link:active, .fiu-back-link:active {
   color: var(--govuk-text-colour, #0b0c0c);
 }
-.govuk-back-link:focus, .fiu-back-link:focus, .fiu-back-link--top:focus {
+.govuk-back-link:focus, .fiu-back-link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
-.govuk-back-link, .fiu-back-link, .fiu-back-link--top {
+.govuk-back-link, .fiu-back-link {
   display: inline-block;
   position: relative;
   margin-top: 15px;
@@ -2746,7 +2746,7 @@
   padding-left: 0.875em;
 }
 
-.govuk-back-link::before, .fiu-back-link::before, .fiu-back-link--top::before {
+.govuk-back-link::before, .fiu-back-link::before {
   content: "";
   display: block;
   position: absolute;
@@ -2762,17 +2762,17 @@
   border-color: var(--govuk-secondary-text-colour, #484949);
 }
 @supports (border-width: max(0px)) {
-  .govuk-back-link::before, .fiu-back-link::before, .fiu-back-link--top::before {
+  .govuk-back-link::before, .fiu-back-link::before {
     border-width: max(1px, 0.0625em) max(1px, 0.0625em) 0 0;
     font-size: max(16px, 1em);
   }
 }
 
-.govuk-back-link:focus::before, .fiu-back-link:focus::before, .fiu-back-link--top:focus::before {
+.govuk-back-link:focus::before, .fiu-back-link:focus::before {
   border-color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 
-.govuk-back-link::after, .fiu-back-link::after, .fiu-back-link--top::after {
+.govuk-back-link::after, .fiu-back-link::after {
   content: "";
   position: absolute;
   top: -14px;
@@ -16595,7 +16595,7 @@
 @media (min-width: 40.0625em) {
   .fiu-flex-row {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 1.875rem;
   }
 }
 
@@ -16608,8 +16608,8 @@
 .fiu-grid-layout {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 1.875rem;
+  grid-row-gap: 1.875rem;
 }
 @media (min-width: 27.5em) {
   .fiu-grid-layout {
@@ -17126,7 +17126,7 @@ b {
 }
 
 .fiu-feature-text {
-  transform: rotate(-6deg) skewX(-6deg);
+  transform: rotate(-6deg);
 }
 
 @media (min-width: 40.0625em) {
@@ -17245,6 +17245,41 @@ b {
   clip-path: inset(50%) !important;
   border: 0 !important;
   white-space: nowrap !important;
+}
+
+.app-anchor-links__panel {
+  margin-bottom: 2rem;
+}
+
+.app-anchor-links__list {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+
+.app-anchor-links__list-item {
+  margin-bottom: 10px;
+}
+.app-anchor-links__list-item:last-child {
+  margin-bottom: 0;
+}
+
+.app-anchor-links__link::before {
+  content: "–";
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.app-anchor-links__list--no-marker .app-anchor-links__link::before {
+  content: none;
+}
+.app-anchor-links__list--no-marker .app-anchor-links__link {
+  display: inline-block;
+  padding-left: 10px;
+  border-left: 5px solid transparent;
+}
+.app-anchor-links__list--no-marker .app-anchor-links__link--active {
+  border-left-color: currentColor;
 }
 
 .fiu-template--employers .fiu-main-wrapper .fiu-article {
@@ -17547,21 +17582,26 @@ b {
 }
 
 .fiu-back-link--top {
-  font-family: nobel, sans-serif;
-  font-weight: 300;
-  font-style: normal;
+  font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-transform: uppercase;
-  font-size: 15px;
-  color: #000;
-  -webkit-font-smoothing: auto;
-  margin: 0;
-  position: relative;
-  top: -20px;
 }
-.fiu-back-link--top:link, .fiu-back-link--top:active, .fiu-back-link--top:visited {
-  color: #000;
+@media print {
+  .fiu-back-link--top {
+    font-family: sans-serif;
+  }
+}
+.fiu-back-link--top {
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, .0625rem);
+  text-underline-offset: 0.1578em;
+}
+.fiu-back-link--top:hover {
+  text-decoration-thickness: max(3px, .1875rem, .12em);
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
+  -webkit-text-decoration-skip: none;
+  text-decoration-skip: none;
 }
 .fiu-back-link--top:focus {
   outline: 3px solid transparent;
@@ -17572,6 +17612,43 @@ b {
 }
 @supports not (text-wrap: balance) {
   .fiu-back-link--top:focus {
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+}
+.fiu-back-link--top {
+  font-family: nobel, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-size: 19px;
+  color: #2e8540;
+}
+.fiu-back-link--top::before {
+  content: "";
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-right: 5px;
+  background-color: currentColor;
+  -webkit-mask: url("../assets/images/icon-back-to-top.svg") no-repeat center/contain;
+  mask: url("../assets/images/icon-back-to-top.svg") no-repeat center/contain;
+}
+
+.fiu-template--employers .fiu-back-link--top {
+  color: #4d43a3;
+}
+.fiu-template--employers .fiu-back-link--top:focus {
+  outline: 3px solid transparent;
+  color: var(--govuk-focus-text-colour, #0b0c0c);
+  background-color: var(--govuk-focus-colour, #ffdd00);
+  box-shadow: 0 -2px var(--govuk-focus-colour, #ffdd00), 0 4px var(--govuk-focus-text-colour, #0b0c0c);
+  text-decoration: none;
+}
+@supports not (text-wrap: balance) {
+  .fiu-template--employers .fiu-back-link--top:focus {
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
@@ -17766,19 +17843,20 @@ b {
   border: 1px solid #cbd0d3;
   border-radius: 7px;
 }
-.fiu-card:focus, .fiu-card-homepage:focus {
-  outline: 3px solid var(--govuk-focus-colour, #ffdd00);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
-}
-.fiu-card:active, .fiu-card-homepage:active, .fiu-card:hover, .fiu-card-homepage:hover {
-  background: #2e8540;
-  border-color: rgb(32.8938547486, 95.1061452514, 45.7653631285);
-  color: #fff;
-}
 @media (min-width: 40.0625em) {
   .fiu-card, .fiu-card-homepage {
     margin-bottom: 0;
   }
+}
+
+a.fiu-card:focus, a.fiu-card-homepage:focus {
+  outline: 3px solid var(--govuk-focus-colour, #ffdd00);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+a.fiu-card:active, a.fiu-card-homepage:active, a.fiu-card:hover, a.fiu-card-homepage:hover {
+  background: #2e8540;
+  border-color: rgb(32.8938547486, 95.1061452514, 45.7653631285);
+  color: #fff;
 }
 
 .fiu-card__heading {
@@ -17800,6 +17878,18 @@ b {
   .fiu-card__heading {
     font-size: 24px;
   }
+}
+
+.fiu-card__logo {
+  min-height: 100px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.fiu-card__logo img {
+  max-width: 80%;
+  display: block;
+  margin: 0 auto;
 }
 
 .fiu-card-group--employers .fiu-card:active, .fiu-card-group--employers .fiu-card-homepage:active, .fiu-card-group--employers .fiu-card:hover, .fiu-card-group--employers .fiu-card-homepage:hover {
@@ -17839,7 +17929,7 @@ b {
   background: #333;
   color: #fff;
   text-align: center;
-  padding: 40px 20px 20px;
+  padding: 2rem 3rem;
 }
 .fiu-card-homepage .fiu-panel__tag {
   margin-bottom: 1rem;
@@ -17864,6 +17954,10 @@ b {
 
 .fiu-card-group {
   margin-bottom: 2rem;
+}
+
+.fiu-card-group__title {
+  margin-top: 3.75rem;
 }
 
 .fiu-confirmation--employers {
@@ -18369,7 +18463,14 @@ b {
 }
 
 .govuk-header__logotype {
-  width: 100px;
+  height: 20px;
+  width: 108px;
+}
+@media (min-width: 40.0625em) {
+  .govuk-header__logotype {
+    height: 30px;
+    width: 162px;
+  }
 }
 
 .fiu-header__navigation-wrap {
@@ -18638,7 +18739,7 @@ b {
 @media print {
   .fiu-page-heading__title-hub {
     color: black;
-    transform: rotate(6deg) skewX(6deg);
+    transform: rotate(6deg);
     text-transform: lowercase;
     letter-spacing: 0;
   }
@@ -18810,7 +18911,7 @@ b {
   background: #ffffff;
   text-align: center;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 1.875rem;
   height: 100%;
   display: block;
   color: #0b0c0c;
@@ -18963,7 +19064,7 @@ b {
   text-align: center;
   padding: 15px;
   padding-top: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 1.875rem;
   height: 100%;
   display: block;
   color: #ffffff;
@@ -18979,8 +19080,7 @@ b {
 
 .fiu-panel-homepage__heading {
   color: inherit;
-  text-transform: uppercase;
-  letter-spacing: -0.08em;
+  margin: 1rem 1rem 2rem;
 }
 
 .fiu-panel-homepage__content {

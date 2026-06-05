@@ -37,7 +37,12 @@
 }
 
 .govuk-header__logotype {
-  width: 100px;
+  height: 20px;
+  width: 108px;
+  @include govuk-media-query(tablet) {
+    height: 30px;
+    width: 162px;
+  }
 }
 
 .fiu-header__navigation-wrap {

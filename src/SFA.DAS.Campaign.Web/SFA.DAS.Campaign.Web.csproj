@@ -82,5 +82,6 @@
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\Default.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\DefaultNew.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Shared\Components\Sidebar\FormSidebar.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Articles\Employers\TheRoadToAQualityApprenticeship.cshtml" />
   </ItemGroup>
 </Project>

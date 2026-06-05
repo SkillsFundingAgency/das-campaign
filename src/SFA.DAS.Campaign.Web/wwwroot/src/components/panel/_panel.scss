@@ -5,7 +5,7 @@
   background: $white;
   text-align: center;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 1.875rem;
   height: 100%;
   display: block;
   color: $fiu-text-colour;
@@ -149,7 +149,7 @@
   text-align: center;
   padding: 15px;
   padding-top: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 1.875rem;
   height: 100%;
   display: block;
   color: $white;
@@ -163,8 +163,7 @@
 
 .fiu-panel-homepage__heading {
   color: inherit;
-  text-transform: uppercase;
-  letter-spacing: -0.08em;
+  margin: 1rem 1rem 2rem
 }
 
 .fiu-panel-homepage__content {

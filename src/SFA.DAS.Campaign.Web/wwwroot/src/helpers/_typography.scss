@@ -9,7 +9,7 @@
 }
 
 @mixin fiu-rotate-skew {
-  transform: rotate(-6deg) skewX(-6deg);
+  transform: rotate(-6deg);
 }
 
 @mixin fiu-uppercase-title {

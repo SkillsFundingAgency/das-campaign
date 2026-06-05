@@ -58,7 +58,7 @@
   }
   @include govuk-media-query($media-type: print) {
     color: black;
-    transform: rotate(6deg) skewX(6deg);
+    transform: rotate(6deg);
     text-transform: lowercase;
     letter-spacing: 0;
     &:first-letter {

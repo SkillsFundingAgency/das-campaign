@@ -9,7 +9,7 @@
 .fiu-flex-row {
   @include govuk-media-query(tablet) {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 1.875rem;
   }
 }
 
@@ -21,8 +21,8 @@
 .fiu-grid-layout {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 1.875rem;
+  grid-row-gap: 1.875rem;
   @include govuk-media-query(440px) {
     grid-template-columns: repeat(2, 1fr);
   }
