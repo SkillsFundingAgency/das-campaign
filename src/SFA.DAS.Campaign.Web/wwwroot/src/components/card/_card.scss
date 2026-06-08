@@ -3,8 +3,8 @@
 .fiu-card {
   @include fiu-typography-common;
   background: $white;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 1rem;
+  margin-bottom: 1rem;
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -62,7 +62,7 @@ a.fiu-card {
 }
 
 .fiu-card-group--employers {
-  .fiu-card {
+  a.fiu-card {
     &:active,
     &:hover {
       background: $fiu-employers-brand-colour;
@@ -74,7 +74,7 @@ a.fiu-card {
   }
 }
 
-.fiu-card {
+a.fiu-card {
   &:hover {
     .fiu-card__heading {
       text-decoration-thickness: 2px;
@@ -103,7 +103,7 @@ a.fiu-card {
 
 
 
-.fiu-card-homepage {
+a.fiu-card-homepage {
   @extend .fiu-card;
   background: #333;
   color: #fff;

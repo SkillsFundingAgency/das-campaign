@@ -22,6 +22,9 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  @include govuk-media-query($until: tablet) {
+    margin-top: 140px
+  }
 }
 
 .govuk-back-link {
@@ -105,6 +108,10 @@
   @include govuk-media-query(tablet) {
     background-position: top right;
   }
+  @include govuk-media-query($until: tablet) {
+    background-position: 0 70px;
+    background-size: contain;
+  }
 }
 
 
@@ -117,6 +124,10 @@
   bottom: 0;
   @include govuk-media-query(tablet) {
     top: 0;
+  }
+  @include govuk-media-query($until: tablet) {
+    bottom: auto;
+    height: 200px;
   }
 }
 

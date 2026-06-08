@@ -4,15 +4,17 @@
   @include fiu-typography-common;
   background: $white;
   text-align: center;
-  padding: 20px;
+  padding: 2rem;
   margin-bottom: 1.875rem;
   height: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
   color: $fiu-text-colour;
   text-decoration: none;
   border: 1px solid $fiu-border-colour;
   border-radius: $fiu-border-radius;
   position: relative;
+  gap: 1rem;
 
   &:focus {
     @include fiu-focused-block;
@@ -26,16 +28,38 @@
     border: none;
     text-align: left;
   }
+  h2 {
+    color: $fiu-apprentices-brand-colour;
+  }
+  p {
+    @extend .govuk-body;
+    @include fiu-typography-common;
+    color: inherit;
+    margin-bottom: 0;
+  }
+}
+
+a.fiu-panel {
+  &:active,
+  &:hover {
+    background: $fiu-apprentices-brand-colour;
+    border-color: $fiu-apprentices-link-hover-colour;
+    color: #fff;
+    h2 {
+      text-decoration-thickness: 2px;
+      color: #fff;
+    }
+    .fiu-panel__tag {
+      color: $fiu-apprentices-brand-colour;
+      background: #fff;
+    }
+  }
 }
 
 @include govuk-media-query(tablet) {
   .fiu-flex-row .fiu-panel {
     margin-bottom: 0;
   }
-}
-
-.fiu-panel__tag {
-  margin-bottom: 2em;
 }
 
 .fiu-panel__heading {
