@@ -37,6 +37,12 @@
     </script>
 
     <a href="#main" class="govuk-skip-link">Skip to main content</a>
+    
+    @if (ViewBag.HideCookieBanner == null)
+    {
+        <partial name="./Banners/_CookieBanner" />
+    }
+
 
     <header class="fiu-header">
         <div class="fiu-width-container">
@@ -176,10 +182,6 @@
             </div>
     </footer>
 
-    @if (ViewBag.HideCookieBanner == null)
-    {
-        <partial name="./Banners/_CookieBanner" />
-    }
 
     <script src="/js/dataLayerPushes.js" asp-append-version="true"></script>
     <script src="/js/consent.js" asp-append-version="true"></script>

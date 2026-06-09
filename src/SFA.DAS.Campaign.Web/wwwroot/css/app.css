@@ -183,7 +183,7 @@
 
 
 
-.govuk-link {
+.govuk-link, .fiu-header__apprenticeship-logo-link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -204,23 +204,23 @@
   font-display: fallback;
 }
 @media print {
-  .govuk-link {
+  .govuk-link, .fiu-header__apprenticeship-logo-link {
     font-family: sans-serif;
   }
 }
-.govuk-link {
+.govuk-link, .fiu-header__apprenticeship-logo-link {
   text-decoration: underline;
   text-decoration-thickness: max(1px, .0625rem);
   text-underline-offset: 0.1578em;
 }
-.govuk-link:hover {
+.govuk-link:hover, .fiu-header__apprenticeship-logo-link:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
   -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
   -webkit-text-decoration-skip: none;
   text-decoration-skip: none;
 }
-.govuk-link:focus {
+.govuk-link:focus, .fiu-header__apprenticeship-logo-link:focus {
   outline: 3px solid transparent;
   color: var(--govuk-focus-text-colour, #0b0c0c);
   background-color: var(--govuk-focus-colour, #ffdd00);
@@ -228,28 +228,28 @@
   text-decoration: none;
 }
 @supports not (text-wrap: balance) {
-  .govuk-link:focus {
+  .govuk-link:focus, .fiu-header__apprenticeship-logo-link:focus {
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
   }
 }
-.govuk-link:link {
+.govuk-link:link, .fiu-header__apprenticeship-logo-link:link {
   color: var(--govuk-link-colour, #1a65a6);
 }
-.govuk-link:visited {
+.govuk-link:visited, .fiu-header__apprenticeship-logo-link:visited {
   color: var(--govuk-link-visited-colour, #54319f);
 }
-.govuk-link:hover {
+.govuk-link:hover, .fiu-header__apprenticeship-logo-link:hover {
   color: var(--govuk-link-hover-colour, #0f385c);
 }
-.govuk-link:active {
+.govuk-link:active, .fiu-header__apprenticeship-logo-link:active {
   color: var(--govuk-link-active-colour, #0b0c0c);
 }
-.govuk-link:focus {
+.govuk-link:focus, .fiu-header__apprenticeship-logo-link:focus {
   color: var(--govuk-focus-text-colour, #0b0c0c);
 }
 @media print {
-  [href^="/"].govuk-link::after, [href^="http://"].govuk-link::after, [href^="https://"].govuk-link::after {
+  [href^="/"].govuk-link::after, [href^="/"].fiu-header__apprenticeship-logo-link::after, [href^="http://"].govuk-link::after, [href^="http://"].fiu-header__apprenticeship-logo-link::after, [href^="https://"].govuk-link::after, [href^="https://"].fiu-header__apprenticeship-logo-link::after {
     content: " (" attr(href) ")";
     font-size: 90%;
     word-wrap: break-word;
@@ -1252,28 +1252,28 @@
   flex-direction: column;
   align-items: center;
 }
-.govuk-button-group .govuk-link {
+.govuk-button-group .govuk-link, .govuk-button-group .fiu-header__apprenticeship-logo-link {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 @media print {
-  .govuk-button-group .govuk-link {
+  .govuk-button-group .govuk-link, .govuk-button-group .fiu-header__apprenticeship-logo-link {
     font-family: sans-serif;
   }
 }
-.govuk-button-group .govuk-link {
+.govuk-button-group .govuk-link, .govuk-button-group .fiu-header__apprenticeship-logo-link {
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1;
 }
 @media print {
-  .govuk-button-group .govuk-link {
+  .govuk-button-group .govuk-link, .govuk-button-group .fiu-header__apprenticeship-logo-link {
     font-size: 14pt;
     line-height: 19px;
   }
 }
-.govuk-button-group .govuk-link {
+.govuk-button-group .govuk-link, .govuk-button-group .fiu-header__apprenticeship-logo-link {
   display: inline-block;
   max-width: 100%;
   margin-top: 5px;
@@ -1291,10 +1291,11 @@
     align-items: baseline;
   }
   .govuk-button-group .govuk-button, .govuk-button-group .fiu-button, .govuk-button-group .fiu-article > h2 > a,
-  .govuk-button-group .govuk-link {
+  .govuk-button-group .govuk-link,
+  .govuk-button-group .fiu-header__apprenticeship-logo-link {
     margin-right: 15px;
   }
-  .govuk-button-group .govuk-link {
+  .govuk-button-group .govuk-link, .govuk-button-group .fiu-header__apprenticeship-logo-link {
     text-align: left;
   }
 }
@@ -13348,7 +13349,7 @@
     border: 0;
   }
 }
-.govuk-summary-list__actions-list-item .govuk-link:focus {
+.govuk-summary-list__actions-list-item .govuk-link:focus, .govuk-summary-list__actions-list-item .fiu-header__apprenticeship-logo-link:focus {
   isolation: isolate;
 }
 
@@ -16678,20 +16679,12 @@
 .fiu-button, .fiu-article > h2 > a {
   border-radius: 2px;
   box-shadow: none;
-  background: #4282ba;
+  background: #287E3A;
   font-family: nobel, sans-serif;
-  text-transform: uppercase;
   font-weight: 700;
-  font-size: 14px;
-  padding: 0.7em 1.5em;
 }
 .fiu-button:hover, .fiu-article > h2 > a:hover {
-  background: rgb(52.6428571429, 103.6904761905, 148.3571428571);
-}
-@media (min-width: 40.0625em) {
-  .fiu-button, .fiu-article > h2 > a {
-    padding-top: 0.8em;
-  }
+  background: rgb(27.7108433735, 87.2891566265, 40.1807228916);
 }
 
 .fiu-button--apprentices, .fiu-template--apprentices .fiu-article > h2 > a, .fiu-template--apprentices .fiu-next-link {
@@ -18447,15 +18440,8 @@ a.fiu-card-homepage .fiu-card__content {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.fiu-header__apprenticeship-logo-link:focus {
-  outline: 3px solid var(--govuk-focus-colour, #ffdd00);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
-}
-@media (min-width: 40.0625em) {
-  .fiu-header__apprenticeship-logo-link {
-    float: left;
-    display: block;
-  }
+.fiu-header__apprenticeship-logo-link:hover {
+  box-shadow: 0 4px var(--govuk-focus-text-colour, #0b0c0c);
 }
 
 .fiu-header__apprenticeship-logo {

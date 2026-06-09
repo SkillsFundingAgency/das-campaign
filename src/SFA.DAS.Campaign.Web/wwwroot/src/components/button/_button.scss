@@ -4,19 +4,12 @@
   @extend .govuk-button;
   border-radius: 2px;
   box-shadow: none;
-  background: $fiu-global-brand-colour;
+  background: $fiu-apprentices-link-colour;
   font-family: $fiu-font-family;
-  text-transform: uppercase;
   font-weight: $fiu-font-weight-bold;
-  font-size: 14px;
-  padding: 0.7em 1.5em;
 
   &:hover {
-    background: $fiu-global-link-hover-colour;
-  }
-
-  @include govuk-media-query($from: tablet) {
-    padding-top: 0.8em;
+    background: $fiu-apprentices-link-hover-colour;
   }
 }
 

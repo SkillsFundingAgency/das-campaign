@@ -14,16 +14,13 @@
 }
 
 .fiu-header__apprenticeship-logo-link {
+  @extend .govuk-link;
   padding-top: 1px;
   display: inline-block;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  &:focus {
-    @include fiu-focused-block;
-  }
-  @include govuk-media-query(tablet) {
-    float: left;
-    display: block;
+  &:hover {
+    box-shadow: 0 4px var(--govuk-focus-text-colour, #0b0c0c);
   }
 }
 
