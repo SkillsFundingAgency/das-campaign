@@ -26,21 +26,15 @@
     };
 }
 
-<span class="fiu-header-content-spacer"></span>
-
 <div class="fiu-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-
-
-            <div class="govuk-error-summary" role="alert" tabindex="-1" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
+            <div class="govuk-error-summary" data-module="govuk-error-summary" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
                 <h2 class="govuk-error-summary__title">There's a problem</h2>
                 <div class="govuk-error-summary__body">
                     <ul class="govuk-list govuk-error-summary__list">
                         @{
                             var errorStringBuilder = new StringBuilder();
-                            var errorCount = ViewData.ModelState.ErrorCount;
-
                             foreach (var error in errorOrder)
                             {
                                 if (ViewData.ModelState[error]?.ValidationState == ModelValidationState.Invalid)
@@ -50,7 +44,7 @@
                                 }
                             }
                         }
-                        @Html.Raw(HttpUtility.HtmlEncode(errorStringBuilder.ToString()))
+                        @Html.Raw(errorStringBuilder.ToString())
                     </ul>
                 </div>
             </div>
@@ -121,8 +115,8 @@
                     <div class="govuk-form-group" highlight-error-for="Industry">
                         <span asp-validation-for="@Model.Industry" class="govuk-error-message"></span>
                         <label for="Industry" class="govuk-label">Industry</label>
-                        <div class="govuk-hint">Select only one</div>
-                        <select class="govuk-select" asp-for="Industry" data-val="true" das-validation-for="Industry" das-validationerror-class="form-group-validation-error" id="Industry" name="Industry">
+                        <div class="govuk-hint" id="selectInstr">Select only one</div>
+                        <select class="govuk-select" asp-for="Industry" data-val="true" aria-describedby="selectInstr" das-validation-for="Industry" das-validationerror-class="form-group-validation-error" id="Industry" name="Industry">
                             <option>Agriculture, environmental and animal care</option>
                             <option>Business and administration</option>
                             <option>Care services</option>
@@ -145,8 +139,8 @@
                     <div class="govuk-form-group" highlight-error-for="Location">
                         <span asp-validation-for="@Model.Location" class="govuk-error-message"></span>
                         <label for="Location" class="govuk-label">Region</label>
-                        <div class="govuk-hint">Select only one</div>
-                        <select class="govuk-select" asp-for="Location" data-val="true" das-validation-for="Location" das-validationerror-class="form-group-validation-error" id="Location" name="Location">
+                        <div class="govuk-hint" id="selectInstr2">Select only one</div>
+                        <select class="govuk-select" asp-for="Location" data-val="true" aria-describedby="selectInstr2" das-validation-for="Location" das-validationerror-class="form-group-validation-error" id="Location" name="Location">
                             <option>South West</option>
                             <option>South East</option>
                             <option>London</option>
