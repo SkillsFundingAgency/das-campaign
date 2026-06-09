@@ -27,6 +27,10 @@
   }
 }
 
+.govuk-grid-column-full.fiu-page-header__wrap {
+  margin-top: 0;
+}
+
 .govuk-back-link {
   -webkit-font-smoothing: unset;
   &:hover {
@@ -124,10 +128,6 @@
   bottom: 0;
   @include govuk-media-query(tablet) {
     top: 0;
-  }
-  @include govuk-media-query($until: tablet) {
-    bottom: auto;
-    height: 200px;
   }
 }
 

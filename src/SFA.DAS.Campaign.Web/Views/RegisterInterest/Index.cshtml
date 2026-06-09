@@ -85,14 +85,12 @@
                         <input id="Email" class="govuk-input govuk-!-width-two-thirds" asp-for="Email" type="text" autocomplete="email">
                     </div>
                 </fieldset>
-                <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Your company</legend>
+                <h2 class="govuk-heading-m">Your company</h2>
+                <fieldset class="govuk-fieldset" aria-describedby="ukHint">
+                    <legend class="govuk-fieldset__legend">Size of your company</legend>
                     <div class="govuk-form-group" highlight-error-for="SizeOfYourCompany">
                         <span asp-validation-for="@Model.SizeOfYourCompany" class="govuk-error-message"></span>
-                        <label class="govuk-label">
-                            Size of your company
-                        </label>
-                        <span class="govuk-caption-m  govuk-!-margin-bottom-2">Only include people based in the UK</span>
+                        <div class="govuk-hint" id="ukHint">Only include people based in the UK</div>
                         <div class="govuk-radios" data-module="govuk-radios" das-validation-for="SizeOfYourCompany" das-validationerror-class="form-group-validation-error">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="SizeOfYourCompany" name="SizeOfYourCompany" type="radio" value="Less than 10 employees" asp-for="@Model.SizeOfYourCompany">
@@ -123,7 +121,7 @@
                     <div class="govuk-form-group" highlight-error-for="Industry">
                         <span asp-validation-for="@Model.Industry" class="govuk-error-message"></span>
                         <label for="Industry" class="govuk-label">Industry</label>
-                        <span class="govuk-caption-m govuk-!-margin-bottom-2">Select only one</span>
+                        <div class="govuk-hint">Select only one</div>
                         <select class="govuk-select" asp-for="Industry" data-val="true" das-validation-for="Industry" das-validationerror-class="form-group-validation-error" id="Industry" name="Industry">
                             <option>Agriculture, environmental and animal care</option>
                             <option>Business and administration</option>
@@ -147,7 +145,7 @@
                     <div class="govuk-form-group" highlight-error-for="Location">
                         <span asp-validation-for="@Model.Location" class="govuk-error-message"></span>
                         <label for="Location" class="govuk-label">Region</label>
-                        <span class="govuk-caption-m govuk-!-margin-bottom-2">Select only one</span>
+                        <div class="govuk-hint">Select only one</div>
                         <select class="govuk-select" asp-for="Location" data-val="true" das-validation-for="Location" das-validationerror-class="form-group-validation-error" id="Location" name="Location">
                             <option>South West</option>
                             <option>South East</option>
@@ -172,8 +170,8 @@
                 <div class="govuk-form-group" das-validation-for="IncludeInUR" das-validationerror-class="form-group-validation-error">
                     <div class="govuk-checkboxes__item">
                         <input class="govuk-checkboxes__input fiu-checkboxes__input" asp-for="IncludeInUR" type="checkbox" value="true">
-                        <label class="govuk-checkboxes__label fiu-checkboxes__label" asp-for="IncludeInUR">
-                            I am happy to be take part in research that'll help improve the Apprenticeship service.
+                        <label class="govuk-label govuk-checkboxes__label fiu-checkboxes__label" asp-for="IncludeInUR">
+                            I am happy to take part in research that'll help improve the Apprenticeship service.
                         </label>
                     </div>
                 </div>

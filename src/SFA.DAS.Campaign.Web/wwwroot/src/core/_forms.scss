@@ -52,3 +52,11 @@
 .govuk-error-summary__list a:focus {
   color: inherit;
 }
+
+.govuk-hint {
+  color: #484949;
+}
+
+.govuk-error-message:empty {
+  display: none;
+}

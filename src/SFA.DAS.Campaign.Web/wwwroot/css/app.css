@@ -16538,7 +16538,7 @@
 }
 
 .fiu-notification--success {
-  background: #2e8540;
+  background: #287E3A;
 }
 
 .fiu-notification--error, .govuk-error-summary {
@@ -16598,6 +16598,14 @@
 .govuk-error-summary__list a:active,
 .govuk-error-summary__list a:focus {
   color: inherit;
+}
+
+.govuk-hint {
+  color: #484949;
+}
+
+.govuk-error-message:empty {
+  display: none;
 }
 
 * {
@@ -16687,10 +16695,10 @@
 }
 
 .fiu-button--apprentices, .fiu-template--apprentices .fiu-article > h2 > a, .fiu-template--apprentices .fiu-next-link {
-  background: #2e8540;
+  background: #287E3A;
 }
 .fiu-button--apprentices:hover, .fiu-template--apprentices .fiu-article > h2 > a:hover, .fiu-template--apprentices .fiu-next-link:hover {
-  background: rgb(32.8938547486, 95.1061452514, 45.7653631285);
+  background: rgb(27.7108433735, 87.2891566265, 40.1807228916);
 }
 
 .fiu-button--employers, .fiu-template--employers .fiu-article > h2 > a, .fiu-template--employers .fiu-next-link {
@@ -16723,17 +16731,17 @@
   color: #4282ba;
 }
 .fiu-button--outlined.fiu-button--apprentices, .fiu-template--apprentices .fiu-article > h2 > a.fiu-button--outlined, .fiu-template--apprentices .fiu-button--outlined.fiu-next-link {
-  color: #2e8540;
+  color: #287E3A;
 }
 .fiu-button--outlined.fiu-button--apprentices:hover, .fiu-template--apprentices .fiu-article > h2 > a.fiu-button--outlined:hover, .fiu-template--apprentices .fiu-button--outlined.fiu-next-link:hover {
-  color: rgb(32.8938547486, 95.1061452514, 45.7653631285);
+  color: rgb(27.7108433735, 87.2891566265, 40.1807228916);
 }
 .fiu-button--outlined.fiu-button--apprentices-light {
   border-color: #94eb81;
-  color: #2e8540;
+  color: #287E3A;
 }
 .fiu-button--outlined.fiu-button--apprentices-light:hover {
-  color: rgb(32.8938547486, 95.1061452514, 45.7653631285);
+  color: rgb(27.7108433735, 87.2891566265, 40.1807228916);
 }
 .fiu-button--outlined.fiu-button--employers, .fiu-template--employers .fiu-article > h2 > a.fiu-button--outlined, .fiu-template--employers .fiu-button--outlined.fiu-next-link {
   color: #4d43a3;
@@ -16868,13 +16876,13 @@
 .fiu-template--apprentices .fiu-article > p > a,
 .fiu-template--apprentices .fiu-article li > a,
 .fiu-template--apprentices .fiu-article li > p > a, .fiu-template--apprentices .app-anchor-links__link {
-  color: #2e8540;
+  color: #287E3A;
 }
 .fiu-link--apprentices:hover, .fiu-template--apprentices .fiu-article > h3 > a:hover,
 .fiu-template--apprentices .fiu-article > p > a:hover,
 .fiu-template--apprentices .fiu-article li > a:hover,
 .fiu-template--apprentices .fiu-article li > p > a:hover, .fiu-template--apprentices .app-anchor-links__link:hover {
-  color: rgb(32.8938547486, 95.1061452514, 45.7653631285);
+  color: rgb(27.7108433735, 87.2891566265, 40.1807228916);
 }
 .fiu-link--apprentices:focus, .fiu-template--apprentices .fiu-article > h3 > a:focus,
 .fiu-template--apprentices .fiu-article > p > a:focus,
@@ -17059,33 +17067,9 @@
   border-left-color: #4d43a3;
 }
 
-.govuk-heading-xl,
-.govuk-heading-l,
-.fiu-article > h2:not([class]),
-.govuk-heading-m,
-.fiu-article > h3:not([class]),
-.fiu-heading-m-l,
-.govuk-heading-s,
-.fiu-article > h4:not([class]),
-.govuk-heading-xs,
-.fiu-article > h6:not([class]),
-.fiu-article > h5:not([class]),
-.govuk-fieldset__legend,
-.govuk-error-summary__title,
-.govuk-error-message,
-.fiu-font-weight-bold,
-.govuk-panel__title,
-b {
-  font-family: nobel, sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 700;
-}
-
 .govuk-details__summary,
 .govuk-summary-list,
+.govuk-fieldset__legend,
 .govuk-input,
 .govuk-select,
 .govuk-table,
@@ -17098,12 +17082,38 @@ b {
 .fiu-article > ol:not([class]),
 .fiu-article > ul:not([class]),
 .govuk-label,
+.govuk-hint,
 .govuk-checkboxes__label {
   font-family: nobel, sans-serif;
   font-weight: 300;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.govuk-heading-xl,
+.govuk-heading-l,
+.fiu-article > h2:not([class]),
+.govuk-heading-m,
+.fiu-article > h3:not([class]),
+.fiu-heading-m-l,
+.govuk-heading-s,
+.fiu-article > h4:not([class]),
+.govuk-heading-xs,
+.fiu-article > h6:not([class]),
+.fiu-article > h5:not([class]),
+.govuk-error-summary__title,
+.govuk-error-message,
+.fiu-font-weight-bold,
+.govuk-panel__title,
+.govuk-fieldset__legend--m,
+b {
+  font-family: nobel, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
 }
 
 .govuk-caption-s,
@@ -17298,29 +17308,6 @@ b {
 }
 .app-anchor-links__list--no-marker .app-anchor-links__link--active {
   border-left-color: currentColor;
-}
-
-.fiu-template--employers .fiu-main-wrapper .fiu-article {
-  background: #ffffff;
-  padding: 20px;
-  border: 1px solid #cbd0d3;
-  border-radius: 7px;
-  margin-bottom: 20px;
-}
-@media (min-width: 48.0625em) {
-  .fiu-template--employers .fiu-main-wrapper .fiu-article {
-    padding: 30px;
-  }
-}
-@media print {
-  .fiu-template--employers .fiu-main-wrapper .fiu-article {
-    padding: 0;
-    border: none;
-    text-align: left;
-  }
-}
-.fiu-article:empty {
-  display: none;
 }
 
 .fiu-attachment {
@@ -17642,7 +17629,7 @@ b {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   font-size: 19px;
-  color: #2e8540;
+  color: #287E3A;
 }
 .fiu-back-link--top::before {
   content: "";
@@ -17872,8 +17859,8 @@ a.fiu-card:focus, a.fiu-card-homepage:focus {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 a.fiu-card:active, a.fiu-card-homepage:active, a.fiu-card:hover, a.fiu-card-homepage:hover {
-  background: #2e8540;
-  border-color: rgb(32.8938547486, 95.1061452514, 45.7653631285);
+  background: #287E3A;
+  border-color: rgb(27.7108433735, 87.2891566265, 40.1807228916);
   color: #fff;
 }
 
@@ -17885,7 +17872,7 @@ a.fiu-card:active, a.fiu-card-homepage:active, a.fiu-card:hover, a.fiu-card-home
   text-decoration: underline;
   text-decoration-thickness: max(1px, 0.0625rem);
   text-underline-offset: 0.1578em;
-  color: #2e8540;
+  color: #287E3A;
 }
 @media (min-width: 40.0625em) {
   .fiu-card__heading {
@@ -17953,10 +17940,10 @@ a.fiu-card-homepage .fiu-panel__tag {
   margin-bottom: 1rem;
 }
 a.fiu-card-homepage:hover {
-  background: #2e8540;
+  background: #287E3A;
 }
 a.fiu-card-homepage:hover .fiu-panel__tag {
-  color: #2e8540;
+  color: #287E3A;
   background: #fff;
 }
 a.fiu-card-homepage--employers:hover {
@@ -18573,7 +18560,7 @@ a.fiu-card-homepage .fiu-card__content {
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-bottom: 10px solid #2e8540;
+  border-bottom: 10px solid #287E3A;
   margin-left: -5px;
   left: 50%;
 }
@@ -18720,6 +18707,10 @@ a.fiu-card-homepage .fiu-card__content {
   }
 }
 
+.govuk-grid-column-full.fiu-page-header__wrap {
+  margin-top: 0;
+}
+
 .govuk-back-link {
   -webkit-font-smoothing: unset;
 }
@@ -18841,12 +18832,6 @@ a.fiu-card-homepage .fiu-card__content {
 @media (min-width: 40.0625em) {
   .fiu-page-header__image-mask {
     top: 0;
-  }
-}
-@media (max-width: 40.0525em) {
-  .fiu-page-header__image-mask {
-    bottom: auto;
-    height: 200px;
   }
 }
 
@@ -18974,7 +18959,7 @@ a.fiu-card-homepage .fiu-card__content {
   }
 }
 .fiu-panel h2, .fiu-support-panel h2, .fiu-results-panel h2 {
-  color: #2e8540;
+  color: #287E3A;
 }
 .fiu-panel p, .fiu-support-panel p, .fiu-results-panel p {
   font-family: nobel, sans-serif;
@@ -18987,8 +18972,8 @@ a.fiu-card-homepage .fiu-card__content {
 }
 
 a.fiu-panel:active, a.fiu-support-panel:active, a.fiu-results-panel:active, a.fiu-panel:hover, a.fiu-support-panel:hover, a.fiu-results-panel:hover {
-  background: #2e8540;
-  border-color: rgb(32.8938547486, 95.1061452514, 45.7653631285);
+  background: #287E3A;
+  border-color: rgb(27.7108433735, 87.2891566265, 40.1807228916);
   color: #fff;
 }
 a.fiu-panel:active h2, a.fiu-support-panel:active h2, a.fiu-results-panel:active h2, a.fiu-panel:hover h2, a.fiu-support-panel:hover h2, a.fiu-results-panel:hover h2 {
@@ -18996,7 +18981,7 @@ a.fiu-panel:active h2, a.fiu-support-panel:active h2, a.fiu-results-panel:active
   color: #fff;
 }
 a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, a.fiu-results-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag, a.fiu-support-panel:hover .fiu-panel__tag, a.fiu-results-panel:hover .fiu-panel__tag {
-  color: #2e8540;
+  color: #287E3A;
   background: #fff;
 }
 
@@ -19074,7 +19059,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
 }
 
 .fiu-panel--solid-apprentices {
-  background: #2e8540;
+  background: #287E3A;
   color: #ffffff;
 }
 
@@ -19227,7 +19212,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
 }
 
 .fiu-promo--apprentices {
-  background-color: #2e8540;
+  background-color: #287E3A;
   color: #ffffff;
 }
 
@@ -19515,19 +19500,19 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
 
 .fiu-provider-details-bars__value--apprentices-default > span,
 .fiu-provider-details-bars__value--apprentices-excellent > span {
-  background-color: #2e8540;
+  background-color: #287E3A;
 }
 
 .fiu-provider-details-bars__value--apprentices-good > span {
-  background-color: rgb(65.9022346369, 189.5977653631, 91.4944134078);
+  background-color: rgb(58.4337349398, 184.0662650602, 84.7289156627);
 }
 
 .fiu-provider-details-bars__value--apprentices-poor > span {
-  background-color: rgb(103.7960893855, 202.7039106145, 124.2597765363);
+  background-color: rgb(90.6686746988, 202.8313253012, 114.1445783133);
 }
 
 .fiu-provider-details-bars__value--apprentices-very-poor > span {
-  background-color: rgb(141.6899441341, 215.8100558659, 157.0251396648);
+  background-color: rgb(129.3795180723, 215.1204819277, 147.3253012048);
 }
 
 .fiu-provider-details-bars__value--default > span {
@@ -19720,7 +19705,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
 }
 
 .fiu-results-panel__strip--apprentices {
-  background-color: #2e8540;
+  background-color: #287E3A;
 }
 
 .fiu-results-inset-text {
@@ -19994,7 +19979,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
   font-weight: 700;
 }
 .fiu-stats-list--apprentices .fiu-stats-list__stat {
-  color: #2e8540;
+  color: #287E3A;
 }
 .fiu-stats-list--employers .fiu-stats-list__stat {
   color: #4d43a3;
@@ -20161,11 +20146,11 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
 }
 
 .fiu-tag--apprentices {
-  background: #2e8540;
+  background: #287E3A;
 }
 
 a.fiu-tag--apprentices:hover {
-  background: rgb(32.8938547486, 95.1061452514, 45.7653631285);
+  background: rgb(27.7108433735, 87.2891566265, 40.1807228916);
 }
 
 .fiu-tag--employers {
