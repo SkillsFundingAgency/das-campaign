@@ -2,9 +2,7 @@
 <html lang="en" class="fiu-template fiu-template--@ViewBag.Section">
 
 <head>
-
     <partial name="./Components/_GtmHead" />
-
     <meta charset="utf-8">
     <title>@(ViewData["MetaTitle"] != null ? ViewData["MetaTitle"] : ViewData["Title"])</title>
     @if (ViewData["MetaDesc"] != null)
@@ -32,9 +30,8 @@
 
     <partial name="./Components/_GtmBody" />
 
-    <script>
-        document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
-    </script>
+    <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+
 
     <a href="#main" class="govuk-skip-link">Skip to main content</a>
     
@@ -188,9 +185,11 @@
     <script src="/js/cookies-page.js" asp-append-version="true"></script>
     <script src="/js/app.js" asp-append-version="true"></script>
 
-    <script>
-        window.GOVUKFrontend.initAll();
-    </script>
+    <script type="module" src="/js/govuk-frontend.min.js"></script>
+    <script type="module">
+        import { initAll } from '/js/govuk-frontend.min.js'
+        initAll()
+      </script>
 
 </body>
 
