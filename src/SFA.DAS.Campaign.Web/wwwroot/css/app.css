@@ -17069,6 +17069,8 @@
 
 .govuk-details__summary,
 .govuk-summary-list,
+.govuk-error-summary__list a,
+.govuk-form-validation-summary__link,
 .govuk-fieldset__legend,
 .govuk-input,
 .govuk-select,
