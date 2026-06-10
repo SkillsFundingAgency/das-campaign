@@ -4,6 +4,7 @@
 
 .fiu-table {
   @extend .govuk-table;
+  @include fiu-typography-common;
 }
 
 .fiu-table th {

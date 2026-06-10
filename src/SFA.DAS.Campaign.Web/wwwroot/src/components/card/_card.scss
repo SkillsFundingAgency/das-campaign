@@ -12,9 +12,14 @@
   text-decoration: none;
   border: 1px solid $fiu-border-colour;
   border-radius: $fiu-border-radius;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 }
 
@@ -41,6 +46,7 @@ a.fiu-card {
   text-decoration-thickness: max(1px, .0625rem);
   text-underline-offset: 0.1578em;
   color: $fiu-apprentices-brand-colour;
+  transition: color 0.2s ease, text-decoration-thickness 0.2s ease;
   @include govuk-media-query($from: tablet) {
     font-size: 18px;
   }
@@ -98,7 +104,7 @@ a.fiu-card {
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 7px 7px 0 0;
-  margin: -20px -20px 20px;
+  margin: -1rem -1rem 1rem;
 }
 
 
@@ -112,8 +118,9 @@ a.fiu-card-homepage {
 
   .fiu-panel__tag {
     margin-bottom: 1rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
-  
+
   &:hover {
     background: $fiu-apprentices-brand-colour;
     .fiu-panel__tag {

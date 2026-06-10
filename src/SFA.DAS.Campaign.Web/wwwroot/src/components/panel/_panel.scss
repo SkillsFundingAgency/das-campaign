@@ -15,9 +15,14 @@
   border-radius: $fiu-border-radius;
   position: relative;
   gap: 1rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 
   &:focus {
     @include fiu-focused-block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 
   @include govuk-media-query($from: desktop) {
@@ -30,12 +35,16 @@
   }
   h2 {
     color: $fiu-apprentices-brand-colour;
+    transition: color 0.2s ease, text-decoration-thickness 0.2s ease;
   }
   p {
     @extend .govuk-body;
     @include fiu-typography-common;
     color: inherit;
     margin-bottom: 0;
+  }
+  .fiu-panel__tag {
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 }
 

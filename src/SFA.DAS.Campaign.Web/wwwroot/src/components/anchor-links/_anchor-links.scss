@@ -18,25 +18,20 @@
   }
 }
 
-.app-anchor-links__link {
-  &::before {
-    content: "–";
-    display: inline-block;
-    margin-right: govuk-spacing(2);
-  }
+.app-anchor-links__list-item--active {
+  margin-left: -15px;
+  padding-left: 10px;
+  border-left: 5px solid $fiu-apprentices-link-colour;
 }
 
-.app-anchor-links__list--no-marker {
-  .app-anchor-links__link {
-    &::before {
-      content: none;
-    }
+.app-anchor-links__list--dash {
+  padding-left: 20px;
+
+  .app-anchor-links__list-item::before {
+    content: "—";
+    margin-left: -20px;
+    color: #484949;
     display: inline-block;
-    padding-left: govuk-spacing(2);
-    border-left: 5px solid transparent;
-  }
-  
-  .app-anchor-links__link--active {
-    border-left-color: currentColor;
+    width: 20px;
   }
 }
