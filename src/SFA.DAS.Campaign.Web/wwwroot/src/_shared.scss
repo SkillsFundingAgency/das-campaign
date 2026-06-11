@@ -1,10 +1,6 @@
-// Global vocabulary for non-settings/non-helpers partials.
-// Leaf partials in core/, utilities/, components/, pages/ load this with
-// `@use '<path>/shared' as *;` to access govuk-frontend and our own
-// settings/helpers without prefixes.
-
 @forward 'govuk/index' with (
-  $govuk-gutter: 30px
+  $govuk-gutter: 30px,
+  $govuk-include-default-font-face: false
 );
 
 @forward 'settings/colours-palette';
