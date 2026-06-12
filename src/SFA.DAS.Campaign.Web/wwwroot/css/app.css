@@ -17294,7 +17294,7 @@ b {
   margin-left: -20px;
   color: #484949;
   display: inline-block;
-  width: 20px;
+  width: 16px;
 }
 
 .fiu-article {
@@ -18960,7 +18960,6 @@ a.fiu-card-homepage .fiu-card__content {
   }
 }
 .fiu-panel h2, .fiu-support-panel h2, .fiu-results-panel h2 {
-  color: #287E3A;
   transition: color 0.2s ease, text-decoration-thickness 0.2s ease;
 }
 .fiu-panel p, .fiu-support-panel p, .fiu-results-panel p {
@@ -18976,6 +18975,9 @@ a.fiu-card-homepage .fiu-card__content {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+a.fiu-panel h2, a.fiu-support-panel h2, a.fiu-results-panel h2 {
+  color: #287E3A;
+}
 a.fiu-panel:active, a.fiu-support-panel:active, a.fiu-results-panel:active, a.fiu-panel:hover, a.fiu-support-panel:hover, a.fiu-results-panel:hover {
   background: #287E3A;
   border-color: rgb(27.7108433735, 87.2891566265, 40.1807228916);

@@ -34,7 +34,6 @@
     text-align: left;
   }
   h2 {
-    color: $fiu-apprentices-brand-colour;
     transition: color 0.2s ease, text-decoration-thickness 0.2s ease;
   }
   p {
@@ -49,6 +48,9 @@
 }
 
 a.fiu-panel {
+  h2 {
+    color: $fiu-apprentices-brand-colour;
+  }
   &:active,
   &:hover {
     background: $fiu-apprentices-brand-colour;

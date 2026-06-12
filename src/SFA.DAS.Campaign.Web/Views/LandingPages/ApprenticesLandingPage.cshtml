@@ -14,14 +14,16 @@
 <div class="fiu-grad-row">
     <div class="fiu-width-container">
         <div class="fiu-grid-layout fiu-card-group">
-        @{
-            var items = Model.Content.Cards;
+            @{
+                var items = Model.Content.Cards;
 
-            for (var i = 0; i < items.Count(); i++)
-            {
-                @items.ElementAt(i).CardToHtml()
+                for (var i = 0; i < items.Count(); i++)
+                {
+                    @items.ElementAt(i).CardToHtml()
+                }
             }
-        }
         </div>
+        <p class="govuk-!-margin-bottom-8"><a href="#main" class="fiu-back-link--top">Back to top</a></p>
+        <partial name="Panels/_FindAnApprenticeship" />
     </div>
 </div>
