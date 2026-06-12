@@ -17666,9 +17666,6 @@ b {
   outline: 3px solid var(--govuk-focus-colour, #ffdd00);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
-.fiu-banner {
-  display: none;
-}
 
 .fiu-banner--warning {
   background: #ffdd00;
@@ -17681,6 +17678,12 @@ b {
 }
 
 .fiu-banner__heading {
+  font-family: nobel, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
   color: inherit;
   margin-bottom: 0;
 }

@@ -10,7 +10,6 @@
   &:focus {
     @include fiu-focused-block;
   }
-  display: none;
 }
 
 .fiu-banner--warning {
@@ -25,6 +24,8 @@
 
 .fiu-banner__heading {
   @extend .govuk-heading-s;
+  @include fiu-typography-common;
+  font-weight: 700;
   color: inherit;
   margin-bottom: 0;
 }
