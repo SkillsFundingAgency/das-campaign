@@ -94,12 +94,38 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         }
         private static void AddCards(PageRoot cmsContent, Page<Hub> model)
         {
-            if (cmsContent.Hub.MainContent.Cards == null || !cmsContent.Hub.MainContent.Cards.Any())
+            var mainContent = cmsContent.Hub.MainContent;
+
+            model.Content.CardsTitle = mainContent.CardsTitle;
+            model.Content.Cards = MapCards(mainContent.Cards);
+
+            model.Content.CardsTitle2 = mainContent.CardsTitle2;
+            model.Content.Cards2 = MapCards(mainContent.Cards2);
+
+            model.Content.CardsTitle3 = mainContent.CardsTitle3;
+            model.Content.Cards3 = MapCards(mainContent.Cards3);
+        }
+
+        private static List<Card> MapCards(List<ResponseCard> cards)
+        {
+            if (cards == null || !cards.Any())
             {
-                return;
+                return new List<Card>();
             }
 
-            model.Content.Cards = cmsContent.Hub.MainContent.Cards;
+            return cards.Select(c => new Card
+            {
+                Title = c.Title,
+                Slug = c.Slug,
+                HubType = c.HubType,
+                Summary = c.Summary,
+                CardImage = new Image
+                {
+                    Description = c.CardImage?.EmbeddedResource?.Description,
+                    Title = c.CardImage?.EmbeddedResource?.Title,
+                    Url = c.CardImage?.EmbeddedResource?.Url
+                }
+            }).ToList();
         }
     }
 }

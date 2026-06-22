@@ -1,0 +1,215 @@
+@use '../../shared' as *;
+
+.fiu-panel {
+  @include fiu-typography-common;
+  background: $white;
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 1.875rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: $fiu-text-colour;
+  text-decoration: none;
+  border: 1px solid $fiu-border-colour;
+  border-radius: $fiu-border-radius;
+  position: relative;
+  gap: 1rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+  &:focus {
+    @include fiu-focused-block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    padding: 30px;
+  }
+  @include govuk-media-query($media-type: print) {
+    padding: 0;
+    border: none;
+    text-align: left;
+  }
+  h2 {
+    transition: color 0.2s ease, text-decoration-thickness 0.2s ease;
+  }
+  p {
+    @extend .govuk-body;
+    @include fiu-typography-common;
+    color: inherit;
+    margin-bottom: 0;
+  }
+  .fiu-panel__tag {
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+}
+
+a.fiu-panel {
+  h2 {
+    color: $fiu-apprentices-brand-colour;
+  }
+  &:active,
+  &:hover {
+    background: $fiu-apprentices-brand-colour;
+    border-color: $fiu-apprentices-link-hover-colour;
+    color: #fff;
+    h2 {
+      text-decoration-thickness: 2px;
+      color: #fff;
+    }
+    .fiu-panel__tag {
+      color: $fiu-apprentices-brand-colour;
+      background: #fff;
+    }
+  }
+}
+
+@include govuk-media-query(tablet) {
+  .fiu-flex-row .fiu-panel {
+    margin-bottom: 0;
+  }
+}
+
+.fiu-panel__heading {
+  color: inherit;
+  margin-bottom: 0.5em;
+  line-height: 1;
+  @include govuk-media-query(tablet) {
+    margin: 0 1em 0.5em;
+  }
+}
+
+.fiu-panel__content {
+  @include fiu-typography-common;
+  color: $dark-grey;
+  margin: 0 0 1.5em;
+  @include govuk-media-query(tablet) {
+    font-size: 21px;
+    line-height: 1.15;
+    margin: 0 2em 1.5em;
+  }
+}
+
+.fiu-panel__content--s {
+  font-size: 16px;
+  line-height: 1.35em;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.fiu-panel__label {
+  color: inherit;
+  margin-bottom: 0.5em;
+}
+
+.fiu-panel__image {
+  display: block;
+  max-width: 100%;
+}
+
+.fiu-panel__logo {
+  height: 50px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+@include govuk-media-query(tablet) {
+  .fiu-panel__logo {
+    height: 100px;
+  }
+}
+
+.fiu-panel__logo-img {
+  max-width: 90%;
+  max-height: 80%;
+  margin: 0 auto;
+}
+
+.fiu-panel__button {
+  margin: 0;
+}
+
+.fiu-panel--solid-apprentices {
+  background: $fiu-apprentices-brand-colour;
+  color: $white;
+}
+
+.fiu-panel--solid-employers {
+  background: $fiu-employers-brand-colour;
+  color: $white;
+}
+
+.fiu-panel--left-align {
+  text-align: left;
+}
+
+.fiu-panel--min-padding {
+  padding: 0 15px;
+}
+
+.fiu-panel--narrow-col {
+  @include govuk-media-query($from: desktop) {
+    padding: 20px;
+  }
+
+  .fiu-panel__heading.govuk-heading-l {
+    @include govuk-media-query($from: tablet) {
+      font-size: 20px;
+    }
+    @include govuk-media-query($from: desktop) {
+      font-size: 24px;
+    }
+    @include govuk-media-query($from: $fiu-large-desktop-breakpoint) {
+      font-size: 30px;
+    }
+  }
+
+  .fiu-panel__content {
+    @include govuk-media-query($from: desktop) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+/* Homepage version of the panel */
+
+.fiu-panel-homepage {
+  text-align: center;
+  padding: 15px;
+  padding-top: 20px;
+  margin-bottom: 1.875rem;
+  height: 100%;
+  display: block;
+  color: $white;
+  position: relative;
+  background: #333;
+  border-radius: $fiu-border-radius;
+  @include govuk-media-query(tablet) {
+    padding: 20px;
+  }
+}
+
+.fiu-panel-homepage__heading {
+  color: inherit;
+  margin: 1rem 0 2rem
+}
+
+.fiu-panel-homepage__content {
+  @include fiu-typography-common;
+  color: inherit;
+  position: relative;
+  @include govuk-media-query(tablet) {
+    font-size: 19px;
+  }
+}
+
+.fiu-panel-homepage__button {
+  margin-bottom: 0;
+}

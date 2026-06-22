@@ -14,7 +14,7 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.converters
         private string jsonNoHeaderImage = "{\"hub\":{\"pageAttributes\":{\"pageType\":3,\"title\":\"Become an apprentice\",\"metaDescription\":\"something\",\"slug\":\"apprentices\",\"hubType\":\"Apprentices\",\"summary\":\"Find out how to become an apprentice, what apprenticeships are available and which employers offer them.\"},\"mainContent\":{\"headerImage\":null,\"cards\":[{\"pageType\":0,\"title\":\"Browse by interest\",\"metaDescription\":null,\"slug\":\"browse-by-interests\",\"hubType\":\"Apprentices\",\"summary\":\"Find out what type of apprenticeships you can expect in your chosen interest.\"}]}, \"menuContent\":{\"topLevel\":[{\"slug\":\"apprentices\",\"title\":\"Become an apprentice\",\"hub\":\"Apprentices\",\"pageType\":\"Hub\"}],\"apprentices\":[],\"employers\":[],\"influencers\":[]}}}";
 
         private const string json =
-            "{\"hub\":{\"pageAttributes\":{\"pageType\":3,\"title\":\"Become an apprentice\",\"metaDescription\":\"something\",\"slug\":\"apprentices\",\"hubType\":\"Apprentices\",\"summary\":\"Find out how to become an apprentice, what apprenticeships are available and which employers offer them.\"},\"mainContent\":{\"headerImage\":{\"values\":null,\"type\":\"Asset\",\"tableValue\":null,\"embeddedResource\":{\"title\":\"apprentice-sparks\",\"id\":\"7FMiFuKxmMQDmVxbhPQy4K\",\"fileName\":\"apprentice-sparks.jpg\",\"contentType\":\"image/jpeg\",\"url\":\"https://images.ctfassets.net/8kbr1n52z8s2/7FMiFuKxmMQDmVxbhPQy4K/2d693fc0e6955f6a58bc12e663282a80/apprentice-sparks.jpg\",\"size\":57643,\"description\":null}},\"cards\":[{\"pageType\":0,\"title\":\"Browse by interest\",\"metaDescription\":null,\"slug\":\"browse-by-interests\",\"hubType\":\"Apprentices\",\"summary\":\"Find out what type of apprenticeships you can expect in your chosen interest.\"}]},\"menuContent\":{\"topLevel\":[{\"slug\":\"apprentices\",\"title\":\"Become an apprentice\",\"hub\":\"Apprentices\",\"pageType\":\"Hub\"}],\"apprentices\":[],\"employers\":[],\"influencers\":[]}}}";
+            "{\"hub\":{\"pageAttributes\":{\"pageType\":3,\"title\":\"Become an apprentice\",\"metaDescription\":\"something\",\"slug\":\"apprentices\",\"hubType\":\"Apprentices\",\"summary\":\"Find out how to become an apprentice, what apprenticeships are available and which employers offer them.\"},\"mainContent\":{\"headerImage\":{\"values\":null,\"type\":\"Asset\",\"tableValue\":null,\"embeddedResource\":{\"title\":\"apprentice-sparks\",\"id\":\"7FMiFuKxmMQDmVxbhPQy4K\",\"fileName\":\"apprentice-sparks.jpg\",\"contentType\":\"image/jpeg\",\"url\":\"https://images.ctfassets.net/8kbr1n52z8s2/7FMiFuKxmMQDmVxbhPQy4K/2d693fc0e6955f6a58bc12e663282a80/apprentice-sparks.jpg\",\"size\":57643,\"description\":null}},\"cardsTitle\":\"First group\",\"cards\":[{\"pageType\":0,\"title\":\"Browse by interest\",\"metaDescription\":null,\"slug\":\"browse-by-interests\",\"hubType\":\"Apprentices\",\"summary\":\"Find out what type of apprenticeships you can expect in your chosen interest.\"}],\"cardsTitle2\":\"Second group\",\"cards2\":[{\"pageType\":0,\"title\":\"Browse by sector\",\"metaDescription\":null,\"slug\":\"browse-by-sector\",\"hubType\":\"Apprentices\",\"summary\":\"Find apprenticeships by sector.\"}],\"cardsTitle3\":\"Third group\",\"cards3\":[{\"pageType\":0,\"title\":\"Browse by location\",\"metaDescription\":null,\"slug\":\"browse-by-location\",\"hubType\":\"Apprentices\",\"summary\":\"Find apprenticeships by location.\"}]},\"menuContent\":{\"topLevel\":[{\"slug\":\"apprentices\",\"title\":\"Become an apprentice\",\"hub\":\"Apprentices\",\"pageType\":\"Hub\"}],\"apprentices\":[],\"employers\":[],\"influencers\":[]}}}";
 
 
         [Test, MoqAutoData]
@@ -50,6 +50,25 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.converters
             var actual = InvokeReadJsonMethodOnConverter(converter);
 
             actual.Content.Cards.Should().NotBeNullOrEmpty();
+        }
+
+        [Test, MoqAutoData]
+        public void The_Card_Group_Titles_Are_Set(HubJsonConverter converter)
+        {
+            var actual = InvokeReadJsonMethodOnConverter(converter);
+
+            actual.Content.CardsTitle.Should().Be("First group");
+            actual.Content.CardsTitle2.Should().Be("Second group");
+            actual.Content.CardsTitle3.Should().Be("Third group");
+        }
+
+        [Test, MoqAutoData]
+        public void The_Second_And_Third_Card_Groups_Are_Set(HubJsonConverter converter)
+        {
+            var actual = InvokeReadJsonMethodOnConverter(converter);
+
+            actual.Content.Cards2.Should().NotBeNullOrEmpty();
+            actual.Content.Cards3.Should().NotBeNullOrEmpty();
         }
 
         [Test, MoqAutoData]

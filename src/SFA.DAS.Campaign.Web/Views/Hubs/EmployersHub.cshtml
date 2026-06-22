@@ -1,5 +1,4 @@
 @using SFA.DAS.Campaign.Web.Helpers
-@using SFA.DAS.Campaign.Web.Renderers
 @model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.Hub>
 @{
 ViewBag.Title = Model.Title;
@@ -9,155 +8,32 @@ ViewBag.PageSummary = Model.Content.Summary;
 ViewBag.HubPage = true;
 ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
 }
-<span class="fiu-header-content-spacer"></span>
-<div class="fiu-grad-row">
-   @if (ViewBag.HeadingImage == null)
+@functions {
+   void RenderCardGroup(string title, IReadOnlyCollection<SFA.DAS.Campaign.Domain.Content.HtmlControl.Card> cards)
    {
-   <span class="fiu-grad-row__bg"></span>
-   }
-   <div class="fiu-width-container">
-      <h2 class="govuk-heading-l">Considering hiring an apprentice?</h2>
-      <div class="govuk-grid-row fiu-flex-row">
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Choose the right training for your business</h3>
-               <p class="fiu-card__content">Find out how apprenticeships work, and explore different ways to help your employees learn on the job.</p>
-               <a href="/employers/is-an-apprenticeship-right-for-your-business" class="fiu-card__link">Choose the right training for your business</a>
-            </div>
-         </div>
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Check who can do apprenticeship training</h3>
-               <p class="fiu-card__content">Learn about eligibility for apprenticeship training, including education requirements.
-               </p>
-               <a href="/employers/who-can-be-an-apprentice" class="fiu-card__link">Who can do apprenticeship training</a>
-            </div>
-         </div>
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Understanding apprenticeship benefits and funding</h3>
-               <p class="fiu-card__content">Explore the benefits apprenticeships can bring to your organisation and calculate what funding could be available.</p>
-               <a href="/employers/understanding-apprenticeship-benefits-and-funding" class="fiu-card__link">Understanding apprenticeship benefits and funding</a>
-            </div>
-         </div>
-      </div>
-      <div class="govuk-grid-row fiu-flex-row">
+      if (cards == null || !cards.Any())
+      {
+         return;
+      }
 
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Find funding and support </h3>
-               <p class="fiu-card__content">Explore the different funding opportunities available to support you.</p>
-               <a href="/employers/explore-funding-options" class="fiu-card__link">Explore funding options </a>
-            </div>
-         </div>
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Check what you’re responsible for</h3>
-               <p class="fiu-card__content">Understand what you need to do during apprenticeship training, and where to get support. </p>
-               <a href="/employers/your-responsibilities-as-an-employer" class="fiu-card__link">Your responsibilities as an employer</a>
-            </div>
-         </div>
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">See what’s worked for other employers</h3>
-               <p class="fiu-card__content">Explore case studies that share experiences and insights from businesses offering apprenticeships.</p>
-               <a href="/employers/real-stories-employers" class="fiu-card__link">See what’s worked for other employers</a>
-            </div>
-         </div>
-      </div>
-      <h2 class="govuk-heading-l">Get started</h2>
-      <div class="govuk-grid-row fiu-flex-row">
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Find the right training</h3>
-               <p class="fiu-card__content">Find apprenticeships or training that match the job role you need.</p>
-               <a href="/employers/find-the-right-apprenticeship" class="fiu-card__link">Find the right training</a>
-            </div>
-         </div>
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Choose a training provider </h3>
-               <p class="fiu-card__content">Learn how to choose a training provider that’s right for your business.</p>
-               <a href="/employers/choose-a-training-provider" class="fiu-card__link">Choose a training provider </a>
-            </div>
-         </div>
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Create your apprenticeship service account </h3>
-               <p class="fiu-card__content">Create an apprenticeship service account to set up and manage your apprenticeships or training.</p>
-               <a href="/employers/create-your-apprenticeship-service-account" class="fiu-card__link">Create your apprenticeship service account </a>
-            </div>
-         </div>
-      </div>
-      <div class="govuk-grid-row fiu-flex-row">
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Recruit your apprentice </h3>
-               <p class="fiu-card__content">Start your journey to recruiting the right apprentice. </p>
-               <a href="/employers/recruit-your-apprentice" class="fiu-card__link">Recruit your apprentice </a>
-            </div>
-         </div>
-      </div>
-      <h2 class="govuk-heading-l">What's next?</h2>
-      <div class="govuk-grid-row fiu-flex-row">
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Have an initial assessment </h3>
-               <p class="fiu-card__content">Create a tailored training plan so your business gets the skills it needs. </p>
-               <a href="/employers/have-an-initial-assessment" class="fiu-card__link">Have an initial assessment </a>
-            </div>
-         </div>
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Provide support and get help</h3>
-               <p class="fiu-card__content">Learn what support you need to provide as an employer, and where to get help. </p>
-               <a href="/employers/new-support-your-apprentice" class="fiu-card__link">Support your apprentice</a>
-            </div>
-         </div>
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Plan your apprentice’s next steps</h3>
-               <p class="fiu-card__content">What’s next for your apprentice once training is complete.</p>
-               <a href="/employers/plan-whats-next-for-your-apprentice" class="fiu-card__link">Plan your apprentice’s next steps</a>
-            </div>
-         </div>
-      </div>
-      <div class="govuk-grid-row fiu-flex-row">
-         <div class="govuk-grid-column-one-third">
-            <div class="fiu-card">
-               <h3 class="fiu-card__heading">Become an apprenticeship ambassador</h3>
-               <p class="fiu-card__content">Learn how to join the Apprenticeship Ambassador Network in your area and champion apprenticeships.</p>
-               <a href="/employers/celebrate-apprenticeships-and-upcoming-events" class="fiu-card__link">Celebrate apprenticeships and upcoming events</a>
-            </div>
-         </div>
-      </div>
-      @* @{
-      var items = Model.Content.Cards.Take(Model.Content.Cards.Count);
-      int columncount = 1;
-      for (var i = 0; i < items.Count(); i++)
+      if (!string.IsNullOrWhiteSpace(title))
       {
-      if (columncount == 1)
-      {
-      @:
-      <div class="govuk-grid-row fiu-flex-row">
-         }
-         @items.ElementAt(i).CardToHtml();
-         if (columncount == 3 || i == items.Count() - 1)
+         <h2 class="govuk-heading-l fiu-card-group__title">@title</h2>
+      }
+
+      <div class="fiu-grid-layout fiu-grid-layout--@cards.Count fiu-card-group fiu-card-group--employers ">
+         @foreach (var card in cards)
          {
-         @:
+            @card.CardToHtml()
+         }
       </div>
-      columncount = 1;
-      }
-      else
-      {
-      columncount++;
-      }                
-      }
-      } *@
-      <div class="govuk-grid-row fiu-flex-row">
-         <div class="govuk-grid-column-full">
-            <partial name="Panels/_EmployerSupport"/>
-         </div>
-      </div>
+   }
+}
+<div class="fiu-grad-row">
+   <div class="fiu-width-container">
+      @{ RenderCardGroup(Model.Content.CardsTitle, Model.Content.Cards); }
+      @{ RenderCardGroup(Model.Content.CardsTitle2, Model.Content.Cards2); }
+      @{ RenderCardGroup(Model.Content.CardsTitle3, Model.Content.Cards3); }
+      <partial name="Panels/_EmployerSupport" />
    </div>
 </div>

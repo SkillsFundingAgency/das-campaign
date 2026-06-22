@@ -1,0 +1,37 @@
+@use '../../shared' as *;
+
+.app-anchor-links__panel {
+  margin-bottom: 2rem;
+}
+
+.app-anchor-links__list {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+
+.app-anchor-links__list-item {
+  margin-bottom: govuk-spacing(2);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.app-anchor-links__list-item--active {
+  margin-left: -15px;
+  padding-left: 10px;
+  border-left: 5px solid $fiu-apprentices-link-colour;
+}
+
+.app-anchor-links__list--dash {
+  padding-left: 20px;
+
+  .app-anchor-links__list-item::before {
+    content: "—";
+    margin-left: -20px;
+    color: #484949;
+    display: inline-block;
+    width: 16px;
+  }
+}

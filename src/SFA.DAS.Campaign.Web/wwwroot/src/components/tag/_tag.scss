@@ -1,0 +1,43 @@
+@use '../../shared' as *;
+
+.fiu-tag {
+  @extend .govuk-tag;
+  @include fiu-typography-common;
+  font-size: 19px;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.fiu-tag--apprentices {
+  background: $fiu-apprentices-brand-colour;
+}
+
+a.fiu-tag--apprentices:hover {
+  background: $fiu-apprentices-link-hover-colour;
+}
+
+.fiu-tag--employers {
+  background: $fiu-employers-brand-colour;
+}
+
+a.fiu-tag--employers:hover {
+  background: $fiu-employers-link-hover-colour;
+}
+
+.fiu-tag--influencers {
+  background: $fiu-influencers-brand-colour;
+}
+
+a.fiu-tag--influencers:hover {
+  background: $fiu-influencers-link-hover-colour;
+}
+
+.fiu-tag--national {
+  background: $dark-grey;
+}
+
+a.fiu-tag {
+  &:focus {
+    @include govuk-focused-text;
+  }
+}

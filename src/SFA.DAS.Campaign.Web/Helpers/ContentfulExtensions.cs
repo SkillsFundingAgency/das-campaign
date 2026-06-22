@@ -71,22 +71,6 @@ namespace SFA.DAS.Campaign.Web.Helpers
 
             return new HtmlString(html.ToString());
         }
-        public static HtmlString TabbedContentToHtml(this IEnumerable<TabbedContent> control, HttpContext context, ITempDataDictionary tempDataDictionary)
-        {
-            var renderer = new TabbedContentRenderer
-            {
-                HttpContext = context,
-                TempDataDictionary = tempDataDictionary
-            };
-            
-            var tabs = new Tabs()
-            {
-                TabbedContents = control
-            };
-
-            return renderer.Render(tabs);
-        }
-
         public static async Task<HtmlString> RenderViewAsync(this TabbedContent tab, string viewName, HttpContext context, ITempDataDictionary tempDataDictionary)
         {
             using (var writer = new StringWriter())

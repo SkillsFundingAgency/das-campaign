@@ -1,0 +1,43 @@
+@use '../../shared' as *;
+
+.fiu-back-link {
+  @extend .govuk-back-link;
+  @include fiu-typography-common;
+  color: $white;
+  -webkit-font-smoothing: auto;
+  &:link,
+  &:active,
+  &:visited {
+    color: $white;
+  }
+  &:focus {
+    @include govuk-focused-text;
+  }
+}
+
+.fiu-back-link--top {
+  @include govuk-link-common;
+  @include fiu-typography-common;
+  margin: 0;
+  font-size: 19px;
+  color: $fiu-apprentices-link-colour;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    margin-right: govuk-spacing(1);
+    background-color: currentColor;
+    -webkit-mask: url('../assets/images/icon-back-to-top.svg') no-repeat center / contain;
+    mask: url('../assets/images/icon-back-to-top.svg') no-repeat center / contain;
+  }
+}
+
+.fiu-template--employers {
+  .fiu-back-link--top {
+    color: $fiu-employers-brand-colour;
+    &:focus {
+      @include govuk-focused-text;
+    }
+  }
+}

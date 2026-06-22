@@ -1,0 +1,43 @@
+@use "sass:color";
+@use 'colours-palette' as *;
+
+$fiu-text-colour: $light-black;
+$fiu-body-colour: $light-grey;
+
+$fiu-global-brand-colour: $blue;
+$fiu-apprentices-brand-colour: $green;
+$fiu-employers-brand-colour: $purple;
+$fiu-providers-brand-colour: $orange;
+$fiu-influencers-brand-colour: $blue;
+
+$fiu-global-link-colour: $blue;
+$fiu-apprentices-link-colour: $green;
+$fiu-employers-link-colour: $purple;
+$fiu-providers-link-colour: $orange;
+$fiu-influencers-link-colour: $blue;
+
+$fiu-apprentices-link-colour-light: $light-green;
+$fiu-employers-link-colour-light: $light-purple;
+
+$fiu-global-link-hover-colour: color.adjust($blue, $lightness: -10%);
+$fiu-apprentices-link-hover-colour: color.adjust($green, $lightness: -10%);
+$fiu-employers-link-hover-colour: color.adjust($purple, $lightness: -10%);
+$fiu-providers-link-hover-colour: color.adjust($orange, $lightness: -10%);
+$fiu-influencers-link-hover-colour: color.adjust($blue, $lightness: -10%);
+
+$fiu-page-bg-colour: $black;
+$fiu-border-colour: $grey;
+
+$fiu-footer-bg-colour: $black;
+$fiu-footer-text-colour: $white;
+$fiu-footer-link-colour: $white;
+
+$fiu-header-bg-colour: $white;
+$fiu-header-link-colour: $black;
+$fiu-header-link-hover-colour: $dark-grey;
+
+$fiu-navigation-bg-colour: $light-black;
+
+$fiu-action-success: $green;
+$fiu-action-error: $red;
+$fiu-action-information: $blue;

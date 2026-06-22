@@ -1,0 +1,14 @@
+@use '../../shared' as *;
+
+.fiu-sitemap-list {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.fiu-sitemap-list__link {
+  font-weight: $fiu-font-weight-bold;
+}
+
+.fiu-sitemap-list__child-list {
+  margin-left: 10px;
+}

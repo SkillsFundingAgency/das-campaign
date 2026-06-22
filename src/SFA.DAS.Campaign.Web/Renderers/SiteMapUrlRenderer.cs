@@ -111,7 +111,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
         {
             if (string.Compare(hub, "apprentices", StringComparison.OrdinalIgnoreCase) == 0)
             {
-                return "citizens";
+                return "apprentices";
             }
 
             return hub.ToLowerInvariant();

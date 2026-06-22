@@ -1,0 +1,144 @@
+@use '../../shared' as *;
+
+.fiu-button {
+  @extend .govuk-button;
+  border-radius: 2px;
+  box-shadow: none;
+  background: $fiu-apprentices-link-colour;
+  font-family: $fiu-font-family;
+  font-weight: $fiu-font-weight-bold;
+
+  &:hover {
+    background: $fiu-apprentices-link-hover-colour;
+  }
+}
+
+.fiu-button--apprentices {
+  background: $fiu-apprentices-brand-colour;
+
+  &:hover {
+    background: $fiu-apprentices-link-hover-colour;
+  }
+}
+
+.fiu-template--apprentices .fiu-next-link {
+  @extend .fiu-button--apprentices;
+}
+
+.fiu-button--employers {
+  background: $fiu-employers-brand-colour;
+
+  &:hover {
+    background: $fiu-employers-link-hover-colour;
+  }
+}
+
+.fiu-template--employers .fiu-next-link {
+  @extend .fiu-button--employers;
+}
+
+.fiu-button--providers {
+  background: $fiu-providers-brand-colour;
+
+  &:hover {
+    background: $fiu-providers-link-hover-colour;
+  }
+}
+
+.fiu-button--outlined {
+  background: #fff;
+  color: $fiu-global-link-colour;
+  border: 2px solid currentColor;
+
+  &:hover {
+    background: #fff;
+    color: $fiu-global-link-hover-colour;
+  }
+
+  &:active {
+    color: $fiu-global-link-hover-colour;
+  }
+
+  &:visited {
+    color: $fiu-global-link-colour;
+  }
+
+  &.fiu-button--apprentices {
+    color: $fiu-apprentices-link-colour;
+
+    &:hover {
+      color: $fiu-apprentices-link-hover-colour;
+    }
+  }
+
+  &.fiu-button--apprentices-light {
+    border-color: $light-green;
+    color: $fiu-apprentices-link-colour;
+
+    &:hover {
+      color: $fiu-apprentices-link-hover-colour;
+    }
+  }
+
+  &.fiu-button--employers {
+    color: $fiu-employers-link-colour;
+
+    &:hover {
+      color: $fiu-employers-link-hover-colour;
+    }
+  }
+
+  &.fiu-button--employers-light {
+    border-color: $light-purple;
+    color: $fiu-employers-link-colour;
+
+    &:hover {
+      color: $fiu-employers-link-hover-colour;
+    }
+  }
+
+  &.fiu-button--providers {
+    color: $fiu-providers-link-colour;
+
+    &:hover {
+      color: $fiu-providers-link-hover-colour;
+    }
+  }
+
+  &.fiu-button--influencers {
+    color: $fiu-influencers-link-colour;
+
+    &:hover {
+      color: $fiu-influencers-link-hover-colour;
+    }
+  }
+}
+
+.fiu-button--text {
+  background: transparent;
+  color: $fiu-global-link-colour;
+  border: 2px solid transparent;
+  text-transform: none;
+  text-decoration: underline;
+  font-weight: $fiu-font-weight-book;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
+
+  &:link,
+  &:visited,
+  &:active {
+    color: $fiu-global-link-colour;
+    text-decoration: underline;
+  }
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+.fiu-button--sparks {
+  border-image-slice: 30% 20% 40%;
+  border-image-width: 50px;
+  border-image-outset: 50px;
+  border-image-source: url('../assets/images/design/button-sparks-border.png');
+}

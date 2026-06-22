@@ -1,0 +1,19 @@
+@use 'govuk/index' as *;
+
+$blue: #4282ba;
+$green: #287E3A;
+$light-green: #94eb81;
+$purple: #4d43a3;
+$light-purple: #a49de3;
+$orange: #ff7b20;
+$red: govuk-colour('red');
+$yellow: govuk-colour('yellow');
+
+$black: #000;
+$light-black: govuk-colour('black');
+$dark-grey: #6f777b;
+$mid-grey: govuk-colour('black', $variant: 'tint-80');
+$grey: #cbd0d3;
+$lighter-grey: #e6e8ea;
+$light-grey: #f3f3f3;
+$white: govuk-colour('white');

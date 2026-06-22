@@ -1,0 +1,53 @@
+@use '../shared' as *;
+
+.fiu-grid-column-pull-right {
+  @include govuk-media-query(tablet) {
+    float: right;
+  }
+}
+
+.fiu-flex-row {
+  @include govuk-media-query(tablet) {
+    display: flex;
+    margin-bottom: 1.875rem;
+  }
+}
+
+.fiu-clearfix {
+  @include govuk-clearfix;
+}
+
+
+.fiu-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: 1.875rem;
+  grid-row-gap: 1.875rem;
+  @include govuk-media-query(440px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include govuk-media-query(700px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fiu-grid-layout--4 {
+  @include govuk-media-query(700px) {
+    grid-template-columns: repeat(6, 1fr);
+    .fiu-card {
+      grid-column: span 3;
+    }
+  }
+}
+
+.fiu-grid-layout--5 {
+  @include govuk-media-query(700px) {
+    grid-template-columns: repeat(6, 1fr);
+    .fiu-card {
+      grid-column: span 3;
+    }
+    .fiu-card:nth-child(-n + 3) {
+      grid-column: span 2;
+    }
+  }
+}

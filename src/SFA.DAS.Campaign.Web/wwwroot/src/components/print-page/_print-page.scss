@@ -1,0 +1,19 @@
+@use '../../shared' as *;
+
+.fiu-print-page-link {
+  display: inline-block;
+  @include govuk-media-query($media-type: print) {
+    display: none;
+  }
+}
+@include govuk-media-query($media-type: print) {
+  .fiu-header__nav,
+  .fiu-navigation,
+  .fiu-promo,
+  .fiu-footer,
+  .fiu-panel__image,
+  .govuk-breadcrumbs,
+  .fiu-hide-print {
+    display: none;
+  }
+}

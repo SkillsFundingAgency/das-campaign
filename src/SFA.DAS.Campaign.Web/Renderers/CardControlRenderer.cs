@@ -15,13 +15,17 @@ namespace SFA.DAS.Campaign.Web.Renderers
         {
             var control = content as Card;
 
-            var card = new TagBuilder($"div");
+            var card = new TagBuilder("a");
             card.AddCssClass("fiu-card");
+            card.Attributes.Add("href", control?.Url.ToLower());
 
-            card.InnerHtml.AppendHtml($"<h3 class=\"fiu-card__heading\">{control?.Title}</h3>");
-            card.InnerHtml.AppendHtml($"<p class=\"fiu-card__content\">{control?.Summary}</p>");
-            card.InnerHtml.AppendHtml(
-                $"<a href=\"{control?.Url.ToString().ToLower()}\" class=\"fiu-card__link\">{control?.Title}</a>");
+            if (control?.CardImage?.Url != null)
+            {
+                card.InnerHtml.AppendHtml($"<span class=\"fiu-card__img\" style=\"background-image:url({control.CardImage.Url})\"></span>");
+            }
+
+            card.InnerHtml.AppendHtml($"<div class=\"fiu-card__body\"><h3 class=\"fiu-card__heading\">{control?.Title}</h3>");
+            card.InnerHtml.AppendHtml($"<p class=\"fiu-card__content\">{control?.Summary}</p></div>");
             string result = card.WriteString();
 
             return new HtmlString(result);

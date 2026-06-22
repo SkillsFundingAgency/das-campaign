@@ -1,34 +1,12 @@
+@using System.Linq
+@using SFA.DAS.Campaign.Domain.Content.HtmlControl
 @{
     Layout = "Redesign_Layout_ApprenticesHub";
     ViewBag.PanelsInNarrowColumn = true;
+    ViewBag.PageSummary = Model.Content.Summary;
 }
 
-<span class="fiu-header-content-spacer"></span>
 <div class="fiu-width-container">
-    <div class="govuk-grid-row">
-        @if (ViewBag.HasNotGotTabs == false)
-        {
-            <div class="govuk-grid-column-full">
-                @RenderBody()
-            </div>
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-third">
-                    &nbsp;
-                </div>
-                <div class="govuk-grid-column-two-thirds">
-                    @Html.Partial("./Panels/_BrowseApprenticeships", "fiu-button--outlined")
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="govuk-grid-column-two-thirds">
-                @RenderBody()
-            </div>
-            <div class="govuk-grid-column-one-third fiu-hide-print">
-                @Html.Partial("./Panels/_BrowseApprenticeships", "fiu-button--outlined")
-            </div>
-        }
-    </div>
-    <hr class="fiu-section-break fiu-section-break--l">
+    @RenderBody()
+    <hr class="govuk-section-break govuk-section-break--xl" />
 </div>

@@ -1,0 +1,53 @@
+@use '../shared' as *;
+
+.fiu-template {
+  @extend .govuk-template;
+  background: $fiu-page-bg-colour;
+  scroll-behavior: smooth;
+}
+
+.fiu-template__body {
+  @extend .govuk-template__body;
+  background: $fiu-body-colour;
+}
+
+.fiu-feature-row {
+  background: $black;
+  padding-bottom: 1px;
+}
+
+.fiu-grad-row {
+  position: relative;
+}
+
+.fiu-grad-row__bg {
+  height: 50px;
+  background: url('/images/step-gradient-bg-black.png') repeat-x;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.fiu-grad-row__bg--grey {
+  height: 50px;
+  border-top: none;
+  background: url('/images/step-gradient-bg-grey.png') repeat-x;
+}
+
+.fiu-header-content-spacer {
+  background: url('/images/step-gradient-bg-black.png') repeat-x;
+  height: 50px;
+  display: block;
+  margin-bottom: 30px;
+  @include govuk-media-query($media-type: print) {
+    display: none;
+  }
+}
+
+.fiu-header-content-spacer--grey {
+  background: url('/images/step-gradient-bg-grey.png') repeat-x;
+  height: 50px;
+  display: block;
+  @include govuk-media-query($media-type: print) {
+    display: none;
+  }
+}

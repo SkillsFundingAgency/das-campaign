@@ -1,0 +1,54 @@
+@use '../../shared' as *;
+
+.fiu-nav {
+  position: relative;
+  z-index: 10;
+  
+  &__list {
+    margin: 0 0 0 -10px;
+    padding: 10px 0;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    @include govuk-media-query(tablet) {
+      gap: 20px;
+    }
+  }
+  
+  &__link {
+    @include fiu-typography-common();
+    text-decoration: none;
+    color: #fff;
+    font-size: 19px;
+    padding: 10px;
+    display: block;
+    -webkit-font-smoothing: unset
+  }
+
+  &__link--active {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 15px;
+  }
+  
+  &__link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 15px;
+  }
+  
+  &__link:focus {
+    background-color: #fd0;
+    color: #000;
+  }
+  
+  &__link:focus-visible {
+    outline-offset: 0;
+    color: #000;
+  }
+  
+  &__link:active {
+    background-color: #fd0;
+    color: #000;
+  }
+}

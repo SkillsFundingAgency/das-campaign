@@ -1,7 +1,5 @@
 ﻿@using System.Text
-@using System.Web
 @using Microsoft.AspNetCore.Mvc.ModelBinding
-@using SFA.DAS.Campaign.Web.Models.Components.Form
 @model SFA.DAS.Campaign.Web.Models.RegisterInterestModel
 
 @{
@@ -26,21 +24,15 @@
     };
 }
 
-<span class="fiu-header-content-spacer"></span>
-
 <div class="fiu-width-container">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-
-
-            <div class="govuk-error-summary" role="alert" tabindex="-1" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
+            <div class="govuk-error-summary" data-module="govuk-error-summary" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
                 <h2 class="govuk-error-summary__title">There's a problem</h2>
                 <div class="govuk-error-summary__body">
                     <ul class="govuk-list govuk-error-summary__list">
                         @{
                             var errorStringBuilder = new StringBuilder();
-                            var errorCount = ViewData.ModelState.ErrorCount;
-
                             foreach (var error in errorOrder)
                             {
                                 if (ViewData.ModelState[error]?.ValidationState == ModelValidationState.Invalid)
@@ -50,7 +42,7 @@
                                 }
                             }
                         }
-                        @Html.Raw(HttpUtility.HtmlEncode(errorStringBuilder.ToString()))
+                        @Html.Raw(errorStringBuilder.ToString())
                     </ul>
                 </div>
             </div>
@@ -85,14 +77,12 @@
                         <input id="Email" class="govuk-input govuk-!-width-two-thirds" asp-for="Email" type="text" autocomplete="email">
                     </div>
                 </fieldset>
-                <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Your company</legend>
+                <h2 class="govuk-heading-m">Your company</h2>
+                <fieldset class="govuk-fieldset" aria-describedby="ukHint">
+                    <legend class="govuk-fieldset__legend">Size of your company</legend>
                     <div class="govuk-form-group" highlight-error-for="SizeOfYourCompany">
                         <span asp-validation-for="@Model.SizeOfYourCompany" class="govuk-error-message"></span>
-                        <label class="govuk-label">
-                            Size of your company
-                        </label>
-                        <span class="govuk-caption-m  govuk-!-margin-bottom-2">Only include people based in the UK</span>
+                        <div class="govuk-hint" id="ukHint">Only include people based in the UK</div>
                         <div class="govuk-radios" data-module="govuk-radios" das-validation-for="SizeOfYourCompany" das-validationerror-class="form-group-validation-error">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="SizeOfYourCompany" name="SizeOfYourCompany" type="radio" value="Less than 10 employees" asp-for="@Model.SizeOfYourCompany">
@@ -123,8 +113,8 @@
                     <div class="govuk-form-group" highlight-error-for="Industry">
                         <span asp-validation-for="@Model.Industry" class="govuk-error-message"></span>
                         <label for="Industry" class="govuk-label">Industry</label>
-                        <span class="govuk-caption-m govuk-!-margin-bottom-2">Select only one</span>
-                        <select class="govuk-select" asp-for="Industry" data-val="true" das-validation-for="Industry" das-validationerror-class="form-group-validation-error" id="Industry" name="Industry">
+                        <div class="govuk-hint" id="selectInstr">Select only one</div>
+                        <select class="govuk-select" asp-for="Industry" data-val="true" aria-describedby="selectInstr" das-validation-for="Industry" das-validationerror-class="form-group-validation-error" id="Industry" name="Industry">
                             <option>Agriculture, environmental and animal care</option>
                             <option>Business and administration</option>
                             <option>Care services</option>
@@ -147,8 +137,8 @@
                     <div class="govuk-form-group" highlight-error-for="Location">
                         <span asp-validation-for="@Model.Location" class="govuk-error-message"></span>
                         <label for="Location" class="govuk-label">Region</label>
-                        <span class="govuk-caption-m govuk-!-margin-bottom-2">Select only one</span>
-                        <select class="govuk-select" asp-for="Location" data-val="true" das-validation-for="Location" das-validationerror-class="form-group-validation-error" id="Location" name="Location">
+                        <div class="govuk-hint" id="selectInstr2">Select only one</div>
+                        <select class="govuk-select" asp-for="Location" data-val="true" aria-describedby="selectInstr2" das-validation-for="Location" das-validationerror-class="form-group-validation-error" id="Location" name="Location">
                             <option>South West</option>
                             <option>South East</option>
                             <option>London</option>
@@ -172,8 +162,8 @@
                 <div class="govuk-form-group" das-validation-for="IncludeInUR" das-validationerror-class="form-group-validation-error">
                     <div class="govuk-checkboxes__item">
                         <input class="govuk-checkboxes__input fiu-checkboxes__input" asp-for="IncludeInUR" type="checkbox" value="true">
-                        <label class="govuk-checkboxes__label fiu-checkboxes__label" asp-for="IncludeInUR">
-                            I am happy to be take part in research that'll help improve the Apprenticeship service.
+                        <label class="govuk-label govuk-checkboxes__label fiu-checkboxes__label" asp-for="IncludeInUR">
+                            I am happy to take part in research that'll help improve the Apprenticeship service.
                         </label>
                     </div>
                 </div>

@@ -140,7 +140,15 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
             model.Content = new Article
             {
-                PageControls = pageContent, Summary = cmsContent.Article.PageAttributes.Summary
+                PageControls = pageContent,
+                Summary = cmsContent.Article.PageAttributes.Summary,
+                ArticleType = cmsContent.Article.PageAttributes?.ArticleType,
+                HeaderImage = new Image
+                {
+                    Description = cmsContent.Article.MainContent?.HeaderImage?.EmbeddedResource?.Description,
+                    Title = cmsContent.Article.MainContent?.HeaderImage?.EmbeddedResource?.Title,
+                    Url = cmsContent.Article.MainContent?.HeaderImage?.EmbeddedResource?.Url
+                }
             };
         }
 

@@ -1,0 +1,151 @@
+@use '../../shared' as *;
+
+.fiu-card {
+  @include fiu-typography-common;
+  background: $white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  color: $fiu-text-colour;
+  text-decoration: none;
+  border: 1px solid $fiu-border-colour;
+  border-radius: $fiu-border-radius;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+a.fiu-card {
+  &:focus {
+    @include fiu-focused-block;
+  }
+
+  &:active,
+  &:hover {
+    background: $fiu-apprentices-brand-colour;
+    border-color: $fiu-apprentices-link-hover-colour;
+    color: #fff;
+  }
+}
+
+
+.fiu-card__heading {
+  margin: 0 0 0.7em 0;
+  font-size: 20px;
+  line-height: 1.1em;
+  font-weight: $fiu-font-weight-bold;
+  color: $fiu-apprentices-brand-colour;
+  transition: color 0.2s ease, text-decoration-thickness 0.2s ease;
+  @include govuk-media-query($from: tablet) {
+    font-size: 18px;
+  }
+  @include govuk-media-query($from: $fiu-large-desktop-breakpoint) {
+    font-size: 24px;
+  }
+}
+
+.fiu-card__logo {
+  min-height: 100px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  img {
+    max-width: 80%;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.fiu-card-group--employers {
+  a.fiu-card {
+    &:active,
+    &:hover {
+      background: $fiu-employers-brand-colour;
+      border-color: $fiu-employers-link-hover-colour;
+    }
+    .fiu-card__heading {
+      color: $fiu-employers-brand-colour;
+    }
+  }
+}
+
+a.fiu-card {
+  &:hover {
+    .fiu-card__heading {
+      text-decoration-thickness: 2px;
+      color: #fff;
+    }
+  }
+}
+
+.fiu-card__content {
+  @extend .govuk-body;
+  @include fiu-typography-common;
+  color: inherit;
+  margin-bottom: 0;
+}
+
+
+.fiu-card__img {
+  display: block;
+  height: 160px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 7px 7px 0 0;
+  margin: -1rem -1rem 1rem;
+}
+
+
+
+a.fiu-card-homepage {
+  @extend .fiu-card;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 3rem;
+
+  .fiu-panel__tag {
+    margin-bottom: 1rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  &:hover {
+    background: $fiu-apprentices-brand-colour;
+    .fiu-panel__tag {
+      color: $fiu-apprentices-brand-colour;
+      background: #fff;
+    }
+  }
+  
+  &--employers {
+    &:hover {
+      background: $fiu-employers-brand-colour;
+      .fiu-panel__tag {
+        color: $fiu-employers-brand-colour;
+        background: #fff;
+      }
+    }
+  }
+  
+  .fiu-card__content {
+    color: inherit;
+  }
+}
+
+
+.fiu-card-group {
+  margin-bottom: 2rem;
+}
+
+.fiu-card-group__title {
+  margin-top: 3.75rem;
+}

@@ -1,0 +1,136 @@
+@use '../../shared' as *;
+
+.fiu-page-header {
+  @include fiu-typography-common;
+  background-color: $black;
+  padding: 1px 0;
+  color: $white;
+  position: relative;
+}
+
+.fiu-page-header .fiu-width-container {
+  position: relative;
+  padding-top: 1px;
+  margin-top: -1px;
+}
+
+.fiu-page-header__wrap {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  @include govuk-media-query($until: tablet) {
+    margin-top: 140px
+  }
+}
+
+.govuk-grid-column-full.fiu-page-header__wrap {
+  margin-top: 0;
+}
+
+.govuk-back-link {
+  -webkit-font-smoothing: unset;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.fiu-page-header__tag {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  @include govuk-media-query($media-type: print) {
+    display: none;
+  }
+}
+
+.fiu-page-heading__title {
+  margin-bottom: 20px;
+  color: inherit;
+  @include govuk-media-query($media-type: print) {
+    color: black;
+    margin-bottom: 0;
+  }
+}
+
+.fiu-page-heading__title-hub {
+  letter-spacing: -0.03em;
+  margin-bottom: 40px;
+  color: inherit;
+  @include govuk-media-query(tablet) {
+    margin-bottom: 60px;
+    max-width: 66%;
+  }
+  @include govuk-media-query($media-type: print) {
+    color: black;
+    transform: rotate(6deg);
+    text-transform: lowercase;
+    letter-spacing: 0;
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.fiu-page-header__content {
+  @extend .govuk-body;
+  @include fiu-typography-common;
+  color: inherit;
+}
+
+.fiu-page-header__content--l {
+  @extend .govuk-body-l;
+  @include fiu-typography-common;
+  color: inherit;
+  line-height: 1.4;
+}
+
+.fiu-page-header__gov-logo {
+  height: 30px;
+  display: block;
+  margin-bottom: 10px;
+  @include govuk-media-query($media-type: print) {
+    display: none;
+  }
+}
+
+.fiu-page-header__sub-heading {
+  color: $white;
+  position: relative;
+  @include govuk-media-query($media-type: print) {
+    display: none;
+  }
+}
+
+.fiu-page-header__image-wrap {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 70% 70px;
+  position: relative;
+  @include govuk-media-query(tablet) {
+    background-position: top right;
+  }
+  @include govuk-media-query($until: tablet) {
+    background-position: 0 70px;
+    background-size: contain;
+  }
+}
+
+
+.fiu-page-header__image-mask {
+  position: absolute;
+  background: linear-gradient(to right, #00000000 73%, #000000ff 100%), radial-gradient(farthest-corner at 59% 32%, #00000000 0%, #000000ff 63%);background-blend-mode: color-dodge;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @include govuk-media-query(tablet) {
+    top: 0;
+  }
+}
+
+.fiu-page-header__back {
+  display: block;
+}
