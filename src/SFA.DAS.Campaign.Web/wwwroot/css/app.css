@@ -17869,9 +17869,6 @@ a.fiu-card:active, a.fiu-card-homepage:active, a.fiu-card:hover, a.fiu-card-home
   font-size: 20px;
   line-height: 1.1em;
   font-weight: 700;
-  text-decoration: underline;
-  text-decoration-thickness: max(1px, 0.0625rem);
-  text-underline-offset: 0.1578em;
   color: #287E3A;
   transition: color 0.2s ease, text-decoration-thickness 0.2s ease;
 }
@@ -19131,7 +19128,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
 
 .fiu-panel-homepage__heading {
   color: inherit;
-  margin: 1rem 1rem 2rem;
+  margin: 1rem 0 2rem;
 }
 
 .fiu-panel-homepage__content {
