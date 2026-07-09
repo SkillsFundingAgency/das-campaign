@@ -18,16 +18,18 @@
 <main id="main" class="fiu-main-wrapper">
     <div class="fiu-page-header">
         <div class="fiu-width-container">
-            <div class="fiu-page-header__image-wrap" style="background-image: url(/images/homepage-background.jpg)">
+            <div class="fiu-page-header__image-wrap">
                 <partial name="_Navigation" model="@("home")" />
-                <span class="fiu-page-header__image-mask"></span>
+                <div class="fiu-page-header__image" style="background-image: url(/images/homepage-background.jpg)">
+                    <span class="fiu-page-header__image-mask"></span>
+                </div>
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-half fiu-page-header__wrap">
                         <h1 class="govuk-heading-xl fiu-page-heading__title govuk-!-margin-top-5">
-                            Your trusted guide to apprenticeships
+                            Your guide to apprenticeships
                         </h1>
                         <p class="fiu-page-header__content--l">
-                            With over 700 available - from construction to digital, legal to care services - we’ll help you choose what’s best for you.
+                            With over 700 available - from construction to digital, legal to care services - we’ll help you choose what’s best for you or your business.
                         </p>
                     </div>
                 </div>
@@ -44,7 +46,7 @@
                             <strong class="fiu-tag fiu-tag--apprentices fiu-panel__tag">Apprentices</strong>
                         </div>
                         <h2 class="govuk-heading-l fiu-panel-homepage__heading">Become an apprentice</h2>
-                        <p class="fiu-card__content govuk-!-font-size-24">Find out about apprenticeships and get support as an apprentice. </p>
+                        <p class="fiu-card__content govuk-!-font-size-24">What an apprenticeship is, how to find the right one and get support as an apprentice. </p>
                     </a>
                 </div>
                 <div class="govuk-grid-column-one-half">
@@ -53,7 +55,7 @@
                             <strong class="fiu-tag fiu-tag--employers fiu-panel__tag">Employers</strong>
                         </div>
                         <h2 class="govuk-heading-l fiu-panel-homepage__heading">Hire an apprentice</h2>
-                        <p class="fiu-card__content govuk-!-font-size-24">Hire an apprentice or train an existing employee.</p>
+                        <p class="fiu-card__content govuk-!-font-size-24">Find out how to hire an apprentice or train an existing employee.</p>
                     </a>
                 </div>
             </div>
@@ -63,19 +65,19 @@
         </div>
         <div class="fiu-width-container">
             <div class="fiu-grid-layout fiu-grid-layout--5 fiu-card-group">
-                <a class="fiu-card" href="/apprentices/">
+                <a class="fiu-card" href="/apprentices/employer-profiles">
                     <div class="fiu-card__body">
                         <h3 class="fiu-card__heading">What employers hire apprentices?</h3>
                         <p class="fiu-card__content">See some employers who offer apprenticeships.</p>
                     </div>
                 </a>
-                <a class="fiu-card" href="/apprentices/">
+                <a class="fiu-card" href="/apprentices/join-the-apprenticeship-ambassador-network-as-an-apprentice">
                     <div class="fiu-card__body">
                         <h3 class="fiu-card__heading">Connect with apprentices and employers</h3>
                         <p class="fiu-card__content">Join the Apprenticeship Ambassador Network. </p>
                     </div>
                 </a>
-                <a class="fiu-card" href="/apprentices/">
+                <a class="fiu-card" href="/apprentices/resource-hub">
                     <div class="fiu-card__body">
                         <h3 class="fiu-card__heading">Resources to inspire and help future apprentices</h3>
                         <p class="fiu-card__content">Get posters, presentations and guides to interviews and applications.</p>

@@ -7,14 +7,14 @@
 @{
     if (Model.Roles > 1)
     {
-        <ul class="fiu-stats-list fiu-stats-list--panels">
-            <li class="fiu-stats-list__list-item">
+        <ul role="list" class="fiu-stats-list fiu-stats-list--panels">
+            <li role="listitem" class="fiu-stats-list__list-item">
                 <span class="fiu-stats-list__panel">
                     <span class="fiu-stats-list__stat">£@Model.CalculationResults.AvailableFunding</span>
                     Estimated funding for @Model.Roles apprentices paid directly to training provider
                 </span>
             </li>
-            <li class="fiu-stats-list__list-item">
+            <li role="listitem" class="fiu-stats-list__list-item">
                 <span class="fiu-stats-list__panel">
                     <span class="fiu-stats-list__stat">£@Model.CalculationResults.TrainingCost</span>
                     Training costs paid by you
@@ -24,14 +24,14 @@
     }
     else
     {
-        <ul class="fiu-stats-list fiu-stats-list--panels">
-            <li class="fiu-stats-list__list-item">
+        <ul role="list" class="fiu-stats-list fiu-stats-list--panels">
+            <li role="listitem" class="fiu-stats-list__list-item">
                 <span class="fiu-stats-list__panel">
                     <span class="fiu-stats-list__stat">£@Model.CalculationResults.AvailableFunding</span>
                     Estimated funding for 1 apprentice paid directly to training provider
                 </span>
             </li>
-            <li class="fiu-stats-list__list-item">
+            <li role="listitem" class="fiu-stats-list__list-item">
                 <span class="fiu-stats-list__panel">
                     <span class="fiu-stats-list__stat">£@Model.CalculationResults.TrainingCost</span>
                     Training costs paid by you

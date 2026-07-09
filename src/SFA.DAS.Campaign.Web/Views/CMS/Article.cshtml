@@ -19,10 +19,10 @@
     @if (Model.Content?.TabbedContents != null)
     {
         <h2 class="govuk-heading-m">On this page</h2>
-        <ul class="govuk-list govuk-list--spaced app-anchor-links app-anchor-links__list app-anchor-links__list--dash govuk-!-margin-bottom-9">
+        <ul role="list" class="govuk-list govuk-list--spaced app-anchor-links app-anchor-links__list app-anchor-links__list--dash govuk-!-margin-bottom-9">
             @foreach (var tab in Model.Content.TabbedContents)
             {
-                <li class="app-anchor-links__list-item">
+                <li role="listitem" class="app-anchor-links__list-item">
                     <a class="govuk-link govuk-link--no-visited-state app-anchor-links__link" href="#@tab.TabTitle.EnsureHrefUsableTitle()">@tab.TabTitle</a>
                 </li>
             }
@@ -37,10 +37,10 @@
             .OrderBy(p => p.Title?.Trim(), StringComparer.CurrentCultureIgnoreCase);
 
         <h2 class="govuk-heading-m">Areas of interest</h2>
-        <ul class="govuk-list govuk-list--spaced app-anchor-links__list app-anchor-links__list--no-marker">
+        <ul role="list" class="govuk-list govuk-list--spaced app-anchor-links__list app-anchor-links__list--no-marker">
             @foreach (var link in links)
             {
-                <li class="app-anchor-links__list-item  @(link.IsActive ? "app-anchor-links__list-item--active" : null)">
+                <li role="listitem" class="app-anchor-links__list-item  @(link.IsActive ? "app-anchor-links__list-item--active" : null)">
                     <a href="@link.Url"
                        class="govuk-link govuk-link--no-visited-state app-anchor-links__link"
                        aria-current="@(link.IsActive ? "page" : null)">@link.Title</a>

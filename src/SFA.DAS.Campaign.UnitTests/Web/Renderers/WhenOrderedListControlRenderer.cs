@@ -35,7 +35,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(list);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<ol><li>item 1</li></ol>");
+            actual.Value.Should().Be("<ol role=\"list\"><li role=\"listitem\">item 1</li></ol>");
         }
 
         [Test, MoqAutoData]
@@ -45,7 +45,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(list);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<ol><li>item 1</li><li>item 2</li></ol>");
+            actual.Value.Should().Be("<ol role=\"list\"><li role=\"listitem\">item 1</li><li role=\"listitem\">item 2</li></ol>");
         }
     }
 }

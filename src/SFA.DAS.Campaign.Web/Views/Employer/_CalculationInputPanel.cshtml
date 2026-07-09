@@ -28,21 +28,21 @@
                 What training course do you want your apprentice to take?
             </label>
             <span asp-validation-for="@Model.StandardUid" class="govuk-error-message"></span>
-            <p class="govuk-body">
+            <div class="govuk-hint" id="offerHint">
                 We offer over @Model.Standards.Count() courses which you can search by keyword or job role,
                 <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link govuk-link--no-visited-state" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.
-            </p>
-            <select class="govuk-select" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true" id="StandardUid"><option label=" "></option></select>
+            </div>
+            <select class="govuk-select" aria-describedby="offerHint" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true" id="StandardUid"><option label=" "></option></select>
         </div>
         <div class="govuk-form-group" highlight-error-for="NumberOfRoles">
             <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="NumberOfRoles">
                 How many roles do you have available for this apprenticeship?
             </label>
             <span asp-validation-for="@Model.NumberOfRoles" class="govuk-error-message"></span>
-            <p class="govuk-body">
+            <div class="govuk-hint" id="NumberOfRolesHint">
                 Enter the number of available roles
-            </p>
-            <input class="govuk-input govuk-input--width-3" name="NumberOfRoles" type="text" asp-for="@Model.NumberOfRoles" id="NumberOfRoles" inputmode="numeric">
+            </div>
+            <input class="govuk-input govuk-input--width-3" aria-describedby="NumberOfRolesHint" name="NumberOfRoles" type="text" asp-for="@Model.NumberOfRoles" id="NumberOfRoles" inputmode="numeric">
         </div>
         <div class="govuk-button-group">
             <button class="fiu-button fiu-button--employers" type="submit">

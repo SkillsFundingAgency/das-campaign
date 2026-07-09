@@ -1,14 +1,14 @@
-@model string
-
 @{
+    var activeSection = ViewData.Model as string;
+
     string LinkClass(string section)
-        => Model == section ? "fiu-nav__link fiu-nav__link--active" : "fiu-nav__link";
+        => activeSection == section ? "fiu-nav__link fiu-nav__link--active" : "fiu-nav__link";
 }
 
 <nav class="fiu-nav" aria-label="Main navigation">
-    <ul class="fiu-nav__list">
-        <li class="fiu-nav__list-item"><a href="/" class="@LinkClass("home")">Home</a></li>
-        <li class="fiu-nav__list-item"><a href="/apprentices" class="@LinkClass("apprentices")">Apprentices</a></li>
-        <li class="fiu-nav__list-item"><a href="/employers" class="@LinkClass("employers")">Employers</a></li>
+    <ul role="list" class="fiu-nav__list">
+        <li role="listitem" class="fiu-nav__list-item"><a href="/" class="@LinkClass("home")">Home</a></li>
+        <li role="listitem" class="fiu-nav__list-item"><a href="/apprentices" class="@LinkClass("apprentices")">Apprentices</a></li>
+        <li role="listitem" class="fiu-nav__list-item"><a href="/employers" class="@LinkClass("employers")">Employers</a></li>
     </ul>
 </nav>

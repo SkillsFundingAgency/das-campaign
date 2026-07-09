@@ -21,9 +21,11 @@
 <main id="main" class="fiu-main-wrapper">
     <div class="fiu-page-header">
         <div class="fiu-width-container">
-            <div class="fiu-page-header__image-wrap" style="@headingImageStyle">
+            <div class="fiu-page-header__image-wrap">
                 <partial name="_Navigation" model="@("employers")" />
-                <span class="fiu-page-header__image-mask"></span>
+                <div class="fiu-page-header__image" style="@headingImageStyle">
+                    <span class="fiu-page-header__image-mask"></span>
+                </div>
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-@headingColWidth fiu-page-header__wrap">
                         @if (ViewBag.ParentPageUrl != null)
