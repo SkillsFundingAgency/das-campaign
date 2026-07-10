@@ -15,29 +15,36 @@
 }
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third govuk-!-margin-top-9 fiu-hide-print" id="nav-menu">
-            <h2 class="govuk-heading-l govuk-!-margin-top-6">On this page</h2>
-            <ul class="govuk-list govuk-list--spaced">
-                <li><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel1.Title</a></li>
-                <li><a href="#@Model.Panel2.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel2.Title</a></li>
-                <li><a href="#@Model.Panel3.Slug" class="govuk-link govuk-link--no-visited-state">@Model.Panel3.Title</a></li>
-                <li><a href="#available-funding" class="govuk-link govuk-link--no-visited-state">@ViewBag.Panel4Title</a></li>
-                <li><a href="/employers/apprenticeship-alternatives-employers" class="govuk-link govuk-link--no-visited-state">Apprenticeships not right for you?</a></li>
+        <div class="govuk-grid-column-one-third" id="nav-menu">
+            <h2 class="govuk-heading-m">On this page</h2>
+            <ul role="list" class="govuk-list govuk-list--spaced app-anchor-links app-anchor-links__list app-anchor-links__list--dash govuk-!-margin-bottom-9">
+                <li role="listitem" class="app-anchor-links__list-item"><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@Model.Panel1.Title</a></li>
+                <li role="listitem" class="app-anchor-links__list-item"><a href="#@Model.Panel2.Slug" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@Model.Panel2.Title</a></li>
+                <li role="listitem" class="app-anchor-links__list-item"><a href="#@Model.Panel3.Slug" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@Model.Panel3.Title</a></li>
+                <li role="listitem" class="app-anchor-links__list-item"><a href="#available-funding" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@ViewBag.Panel4Title</a></li>
+                <li role="listitem" class="app-anchor-links__list-item"><a href="/employers/apprenticeship-alternatives-employers" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">Apprenticeships not right for you?</a></li>
             </ul>
         </div>
-        <div class="govuk-grid-column-two-thirds govuk-!-margin-top-6">
-            <div class="fiu-hide-print govuk-!-margin-top-6">
+        <div class="govuk-grid-column-two-thirds">
+            <div class="fiu-hide-print">
 
                 <partial name="ValidationSummary" />
 
-                <div id="@Model.Panel1.Slug">@await Html.PartialAsync("_Panel", Model.Panel1)</div>
-                <a href="#main" class="fiu-back-link--top"> Back to top</a>
-                <div id="@Model.Panel2.Slug">@await Html.PartialAsync("_Panel", Model.Panel2)</div>
-                <a href="#main" class="fiu-back-link--top"> Back to top</a>
-                <div id="@Model.Panel3.Slug">@await Html.PartialAsync("_Panel", Model.Panel3)</div>
-                <a href="#main" class="fiu-back-link--top"> Back to top</a>
+                <div id="@Model.Panel1.Slug" class="app-anchor-links__panel">
+                    @await Html.PartialAsync("_Panel", Model.Panel1)
+                    <a href="#main" class="fiu-back-link--top">Back to top</a>
+                </div>
+                
+                <div id="@Model.Panel2.Slug" class="app-anchor-links__panel">
+                    @await Html.PartialAsync("_Panel", Model.Panel2)
+                    <a href="#main" class="fiu-back-link--top">Back to top</a>
+                </div>
+                <div id="@Model.Panel3.Slug" class="app-anchor-links__panel">
+                    @await Html.PartialAsync("_Panel", Model.Panel3)
+                    <a href="#main" class="fiu-back-link--top">Back to top</a>
+                </div>
             </div>
-            <div id="available-funding">
+            <div id="available-funding" class="app-anchor-links__panel">
                 @if (Model.Submitted)
                 {
                     if (Model.PayBillGreaterThanThreeMillion == true)
@@ -53,13 +60,13 @@
                 {
                     <div>@await Html.PartialAsync("_CalculationInputPanel")</div>
                 }
+                <a href="#main" class="fiu-back-link--top"> Back to top</a>
+            </div>
+            <div id="use-cases" class="app-anchor-links__panel">
+                @await Html.PartialAsync("_UseCases")
+                <a href="#main" class="fiu-back-link--top"> Back to top</a>
             </div>
 
-            <a href="#main" class="fiu-back-link--top"> Back to top</a>
-
-            <div id="use-cases">@await Html.PartialAsync("_UseCases")</div>
-
-            <a href="#main" class="fiu-back-link--top"> Back to top</a>
         </div>
     </div>
 </div>

@@ -25,24 +25,25 @@
 <main id="main" class="fiu-main-wrapper">
     <div class="fiu-page-header">
         <div class="fiu-width-container">
-            <div class="fiu-page-header__image-wrap" style="@headingImageStyle">
+            <div class="fiu-page-header__image-wrap">
                 <partial name="_Navigation" model="@("apprentices")" />
-                <span class="fiu-page-header__image-mask"></span>
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-@headingColWidth fiu-page-header__wrap">
-                            @if (ViewBag.ParentPageUrl != null)
-                            {
-                                <a href="@ViewBag.ParentPageUrl" class="govuk-back-link govuk-back-link--inverse fiu-back-link fiu-page-header__back">Back</a>
-                            }
-                            <strong class="fiu-tag fiu-tag--apprentices fiu-page-header__tag fiu-feature-text">Apprentices</strong>
-                            <h1 class="govuk-heading-xl fiu-page-heading__title">@ViewBag.PageTitle</h1>
-                            @if (ViewBag.PageSummary != null)
-                            {
-                                <p class="fiu-page-header__content--l">@ViewBag.PageSummary</p>
-                            }
-                        </div>
+                <div class="fiu-page-header__image" style="@headingImageStyle">
+                    <span class="fiu-page-header__image-mask"></span>
+                </div>
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-@headingColWidth fiu-page-header__wrap">
+                        @if (ViewBag.ParentPageUrl != null)
+                        {
+                            <a href="@ViewBag.ParentPageUrl" class="govuk-back-link govuk-back-link--inverse fiu-back-link fiu-page-header__back">Back</a>
+                        }
+                        <strong class="fiu-tag fiu-tag--apprentices fiu-page-header__tag fiu-feature-text">Apprentices</strong>
+                        <h1 class="govuk-heading-xl fiu-page-heading__title">@ViewBag.PageTitle</h1>
+                        @if (ViewBag.PageSummary != null)
+                        {
+                            <p class="fiu-page-header__content--l">@ViewBag.PageSummary</p>
+                        }
                     </div>
-                    
+                </div>
             </div>
         </div>
     </div>  

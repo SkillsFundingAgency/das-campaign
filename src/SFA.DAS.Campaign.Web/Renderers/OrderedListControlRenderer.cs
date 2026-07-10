@@ -21,10 +21,11 @@ namespace SFA.DAS.Campaign.Web.Renderers
             var control = content as OrderedList;
 
             var ul = new TagBuilder("ol");
+            ul.Attributes.Add("role", "list");
 
             foreach (var value in control.Items)
             {
-                ul.InnerHtml.AppendHtml("<li>");
+                ul.InnerHtml.AppendHtml("<li role=\"listitem\">");
 
                 foreach (var childValue in value)
                 {

@@ -2,7 +2,7 @@
 
 .fiu-page-header {
   @include fiu-typography-common;
-  background-color: $black;
+  background-color: #0B0C0C;
   padding: 1px 0;
   color: $white;
   position: relative;
@@ -15,16 +15,12 @@
 }
 
 .fiu-page-header__wrap {
-  padding-top: 20px;
   padding-bottom: 20px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  @include govuk-media-query($until: tablet) {
-    margin-top: 140px
-  }
 }
 
 .govuk-grid-column-full.fiu-page-header__wrap {
@@ -105,24 +101,33 @@
 }
 
 .fiu-page-header__image-wrap {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 70% 70px;
   position: relative;
+}
+
+.fiu-page-header__image {
+  position: relative;
+  min-height: 200px;
+  background-size: cover;
+  background-position: center center;
+  margin: 10px -20px 0;
   @include govuk-media-query(tablet) {
-    background-position: top right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin: 0;
   }
-  @include govuk-media-query($until: tablet) {
-    background-position: 0 70px;
-    background-size: contain;
+  @include govuk-media-query($media-type: print) {
+    display: none;
   }
 }
 
-
 .fiu-page-header__image-mask {
   position: absolute;
-  background: linear-gradient(to right, #00000000 73%, #000000ff 100%), radial-gradient(farthest-corner at 59% 32%, #00000000 0%, #000000ff 63%);background-blend-mode: color-dodge;
-  top: 70px;
+  background: linear-gradient(90deg, #0B0C0C 0%, rgba(11, 12, 12, 0) 20%, rgba(11, 12, 12, 0) 80%, #0B0C0C 100%),
+  linear-gradient(180deg, rgba(11, 12, 12, 0) 0%, rgba(11, 12, 12, 0) 80%, #0B0C0C 100%);
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;

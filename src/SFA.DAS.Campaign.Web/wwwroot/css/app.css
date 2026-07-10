@@ -17576,6 +17576,9 @@ b {
     box-decoration-break: clone;
   }
 }
+.fiu-back-link:before {
+  border-color: inherit;
+}
 
 .fiu-back-link--top {
   font-family: "GDS Transport", arial, sans-serif;
@@ -18672,7 +18675,7 @@ a.fiu-card-homepage .fiu-card__content {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #000;
+  background-color: #0B0C0C;
   padding: 1px 0;
   color: #ffffff;
   position: relative;
@@ -18685,18 +18688,12 @@ a.fiu-card-homepage .fiu-card__content {
 }
 
 .fiu-page-header__wrap {
-  padding-top: 20px;
   padding-bottom: 20px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-}
-@media (max-width: 40.0525em) {
-  .fiu-page-header__wrap {
-    margin-top: 140px;
-  }
 }
 
 .govuk-grid-column-full.fiu-page-header__wrap {
@@ -18795,28 +18792,36 @@ a.fiu-card-homepage .fiu-card__content {
 }
 
 .fiu-page-header__image-wrap {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 70% 70px;
   position: relative;
 }
+
+.fiu-page-header__image {
+  position: relative;
+  min-height: 200px;
+  background-size: cover;
+  background-position: center center;
+  margin: 10px -20px 0;
+}
 @media (min-width: 40.0625em) {
-  .fiu-page-header__image-wrap {
-    background-position: top right;
+  .fiu-page-header__image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin: 0;
   }
 }
-@media (max-width: 40.0525em) {
-  .fiu-page-header__image-wrap {
-    background-position: 0 70px;
-    background-size: contain;
+@media print {
+  .fiu-page-header__image {
+    display: none;
   }
 }
 
 .fiu-page-header__image-mask {
   position: absolute;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0) 73%, black 100%), radial-gradient(farthest-corner at 59% 32%, rgba(0, 0, 0, 0) 0%, black 63%);
-  background-blend-mode: color-dodge;
-  top: 70px;
+  background: linear-gradient(90deg, #0B0C0C 0%, rgba(11, 12, 12, 0) 20%, rgba(11, 12, 12, 0) 80%, #0B0C0C 100%), linear-gradient(180deg, rgba(11, 12, 12, 0) 0%, rgba(11, 12, 12, 0) 80%, #0B0C0C 100%);
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -19915,7 +19920,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
 }
 
 .fiu-sitemap-list {
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
 }
 

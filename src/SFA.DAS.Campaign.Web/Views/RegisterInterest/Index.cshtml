@@ -30,7 +30,7 @@
             <div class="govuk-error-summary" data-module="govuk-error-summary" style="@(ViewData.ModelState.IsValid ? " display: none" : "")">
                 <h2 class="govuk-error-summary__title">There's a problem</h2>
                 <div class="govuk-error-summary__body">
-                    <ul class="govuk-list govuk-error-summary__list">
+                    <ul role="list" class="govuk-list govuk-error-summary__list">
                         @{
                             var errorStringBuilder = new StringBuilder();
                             foreach (var error in errorOrder)
@@ -38,7 +38,7 @@
                                 if (ViewData.ModelState[error]?.ValidationState == ModelValidationState.Invalid)
                                 {
                                     var errorKey = error == "Route" ? "rbApprentice" : error;
-                                    errorStringBuilder.Append($" <li><a href =\"#{errorKey}\" class=\"govuk-form-validation-summary__link\">{Model.ValidationMessages[error]}</a></li>");
+                                    errorStringBuilder.Append($" <li role=\"listitem\"><a href =\"#{errorKey}\" class=\"govuk-form-validation-summary__link\">{Model.ValidationMessages[error]}</a></li>");
                                 }
                             }
                         }

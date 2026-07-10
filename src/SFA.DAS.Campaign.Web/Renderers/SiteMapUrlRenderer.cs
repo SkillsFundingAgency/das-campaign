@@ -31,7 +31,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
             parentDiv.AddCssClass("govuk-grid-row");
             TagBuilder columnDiv = null;
             
-            foreach (var url in control.Urls.Where(o => string.Compare(o.PageType, "hub", StringComparison.OrdinalIgnoreCase) == 0).OrderBy(o => o.Hub))
+            foreach (var url in control.Urls.Where(o => string.Compare(o.PageType, "hub", StringComparison.OrdinalIgnoreCase) == 0).OrderBy(o => o.Hub).Take(2))
             {
                 if (string.Compare(url.Hub, currentHub, StringComparison.OrdinalIgnoreCase) != 0)
                 {
@@ -41,7 +41,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
                     }
 
                     columnDiv = new TagBuilder("div");
-                    columnDiv.AddCssClass("govuk-grid-column-one-third");
+                    columnDiv.AddCssClass("govuk-grid-column-one-half");
 
                     AddHubUrl(columnDiv, url);
 
@@ -62,12 +62,13 @@ namespace SFA.DAS.Campaign.Web.Renderers
         private void AddArticlePageUrls(IEnumerable<Url> articleUrls, TagBuilder parentDiv) 
         {
             var ul = new TagBuilder("ul");
+            ul.Attributes.Add("role", "list");
             ul.AddCssClass("govuk-list fiu-sitemap-list__child-list");
 
             foreach (var url in articleUrls)
             {
                 ul.InnerHtml.AppendHtml(
-                    $"<li><a href=\"/{url.Hub.ToLowerInvariant()}/{url.Slug}\" class=\"fiu-link fiu-link--{GetCssClassNameForHub(url.Hub)}\">{url.Title}</a></li>");
+                    $"<li role=\"listitem\"><a href=\"/{url.Hub.ToLowerInvariant()}/{url.Slug}\" class=\"fiu-link fiu-link--{GetCssClassNameForHub(url.Hub)}\">{url.Title}</a></li>");
             }
 
             parentDiv.InnerHtml.AppendHtml(ul.WriteString());
@@ -76,7 +77,8 @@ namespace SFA.DAS.Campaign.Web.Renderers
         private void AddLandingPageUrl(List<Url> landingPageUrls, TagBuilder parentDiv, SiteMapUrls sitemapUrls)
         {
             string currentLandingPage = null;
-            var ul = new TagBuilder("ul"); 
+            var ul = new TagBuilder("ul");
+            ul.Attributes.Add("role", "list");
             ul.AddCssClass("govuk-list fiu-sitemap-list");
 
             foreach (var landingPageUrl in landingPageUrls)
@@ -84,7 +86,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 if (string.Compare(currentLandingPage, landingPageUrl.Slug, StringComparison.OrdinalIgnoreCase) != 0)
                 {
                     ul.InnerHtml.AppendHtml(
-                        $"<li><a href=\"/{landingPageUrl.Hub.ToLowerInvariant()}/{landingPageUrl.Slug}\" class=\"fiu-link fiu-link--{ GetCssClassNameForHub(landingPageUrl.Hub)} fiu-sitemap-list__link\">{landingPageUrl.Title}</a>");
+                        $"<li role=\"listitem\"><a href=\"/{landingPageUrl.Hub.ToLowerInvariant()}/{landingPageUrl.Slug}\" class=\"fiu-link fiu-link--{ GetCssClassNameForHub(landingPageUrl.Hub)} fiu-sitemap-list__link\">{landingPageUrl.Title}</a>");
 
                     currentLandingPage = landingPageUrl.Slug;
 
