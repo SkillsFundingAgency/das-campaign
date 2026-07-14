@@ -6,7 +6,6 @@
   box-shadow: none;
   background: $fiu-apprentices-link-colour;
   font-family: $fiu-font-family;
-  font-weight: $fiu-font-weight-bold;
 
   &:hover {
     background: $fiu-apprentices-link-hover-colour;
@@ -35,14 +34,6 @@
 
 .fiu-template--employers .fiu-next-link {
   @extend .fiu-button--employers;
-}
-
-.fiu-button--providers {
-  background: $fiu-providers-brand-colour;
-
-  &:hover {
-    background: $fiu-providers-link-hover-colour;
-  }
 }
 
 .fiu-button--outlined {
@@ -104,14 +95,7 @@
       color: $fiu-providers-link-hover-colour;
     }
   }
-
-  &.fiu-button--influencers {
-    color: $fiu-influencers-link-colour;
-
-    &:hover {
-      color: $fiu-influencers-link-hover-colour;
-    }
-  }
+  
 }
 
 .fiu-button--text {
@@ -134,11 +118,4 @@
   &:hover {
     background: transparent;
   }
-}
-
-.fiu-button--sparks {
-  border-image-slice: 30% 20% 40%;
-  border-image-width: 50px;
-  border-image-outset: 50px;
-  border-image-source: url('../assets/images/design/button-sparks-border.png');
 }

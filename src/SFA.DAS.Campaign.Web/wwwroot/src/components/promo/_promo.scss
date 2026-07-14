@@ -3,10 +3,7 @@
 .fiu-promo {
   @include fiu-typography-common;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 50px;
-  background-color: $white;
-  color: $light-black;
+  padding: 3rem 0;
   z-index: 0;
   position: relative;
 }
@@ -15,6 +12,7 @@
   background-color: $fiu-apprentices-brand-colour;
   color: $white;
 }
+
 .fiu-promo--employers {
   background-color: $fiu-employers-brand-colour;
   color: $white;
@@ -44,29 +42,16 @@
 }
 
 .fiu-promo__button {
+  background-color: #fff;
+  box-shadow: 0 2px 0 #0f385c;
   margin-bottom: 0;
-}
-
-.fiu-promo__bg-container {
-  position: relative;
-}
-
-.fiu-promo__bg {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.fiu-promo__bg--logo-montage {
-  background-image: url('/fiu/assets/images/employers/montage.png');
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 140px;
-  top: -30px;
-  @include govuk-media-query(tablet) {
-    top: -130px;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.8);
   }
+}
+
+
+.fiu-promo--employers .fiu-promo__button {
+  color: $fiu-employers-brand-colour;
 }
