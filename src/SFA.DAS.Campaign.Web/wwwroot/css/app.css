@@ -18261,6 +18261,8 @@ a.fiu-card-homepage .fiu-card__content {
 @media (min-width: 40.0625em) {
   .fiu-footer__list {
     margin-left: -0.7em;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
@@ -18289,7 +18291,7 @@ a.fiu-card-homepage .fiu-card__content {
   .fiu-footer__inline-list-title,
   .fiu-footer__list-item {
     display: inline-block;
-    padding: 0 0.7em;
+    padding: 0 1rem;
     line-height: 1;
     border-right: 1px solid #6f777b;
   }
@@ -18347,6 +18349,13 @@ a.fiu-card-homepage .fiu-card__content {
 @media (min-width: 40.0625em) {
   .fiu-footer__crown-wrap {
     display: block;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .fiu-footer__bottom {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -18665,15 +18674,12 @@ a.fiu-card-homepage .fiu-card__content {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #0B0C0C;
-  padding: 1px 0;
   color: #ffffff;
   position: relative;
 }
 
 .fiu-page-header .fiu-width-container {
   position: relative;
-  padding-top: 1px;
-  margin-top: -1px;
 }
 
 .fiu-page-header__wrap {

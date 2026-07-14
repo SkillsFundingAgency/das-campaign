@@ -3,15 +3,12 @@
 .fiu-page-header {
   @include fiu-typography-common;
   background-color: #0B0C0C;
-  padding: 1px 0;
   color: $white;
   position: relative;
 }
 
 .fiu-page-header .fiu-width-container {
   position: relative;
-  padding-top: 1px;
-  margin-top: -1px;
 }
 
 .fiu-page-header__wrap {
