@@ -18703,8 +18703,8 @@ a.fiu-card-homepage .fiu-card__content {
 }
 
 .fiu-page-header__tag {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 @media print {
   .fiu-page-header__tag {

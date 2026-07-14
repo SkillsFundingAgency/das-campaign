@@ -22,6 +22,8 @@
         "Route",
         "AcceptTandCs"
     };
+
+    Func<string, bool> isInvalid = field => ViewData.ModelState[field]?.ValidationState == ModelValidationState.Invalid;
 }
 
 <div class="fiu-width-container">
@@ -54,67 +56,71 @@
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Your details</legend>
                     <input type="hidden" asp-for="Version" />
                     <div class="govuk-form-group" highlight-error-for="FirstName" das-validation-for="FirstName" das-validationerror-class="form-group-validation-error">
-                        <span asp-validation-for="@Model.FirstName" class="govuk-error-message"></span>
+                        
                         <label class="govuk-label" asp-for="FirstName">
                             First name
                         </label>
-                        <input id="FirstName" class="govuk-input govuk-!-width-two-thirds" asp-for="FirstName" type="text" autocomplete="given-name">
+                        <span id="FirstName-error" asp-validation-for="@Model.FirstName" class="govuk-error-message"></span>
+                        <input id="FirstName" class="govuk-input govuk-!-width-two-thirds" asp-for="FirstName" type="text" autocomplete="given-name" aria-describedby="@(isInvalid("FirstName") ? "FirstName-error" : null)">
                     </div>
 
                     <div class="govuk-form-group" highlight-error-for="LastName" das-validation-for="LastName" das-validationerror-class="form-group-validation-error">
-                        <span asp-validation-for="@Model.LastName" class="govuk-error-message"></span>
+                       
                         <label class="govuk-label" asp-for="LastName">
                             Last name
                         </label>
-                        <input id="LastName" class="govuk-input govuk-!-width-two-thirds" asp-for="LastName" type="text" autocomplete="family-name">
+                        <span id="LastName-error" asp-validation-for="@Model.LastName" class="govuk-error-message"></span>
+                        <input id="LastName" class="govuk-input govuk-!-width-two-thirds" asp-for="LastName" type="text" autocomplete="family-name" aria-describedby="@(isInvalid("LastName") ? "LastName-error" : null)">
                     </div>
 
                     <div class="govuk-form-group" highlight-error-for="Email" das-validation-for="Email" das-validationerror-class="form-group-validation-error">
-                        <span asp-validation-for="@Model.Email" class="govuk-error-message"></span>
                         <label class="govuk-label" asp-for="Email">
                             Email address
                         </label>
-                        <input id="Email" class="govuk-input govuk-!-width-two-thirds" asp-for="Email" type="text" autocomplete="email">
+                        <span id="Email-error" asp-validation-for="@Model.Email" class="govuk-error-message"></span>
+
+                        <input id="Email" class="govuk-input govuk-!-width-two-thirds" asp-for="Email" type="text" autocomplete="email" aria-describedby="@(isInvalid("Email") ? "Email-error" : null)">
                     </div>
                 </fieldset>
                 <h2 class="govuk-heading-m">Your company</h2>
-                <fieldset class="govuk-fieldset" aria-describedby="ukHint">
+                <fieldset class="govuk-fieldset" aria-describedby="@(isInvalid("SizeOfYourCompany") ? "ukHint SizeOfYourCompany-error" : "ukHint")">
                     <legend class="govuk-fieldset__legend">Size of your company</legend>
-                    <div class="govuk-form-group" highlight-error-for="SizeOfYourCompany">
-                        <span asp-validation-for="@Model.SizeOfYourCompany" class="govuk-error-message"></span>
-                        <div class="govuk-hint" id="ukHint">Only include people based in the UK</div>
-                        <div class="govuk-radios" data-module="govuk-radios" das-validation-for="SizeOfYourCompany" das-validationerror-class="form-group-validation-error">
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="SizeOfYourCompany" name="SizeOfYourCompany" type="radio" value="Less than 10 employees" asp-for="@Model.SizeOfYourCompany">
-                                <label class="govuk-label govuk-radios__label" for="SizeOfYourCompany">
-                                    Less than 10 employees
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="between10and49employees" name="SizeOfYourCompany" type="radio" value="Between 10 and 49 employees" asp-for="@Model.SizeOfYourCompany">
-                                <label class="govuk-label govuk-radios__label" for="between10and49employees">
-                                    Between 10 and 49 employees
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="between50and249employees" name="SizeOfYourCompany" type="radio" value="Between 50 and 249 employees" asp-for="@Model.SizeOfYourCompany">
-                                <label class="govuk-label govuk-radios__label" for="between50and249employees">
-                                    Between 50 and 249 employees
-                                </label>
-                            </div>
-                            <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="over250employees" name="SizeOfYourCompany" type="radio" value="Over 250 employees" asp-for="@Model.SizeOfYourCompany">
-                                <label class="govuk-label govuk-radios__label" for="over250employees">
-                                    Over 250 employees
-                                </label>
-                            </div>
+                <div class="govuk-form-group" highlight-error-for="SizeOfYourCompany">
+                    <div class="govuk-hint" id="ukHint">Only include people based in the UK</div>
+                    <span id="SizeOfYourCompany-error" asp-validation-for="@Model.SizeOfYourCompany" class="govuk-error-message"></span>
+
+                    <div class="govuk-radios" data-module="govuk-radios" das-validation-for="SizeOfYourCompany" das-validationerror-class="form-group-validation-error">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="SizeOfYourCompany" name="SizeOfYourCompany" type="radio" value="Less than 10 employees" asp-for="@Model.SizeOfYourCompany">
+                            <label class="govuk-label govuk-radios__label" for="SizeOfYourCompany">
+                                Less than 10 employees
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="between10and49employees" name="SizeOfYourCompany" type="radio" value="Between 10 and 49 employees" asp-for="@Model.SizeOfYourCompany">
+                            <label class="govuk-label govuk-radios__label" for="between10and49employees">
+                                Between 10 and 49 employees
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="between50and249employees" name="SizeOfYourCompany" type="radio" value="Between 50 and 249 employees" asp-for="@Model.SizeOfYourCompany">
+                            <label class="govuk-label govuk-radios__label" for="between50and249employees">
+                                Between 50 and 249 employees
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="over250employees" name="SizeOfYourCompany" type="radio" value="Over 250 employees" asp-for="@Model.SizeOfYourCompany">
+                            <label class="govuk-label govuk-radios__label" for="over250employees">
+                                Over 250 employees
+                            </label>
                         </div>
                     </div>
+                </div>
+                </fieldset>
                     <div class="govuk-form-group" highlight-error-for="Industry">
-                        <span asp-validation-for="@Model.Industry" class="govuk-error-message"></span>
                         <label for="Industry" class="govuk-label">Industry</label>
-                        <div class="govuk-hint" id="selectInstr">Select only one</div>
-                        <select class="govuk-select" asp-for="Industry" data-val="true" aria-describedby="selectInstr" das-validation-for="Industry" das-validationerror-class="form-group-validation-error" id="Industry" name="Industry">
+                        <span id="Industry-error" asp-validation-for="@Model.Industry" class="govuk-error-message"></span>
+                        <select class="govuk-select" asp-for="Industry" data-val="true" das-validation-for="Industry" das-validationerror-class="form-group-validation-error" id="Industry" name="Industry" aria-describedby="@(isInvalid("Industry") ? "Industry-error" : null)">
                             <option>Agriculture, environmental and animal care</option>
                             <option>Business and administration</option>
                             <option>Care services</option>
@@ -135,10 +141,9 @@
                     </div>
 
                     <div class="govuk-form-group" highlight-error-for="Location">
-                        <span asp-validation-for="@Model.Location" class="govuk-error-message"></span>
                         <label for="Location" class="govuk-label">Region</label>
-                        <div class="govuk-hint" id="selectInstr2">Select only one</div>
-                        <select class="govuk-select" asp-for="Location" data-val="true" aria-describedby="selectInstr2" das-validation-for="Location" das-validationerror-class="form-group-validation-error" id="Location" name="Location">
+                        <span id="Location-error" asp-validation-for="@Model.Location" class="govuk-error-message"></span>
+                        <select class="govuk-select" asp-for="Location" data-val="true" das-validation-for="Location" das-validationerror-class="form-group-validation-error" id="Location" name="Location" aria-describedby="@(isInvalid("Location") ? "Location-error" : null)">
                             <option>South West</option>
                             <option>South East</option>
                             <option>London</option>
@@ -151,7 +156,7 @@
                             <option value="" selected="selected">Choose your location</option>
                         </select>
                     </div>
-                </fieldset>
+                
                 <input asp-for="Route" value="Employer" type="hidden" />
                 <p class="govuk-body">
                     Your data is protected under the terms of our <a href="/privacy" class="govuk-link">privacy policy</a>.
