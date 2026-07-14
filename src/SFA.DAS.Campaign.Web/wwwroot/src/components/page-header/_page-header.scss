@@ -3,15 +3,12 @@
 .fiu-page-header {
   @include fiu-typography-common;
   background-color: #0B0C0C;
-  padding: 1px 0;
   color: $white;
   position: relative;
 }
 
 .fiu-page-header .fiu-width-container {
   position: relative;
-  padding-top: 1px;
-  margin-top: -1px;
 }
 
 .fiu-page-header__wrap {
@@ -35,8 +32,8 @@
 }
 
 .fiu-page-header__tag {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
   @include govuk-media-query($media-type: print) {
     display: none;
   }

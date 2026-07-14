@@ -120,6 +120,8 @@
   margin: 2rem 0 0 0;
   @include govuk-media-query(tablet) {
     margin-left: -.7em;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
@@ -143,7 +145,7 @@
   display: block;
   @include govuk-media-query(tablet) {
     display: inline-block;
-    padding: 0 0.7em;
+    padding: 0 1rem;
     line-height: 1;
     border-right: 1px solid $dark-grey;
     &:last-child {
@@ -187,4 +189,19 @@
 .govuk-footer__copyright-logo:focus, 
 .govuk-footer__copyright-logo:active {
   color: #0b0c0c;
+}
+
+.fiu-footer__crown-wrap {
+  display: flex;
+  justify-content: center;
+  @include govuk-media-query(tablet) {
+    display: block;
+  }
+}
+
+.fiu-footer__bottom {
+  @include govuk-media-query(tablet) {
+    display: flex;
+    justify-content: space-between;
+  }
 }

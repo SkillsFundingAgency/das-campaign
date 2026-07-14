@@ -16666,7 +16666,6 @@
   box-shadow: none;
   background: #287E3A;
   font-family: nobel, sans-serif;
-  font-weight: 700;
 }
 .fiu-button:hover, .fiu-article > h2 > a:hover {
   background: rgb(27.7108433735, 87.2891566265, 40.1807228916);
@@ -16684,13 +16683,6 @@
 }
 .fiu-button--employers:hover, .fiu-template--employers .fiu-article > h2 > a:hover, .fiu-template--employers .fiu-next-link:hover {
   background: rgb(59.9260869565, 52.1434782609, 126.8565217391);
-}
-
-.fiu-button--providers {
-  background: #ff7b20;
-}
-.fiu-button--providers:hover {
-  background: rgb(236, 96.3049327354, 0);
 }
 
 .fiu-button--outlined {
@@ -16740,12 +16732,6 @@
 .fiu-button--outlined.fiu-button--providers:hover {
   color: rgb(236, 96.3049327354, 0);
 }
-.fiu-button--outlined.fiu-button--influencers {
-  color: #4282ba;
-}
-.fiu-button--outlined.fiu-button--influencers:hover {
-  color: rgb(52.6428571429, 103.6904761905, 148.3571428571);
-}
 
 .fiu-button--text {
   background: transparent;
@@ -16763,13 +16749,6 @@
 }
 .fiu-button--text:hover {
   background: transparent;
-}
-
-.fiu-button--sparks {
-  border-image-slice: 30% 20% 40%;
-  border-image-width: 50px;
-  border-image-outset: 50px;
-  border-image-source: url("../assets/images/design/button-sparks-border.png");
 }
 
 .fiu-link, .fiu-article > h3 > a,
@@ -18282,6 +18261,8 @@ a.fiu-card-homepage .fiu-card__content {
 @media (min-width: 40.0625em) {
   .fiu-footer__list {
     margin-left: -0.7em;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
@@ -18310,7 +18291,7 @@ a.fiu-card-homepage .fiu-card__content {
   .fiu-footer__inline-list-title,
   .fiu-footer__list-item {
     display: inline-block;
-    padding: 0 0.7em;
+    padding: 0 1rem;
     line-height: 1;
     border-right: 1px solid #6f777b;
   }
@@ -18359,6 +18340,23 @@ a.fiu-card-homepage .fiu-card__content {
 .govuk-footer__copyright-logo:focus,
 .govuk-footer__copyright-logo:active {
   color: #0b0c0c;
+}
+
+.fiu-footer__crown-wrap {
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 40.0625em) {
+  .fiu-footer__crown-wrap {
+    display: block;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .fiu-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .fiu-govuk-panel {
@@ -18676,15 +18674,12 @@ a.fiu-card-homepage .fiu-card__content {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #0B0C0C;
-  padding: 1px 0;
   color: #ffffff;
   position: relative;
 }
 
 .fiu-page-header .fiu-width-container {
   position: relative;
-  padding-top: 1px;
-  margin-top: -1px;
 }
 
 .fiu-page-header__wrap {
@@ -18708,8 +18703,8 @@ a.fiu-card-homepage .fiu-card__content {
 }
 
 .fiu-page-header__tag {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 @media print {
   .fiu-page-header__tag {
@@ -19212,10 +19207,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 50px;
-  background-color: #ffffff;
-  color: #0b0c0c;
+  padding: 3rem 0;
   z-index: 0;
   position: relative;
 }
@@ -19254,33 +19246,16 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
 }
 
 .fiu-promo__button {
+  background-color: #fff;
+  box-shadow: 0 2px 0 #0f385c;
   margin-bottom: 0;
 }
-
-.fiu-promo__bg-container {
-  position: relative;
+.fiu-promo__button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
-.fiu-promo__bg {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
-
-.fiu-promo__bg--logo-montage {
-  background-image: url("/fiu/assets/images/employers/montage.png");
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 140px;
-  top: -30px;
-}
-@media (min-width: 40.0625em) {
-  .fiu-promo__bg--logo-montage {
-    top: -130px;
-  }
+.fiu-promo--employers .fiu-promo__button {
+  color: #4d43a3;
 }
 
 .fiu-provider-details-summary {
