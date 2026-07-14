@@ -18340,6 +18340,16 @@ a.fiu-card-homepage .fiu-card__content {
   color: #0b0c0c;
 }
 
+.fiu-footer__crown-wrap {
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 40.0625em) {
+  .fiu-footer__crown-wrap {
+    display: block;
+  }
+}
+
 .fiu-govuk-panel {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;

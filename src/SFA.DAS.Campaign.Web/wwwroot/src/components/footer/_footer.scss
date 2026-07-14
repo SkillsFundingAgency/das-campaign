@@ -188,3 +188,11 @@
 .govuk-footer__copyright-logo:active {
   color: #0b0c0c;
 }
+
+.fiu-footer__crown-wrap {
+  display: flex;
+  justify-content: center;
+  @include govuk-media-query(tablet) {
+    display: block;
+  }
+}
