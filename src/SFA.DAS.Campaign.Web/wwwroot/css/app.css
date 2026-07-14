@@ -16586,10 +16586,6 @@
   color: inherit;
 }
 
-.govuk-hint {
-  color: #484949;
-}
-
 .govuk-error-message:empty {
   display: none;
 }
@@ -16663,7 +16659,6 @@
 
 .fiu-button, .fiu-article > h2 > a {
   border-radius: 2px;
-  box-shadow: none;
   background: #287E3A;
   font-family: nobel, sans-serif;
 }
@@ -17000,22 +16995,39 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #fff;
   color: #0b0c0c;
   margin: 0 0 20px;
-  padding-left: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-left: 5px solid #cbd0d3;
+  padding: 1rem;
+  border-left: 10px solid #cbd0d3;
+}
+.fiu-quote--has-image {
+  display: flex;
+  gap: 1rem;
 }
 
 .fiu-quote__blockquote, .fiu-article > blockquote:not([class]) {
+  font-family: nobel, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   color: inherit;
   margin: 0;
+}
+
+.fiu-quote__image {
+  max-width: 10rem;
 }
 
 .fiu-quote__caption {
   margin-top: 20px;
   margin-bottom: 0;
+  font-family: nobel, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   color: inherit;
   font-weight: 500;
 }
@@ -17028,7 +17040,6 @@
 
 .fiu-template--employers .fiu-article > blockquote:not([class]),
 .fiu-quote--employer {
-  color: #4d43a3;
   border-left-color: #4d43a3;
 }
 
@@ -17050,6 +17061,7 @@
 .fiu-article > ul:not([class]),
 .govuk-label,
 .govuk-hint,
+.govuk-error-message,
 .govuk-checkboxes__label {
   font-family: nobel, sans-serif;
   font-weight: 300;
@@ -17070,7 +17082,6 @@
 .fiu-article > h6:not([class]),
 .fiu-article > h5:not([class]),
 .govuk-error-summary__title,
-.govuk-error-message,
 .fiu-font-weight-bold,
 .govuk-panel__title,
 .govuk-fieldset__legend--m,

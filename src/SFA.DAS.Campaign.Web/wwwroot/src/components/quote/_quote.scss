@@ -2,23 +2,32 @@
 
 .fiu-quote {
   @include fiu-typography-common;
+  background: #fff;
   color: $fiu-text-colour;
   margin: 0 0 20px;
-  padding-left: 20px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-left: 5px solid $fiu-border-colour;
+  padding: 1rem;
+  border-left: 10px solid $fiu-border-colour;
+  &--has-image {
+    display: flex;
+    gap: 1rem;
+  }
 }
 
 .fiu-quote__blockquote {
   @extend .govuk-body;
+  @include fiu-typography-common;
   color: inherit;
   margin: 0;
+}
+
+.fiu-quote__image {
+  max-width: 10rem;
 }
 
 .fiu-quote__caption {
   margin-top: 20px;
   margin-bottom: 0;
+  @include fiu-typography-common;
   @extend .govuk-body;
   color: inherit;
   font-weight: $fiu-font-weight-regular;
@@ -32,6 +41,5 @@
 
 .fiu-template--employers .fiu-article > blockquote:not([class]),
 .fiu-quote--employer {
-  color: $fiu-employers-brand-colour;
   border-left-color: $fiu-employers-brand-colour;
 }

@@ -17,6 +17,7 @@
 .govuk-list,
 .govuk-label,
 .govuk-hint,
+.govuk-error-message,
 .govuk-checkboxes__label {
   @include fiu-typography-common;
 }
@@ -27,7 +28,6 @@
 .govuk-heading-s,
 .govuk-heading-xs,
 .govuk-error-summary__title,
-.govuk-error-message,
 .fiu-font-weight-bold,
 .govuk-panel__title,
 .govuk-fieldset__legend--m,
