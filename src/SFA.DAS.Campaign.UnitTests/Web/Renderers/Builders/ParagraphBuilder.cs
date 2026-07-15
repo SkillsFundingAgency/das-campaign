@@ -26,6 +26,17 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers.Builders
             return this;
         }
 
+        public ParagraphBuilder AddVideoTranscript(string videoName, string text)
+        {
+            _paragraph.VideoTranscripts.Add(new VideoTranscript
+            {
+                VideoName = videoName,
+                Text = text
+            });
+
+            return this;
+        }
+
         public Paragraph Build()
         {
             return _paragraph;

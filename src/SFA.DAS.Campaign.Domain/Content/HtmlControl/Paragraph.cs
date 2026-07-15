@@ -9,7 +9,9 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
         public Paragraph()
         {
             Content = new List<string>();
+            VideoTranscripts = new List<VideoTranscript>();
         }
         public List<string> Content { get; set; }
+        public List<VideoTranscript> VideoTranscripts { get; set; }
     }
 }

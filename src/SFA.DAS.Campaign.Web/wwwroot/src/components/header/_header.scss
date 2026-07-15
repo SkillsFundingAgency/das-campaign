@@ -107,10 +107,6 @@
   @include arrow($fiu-employers-brand-colour);
 }
 
-.fiu-header__navigation-item--influencers-active:after {
-  @include arrow($fiu-influencers-brand-colour);
-}
-
 .fiu-header-grad {
   height: 50px;
   display: block;
