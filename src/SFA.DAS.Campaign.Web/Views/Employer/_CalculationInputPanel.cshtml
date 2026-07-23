@@ -1,12 +1,17 @@
-﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipTrainingAndBenefitsViewModel
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model SFA.DAS.Campaign.Web.Models.ApprenticeshipTrainingAndBenefitsViewModel
 
-<div class="fiu-panel fiu-panel--left-align">
+@{
+    Func<string, bool> isInvalid = field => ViewData.ModelState[field]?.ValidationState == ModelValidationState.Invalid;
+}
+
+<div>
     <h2 class="govuk-heading-l">Estimate what funding could be available towards your apprentices training costs</h2>
     <form method="post" asp-action="ApprenticeshipBenefitsAndFunding" asp-controller="Employer" asp-fragment="funding">
         <div class="govuk-form-group" highlight-error-for="PayBillGreaterThanThreeMillion">
-            <fieldset class="govuk-fieldset">
+            <fieldset class="govuk-fieldset" aria-describedby="@(isInvalid("PayBillGreaterThanThreeMillion") ? "PayBillGreaterThanThreeMillion-error" : null)">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">What is your annual pay bill?</legend>
-                <span asp-validation-for="@Model.PayBillGreaterThanThreeMillion" class="govuk-error-message"></span>
+                <span id="PayBillGreaterThanThreeMillion-error" asp-validation-for="@Model.PayBillGreaterThanThreeMillion" class="govuk-error-message"></span>
                 <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
                         <input class="govuk-radios__input" id="PayBillGreaterThanThreeMillion" name="PayBillGreaterThanThreeMillion" type="radio" value="@false" asp-for="@Model.PayBillGreaterThanThreeMillion">
@@ -27,22 +32,22 @@
             <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="StandardUid">
                 What training course do you want your apprentice to take?
             </label>
-            <span asp-validation-for="@Model.StandardUid" class="govuk-error-message"></span>
+            <span id="StandardUid-error" asp-validation-for="@Model.StandardUid" class="govuk-error-message"></span>
             <div class="govuk-hint" id="offerHint">
                 We offer over @Model.Standards.Count() courses which you can search by keyword or job role,
                 <a href="https://www.instituteforapprenticeships.org/apprenticeship-standards/" class="govuk-link govuk-link--no-visited-state" target="_blank">or you can explore the latest list with Institute for Apprenticeships and Technical Education</a>.
             </div>
-            <select class="govuk-select" aria-describedby="offerHint" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true" id="StandardUid"><option label=" "></option></select>
+            <select class="govuk-select" aria-describedby="@(isInvalid("StandardUid") ? "offerHint StandardUid-error" : "offerHint")" asp-for="@Model.StandardUid" asp-items="@Model.StandardItems" data-fiu-autocomplete="true" id="StandardUid"><option label=" "></option></select>
         </div>
         <div class="govuk-form-group" highlight-error-for="NumberOfRoles">
             <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="NumberOfRoles">
                 How many roles do you have available for this apprenticeship?
             </label>
-            <span asp-validation-for="@Model.NumberOfRoles" class="govuk-error-message"></span>
+            <span id="NumberOfRoles-error" asp-validation-for="@Model.NumberOfRoles" class="govuk-error-message"></span>
             <div class="govuk-hint" id="NumberOfRolesHint">
                 Enter the number of available roles
             </div>
-            <input class="govuk-input govuk-input--width-3" aria-describedby="NumberOfRolesHint" name="NumberOfRoles" type="text" asp-for="@Model.NumberOfRoles" id="NumberOfRoles" inputmode="numeric">
+            <input class="govuk-input govuk-input--width-3" aria-describedby="@(isInvalid("NumberOfRoles") ? "NumberOfRolesHint NumberOfRoles-error" : "NumberOfRolesHint")" name="NumberOfRoles" type="text" asp-for="@Model.NumberOfRoles" id="NumberOfRoles" inputmode="numeric">
         </div>
         <div class="govuk-button-group">
             <button class="fiu-button fiu-button--employers" type="submit">

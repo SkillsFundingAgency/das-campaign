@@ -3,7 +3,6 @@
 .fiu-button {
   @extend .govuk-button;
   border-radius: 2px;
-  box-shadow: none;
   background: $fiu-apprentices-link-colour;
   font-family: $fiu-font-family;
 
@@ -85,14 +84,6 @@
 
     &:hover {
       color: $fiu-employers-link-hover-colour;
-    }
-  }
-
-  &.fiu-button--providers {
-    color: $fiu-providers-link-colour;
-
-    &:hover {
-      color: $fiu-providers-link-hover-colour;
     }
   }
   

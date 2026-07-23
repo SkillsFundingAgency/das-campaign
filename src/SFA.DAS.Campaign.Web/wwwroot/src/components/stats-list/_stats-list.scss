@@ -36,9 +36,6 @@
   .fiu-stats-list--employers & {
     color: $fiu-employers-brand-colour;
   }
-  .fiu-stats-list--influencers & {
-    color: $fiu-influencers-brand-colour;
-  }
 
   @include govuk-media-query(tablet) {
     display: block;

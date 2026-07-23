@@ -64,6 +64,17 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory.Builders
             return this;
         }
 
+        public ItemBuilder AddVideoTranscript(string videoName, string text)
+        {
+            _item.VideoTranscripts.Add(new VideoTranscript
+            {
+                VideoName = videoName,
+                Text = text
+            });
+
+            return this;
+        }
+
         public ItemBuilder AddEmptyTableValuesArray()
         {
             _item.TableValue = new List<List<string>>();

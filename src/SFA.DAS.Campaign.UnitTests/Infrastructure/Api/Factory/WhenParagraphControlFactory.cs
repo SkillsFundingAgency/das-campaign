@@ -73,6 +73,46 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory
         }
 
 
+        [Test, MoqAutoData]
+        public void Is_Given_An_Item_Of_Type_Paragraph_With_Empty_Values_Then_Is_Valid_Does_Not_Throw_And_Returns_True(ParagraphControlFactory factory)
+        {
+            var control = new ItemBuilder().SetType("paragraph")
+                .AddEmptyValuesArray()
+                .Build();
+
+            var actual = factory.IsValid(control);
+
+            actual.Should().BeTrue();
+        }
+
+        [Test, MoqAutoData]
+        public void Is_Given_An_Item_Of_Type_Paragraph_With_Null_Values_Then_Is_Valid_Does_Not_Throw_And_Returns_True(ParagraphControlFactory factory)
+        {
+            var control = new ItemBuilder().SetType("paragraph")
+                .SetValues(null)
+                .Build();
+
+            var actual = factory.IsValid(control);
+
+            actual.Should().BeTrue();
+        }
+
+        [Test, MoqAutoData]
+        public void Is_Given_An_Item_With_Video_Transcripts_Then_Create_Maps_The_Transcripts(ParagraphControlFactory factory)
+        {
+            var control = new ItemBuilder().SetType("paragraph")
+                .SetValue("")
+                .AddVideoTranscript("Test video", "The transcript text")
+                .Build();
+
+            var actual = factory.Create(control) as Paragraph;
+
+            actual.Should().NotBeNull();
+            actual.VideoTranscripts.Should().ContainSingle();
+            actual.VideoTranscripts.Single().VideoName.Should().Be("Test video");
+            actual.VideoTranscripts.Single().Text.Should().Be("The transcript text");
+        }
+
         private static Item BuildControl()
         {
             var control = new ItemBuilder().SetType("paragraph")
