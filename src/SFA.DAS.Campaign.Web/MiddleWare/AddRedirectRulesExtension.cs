@@ -32,9 +32,6 @@ namespace SFA.DAS.Campaign.Web.MiddleWare
             options.Add(new PathWithQueryRule(@"(?i)apprentice\b\/(assessment-and-certification)", "/apprentices/assessment-and-certification"));
             options.AddRedirect(@"(?i)apprentice\b\/(assessment-and-certification)", "/apprentices/assessment-and-certification", (int)HttpStatusCode.PermanentRedirect);
 
-            options.Add(new PathWithQueryRule(@"(?i)apprentice\b\/(find-an-apprenticeship)", "/apprentices/browse-apprenticeships"));
-            options.AddRedirect(@"(?i)apprentice\b\/(find-an-apprenticeship)", "/apprentices/browse-apprenticeships", (int)HttpStatusCode.PermanentRedirect);
-
             options.Add(new PathWithQueryRule(@"(?i)employer\b\/(how-much-is-it-going-to-cost|funding-an-apprenticeship)", "/employers/funding-an-apprenticeship"));
             options.AddRedirect(@"(?i)employer\b\/(how-much-is-it-going-to-cost|funding-an-apprenticeship)", "/employers/funding-an-apprenticeship", (int)HttpStatusCode.PermanentRedirect);
 
