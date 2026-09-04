@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +12,7 @@ using SFA.DAS.Campaign.Infrastructure.Configuration;
 using SFA.DAS.Campaign.Web.Helpers;
 using Menu = SFA.DAS.Campaign.Domain.Content.Menu;
 
-namespace SFA.DAS.Campaign.Web.Controllers.Redesign
+namespace SFA.DAS.Campaign.Web.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -15,7 +15,7 @@ using SFA.DAS.Campaign.Application.Services;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Web.Helpers;
 
-namespace SFA.DAS.Campaign.Web.Controllers.Redesign
+namespace SFA.DAS.Campaign.Web.Controllers
 {
     public class ArticleController : Controller
     {

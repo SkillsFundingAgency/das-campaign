@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SFA.DAS.Campaign.Application.Content.Queries;
 
-namespace SFA.DAS.Campaign.Web.Controllers.Redesign
+namespace SFA.DAS.Campaign.Web.Controllers
 {
     public class HubController : Controller
     {
