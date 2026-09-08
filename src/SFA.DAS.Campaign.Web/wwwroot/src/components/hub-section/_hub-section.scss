@@ -1,0 +1,302 @@
+@use '../../shared' as *;
+
+.fiu-hub-section {
+  background: #fff;
+  padding: $fiu-padding;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-colour);
+  border-radius: $fiu-border-radius-lg;
+  @include govuk-media-query($from: tablet) {
+    padding: $fiu-padding-lg;
+    margin-bottom: 30px;
+  }
+}
+
+.fiu-hub-section__btt {
+  margin-bottom: 40px;
+  display: inline-block;
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: 60px;
+  }
+}
+
+.fiu-hub-section__intro {
+  align-items: center;
+}
+
+.fiu-hub-section__title {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.fiu-hub-section__introduction {
+  @extend .govuk-body;
+  color: var(--govuk-secondary-text-colour);
+  @include fiu-typography-common;
+  margin-bottom: 0;
+}
+
+.fiu-hub-section__image {
+  display: block;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin: 1.5rem auto;
+}
+
+.fiu-stepper {
+  @include fiu-typography-common;
+  counter-reset: fiu-stepper;
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.fiu-stepper__item {
+  counter-increment: fiu-stepper;
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  position: relative;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  &:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: 2.5rem;
+    left: 1.25rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-colour);
+  }
+}
+
+.fiu-stepper__number {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--border-colour);
+  font-weight: $fiu-font-weight-bold;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: counter(fiu-stepper);
+  }
+}
+
+.fiu-stepper__space {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+}
+
+.fiu-stepper__body {
+  flex: 1 1 auto;
+  padding-top: 0.25rem;
+}
+
+.fiu-stepper__heading {
+  margin: 0 0 0.4em 0;
+  font-size: 20px;
+  line-height: 1.1em;
+  font-weight: $fiu-font-weight-bold;
+
+  @include govuk-media-query($from: $fiu-large-desktop-breakpoint) {
+    font-size: 24px;
+  }
+}
+
+.fiu-stepper__content {
+  @extend .govuk-body;
+  @include fiu-typography-common;
+  margin-bottom: 0;
+}
+
+.fiu-stepper__link {
+  display: block;
+  text-decoration: none;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-colour);
+  .fiu-stepper__heading {
+    color: var(--link-colour);
+    text-decoration: underline;
+    text-decoration-thickness: max(1px, .0625rem);
+    text-underline-offset: 0.1578em;
+  }
+  &:hover,
+  &:focus {
+    .fiu-stepper__heading {
+      text-decoration-thickness: max(3px, .1875rem, .12em);
+    }
+  }
+  &:focus {
+    outline: 3px solid transparent;
+    color: var(--govuk-focus-text-colour, #0b0c0c);
+    background-color: var(--govuk-focus-colour, #ffdd00);
+    box-shadow: 0 -2px var(--govuk-focus-colour, #ffdd00), 0 4px var(--govuk-focus-text-colour, #0b0c0c);
+    text-decoration: none;
+    .fiu-stepper__heading {
+      color: var(--govuk-focus-text-colour, #0b0c0c);
+    }
+  }
+}
+
+// If there are no ordered stepper links, in a hub section
+// then we don't want to indent unordered stepper links
+.fiu-stepper--without-links {
+  .fiu-stepper__item {
+    &:before {
+      display: none;
+    }
+    .fiu-stepper__space {
+      display: none;
+    }
+  }
+}
+
+.fiu-panel.fiu-cta-panel {
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  border: none;
+  background: var(--border-colour);
+  color: var(--brand-colour-dark);
+  margin: 0;
+  @include govuk-media-query($from: tablet) {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.5rem;
+    padding: 1.75rem;
+  }
+}
+
+.fiu-icon {
+  fill: currentColor;
+}
+
+.fiu-cta-panel__icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+}
+
+.fiu-cta-panel__body {
+  flex: 1 1 auto;
+  h2 {
+    color: inherit !important;
+  }
+}
+
+.fiu-cta-panel__action {
+  flex: 0 0 auto;
+  @include govuk-media-query($from: tablet) {
+    align-self: self-end;
+  }
+}
+
+.fiu-cta-panel__button {
+  background: var(--brand-colour);
+  color: #fff;
+  font-weight: 600;
+  font-size: 19px;
+  padding: 7px 20px 10px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+a.fiu-panel:hover{
+  .fiu-cta-panel__button {
+    outline: 3px solid currentColor;
+  }
+}
+
+.fiu-hub-section__header {
+  margin-bottom: 1.5rem;
+
+  @include govuk-media-query($from: tablet) {
+    max-width: 66%;
+  }
+}
+
+.fiu-statistics {
+  @include fiu-typography-common;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fiu-statistics__item {
+  display: flex;
+}
+
+.fiu-statistic,
+.fiu-statistic-quote {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: govuk-colour('black', $variant: 'tint-95');
+  border-left: 10px solid var(--brand-colour-dark);
+  border-top: 1px solid var(--govuk-border-colour);
+  border-right: 1px solid var(--govuk-border-colour);
+  border-bottom: 1px solid var(--govuk-border-colour);
+  padding: 1.25rem 1.5rem;
+  gap: 10px;
+}
+
+.fiu-statistic__highlight {
+  @include fiu-typography-common;
+  color: var(--brand-colour-dark);
+  font-weight: $fiu-font-weight-bold;
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 0;
+
+  @include govuk-media-query($from: tablet) {
+    font-size: 3rem;
+  }
+}
+
+.fiu-statistic__text {
+  @extend .govuk-body;
+  @include fiu-typography-common;
+  margin-bottom: 0;
+}
+
+.fiu-statistic-quote .fiu-quote__caption {
+  @include fiu-typography-common;
+  color: var(--brand-colour-dark);
+  font-size: 24px;
+  font-weight: $fiu-font-weight-bold;
+  margin: 0;
+}
+
+.fiu-statistic__reference {
+  @extend .govuk-body;
+  @include fiu-typography-common;
+  color: var(--govuk-secondary-text-colour);
+  margin: 0;
+}

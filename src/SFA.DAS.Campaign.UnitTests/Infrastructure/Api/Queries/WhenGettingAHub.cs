@@ -135,7 +135,6 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Queries
             actual.Page.Content.Should().NotBeNull();
             actual.Page.Menu.Should().NotBeNull();
             actual.Page.Menu.Apprentices.Should().NotBeNullOrEmpty();
-            actual.Page.Menu.Influencers.Should().NotBeNullOrEmpty();
             actual.Page.Menu.TopLevel.Should().NotBeNullOrEmpty();
             actual.Page.Menu.Employers.Should().NotBeNullOrEmpty();
         }

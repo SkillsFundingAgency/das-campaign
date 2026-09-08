@@ -59,10 +59,15 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         private Page<Hub> PopulatePageModel(PageRoot cmsContent)
         {
+            if (!cmsContent.Hub.PageAttributes.HubType.TryGetHubType(out var hubType))
+            {
+                return null;
+            }
+
             var pageModel = new Page<Hub>
             {
                 Slug = cmsContent.Hub.PageAttributes.Slug,
-                HubType = Enum.Parse<HubType>(cmsContent.Hub.PageAttributes.HubType),
+                HubType = hubType,
                 Title = cmsContent.Hub.PageAttributes.Title,
                 MetaContent = new MetaContent
                 {
@@ -79,6 +84,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             pageModel.AddBannerContent(_controlAbstractFactory, cmsContent.Hub.BannerModels);
             AddHeaderImage(cmsContent, pageModel);
             AddCards(cmsContent, pageModel);
+            AddSections(cmsContent, pageModel);
+            AddCarousel(cmsContent, pageModel);
             
             return pageModel;
         }
@@ -96,6 +103,11 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         {
             var mainContent = cmsContent.Hub.MainContent;
 
+            if (mainContent == null)
+            {
+                return;
+            }
+
             model.Content.CardsTitle = mainContent.CardsTitle;
             model.Content.Cards = MapCards(mainContent.Cards);
 
@@ -104,6 +116,141 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
             model.Content.CardsTitle3 = mainContent.CardsTitle3;
             model.Content.Cards3 = MapCards(mainContent.Cards3);
+        }
+
+        private static void AddCarousel(PageRoot cmsContent, Page<Hub> model)
+        {
+            var carousel = cmsContent.Hub.MainContent?.Carousel;
+
+            if (carousel == null || !carousel.Any())
+            {
+                return;
+            }
+
+            model.Content.Carousel = carousel
+                .Select(MapImage)
+                .Where(image => image != null)
+                .ToList();
+        }
+
+        private static void AddSections(PageRoot cmsContent, Page<Hub> model)
+        {
+            var sections = cmsContent.Hub.MainContent?.Sections;
+
+            if (sections == null || !sections.Any())
+            {
+                return;
+            }
+
+            var hubType = model.HubType.ToString();
+
+            model.Content.Sections = sections
+                .Where(section => section != null)
+                .Select(section => new HubSection
+                {
+                    SectionType = section.SectionType,
+                    Heading = section.Heading,
+                    Introduction = section.Introduction,
+                    Image = MapImage(section.Image),
+                    StepperLinks = MapSectionLinks(section.StepperLinks, hubType),
+                    StandardLinks = MapSectionLinks(section.StandardLinks, hubType),
+                    Statistics = MapStatistics(section.StatisticsSections),
+                    CtaPanel = MapCtaPanel(section.CtaPanel)
+                })
+                .Where(section => section.HasContent)
+                .ToList();
+        }
+
+        private static List<HubSectionLink> MapSectionLinks(List<ResponseHubSectionLink> links, string hubType)
+        {
+            if (links == null || !links.Any())
+            {
+                return new List<HubSectionLink>();
+            }
+
+            return links
+                .Where(link => link != null)
+                .Select(link => new HubSectionLink
+                {
+                    Title = link.Title,
+                    Slug = link.Slug,
+                    Summary = link.Summary,
+                    Description = link.MetaDescription,
+                    // Section links carry no hubType of their own, so fall back to the hub being rendered.
+                    HubType = string.IsNullOrWhiteSpace(link.LandingPage?.Hub) ? hubType : link.LandingPage.Hub,
+                    LandingPage = MapLandingPage(link.LandingPage),
+                    CtaPanel = MapCtaPanel(link.CtaPanel)
+                })
+                .ToList();
+        }
+
+        private static List<HubStatistic> MapStatistics(List<ResponseHubStatistic> statistics)
+        {
+            if (statistics == null || !statistics.Any())
+            {
+                return new List<HubStatistic>();
+            }
+
+            return statistics
+                .Where(statistic => statistic != null)
+                .Select(statistic => new HubStatistic
+                {
+                    Text = statistic.Text,
+                    HighlightValue = statistic.HighlightValue,
+                    QuoteName = statistic.QuoteName,
+                    QuoteRole = statistic.QuoteRole,
+                    ReferenceText = statistic.ReferenceText
+                })
+                .Where(statistic => statistic.HasContent)
+                .ToList();
+        }
+
+        private static CardLandingPage MapLandingPage(CardLandingPageResponse landingPage)
+        {
+            if (landingPage == null || string.IsNullOrWhiteSpace(landingPage.Slug))
+            {
+                return null;
+            }
+
+            return new CardLandingPage
+            {
+                Slug = landingPage.Slug,
+                Title = landingPage.Title,
+                Hub = landingPage.Hub,
+                ParentSlug = landingPage.ParentSlug
+            };
+        }
+
+        private static CtaPanel MapCtaPanel(ResponseCtaPanel ctaPanel)
+        {
+            if (ctaPanel == null)
+            {
+                return null;
+            }
+
+            return new CtaPanel
+            {
+                Heading = ctaPanel.Heading,
+                Description = ctaPanel.Description,
+                Icon = ctaPanel.Icon,
+                ButtonText = ctaPanel.ButtonText,
+                Url = ctaPanel.Url
+            };
+        }
+
+        private static Image MapImage(Item image)
+        {
+            if (image?.EmbeddedResource == null)
+            {
+                return null;
+            }
+
+            return new Image
+            {
+                Description = image.EmbeddedResource.Description,
+                Title = image.EmbeddedResource.Title,
+                Url = image.EmbeddedResource.Url
+            };
         }
 
         private static List<Card> MapCards(List<ResponseCard> cards)

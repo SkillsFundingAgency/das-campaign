@@ -1,7 +1,11 @@
+import {AnchorLinks} from './components/anchor-links/_anchor-links.js';
 import {Autocomplete} from './components/autocomplete/_autocomplete.js';
 import {BackLink} from './components/back-link/_back-link.js';
 import {Banner} from './components/banner/_banner.js';
 import {PrintLink} from './components/print-page/_print-page';
+
+// Anchor links (same page jumps that stay out of the browser history)
+new AnchorLinks().init();
 
 // Autocomplete
 const autocompleteSelects = document.querySelectorAll('[data-fiu-autocomplete]');

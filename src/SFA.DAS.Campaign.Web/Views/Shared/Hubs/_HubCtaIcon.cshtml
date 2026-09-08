@@ -1,0 +1,9 @@
+@model string
+@{
+    var icon = (Model ?? string.Empty).Trim().ToLowerInvariant();
+}
+<span class="fiu-cta-panel__icon" aria-hidden="true">
+    <svg class="fiu-icon" aria-hidden="true" focusable="false">                                                                                                                                                                                                 
+        <use href="/images/sprite.svg#@icon"></use>                                                                                                                                                                                                       
+    </svg>     
+</span>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Domain.Content.HtmlControl;
@@ -8,6 +9,11 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 {
     internal static class Extensions
     {
+        internal static bool TryGetHubType(this string hubType, out HubType parsed)
+        {
+            return Enum.TryParse(hubType, true, out parsed) && Enum.IsDefined(typeof(HubType), parsed);
+        }
+
         internal static List<Url> AddSiteMapUrls(this List<SiteMapPage> page)
         {
             return page.Select(page => new Url { Title = page.Title, Hub = page.Hub, PageType = page.PageType, Slug = page.Slug }).ToList();
@@ -19,7 +25,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             {
                 Apprentices = cmsContent.Menu.MainContent.Apprentices.AddSiteMapUrls(),
                 Employers = cmsContent.Menu.MainContent.Employers.AddSiteMapUrls(),
-                Influencers = cmsContent.Menu.MainContent.Influencers.AddSiteMapUrls(),
                 TopLevel = cmsContent.Menu.MainContent.TopLevel.AddSiteMapUrls()
             };
         }
@@ -30,7 +35,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             {
                 Apprentices = cmsContent.Apprentices.AddSiteMapUrls(),
                 Employers = cmsContent.Employers.AddSiteMapUrls(),
-                Influencers = cmsContent.Influencers.AddSiteMapUrls(),
                 TopLevel = cmsContent.TopLevel.AddSiteMapUrls()
             };
         }

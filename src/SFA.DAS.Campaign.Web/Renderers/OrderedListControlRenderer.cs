@@ -29,7 +29,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
                 foreach (var childValue in value)
                 {
-                    ul.InnerHtml.AppendHtml($"{childValue.CheckForFontEffects().CheckForAndConstructHyperlinks()}");
+                    ul.InnerHtml.AppendHtml($"{childValue.CheckForFontEffects().CheckForAndConstructHyperlinks().LineBreaksToHtml()}");
                 }
 
                 ul.InnerHtml.AppendHtml("</li>");

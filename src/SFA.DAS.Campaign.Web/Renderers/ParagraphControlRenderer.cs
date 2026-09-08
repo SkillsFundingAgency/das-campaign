@@ -26,7 +26,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
             foreach (var value in control.Content)
             {
-                para.InnerHtml.AppendHtml(value.CheckForFontEffects().CheckForAndConstructHyperlinks());
+                para.InnerHtml.AppendHtml(value.CheckForFontEffects().CheckForAndConstructHyperlinks().LineBreaksToHtml());
             }
 
             var result = new StringBuilder(para.WriteString());

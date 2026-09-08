@@ -1,8 +1,8 @@
-@using SFA.DAS.Campaign.Web.Helpers
+﻿@using SFA.DAS.Campaign.Web.Helpers
 @model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.LandingPage>
 @{
     ViewBag.Title = Model.Title;
-    Layout = "Redesign_Layout_EmployersLandingPage";
+    Layout = "Layout_EmployersLandingPage";
     ViewBag.PageTitle = Model.Title;
     ViewBag.PageSummary = Model.Content.Summary;
     ViewBag.HeadingImage = Model.Content?.HeaderImage?.Url;

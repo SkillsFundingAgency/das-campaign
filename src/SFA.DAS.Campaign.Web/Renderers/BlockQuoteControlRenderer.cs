@@ -31,7 +31,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
                     quote.InnerHtml.AppendHtml("<br />");
                 }
 
-                quote.InnerHtml.AppendHtml(value.CheckForFontEffects().CheckForAndConstructHyperlinks());
+                quote.InnerHtml.AppendHtml(value.CheckForFontEffects().CheckForAndConstructHyperlinks().LineBreaksToHtml());
                 itemsIterated++;
             }
 

@@ -15,6 +15,8 @@ namespace SFA.DAS.Campaign.Web.Renderers
     {
         private const string InternalHost = "www.apprenticeships.gov.uk";
 
+        private static readonly Regex LineBreakRegEx = new Regex(@"\r\n|\r|\n", RegexOptions.Compiled);
+
         public static string CheckForAndConstructHyperlinks(this string controlValue)
         {
             var linkTextRegEx = new Regex(@"\[(.*?)\]", RegexOptions.Compiled);
@@ -75,6 +77,18 @@ namespace SFA.DAS.Campaign.Web.Renderers
             };
         }
 
+        // The CMS sends soft line breaks as newline characters. HTML collapses those to a
+        // single space, so they have to become <br /> to survive rendering.
+        public static string LineBreaksToHtml(this string controlValue)
+        {
+            if (string.IsNullOrEmpty(controlValue))
+            {
+                return controlValue;
+            }
+
+            return LineBreakRegEx.Replace(controlValue, "<br />");
+        }
+
         public static string CheckForFontEffects(this string controlValue)
         {
             var fontEffectRegEx = new Regex(@"\[(bold|italic)\]", RegexOptions.Compiled);
@@ -106,7 +120,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
         public static string EnsureHrefUsableTitle(this string tabTitle)
         {
-            return tabTitle.Replace(" ", "").Replace("&", "");
+            return tabTitle.ToLower().Replace(" ", "").Replace("&", "").Replace("?", "");
         }
 
         private static string GetHtml5TagNameFromMarkup(string fontEffect)

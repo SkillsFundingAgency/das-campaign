@@ -15,7 +15,7 @@ using SFA.DAS.Campaign.Application.Content.Queries;
 using SFA.DAS.Campaign.Application.Services;
 using SFA.DAS.Campaign.Domain.Content;
 using SFA.DAS.Campaign.Infrastructure.Api.Responses;
-using SFA.DAS.Campaign.Web.Controllers.Redesign;
+using SFA.DAS.Campaign.Web.Controllers;
 using SFA.DAS.Testing.AutoFixture;
 
 namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Article

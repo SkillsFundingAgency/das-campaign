@@ -50,6 +50,16 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         }
 
         [Test, AutoData]
+        public void Is_Passed_A_Paragraph_Containing_Line_Breaks_Then_Render_Returns_Break_Tags(ParagraphControlRenderer renderer)
+        {
+            var paragraph = ParagraphBuilder.New().AddText("first line\nsecond line").Build();
+
+            var actual = renderer.Render(paragraph);
+
+            actual.Value.Should().Be("<p>first line<br />second line</p>");
+        }
+
+        [Test, AutoData]
         public void Is_Passed_A_Paragraph_With_A_Video_Transcript_Then_Render_Returns_A_Details_Element(ParagraphControlRenderer renderer)
         {
             var paragraph = ParagraphBuilder.New().AddText("")

@@ -21,6 +21,7 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
         public string Slug { get; set; }
         public string Title { get; set; }
         public string Hub { get; set; }
+        public string ParentSlug { get; set; }
         public string Url => $"/{Hub}/{Slug}";
     }
 }

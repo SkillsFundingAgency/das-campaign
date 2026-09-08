@@ -38,18 +38,6 @@
   @extend .fiu-link--apprentices;
 }
 
-.fiu-link--apprentices-light {
-  color: $fiu-apprentices-link-colour-light;
-
-  &:hover {
-    color: color.adjust($fiu-apprentices-link-colour-light, $lightness: 15%);
-  }
-
-  &:focus {
-    @include govuk-focused-text;
-  }
-}
-
 .fiu-link--employers {
   color: $fiu-employers-link-colour;
 
@@ -64,18 +52,6 @@
 
 .fiu-template--employers .app-anchor-links__link {
   @extend .fiu-link--employers;
-}
-
-.fiu-link--employers-light {
-  color: $fiu-employers-link-colour-light;
-
-  &:hover {
-    color: color.adjust($fiu-employers-link-colour-light, $lightness: 15%);
-  }
-
-  &:focus {
-    @include govuk-focused-text;
-  }
 }
 
 // Content coming from CMS

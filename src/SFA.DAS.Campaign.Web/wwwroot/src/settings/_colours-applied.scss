@@ -12,9 +12,6 @@ $fiu-global-link-colour: $blue;
 $fiu-apprentices-link-colour: $green;
 $fiu-employers-link-colour: $purple;
 
-$fiu-apprentices-link-colour-light: $light-green;
-$fiu-employers-link-colour-light: $light-purple;
-
 $fiu-global-link-hover-colour: color.adjust($blue, $lightness: -10%);
 $fiu-apprentices-link-hover-colour: color.adjust($green, $lightness: -10%);
 $fiu-employers-link-hover-colour: color.adjust($purple, $lightness: -10%);

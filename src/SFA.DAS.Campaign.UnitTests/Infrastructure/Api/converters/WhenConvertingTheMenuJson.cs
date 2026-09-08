@@ -30,7 +30,6 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.converters
 
             actual.Menu.Apprentices.Should().NotBeNullOrEmpty();
             actual.Menu.Employers.Should().NotBeNullOrEmpty();
-            actual.Menu.Influencers.Should().NotBeNullOrEmpty();
             actual.Menu.TopLevel.Should().NotBeNullOrEmpty();
         }
         

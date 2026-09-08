@@ -1,5 +1,37 @@
-@use 'shared';
+@use 'shared' as s;
 @use 'core';
 @use 'utilities';
 @use 'components';
 @use 'pages';
+
+
+:root {
+  --brand-colour: #{s.$fiu-global-brand-colour};
+  --brand-colour-dark: #{s.$blue};
+  --brand-colour-mid: #{s.$blue};
+  --brand-colour-light: #{s.$blue};
+  --border-colour: #cecece;
+  --link-colour: #{s.$fiu-global-link-colour};
+  --link-hover-colour: #{s.$fiu-global-link-hover-colour};
+}
+
+.fiu-template--apprentices {
+  --brand-colour: #{s.$fiu-apprentices-brand-colour};
+  --brand-colour-dark: #{s.$green-dark};
+  --brand-colour-mid: #{s.$green-mid};
+  --brand-colour-light: #{s.$green-light};
+  --border-colour: #{s.$green-light};
+  --link-colour: #{s.$fiu-apprentices-link-colour};
+  --link-hover-colour: #{s.$fiu-apprentices-link-hover-colour};
+}
+
+.fiu-template--employers {
+  --brand-colour: #{s.$purple};
+  --brand-colour-dark: #{s.$purple-dark};
+  --brand-colour-mid: #{s.$purple-mid};
+  --brand-colour-light: #{s.$purple-light};
+  --border-colour: #{s.$purple-light};
+  --link-colour: #{s.$fiu-employers-link-colour};
+  --link-hover-colour: #{s.$fiu-employers-link-hover-colour};
+}
+

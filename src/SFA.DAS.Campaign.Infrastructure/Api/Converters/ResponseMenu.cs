@@ -16,8 +16,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
     {
         [JsonProperty("topLevel")]
         public List<SiteMapPage> TopLevel { get; set; }
-        [JsonProperty("influencers")]
-        public List<SiteMapPage> Influencers { get; set; }
         [JsonProperty("apprentices")]
         public List<SiteMapPage> Apprentices { get; set; }
         [JsonProperty("employers")]

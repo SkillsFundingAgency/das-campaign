@@ -9,6 +9,27 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
 {
     public class WhenRendererExtensionsIsGivenAString
     {
+        [TestCase("First line\nSecond line", "First line<br />Second line")]
+        [TestCase("First line\r\nSecond line", "First line<br />Second line")]
+        [TestCase("First line\rSecond line", "First line<br />Second line")]
+        [TestCase("Blank line between\n\nthese two", "Blank line between<br /><br />these two")]
+        public void Then_Line_Breaks_Are_Converted_To_Break_Tags(string value, string expected)
+        {
+            var actual = value.LineBreaksToHtml();
+
+            actual.Should().Be(expected);
+        }
+
+        [TestCase("no line breaks")]
+        [TestCase("")]
+        [TestCase(null)]
+        public void Then_A_String_Without_Line_Breaks_Is_Left_Alone(string value)
+        {
+            var actual = value.LineBreaksToHtml();
+
+            actual.Should().Be(value);
+        }
+
         [Test]
         public void Then_If_It_Contains_Markup_A_Formed_Hyper_Link_Is_Returned()
         {
