@@ -11,14 +11,15 @@
     ViewBag.HeadingImage = Model.Content?.HeaderImage?.Url;
     ViewBag.ArticleType = Model.Content?.ArticleType;
     ViewBag.ParentPageUrl = Model.Breadcrumbs?.ParentPageUrl;
+    ViewBag.LandingPageShortTitle = Model.Breadcrumbs?.LandingPageShortTitle;
     ViewBag.HasNotGotTabs = Model.Content?.TabbedContents is null;
 }
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row app-page-start">
     <div class="govuk-grid-column-one-third">
     @if (Model.Content?.TabbedContents != null)
     {
-        <h2 class="govuk-heading-m">On this page</h2>
+        <h2 class="govuk-heading-m app-anchor-links__heading">On this page</h2>
         <ul role="list" class="govuk-list govuk-list--spaced app-anchor-links app-anchor-links__list app-anchor-links__list--dash govuk-!-margin-bottom-9">
             @foreach (var tab in Model.Content.TabbedContents)
             {

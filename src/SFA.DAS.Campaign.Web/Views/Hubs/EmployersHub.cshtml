@@ -31,12 +31,12 @@
       </div>
    }
 }
-<div class="fiu-grad-row">
+<div class="fiu-grad-row app-page-start">
    <div class="fiu-width-container">
       @if (Model.Content.Sections.Any())
       {
-         <h2 class="govuk-heading-m">On this page</h2>
-         <ul class="govuk-list govuk-list--spaced app-anchor-links app-anchor-links__list app-anchor-links__list--grid app-anchor-links__list--dash govuk-!-margin-bottom-9">
+         <h2 class="govuk-heading-m app-anchor-links__heading">On this page</h2>
+         <ul class="govuk-list app-anchor-links app-anchor-links__list app-anchor-links__list--grid app-anchor-links__list--dash">
             @foreach (var hubSection in Model.Content.Sections) {
                <li role="listitem" class="app-anchor-links__list-item">
                   <a class="govuk-link govuk-link--no-visited-state app-anchor-links__link" href="#@hubSection.Heading.EnsureHrefUsableTitle()">@hubSection.Heading</a>

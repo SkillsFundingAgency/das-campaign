@@ -10,6 +10,9 @@
     var headingColWidth = ViewBag.HeadingImage != null
         ? "one-half"
         : "full";
+
+    var parentPageUrl = ViewBag.ParentPageUrl as string;
+    var showBackLink = !string.IsNullOrWhiteSpace(parentPageUrl);
 }
 
 @if (Model.BannerModels != null && Model.BannerModels.Count > 0)
@@ -31,9 +34,9 @@
                 </div>
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-@headingColWidth fiu-page-header__wrap">
-                        @if (ViewBag.ParentPageUrl != null)
+                        @if (showBackLink)
                         {
-                            <a href="@ViewBag.ParentPageUrl" class="govuk-back-link govuk-back-link--inverse fiu-back-link fiu-page-header__back">Back</a>
+                            <a href="@parentPageUrl" class="govuk-back-link govuk-back-link--inverse fiu-back-link fiu-page-header__back">Back</a>
                         }
                         <h1 class="govuk-heading-xl fiu-page-heading__title">@ViewBag.PageTitle</h1>
                         @if (ViewBag.PageSummary != null)

@@ -186,6 +186,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             model.Breadcrumbs = new Breadcrumbs
             {
                 LandingPageSlug = cmsContent.Article.ParentPage.Slug,
+                LandingPageShortTitle =  cmsContent.Article.ParentPage.ShortPageTitle,
                 HubPage = cmsContent.Article.ParentPage.HubType,
                 LandingPage = cmsContent.Article.ParentPage.Title
             };
