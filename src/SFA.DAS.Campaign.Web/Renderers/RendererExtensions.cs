@@ -15,12 +15,12 @@ namespace SFA.DAS.Campaign.Web.Renderers
     {
         private const string InternalHost = "www.apprenticeships.gov.uk";
 
-        private static readonly Regex LineBreakRegEx = new Regex(@"\r\n|\r|\n", RegexOptions.Compiled);
+        private static readonly Regex LineBreakRegEx = new Regex(@"\r\n|\r|\n", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
 
         public static string CheckForAndConstructHyperlinks(this string controlValue)
         {
-            var linkTextRegEx = new Regex(@"\[(.*?)\]", RegexOptions.Compiled);
-            var urlRegEx = new Regex(@"\(([^]]+)\)", RegexOptions.Compiled);
+            var linkTextRegEx = new Regex(@"\[(.*?)\]", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
+            var urlRegEx = new Regex(@"\(([^]]+)\)", RegexOptions.Compiled, TimeSpan.FromMilliseconds(100));
 
             var linkText = linkTextRegEx.Matches(controlValue).FirstOrDefault();
             var url = urlRegEx.Matches(controlValue).FirstOrDefault();
