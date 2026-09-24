@@ -68,7 +68,9 @@ a.fiu-panel {
 }
 
 .fiu-panel--apprentices {
+  --border-colour: #{$green-light};
   --brand-colour: #{$fiu-apprentices-brand-colour};
+  --brand-colour-dark: #{$fiu-apprentices-link-colour};
 }
 
 @include govuk-media-query(tablet) {
@@ -202,7 +204,11 @@ a.fiu-panel {
 
 .fiu-panel-homepage__heading {
   color: inherit;
-  margin: 1rem 0 2rem
+  margin: 0 0 1rem;
+  @include govuk-media-query(tablet) {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .fiu-panel-homepage__content {

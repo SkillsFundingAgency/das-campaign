@@ -141,7 +141,7 @@
 
 .fiu-footer__inline-list-title,
 .fiu-footer__list-item {
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
   display: block;
   @include govuk-media-query(tablet) {
     display: inline-block;
@@ -157,7 +157,7 @@
 
 .fiu-footer__inline-list-title {
   padding-left: 0;
-  display: block;
+  display: inline-block;
   border-right: 0;
 }
 
