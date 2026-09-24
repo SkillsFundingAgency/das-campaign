@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 {
@@ -20,5 +20,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public string Slug { get; set; }
         public string Title { get; set; }
         public string Hub { get; set; }
+        public string ParentSlug { get; set; }
     }
 }

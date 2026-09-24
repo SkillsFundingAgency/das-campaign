@@ -4,7 +4,9 @@
   @extend .govuk-back-link;
   @include fiu-typography-common;
   color: $white;
-  -webkit-font-smoothing: auto;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 16px;
   &:link,
   &:active,
   &:visited {
@@ -15,6 +17,10 @@
   }
   &:before {
     border-color: inherit;
+  }
+  @include govuk-media-query(tablet) {
+    margin-bottom: 30px;
+    font-size: 19px;
   }
 }
 

@@ -4,6 +4,7 @@
     {
         public int PageType { get; set; }
         public string Title { get; set; }
+        public string ShortPageTitle  { get; set; }
         public string MetaDescription { get; set; }
         public string Slug { get; set; }
         public string HubType { get; set; }

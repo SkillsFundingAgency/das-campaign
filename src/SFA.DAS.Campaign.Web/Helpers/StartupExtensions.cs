@@ -1,17 +1,15 @@
-using Azure.Core;
+﻿using Azure.Core;
 using Azure.Identity;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SFA.DAS.Campaign.Application.DataCollection;
-using SFA.DAS.Campaign.Application.Geocode;
 using SFA.DAS.Campaign.Application.Services;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
 using SFA.DAS.Campaign.Domain.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
-using SFA.DAS.Campaign.Infrastructure.Geocode.Configuration;
 using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
 using StackExchange.Redis;
@@ -32,13 +30,6 @@ namespace SFA.DAS.Campaign.Web.Helpers
             
             services.Configure<UserDataCryptography>(configuration.GetSection("CampaignConfiguration:UserDataCryptography"));
             services.Configure<UserDataQueueNames>(configuration.GetSection("CampaignConfiguration:UserDataQueueNames"));
-
-            var mappingConfig = new MappingConfiguration();
-            configuration.Bind("CampaignConfiguration:Mapping", mappingConfig);
-
-            services.AddSingleton<IMappingConfiguration>(mappingConfig);
-
-            services.Configure<MappingConfiguration>(configuration.GetSection("CampaignConfiguration:Mapping"));
         }
 
         public static void ConfigureSfaConnectionStrings(this IServiceCollection services, IConfiguration configuration)
@@ -64,7 +55,6 @@ namespace SFA.DAS.Campaign.Web.Helpers
         {
             services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
             services.AddTransient<ISessionService, SessionService>();
-            services.AddTransient<IMappingService, GoogleMappingService>();
             services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
 
             string tenantId = configuration.GetSection("TenantId").Value ?? throw new ConfigurationErrorsException("TenantId is not configured");

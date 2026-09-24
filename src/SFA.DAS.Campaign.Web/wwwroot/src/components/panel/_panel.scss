@@ -49,12 +49,12 @@
 
 a.fiu-panel {
   h2 {
-    color: $fiu-apprentices-brand-colour;
+    color: var(--brand-colour);
   }
   &:active,
   &:hover {
-    background: $fiu-apprentices-brand-colour;
-    border-color: $fiu-apprentices-link-hover-colour;
+    background: var(--brand-colour);
+    border-color: var(--brand-colour);
     color: #fff;
     h2 {
       text-decoration-thickness: 2px;
@@ -65,6 +65,10 @@ a.fiu-panel {
       background: #fff;
     }
   }
+}
+
+.fiu-panel--apprentices {
+  --brand-colour: #{$fiu-apprentices-brand-colour};
 }
 
 @include govuk-media-query(tablet) {

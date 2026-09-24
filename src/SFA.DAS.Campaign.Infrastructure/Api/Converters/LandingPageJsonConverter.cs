@@ -59,10 +59,15 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         private Page<LandingPage> PopulatePageModel(PageRoot cmsContent)
         {
+            if (!cmsContent.LandingPage.PageAttributes.HubType.TryGetHubType(out var hubType))
+            {
+                return null;
+            }
+
             var pageModel = new Page<LandingPage>
             {
                 Slug = cmsContent.LandingPage.PageAttributes.Slug,
-                HubType = Enum.Parse<HubType>(cmsContent.LandingPage.PageAttributes.HubType),
+                HubType = hubType,
                 Title = cmsContent.LandingPage.PageAttributes.Title,
                 MetaContent = new MetaContent
                 {

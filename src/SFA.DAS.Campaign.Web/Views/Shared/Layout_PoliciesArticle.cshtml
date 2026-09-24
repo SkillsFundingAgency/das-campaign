@@ -1,0 +1,8 @@
+﻿@using System.Linq
+@using SFA.DAS.Campaign.Domain.Content.HtmlControl
+@{
+    Layout = "Layout_Generic";
+    ViewBag.PageSummary = Model.Content.Summary;
+}
+    @RenderBody()
+    <hr class="govuk-section-break govuk-section-break--xl" />

@@ -1,12 +1,14 @@
-@using SFA.DAS.Campaign.Web.Helpers
+﻿@using SFA.DAS.Campaign.Web.Helpers
+@using SFA.DAS.Campaign.Web.Renderers
 @model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.Hub>
 @{
-ViewBag.Title = Model.Title;
-Layout = "Redesign_Layout_EmployersHub";
-ViewBag.PageTitle = Model.Title;
-ViewBag.PageSummary = Model.Content.Summary;
-ViewBag.HubPage = true;
-ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
+   ViewBag.Title = Model.Title;
+   Layout = "Layout_EmployersHub";
+   ViewBag.PageTitle = Model.Title;
+   ViewBag.PageSummary = Model.Content.Summary;
+   ViewBag.HubPage = true;
+   ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
+   ViewData["HubBrand"] = "employers";
 }
 @functions {
    void RenderCardGroup(string title, IReadOnlyCollection<SFA.DAS.Campaign.Domain.Content.HtmlControl.Card> cards)
@@ -29,11 +31,30 @@ ViewBag.HeadingImage = Model.Content.HeaderImage.Url;
       </div>
    }
 }
-<div class="fiu-grad-row">
+<div class="fiu-grad-row app-page-start">
    <div class="fiu-width-container">
-      @{ RenderCardGroup(Model.Content.CardsTitle, Model.Content.Cards); }
-      @{ RenderCardGroup(Model.Content.CardsTitle2, Model.Content.Cards2); }
-      @{ RenderCardGroup(Model.Content.CardsTitle3, Model.Content.Cards3); }
-      <partial name="Panels/_EmployerSupport" />
+      @if (Model.Content.Sections.Any())
+      {
+         <h2 class="govuk-heading-m app-anchor-links__heading">On this page</h2>
+         <ul class="govuk-list app-anchor-links app-anchor-links__list app-anchor-links__list--grid app-anchor-links__list--dash">
+            @foreach (var hubSection in Model.Content.Sections) {
+               <li role="listitem" class="app-anchor-links__list-item">
+                  <a class="govuk-link govuk-link--no-visited-state app-anchor-links__link" href="#@hubSection.Heading.EnsureHrefUsableTitle()">@hubSection.Heading</a>
+               </li>
+            }
+         </ul>
+         foreach (var hubSection in Model.Content.Sections)
+         {
+            <partial name="Hubs/_HubSection" model="hubSection" />
+         }
+      }
+      else
+      {
+         @* Fallback for hubs the CMS has not yet migrated onto sections. *@
+         RenderCardGroup(Model.Content.CardsTitle, Model.Content.Cards);
+         RenderCardGroup(Model.Content.CardsTitle2, Model.Content.Cards2);
+         RenderCardGroup(Model.Content.CardsTitle3, Model.Content.Cards3);
+         <partial name="Panels/_EmployerSupport" />
+      }
    </div>
 </div>

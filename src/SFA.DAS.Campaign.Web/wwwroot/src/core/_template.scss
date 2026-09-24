@@ -24,7 +24,10 @@
   height: 50px;
   background: url('/images/step-gradient-bg-black.png') repeat-x;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  @include govuk-media-query(tablet) {
+    margin-bottom: 50px;
+  }
 }
 
 .fiu-grad-row__bg--grey {

@@ -1,0 +1,51 @@
+@model IReadOnlyCollection<SFA.DAS.Campaign.Domain.Content.HubStatistic>
+@{
+    if (Model == null || !Model.Any())
+    {
+        return;
+    }
+}
+<ul role="list" class="fiu-statistics">
+    @foreach (var statistic in Model)
+    {
+        <li role="listitem" class="fiu-statistics__item">
+            @if (statistic.IsStat)
+            {
+                <div class="fiu-statistic">
+                    <p class="fiu-statistic__highlight">@statistic.HighlightValue</p>
+                    @if (!string.IsNullOrWhiteSpace(statistic.Text))
+                    {
+                        <p class="fiu-statistic__text">@statistic.Text</p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(statistic.ReferenceText))
+                    {
+                        <p class="fiu-statistic__reference">@statistic.ReferenceText</p>
+                    }
+                </div>
+            }
+            else
+            {
+                <figure class="fiu-quote fiu-statistic-quote">
+                    @if (!string.IsNullOrWhiteSpace(statistic.Text))
+                    {
+                        <blockquote class="fiu-quote__blockquote">@statistic.Text</blockquote>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(statistic.QuoteName) || !string.IsNullOrWhiteSpace(statistic.QuoteRole))
+                    {
+                        <figcaption class="fiu-quote__caption">
+                            @statistic.QuoteName
+                            @if (!string.IsNullOrWhiteSpace(statistic.QuoteRole))
+                            {
+                                <span class="fiu-quote__caption-description">@statistic.QuoteRole</span>
+                            }
+                        </figcaption>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(statistic.ReferenceText))
+                    {
+                        <p class="fiu-statistic__reference">@statistic.ReferenceText</p>
+                    }
+                </figure>
+            }
+        </li>
+    }
+</ul>

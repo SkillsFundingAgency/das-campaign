@@ -4,9 +4,10 @@
   "private": true,
   "description": "Front-end assets for the DAS Campaign web app.",
   "scripts": {
-    "build": "npm run build:css && npm run build:js",
+    "build": "npm run build:css && npm run build:js && npm run build:sprite",
     "build:css": "sass --load-path=node_modules/govuk-frontend/dist --silence-deprecation=import --style=compressed --no-source-map wwwroot/src/all.scss wwwroot/css/app.css",
     "build:js": "esbuild wwwroot/src/fiu.js --bundle --minify --outfile=wwwroot/js/fiu.js",
+    "build:sprite": "node build/build-sprite.js",
     "watch": "sass --load-path=node_modules/govuk-frontend/dist --silence-deprecation=import --watch wwwroot/src/all.scss:wwwroot/css/app.css",
     "watch:js": "esbuild wwwroot/src/fiu.js --bundle --outfile=wwwroot/js/fiu.js --watch"
   },

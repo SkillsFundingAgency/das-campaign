@@ -175,6 +175,167 @@
           "hubType": "Influencers",
           "summary": "There are other career alternatives to apprenticeships which may be more suitable, such as T levels and traineeships. "
         }
+      ],
+      "sections": [
+        {
+          "sectionType": "Regular",
+          "heading": "Is an apprenticeship right for you?",
+          "introduction": "Check if an apprenticeship is right for you, and have a look at what's out there.",
+          "image": {
+            "values": null,
+            "type": "Asset",
+            "tableValue": null,
+            "embeddedResource": {
+              "title": "apprentice-sparks",
+              "id": "7FMiFuKxmMQDmVxbhPQy4K",
+              "fileName": "apprentice-sparks.jpg",
+              "contentType": "image/jpeg",
+              "url": "https://images.ctfassets.net/8kbr1n52z8s2/7FMiFuKxmMQDmVxbhPQy4K/2d693fc0e6955f6a58bc12e663282a80/apprentice-sparks.jpg",
+              "size": 57643,
+              "description": null
+            },
+            "videoTranscripts": null
+          },
+          "stepperLinks": [
+            {
+              "id": "8cy2XVSZTWR7fMPCCE5uX",
+              "pageType": 2,
+              "title": "Is an apprenticeship right for you?",
+              "slug": "is-an-apprenticeship-right-for-you",
+              "summary": "What to expect from an apprenticeship and what else you can do if an apprenticeship is not right for you.",
+              "metaDescription": "What to expect from an apprenticeship and what else you can do if an apprenticeship is not right for you.",
+              "landingPage": {
+                "slug": "are-they-right-for-you",
+                "title": "Are they right for you? ",
+                "hub": "Apprentices",
+                "pageType": null,
+                "parentSlug": null
+              },
+              "ctaPanel": null
+            },
+            {
+              "id": "2ioxtbsIXtEtDNdPwfbS0y",
+              "pageType": 1,
+              "title": "Browse by interests",
+              "slug": "interests",
+              "summary": "There are more than 700 different types of apprenticeship.",
+              "metaDescription": null,
+              "landingPage": {
+                "slug": null,
+                "title": null,
+                "hub": null,
+                "pageType": null,
+                "parentSlug": null
+              },
+              "ctaPanel": null
+            }
+          ],
+          "standardLinks": [
+            {
+              "id": "3cnAtsdWapcHgI0LQ19a8l",
+              "pageType": 2,
+              "title": "Support if you have been in care",
+              "slug": "support-care-experienced-apprentices",
+              "summary": "Financial support towards your apprenticeship if you are or have been in care.",
+              "metaDescription": "Financial support towards your apprenticeship if you are or have been in care.",
+              "landingPage": {
+                "slug": "are-they-right-for-you",
+                "title": "Are they right for you? ",
+                "hub": "Apprentices",
+                "pageType": null,
+                "parentSlug": null
+              },
+              "ctaPanel": null
+            }
+          ],
+          "ctaPanel": {
+            "heading": "Find an apprenticeship",
+            "description": "Use our Find an apprenticeship website to search and apply for apprenticeships.",
+            "icon": "Search",
+            "buttonText": "Find an apprenticeship",
+            "url": "https://www.findapprenticeship.service.gov.uk/"
+          }
+        }
+,
+        {
+          "sectionType": "Stats",
+          "heading": "Apprenticeships in numbers",
+          "introduction": "What apprentices and employers say about apprenticeships.",
+          "image": null,
+          "stepperLinks": [],
+          "standardLinks": [],
+          "statisticsSections": [
+            {
+              "text": "of employers said apprenticeships helped them develop skills relevant to their organisation.",
+              "highlightValue": "86%",
+              "quoteName": null,
+              "quoteRole": null,
+              "referenceText": "Employer apprenticeships benefits survey"
+            },
+            {
+              "text": "of employers said apprenticeships helped them improve productivity.",
+              "highlightValue": "78%",
+              "quoteName": null,
+              "quoteRole": null,
+              "referenceText": "Employer apprenticeships benefits survey"
+            },
+            {
+              "text": "Taking on an apprentice was the best decision we made. She brought fresh ideas to the team from day one.",
+              "highlightValue": null,
+              "quoteName": "Jane",
+              "quoteRole": "Industry Talent Specialist, Channel 4",
+              "referenceText": null
+            }
+          ],
+          "ctaPanel": null
+        }
+      ],
+      "carousel": [
+        {
+          "values": null,
+          "type": "Asset",
+          "tableValue": null,
+          "embeddedResource": {
+            "title": "Apprentice working in a lab",
+            "id": "5KpQ2xJcYm1RtVbNwHZa3d",
+            "fileName": "apprentice-lab.jpg",
+            "contentType": "image/jpeg",
+            "url": "https://images.ctfassets.net/8kbr1n52z8s2/5KpQ2xJcYm1RtVbNwHZa3d/apprentice-lab.jpg",
+            "size": 84213,
+            "description": "An apprentice working in a laboratory"
+          },
+          "videoTranscripts": null
+        },
+        {
+          "values": null,
+          "type": "Asset",
+          "tableValue": null,
+          "embeddedResource": {
+            "title": "Apprentice on a construction site",
+            "id": "6LrS3yKdZn2SuWcOxIAb4e",
+            "fileName": "apprentice-construction.jpg",
+            "contentType": "image/jpeg",
+            "url": "https://images.ctfassets.net/8kbr1n52z8s2/6LrS3yKdZn2SuWcOxIAb4e/apprentice-construction.jpg",
+            "size": 91544,
+            "description": "An apprentice on a construction site"
+          },
+          "videoTranscripts": null
+        },
+        {
+          "values": null,
+          "type": "Asset",
+          "tableValue": null,
+          "embeddedResource": {
+            "title": "Apprentice in an office",
+            "id": "7MsT4zLeAo3TvXdPyJBc5f",
+            "fileName": "apprentice-office.jpg",
+            "contentType": "image/jpeg",
+            "url": "https://images.ctfassets.net/8kbr1n52z8s2/7MsT4zLeAo3TvXdPyJBc5f/apprentice-office.jpg",
+            "size": 77310,
+            "description": "An apprentice working in an office"
+          },
+          "videoTranscripts": null
+        }
       ]
     },
     "menuContent": {

@@ -60,10 +60,15 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         private Page<Article> PopulatePageModel(PageRoot cmsContent)
         {
+            if (!cmsContent.Article.PageAttributes.HubType.TryGetHubType(out var hubType))
+            {
+                return null;
+            }
+
             var pageModel = new Page<Article>
             {
                 Slug = cmsContent.Article.PageAttributes.Slug,
-                HubType = Enum.Parse<HubType>(cmsContent.Article.PageAttributes.HubType),
+                HubType = hubType,
                 Title = cmsContent.Article.PageAttributes.Title,
                 MetaContent = new MetaContent
                 {
@@ -181,6 +186,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             model.Breadcrumbs = new Breadcrumbs
             {
                 LandingPageSlug = cmsContent.Article.ParentPage.Slug,
+                LandingPageShortTitle =  cmsContent.Article.ParentPage.ShortPageTitle,
                 HubPage = cmsContent.Article.ParentPage.HubType,
                 LandingPage = cmsContent.Article.ParentPage.Title
             };

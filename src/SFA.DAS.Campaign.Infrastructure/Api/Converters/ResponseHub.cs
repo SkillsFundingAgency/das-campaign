@@ -40,5 +40,11 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         [JsonProperty("cards3")]
         public List<ResponseCard> Cards3 { get; set; }
+
+        [JsonProperty("sections")]
+        public List<ResponseHubSection> Sections { get; set; }
+
+        [JsonProperty("carousel")]
+        public List<Item> Carousel { get; set; }
     }
 }
