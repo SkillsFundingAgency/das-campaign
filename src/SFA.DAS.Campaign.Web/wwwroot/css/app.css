@@ -16622,7 +16622,7 @@
 @media (min-width: 40.0625em) {
   .fiu-flex-row {
     display: flex;
-    margin-bottom: 1.875rem;
+    margin-bottom: 3rem;
   }
 }
 
@@ -17872,6 +17872,10 @@ a.fiu-card:active, a.fiu-card-homepage:active, a.fiu-card:hover, a.fiu-card-home
   border-color: rgb(27.7108433735, 87.2891566265, 40.1807228916);
   color: #fff;
 }
+a.fiu-card--employers:active, a.fiu-card--employers:hover {
+  background: #4d43a3;
+  border-color: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+}
 
 .fiu-card__heading {
   margin: 0 0 0.7em 0;
@@ -17890,6 +17894,10 @@ a.fiu-card:active, a.fiu-card-homepage:active, a.fiu-card:hover, a.fiu-card-home
   .fiu-card__heading {
     font-size: 24px;
   }
+}
+
+.fiu-card--employers .fiu-card__heading {
+  color: #4d43a3;
 }
 
 .fiu-card__logo {
@@ -17961,7 +17969,7 @@ a.fiu-card-homepage .fiu-card__content {
 }
 
 .fiu-card-group {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .fiu-card-group__title {
@@ -19380,7 +19388,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
 .fiu-panel--apprentices {
   --border-colour: #CCE2D8;
   --brand-colour: #287E3A;
-  --brand-colour-dark: #287E3A;
+  --brand-colour-dark: #005A30;
 }
 
 @media (min-width: 40.0625em) {

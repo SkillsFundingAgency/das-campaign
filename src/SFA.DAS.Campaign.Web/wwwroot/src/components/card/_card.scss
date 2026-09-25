@@ -34,6 +34,13 @@ a.fiu-card {
     border-color: $fiu-apprentices-link-hover-colour;
     color: #fff;
   }
+  &--employers {
+    &:active,
+    &:hover {
+      background: $fiu-employers-brand-colour;
+      border-color: $fiu-employers-link-hover-colour;
+    }
+  }
 }
 
 
@@ -50,6 +57,10 @@ a.fiu-card {
   @include govuk-media-query($from: $fiu-large-desktop-breakpoint) {
     font-size: 24px;
   }
+}
+
+.fiu-card--employers .fiu-card__heading {
+  color: $fiu-employers-brand-colour;
 }
 
 .fiu-card__logo {
@@ -136,7 +147,7 @@ a.fiu-card-homepage {
 
 
 .fiu-card-group {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .fiu-card-group__title {
