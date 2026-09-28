@@ -34,6 +34,13 @@ a.fiu-card {
     border-color: $fiu-apprentices-link-hover-colour;
     color: #fff;
   }
+  &--employers {
+    &:active,
+    &:hover {
+      background: $fiu-employers-brand-colour;
+      border-color: $fiu-employers-link-hover-colour;
+    }
+  }
 }
 
 
@@ -50,6 +57,10 @@ a.fiu-card {
   @include govuk-media-query($from: $fiu-large-desktop-breakpoint) {
     font-size: 24px;
   }
+}
+
+.fiu-card--employers .fiu-card__heading {
+  color: $fiu-employers-brand-colour;
 }
 
 .fiu-card__logo {
@@ -108,10 +119,10 @@ a.fiu-card {
 
 a.fiu-card-homepage {
   @extend .fiu-card;
-  background: #333;
+  background: $fiu-apprentices-brand-colour;
   color: #fff;
   text-align: center;
-  padding: 2rem 3rem;
+  padding: 3rem 2rem;
 
   .fiu-panel__tag {
     margin-bottom: 1rem;
@@ -119,20 +130,13 @@ a.fiu-card-homepage {
   }
 
   &:hover {
-    background: $fiu-apprentices-brand-colour;
-    .fiu-panel__tag {
-      color: $fiu-apprentices-brand-colour;
-      background: #fff;
-    }
+    background: $fiu-apprentices-link-hover-colour;
   }
   
   &--employers {
+    background: $fiu-employers-brand-colour;
     &:hover {
-      background: $fiu-employers-brand-colour;
-      .fiu-panel__tag {
-        color: $fiu-employers-brand-colour;
-        background: #fff;
-      }
+      background: $fiu-employers-link-hover-colour;
     }
   }
   
@@ -143,7 +147,7 @@ a.fiu-card-homepage {
 
 
 .fiu-card-group {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .fiu-card-group__title {

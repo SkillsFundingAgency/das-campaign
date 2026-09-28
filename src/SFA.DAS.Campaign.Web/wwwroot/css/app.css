@@ -514,41 +514,41 @@
   }
 }
 
-.govuk-heading-m, .fiu-support-panel__heading, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
+.govuk-heading-m, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 @media print {
-  .govuk-heading-m, .fiu-support-panel__heading, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
+  .govuk-heading-m, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
     font-family: sans-serif;
   }
 }
-.govuk-heading-m, .fiu-support-panel__heading, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
+.govuk-heading-m, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
   font-weight: 700;
   font-size: 1.3125rem;
   line-height: 1.1904761905;
 }
 @media (min-width: 40.0625em) {
-  .govuk-heading-m, .fiu-support-panel__heading, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
+  .govuk-heading-m, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
     font-size: 1.5rem;
     line-height: 1.25;
   }
 }
 @media print {
-  .govuk-heading-m, .fiu-support-panel__heading, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
+  .govuk-heading-m, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
     font-size: 18pt;
     line-height: 1.15;
   }
 }
-.govuk-heading-m, .fiu-support-panel__heading, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
+.govuk-heading-m, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
   display: block;
   margin-top: 0;
   color: var(--govuk-text-colour, #0b0c0c);
   margin-bottom: 15px;
 }
 @media (min-width: 40.0625em) {
-  .govuk-heading-m, .fiu-support-panel__heading, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
+  .govuk-heading-m, .fiu-heading-m-l, .fiu-article > h3:not([class]), .fiu-notification__heading {
     margin-bottom: 20px;
   }
 }
@@ -721,7 +721,7 @@
   }
 }
 
-.govuk-body, .fiu-panel p, .fiu-support-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
+.govuk-body, .fiu-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
   margin-top: 0;
   color: var(--govuk-text-colour, #0b0c0c);
   font-family: "GDS Transport", arial, sans-serif;
@@ -729,26 +729,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 @media print {
-  .govuk-body, .fiu-panel p, .fiu-support-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
+  .govuk-body, .fiu-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
     font-family: sans-serif;
   }
 }
-.govuk-body, .fiu-panel p, .fiu-support-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
+.govuk-body, .fiu-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
   font-weight: 400;
   font-size: 1.1875rem;
   line-height: 1.3157894737;
 }
 @media print {
-  .govuk-body, .fiu-panel p, .fiu-support-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
+  .govuk-body, .fiu-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
     font-size: 14pt;
     line-height: 1.15;
   }
 }
-.govuk-body, .fiu-panel p, .fiu-support-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
+.govuk-body, .fiu-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
   margin-bottom: 15px;
 }
 @media (min-width: 40.0625em) {
-  .govuk-body, .fiu-panel p, .fiu-support-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
+  .govuk-body, .fiu-panel p, .fiu-page-header__content, .fiu-hub-section__introduction, .fiu-stepper__content, .fiu-statistic__text, .fiu-statistic__reference, .fiu-card__content, .fiu-article > p:not([class]), .fiu-quote__blockquote, .fiu-quote__caption, .fiu-article > blockquote:not([class]), .fiu-notification__body, .govuk-body-m {
     margin-bottom: 20px;
   }
 }
@@ -794,7 +794,7 @@
   }
 }
 
-.govuk-body-m + .govuk-heading-l, .fiu-article > .govuk-body-m + h2:not([class]), .govuk-body + .govuk-heading-l, .fiu-panel p + .govuk-heading-l, .fiu-support-panel p + .govuk-heading-l, .fiu-page-header__content + .govuk-heading-l, .fiu-hub-section__introduction + .govuk-heading-l, .fiu-stepper__content + .govuk-heading-l, .fiu-statistic__text + .govuk-heading-l, .fiu-statistic__reference + .govuk-heading-l, .fiu-card__content + .govuk-heading-l, .fiu-article > p:not([class]) + .govuk-heading-l, .fiu-quote__blockquote + .govuk-heading-l, .fiu-quote__caption + .govuk-heading-l, .fiu-article > blockquote:not([class]) + .govuk-heading-l, .fiu-notification__body + .govuk-heading-l, .fiu-article > .govuk-body + h2:not([class]), .fiu-panel .fiu-article > p + h2:not([class]), .fiu-support-panel .fiu-article > p + h2:not([class]), .fiu-article > .fiu-page-header__content + h2:not([class]), .fiu-article > .fiu-hub-section__introduction + h2:not([class]), .fiu-article > .fiu-stepper__content + h2:not([class]), .fiu-article > .fiu-statistic__text + h2:not([class]), .fiu-article > .fiu-statistic__reference + h2:not([class]), .fiu-article > .fiu-card__content + h2:not([class]), .fiu-article > p:not([class]) + h2:not([class]), .fiu-article > .fiu-quote__blockquote + h2:not([class]), .fiu-article > .fiu-quote__caption + h2:not([class]), .fiu-article > blockquote:not([class]) + h2:not([class]), .fiu-article > .fiu-notification__body + h2:not([class]),
+.govuk-body-m + .govuk-heading-l, .fiu-article > .govuk-body-m + h2:not([class]), .govuk-body + .govuk-heading-l, .fiu-panel p + .govuk-heading-l, .fiu-page-header__content + .govuk-heading-l, .fiu-hub-section__introduction + .govuk-heading-l, .fiu-stepper__content + .govuk-heading-l, .fiu-statistic__text + .govuk-heading-l, .fiu-statistic__reference + .govuk-heading-l, .fiu-card__content + .govuk-heading-l, .fiu-article > p:not([class]) + .govuk-heading-l, .fiu-quote__blockquote + .govuk-heading-l, .fiu-quote__caption + .govuk-heading-l, .fiu-article > blockquote:not([class]) + .govuk-heading-l, .fiu-notification__body + .govuk-heading-l, .fiu-article > .govuk-body + h2:not([class]), .fiu-panel .fiu-article > p + h2:not([class]), .fiu-article > .fiu-page-header__content + h2:not([class]), .fiu-article > .fiu-hub-section__introduction + h2:not([class]), .fiu-article > .fiu-stepper__content + h2:not([class]), .fiu-article > .fiu-statistic__text + h2:not([class]), .fiu-article > .fiu-statistic__reference + h2:not([class]), .fiu-article > .fiu-card__content + h2:not([class]), .fiu-article > p:not([class]) + h2:not([class]), .fiu-article > .fiu-quote__blockquote + h2:not([class]), .fiu-article > .fiu-quote__caption + h2:not([class]), .fiu-article > blockquote:not([class]) + h2:not([class]), .fiu-article > .fiu-notification__body + h2:not([class]),
 .govuk-body-s + .govuk-heading-l,
 .fiu-article > .govuk-body-s + h2:not([class]),
 .govuk-list + .govuk-heading-l,
@@ -806,7 +806,7 @@
   padding-top: 15px;
 }
 @media (min-width: 40.0625em) {
-  .govuk-body-m + .govuk-heading-l, .fiu-article > .govuk-body-m + h2:not([class]), .govuk-body + .govuk-heading-l, .fiu-panel p + .govuk-heading-l, .fiu-support-panel p + .govuk-heading-l, .fiu-page-header__content + .govuk-heading-l, .fiu-hub-section__introduction + .govuk-heading-l, .fiu-stepper__content + .govuk-heading-l, .fiu-statistic__text + .govuk-heading-l, .fiu-statistic__reference + .govuk-heading-l, .fiu-card__content + .govuk-heading-l, .fiu-article > p:not([class]) + .govuk-heading-l, .fiu-quote__blockquote + .govuk-heading-l, .fiu-quote__caption + .govuk-heading-l, .fiu-article > blockquote:not([class]) + .govuk-heading-l, .fiu-notification__body + .govuk-heading-l, .fiu-article > .govuk-body + h2:not([class]), .fiu-panel .fiu-article > p + h2:not([class]), .fiu-support-panel .fiu-article > p + h2:not([class]), .fiu-article > .fiu-page-header__content + h2:not([class]), .fiu-article > .fiu-hub-section__introduction + h2:not([class]), .fiu-article > .fiu-stepper__content + h2:not([class]), .fiu-article > .fiu-statistic__text + h2:not([class]), .fiu-article > .fiu-statistic__reference + h2:not([class]), .fiu-article > .fiu-card__content + h2:not([class]), .fiu-article > p:not([class]) + h2:not([class]), .fiu-article > .fiu-quote__blockquote + h2:not([class]), .fiu-article > .fiu-quote__caption + h2:not([class]), .fiu-article > blockquote:not([class]) + h2:not([class]), .fiu-article > .fiu-notification__body + h2:not([class]),
+  .govuk-body-m + .govuk-heading-l, .fiu-article > .govuk-body-m + h2:not([class]), .govuk-body + .govuk-heading-l, .fiu-panel p + .govuk-heading-l, .fiu-page-header__content + .govuk-heading-l, .fiu-hub-section__introduction + .govuk-heading-l, .fiu-stepper__content + .govuk-heading-l, .fiu-statistic__text + .govuk-heading-l, .fiu-statistic__reference + .govuk-heading-l, .fiu-card__content + .govuk-heading-l, .fiu-article > p:not([class]) + .govuk-heading-l, .fiu-quote__blockquote + .govuk-heading-l, .fiu-quote__caption + .govuk-heading-l, .fiu-article > blockquote:not([class]) + .govuk-heading-l, .fiu-notification__body + .govuk-heading-l, .fiu-article > .govuk-body + h2:not([class]), .fiu-panel .fiu-article > p + h2:not([class]), .fiu-article > .fiu-page-header__content + h2:not([class]), .fiu-article > .fiu-hub-section__introduction + h2:not([class]), .fiu-article > .fiu-stepper__content + h2:not([class]), .fiu-article > .fiu-statistic__text + h2:not([class]), .fiu-article > .fiu-statistic__reference + h2:not([class]), .fiu-article > .fiu-card__content + h2:not([class]), .fiu-article > p:not([class]) + h2:not([class]), .fiu-article > .fiu-quote__blockquote + h2:not([class]), .fiu-article > .fiu-quote__caption + h2:not([class]), .fiu-article > blockquote:not([class]) + h2:not([class]), .fiu-article > .fiu-notification__body + h2:not([class]),
   .govuk-body-s + .govuk-heading-l,
   .fiu-article > .govuk-body-s + h2:not([class]),
   .govuk-list + .govuk-heading-l,
@@ -819,18 +819,14 @@
   }
 }
 
-.govuk-body-m + .govuk-heading-m, .govuk-body-m + .fiu-support-panel__heading, .govuk-body-m + .fiu-heading-m-l, .fiu-article > .govuk-body-m + h3:not([class]), .govuk-body-m + .fiu-notification__heading, .govuk-body + .govuk-heading-m, .fiu-panel p + .govuk-heading-m, .fiu-support-panel p + .govuk-heading-m, .fiu-page-header__content + .govuk-heading-m, .fiu-hub-section__introduction + .govuk-heading-m, .fiu-stepper__content + .govuk-heading-m, .fiu-statistic__text + .govuk-heading-m, .fiu-statistic__reference + .govuk-heading-m, .fiu-card__content + .govuk-heading-m, .fiu-article > p:not([class]) + .govuk-heading-m, .fiu-quote__blockquote + .govuk-heading-m, .fiu-quote__caption + .govuk-heading-m, .fiu-article > blockquote:not([class]) + .govuk-heading-m, .fiu-notification__body + .govuk-heading-m, .govuk-body + .fiu-support-panel__heading, .fiu-panel p + .fiu-support-panel__heading, .fiu-support-panel p + .fiu-support-panel__heading, .fiu-page-header__content + .fiu-support-panel__heading, .fiu-hub-section__introduction + .fiu-support-panel__heading, .fiu-stepper__content + .fiu-support-panel__heading, .fiu-statistic__text + .fiu-support-panel__heading, .fiu-statistic__reference + .fiu-support-panel__heading, .fiu-card__content + .fiu-support-panel__heading, .fiu-article > p:not([class]) + .fiu-support-panel__heading, .fiu-quote__blockquote + .fiu-support-panel__heading, .fiu-quote__caption + .fiu-support-panel__heading, .fiu-article > blockquote:not([class]) + .fiu-support-panel__heading, .fiu-notification__body + .fiu-support-panel__heading, .govuk-body + .fiu-heading-m-l, .fiu-panel p + .fiu-heading-m-l, .fiu-support-panel p + .fiu-heading-m-l, .fiu-page-header__content + .fiu-heading-m-l, .fiu-hub-section__introduction + .fiu-heading-m-l, .fiu-stepper__content + .fiu-heading-m-l, .fiu-statistic__text + .fiu-heading-m-l, .fiu-statistic__reference + .fiu-heading-m-l, .fiu-card__content + .fiu-heading-m-l, .fiu-article > p:not([class]) + .fiu-heading-m-l, .fiu-quote__blockquote + .fiu-heading-m-l, .fiu-quote__caption + .fiu-heading-m-l, .fiu-article > blockquote:not([class]) + .fiu-heading-m-l, .fiu-notification__body + .fiu-heading-m-l, .fiu-article > .govuk-body + h3:not([class]), .fiu-panel .fiu-article > p + h3:not([class]), .fiu-support-panel .fiu-article > p + h3:not([class]), .fiu-article > .fiu-page-header__content + h3:not([class]), .fiu-article > .fiu-hub-section__introduction + h3:not([class]), .fiu-article > .fiu-stepper__content + h3:not([class]), .fiu-article > .fiu-statistic__text + h3:not([class]), .fiu-article > .fiu-statistic__reference + h3:not([class]), .fiu-article > .fiu-card__content + h3:not([class]), .fiu-article > p:not([class]) + h3:not([class]), .fiu-article > .fiu-quote__blockquote + h3:not([class]), .fiu-article > .fiu-quote__caption + h3:not([class]), .fiu-article > blockquote:not([class]) + h3:not([class]), .fiu-article > .fiu-notification__body + h3:not([class]), .govuk-body + .fiu-notification__heading, .fiu-panel p + .fiu-notification__heading, .fiu-support-panel p + .fiu-notification__heading, .fiu-page-header__content + .fiu-notification__heading, .fiu-hub-section__introduction + .fiu-notification__heading, .fiu-stepper__content + .fiu-notification__heading, .fiu-statistic__text + .fiu-notification__heading, .fiu-statistic__reference + .fiu-notification__heading, .fiu-card__content + .fiu-notification__heading, .fiu-article > p:not([class]) + .fiu-notification__heading, .fiu-quote__blockquote + .fiu-notification__heading, .fiu-quote__caption + .fiu-notification__heading, .fiu-article > blockquote:not([class]) + .fiu-notification__heading, .fiu-notification__body + .fiu-notification__heading,
+.govuk-body-m + .govuk-heading-m, .govuk-body-m + .fiu-heading-m-l, .fiu-article > .govuk-body-m + h3:not([class]), .govuk-body-m + .fiu-notification__heading, .govuk-body + .govuk-heading-m, .fiu-panel p + .govuk-heading-m, .fiu-page-header__content + .govuk-heading-m, .fiu-hub-section__introduction + .govuk-heading-m, .fiu-stepper__content + .govuk-heading-m, .fiu-statistic__text + .govuk-heading-m, .fiu-statistic__reference + .govuk-heading-m, .fiu-card__content + .govuk-heading-m, .fiu-article > p:not([class]) + .govuk-heading-m, .fiu-quote__blockquote + .govuk-heading-m, .fiu-quote__caption + .govuk-heading-m, .fiu-article > blockquote:not([class]) + .govuk-heading-m, .fiu-notification__body + .govuk-heading-m, .govuk-body + .fiu-heading-m-l, .fiu-panel p + .fiu-heading-m-l, .fiu-page-header__content + .fiu-heading-m-l, .fiu-hub-section__introduction + .fiu-heading-m-l, .fiu-stepper__content + .fiu-heading-m-l, .fiu-statistic__text + .fiu-heading-m-l, .fiu-statistic__reference + .fiu-heading-m-l, .fiu-card__content + .fiu-heading-m-l, .fiu-article > p:not([class]) + .fiu-heading-m-l, .fiu-quote__blockquote + .fiu-heading-m-l, .fiu-quote__caption + .fiu-heading-m-l, .fiu-article > blockquote:not([class]) + .fiu-heading-m-l, .fiu-notification__body + .fiu-heading-m-l, .fiu-article > .govuk-body + h3:not([class]), .fiu-panel .fiu-article > p + h3:not([class]), .fiu-article > .fiu-page-header__content + h3:not([class]), .fiu-article > .fiu-hub-section__introduction + h3:not([class]), .fiu-article > .fiu-stepper__content + h3:not([class]), .fiu-article > .fiu-statistic__text + h3:not([class]), .fiu-article > .fiu-statistic__reference + h3:not([class]), .fiu-article > .fiu-card__content + h3:not([class]), .fiu-article > p:not([class]) + h3:not([class]), .fiu-article > .fiu-quote__blockquote + h3:not([class]), .fiu-article > .fiu-quote__caption + h3:not([class]), .fiu-article > blockquote:not([class]) + h3:not([class]), .fiu-article > .fiu-notification__body + h3:not([class]), .govuk-body + .fiu-notification__heading, .fiu-panel p + .fiu-notification__heading, .fiu-page-header__content + .fiu-notification__heading, .fiu-hub-section__introduction + .fiu-notification__heading, .fiu-stepper__content + .fiu-notification__heading, .fiu-statistic__text + .fiu-notification__heading, .fiu-statistic__reference + .fiu-notification__heading, .fiu-card__content + .fiu-notification__heading, .fiu-article > p:not([class]) + .fiu-notification__heading, .fiu-quote__blockquote + .fiu-notification__heading, .fiu-quote__caption + .fiu-notification__heading, .fiu-article > blockquote:not([class]) + .fiu-notification__heading, .fiu-notification__body + .fiu-notification__heading,
 .govuk-body-s + .govuk-heading-m,
-.govuk-body-s + .fiu-support-panel__heading,
 .govuk-body-s + .fiu-heading-m-l,
 .fiu-article > .govuk-body-s + h3:not([class]),
 .govuk-body-s + .fiu-notification__heading,
 .govuk-list + .govuk-heading-m,
 .fiu-article > ul:not([class]) + .govuk-heading-m,
 .fiu-article > ol:not([class]) + .govuk-heading-m,
-.govuk-list + .fiu-support-panel__heading,
-.fiu-article > ul:not([class]) + .fiu-support-panel__heading,
-.fiu-article > ol:not([class]) + .fiu-support-panel__heading,
 .govuk-list + .fiu-heading-m-l,
 .fiu-article > ul:not([class]) + .fiu-heading-m-l,
 .fiu-article > ol:not([class]) + .fiu-heading-m-l,
@@ -845,7 +841,6 @@
 .fiu-article > .govuk-body-m + h4:not([class]),
 .govuk-body + .govuk-heading-s,
 .fiu-panel p + .govuk-heading-s,
-.fiu-support-panel p + .govuk-heading-s,
 .fiu-page-header__content + .govuk-heading-s,
 .fiu-hub-section__introduction + .govuk-heading-s,
 .fiu-stepper__content + .govuk-heading-s,
@@ -859,7 +854,6 @@
 .fiu-notification__body + .govuk-heading-s,
 .govuk-body + .fiu-banner__heading,
 .fiu-panel p + .fiu-banner__heading,
-.fiu-support-panel p + .fiu-banner__heading,
 .fiu-page-header__content + .fiu-banner__heading,
 .fiu-hub-section__introduction + .fiu-banner__heading,
 .fiu-stepper__content + .fiu-banner__heading,
@@ -873,7 +867,6 @@
 .fiu-notification__body + .fiu-banner__heading,
 .fiu-article > .govuk-body + h4:not([class]),
 .fiu-panel .fiu-article > p + h4:not([class]),
-.fiu-support-panel .fiu-article > p + h4:not([class]),
 .fiu-article > .fiu-page-header__content + h4:not([class]),
 .fiu-article > .fiu-hub-section__introduction + h4:not([class]),
 .fiu-article > .fiu-stepper__content + h4:not([class]),
@@ -900,18 +893,14 @@
   padding-top: 5px;
 }
 @media (min-width: 40.0625em) {
-  .govuk-body-m + .govuk-heading-m, .govuk-body-m + .fiu-support-panel__heading, .govuk-body-m + .fiu-heading-m-l, .fiu-article > .govuk-body-m + h3:not([class]), .govuk-body-m + .fiu-notification__heading, .govuk-body + .govuk-heading-m, .fiu-panel p + .govuk-heading-m, .fiu-support-panel p + .govuk-heading-m, .fiu-page-header__content + .govuk-heading-m, .fiu-hub-section__introduction + .govuk-heading-m, .fiu-stepper__content + .govuk-heading-m, .fiu-statistic__text + .govuk-heading-m, .fiu-statistic__reference + .govuk-heading-m, .fiu-card__content + .govuk-heading-m, .fiu-article > p:not([class]) + .govuk-heading-m, .fiu-quote__blockquote + .govuk-heading-m, .fiu-quote__caption + .govuk-heading-m, .fiu-article > blockquote:not([class]) + .govuk-heading-m, .fiu-notification__body + .govuk-heading-m, .govuk-body + .fiu-support-panel__heading, .fiu-panel p + .fiu-support-panel__heading, .fiu-support-panel p + .fiu-support-panel__heading, .fiu-page-header__content + .fiu-support-panel__heading, .fiu-hub-section__introduction + .fiu-support-panel__heading, .fiu-stepper__content + .fiu-support-panel__heading, .fiu-statistic__text + .fiu-support-panel__heading, .fiu-statistic__reference + .fiu-support-panel__heading, .fiu-card__content + .fiu-support-panel__heading, .fiu-article > p:not([class]) + .fiu-support-panel__heading, .fiu-quote__blockquote + .fiu-support-panel__heading, .fiu-quote__caption + .fiu-support-panel__heading, .fiu-article > blockquote:not([class]) + .fiu-support-panel__heading, .fiu-notification__body + .fiu-support-panel__heading, .govuk-body + .fiu-heading-m-l, .fiu-panel p + .fiu-heading-m-l, .fiu-support-panel p + .fiu-heading-m-l, .fiu-page-header__content + .fiu-heading-m-l, .fiu-hub-section__introduction + .fiu-heading-m-l, .fiu-stepper__content + .fiu-heading-m-l, .fiu-statistic__text + .fiu-heading-m-l, .fiu-statistic__reference + .fiu-heading-m-l, .fiu-card__content + .fiu-heading-m-l, .fiu-article > p:not([class]) + .fiu-heading-m-l, .fiu-quote__blockquote + .fiu-heading-m-l, .fiu-quote__caption + .fiu-heading-m-l, .fiu-article > blockquote:not([class]) + .fiu-heading-m-l, .fiu-notification__body + .fiu-heading-m-l, .fiu-article > .govuk-body + h3:not([class]), .fiu-panel .fiu-article > p + h3:not([class]), .fiu-support-panel .fiu-article > p + h3:not([class]), .fiu-article > .fiu-page-header__content + h3:not([class]), .fiu-article > .fiu-hub-section__introduction + h3:not([class]), .fiu-article > .fiu-stepper__content + h3:not([class]), .fiu-article > .fiu-statistic__text + h3:not([class]), .fiu-article > .fiu-statistic__reference + h3:not([class]), .fiu-article > .fiu-card__content + h3:not([class]), .fiu-article > p:not([class]) + h3:not([class]), .fiu-article > .fiu-quote__blockquote + h3:not([class]), .fiu-article > .fiu-quote__caption + h3:not([class]), .fiu-article > blockquote:not([class]) + h3:not([class]), .fiu-article > .fiu-notification__body + h3:not([class]), .govuk-body + .fiu-notification__heading, .fiu-panel p + .fiu-notification__heading, .fiu-support-panel p + .fiu-notification__heading, .fiu-page-header__content + .fiu-notification__heading, .fiu-hub-section__introduction + .fiu-notification__heading, .fiu-stepper__content + .fiu-notification__heading, .fiu-statistic__text + .fiu-notification__heading, .fiu-statistic__reference + .fiu-notification__heading, .fiu-card__content + .fiu-notification__heading, .fiu-article > p:not([class]) + .fiu-notification__heading, .fiu-quote__blockquote + .fiu-notification__heading, .fiu-quote__caption + .fiu-notification__heading, .fiu-article > blockquote:not([class]) + .fiu-notification__heading, .fiu-notification__body + .fiu-notification__heading,
+  .govuk-body-m + .govuk-heading-m, .govuk-body-m + .fiu-heading-m-l, .fiu-article > .govuk-body-m + h3:not([class]), .govuk-body-m + .fiu-notification__heading, .govuk-body + .govuk-heading-m, .fiu-panel p + .govuk-heading-m, .fiu-page-header__content + .govuk-heading-m, .fiu-hub-section__introduction + .govuk-heading-m, .fiu-stepper__content + .govuk-heading-m, .fiu-statistic__text + .govuk-heading-m, .fiu-statistic__reference + .govuk-heading-m, .fiu-card__content + .govuk-heading-m, .fiu-article > p:not([class]) + .govuk-heading-m, .fiu-quote__blockquote + .govuk-heading-m, .fiu-quote__caption + .govuk-heading-m, .fiu-article > blockquote:not([class]) + .govuk-heading-m, .fiu-notification__body + .govuk-heading-m, .govuk-body + .fiu-heading-m-l, .fiu-panel p + .fiu-heading-m-l, .fiu-page-header__content + .fiu-heading-m-l, .fiu-hub-section__introduction + .fiu-heading-m-l, .fiu-stepper__content + .fiu-heading-m-l, .fiu-statistic__text + .fiu-heading-m-l, .fiu-statistic__reference + .fiu-heading-m-l, .fiu-card__content + .fiu-heading-m-l, .fiu-article > p:not([class]) + .fiu-heading-m-l, .fiu-quote__blockquote + .fiu-heading-m-l, .fiu-quote__caption + .fiu-heading-m-l, .fiu-article > blockquote:not([class]) + .fiu-heading-m-l, .fiu-notification__body + .fiu-heading-m-l, .fiu-article > .govuk-body + h3:not([class]), .fiu-panel .fiu-article > p + h3:not([class]), .fiu-article > .fiu-page-header__content + h3:not([class]), .fiu-article > .fiu-hub-section__introduction + h3:not([class]), .fiu-article > .fiu-stepper__content + h3:not([class]), .fiu-article > .fiu-statistic__text + h3:not([class]), .fiu-article > .fiu-statistic__reference + h3:not([class]), .fiu-article > .fiu-card__content + h3:not([class]), .fiu-article > p:not([class]) + h3:not([class]), .fiu-article > .fiu-quote__blockquote + h3:not([class]), .fiu-article > .fiu-quote__caption + h3:not([class]), .fiu-article > blockquote:not([class]) + h3:not([class]), .fiu-article > .fiu-notification__body + h3:not([class]), .govuk-body + .fiu-notification__heading, .fiu-panel p + .fiu-notification__heading, .fiu-page-header__content + .fiu-notification__heading, .fiu-hub-section__introduction + .fiu-notification__heading, .fiu-stepper__content + .fiu-notification__heading, .fiu-statistic__text + .fiu-notification__heading, .fiu-statistic__reference + .fiu-notification__heading, .fiu-card__content + .fiu-notification__heading, .fiu-article > p:not([class]) + .fiu-notification__heading, .fiu-quote__blockquote + .fiu-notification__heading, .fiu-quote__caption + .fiu-notification__heading, .fiu-article > blockquote:not([class]) + .fiu-notification__heading, .fiu-notification__body + .fiu-notification__heading,
   .govuk-body-s + .govuk-heading-m,
-  .govuk-body-s + .fiu-support-panel__heading,
   .govuk-body-s + .fiu-heading-m-l,
   .fiu-article > .govuk-body-s + h3:not([class]),
   .govuk-body-s + .fiu-notification__heading,
   .govuk-list + .govuk-heading-m,
   .fiu-article > ul:not([class]) + .govuk-heading-m,
   .fiu-article > ol:not([class]) + .govuk-heading-m,
-  .govuk-list + .fiu-support-panel__heading,
-  .fiu-article > ul:not([class]) + .fiu-support-panel__heading,
-  .fiu-article > ol:not([class]) + .fiu-support-panel__heading,
   .govuk-list + .fiu-heading-m-l,
   .fiu-article > ul:not([class]) + .fiu-heading-m-l,
   .fiu-article > ol:not([class]) + .fiu-heading-m-l,
@@ -926,7 +915,6 @@
   .fiu-article > .govuk-body-m + h4:not([class]),
   .govuk-body + .govuk-heading-s,
   .fiu-panel p + .govuk-heading-s,
-  .fiu-support-panel p + .govuk-heading-s,
   .fiu-page-header__content + .govuk-heading-s,
   .fiu-hub-section__introduction + .govuk-heading-s,
   .fiu-stepper__content + .govuk-heading-s,
@@ -940,7 +928,6 @@
   .fiu-notification__body + .govuk-heading-s,
   .govuk-body + .fiu-banner__heading,
   .fiu-panel p + .fiu-banner__heading,
-  .fiu-support-panel p + .fiu-banner__heading,
   .fiu-page-header__content + .fiu-banner__heading,
   .fiu-hub-section__introduction + .fiu-banner__heading,
   .fiu-stepper__content + .fiu-banner__heading,
@@ -954,7 +941,6 @@
   .fiu-notification__body + .fiu-banner__heading,
   .fiu-article > .govuk-body + h4:not([class]),
   .fiu-panel .fiu-article > p + h4:not([class]),
-  .fiu-support-panel .fiu-article > p + h4:not([class]),
   .fiu-article > .fiu-page-header__content + h4:not([class]),
   .fiu-article > .fiu-hub-section__introduction + h4:not([class]),
   .fiu-article > .fiu-stepper__content + h4:not([class]),
@@ -16636,7 +16622,7 @@
 @media (min-width: 40.0625em) {
   .fiu-flex-row {
     display: flex;
-    margin-bottom: 1.875rem;
+    margin-bottom: 3rem;
   }
 }
 
@@ -17886,6 +17872,10 @@ a.fiu-card:active, a.fiu-card-homepage:active, a.fiu-card:hover, a.fiu-card-home
   border-color: rgb(27.7108433735, 87.2891566265, 40.1807228916);
   color: #fff;
 }
+a.fiu-card--employers:active, a.fiu-card--employers:hover {
+  background: #4d43a3;
+  border-color: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+}
 
 .fiu-card__heading {
   margin: 0 0 0.7em 0;
@@ -17904,6 +17894,10 @@ a.fiu-card:active, a.fiu-card-homepage:active, a.fiu-card:hover, a.fiu-card-home
   .fiu-card__heading {
     font-size: 24px;
   }
+}
+
+.fiu-card--employers .fiu-card__heading {
+  color: #4d43a3;
 }
 
 .fiu-card__logo {
@@ -17952,35 +17946,30 @@ a.fiu-card:hover .fiu-card__heading, a.fiu-card-homepage:hover .fiu-card__headin
 }
 
 a.fiu-card-homepage {
-  background: #333;
+  background: #287E3A;
   color: #fff;
   text-align: center;
-  padding: 2rem 3rem;
+  padding: 3rem 2rem;
 }
 a.fiu-card-homepage .fiu-panel__tag {
   margin-bottom: 1rem;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 a.fiu-card-homepage:hover {
-  background: #287E3A;
+  background: rgb(27.7108433735, 87.2891566265, 40.1807228916);
 }
-a.fiu-card-homepage:hover .fiu-panel__tag {
-  color: #287E3A;
-  background: #fff;
-}
-a.fiu-card-homepage--employers:hover {
+a.fiu-card-homepage--employers {
   background: #4d43a3;
 }
-a.fiu-card-homepage--employers:hover .fiu-panel__tag {
-  color: #4d43a3;
-  background: #fff;
+a.fiu-card-homepage--employers:hover {
+  background: rgb(59.9260869565, 52.1434782609, 126.8565217391);
 }
 a.fiu-card-homepage .fiu-card__content {
   color: inherit;
 }
 
 .fiu-card-group {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .fiu-card-group__title {
@@ -18377,7 +18366,7 @@ a.fiu-card-homepage .fiu-card__content {
 
 .fiu-footer__inline-list-title,
 .fiu-footer__list-item {
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
   display: block;
 }
 @media (min-width: 40.0625em) {
@@ -18397,7 +18386,7 @@ a.fiu-card-homepage .fiu-card__content {
 
 .fiu-footer__inline-list-title {
   padding-left: 0;
-  display: block;
+  display: inline-block;
   border-right: 0;
 }
 
@@ -18826,6 +18815,7 @@ a.fiu-card-homepage .fiu-card__content {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--govuk-secondary-text-colour);
   margin-bottom: 0;
 }
 
@@ -19320,7 +19310,7 @@ a.fiu-panel:hover .fiu-cta-panel__button {
   cursor: default;
 }
 
-.fiu-panel, .fiu-support-panel {
+.fiu-panel {
   font-family: nobel, sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -19341,31 +19331,31 @@ a.fiu-panel:hover .fiu-cta-panel__button {
   gap: 1rem;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
-.fiu-panel:focus, .fiu-support-panel:focus {
+.fiu-panel:focus {
   outline: 3px solid var(--govuk-focus-colour, #ffdd00);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 @media (prefers-reduced-motion: reduce) {
-  .fiu-panel, .fiu-support-panel {
+  .fiu-panel {
     transition: none;
   }
 }
 @media (min-width: 48.0625em) {
-  .fiu-panel, .fiu-support-panel {
+  .fiu-panel {
     padding: 30px;
   }
 }
 @media print {
-  .fiu-panel, .fiu-support-panel {
+  .fiu-panel {
     padding: 0;
     border: none;
     text-align: left;
   }
 }
-.fiu-panel h2, .fiu-support-panel h2 {
+.fiu-panel h2 {
   transition: color 0.2s ease, text-decoration-thickness 0.2s ease;
 }
-.fiu-panel p, .fiu-support-panel p {
+.fiu-panel p {
   font-family: nobel, sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -19374,33 +19364,35 @@ a.fiu-panel:hover .fiu-cta-panel__button {
   color: inherit;
   margin-bottom: 0;
 }
-.fiu-panel .fiu-panel__tag, .fiu-support-panel .fiu-panel__tag {
+.fiu-panel .fiu-panel__tag {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-a.fiu-panel h2, a.fiu-support-panel h2 {
+a.fiu-panel h2 {
   color: var(--brand-colour);
 }
-a.fiu-panel:active, a.fiu-support-panel:active, a.fiu-panel:hover, a.fiu-support-panel:hover {
+a.fiu-panel:active, a.fiu-panel:hover {
   background: var(--brand-colour);
   border-color: var(--brand-colour);
   color: #fff;
 }
-a.fiu-panel:active h2, a.fiu-support-panel:active h2, a.fiu-panel:hover h2, a.fiu-support-panel:hover h2 {
+a.fiu-panel:active h2, a.fiu-panel:hover h2 {
   text-decoration-thickness: 2px;
   color: #fff;
 }
-a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag, a.fiu-support-panel:hover .fiu-panel__tag {
+a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
   color: #287E3A;
   background: #fff;
 }
 
 .fiu-panel--apprentices {
+  --border-colour: #CCE2D8;
   --brand-colour: #287E3A;
+  --brand-colour-dark: #005A30;
 }
 
 @media (min-width: 40.0625em) {
-  .fiu-flex-row .fiu-panel, .fiu-flex-row .fiu-support-panel {
+  .fiu-flex-row .fiu-panel {
     margin-bottom: 0;
   }
 }
@@ -19538,7 +19530,13 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
 
 .fiu-panel-homepage__heading {
   color: inherit;
-  margin: 1rem 0 2rem;
+  margin: 0 0 1rem;
+}
+@media (min-width: 40.0625em) {
+  .fiu-panel-homepage__heading {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .fiu-panel-homepage__content {
@@ -20161,45 +20159,112 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-support-panel:active .fiu-panel__tag, 
   }
 }
 
-.fiu-support-panel__heading {
-  font-weight: 700;
-  color: #0b0c0c;
-  margin-top: 0;
-  margin-bottom: 20px;
-  word-wrap: break-word;
-  word-break: break-all;
-  word-break: break-word;
+.fiu-support-panel {
+  text-align: center;
+  padding: 20px 0 3rem;
+  background: var(--border-colour);
+  color: var(--brand-colour-dark);
 }
-
+@media (min-width: 40.0625em) {
+  .fiu-support-panel {
+    padding: 3rem 0;
+  }
+}
+@media (min-width: 40.0625em) {
+  .fiu-support-panel__container {
+    display: grid;
+    align-items: center;
+    grid-column-gap: 1rem;
+    grid-template-columns: 1fr 3fr 3fr;
+    grid-template-areas: "icon heading heading" "icon content list";
+  }
+}
+.fiu-support-panel__icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  height: 10rem;
+  margin: 0 auto 1rem;
+  grid-area: icon;
+}
+@media (min-width: 40.0625em) {
+  .fiu-support-panel__icon {
+    margin: 0 auto;
+    height: 8rem;
+  }
+}
 .fiu-support-panel__content {
-  font-size: 16px;
-  line-height: 21px;
-  margin-bottom: 0;
+  text-align: left;
+  grid-area: content;
+  color: var(--brand-colour-dark);
 }
 @media (min-width: 40.0625em) {
   .fiu-support-panel__content {
-    font-size: 18px;
-    line-height: 23px;
+    margin: 0;
   }
 }
-
-.fiu-support-panel__wrap {
-  display: block;
+.fiu-support-panel__heading {
+  grid-area: heading;
+  color: var(--brand-colour-dark);
 }
-.fiu-support-panel__wrap.fiu-link {
-  margin-top: 10px;
-  word-wrap: break-word;
-  word-break: break-all;
-  word-break: break-word;
+@media (min-width: 40.0625em) {
+  .fiu-support-panel__heading {
+    text-align: left;
+    margin: 0;
+  }
 }
-
-.fiu-support-panel__tel {
-  font-size: 34px;
-  line-height: 1.3em;
-  margin-bottom: 20px;
-  word-wrap: break-word;
-  word-break: break-all;
-  word-break: break-word;
+.fiu-support-panel__list {
+  grid-area: list;
+  margin: 0;
+  overflow: hidden;
+  text-align: left;
+  color: var(--brand-colour-dark);
+}
+.fiu-support-panel__list dt {
+  clear: both;
+  float: left;
+  margin: 0 10px 0 0;
+  min-width: 50px;
+  font-weight: 700;
+}
+.fiu-support-panel__list dd {
+  float: left;
+  margin: 0;
+}
+.fiu-support-panel__list-link {
+  font-family: nobel, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: underline;
+  text-decoration-thickness: max(1px, .0625rem);
+  text-underline-offset: 0.1578em;
+}
+.fiu-support-panel__list-link:hover {
+  text-decoration-thickness: max(3px, .1875rem, .12em);
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
+  -webkit-text-decoration-skip: none;
+  text-decoration-skip: none;
+}
+.fiu-support-panel__list-link:focus {
+  outline: 3px solid transparent;
+  color: var(--govuk-focus-text-colour, #0b0c0c);
+  background-color: var(--govuk-focus-colour, #ffdd00);
+  box-shadow: 0 -2px var(--govuk-focus-colour, #ffdd00), 0 4px var(--govuk-focus-text-colour, #0b0c0c);
+  text-decoration: none;
+}
+@supports not (text-wrap: balance) {
+  .fiu-support-panel__list-link:focus {
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+}
+.fiu-support-panel__list-link {
+  color: var(--brand-colour-dark);
 }
 
 .fiu-tabs__tab {
@@ -20740,6 +20805,7 @@ a.fiu-tag:focus {
   --link-hover-colour: rgb(52.6428571429, 103.6904761905, 148.3571428571);
 }
 
+.fiu-template--homepage,
 .fiu-template--apprentices {
   --brand-colour: #287E3A;
   --brand-colour-dark: #005A30;

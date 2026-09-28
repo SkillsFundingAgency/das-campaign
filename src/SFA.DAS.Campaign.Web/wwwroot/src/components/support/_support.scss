@@ -1,40 +1,81 @@
 @use '../../shared' as *;
-@use '../panel/panel';
 
 .fiu-support-panel {
-  @extend .fiu-panel;
-}
+  text-align: center;
+  padding: 20px 0 3rem;
+  background: var(--border-colour);
+  color: var(--brand-colour-dark);
 
-.fiu-support-panel__heading {
-  @extend .govuk-heading-m;
-  font-weight: $fiu-font-weight-bold;
-  color: $fiu-text-colour;
-  margin-top: 0;
-  margin-bottom: 20px;
-  @include fiu-word-break;
-}
-
-.fiu-support-panel__content {
-  font-size: 16px;
-  line-height: 21px;
-  margin-bottom: 0;
-  @include govuk-media-query(tablet) {
-    font-size: 18px;
-    line-height: 23px;
+  @include govuk-media-query($from: tablet) {
+    padding: 3rem 0;
   }
-}
-
-.fiu-support-panel__wrap {
-  display: block;
-  &.fiu-link {
-    margin-top: 10px;
-    @include fiu-word-break;
+  
+  &__container {
+    @include govuk-media-query($from: tablet) {
+      display: grid;
+      align-items: center;
+      grid-column-gap: 1rem;
+      grid-template-columns: 1fr 3fr 3fr;
+      grid-template-areas:
+        "icon heading heading"
+        "icon content list"
+    }
   }
-}
-
-.fiu-support-panel__tel {
-  font-size: 34px;
-  line-height: 1.3em;
-  margin-bottom: 20px;
-  @include fiu-word-break;
+  
+  &__icon {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 10rem;
+    margin: 0 auto 1rem;
+    grid-area: icon;
+    @include govuk-media-query($from: tablet) {
+      margin: 0 auto;
+      height: 8rem;
+    }
+  }
+  
+  &__content {
+    text-align: left;
+    grid-area: content;
+    color: var(--brand-colour-dark);
+    @include govuk-media-query($from: tablet) {
+      margin: 0;
+    }
+  }
+  
+  &__heading {
+    grid-area: heading;
+    color: var(--brand-colour-dark);
+    @include govuk-media-query($from: tablet) {
+      text-align: left;
+      margin: 0;
+    }
+  }
+  
+  &__list {
+    grid-area: list;
+    margin: 0;
+    overflow: hidden;
+    text-align: left;
+    color: var(--brand-colour-dark);
+    dt {
+      clear: both;
+      float: left;
+      margin: 0 10px 0 0;
+      min-width: 50px;
+      font-weight: 700;
+    }
+    dd {
+      float: left;
+      margin: 0;
+    }
+  }
+  
+  &__list-link {
+    @include fiu-link-common;
+    color: var(--brand-colour-dark);
+  }
 }
