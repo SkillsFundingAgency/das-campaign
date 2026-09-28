@@ -192,16 +192,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             }
 
             return statistics
+                .Select(statistic => statistic.ToHubStatistic())
                 .Where(statistic => statistic != null)
-                .Select(statistic => new HubStatistic
-                {
-                    Text = statistic.Text,
-                    HighlightValue = statistic.HighlightValue,
-                    QuoteName = statistic.QuoteName,
-                    QuoteRole = statistic.QuoteRole,
-                    ReferenceText = statistic.ReferenceText
-                })
-                .Where(statistic => statistic.HasContent)
                 .ToList();
         }
 

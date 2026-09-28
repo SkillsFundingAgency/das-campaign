@@ -17183,19 +17183,19 @@ b {
 }
 
 .fiu-article > hr:not([class]) {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 @media (min-width: 40.0625em) {
   .fiu-article > hr:not([class]) {
-    margin-top: 20px;
+    margin-top: 30px;
   }
 }
 .fiu-article > hr:not([class]) {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 @media (min-width: 40.0625em) {
   .fiu-article > hr:not([class]) {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 }
 
@@ -18884,7 +18884,7 @@ a.fiu-card-homepage .fiu-card__content {
     text-align: left;
     align-items: center;
     grid-row-gap: 0.5rem;
-    grid-column-gap: 1rem;
+    grid-column-gap: 1.25rem;
     grid-template-areas: "icon heading heading" "icon content action";
     padding: 1.875rem;
   }
@@ -18916,11 +18916,6 @@ a.fiu-card-homepage .fiu-card__content {
 .fiu-cta-panel__action {
   flex: 0 0 auto;
 }
-@media (min-width: 40.0625em) {
-  .fiu-cta-panel__action {
-    align-self: self-end;
-  }
-}
 
 .fiu-cta-panel__button {
   background: var(--brand-colour);
@@ -18934,7 +18929,7 @@ a.fiu-card-homepage .fiu-card__content {
 }
 @media (min-width: 40.0625em) {
   .fiu-cta-panel__button {
-    margin-left: 1rem;
+    align-self: end;
   }
 }
 
@@ -19562,7 +19557,6 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
 }
 @media (min-width: 40.0625em) {
   .fiu-panel-homepage__heading {
-    margin-top: 1rem;
     margin-bottom: 2rem;
   }
 }

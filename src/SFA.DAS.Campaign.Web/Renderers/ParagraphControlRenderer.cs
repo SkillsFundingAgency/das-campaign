@@ -31,8 +31,8 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
             var result = new StringBuilder();
 
-            // a paragraph that only carries a CTA panel has no text of its own
-            if (control.CtaPanel == null || control.Content.Any(value => !string.IsNullOrWhiteSpace(value)))
+            // a paragraph that only carries a CTA panel or a statistic has no text of its own
+            if ((control.CtaPanel == null && control.StatsSection == null) || control.Content.Any(value => !string.IsNullOrWhiteSpace(value)))
             {
                 result.Append(para.WriteString());
             }
@@ -48,6 +48,11 @@ namespace SFA.DAS.Campaign.Web.Renderers
             if (control.CtaPanel != null)
             {
                 result.Append(new CtaPanelControlRenderer().Render(control.CtaPanel));
+            }
+
+            if (control.StatsSection != null)
+            {
+                result.Append(new StatisticsControlRenderer().Render(control.StatsSection));
             }
 
             return new HtmlString(result.ToString());

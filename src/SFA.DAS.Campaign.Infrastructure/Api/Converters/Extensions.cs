@@ -14,6 +14,25 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             return Enum.TryParse(hubType, true, out parsed) && Enum.IsDefined(typeof(HubType), parsed);
         }
 
+        internal static HubStatistic ToHubStatistic(this ResponseHubStatistic statistic)
+        {
+            if (statistic == null)
+            {
+                return null;
+            }
+
+            var hubStatistic = new HubStatistic
+            {
+                Text = statistic.Text,
+                HighlightValue = statistic.HighlightValue,
+                QuoteName = statistic.QuoteName,
+                QuoteRole = statistic.QuoteRole,
+                ReferenceText = statistic.ReferenceText
+            };
+
+            return hubStatistic.HasContent ? hubStatistic : null;
+        }
+
         internal static CtaPanel ToCtaPanel(this ResponseCtaPanel ctaPanel)
         {
             if (ctaPanel == null)

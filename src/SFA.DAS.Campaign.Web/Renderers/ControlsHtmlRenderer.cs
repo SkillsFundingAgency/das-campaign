@@ -28,16 +28,27 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 new ArticleRelatedControlRenderer(),
                 new CardControlRenderer(),
                 new SiteMapUrlRenderer(),
-                new CtaPanelControlRenderer()
+                new CtaPanelControlRenderer(),
+                new StatisticsControlRenderer()
             };
         }
 
         public HtmlString ToHtml(IEnumerable<IHtmlControl> controlsToRender)
         {
             var sb = new StringBuilder();
+            var statistics = new List<HubStatistic>();
 
             foreach (var control in controlsToRender)
             {
+                // statistics that follow one another share a list, so they sit side by side
+                if (control is HubStatistic statistic)
+                {
+                    statistics.Add(statistic);
+                    continue;
+                }
+
+                AppendStatistics(sb, statistics);
+
                 var renderer = _controlRenderers.FirstOrDefault(o => o.SupportsContent(control));
 
                 if (renderer == null)
@@ -48,7 +59,20 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 sb.Append(renderer.Render(control));
             }
 
+            AppendStatistics(sb, statistics);
+
             return new HtmlString(sb.ToString());
+        }
+
+        private static void AppendStatistics(StringBuilder sb, List<HubStatistic> statistics)
+        {
+            if (statistics.Count == 0)
+            {
+                return;
+            }
+
+            sb.Append(new StatisticsControlRenderer().Render(statistics));
+            statistics.Clear();
         }
 
         public HtmlString ToHtml(IEnumerable<DocumentAttachment> attachmentsToRender)

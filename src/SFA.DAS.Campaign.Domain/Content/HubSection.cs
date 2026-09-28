@@ -42,7 +42,7 @@ namespace SFA.DAS.Campaign.Domain.Content
         public CtaPanel CtaPanel { get; set; }
     }
 
-    public class HubStatistic
+    public class HubStatistic : IHtmlControl
     {
         public string Text { get; set; }
         public string HighlightValue { get; set; }

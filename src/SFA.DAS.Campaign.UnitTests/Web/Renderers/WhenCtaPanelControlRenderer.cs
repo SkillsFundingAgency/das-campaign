@@ -13,8 +13,8 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
         private const string ExpectedPanelHtml =
             "<a class=\"fiu-panel fiu-panel--left-align fiu-cta-panel\" href=\"https://www.gov.uk/find-training\">" +
             "<span aria-hidden=\"true\" class=\"fiu-cta-panel__icon\"><svg aria-hidden=\"true\" class=\"fiu-icon\" focusable=\"false\"><use href=\"/images/sprite.svg#search_user\"></use></svg></span>" +
-            "<div class=\"fiu-cta-panel__body\"><h2 class=\"govuk-heading-m govuk-!-margin--top-0 govuk-!-margin-bottom-2\">Find training</h2><p>Search for providers</p></div>" +
-            "<div class=\"fiu-cta-panel__action\"><span class=\"fiu-cta-panel__button\">Start now</span></div>" +
+            "<h2 class=\"govuk-heading-m govuk-!-margin--top-0\">Find training</h2><p>Search for providers</p>" +
+            "<span class=\"fiu-cta-panel__button\">Start now</span>" +
             "</a>";
 
         [Test, MoqAutoData]
@@ -51,7 +51,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(ctaPanel);
 
             actual.Value.Should().NotContain("fiu-cta-panel__icon");
-            actual.Value.Should().NotContain("fiu-cta-panel__action");
+            actual.Value.Should().NotContain("fiu-cta-panel__button");
         }
 
         [Test, MoqAutoData]

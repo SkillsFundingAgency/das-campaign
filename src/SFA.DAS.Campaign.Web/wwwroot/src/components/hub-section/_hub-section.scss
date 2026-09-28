@@ -180,7 +180,7 @@
     text-align: left;
     align-items: center;
     grid-row-gap: 0.5rem;
-    grid-column-gap: 1rem;
+    grid-column-gap: 1.25rem;
     grid-template-areas:
         "icon heading heading"
         "icon content action";
@@ -215,9 +215,6 @@
 
 .fiu-cta-panel__action {
   flex: 0 0 auto;
-  @include govuk-media-query($from: tablet) {
-    align-self: self-end;
-  }
 }
 
 .fiu-cta-panel__button {
@@ -230,7 +227,7 @@
   border-radius: 5px;
   grid-area: action;
   @include govuk-media-query($from: tablet) {
-    margin-left: 1rem;
+    align-self: end;
   }
 }
 

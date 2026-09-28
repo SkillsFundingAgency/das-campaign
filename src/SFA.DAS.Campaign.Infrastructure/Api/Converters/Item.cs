@@ -18,5 +18,6 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public EmbeddedResource EmbeddedResource { get; set; }
         public List<VideoTranscript> VideoTranscripts { get; set; }
         public ResponseCtaPanel CtaPanel { get; set; }
+        public ResponseHubStatistic StatsSection { get; set; }
     }
 }
