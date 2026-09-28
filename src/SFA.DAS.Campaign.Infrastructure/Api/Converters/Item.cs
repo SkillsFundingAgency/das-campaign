@@ -13,7 +13,10 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
         public List<string> Values { get; set; }
         public string Type { get; set; }
         public List<List<string>> TableValue { get; set; }
+        public bool TableHasHeaderRow { get; set; }
+        public bool TableHasHeaderColumn { get; set; }
         public EmbeddedResource EmbeddedResource { get; set; }
         public List<VideoTranscript> VideoTranscripts { get; set; }
+        public ResponseCtaPanel CtaPanel { get; set; }
     }
 }

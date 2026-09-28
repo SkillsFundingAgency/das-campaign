@@ -20,7 +20,8 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Factory
                     {
                         VideoName = transcript.VideoName,
                         Text = transcript.Text
-                    }).ToList() ?? new List<DomainVideoTranscript>()
+                    }).ToList() ?? new List<DomainVideoTranscript>(),
+                CtaPanel = control.CtaPanel.ToCtaPanel()
             };
 
             return para;

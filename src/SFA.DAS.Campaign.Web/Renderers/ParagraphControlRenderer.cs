@@ -29,7 +29,13 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 para.InnerHtml.AppendHtml(value.CheckForFontEffects().CheckForAndConstructHyperlinks().LineBreaksToHtml());
             }
 
-            var result = new StringBuilder(para.WriteString());
+            var result = new StringBuilder();
+
+            // a paragraph that only carries a CTA panel has no text of its own
+            if (control.CtaPanel == null || control.Content.Any(value => !string.IsNullOrWhiteSpace(value)))
+            {
+                result.Append(para.WriteString());
+            }
 
             if (control.VideoTranscripts != null)
             {
@@ -37,6 +43,11 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 {
                     result.Append(RenderVideoTranscript(transcript));
                 }
+            }
+
+            if (control.CtaPanel != null)
+            {
+                result.Append(new CtaPanelControlRenderer().Render(control.CtaPanel));
             }
 
             return new HtmlString(result.ToString());

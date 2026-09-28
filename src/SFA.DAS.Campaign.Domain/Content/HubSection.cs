@@ -60,7 +60,7 @@ namespace SFA.DAS.Campaign.Domain.Content
             || !string.IsNullOrWhiteSpace(QuoteRole);
     }
 
-    public class CtaPanel
+    public class CtaPanel : IHtmlControl
     {
         public string Heading { get; set; }
         public string Description { get; set; }

@@ -14,6 +14,23 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
             return Enum.TryParse(hubType, true, out parsed) && Enum.IsDefined(typeof(HubType), parsed);
         }
 
+        internal static CtaPanel ToCtaPanel(this ResponseCtaPanel ctaPanel)
+        {
+            if (ctaPanel == null)
+            {
+                return null;
+            }
+
+            return new CtaPanel
+            {
+                Heading = ctaPanel.Heading,
+                Description = ctaPanel.Description,
+                Icon = ctaPanel.Icon,
+                ButtonText = ctaPanel.ButtonText,
+                Url = ctaPanel.Url
+            };
+        }
+
         internal static List<Url> AddSiteMapUrls(this List<SiteMapPage> page)
         {
             return page.Select(page => new Url { Title = page.Title, Hub = page.Hub, PageType = page.PageType, Slug = page.Slug }).ToList();

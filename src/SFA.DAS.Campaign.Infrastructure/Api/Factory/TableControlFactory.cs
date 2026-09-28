@@ -12,11 +12,20 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Factory
     {
         public IHtmlControl Create(Item control)
         {
-            var table = new Table();
+            var hasHeaderRow = !IsNativeTable(control) || control.TableHasHeaderRow;
 
-            table.Headings.AddRange(control.TableValue[0]);
+            var table = new Table
+            {
+                HasHeaderColumn = control.TableHasHeaderColumn,
+                ColumnCount = control.TableValue.Max(row => row.Count)
+            };
 
-            for (int i = 1; i < control.TableValue.Count; i++)
+            if (hasHeaderRow)
+            {
+                table.Headings.AddRange(control.TableValue[0]);
+            }
+
+            for (int i = hasHeaderRow ? 1 : 0; i < control.TableValue.Count; i++)
             {
                 table.Rows.AddRange(control.TableValue[i]);
             }
@@ -26,12 +35,18 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Factory
 
         public bool IsValid(Item control)
         {
-            if (string.Compare(control.Type, "paragraph", StringComparison.OrdinalIgnoreCase) == 0 && control.TableValue.Any())
+            if (control.TableValue == null || !control.TableValue.Any())
             {
-                return true;
+                return false;
             }
 
-            return false;
+            return IsNativeTable(control)
+                   || string.Compare(control.Type, "paragraph", StringComparison.OrdinalIgnoreCase) == 0;
+        }
+
+        private static bool IsNativeTable(Item control)
+        {
+            return string.Compare(control.Type, "table", StringComparison.OrdinalIgnoreCase) == 0;
         }
     }
 }

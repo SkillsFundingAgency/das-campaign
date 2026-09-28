@@ -16747,6 +16747,7 @@
 
 .fiu-link, .fiu-article > h3 > a,
 .fiu-article > p > a,
+.fiu-article td > a,
 .fiu-article li > a,
 .fiu-article li > p > a {
   font-family: nobel, sans-serif;
@@ -16760,6 +16761,7 @@
 }
 .fiu-link:hover, .fiu-article > h3 > a:hover,
 .fiu-article > p > a:hover,
+.fiu-article td > a:hover,
 .fiu-article li > a:hover,
 .fiu-article li > p > a:hover {
   text-decoration-thickness: max(3px, .1875rem, .12em);
@@ -16770,6 +16772,7 @@
 }
 .fiu-link:focus, .fiu-article > h3 > a:focus,
 .fiu-article > p > a:focus,
+.fiu-article td > a:focus,
 .fiu-article li > a:focus,
 .fiu-article li > p > a:focus {
   outline: 3px solid transparent;
@@ -16781,6 +16784,7 @@
 @supports not (text-wrap: balance) {
   .fiu-link:focus, .fiu-article > h3 > a:focus,
   .fiu-article > p > a:focus,
+  .fiu-article td > a:focus,
   .fiu-article li > a:focus,
   .fiu-article li > p > a:focus {
     -webkit-box-decoration-break: clone;
@@ -16789,18 +16793,21 @@
 }
 .fiu-link, .fiu-article > h3 > a,
 .fiu-article > p > a,
+.fiu-article td > a,
 .fiu-article li > a,
 .fiu-article li > p > a {
   color: #4282ba;
 }
 .fiu-link:hover, .fiu-article > h3 > a:hover,
 .fiu-article > p > a:hover,
+.fiu-article td > a:hover,
 .fiu-article li > a:hover,
 .fiu-article li > p > a:hover {
   color: rgb(52.6428571429, 103.6904761905, 148.3571428571);
 }
 .fiu-link:focus, .fiu-article > h3 > a:focus,
 .fiu-article > p > a:focus,
+.fiu-article td > a:focus,
 .fiu-article li > a:focus,
 .fiu-article li > p > a:focus {
   outline: 3px solid transparent;
@@ -16812,6 +16819,7 @@
 @supports not (text-wrap: balance) {
   .fiu-link:focus, .fiu-article > h3 > a:focus,
   .fiu-article > p > a:focus,
+  .fiu-article td > a:focus,
   .fiu-article li > a:focus,
   .fiu-article li > p > a:focus {
     -webkit-box-decoration-break: clone;
@@ -16825,18 +16833,21 @@
 
 .fiu-link--apprentices, .fiu-template--apprentices .fiu-article > h3 > a,
 .fiu-template--apprentices .fiu-article > p > a,
+.fiu-template--apprentices .fiu-article td > a,
 .fiu-template--apprentices .fiu-article li > a,
 .fiu-template--apprentices .fiu-article li > p > a, .fiu-template--apprentices .app-anchor-links__link {
   color: #287E3A;
 }
 .fiu-link--apprentices:hover, .fiu-template--apprentices .fiu-article > h3 > a:hover,
 .fiu-template--apprentices .fiu-article > p > a:hover,
+.fiu-template--apprentices .fiu-article td > a:hover,
 .fiu-template--apprentices .fiu-article li > a:hover,
 .fiu-template--apprentices .fiu-article li > p > a:hover, .fiu-template--apprentices .app-anchor-links__link:hover {
   color: rgb(27.7108433735, 87.2891566265, 40.1807228916);
 }
 .fiu-link--apprentices:focus, .fiu-template--apprentices .fiu-article > h3 > a:focus,
 .fiu-template--apprentices .fiu-article > p > a:focus,
+.fiu-template--apprentices .fiu-article td > a:focus,
 .fiu-template--apprentices .fiu-article li > a:focus,
 .fiu-template--apprentices .fiu-article li > p > a:focus, .fiu-template--apprentices .app-anchor-links__link:focus {
   outline: 3px solid transparent;
@@ -16848,6 +16859,7 @@
 @supports not (text-wrap: balance) {
   .fiu-link--apprentices:focus, .fiu-template--apprentices .fiu-article > h3 > a:focus,
   .fiu-template--apprentices .fiu-article > p > a:focus,
+  .fiu-template--apprentices .fiu-article td > a:focus,
   .fiu-template--apprentices .fiu-article li > a:focus,
   .fiu-template--apprentices .fiu-article li > p > a:focus, .fiu-template--apprentices .app-anchor-links__link:focus {
     -webkit-box-decoration-break: clone;
@@ -16857,18 +16869,21 @@
 
 .fiu-link--employers, .fiu-template--employers .fiu-article > h3 > a,
 .fiu-template--employers .fiu-article > p > a,
+.fiu-template--employers .fiu-article td > a,
 .fiu-template--employers .fiu-article li > a,
 .fiu-template--employers .fiu-article li > p > a, .fiu-template--employers .app-anchor-links__link {
   color: #4d43a3;
 }
 .fiu-link--employers:hover, .fiu-template--employers .fiu-article > h3 > a:hover,
 .fiu-template--employers .fiu-article > p > a:hover,
+.fiu-template--employers .fiu-article td > a:hover,
 .fiu-template--employers .fiu-article li > a:hover,
 .fiu-template--employers .fiu-article li > p > a:hover, .fiu-template--employers .app-anchor-links__link:hover {
   color: rgb(59.9260869565, 52.1434782609, 126.8565217391);
 }
 .fiu-link--employers:focus, .fiu-template--employers .fiu-article > h3 > a:focus,
 .fiu-template--employers .fiu-article > p > a:focus,
+.fiu-template--employers .fiu-article td > a:focus,
 .fiu-template--employers .fiu-article li > a:focus,
 .fiu-template--employers .fiu-article li > p > a:focus, .fiu-template--employers .app-anchor-links__link:focus {
   outline: 3px solid transparent;
@@ -16880,6 +16895,7 @@
 @supports not (text-wrap: balance) {
   .fiu-link--employers:focus, .fiu-template--employers .fiu-article > h3 > a:focus,
   .fiu-template--employers .fiu-article > p > a:focus,
+  .fiu-template--employers .fiu-article td > a:focus,
   .fiu-template--employers .fiu-article li > a:focus,
   .fiu-template--employers .fiu-article li > p > a:focus, .fiu-template--employers .app-anchor-links__link:focus {
     -webkit-box-decoration-break: clone;
@@ -16889,6 +16905,7 @@
 
 .fiu-article > h3 > a,
 .fiu-article > p > a,
+.fiu-article td > a,
 .fiu-article li > a,
 .fiu-article li > p > a {
   font-weight: inherit;
@@ -18863,11 +18880,13 @@ a.fiu-card-homepage .fiu-card__content {
 }
 @media (min-width: 40.0625em) {
   .fiu-panel.fiu-cta-panel {
-    flex-direction: row;
-    align-items: flex-start;
+    display: grid;
     text-align: left;
-    gap: 1.5rem;
-    padding: 1.75rem;
+    align-items: center;
+    grid-row-gap: 0.5rem;
+    grid-column-gap: 1rem;
+    grid-template-areas: "icon heading heading" "icon content action";
+    padding: 1.875rem;
   }
 }
 
@@ -18882,13 +18901,16 @@ a.fiu-card-homepage .fiu-card__content {
   justify-content: center;
   width: 6rem;
   height: 6rem;
+  grid-area: icon;
 }
 
-.fiu-cta-panel__body {
-  flex: 1 1 auto;
-}
-.fiu-cta-panel__body h2 {
+.fiu-cta-panel h2 {
+  grid-area: heading;
   color: inherit !important;
+  margin: 0;
+}
+.fiu-cta-panel p {
+  grid-area: content;
 }
 
 .fiu-cta-panel__action {
@@ -18908,6 +18930,12 @@ a.fiu-card-homepage .fiu-card__content {
   padding: 7px 20px 10px;
   display: inline-block;
   border-radius: 5px;
+  grid-area: action;
+}
+@media (min-width: 40.0625em) {
+  .fiu-cta-panel__button {
+    margin-left: 1rem;
+  }
 }
 
 a.fiu-panel:hover .fiu-cta-panel__button {

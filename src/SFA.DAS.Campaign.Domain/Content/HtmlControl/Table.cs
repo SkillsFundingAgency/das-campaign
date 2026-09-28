@@ -13,12 +13,19 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
         }
         public List<string> Headings { get; set; }
         public List<string> Rows { get; set; }
+        public bool HasHeaderColumn { get; set; }
+
+        private int? _columnCount;
 
         public int ColumnCount
         {
             get
             {
-                return Headings.Count;
+                return _columnCount ?? Headings.Count;
+            }
+            set
+            {
+                _columnCount = value;
             }
         }
     }

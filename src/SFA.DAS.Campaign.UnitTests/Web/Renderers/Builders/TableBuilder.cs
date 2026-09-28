@@ -33,6 +33,20 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers.Builders
             return this;
         }
 
+        public TableBuilder SetColumnCount(int columnCount)
+        {
+            _table.ColumnCount = columnCount;
+
+            return this;
+        }
+
+        public TableBuilder SetHasHeaderColumn(bool hasHeaderColumn)
+        {
+            _table.HasHeaderColumn = hasHeaderColumn;
+
+            return this;
+        }
+
         public Table Build()
         {
             return _table;

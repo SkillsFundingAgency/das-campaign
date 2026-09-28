@@ -95,6 +95,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.AddTransient<IHtmlControlFactory, YouTubeControlFactory>();
             services.AddTransient<IHtmlControlFactory, BlockQuoteControlFactory>();
             services.AddTransient<IHtmlControlFactory, HorizontalRuleControlFactory>();
+            services.AddTransient<IHtmlControlFactory, CtaPanelControlFactory>();
         }
 
         public static void ConfigureJsonConverters(this IServiceCollection services)

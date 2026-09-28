@@ -223,19 +223,7 @@ namespace SFA.DAS.Campaign.Infrastructure.Api.Converters
 
         private static CtaPanel MapCtaPanel(ResponseCtaPanel ctaPanel)
         {
-            if (ctaPanel == null)
-            {
-                return null;
-            }
-
-            return new CtaPanel
-            {
-                Heading = ctaPanel.Heading,
-                Description = ctaPanel.Description,
-                Icon = ctaPanel.Icon,
-                ButtonText = ctaPanel.ButtonText,
-                Url = ctaPanel.Url
-            };
+            return ctaPanel.ToCtaPanel();
         }
 
         private static Image MapImage(Item image)

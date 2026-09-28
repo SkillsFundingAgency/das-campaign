@@ -13,5 +13,6 @@ namespace SFA.DAS.Campaign.Domain.Content.HtmlControl
         }
         public List<string> Content { get; set; }
         public List<VideoTranscript> VideoTranscripts { get; set; }
+        public CtaPanel CtaPanel { get; set; }
     }
 }

@@ -27,7 +27,8 @@ namespace SFA.DAS.Campaign.Web.Renderers
                 new OrderedListControlRenderer(),
                 new ArticleRelatedControlRenderer(),
                 new CardControlRenderer(),
-                new SiteMapUrlRenderer()
+                new SiteMapUrlRenderer(),
+                new CtaPanelControlRenderer()
             };
         }
 
