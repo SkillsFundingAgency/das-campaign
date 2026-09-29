@@ -18,9 +18,17 @@ namespace SFA.DAS.Campaign.Web.Controllers
     public class RegisterInterestController(IUserDataCollection userDataCollection, IMediator mediator) : Controller
     {
         private const string IndexActionName = "Index";
+        private const string IndexUrl = "/employers/register-interest";
+        private const string ThankYouUrl = "/employers/register-interest/thank-you";
 
         [HttpGet("")]
         [HttpGet("employers/sign-up")]
+        public IActionResult PreviousUrl()
+        {
+            return RedirectPermanent(IndexUrl + Request.QueryString);
+        }
+
+        [HttpGet(IndexUrl)]
         public async Task<IActionResult> Index(RouteType route = RouteType.Employer, int version = 1)
         {
             if (!ModelState.IsValid)
@@ -59,8 +67,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
             return View(IndexActionName, new RegisterInterestModel(url, version, route, staticContent.Menu, staticContent.BannerModels));
         }
 
-        [HttpPost("")]
-        [HttpPost("employers/sign-up")]
+        [HttpPost(IndexUrl)]
         [EnableRateLimiting("fixed")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(RegisterInterestModel registerInterest)
@@ -111,6 +118,12 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpGet("employers/thank-you-for-signing-up")]
+        public IActionResult PreviousThankYouUrl()
+        {
+            return RedirectPermanent(ThankYouUrl);
+        }
+
+        [HttpGet(ThankYouUrl)]
         public async Task<IActionResult> ThankYouForRegistering()
         {
             var staticContent = await mediator.GetModelForStaticContent();
