@@ -75,6 +75,28 @@ namespace SFA.DAS.Campaign.UnitTests.Infrastructure.Api.Factory.Builders
             return this;
         }
 
+        public ItemBuilder SetTableHeaders(bool hasHeaderRow, bool hasHeaderColumn)
+        {
+            _item.TableHasHeaderRow = hasHeaderRow;
+            _item.TableHasHeaderColumn = hasHeaderColumn;
+
+            return this;
+        }
+
+        public ItemBuilder SetCtaPanel(ResponseCtaPanel ctaPanel)
+        {
+            _item.CtaPanel = ctaPanel;
+
+            return this;
+        }
+
+        public ItemBuilder SetStatsSection(ResponseHubStatistic statsSection)
+        {
+            _item.StatsSection = statsSection;
+
+            return this;
+        }
+
         public ItemBuilder AddEmptyTableValuesArray()
         {
             _item.TableValue = new List<List<string>>();

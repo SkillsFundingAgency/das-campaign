@@ -33,6 +33,11 @@ namespace SFA.DAS.Campaign.Web.Renderers
 
         private static void AddHeadingElements(TagBuilder para, Table control)
         {
+            if (control.Headings.Count == 0)
+            {
+                return;
+            }
+
             para.InnerHtml.AppendHtml("<thead><tr>");
 
             foreach (var value in control.Headings)
@@ -56,7 +61,17 @@ namespace SFA.DAS.Campaign.Web.Renderers
                     para.InnerHtml.AppendHtml($"<tr>");
                 }
 
-                para.InnerHtml.AppendHtml($"<td>{value.CheckForFontEffects().CheckForAndConstructHyperlinks().LineBreaksToHtml()}</td>");
+                var cellContent = (value ?? string.Empty).CheckForFontEffects().CheckForAndConstructHyperlinks().LineBreaksToHtml();
+
+                if (column == 0 && control.HasHeaderColumn)
+                {
+                    para.InnerHtml.AppendHtml($"<th scope=\"row\">{cellContent}</th>");
+                }
+                else
+                {
+                    para.InnerHtml.AppendHtml($"<td>{cellContent}</td>");
+                }
+
                 column += 1;
 
                 if (column >= control.ColumnCount)

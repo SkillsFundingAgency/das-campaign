@@ -18,6 +18,7 @@ namespace SFA.DAS.Campaign.Web.Models
         public Panel Panel1 { get; set; }
         public Panel Panel2 { get; set; }
         public Panel Panel3 { get; set; }
+        public Panel Panel4 { get; set; }
 
         [Required(ErrorMessage = "Select a training course")]
         public string StandardUid { get; set; }

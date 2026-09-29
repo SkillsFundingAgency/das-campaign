@@ -22,6 +22,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
         private const int panel1Id = 1;
         private const int panel2Id = 2;
         private const int panel3Id = 3;
+        private const int panel4Id = 4;
 
         public EmployerController(IOptions<CampaignConfiguration> configuration, IMediator mediator)
         {
@@ -44,8 +45,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
             var panel1 = _mediator.Send(new GetPanelQuery() { Id = panel1Id, Preview = preview });
             var panel2 = _mediator.Send(new GetPanelQuery() { Id = panel2Id, Preview = preview });
             var panel3 = _mediator.Send(new GetPanelQuery() { Id = panel3Id, Preview = preview });
+            var panel4 = _mediator.Send(new GetPanelQuery() { Id = panel4Id, Preview = preview });
 
-            await Task.WhenAll(standards, staticContent, panel1, panel2, panel3);
+            await Task.WhenAll(standards, staticContent, panel1, panel2, panel3, panel4);
 
             return View(new ApprenticeshipTrainingAndBenefitsViewModel
             {
@@ -55,6 +57,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 Panel1 = panel1.Result.Panel,
                 Panel2 = panel2.Result.Panel,
                 Panel3 = panel3.Result.Panel,
+                Panel4 = panel4.Result.Panel,
                 Submitted = false
             });
         }
@@ -66,8 +69,9 @@ namespace SFA.DAS.Campaign.Web.Controllers
             var panel1 = _mediator.Send(new GetPanelQuery() { Id = panel1Id, Preview = preview });
             var panel2 = _mediator.Send(new GetPanelQuery() { Id = panel2Id, Preview = preview });
             var panel3 = _mediator.Send(new GetPanelQuery() { Id = panel3Id, Preview = preview });
+            var panel4 = _mediator.Send(new GetPanelQuery() { Id = panel4Id, Preview = preview });
 
-            await Task.WhenAll(staticContent, panel1, panel2, panel3);
+            await Task.WhenAll(staticContent, panel1, panel2, panel3, panel4);
 
             if (!ModelState.IsValid)
             {
@@ -75,6 +79,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 model.Panel1 = panel1.Result.Panel;
                 model.Panel2 = panel2.Result.Panel;
                 model.Panel3 = panel3.Result.Panel;
+                model.Panel4 = panel4.Result.Panel;
                 model.Standards = standards.Standards.Select(s => new Domain.Content.StandardResponse { Title = s.Title, LarsCode = s.LarsCode, Level = s.Level, StandardUId = s.StandardUId }).ToList();
                 model.Menu = staticContent.Result.Menu;
                 model.BannerModels = staticContent.Result.BannerModels;
@@ -93,6 +98,7 @@ namespace SFA.DAS.Campaign.Web.Controllers
                 Panel1 = panel1.Result.Panel,
                 Panel2 = panel2.Result.Panel,
                 Panel3 = panel3.Result.Panel,
+                Panel4 = panel4.Result.Panel,
                 CalculationResults = calculationResult.Result,
                 Submitted = true,
                 PayBillGreaterThanThreeMillion = model.PayBillGreaterThanThreeMillion,

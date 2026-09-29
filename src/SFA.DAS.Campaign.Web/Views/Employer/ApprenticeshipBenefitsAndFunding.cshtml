@@ -1,17 +1,16 @@
 ﻿@model SFA.DAS.Campaign.Web.Models.ApprenticeshipTrainingAndBenefitsViewModel
 @{
-    ViewBag.Title = (ViewData.ModelState.IsValid ? "" : "Error: ") + "Understanding apprenticeship benefits and funding";
+    ViewBag.Title = (ViewData.ModelState.IsValid ? "" : "Error: ") + "Explore funding options";
     ViewBag.HubPage = false;
     Layout = $"Layout_EmployersHub";
-    ViewBag.PageTitle = "Understanding apprenticeship benefits and funding";
-    ViewBag.PageSummary = "Explore what benefits apprentices can bring to your organisation and calculate what funding could be available towards your apprentices training costs.";
+    ViewBag.PageTitle = "Explore funding options";
+    ViewBag.PageSummary = "Learn what payments are available to cover training costs and get an estimate of how much you can receive.";
     ViewBag.LandingPageSlug = "considering-hiring-an-apprentice";
     ViewBag.LandingPageTitle = "Considering hiring an apprentice?";
     ViewBag.ArticlePageSlug = "understanding-apprenticeship-benefits-and-funding";
-    ViewBag.ArticlePageTitle = "Understanding apprenticeship benefits and funding";
+    ViewBag.ArticlePageTitle = "Explore funding options";
     ViewBag.HeadingImage = "https://images.ctfassets.net/8kbr1n52z8s2/6NqEuBnlFi19XrPbEvJq2R/17ea8dc728a5986e9a1c08b7f6002d44/Employer_Whats-next.jpg";
     ViewBag.ValidationOrder = "PayBillGreaterThanThreeMillion,StandardUid,NumberOfRoles";
-    ViewBag.Panel4Title = "Estimate what funding could be available towards your apprentices training costs";
 }
 <div class="govuk-width-container">
     <div class="govuk-grid-row">
@@ -21,8 +20,8 @@
                 <li role="listitem" class="app-anchor-links__list-item"><a href="#@Model.Panel1.Slug" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@Model.Panel1.Title</a></li>
                 <li role="listitem" class="app-anchor-links__list-item"><a href="#@Model.Panel2.Slug" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@Model.Panel2.Title</a></li>
                 <li role="listitem" class="app-anchor-links__list-item"><a href="#@Model.Panel3.Slug" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@Model.Panel3.Title</a></li>
-                <li role="listitem" class="app-anchor-links__list-item"><a href="#available-funding" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@ViewBag.Panel4Title</a></li>
-                <li role="listitem" class="app-anchor-links__list-item"><a href="/employers/apprenticeship-alternatives-employers" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">Apprenticeships not right for you?</a></li>
+                <li role="listitem" class="app-anchor-links__list-item"><a href="#available-funding" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">Estimate what funding could be available towards your apprentices training costs</a></li>
+                <li role="listitem" class="app-anchor-links__list-item"><a href="#@Model.Panel4.Slug" class="govuk-link govuk-link--no-visited-state app-anchor-links__link">@Model.Panel4.Title</a></li>
             </ul>
         </div>
         <div class="govuk-grid-column-two-thirds">
@@ -62,9 +61,11 @@
                 }
                 <a href="#main" class="fiu-back-link--top"> Back to top</a>
             </div>
-            <div id="use-cases" class="app-anchor-links__panel">
-                @await Html.PartialAsync("_UseCases")
-                <a href="#main" class="fiu-back-link--top"> Back to top</a>
+            <div class="fiu-hide-print">
+                <div id="@Model.Panel4.Slug" class="app-anchor-links__panel">
+                    @await Html.PartialAsync("_Panel", Model.Panel4)
+                    <a href="#main" class="fiu-back-link--top">Back to top</a>
+                </div>
             </div>
 
         </div>

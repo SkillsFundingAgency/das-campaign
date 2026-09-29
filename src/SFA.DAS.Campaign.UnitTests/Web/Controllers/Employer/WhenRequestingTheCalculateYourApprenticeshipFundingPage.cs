@@ -32,12 +32,14 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
         private GetPanelQueryResult _panelResult1;
         private GetPanelQueryResult _panelResult2;
         private GetPanelQueryResult _panelResult3;
+        private GetPanelQueryResult _panelResult4;
         private GetStandardsQueryResult _standards;
         private List<StandardResponse> _standardsResult;
 
         private const int panel1Id = 1;
         private const int panel2Id = 2;
         private const int panel3Id = 3;
+        private const int panel4Id = 4;
 
         [SetUp]
         public void Arrange()
@@ -63,6 +65,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
             _panelResult1 = _fixture.Create<GetPanelQueryResult>();
             _panelResult2 = _fixture.Create<GetPanelQueryResult>();
             _panelResult3 = _fixture.Create<GetPanelQueryResult>();
+            _panelResult4 = _fixture.Create<GetPanelQueryResult>();
             _standards = _fixture.Create<GetStandardsQueryResult>();
 
             _configuration = new Mock<IOptions<CampaignConfiguration>>();
@@ -74,6 +77,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
             _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Id == panel1Id), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult1);
             _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Id == panel2Id), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult2);
             _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Id == panel3Id), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult3);
+            _mediator.Setup(p => p.Send(It.Is<GetPanelQuery>(m => m.Id == panel4Id), It.IsAny<CancellationToken>())).ReturnsAsync(_panelResult4);
             _mediator.Setup(p => p.Send(It.IsAny<GetMenuQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(_menu);
             _mediator.Setup(p => p.Send(It.IsAny<GetBannerQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(_banner);
             _staticContent = new Page<StaticContent>
@@ -97,6 +101,8 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.Employer
             actualModel.Standards.Should().BeEquivalentTo(_standardsResult);
             actualModel.Panel1.Should().BeEquivalentTo(_panelResult1.Panel);
             actualModel.Panel2.Should().BeEquivalentTo(_panelResult2.Panel);
+            actualModel.Panel3.Should().BeEquivalentTo(_panelResult3.Panel);
+            actualModel.Panel4.Should().BeEquivalentTo(_panelResult4.Panel);
             actualModel.Menu.Should().BeEquivalentTo(_menu.Page.Menu);
             actualModel.BannerModels.Should().BeEquivalentTo(_banner.Page.BannerModels);
         }
