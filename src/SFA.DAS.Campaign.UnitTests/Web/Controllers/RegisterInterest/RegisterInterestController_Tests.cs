@@ -553,5 +553,27 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Controllers.RegisterInterest
             Assert.That(ExpectedDefaultUrl, Is.EqualTo(model.ReturnUrl));
             mockUrlHelper.Verify(x => x.Action(It.Is<UrlActionContext>(c => c.Action.Equals("SearchResults/standard/postcode/distance") && c.Controller.Equals("cpg"))));
         }
+
+        [Test]
+        public void Then_The_Previous_Url_Redirects_Permanently_To_The_New_Url_Keeping_The_Query_String()
+        {
+            _httpContext.Setup(x => x.Request.QueryString).Returns(new QueryString("?route=Employer&version=2"));
+
+            var actual = _controller.PreviousUrl() as RedirectResult;
+
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.Permanent, Is.True);
+            Assert.That(actual.Url, Is.EqualTo("/employers/register-interest?route=Employer&version=2"));
+        }
+
+        [Test]
+        public void Then_The_Previous_Thank_You_Url_Redirects_Permanently_To_The_New_Url()
+        {
+            var actual = _controller.PreviousThankYouUrl() as RedirectResult;
+
+            Assert.That(actual, Is.Not.Null);
+            Assert.That(actual.Permanent, Is.True);
+            Assert.That(actual.Url, Is.EqualTo("/employers/register-interest/thank-you"));
+        }
     }
 }
