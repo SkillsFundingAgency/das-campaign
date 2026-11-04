@@ -37,10 +37,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
             var connectionStrings = new ConnectionStrings();
             configuration.Bind("CampaignConfiguration:ConnectionStrings", connectionStrings);
 
-            var queueStorageConnectionString = configuration.Get<CampaignConfiguration>().QueueConnectionString;
-
-            services.AddHealthChecks()
-                    .AddAzureQueueStorage(queueStorageConnectionString, "queue-storage-check");
+            services.AddHealthChecks();
 
             if (configuration["Environment"] != "LOCAL")
             {
