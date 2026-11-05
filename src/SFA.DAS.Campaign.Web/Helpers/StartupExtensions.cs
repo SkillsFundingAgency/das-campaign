@@ -6,11 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using SFA.DAS.Campaign.Application.DataCollection;
 using SFA.DAS.Campaign.Application.Services;
 using SFA.DAS.Campaign.Domain.ApprenticeshipCourses;
-using SFA.DAS.Campaign.Domain.Interfaces;
 using SFA.DAS.Campaign.Infrastructure.Api.Converters;
 using SFA.DAS.Campaign.Infrastructure.Api.Factory;
 using SFA.DAS.Campaign.Infrastructure.Configuration;
-using SFA.DAS.Campaign.Infrastructure.Queue;
 using SFA.DAS.Campaign.Infrastructure.Repositories;
 using StackExchange.Redis;
 using System.Configuration;
@@ -29,7 +27,6 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.AddSingleton<CampaignConfiguration>(campaignConfiguration);
             
             services.Configure<UserDataCryptography>(configuration.GetSection("CampaignConfiguration:UserDataCryptography"));
-            services.Configure<UserDataQueueNames>(configuration.GetSection("CampaignConfiguration:UserDataQueueNames"));
         }
 
         public static void ConfigureSfaConnectionStrings(this IServiceCollection services, IConfiguration configuration)
@@ -50,9 +47,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
 
         public static void ConfigureSfaServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<IUserDataCryptographyService, UserDataCryptographyService>();
             services.AddTransient<ISessionService, SessionService>();
-            services.AddTransient(typeof(IQueueService<>), typeof(AzureQueueService<>));
 
             string tenantId = configuration.GetSection("TenantId").Value ?? throw new ConfigurationErrorsException("TenantId is not configured");
             services.AddSingleton<TokenCredential>(sp =>
