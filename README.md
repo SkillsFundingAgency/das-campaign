@@ -45,7 +45,6 @@ Data:
         "ContentCacheDatabase": "",
         "SharedRedis": " "
     },
-    "QueueConnectionString": "UseDevelopmentStorage=true",
     "VacanciesApi": {
         "ApiKey": "1234567890",
         "BaseUrl": "https://{vacancies-apim}/vacancies-at"
@@ -56,10 +55,6 @@ Data:
     "OuterApi": {
         "Key": "1234567890",
         "BaseUrl": "https://{APIM}/campaign/"
-    },
-    "UserDataQueueNames": {
-        "RemoveUserDataQueueName": "sfa-das-cpg-unsubscribe",
-        "StoreUserDataQueueName": "sfa-das-cpg-subscribe"
     },
     "UserDataCryptography": {
         "UserUrlSalt": "1234",
