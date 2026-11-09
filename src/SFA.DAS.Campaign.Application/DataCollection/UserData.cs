@@ -19,7 +19,6 @@ namespace SFA.DAS.Campaign.Application.DataCollection
         public bool EmailVerified { get; set; }
         public string CookieId { get; set; }
         public string RouteId { get; set; }
-        public string EncodedEmail { get; set; }
         /*
          * Email validation taken from https://docs.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
          */
