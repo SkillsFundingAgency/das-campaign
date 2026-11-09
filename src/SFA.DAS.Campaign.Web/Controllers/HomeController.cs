@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using MediatR;
@@ -26,9 +27,19 @@ namespace SFA.DAS.Campaign.Web.Controllers
         }
 
         [HttpGet("/")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery] bool preview, CancellationToken cancellationToken = default)
         {
-            var page = await _mediator.GetModelForStaticContent();
+            var homepage = _mediator.Send(new GetHomepageQuery { Preview = preview }, cancellationToken);
+            var staticContent = _mediator.GetModelForStaticContent();
+
+            await Task.WhenAll(homepage, staticContent);
+
+            var page = new Page<Homepage>
+            {
+                Content = homepage.Result.Homepage,
+                Menu = staticContent.Result.Menu,
+                BannerModels = staticContent.Result.BannerModels
+            };
 
             return View(page);
         }
