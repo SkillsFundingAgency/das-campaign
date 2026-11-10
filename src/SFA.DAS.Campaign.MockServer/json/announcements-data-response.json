@@ -1,0 +1,24 @@
+{
+  "announcements": {
+    "announcements": [
+      {
+        "id": "4Kx1a2B3c4D5e6F7g8H9i0",
+        "headline": "Apprenticeship funding changes from April 2026",
+        "slug": "apprenticeship-funding-changes-from-april-2026",
+        "intro": "What the new funding bands mean for employers and how to prepare.",
+        "publishedDate": "2026-03-02T00:00:00",
+        "audience": "Employers",
+        "category": "Funding"
+      },
+      {
+        "id": "7Jk8L9m0N1o2P3q4R5s6T7",
+        "headline": "New foundation apprenticeships now available",
+        "slug": "new-foundation-apprenticeships-now-available",
+        "intro": "Foundation apprenticeships give young people a route into work in key sectors.",
+        "publishedDate": "2026-01-15T00:00:00",
+        "audience": "Employers",
+        "category": "Programmes"
+      }
+    ]
+  }
+}

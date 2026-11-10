@@ -1,0 +1,43 @@
+@using System.Linq
+@using SFA.DAS.Campaign.Web.Helpers
+@model SFA.DAS.Campaign.Web.Models.AnnouncementsPageViewModel
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.MetaDesc = Model.MetaContent?.MetaDescription;
+    Layout = "Layout_EmployersArticle";
+    ViewBag.PageTitle = Model.Title;
+    ViewBag.HeadingImage = Model.Content?.HeaderImage?.Url;
+    ViewBag.ParentPageUrl = Model.Breadcrumbs?.ParentPageUrl;
+    ViewBag.LandingPageShortTitle = Model.Breadcrumbs?.LandingPageShortTitle;
+}
+
+
+        <div class="fiu-article">
+        @if (Model.Content?.PageControls != null && Model.Content.PageControls.Any())
+        {
+            <article class="fiu-article">@Model.Content.PageControls.ToHtml()</article>
+        }
+
+        @{
+            var cards = new CardsListViewModel
+            {
+                Items = Model.Announcements.Select(a => new CardsListItem
+                {
+                    Text = a.Headline,
+                    Url = a.Url,
+                    Description = a.Intro,
+                    Tag = a.Category,
+                    Meta = a.PublishedDate.ToGovUkDateString()
+                }).ToList()
+            };
+        }
+        @if (cards.HasItems)
+        {
+            <partial name="Components/_CardsList" model="cards"/>
+        }
+        else
+        {
+            <p class="govuk-body">There are no announcements at the moment.</p>
+        }
+        </div>
+

@@ -6,7 +6,7 @@ main {
     background: #fff;
     padding: 1rem;
     border-radius: .625rem;
-    border: 1px solid #cecece;
+    border: 1px solid var(--border-colour, #{$govuk-border-colour});
 
     p:empty {
       display: none;

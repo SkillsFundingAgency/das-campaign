@@ -1,0 +1,42 @@
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model SFA.DAS.Campaign.Web.Models.CardsListViewModel
+
+@if (Model != null && Model.HasItems)
+{
+    <div class="fiu-cards-list">
+        <ul class="fiu-cards-list__list">
+            @foreach (var item in Model.RenderableItems)
+            {
+                var link = new TagBuilder("a");
+                link.AddCssClass("govuk-link fiu-cards-list__link");
+                link.Attributes["href"] = item.Url;
+                link.InnerHtml.Append(item.Text ?? string.Empty);
+
+                var subHeading = new TagBuilder(Model.SubHeadingTag);
+                subHeading.AddCssClass("fiu-cards-list__sub-heading govuk-heading-m");
+                subHeading.InnerHtml.AppendHtml(link);
+
+                <li class="fiu-cards-list__list-item">
+                    <div class="fiu-cards-list__list-item-wrapper">
+                        @subHeading
+                        @if (!string.IsNullOrWhiteSpace(item.Tag))
+                        {
+                            <strong class="fiu-tag fiu-tag--purple fiu-cards-list__tag">
+                                @item.Tag
+                            </strong>
+                        }
+                    
+                        @if (!string.IsNullOrWhiteSpace(item.Description))
+                        {
+                            <p class="govuk-body fiu-cards-list__description">@item.Description</p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(item.Meta))
+                        {
+                            <p class="govuk-body fiu-cards-list__meta">@item.Meta</p>
+                        }
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}

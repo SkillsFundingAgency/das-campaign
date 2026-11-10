@@ -11222,7 +11222,7 @@
   background-color: #cfe4dc;
 }
 
-.govuk-tag--purple {
+.govuk-tag--purple, .fiu-tag--purple {
   color: #2a1950;
   background-color: #ddd6ec;
 }
@@ -16429,8 +16429,8 @@
 }
 
 .fiu-template--employers {
-  --govuk-link-colour: #4d43a3;
-  --govuk-link-hover-colour: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+  --govuk-link-colour: #443B99;
+  --govuk-link-hover-colour: rgb(51.641509434, 44.8066037736, 116.1933962264);
 }
 
 .fiu-fade-in {
@@ -16693,10 +16693,10 @@
 }
 
 .fiu-button--employers, .fiu-template--employers .fiu-article > h2 > a, .fiu-template--employers .fiu-next-link {
-  background: #4d43a3;
+  background: #443B99;
 }
 .fiu-button--employers:hover, .fiu-template--employers .fiu-article > h2 > a:hover, .fiu-template--employers .fiu-next-link:hover {
-  background: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+  background: rgb(51.641509434, 44.8066037736, 116.1933962264);
 }
 
 .fiu-button--outlined {
@@ -16721,10 +16721,10 @@
   color: rgb(27.7108433735, 87.2891566265, 40.1807228916);
 }
 .fiu-button--outlined.fiu-button--employers, .fiu-template--employers .fiu-article > h2 > a.fiu-button--outlined, .fiu-template--employers .fiu-button--outlined.fiu-next-link {
-  color: #4d43a3;
+  color: #443B99;
 }
 .fiu-button--outlined.fiu-button--employers:hover, .fiu-template--employers .fiu-article > h2 > a.fiu-button--outlined:hover, .fiu-template--employers .fiu-button--outlined.fiu-next-link:hover {
-  color: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+  color: rgb(51.641509434, 44.8066037736, 116.1933962264);
 }
 
 .fiu-button--text {
@@ -16872,14 +16872,14 @@
 .fiu-template--employers .fiu-article td > a,
 .fiu-template--employers .fiu-article li > a,
 .fiu-template--employers .fiu-article li > p > a, .fiu-template--employers .app-anchor-links__link {
-  color: #4d43a3;
+  color: #443B99;
 }
 .fiu-link--employers:hover, .fiu-template--employers .fiu-article > h3 > a:hover,
 .fiu-template--employers .fiu-article > p > a:hover,
 .fiu-template--employers .fiu-article td > a:hover,
 .fiu-template--employers .fiu-article li > a:hover,
 .fiu-template--employers .fiu-article li > p > a:hover, .fiu-template--employers .app-anchor-links__link:hover {
-  color: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+  color: rgb(51.641509434, 44.8066037736, 116.1933962264);
 }
 .fiu-link--employers:focus, .fiu-template--employers .fiu-article > h3 > a:focus,
 .fiu-template--employers .fiu-article > p > a:focus,
@@ -17022,7 +17022,7 @@
 
 .fiu-template--employers .fiu-article > blockquote:not([class]),
 .fiu-quote--employer {
-  border-left-color: #4d43a3;
+  border-left-color: #443B99;
   background-color: #f3f3f3;
   border-top: 1px solid #DBD5E9;
   border-right: 1px solid #DBD5E9;
@@ -17302,7 +17302,7 @@ main .fiu-article {
   background: #fff;
   padding: 1rem;
   border-radius: 0.625rem;
-  border: 1px solid #cecece;
+  border: 1px solid var(--border-colour, var(--govuk-border-colour, #cecece));
 }
 main .fiu-article p:empty {
   display: none;
@@ -17660,7 +17660,7 @@ main .fiu-article:empty {
 }
 
 .fiu-template--employers .fiu-back-link--top {
-  color: #4d43a3;
+  color: #443B99;
 }
 .fiu-template--employers .fiu-back-link--top:focus {
   outline: 3px solid transparent;
@@ -17890,8 +17890,8 @@ a.fiu-card:active, a.fiu-card-homepage:active, a.fiu-card:hover, a.fiu-card-home
   color: #fff;
 }
 a.fiu-card--employers:active, a.fiu-card--employers:hover {
-  background: #4d43a3;
-  border-color: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+  background: #443B99;
+  border-color: rgb(51.641509434, 44.8066037736, 116.1933962264);
 }
 
 .fiu-card__heading {
@@ -17914,7 +17914,7 @@ a.fiu-card--employers:active, a.fiu-card--employers:hover {
 }
 
 .fiu-card--employers .fiu-card__heading {
-  color: #4d43a3;
+  color: #443B99;
 }
 
 .fiu-card__logo {
@@ -17930,11 +17930,11 @@ a.fiu-card--employers:active, a.fiu-card--employers:hover {
 }
 
 .fiu-card-group--employers a.fiu-card:active, .fiu-card-group--employers a.fiu-card-homepage:active, .fiu-card-group--employers a.fiu-card:hover, .fiu-card-group--employers a.fiu-card-homepage:hover {
-  background: #4d43a3;
-  border-color: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+  background: #443B99;
+  border-color: rgb(51.641509434, 44.8066037736, 116.1933962264);
 }
 .fiu-card-group--employers a.fiu-card .fiu-card__heading, .fiu-card-group--employers a.fiu-card-homepage .fiu-card__heading {
-  color: #4d43a3;
+  color: #443B99;
 }
 
 a.fiu-card:hover .fiu-card__heading, a.fiu-card-homepage:hover .fiu-card__heading {
@@ -17976,10 +17976,10 @@ a.fiu-card-homepage:hover {
   background: rgb(27.7108433735, 87.2891566265, 40.1807228916);
 }
 a.fiu-card-homepage--employers {
-  background: #4d43a3;
+  background: #443B99;
 }
 a.fiu-card-homepage--employers:hover {
-  background: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+  background: rgb(51.641509434, 44.8066037736, 116.1933962264);
 }
 a.fiu-card-homepage .fiu-card__content {
   color: inherit;
@@ -17993,8 +17993,121 @@ a.fiu-card-homepage .fiu-card__content {
   margin-top: 3.75rem;
 }
 
+.fiu-cards-list__heading {
+  margin-bottom: 20px;
+}
+@media (min-width: 40.0625em) {
+  .fiu-cards-list__heading {
+    margin-bottom: 30px;
+  }
+}
+
+.fiu-cards-list__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  column-gap: 30px;
+}
+.fiu-cards-list__list .fiu-cards-list__list-item:first-child {
+  border-top: 0;
+}
+.fiu-cards-list__list .fiu-cards-list__list-item:first-child .fiu-cards-list__list-item-wrapper {
+  padding-top: 0;
+}
+
+.fiu-cards-list__list-item {
+  border-top: 1px solid var(--border-colour, var(--govuk-border-colour, #cecece));
+  padding: 5px 0 20px;
+}
+
+.fiu-cards-list__list-item-wrapper {
+  padding: 19px 0 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.fiu-cards-list__sub-heading {
+  margin: 0 30px 10px 0;
+  text-wrap: pretty;
+}
+
+.fiu-cards-list__link::after {
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.fiu-cards-list__link::before {
+  border-right: 3px solid var(--link-colour, #4282ba);
+  border-top: 3px solid var(--link-colour, #4282ba);
+  content: "";
+  display: block;
+  height: 7px;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  margin-top: 5px;
+  transform: rotate(45deg);
+  width: 7px;
+}
+.fiu-cards-list__link:hover::before {
+  border-color: var(--link-hover-colour, rgb(52.6428571429, 103.6904761905, 148.3571428571));
+}
+.fiu-cards-list__link:focus::before {
+  border-color: var(--govuk-focus-text-colour, #0b0c0c);
+}
+.fiu-cards-list__link:visited {
+  color: var(--link-colour, #4282ba);
+}
+
+.fiu-cards-list__tag {
+  padding: 8px;
+}
+
+.fiu-cards-list__meta {
+  margin: 0 30px 5px 0;
+  color: var(--govuk-secondary-text-colour, #484949);
+}
+
+.fiu-cards-list__description {
+  margin: 0 30px 0 0;
+  text-wrap: pretty;
+  color: var(--govuk-secondary-text-colour, #484949);
+}
+@media (min-width: 48.0625em) {
+  .fiu-cards-list__description {
+    max-width: 640px;
+  }
+}
+
+@media print {
+  .fiu-cards-list__list {
+    display: block;
+  }
+  .fiu-cards-list__list-item {
+    padding: 0;
+  }
+  .fiu-cards-list__list-item-wrapper {
+    padding: 5mm 0;
+  }
+  .fiu-cards-list__description {
+    margin: 0;
+  }
+  .fiu-cards-list__link::before {
+    display: none;
+  }
+  .fiu-cards-list__link::after {
+    position: static;
+  }
+}
 .fiu-confirmation--employers {
-  background: #4d43a3;
+  background: #443B99;
   color: #fff;
 }
 
@@ -18667,7 +18780,7 @@ a.fiu-card-homepage .fiu-card__content {
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-bottom: 10px solid #4d43a3;
+  border-bottom: 10px solid #443B99;
   margin-left: -5px;
   left: 50%;
 }
@@ -19493,7 +19606,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
 }
 
 .fiu-panel--solid-employers {
-  background: #4d43a3;
+  background: #443B99;
   color: #ffffff;
 }
 
@@ -19656,7 +19769,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
 }
 
 .fiu-promo--employers {
-  background-color: #4d43a3;
+  background-color: #443B99;
   color: #ffffff;
 }
 
@@ -19693,7 +19806,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
 }
 
 .fiu-promo--employers .fiu-promo__button {
-  color: #4d43a3;
+  color: #443B99;
 }
 
 .fiu-provider-details-summary {
@@ -19905,19 +20018,19 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
 
 .fiu-provider-details-bars__value--employers-default > span,
 .fiu-provider-details-bars__value--employers-excellent > span {
-  background-color: #4d43a3;
+  background-color: #443B99;
 }
 
 .fiu-provider-details-bars__value--employers-good > span {
-  background-color: rgb(119.6282608696, 110.7804347826, 195.7195652174);
+  background-color: rgb(104.5471698113, 95.1438679245, 193.3561320755);
 }
 
 .fiu-provider-details-bars__value--employers-poor > span {
-  background-color: rgb(153.5543478261, 146.9239130435, 210.5760869565);
+  background-color: rgb(139.1886792453, 131.9504716981, 207.5495283019);
 }
 
 .fiu-provider-details-bars__value--employers-very-poor > span {
-  background-color: rgb(187.4804347826, 183.0673913043, 225.4326086957);
+  background-color: rgb(173.8301886792, 168.7570754717, 221.7429245283);
 }
 
 .fiu-provider-details-bars__value--apprentices-default > span,
@@ -20106,7 +20219,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
   color: #287E3A;
 }
 .fiu-stats-list--employers .fiu-stats-list__stat {
-  color: #4d43a3;
+  color: #443B99;
 }
 @media (min-width: 40.0625em) {
   .fiu-stats-list__stat {
@@ -20139,7 +20252,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
 .fiu-stats-list--panels .fiu-stats-list__stat {
   text-align: left;
   margin: 0;
-  color: #4d43a3;
+  color: #443B99;
   margin-bottom: 5px;
   display: block;
   font-size: 2rem;
@@ -20164,7 +20277,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
 .fiu-stats-list__panel {
   display: block;
   background: #f3f3f3;
-  border-left: 10px solid #4d43a3;
+  border-left: 10px solid #443B99;
   border-top: 1px solid #DBD5E9;
   border-right: 1px solid #DBD5E9;
   border-bottom: 1px solid #DBD5E9;
@@ -20317,7 +20430,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
   -moz-osx-font-smoothing: grayscale;
   font-size: 19px;
   letter-spacing: 0;
-  color: #fff;
+  max-width: 100%;
 }
 
 .fiu-tag--apprentices {
@@ -20329,11 +20442,11 @@ a.fiu-tag--apprentices:hover {
 }
 
 .fiu-tag--employers {
-  background: #4d43a3;
+  background: #443B99;
 }
 
 a.fiu-tag--employers:hover {
-  background: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+  background: rgb(51.641509434, 44.8066037736, 116.1933962264);
 }
 
 .fiu-tag--national {
@@ -20759,7 +20872,7 @@ a.fiu-tag:focus {
   width: var(--number-size);
   height: var(--number-size);
   top: 0;
-  background: #4d43a3;
+  background: #443B99;
   border-radius: 50%;
   text-align: center;
 }
@@ -20839,13 +20952,13 @@ a.fiu-tag:focus {
 }
 
 .fiu-template--employers {
-  --brand-colour: #4d43a3;
+  --brand-colour: #443B99;
   --brand-colour-dark: #3D2375;
   --brand-colour-mid: #B1AFC6;
   --brand-colour-light: #DBD5E9;
   --border-colour: #DBD5E9;
-  --link-colour: #4d43a3;
-  --link-hover-colour: rgb(59.9260869565, 52.1434782609, 126.8565217391);
+  --link-colour: #443B99;
+  --link-hover-colour: rgb(51.641509434, 44.8066037736, 116.1933962264);
 }
 
 /*# sourceMappingURL=app.css.map */
