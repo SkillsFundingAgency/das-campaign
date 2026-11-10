@@ -106,7 +106,7 @@ namespace SFA.DAS.Campaign.Web.Renderers
         private void AddHubUrl(TagBuilder columnDiv, Url control)
         {
             columnDiv.InnerHtml.AppendHtml(
-                $"<div class=\"fiu-feature-text\"><a class=\"fiu-tag fiu-tag--{ GetCssClassNameForHub(control.Hub)} fiu-panel__tag\" href=\"/{control.Hub.ToLowerInvariant()}\">{control.Hub}</a></div>");
+                $"<h2 class=\"govuk-heading-l\"><a class=\"fiu-link fiu-link--{ GetCssClassNameForHub(control.Hub)} govuk-!-font-weight-bold\" href=\"/{control.Hub.ToLowerInvariant()}\">{control.Hub}</a></h2>");
         }
 
         private string GetCssClassNameForHub(string hub)

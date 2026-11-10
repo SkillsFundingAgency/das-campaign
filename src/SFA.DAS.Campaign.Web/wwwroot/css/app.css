@@ -20440,6 +20440,7 @@ a.fiu-panel:active .fiu-panel__tag, a.fiu-panel:hover .fiu-panel__tag {
 
 .fiu-tag--apprentices {
   background: #287E3A;
+  color: #fff;
 }
 
 a.fiu-tag--apprentices:hover {
@@ -20448,6 +20449,7 @@ a.fiu-tag--apprentices:hover {
 
 .fiu-tag--employers {
   background: #443B99;
+  color: #fff;
 }
 
 a.fiu-tag--employers:hover {
@@ -20937,8 +20939,8 @@ a.fiu-tag:focus {
 
 :root {
   --brand-colour: #4282ba;
-  --brand-colour-dark: #4282ba;
-  --brand-colour-mid: #4282ba;
+  --brand-colour-dark: #000;
+  --brand-colour-mid: #000;
   --brand-colour-light: #4282ba;
   --border-colour: #cecece;
   --link-colour: #4282ba;

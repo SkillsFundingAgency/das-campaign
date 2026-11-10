@@ -175,10 +175,6 @@ namespace SFA.DAS.Campaign.Web
                     new { controller = "Fat" });
                 builder.MapControllerRoute(
                     name: "default",
-                    pattern: "sitemap.xml",
-                    new { controller = "Home", action = "sitemap" });
-                builder.MapControllerRoute(
-                    name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}").RequireRateLimiting("fixed");
 
             });

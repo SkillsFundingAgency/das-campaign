@@ -61,7 +61,7 @@ namespace SFA.DAS.Campaign.UnitTests.Web.Renderers
             var actual = renderer.Render(urls);
 
             actual.Value.Should().NotBeNullOrWhiteSpace();
-            actual.Value.Should().Be("<div class=\"govuk-grid-row\"><div class=\"govuk-grid-column-one-half\"><div class=\"fiu-feature-text\"><a class=\"fiu-tag fiu-tag--hub fiu-panel__tag\" href=\"/hub\">hub</a></div><ul class=\"govuk-list fiu-sitemap-list\" role=\"list\"><li role=\"listitem\"><a href=\"/hub/LandingPage\" class=\"fiu-link fiu-link--hub fiu-sitemap-list__link\">LandingPage</a><ul class=\"govuk-list fiu-sitemap-list__child-list\" role=\"list\"><li role=\"listitem\"><a href=\"/hub/article\" class=\"fiu-link fiu-link--hub\">article</a></li></ul></li></ul></div></div>");
+            actual.Value.Should().Be("<div class=\"govuk-grid-row\"><div class=\"govuk-grid-column-one-half\"><h2 class=\"govuk-heading-l\"><a class=\"fiu-link fiu-link--hub govuk-!-font-weight-bold\" href=\"/hub\">hub</a></h2><ul class=\"govuk-list fiu-sitemap-list\" role=\"list\"><li role=\"listitem\"><a href=\"/hub/LandingPage\" class=\"fiu-link fiu-link--hub fiu-sitemap-list__link\">LandingPage</a><ul class=\"govuk-list fiu-sitemap-list__child-list\" role=\"list\"><li role=\"listitem\"><a href=\"/hub/article\" class=\"fiu-link fiu-link--hub\">article</a></li></ul></li></ul></div></div>");
         }
     }
 }
