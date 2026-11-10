@@ -89,7 +89,8 @@
 }
 
 .fiu-cards-list__meta {
-  margin: 0 govuk-spacing(6) govuk-spacing(1) 0;
+  @include govuk-font-size(16);
+  margin: 0;
   color: $govuk-secondary-text-colour;
 }
 
@@ -97,11 +98,6 @@
   margin: 0 govuk-spacing(6) 0 0;
   text-wrap: pretty;
   color: $govuk-secondary-text-colour;
-
-  // Constrain card content to two thirds on desktop
-  @include govuk-media-query($from: desktop) {
-    max-width: 640px;
-  }
 }
 
 

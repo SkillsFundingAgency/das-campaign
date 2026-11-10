@@ -18071,7 +18071,17 @@ a.fiu-card-homepage .fiu-card__content {
 }
 
 .fiu-cards-list__meta {
-  margin: 0 30px 5px 0;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+@media print {
+  .fiu-cards-list__meta {
+    font-size: 14pt;
+    line-height: 1.2;
+  }
+}
+.fiu-cards-list__meta {
+  margin: 0;
   color: var(--govuk-secondary-text-colour, #484949);
 }
 
@@ -18079,11 +18089,6 @@ a.fiu-card-homepage .fiu-card__content {
   margin: 0 30px 0 0;
   text-wrap: pretty;
   color: var(--govuk-secondary-text-colour, #484949);
-}
-@media (min-width: 48.0625em) {
-  .fiu-cards-list__description {
-    max-width: 640px;
-  }
 }
 
 @media print {
