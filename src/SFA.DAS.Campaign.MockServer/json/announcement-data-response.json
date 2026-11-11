@@ -1,0 +1,51 @@
+{
+  "announcement": {
+    "mainContent": {
+      "id": "4Kx1a2B3c4D5e6F7g8H9i0",
+      "headline": "Apprenticeship funding changes from April 2026",
+      "slug": "apprenticeship-funding-changes-from-april-2026",
+      "intro": "What the new funding bands mean for employers and how to prepare.",
+      "publishedDate": "2026-03-02T00:00:00",
+      "updatedDate": "2026-03-10T00:00:00",
+      "audience": "Employers",
+      "category": "Funding",
+      "items": [
+        {
+          "values": [
+            "From April 2026 the maximum funding bands for a number of apprenticeship standards will change."
+          ],
+          "type": "paragraph",
+          "tableValue": [],
+          "embeddedResource": null
+        },
+        {
+          "values": null,
+          "type": "unordered-list",
+          "tableValue": [
+            [ "Check which standards you currently use" ],
+            [ "Talk to your training provider about the new rates" ],
+            [ "Review your apprenticeship service account" ]
+          ],
+          "embeddedResource": null
+        }
+      ]
+    },
+    "sections": [
+      {
+        "tabName": "What is changing",
+        "tabTitle": "What is changing",
+        "findTraineeship": false,
+        "content": {
+          "items": [
+            {
+              "values": [ "The funding band for each standard is reviewed regularly by Skills England." ],
+              "type": "paragraph",
+              "tableValue": [],
+              "embeddedResource": null
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

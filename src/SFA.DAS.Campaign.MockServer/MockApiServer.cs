@@ -33,6 +33,8 @@ namespace SFA.DAS.Campaign.MockServer
             AddTrainingCoursesResponses(server);
             AddBannerResponses(server);
             AddRedirectsResponses(server);
+            AddHomepageResponses(server);
+            AddAnnouncementsResponses(server);
             return server;
         }
 
@@ -89,6 +91,36 @@ namespace SFA.DAS.Campaign.MockServer
                     .WithStatusCode(200)
                     .WithHeader("Content-Type", "application/json")
                     .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/banner-data-response.json"));
+        }
+
+        private static void AddHomepageResponses(WireMockServer server)
+        {
+            server.Given(Request.Create()
+                    .WithPath(o => Regex.IsMatch(o, "^/homepage(/preview)?$", RegexOptions.IgnoreCase))
+                    .UsingGet())
+                .RespondWith(Response.Create()
+                    .WithStatusCode(200)
+                    .WithHeader("Content-Type", "application/json")
+                    .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/homepage-data-response.json"));
+        }
+
+        private static void AddAnnouncementsResponses(WireMockServer server)
+        {
+            server.Given(Request.Create()
+                    .WithPath(o => Regex.IsMatch(o, "^/announcements(/preview)?$", RegexOptions.IgnoreCase))
+                    .UsingGet())
+                .RespondWith(Response.Create()
+                    .WithStatusCode(200)
+                    .WithHeader("Content-Type", "application/json")
+                    .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/announcements-data-response.json"));
+
+            server.Given(Request.Create()
+                    .WithPath(o => Regex.IsMatch(o, "^/announcements/(preview/)?(?!preview$)[^/]+$", RegexOptions.IgnoreCase))
+                    .UsingGet())
+                .RespondWith(Response.Create()
+                    .WithStatusCode(200)
+                    .WithHeader("Content-Type", "application/json")
+                    .WithBodyFromFile($"{Directory.GetCurrentDirectory()}/json/announcement-data-response.json"));
         }
 
         private static void AddRedirectsResponses(WireMockServer server)

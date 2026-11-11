@@ -1,0 +1,78 @@
+{
+  "homepage": {
+    "pageTitle": "Your guide to apprenticeships",
+    "browserTitle": "Apprenticeships",
+    "introText": "There are hundreds available - from construction to digital, legal to care services - we’ll help you choose what’s best for you or your business.",
+    "featureCards": [
+      {
+        "id": "1H202vCRDsn2RJjv7HMqkj",
+        "heading": "Is an apprenticeship right for you?",
+        "description": "Not sure about what to do? We’ll tell you all about apprenticeships and give you options if you want to try something else. ",
+        "audience": "Apprentices",
+        "linkType": "Internal",
+        "externalUrl": null,
+        "internalPage": {
+          "slug": "is-an-apprenticeship-right-for-you",
+          "title": "Check if an apprenticeship is right for you",
+          "hub": "Apprentices",
+          "pageType": "Article",
+          "parentSlug": "are-they-right-for-you"
+        }
+      },
+      {
+        "id": "6nX45K3cZh2BKZrcCxKMzj",
+        "heading": "Latest apprenticeship updates for employers",
+        "description": "Find out about changes to apprenticeships and what they mean for you.",
+        "audience": "Employers",
+        "linkType": "Internal",
+        "externalUrl": null,
+        "internalPage": {
+          "slug": "announcements",
+          "title": "Announcements",
+          "hub": "Employers",
+          "pageType": "Article",
+          "parentSlug": "get-started"
+        }
+      },
+      {
+        "id": "XHIkkax1UHVFnlFzzZTp0",
+        "heading": "Find out if an apprentice is right for your business",
+        "description": "See if you can hire an apprentice, learn the benefits and explore what other employers say.",
+        "audience": "Employers",
+        "linkType": "Internal",
+        "externalUrl": null,
+        "internalPage": {
+          "slug": "find-out-if-an-apprentice-is-right-for-your-business",
+          "title": "Find out if an apprentice is right for your business",
+          "hub": "Employers",
+          "pageType": "Article",
+          "parentSlug": "considering-hiring-an-apprentice"
+        }
+      },
+      {
+        "id": "Yces0rW19fwOgCgfDshX3",
+        "heading": "Join the Apprenticeship Ambassador Network (AAN)",
+        "description": "Encourage and inspire the apprentices of tomorrow as an apprentice ambassador.",
+        "audience": "Apprentices",
+        "linkType": "Internal",
+        "externalUrl": null,
+        "internalPage": {
+          "slug": "join-the-apprenticeship-ambassador-network-as-an-apprentice",
+          "title": "Join the Apprenticeship Ambassador Network (AAN) as an apprentice",
+          "hub": "Apprentices",
+          "pageType": "Article",
+          "parentSlug": "are-they-right-for-you"
+        }
+      },
+      {
+        "id": "external-example",
+        "heading": "Find an apprenticeship",
+        "description": "Search and apply for apprenticeships on the Find an apprenticeship service.",
+        "audience": "Apprentices",
+        "linkType": "External",
+        "externalUrl": "https://www.findapprenticeship.service.gov.uk/",
+        "internalPage": null
+      }
+    ]
+  }
+}

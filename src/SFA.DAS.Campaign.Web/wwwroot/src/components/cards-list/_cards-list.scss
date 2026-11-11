@@ -1,0 +1,130 @@
+@use '../../shared' as *;
+
+.fiu-cards-list__heading {
+  @include govuk-responsive-margin(6, "bottom");
+}
+
+.fiu-cards-list__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  column-gap: govuk-spacing(6);
+  .fiu-cards-list__list-item:first-child {
+    border-top: 0;
+    .fiu-cards-list__list-item-wrapper {
+      padding-top: 0;
+    }
+  }
+}
+
+.fiu-cards-list__list-item {
+  border-top: 1px solid var(--border-colour, #{$govuk-border-colour});
+  padding: govuk-spacing(1) 0 govuk-spacing(4);
+}
+
+.fiu-cards-list__list-item-wrapper {
+  padding: 19px 0 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: govuk-spacing(2);
+  align-items: flex-start;
+}
+
+.fiu-cards-list__sub-heading {
+  margin: 0 govuk-spacing(6) govuk-spacing(2) 0;
+  text-wrap: pretty;
+}
+
+.fiu-cards-list__link {
+  // Make the entire list item wrapper clickable
+  &::after {
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  // Chevron
+  &::before {
+    $dimension: 7px;
+    $width: 3px;
+
+    border-right: $width solid var(--link-colour, #{$fiu-global-link-colour});
+    border-top: $width solid var(--link-colour, #{$fiu-global-link-colour});
+    content: "";
+    display: block;
+    height: $dimension;
+    position: absolute;
+    right: govuk-spacing(1);
+    top: 50%;
+    margin-top: 5px;
+    transform: rotate(45deg);
+    width: $dimension;
+  }
+
+  &:hover {
+    &::before {
+      border-color: var(--link-hover-colour, #{$fiu-global-link-hover-colour});
+    }
+  }
+
+  &:focus {
+    &::before {
+      border-color: $govuk-focus-text-colour;
+    }
+  }
+  
+  &:visited {
+    color: var(--link-colour, #{$fiu-global-link-colour});
+  }
+  
+}
+
+.fiu-cards-list__tag {
+  padding: 8px;
+}
+
+.fiu-cards-list__meta {
+  @include govuk-font-size(16);
+  margin: 0;
+  color: $govuk-secondary-text-colour;
+}
+
+.fiu-cards-list__description {
+  margin: 0 govuk-spacing(6) 0 0;
+  text-wrap: pretty;
+  color: $govuk-secondary-text-colour;
+}
+
+
+@include govuk-media-query($media-type: print) {
+  .fiu-cards-list__list {
+    display: block;
+  }
+
+  .fiu-cards-list__list-item {
+    padding: 0;
+  }
+
+  .fiu-cards-list__list-item-wrapper {
+    padding: 5mm 0;
+  }
+
+  .fiu-cards-list__description {
+    margin: 0;
+  }
+
+  .fiu-cards-list__link {
+    &::before {
+      display: none;
+    }
+
+    &::after {
+      position: static;
+    }
+  }
+}

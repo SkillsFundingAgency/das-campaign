@@ -5,11 +5,16 @@
   @include fiu-typography-common;
   font-size: 19px;
   letter-spacing: 0;
-  color: #fff;
+  max-width: 100%;
+}
+
+.fiu-tag--purple {
+  @extend .govuk-tag--purple;
 }
 
 .fiu-tag--apprentices {
   background: $fiu-apprentices-brand-colour;
+  color: #fff;
 }
 
 a.fiu-tag--apprentices:hover {
@@ -18,6 +23,7 @@ a.fiu-tag--apprentices:hover {
 
 .fiu-tag--employers {
   background: $fiu-employers-brand-colour;
+  color: #fff;
 }
 
 a.fiu-tag--employers:hover {
