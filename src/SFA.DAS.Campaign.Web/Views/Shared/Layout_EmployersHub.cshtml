@@ -32,7 +32,14 @@
                     <div class="govuk-grid-column-@headingColWidth fiu-page-header__wrap">
                         @if (showBackLink)
                         {
-                            <a class="fiu-back-link" href="/employers">Back to Employer home</a>
+                            if (ViewBag.ParentPageUrl != null && ViewBag.ParentPageTitle != null)
+                            {
+                                <a class="fiu-back-link" href="@ViewBag.ParentPageUrl">Back to @ViewBag.ParentPageTitle</a>
+                            }
+                            else
+                            {
+                                <a class="fiu-back-link" href="/employers">Back to Employer home</a>
+                            }
                         }
                         <h1 class="govuk-heading-xl fiu-page-heading__title">@ViewBag.PageTitle</h1>
                         @if (ViewBag.PageSummary != null)

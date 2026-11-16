@@ -1,13 +1,20 @@
-﻿@{
-    ViewBag.Title = "Apprenticeships";
-    ViewBag.MetaDesc = "There are hundreds available - from construction to digital, legal to care services - we’ll help you choose what’s best for you or your business.";
+﻿@model SFA.DAS.Campaign.Domain.Content.Page<SFA.DAS.Campaign.Domain.Content.Homepage>
+@{
+    // Content comes from the /homepage endpoint; the literals are fallbacks for when it returns nothing.
+    var homepage = Model.Content;
+    var pageTitle = !string.IsNullOrWhiteSpace(homepage?.PageTitle) ? homepage.PageTitle : "Your guide to apprenticeships";
+    var introText = !string.IsNullOrWhiteSpace(homepage?.IntroText) ? homepage.IntroText : "There are hundreds available - from construction to digital, legal to care services - we’ll help you choose what’s best for you or your business.";
+    var featureCards = homepage?.FeatureCards;
+
+    ViewBag.Title = !string.IsNullOrWhiteSpace(homepage?.BrowserTitle) ? homepage.BrowserTitle : "Apprenticeships";
+    ViewBag.MetaDesc = introText;
     ViewBag.PageID = "homepage";
     Layout = "Layout";
     ViewBag.HomePage = true;
     ViewBag.Section = "homepage";
 }
 
-@if (Model.BannerModels != null && Model.BannerModels.Count > 0)
+@if (Model.BannerModels != null && Model.BannerModels.Any())
 {
     foreach (var banner in Model.BannerModels)
     {
@@ -27,10 +34,10 @@
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-half fiu-page-header__wrap">
                         <h1 class="govuk-heading-xl fiu-page-heading__title govuk-!-margin-top-5">
-                            Your guide to apprenticeships
+                            @pageTitle
                         </h1>
                         <p class="fiu-page-header__content--l">
-                            There are hundreds available - from construction to digital, legal to care services - we’ll help you choose what’s best for you or your business.
+                            @introText
                         </p>
                     </div>
                 </div>
@@ -59,7 +66,21 @@
             <partial name="Panels/_FindAnApprenticeship" />
         </div>
         <div class="fiu-width-container">
-            <div class="fiu-grid-layout fiu-grid-layout--5 fiu-card-group">
+            <div class="fiu-grid-layout fiu-grid-layout--@featureCards.Count() fiu-card-group">
+            @if (featureCards != null && featureCards.Any(c => !string.IsNullOrWhiteSpace(c.Url)))
+            {
+                foreach (var card in featureCards.Where(c => !string.IsNullOrWhiteSpace(c.Url)))
+                {
+                    <a class="fiu-card @(card.IsForEmployers ? "fiu-card--employers" : "")" href="@card.Url" rel="@(card.IsExternal ? "noopener noreferrer" : null)">
+                        <div class="fiu-card__body">
+                            <h3 class="fiu-card__heading">@card.Heading</h3>
+                            <p class="fiu-card__content">@card.Description</p>
+                        </div>
+                    </a>
+                }
+            }
+            else
+            {
                 <a class="fiu-card" href="/apprentices/is-an-apprenticeship-right-for-you">
                     <div class="fiu-card__body">
                         <h3 class="fiu-card__heading">Is an apprenticeship right for you?</h3>
@@ -78,6 +99,7 @@
                         <p class="fiu-card__content">See if you can hire an apprentice, learn the benefits and explore what other employers say.</p>
                     </div>
                 </a>
+            }
             </div>
         </div>
     </div>

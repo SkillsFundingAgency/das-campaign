@@ -100,6 +100,7 @@ namespace SFA.DAS.Campaign.Web.Helpers
             services.AddSingleton<ICmsPageConverter, MenuJsonConverter>();
             services.AddSingleton<ICmsPageConverter, BannerJsonConverter>();
             services.AddSingleton<ICmsPageConverter, PanelJsonConverter>();
+            services.AddSingleton<ICmsPageConverter, AnnouncementJsonConverter>();
         }
     }
 }
